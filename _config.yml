@@ -4,9 +4,9 @@
 
 # Site
 title: CliffのBlog
-subtitle: '成長期的異端貓'
-description: '暫時沒什麼好說的'
-keywords: Cliffの前端筆記
+subtitle: '成長期的異端獸'
+description: '追求卓越是種學問'
+keywords: 網頁前端
 author: Cliff Chu
 language: zh-TW
 timezone: ''
@@ -105,4 +105,4 @@ deploy:
   type: git
   repo: https://github.com/Cliff1213/cliff1213.github.io.git
   branch: master
-  message: "add git article"
+  message: "edit git article"

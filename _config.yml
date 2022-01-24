@@ -4,8 +4,8 @@
 
 # Site
 title: CliffのBlog
-subtitle: '成長期的異端獸'
-description: '追求卓越是種學問'
+subtitle: '貪食貓的異世界幻想'
+description: '期待你能卓越'
 keywords: 網頁前端
 author: Cliff Chu
 language: zh-TW
@@ -105,4 +105,4 @@ deploy:
   type: git
   repo: https://github.com/Cliff1213/cliff1213.github.io.git
   branch: master
-  message: "edit git article"
+  message: "set site"

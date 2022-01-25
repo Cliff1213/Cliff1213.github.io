@@ -41,7 +41,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Git 常見指令與使用簡介</title>
+    <title>Git 學習筆記</title>
     <url>/Git-learning/</url>
     <content><![CDATA[<p>以前在初接觸到網頁領域的時候，偶爾會聽到版本控制一詞，當時的理解是把每一次完成編輯的專案，當作一次的版本發佈到網路空間呈現出來；雖然表面上確實是如此，但是實際在接觸到 Git 之後，發現所謂的版本控制並不是這麼單純；為了拓展自己的技能樹，這幾天幾乎是把時間都投資在 Git 的學習上，也藉由這次機會把學到的知識做個紀錄。</p>
 <p><em>備註：本篇僅記錄這段時間學習 Git 所做的筆記，主要是用來回顧與找資料，沒有過多專有名詞的解釋，內容會視情況更新。</em></p>
@@ -50,7 +50,7 @@
 
 
 <h2 id="環境安裝："><a href="#環境安裝：" class="headerlink" title="環境安裝："></a>環境安裝：</h2><p>在進入正題之前，必須先根據電腦的作業系統安裝 <a href="https://git-scm.com/">Git</a> 的環境，安裝成功後在 Git 資料夾中會有 “Git Bash” 的應用程式，可以透過它來操作 Git 指令；或是使用電腦本身就有的命令提示字元 / 終端機也可以，依使用者習慣為主。</p>
-<h2 id="Windows-cmd-基本指令："><a href="#Windows-cmd-基本指令：" class="headerlink" title="Windows cmd 基本指令："></a>Windows cmd 基本指令：</h2><p>除了 Git 指令，通常還會搭配一些命令提示字元內建的原生指令去輔助操作，常用的 cmd 指令如下：</p>
+<h2 id="Command-Line-基本指令："><a href="#Command-Line-基本指令：" class="headerlink" title="Command Line 基本指令："></a>Command Line 基本指令：</h2><p>除了 Git 指令，通常還會搭配一些命令提示字元的原生指令去輔助操作，常用的 command line 指令如下：</p>
 <h3 id="移動到指定目錄"><a href="#移動到指定目錄" class="headerlink" title="移動到指定目錄"></a><strong>移動到指定目錄</strong></h3><p>指令：<code>cd 資料夾路徑</code></p>
 <p>如果覺得直接輸入路徑很麻煩，可以直接將資料夾拖曳至 Git Bash 視窗中。</p>
 <h3 id="展開當前目錄"><a href="#展開當前目錄" class="headerlink" title="展開當前目錄"></a><strong>展開當前目錄</strong></h3><p>指令：<code>ls</code></p>
@@ -89,15 +89,21 @@
 
 
 <h3 id="加入暫存區"><a href="#加入暫存區" class="headerlink" title="加入暫存區"></a><strong>加入暫存區</strong></h3><p>指令：<code>$ git add .</code></p>
-<p>工作目錄有新增或編輯的檔案時，可以使用指令將檔案加入暫存區 / 索引。</p>
+<p>工作目錄有新增或編輯的檔案時，可以使用指令將檔案加入暫存區 / 索引，並等待提交（commit）成一次新的版本。</p>
 <p>嘗試在 Project 新增檔案 index.html，並使用指令 <code>$ git status</code> 查看狀態時出現以下訊息：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">No commits yet</span><br><span class="line">Untracked files:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span><br><span class="line">        index.html</span><br><span class="line"></span><br><span class="line">nothing added to commit but untracked files present (use &quot;git add&quot; to track)</span><br></pre></td></tr></table></figure>
 
-<p>從第 5 行可以得知有尚未追蹤的檔案，而第 7 行為檔案的名稱；此時可以使用指令 <code>$ git add .</code> 將其加入暫存區。</p>
+<p>從第 5 行可以得知，已偵測到尚未追蹤的檔案，而第 7 行為檔案的名稱；此時可以使用指令 <code>$ git add .</code> 將其加入暫存區。</p>
 <p>透過指令將 index.html 加入暫存區後，再使用 <code>$ git status</code> 查看狀態時出現以下訊息：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">No commits yet</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)</span><br><span class="line">        new file:   index.html</span><br></pre></td></tr></table></figure>
 
-<p>從第 5 行可以得知新增檔案的動作被暫時儲存成一個新的版本，並等待提交（commit）。</p>
+<p>從第 5 行可以得知，新增檔案的動作被儲存到暫存區，並等待 commit 成一次新版本。</p>
+<p>補充說明，使用指令 <code>$ git status</code> 查詢狀態時，檔案如果是新增在工作目錄的，狀態會是 <code>Untracked files</code>，表示尚未加入暫存區追蹤；但如果是已被加入到暫存區，後續再進行修改的檔案，狀態會是 <code>Changes not staged for commit</code>，並且檔案前面會有 <code>modified</code> 的字樣，表示該檔案已被編輯，需要再次加入暫存區等待提交。</p>
+<p>以下列出不同狀態所代表的意思：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Changes to be committed        # 已加入暫存區，準備 commit 成一次新的版本紀錄。</span><br><span class="line">Changes not staged for commit  # 已被追蹤，但尚未加入至暫存區。</span><br><span class="line">Untracked file                 # 新建立，尚未被追蹤的檔案。</span><br></pre></td></tr></table></figure>
+
+
+
 <h3 id="提交更新"><a href="#提交更新" class="headerlink" title="提交更新"></a><strong>提交更新</strong></h3><p>指令：<code>$ git commit -m &quot;編輯內容說明&quot;</code></p>
 <p>將加入暫存區的檔案提交一次新的版本。</p>
 <p>先前做了新增檔案 index.html 並加入暫存區；現在嘗試將暫存區的內容提交成新的版本，輸入指令 <code>$ git commit -m &quot;新增 index&quot;</code> 後，如果出現以下訊息表示成功提交。</p>
@@ -157,6 +163,12 @@
 <p>指令：<code>$ git commit --amend --no-edit</code></p>
 <p>執行該指令時如果未加上 <code>--no-edit</code> 參數，會跳出 Vim 編輯視窗，因此建議加上。</p>
 <h2 id="分支介紹"><a href="#分支介紹" class="headerlink" title="分支介紹"></a>分支介紹</h2><p>分支（branch）是開發者在團隊協作一個專案時，會需要使用到的 Git 架構內容；可以理解成將現階段儲存庫的所有檔案複製一份，而這兩個版本可以獨立修改各自的內容。這樣的好處是如果檔案的內容需要做更動，就可以先建立一個分支並在上面進行修改，同時也不用擔心影響到原始的檔案內容。</p>
+<p>以下列出常見分支名稱與主要用途：</p>
+<ul>
+<li>master 預設分支 - 合併時才會產生 commit</li>
+<li>develop 開發分支 - 合併時才會產生 commit</li>
+<li>feature 開發新功能分支</li>
+</ul>
 <p>開始進入分支之前，必須先對 HEAD 指標有些概念，可以把它理解成目前所在的分支；也可以在資料夾路徑看到目前 HEAD 的指向，如下圖，可以看到目前 HEAD 正指向 master 分支。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">user@DESKTOP-LV1TU83 MINGW64 ~/Desktop/Project (master)</span><br></pre></td></tr></table></figure>
 
@@ -181,12 +193,13 @@
 <h3 id="合併分支"><a href="#合併分支" class="headerlink" title="合併分支"></a>合併分支</h3><p>可視情況使用以下兩種合併模式：</p>
 <p><strong>快轉模式（Fast-Forward）</strong></p>
 <p>指令：<code>$ git merge 合併的分支名稱</code></p>
-<p>合併後 HEAD 會指向兩個分支合併後所產生出來的新 commit 上。</p>
-<p>需要注意的是，如果合併時兩個分支的最後 commit 位置相同，就會產生快轉模式（Fast - Forward），以下面這張圖為例：</p>
+<p>快轉模式下，兩分支合併後回重疊，並且不會產生額外的 commit。</p>
+<p>如果合併前兩個分支的最後 commit 位置相同，合併時就會產生快轉模式（Fast - Forward），以下面這張圖為例：</p>
 <p><img src="https://i.imgur.com/uRzQ0zw.png"></p>
 <p>圖中左邊的部分為 master 分支與 feature 分支合併前的狀態；可以得知 feature 分支的 commit 有兩個，依序為 add css 與 add js，而 master 分支並沒有做變動；接著再將 HEAD 切換回 master 分支後，執行指令 <code>$ git merge feature</code> ，狀態變為右邊的部分，可以發現合併後 master 分支的位置移動到 feature 分支 add js 的 commit 上，也就是說兩個分支的差別只是 feature 分支多了兩次 commit 而已，因為兩者都是同一個 commit 分出去的，所以 master 分支有的內容 feature 分支也都有；因此 master 分支只是在合併自己未來的版本而已，而這種合併模式就稱為 “快轉模式（Fast - Forward）”。</p>
 <p><strong>非快轉模式（–no-ff）</strong></p>
 <p>指令：<code>$ git merge 合併的分支名稱 --no-ff</code></p>
+<p>非快轉模式下，兩分支合併後會產生額外的 commit。</p>
 <p>前面提到分支在合併時，如果兩者最後一次的 commit 位置相同，合併時就會進行快轉模式；雖然兩者最後都會合併到同一個 commit 上，但是以開發者的角度來思考，都會盡可能的區隔每個分支所做的工作，這也是分支的意義；因此如果要更明確的區隔兩個分支，就可以使用指令 <code>$ git merge 合併的分支名稱 --no-ff</code>，來關閉快轉模式進行合併；以下面這張圖為例：</p>
 <p><img src="https://i.imgur.com/KFo2foP.png"></p>
 <p>圖中左邊的部分所做的事情與前一張圖是相同的，但是兩個分支在關閉快轉模式進行合併時，可以發現 master 分支與 feature 分支合併後，額外產生出一個新的 commit，但是 feature 分支並沒有與 master 分支重疊，並且進行路線停留在合併前最後一次的 commit 位置 add js 上，而這種合併模式就稱為 ＂非快轉模式＂。</p>
@@ -226,12 +239,15 @@
 <h3 id="清除全部暫存"><a href="#清除全部暫存" class="headerlink" title="清除全部暫存"></a>清除全部暫存</h3><p>指令：<code>$ git stash clear</code></p>
 <p>刪除暫存列表所有的暫存紀錄，並無法還原。</p>
 <h2 id="遠端儲存庫操作指令"><a href="#遠端儲存庫操作指令" class="headerlink" title="遠端儲存庫操作指令"></a>遠端儲存庫操作指令</h2><p>這裡開始會介紹推送本地端資料到遠端儲存庫時，較常會用到的指令；本篇筆記主要是在著重講述 Git 的基本操作，因此先不討論遠端儲存庫的建立方式與相關內容。</p>
+<h3 id="連結遠端儲存庫"><a href="#連結遠端儲存庫" class="headerlink" title="連結遠端儲存庫"></a>連結遠端儲存庫</h3><p>指令：<code>$ git remote add origin 遠端儲存庫網址</code></p>
+<p>指令中的 <code>origin</code> 為遠端儲存庫的預設名稱；在實務上通常會有多個儲存庫，像是正式主機與測試主機；因此名稱也會有所不同。</p>
+<h3 id="查詢遠端儲存庫"><a href="#查詢遠端儲存庫" class="headerlink" title="查詢遠端儲存庫"></a>查詢遠端儲存庫</h3><p>指令：<code>$ git remote</code></p>
+<p>遠端資料與本地端建立連結時，可以使用該指令來查詢遠端儲存庫的名稱；也可以使用指令 <code>$ git remote -v</code> 來查詢目前連結的所有遠端儲存庫名稱與路徑。</p>
 <h3 id="複製遠端儲存庫"><a href="#複製遠端儲存庫" class="headerlink" title="複製遠端儲存庫"></a>複製遠端儲存庫</h3><p>指令：<code>$ git clone 遠端儲存庫網址</code></p>
 <p>複製遠端資料到本地端資料夾，並建立工作目錄與本地端儲存庫（.git 資料夾），可以在指令後方加上 <code>-b 遠端分支名稱</code> 來指定要複製的遠端分支，該指令通常使用在本地端尚未有遠端的資料時；而後續本地端的資料更新都是透過接下來會介紹的指令 <code>$ git pull</code> 來操作。</p>
-<h3 id="查詢遠端儲存庫"><a href="#查詢遠端儲存庫" class="headerlink" title="查詢遠端儲存庫"></a>查詢遠端儲存庫</h3><p>指令：<code>$ git remote</code></p>
-<p>遠端資料被複製到本地端時，可以使用該指令來查詢遠端儲存庫的名稱，通常預設為 “origin”，也代表遠端儲存庫的 URL 路徑。</p>
-<h3 id="推送本地端分支至遠端分支"><a href="#推送本地端分支至遠端分支" class="headerlink" title="推送本地端分支至遠端分支"></a>推送本地端分支至遠端分支</h3><p>指令：<code>$ git push 遠端儲存庫路徑 遠端分支名稱</code></p>
-<p>需要注意的是，該指令在第一次推送時，建議輸入成 <code>$ git push -u 遠端儲存庫路徑 遠端分支名稱</code> ，這樣可以使 Git 將這次的推送行為紀錄起來，後續在推送本地端資料到遠端時，只需要輸入指令 <code>$ git push</code> 即可；但是也可能會遇到無法推送的情形，這部分會在後面 <code>$ git pull</code> 的地方說明。</p>
+<h3 id="推送本地端分支至遠端分支"><a href="#推送本地端分支至遠端分支" class="headerlink" title="推送本地端分支至遠端分支"></a>推送本地端分支至遠端分支</h3><p>指令：<code>$ git push 遠端儲存庫名稱 遠端分支名稱</code></p>
+<p>需要注意的是，第一次使用該指令推送時，可以輸入成 <code>$ git push -u 遠端儲存庫名稱 遠端分支名稱</code> ，這樣可以使 Git 將這次的推送行為紀錄起來，後續在推送本地端資料到遠端時，只需要輸入指令 <code>$ git push</code> 即可；但是也可能會遇到無法推送的情形，這部分會在後面 <code>$ git pull</code> 的地方說明。</p>
+<p>補充說明，如果本地端連結的遠端儲存庫有多個，在推送的時候要注意指令中 <code>遠端儲存庫名稱</code> 的地方，需要改成要推送的遠端儲存庫名稱，避免推送到錯誤的地方。</p>
 <h3 id="變更遠端儲存庫名稱"><a href="#變更遠端儲存庫名稱" class="headerlink" title="變更遠端儲存庫名稱"></a>變更遠端儲存庫名稱</h3><p>指令：<code>$ git remote rename 原始儲存庫名稱 修改後名稱</code></p>
 <p>先前說明到，當遠端資料被複製到本地端時，預設的遠端儲存庫名稱為 “ origin “，但是也可以使用上述指令來變更遠端儲存庫的名稱；需要注意的是後續在推送時，遠端儲存庫的路徑要改成新的名稱，假設修改後的名稱為 “newRepo”，推送指令就要輸入 <code>$ git push -u newRepo 遠端分支名稱</code> 。</p>
 <h3 id="複製遠端儲存庫分支與本地端分支合併"><a href="#複製遠端儲存庫分支與本地端分支合併" class="headerlink" title="複製遠端儲存庫分支與本地端分支合併"></a>複製遠端儲存庫分支與本地端分支合併</h3><p>指令：<code>$ git pull</code></p>

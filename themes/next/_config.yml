@@ -52,7 +52,7 @@ darkmode: false
 favicon:
   small: /images/favicon_16px.png
   medium: /images/favicon_32px.png
-  apple_touch_icon: /images/apple-touch-icon-next.png
+  apple_touch_icon: /images/apple-touch-icon-Cat.png
   safari_pinned_tab: /images/logo.svg
   #android_manifest: /manifest.json
 

@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>六角學院 UI 觀念直播班心得</title>
-    <url>/UI-class-winter-2021/</url>
+    <url>/2022-01-17-hexschool-UI/</url>
     <content><![CDATA[<h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>本身不是設計相關科系，但還是希望能透過這次的＂六角學院－UI設計觀念必修直播班＂來增進一點 UI/UX 的相關知識，雖然很遺憾沒有完美的走到終點，但還是幫自己記錄一下這次參與直播班的心路歷程。</p>
 <span id="more"></span>
 
@@ -42,7 +42,7 @@
   </entry>
   <entry>
     <title>Git 學習筆記</title>
-    <url>/Git-learning/</url>
+    <url>/2022-01-20-git-note/</url>
     <content><![CDATA[<p>以前在初接觸到網頁領域的時候，偶爾會聽到版本控制一詞，當時的理解是把每一次完成編輯的專案，當作一次的版本發佈到網路空間呈現出來；雖然表面上確實是如此，但是實際在接觸到 Git 之後，發現所謂的版本控制並不是這麼單純；為了拓展自己的技能樹，這幾天幾乎是把時間都投資在 Git 的學習上，也藉由這次機會把學到的知識做個紀錄。</p>
 <p><em>備註：本篇僅記錄這段時間學習 Git 所做的筆記，主要是用來回顧與找資料，沒有過多專有名詞的解釋，內容會視情況更新。</em></p>
 <span id="more"></span>
@@ -134,7 +134,7 @@
 <li><code>--soft</code>：還原 commit 節點，但是暫存區與工作目錄的檔案皆不會被影響。</li>
 <li><code>--hard</code>：還原 commit 節點、工作目錄與暫存區所有檔案。</li>
 </ul>
-<p>^ 符號代表要往回還原的版本次數，<code>HEAD^</code> 代表往回一個版本，也可以使用 ~ 加上數字來代替 ^ 符號的數目，以 <code>HEAD^^</code> 為例，可以改成 <code>HEAD~2</code>。</p>
+<p>^ 符號代表要往回還原的版本次數，<code>HEAD^</code> 代表往回一個版本，也可以使用 ~ 加上數字來代替 ^ 符號的數目，@ 符號可以用來代表 <code>HEAD</code>；以 <code>HEAD^^</code> 為例，可以改成 <code>HEAD~2</code>，或 <code>@~2</code>。</p>
 <p>以下 <code>$ git reset</code> 相關指令皆是依據上述三種模式的的原理運作。</p>
 <h3 id="取消加入暫存區"><a href="#取消加入暫存區" class="headerlink" title="取消加入暫存區"></a><strong>取消加入暫存區</strong></h3><p>將暫存區的檔案回到尚未執行 <code>$ git add .</code> 的狀態，相關指令分為下列幾種：</p>
 <p><strong>取消單一檔案加入暫存區</strong></p>
@@ -152,8 +152,10 @@
 <p>指令：<code>$ git reset --hard HEAD^</code></p>
 <p>需要注意的是，該指令除了刪除最新的 commit 節點之外，當前加入暫存區的檔案也會被刪除，但是當前工作目錄的檔案不受影響。</p>
 <p><strong>還原刪除的最新 Commit 節點</strong></p>
-<p>指令：<code>$ git reset --hard ORIG_HEAD</code></p>
+<p>指令：<code>$ git reset ORIG_HEAD --hard</code></p>
 <p>還原 <code>$ git reset --hard HEAD^</code> 刪除的 commit 節點，並刪除當前加入暫存區的檔案，但是當前工作目錄不受影響。</p>
+<p>補充說明，上述指令中的 <code>ORIG_HEAD</code> 是當使用者在執行一些危險指令（<code>merge</code>、<code>rebase</code>、<code>reset</code> 等等）時，會先將當前 HEAD 的檔案狀態存放的地方，並隨時可以還原。</p>
+<p>除了上述方法，也可以使用 <code>$ git reset 被刪除的節點 SHA-1 值</code> 來還原狀態，但是被刪除的節點無法透過 <code>$ git log</code> 來查詢；此時可以使用指令 <code>$ git reflog</code> 來檢視歷史的狀態紀錄。</p>
 <p><strong>刪除最新的 Commit 節點但保留異動內容</strong></p>
 <p>指令：<code>$ git reset --soft HEAD^ </code></p>
 <p>可以理解成沒有做最後一次 commit 的動作；而當前的狀態會變成使用 commit 前的所有狀態，加上執行上述指令前的所有狀態。</p>
@@ -161,7 +163,7 @@
 <p><strong>修改最新一次 Commit 訊息</strong></p>
 <p>指令：<code>$ git commit --amend -m &quot;修改內容&quot;</code></p>
 <p>修改當前分支最新一次的 commit 訊息，如果要修改更早之前的，則需要使用 <code>$ git rebase</code> 相關指令。</p>
-<p>**追加檔案到最新一次 Commit **</p>
+<p><strong>追加檔案到最新一次 Commit</strong></p>
 <p>指令：<code>$ git commit --amend --no-edit</code></p>
 <p>執行該指令時如果未加上 <code>--no-edit</code> 參數，會跳出 Vim 編輯視窗。</p>
 <h2 id="分支介紹"><a href="#分支介紹" class="headerlink" title="分支介紹"></a>分支介紹</h2><p>分支（branch）是開發者在團隊協作一個專案時，會需要使用到的 Git 架構內容；可以理解成將現階段儲存庫的所有檔案複製一份，而這兩個版本可以獨立修改各自的內容。這樣的好處是如果檔案的內容需要做更動，就可以先建立一個分支並在上面進行修改，同時也不用擔心影響到原始的檔案內容。</p>
@@ -217,9 +219,28 @@
 <p>將當前分支從最初分歧的節點至當前 commit 節點整串複製一份，並合併在指定的分支前面。</p>
 <p>需要注意的是，複製下來的分支中的每個 commit 節點會重新產生自己的 SHA-1 值，因此與原先的節點彼此是不同的，而原先的節點會隨著時間流逝被 Git 回收。</p>
 <p>另一個需要注意的是，使用指令 <code>$ git rebase</code> 後如果要復原，透過 <code>$ git reset HEAD^</code> 的話並無法復原到執行前的狀態，而是會退回到當前 commit 節點的上一個節點；如果要復原的話，可以使用指令 <code>$ git reset ORIG_HEAD --hard</code>。</p>
+<p>只要合併都可能會產生衝突，下圖為兩分支在使用 <code>rebase</code> 合併時，產生的常見衝突：</p>
+<p><img src="https://i.imgur.com/VnZbZBn.png"></p>
+<p>此時切換到編輯器，查看衝突的部分，如下所示：</p>
+<p><img src="https://i.imgur.com/mL55SQw.png"></p>
+<p>解決衝突後，只需要在終端機再次將檔案加入暫存區，接著執行指令 <code>$ git rebase --continue</code> 再次嘗試合併即可。</p>
 <!-- cherry-pick 待說明 -->
 
-<h2 id="標籤"><a href="#標籤" class="headerlink" title="標籤"></a>標籤</h2><p>開發專案的過程中，會因為檔案不斷新增、編輯或刪除而增加許多 commit 節點，雖然彼此都有自己的版本內容，但是這樣很難去區分彼此之間的重要程度，比方說不同時期的上線版本；因此為了有效區別，可以使用標籤的相關指令。</p>
+<p><strong>指定幾個 commit 複製並接在當前分支前</strong></p>
+<p>指令： <code>$ git cherry-pick SHA-1值</code></p>
+<p>挑選指定的單一或數個 commit 節點，複製到當前分支前面。</p>
+<p>以下圖為例，目前本地端有兩個分支，分別為 <code>master</code>、<code>feature</code>：</p>
+<p><img src="https://i.imgur.com/2o2yYEc.png"></p>
+<p>圖中左邊的部分為兩分支原始的狀態，如果要將 feature 分支上的 add 02 與 add 04 兩個 commit 節點合併在當前的分支 master 前面，可以輸入指令 <code>$ git cherry-pick 6465c29 bfd46fd</code>，此時狀態會是圖中右邊的部分，可以發現被指定的兩個節點合併到當前分支 master 前面，而原先的節點並沒有影響。</p>
+<p>如果希望被複製過來的 commit 節點不要直接進行合併，可以在指令後方加上參數 <code>--no-commit</code>，如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">＄ git cherry-pick 6465c29 bfd46fd --no-commit</span><br></pre></td></tr></table></figure>
+
+<p>此時被複製過來的 commit 節點會先被加入暫存區等待合併，可以透過 <code>$ git status</code> 來查詢狀態，會發現暫存區目前有兩個檔案，如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)</span><br><span class="line">        new file:   02.html</span><br><span class="line">        new file:   04.html</span><br></pre></td></tr></table></figure>
+
+<p>接著確認檔案沒問題後，就可以進行 commit，結果如下圖所示：</p>
+<p><img src="https://i.imgur.com/b6I6vGO.png"></p>
+<h2 id="標籤（Tag）"><a href="#標籤（Tag）" class="headerlink" title="標籤（Tag）"></a>標籤（Tag）</h2><p>開發專案的過程中，會因為檔案不斷新增、編輯或刪除而增加許多 commit 節點，雖然彼此都有自己的版本內容，但是這樣很難去區分彼此之間的重要程度，比方說不同時期的上線版本；因此為了有效區別，可以使用標籤的相關指令。</p>
 <p>標籤和分支一樣都是指向某一個 commit 節點的指標，但兩者的差別在於標籤只會指向固定的 commit 節點，而分支會隨著 commit 的推進而移動到最新的節點。</p>
 <h3 id="加入輕量標籤"><a href="#加入輕量標籤" class="headerlink" title="加入輕量標籤"></a>加入輕量標籤</h3><p>指令：<code>$ git tag 標籤名稱</code></p>
 <p>可以在當前的節點上新增一個標籤；後續要查詢標籤時，可使用指令 <code>$ git tag</code> 來做查詢。</p>

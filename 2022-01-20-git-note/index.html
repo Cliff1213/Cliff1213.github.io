@@ -20,24 +20,25 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"cliff1213.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="以前在初接觸到網頁領域的時候，偶爾會聽到版本控制一詞，當時的理解是把每一次完成編輯的專案，當作一次的版本發佈到網路空間呈現出來；雖然表面上確實是如此，但是實際在接觸到 Git 之後，發現所謂的版本控制並不是這麼單純；為了拓展自己的技能樹，這幾天幾乎是把時間都投資在 Git 的學習上，也藉由這次機會把學到的知識做個紀錄。 備註：本篇僅記錄這段時間學習 Git 所做的筆記，主要是用來回顧與找資料，沒有">
+<meta name="description" content="在初接觸到網頁領域的時候，偶爾會聽到版本控制一詞，當時的理解是把每一個完整的專案，當作一次的版本發佈到網路空間呈現出來；事實上確實是如此，但是實際在接觸到 Git 之後，才理解到版本控制背後有很多深層的學問可以探究；這段時間為了拓展技能樹，不斷的逼自己學習新的技能，近期剛好把 Git 告一個段落，順便藉由這次機會把學到的知識做個筆記。 備註：本篇僅記錄這段時間學習 Git 所做的筆記，主要是用來找">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git 學習筆記">
+<meta property="og:title" content="Git 指令概述">
 <meta property="og:url" content="https://cliff1213.github.io/2022-01-20-git-note/index.html">
 <meta property="og:site_name" content="CliffのBlog">
-<meta property="og:description" content="以前在初接觸到網頁領域的時候，偶爾會聽到版本控制一詞，當時的理解是把每一次完成編輯的專案，當作一次的版本發佈到網路空間呈現出來；雖然表面上確實是如此，但是實際在接觸到 Git 之後，發現所謂的版本控制並不是這麼單純；為了拓展自己的技能樹，這幾天幾乎是把時間都投資在 Git 的學習上，也藉由這次機會把學到的知識做個紀錄。 備註：本篇僅記錄這段時間學習 Git 所做的筆記，主要是用來回顧與找資料，沒有">
+<meta property="og:description" content="在初接觸到網頁領域的時候，偶爾會聽到版本控制一詞，當時的理解是把每一個完整的專案，當作一次的版本發佈到網路空間呈現出來；事實上確實是如此，但是實際在接觸到 Git 之後，才理解到版本控制背後有很多深層的學問可以探究；這段時間為了拓展技能樹，不斷的逼自己學習新的技能，近期剛好把 Git 告一個段落，順便藉由這次機會把學到的知識做個筆記。 備註：本篇僅記錄這段時間學習 Git 所做的筆記，主要是用來找">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://i.imgur.com/zLOR8aN.png">
-<meta property="og:image" content="https://i.imgur.com/uRzQ0zw.png">
-<meta property="og:image" content="https://i.imgur.com/KFo2foP.png">
-<meta property="og:image" content="https://i.imgur.com/6MWIo44.png">
-<meta property="og:image" content="https://i.imgur.com/VnZbZBn.png">
-<meta property="og:image" content="https://i.imgur.com/mL55SQw.png">
-<meta property="og:image" content="https://i.imgur.com/2o2yYEc.png">
-<meta property="og:image" content="https://i.imgur.com/b6I6vGO.png">
-<meta property="og:image" content="https://i.imgur.com/WYOmVjP.png">
+<meta property="og:image" content="https://i.imgur.com/q0db0Wg.png">
+<meta property="og:image" content="https://i.imgur.com/zpwHsHZ.png">
+<meta property="og:image" content="https://i.imgur.com/LVudQXm.png">
+<meta property="og:image" content="https://i.imgur.com/sz7xcOB.png">
+<meta property="og:image" content="https://i.imgur.com/wxaxXFa.png">
+<meta property="og:image" content="https://i.imgur.com/UyuDjy1.png">
+<meta property="og:image" content="https://i.imgur.com/wJeP32p.png">
+<meta property="og:image" content="https://i.imgur.com/5Pu4KZi.png">
+<meta property="og:image" content="https://i.imgur.com/PnkSzXM.png">
 <meta property="article:published_time" content="2022-01-19T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-01-28T12:39:42.751Z">
+<meta property="article:modified_time" content="2022-01-30T15:55:14.353Z">
 <meta property="article:author" content="Cliff Chu">
 <meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
@@ -48,10 +49,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://cliff1213.github.io/2022-01-20-git-note/","path":"2022-01-20-git-note/","title":"Git 學習筆記"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://cliff1213.github.io/2022-01-20-git-note/","path":"2022-01-20-git-note/","title":"Git 指令概述"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Git 學習筆記 | CliffのBlog</title>
+<title>Git 指令概述 | CliffのBlog</title>
   
 
 
@@ -158,7 +159,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">環境安裝：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Command-Line-%E5%9F%BA%E6%9C%AC%E6%8C%87%E4%BB%A4%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">Command Line 基本指令：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%BB%E5%8B%95%E5%88%B0%E6%8C%87%E5%AE%9A%E7%9B%AE%E9%8C%84"><span class="nav-number">2.1.</span> <span class="nav-text">移動到指定目錄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%95%E9%96%8B%E7%95%B6%E5%89%8D%E7%9B%AE%E9%8C%84"><span class="nav-number">2.2.</span> <span class="nav-text">展開當前目錄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E5%89%8D%E4%B8%80%E5%B1%A4%E7%9B%AE%E9%8C%84"><span class="nav-number">2.3.</span> <span class="nav-text">回前一層目錄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E5%88%B0%E6%A0%B9%E7%9B%AE%E9%8C%84"><span class="nav-number">2.4.</span> <span class="nav-text">回到根目錄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E%E8%B3%87%E6%96%99%E5%A4%BE"><span class="nav-number">2.5.</span> <span class="nav-text">新增資料夾</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E%E6%AA%94%E6%A1%88"><span class="nav-number">2.6.</span> <span class="nav-text">新增檔案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%AA%E9%99%A4%E6%AA%94%E6%A1%88"><span class="nav-number">2.7.</span> <span class="nav-text">刪除檔案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-%E7%89%88%E6%9C%AC%E6%AA%A2%E8%A6%96%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">Git 版本檢視：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A%EF%BC%9A"><span class="nav-number">4.</span> <span class="nav-text">Git 環境設定：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A8%AD%E5%AE%9A%E4%BD%BF%E7%94%A8%E8%80%85%E6%9A%B1%E7%A8%B1"><span class="nav-number">4.1.</span> <span class="nav-text">設定使用者暱稱</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A8%AD%E5%AE%9A%E4%BD%BF%E7%94%A8%E8%80%85%E4%BF%A1%E7%AE%B1"><span class="nav-number">4.2.</span> <span class="nav-text">設定使用者信箱</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E8%A8%AD%E5%AE%9A%E5%80%BC"><span class="nav-number">4.3.</span> <span class="nav-text">查看設定值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4%EF%BC%9A"><span class="nav-number">5.</span> <span class="nav-text">Git 常用指令：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E6%9C%AC%E5%9C%B0%E5%84%B2%E5%AD%98%E5%BA%AB"><span class="nav-number">5.1.</span> <span class="nav-text">建立本地儲存庫</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AA%A2%E6%9F%A5%E7%8B%80%E6%85%8B"><span class="nav-number">5.2.</span> <span class="nav-text">檢查狀態</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E5%85%A5%E6%9A%AB%E5%AD%98%E5%8D%80"><span class="nav-number">5.3.</span> <span class="nav-text">加入暫存區</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%90%E4%BA%A4%E6%9B%B4%E6%96%B0%EF%BC%88Commit%EF%BC%89"><span class="nav-number">5.4.</span> <span class="nav-text">提交更新（Commit）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E8%A9%A2-Commit-%E8%B3%87%E8%A8%8A"><span class="nav-number">5.5.</span> <span class="nav-text">查詢 Commit 資訊</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%BD%E7%95%A5%E6%AA%94%E6%A1%88"><span class="nav-number">5.6.</span> <span class="nav-text">忽略檔案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%82%84%E5%8E%9F%EF%BC%88Reset%EF%BC%89"><span class="nav-number">6.</span> <span class="nav-text">還原（Reset）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%96%E6%B6%88%E5%8A%A0%E5%85%A5%E6%9A%AB%E5%AD%98%E5%8D%80"><span class="nav-number">6.1.</span> <span class="nav-text">取消加入暫存區</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%82%84%E5%8E%9F%E6%AA%94%E6%A1%88"><span class="nav-number">6.2.</span> <span class="nav-text">還原檔案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%AA%E9%99%A4-Commit-%E7%AF%80%E9%BB%9E"><span class="nav-number">6.3.</span> <span class="nav-text">刪除 Commit 節點</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9-Commit-%E5%85%A7%E5%AE%B9"><span class="nav-number">6.4.</span> <span class="nav-text">修改 Commit 內容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%94%AF%E4%BB%8B%E7%B4%B9"><span class="nav-number">7.</span> <span class="nav-text">分支介紹</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AA%A2%E8%A6%96%E7%95%B6%E5%89%8D%E6%89%80%E6%9C%89%E5%88%86%E6%94%AF"><span class="nav-number">7.1.</span> <span class="nav-text">檢視當前所有分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%BB%E5%8B%95-HEAD-%E5%88%B0%E6%8C%87%E5%AE%9A-Commit-%E7%AF%80%E9%BB%9E"><span class="nav-number">7.2.</span> <span class="nav-text">移動 HEAD 到指定 Commit 節點</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E5%88%86%E6%94%AF"><span class="nav-number">7.3.</span> <span class="nav-text">建立分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%87%E6%8F%9B%E7%95%B6%E5%89%8D%E5%88%86%E6%94%AF"><span class="nav-number">7.4.</span> <span class="nav-text">切換當前分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%88%E4%BD%B5%E5%88%86%E6%94%AF"><span class="nav-number">7.5.</span> <span class="nav-text">合併分支</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%99%E7%B1%A4%EF%BC%88Tag%EF%BC%89"><span class="nav-number">8.</span> <span class="nav-text">標籤（Tag）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E5%85%A5%E8%BC%95%E9%87%8F%E6%A8%99%E7%B1%A4"><span class="nav-number">8.1.</span> <span class="nav-text">加入輕量標籤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E5%85%A5%E6%A8%99%E7%A4%BA%E6%A8%99%E7%B1%A4"><span class="nav-number">8.2.</span> <span class="nav-text">加入標示標籤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%AA%E9%99%A4%E6%A8%99%E7%B1%A4"><span class="nav-number">8.3.</span> <span class="nav-text">刪除標籤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%BB%E5%8B%95%E8%87%B3%E6%8C%87%E5%AE%9A%E6%A8%99%E7%B1%A4%E4%BD%8D%E7%BD%AE"><span class="nav-number">8.4.</span> <span class="nav-text">移動至指定標籤位置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9A%AB%E5%AD%98%EF%BC%88Stash%EF%BC%89"><span class="nav-number">9.</span> <span class="nav-text">暫存（Stash）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9A%AB%E5%AD%98%E7%95%B6%E5%89%8D%E7%9B%AE%E9%8C%84"><span class="nav-number">9.1.</span> <span class="nav-text">暫存當前目錄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AA%A2%E8%A6%96%E6%9A%AB%E5%AD%98%E5%88%97%E8%A1%A8"><span class="nav-number">9.2.</span> <span class="nav-text">檢視暫存列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%82%84%E5%8E%9F%E6%9A%AB%E5%AD%98%E7%9A%84%E7%9B%AE%E9%8C%84"><span class="nav-number">9.3.</span> <span class="nav-text">還原暫存的目錄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B8%85%E9%99%A4%E6%9C%80%E6%96%B0%E6%9A%AB%E5%AD%98"><span class="nav-number">9.4.</span> <span class="nav-text">清除最新暫存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B8%85%E9%99%A4%E5%85%A8%E9%83%A8%E6%9A%AB%E5%AD%98"><span class="nav-number">9.5.</span> <span class="nav-text">清除全部暫存</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%A0%E7%AB%AF%E5%84%B2%E5%AD%98%E5%BA%AB%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4"><span class="nav-number">10.</span> <span class="nav-text">遠端儲存庫操作指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%A3%E7%B5%90%E9%81%A0%E7%AB%AF%E5%84%B2%E5%AD%98%E5%BA%AB"><span class="nav-number">10.1.</span> <span class="nav-text">連結遠端儲存庫</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E8%A9%A2%E9%81%A0%E7%AB%AF%E5%84%B2%E5%AD%98%E5%BA%AB"><span class="nav-number">10.2.</span> <span class="nav-text">查詢遠端儲存庫</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A4%87%E8%A3%BD%E9%81%A0%E7%AB%AF%E5%84%B2%E5%AD%98%E5%BA%AB"><span class="nav-number">10.3.</span> <span class="nav-text">複製遠端儲存庫</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A8%E9%80%81%E6%9C%AC%E5%9C%B0%E7%AB%AF%E5%88%86%E6%94%AF%E8%87%B3%E9%81%A0%E7%AB%AF%E5%88%86%E6%94%AF"><span class="nav-number">10.4.</span> <span class="nav-text">推送本地端分支至遠端分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%8A%E6%9B%B4%E9%81%A0%E7%AB%AF%E5%84%B2%E5%AD%98%E5%BA%AB%E5%90%8D%E7%A8%B1"><span class="nav-number">10.5.</span> <span class="nav-text">變更遠端儲存庫名稱</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A4%87%E8%A3%BD%E9%81%A0%E7%AB%AF%E5%84%B2%E5%AD%98%E5%BA%AB%E5%88%86%E6%94%AF%E8%88%87%E6%9C%AC%E5%9C%B0%E7%AB%AF%E5%88%86%E6%94%AF%E5%90%88%E4%BD%B5"><span class="nav-number">10.6.</span> <span class="nav-text">複製遠端儲存庫分支與本地端分支合併</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A4%87%E8%A3%BD%E9%81%A0%E7%AB%AF%E5%84%B2%E5%AD%98%E5%BA%AB%E5%88%86%E6%94%AF%E8%88%87%E6%9C%AC%E5%9C%B0%E7%AB%AF%E5%88%86%E6%94%AF%E5%BE%85%E5%90%88%E4%BD%B5"><span class="nav-number">10.7.</span> <span class="nav-text">複製遠端儲存庫分支與本地端分支待合併</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">11.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D"><span class="nav-number">1.</span> <span class="nav-text">環境安裝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Command-Line-%E5%9F%BA%E6%9C%AC%E6%8C%87%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">Command Line 基本指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%BB%E5%8B%95%E5%88%B0%E6%8C%87%E5%AE%9A%E7%9B%AE%E9%8C%84"><span class="nav-number">2.1.</span> <span class="nav-text">移動到指定目錄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%95%E9%96%8B%E7%95%B6%E5%89%8D%E7%9B%AE%E9%8C%84"><span class="nav-number">2.2.</span> <span class="nav-text">展開當前目錄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E5%89%8D%E4%B8%80%E5%B1%A4%E7%9B%AE%E9%8C%84"><span class="nav-number">2.3.</span> <span class="nav-text">回前一層目錄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E5%88%B0%E6%A0%B9%E7%9B%AE%E9%8C%84"><span class="nav-number">2.4.</span> <span class="nav-text">回到根目錄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E%E8%B3%87%E6%96%99%E5%A4%BE"><span class="nav-number">2.5.</span> <span class="nav-text">新增資料夾</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E%E6%AA%94%E6%A1%88"><span class="nav-number">2.6.</span> <span class="nav-text">新增檔案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%AA%E9%99%A4%E6%AA%94%E6%A1%88"><span class="nav-number">2.7.</span> <span class="nav-text">刪除檔案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-%E7%89%88%E6%9C%AC%E6%AA%A2%E8%A6%96"><span class="nav-number">3.</span> <span class="nav-text">Git 版本檢視</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A"><span class="nav-number">4.</span> <span class="nav-text">Git 環境設定</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A8%AD%E5%AE%9A%E4%BD%BF%E7%94%A8%E8%80%85%E6%9A%B1%E7%A8%B1"><span class="nav-number">4.1.</span> <span class="nav-text">設定使用者暱稱</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A8%AD%E5%AE%9A%E4%BD%BF%E7%94%A8%E8%80%85%E4%BF%A1%E7%AE%B1"><span class="nav-number">4.2.</span> <span class="nav-text">設定使用者信箱</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E8%A8%AD%E5%AE%9A%E5%80%BC"><span class="nav-number">4.3.</span> <span class="nav-text">查看設定值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4"><span class="nav-number">5.</span> <span class="nav-text">Git 常用指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E6%9C%AC%E5%9C%B0%E7%AB%AF%E5%84%B2%E5%AD%98%E5%BA%AB"><span class="nav-number">5.1.</span> <span class="nav-text">建立本地端儲存庫</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AA%A2%E8%A6%96%E7%8B%80%E6%85%8B"><span class="nav-number">5.2.</span> <span class="nav-text">檢視狀態</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E5%85%A5%E6%9A%AB%E5%AD%98%E5%8D%80"><span class="nav-number">5.3.</span> <span class="nav-text">加入暫存區</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%90%E4%BA%A4%E6%9B%B4%E6%96%B0%EF%BC%88Commit%EF%BC%89"><span class="nav-number">5.4.</span> <span class="nav-text">提交更新（Commit）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E8%A9%A2%E6%8F%90%E4%BA%A4%E7%B4%80%E9%8C%84"><span class="nav-number">5.5.</span> <span class="nav-text">查詢提交紀錄</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%BD%E7%95%A5%E6%AA%94%E6%A1%88"><span class="nav-number">6.</span> <span class="nav-text">忽略檔案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%82%84%E5%8E%9F%EF%BC%88Reset%EF%BC%89"><span class="nav-number">7.</span> <span class="nav-text">還原（Reset）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%82%84%E5%8E%9F%E6%9A%AB%E5%AD%98%E5%8D%80%E5%96%AE%E4%B8%80%E6%AA%94%E6%A1%88%E5%9B%9E%E5%B7%A5%E4%BD%9C%E7%9B%AE%E9%8C%84"><span class="nav-number">7.1.</span> <span class="nav-text">還原暫存區單一檔案回工作目錄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%82%84%E5%8E%9F%E6%9A%AB%E5%AD%98%E5%8D%80%E6%89%80%E6%9C%89%E6%AA%94%E6%A1%88%E5%9B%9E%E5%B7%A5%E4%BD%9C%E7%9B%AE%E9%8C%84"><span class="nav-number">7.2.</span> <span class="nav-text">還原暫存區所有檔案回工作目錄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%82%84%E5%8E%9F%E5%96%AE%E4%B8%80%E6%AA%94%E6%A1%88%E5%85%A7%E5%AE%B9"><span class="nav-number">7.3.</span> <span class="nav-text">還原單一檔案內容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%82%84%E5%8E%9F%E5%B7%A5%E4%BD%9C%E7%9B%AE%E9%8C%84%E8%88%87%E6%9A%AB%E5%AD%98%E5%8D%80"><span class="nav-number">7.4.</span> <span class="nav-text">還原工作目錄與暫存區</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%BB%E9%99%A4%E6%9C%80%E6%96%B0%E7%9A%84%E6%8F%90%E4%BA%A4%E7%AF%80%E9%BB%9E"><span class="nav-number">7.5.</span> <span class="nav-text">移除最新的提交節點</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%82%84%E5%8E%9F%E8%A2%AB%E7%A7%BB%E9%99%A4%E7%9A%84%E6%9C%80%E6%96%B0%E6%8F%90%E4%BA%A4%E7%AF%80%E9%BB%9E"><span class="nav-number">7.6.</span> <span class="nav-text">還原被移除的最新提交節點</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%BB%E9%99%A4%E6%9C%80%E6%96%B0%E7%9A%84%E6%8F%90%E4%BA%A4%E7%AF%80%E9%BB%9E%E4%B8%A6%E4%BF%9D%E7%95%99%E6%AA%94%E6%A1%88%E7%8B%80%E6%85%8B"><span class="nav-number">7.7.</span> <span class="nav-text">移除最新的提交節點並保留檔案狀態</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E6%9C%80%E6%96%B0%E6%8F%90%E4%BA%A4%E7%AF%80%E9%BB%9E%E7%9A%84%E6%8F%8F%E8%BF%B0"><span class="nav-number">7.8.</span> <span class="nav-text">修改最新提交節點的描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%BD%E5%8A%A0%E6%AA%94%E6%A1%88%E5%88%B0%E6%9C%80%E6%96%B0%E7%9A%84%E6%8F%90%E4%BA%A4%E7%AF%80%E9%BB%9E"><span class="nav-number">7.9.</span> <span class="nav-text">追加檔案到最新的提交節點</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%94%AF"><span class="nav-number">8.</span> <span class="nav-text">分支</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AA%A2%E8%A6%96%E7%95%B6%E5%89%8D%E6%89%80%E6%9C%89%E5%88%86%E6%94%AF"><span class="nav-number">8.1.</span> <span class="nav-text">檢視當前所有分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%BB%E5%8B%95-HEAD-%E5%88%B0%E6%8C%87%E5%AE%9A%E6%8F%90%E4%BA%A4%E7%AF%80%E9%BB%9E"><span class="nav-number">8.2.</span> <span class="nav-text">移動 HEAD 到指定提交節點</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E5%88%86%E6%94%AF"><span class="nav-number">8.3.</span> <span class="nav-text">建立分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%87%E6%8F%9B%E7%95%B6%E5%89%8D%E5%88%86%E6%94%AF"><span class="nav-number">8.4.</span> <span class="nav-text">切換當前分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%88%E4%BD%B5%E5%88%86%E6%94%AF-%E5%BF%AB%E8%BD%89%E6%A8%A1%E5%BC%8F%EF%BC%88Fast-Forward%EF%BC%89"><span class="nav-number">8.5.</span> <span class="nav-text">合併分支 - 快轉模式（Fast-Forward）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%88%E4%BD%B5%E5%88%86%E6%94%AF-%E9%97%9C%E9%96%89%E5%BF%AB%E8%BD%89%E6%A8%A1%E5%BC%8F"><span class="nav-number">8.6.</span> <span class="nav-text">合併分支 - 關閉快轉模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%87%E7%95%B6%E5%89%8D%E5%88%86%E6%94%AF%E5%90%88%E4%BD%B5%E5%88%B0%E6%8C%87%E5%AE%9A%E5%88%86%E6%94%AF%E5%89%8D"><span class="nav-number">8.7.</span> <span class="nav-text">將當前分支合併到指定分支前</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E5%AE%9A%E6%8F%90%E4%BA%A4%E7%AF%80%E9%BB%9E%E5%90%88%E4%BD%B5%E5%88%B0%E7%95%B6%E5%89%8D%E5%88%86%E6%94%AF%E5%89%8D"><span class="nav-number">8.8.</span> <span class="nav-text">指定提交節點合併到當前分支前</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%99%E7%B1%A4%EF%BC%88Tag%EF%BC%89"><span class="nav-number">9.</span> <span class="nav-text">標籤（Tag）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E%E6%A8%99%E7%B1%A4"><span class="nav-number">9.1.</span> <span class="nav-text">新增標籤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E%E6%A8%99%E7%A4%BA%E6%A8%99%E7%B1%A4"><span class="nav-number">9.2.</span> <span class="nav-text">新增標示標籤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%AA%E9%99%A4%E6%A8%99%E7%B1%A4"><span class="nav-number">9.3.</span> <span class="nav-text">刪除標籤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%BB%E5%8B%95%E5%88%B0%E6%8C%87%E5%AE%9A%E6%A8%99%E7%B1%A4%E4%BD%8D%E7%BD%AE"><span class="nav-number">9.4.</span> <span class="nav-text">移動到指定標籤位置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9A%AB%E5%AD%98%EF%BC%88Stash%EF%BC%89"><span class="nav-number">10.</span> <span class="nav-text">暫存（Stash）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9A%AB%E5%AD%98%E7%95%B6%E5%89%8D%E7%9A%84%E6%AA%94%E6%A1%88%E7%8B%80%E6%85%8B"><span class="nav-number">10.1.</span> <span class="nav-text">暫存當前的檔案狀態</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AA%A2%E8%A6%96%E6%9A%AB%E5%AD%98%E5%88%97%E8%A1%A8"><span class="nav-number">10.2.</span> <span class="nav-text">檢視暫存列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%82%84%E5%8E%9F%E6%9A%AB%E5%AD%98%E7%9A%84%E6%AA%94%E6%A1%88%E7%8B%80%E6%85%8B"><span class="nav-number">10.3.</span> <span class="nav-text">還原暫存的檔案狀態</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B8%85%E9%99%A4%E6%9C%80%E6%96%B0%E6%9A%AB%E5%AD%98"><span class="nav-number">10.4.</span> <span class="nav-text">清除最新暫存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B8%85%E9%99%A4%E5%85%A8%E9%83%A8%E6%9A%AB%E5%AD%98"><span class="nav-number">10.5.</span> <span class="nav-text">清除全部暫存</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%A0%E7%AB%AF%E5%84%B2%E5%AD%98%E5%BA%AB%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4"><span class="nav-number">11.</span> <span class="nav-text">遠端儲存庫操作指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%A3%E7%B5%90%E9%81%A0%E7%AB%AF%E5%84%B2%E5%AD%98%E5%BA%AB"><span class="nav-number">11.1.</span> <span class="nav-text">連結遠端儲存庫</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E8%A9%A2%E9%81%A0%E7%AB%AF%E5%84%B2%E5%AD%98%E5%BA%AB"><span class="nav-number">11.2.</span> <span class="nav-text">查詢遠端儲存庫</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A4%87%E8%A3%BD%E9%81%A0%E7%AB%AF%E5%84%B2%E5%AD%98%E5%BA%AB"><span class="nav-number">11.3.</span> <span class="nav-text">複製遠端儲存庫</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A8%E9%80%81%E6%9C%AC%E5%9C%B0%E7%AB%AF%E5%88%86%E6%94%AF%E5%88%B0%E9%81%A0%E7%AB%AF%E5%88%86%E6%94%AF"><span class="nav-number">11.4.</span> <span class="nav-text">推送本地端分支到遠端分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%8A%E6%9B%B4%E9%81%A0%E7%AB%AF%E5%84%B2%E5%AD%98%E5%BA%AB%E5%90%8D%E7%A8%B1"><span class="nav-number">11.5.</span> <span class="nav-text">變更遠端儲存庫名稱</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A4%87%E8%A3%BD%E9%81%A0%E7%AB%AF%E5%84%B2%E5%AD%98%E5%BA%AB%E5%88%86%E6%94%AF%E8%88%87%E6%9C%AC%E5%9C%B0%E7%AB%AF%E5%88%86%E6%94%AF%E5%90%88%E4%BD%B5"><span class="nav-number">11.6.</span> <span class="nav-text">複製遠端儲存庫分支與本地端分支合併</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A4%87%E8%A3%BD%E9%81%A0%E7%AB%AF%E5%84%B2%E5%AD%98%E5%BA%AB%E5%88%86%E6%94%AF%E8%88%87%E6%9C%AC%E5%9C%B0%E7%AB%AF%E5%88%86%E6%94%AF%E7%AD%89%E5%BE%85%E5%90%88%E4%BD%B5"><span class="nav-number">11.7.</span> <span class="nav-text">複製遠端儲存庫分支與本地端分支等待合併</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">12.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -245,7 +246,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Git 學習筆記
+          Git 指令概述
         </h1>
 
         <div class="post-meta-container">
@@ -263,7 +264,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2022-01-28 20:39:42" itemprop="dateModified" datetime="2022-01-28T20:39:42+08:00">2022-01-28</time>
+      <time title="修改時間：2022-01-30 23:55:14" itemprop="dateModified" datetime="2022-01-30T23:55:14+08:00">2022-01-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -281,7 +282,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">文章字數：</span>
-      <span>10k</span>
+      <span>8.9k</span>
     </span>
 </div>
 
@@ -292,149 +293,144 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>以前在初接觸到網頁領域的時候，偶爾會聽到版本控制一詞，當時的理解是把每一次完成編輯的專案，當作一次的版本發佈到網路空間呈現出來；雖然表面上確實是如此，但是實際在接觸到 Git 之後，發現所謂的版本控制並不是這麼單純；為了拓展自己的技能樹，這幾天幾乎是把時間都投資在 Git 的學習上，也藉由這次機會把學到的知識做個紀錄。</p>
-<p><em>備註：本篇僅記錄這段時間學習 Git 所做的筆記，主要是用來回顧與找資料，沒有過多專有名詞的解釋，內容會視情況更新。</em></p>
+        <p>在初接觸到網頁領域的時候，偶爾會聽到版本控制一詞，當時的理解是把每一個完整的專案，當作一次的版本發佈到網路空間呈現出來；事實上確實是如此，但是實際在接觸到 Git 之後，才理解到版本控制背後有很多深層的學問可以探究；這段時間為了拓展技能樹，不斷的逼自己學習新的技能，近期剛好把 Git 告一個段落，順便藉由這次機會把學到的知識做個筆記。</p>
+<p><em>備註：本篇僅記錄這段時間學習 Git 所做的筆記，主要是用來找資料與複習，內容較為白話也沒有過多專有名詞的解釋。</em></p>
 <span id="more"></span>
 
 
 
-<h2 id="環境安裝："><a href="#環境安裝：" class="headerlink" title="環境安裝："></a>環境安裝：</h2><p>在進入正題之前，必須先根據電腦的作業系統安裝 <a target="_blank" rel="noopener" href="https://git-scm.com/">Git</a> 的環境，安裝成功後在 Git 資料夾中會有 “Git Bash” 的應用程式，可以透過它來操作 Git 指令；或是使用電腦本身就有的命令提示字元 / 終端機也可以，依使用者習慣為主。</p>
-<h2 id="Command-Line-基本指令："><a href="#Command-Line-基本指令：" class="headerlink" title="Command Line 基本指令："></a>Command Line 基本指令：</h2><p>除了 Git 指令，通常還會搭配一些命令提示字元的原生指令去輔助操作，常用的 command line 指令如下：</p>
+<h2 id="環境安裝"><a href="#環境安裝" class="headerlink" title="環境安裝"></a>環境安裝</h2><p>在進入正題之前，必須先根據電腦的作業系統安裝 <a target="_blank" rel="noopener" href="https://git-scm.com/">Git</a> 的環境，安裝成功後在 Git 資料夾中會有 “Git Bash” 的應用程式，可以透過它來操作 Git 指令；或是使用電腦本身就有的命令提示字元 / 終端機也可以，依使用者習慣為主。</p>
+<h2 id="Command-Line-基本指令"><a href="#Command-Line-基本指令" class="headerlink" title="Command Line 基本指令"></a>Command Line 基本指令</h2><p>使用 Git 時，通常還會搭配一些終端機的基本指令去輔助操作，常用的 command line 指令如下：</p>
 <h3 id="移動到指定目錄"><a href="#移動到指定目錄" class="headerlink" title="移動到指定目錄"></a><strong>移動到指定目錄</strong></h3><p>指令：<code>cd 資料夾路徑</code></p>
-<p>如果覺得直接輸入路徑很麻煩，可以直接將資料夾拖曳至 Git Bash 視窗中。</p>
+<p>除了直接輸入路徑，也可以直接將資料夾拖曳至終端機視窗中。</p>
 <h3 id="展開當前目錄"><a href="#展開當前目錄" class="headerlink" title="展開當前目錄"></a><strong>展開當前目錄</strong></h3><p>指令：<code>ls</code></p>
-<p>列出當前目錄下的所有檔案。</p>
+<p>列出當前目錄的所有檔案。</p>
 <h3 id="回前一層目錄"><a href="#回前一層目錄" class="headerlink" title="回前一層目錄"></a><strong>回前一層目錄</strong></h3><p>指令：<code>cd ..</code></p>
-<p>從當前位置回到上一層目錄。</p>
+<p>從當前位置回到前一層目錄。</p>
 <h3 id="回到根目錄"><a href="#回到根目錄" class="headerlink" title="回到根目錄"></a>回到根目錄</h3><p>指令：<code>cd\</code></p>
-<p>無論在哪個位置，都會移動到根目錄。</p>
+<p>直接移動到根目錄。</p>
 <h3 id="新增資料夾"><a href="#新增資料夾" class="headerlink" title="新增資料夾"></a><strong>新增資料夾</strong></h3><p>指令：<code>mkdir 資料夾名稱</code></p>
 <p>在當前目錄下建立一個資料夾。</p>
 <h3 id="新增檔案"><a href="#新增檔案" class="headerlink" title="新增檔案"></a><strong>新增檔案</strong></h3><p>指令：<code>touch 檔案名稱.檔案類型</code></p>
-<p>在當前目錄建立一個檔案，以 index 網頁為例，即輸入 <code>touch index.html</code></p>
+<p>在當前目錄建立一個檔案。</p>
 <h3 id="刪除檔案"><a href="#刪除檔案" class="headerlink" title="刪除檔案"></a>刪除檔案</h3><p>指令：<code>del 檔案名稱.檔案類型</code></p>
-<h2 id="Git-版本檢視："><a href="#Git-版本檢視：" class="headerlink" title="Git 版本檢視："></a>Git 版本檢視：</h2><p>環境安裝完成後開啟終端機，嘗試輸入指令 <code>$ git version</code> ，如果若出現 Git 版本訊息即表示安裝成功。</p>
-<p>版本訊息：<code>git version 2.32.0.windows.2</code></p>
-<h2 id="Git-環境設定："><a href="#Git-環境設定：" class="headerlink" title="Git 環境設定："></a>Git 環境設定：</h2><p>使用 Git 進行版本控制時，每一個更新紀錄的更新人、更新時間以及一些詳細的內容都會被記錄；因此在開始使用 Git 之前，會需要先設定一些基本的資訊。</p>
+<h2 id="Git-版本檢視"><a href="#Git-版本檢視" class="headerlink" title="Git 版本檢視"></a>Git 版本檢視</h2><p>環境安裝完成後開啟終端機，嘗試輸入指令 <code>$ git version</code> ，如果若出現 Git 版本訊息即表示安裝成功。</p>
+<p>版本訊息範例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git version</span><br><span class="line">git version 2.32.0.windows.2</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Git-環境設定"><a href="#Git-環境設定" class="headerlink" title="Git 環境設定"></a>Git 環境設定</h2><p>使用 Git 進行版本控制時，每一個更新紀錄的更新人、更新時間以及部分的內容都會被記錄；因此在開始使用 Git 之前，需要先設定一些基本的資訊。</p>
 <h3 id="設定使用者暱稱"><a href="#設定使用者暱稱" class="headerlink" title="設定使用者暱稱"></a><strong>設定使用者暱稱</strong></h3><p>指令：<code>$ git config --global user.name &quot;使用者暱稱&quot;</code></p>
 <h3 id="設定使用者信箱"><a href="#設定使用者信箱" class="headerlink" title="設定使用者信箱"></a><strong>設定使用者信箱</strong></h3><p>指令：<code>$ git config --global user.email &quot;使用者信箱&quot;</code></p>
 <h3 id="查看設定值"><a href="#查看設定值" class="headerlink" title="查看設定值"></a><strong>查看設定值</strong></h3><p>指令：<code>$ git config --list</code></p>
-<h2 id="Git-常用指令："><a href="#Git-常用指令：" class="headerlink" title="Git 常用指令："></a>Git 常用指令：</h2><p>Git 基本操作流程：</p>
+<h2 id="Git-常用指令"><a href="#Git-常用指令" class="headerlink" title="Git 常用指令"></a>Git 常用指令</h2><p>Git 基本操作流程示意圖：</p>
 <p><img src="https://i.imgur.com/zLOR8aN.png"></p>
-<p>Git 操作方式會根據不同情境而有所差異，但是原理大同小異；這裡開始會先以本地端會使用到的指令說明，並且皆使用 Git Bash 來操作。</p>
-<h3 id="建立本地儲存庫"><a href="#建立本地儲存庫" class="headerlink" title="建立本地儲存庫"></a><strong>建立本地儲存庫</strong></h3><p>指令：<code>$ git init</code></p>
-<p>儲存庫（Repositiory）基本上就是用來存放一個專案所有檔案內容的資料夾。建立方式只需要開啟終端機，並以任意資料夾作為根目錄輸入上述指令即可。</p>
-<p>以檔名為 Project 的資料夾為例，建立成功後會出現以下訊息：</p>
+<p>Git 操作方式會根據不同情境而有所差異，但是運作原理相同。</p>
+<h3 id="建立本地端儲存庫"><a href="#建立本地端儲存庫" class="headerlink" title="建立本地端儲存庫"></a><strong>建立本地端儲存庫</strong></h3><p>指令：<code>$ git init</code></p>
+<p>儲存庫（Repositiory）是用來存放一個專案所有檔案的資料夾；建立方式只需要開啟終端機，並以任意資料夾作為根目錄並輸入上述指令即可。</p>
+<p>以檔名為 Project 的資料夾為例，建立成功後會顯示以下訊息：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br><span class="line">Initialized empty Git repository in C:/Users/user/Desktop/Project/.git/</span><br></pre></td></tr></table></figure>
 
-<p>並且可以發現資料夾的路徑資訊後方出現 <code>(master)</code>  字樣，這個是資料夾在 Git 初始化成功時所產生的預設分支（branch）。</p>
-<p>此外也可以開啟初始化的資料夾，查看根目錄是否多出一個 .git 的資料夾，它主要是用於監控與紀錄初始化資料夾內檔案的所有變動；通常 .git 資料夾預設會隱藏，可以從資料夾上方列的 “檢視” 開啟隱藏的項目。</p>
-<p><em>備註：為了方便閱讀，後續皆以 “儲存庫” 來表示初始化的資料夾。</em></p>
-<h3 id="檢查狀態"><a href="#檢查狀態" class="headerlink" title="檢查狀態"></a><strong>檢查狀態</strong></h3><p>指令：<code>$ git status</code></p>
-<p>查看工作目錄與暫存區的內容是否有變動；能檢視那些檔案被修改，那些檔案沒有被 Git 追蹤到。</p>
-<p>以 Project（本地端儲存庫）為例，初始化後透過指令查看狀態時出現以下訊息，表示尚未做任何新增或編輯：</p>
+<p>此外也可以開啟該資料夾，查看根目錄是否多出一個 .git 的資料夾，它主要是用於監控與紀錄資料夾內檔案的所有變動；通常 .git 資料夾預設會隱藏，可以從資料夾上方列的 “檢視” 開啟隱藏的項目。</p>
+<h3 id="檢視狀態"><a href="#檢視狀態" class="headerlink" title="檢視狀態"></a><strong>檢視狀態</strong></h3><p>指令：<code>$ git status</code></p>
+<p>查看工作目錄與暫存區的檔案是否有變動；可得知哪些檔案被修改，哪些檔案尚未被 Git 追蹤。</p>
+<p>以 Project（本地端儲存庫）為例，輸入指令時顯示以下訊息，表示尚未做任何檔案新增或編輯：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">No commits yet</span><br><span class="line">nothing to commit (create/copy files and use &quot;git add&quot; to track)</span><br></pre></td></tr></table></figure>
 
 
 
 <h3 id="加入暫存區"><a href="#加入暫存區" class="headerlink" title="加入暫存區"></a><strong>加入暫存區</strong></h3><p>指令：<code>$ git add .</code></p>
-<p>工作目錄有新增或編輯的檔案時，可以使用指令將檔案加入暫存區 / 索引，並等待提交（commit）成一次新的版本。</p>
-<p>嘗試在 Project 新增檔案 index.html，並使用指令 <code>$ git status</code> 查看狀態時出現以下訊息：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">No commits yet</span><br><span class="line">Untracked files:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span><br><span class="line">        index.html</span><br><span class="line"></span><br><span class="line">nothing added to commit but untracked files present (use &quot;git add&quot; to track)</span><br></pre></td></tr></table></figure>
+<p>工作目錄有新增或編輯的檔案時，可以輸入上述指令將檔案加入暫存區（索引），並等待提交成一次新的版本。</p>
+<p>新增檔案 index.html 在 Project 資料夾中，並輸入指令 <code>$ git status</code> 查看狀態時顯示以下訊息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">No commits yet</span><br><span class="line">Untracked files:  # 偵測到未被追蹤檔案</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span><br><span class="line">        index.html  # 檔案名稱</span><br><span class="line"></span><br><span class="line">nothing added to commit but untracked files present (use &quot;git add&quot; to track)</span><br></pre></td></tr></table></figure>
 
-<p>從第 5 行可以得知，已偵測到尚未追蹤的檔案，而第 7 行為檔案的名稱；此時可以使用指令 <code>$ git add .</code> 將其加入暫存區。</p>
-<p>透過指令將 index.html 加入暫存區後，再使用 <code>$ git status</code> 查看狀態時出現以下訊息：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">No commits yet</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)</span><br><span class="line">        new file:   index.html</span><br></pre></td></tr></table></figure>
-
-<p>從第 5 行可以得知，新增檔案的動作被儲存到暫存區，並等待提交成一次新版本。</p>
-<p>補充說明，使用指令 <code>$ git status</code> 查詢狀態時，檔案如果是新增在工作目錄的，狀態會是 <code>Untracked files</code>，表示尚未加入暫存區追蹤；但如果是已被加入到暫存區，後續再進行修改的檔案，狀態會是 <code>Changes not staged for commit</code>，並且檔案前面會有 <code>modified</code> 的字樣，表示該檔案已被編輯，需要再次加入暫存區等待提交。</p>
-<p>以下列出不同狀態所代表的意思：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Changes to be committed        # 已加入暫存區，準備 commit 成一次新的版本紀錄。</span><br><span class="line">Changes not staged for commit  # 已被追蹤，但尚未加入至暫存區。</span><br><span class="line">Untracked file                 # 新建立，尚未被追蹤的檔案。</span><br></pre></td></tr></table></figure>
+<p>訊息顯示偵測到尚未追蹤的檔案 index.html，此時可以輸入上述指令將檔案加入暫存區。</p>
+<p>檔案加入暫存區後，輸入 <code>$ git status</code> 查看狀態時顯示以下訊息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">No commits yet</span><br><span class="line">Changes to be committed:  # 工作目錄的檔案已被加入暫存區等待提交</span><br><span class="line">  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)</span><br><span class="line">        new file:   index.html  # 檔案名稱</span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="提交更新（Commit）"><a href="#提交更新（Commit）" class="headerlink" title="提交更新（Commit）"></a><strong>提交更新</strong>（Commit）</h3><p>指令：<code>$ git commit -m &quot;編輯內容說明&quot;</code></p>
-<p>將加入暫存區的檔案提交一次新的版本。</p>
-<p>先前做了新增檔案 index.html 並加入暫存區；現在嘗試將暫存區的內容提交成新的版本，輸入指令 <code>$ git commit -m &quot;新增 index&quot;</code> 後，如果出現以下訊息表示成功提交。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &quot;新增 index&quot;</span><br><span class="line">[master (root-commit) ce9d927] 新增 index</span><br><span class="line">1 file changed, 0 insertions(+), 0 deletions(-)</span><br><span class="line">create mode 100644 index.html</span><br></pre></td></tr></table></figure>
+<p>補充說明：</p>
+<p>使用指令 <code>$ git status</code> 查詢狀態時，如果是工作目錄新增的檔案，狀態會是 <code>Untracked files</code>，表示尚未加入暫存區追蹤；但如果是暫存區已存在，後續再進行修改的檔案，狀態會是 <code>Changes not staged for commit</code>，並且檔案前面會標註 <code>modified</code>，表示該檔案已被編輯，需要再次加入暫存區等待提交。</p>
+<p>下列為檔案在不同狀態下所表示的意思：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Changes to be committed        # 已加入暫存區，準備提交成一次新的版本紀錄。</span><br><span class="line">Changes not staged for commit  # 已被追蹤，但尚未加入至暫存區。</span><br><span class="line">Untracked file                 # 新建立，尚未被追蹤的檔案。</span><br></pre></td></tr></table></figure>
 
-<p>可以再透過指令 <code>$ git status</code> 查看狀態，出現以下訊息表示沒有更動需要 commit，並且目前工作目錄非常乾淨，完全沒有新增、修改或刪除。</p>
+
+
+<h3 id="提交更新（Commit）"><a href="#提交更新（Commit）" class="headerlink" title="提交更新（Commit）"></a><strong>提交更新</strong>（Commit）</h3><p>指令：<code>$ git commit -m &quot;提交內容敘述&quot;</code></p>
+<p>將暫存區的檔案提交一次新的版本紀錄。</p>
+<p>以下為成功提交暫存區的檔案 index.html 後顯示的訊息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &quot;新增 index&quot;</span><br><span class="line">[master (root-commit) ce9d927] 新增 index  # 提交內容敘述</span><br><span class="line">1 file changed, 0 insertions(+), 0 deletions(-)</span><br><span class="line">create mode 100644 index.html  # 被提交的檔案</span><br></pre></td></tr></table></figure>
+
+<p>提交暫存區的檔案後，輸入 <code>$ git status</code> 查看狀態時顯示以下訊息，表示沒有更動需要提交，並且目前工作目錄乾淨，完全沒有檔案新增、修改或刪除。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">nothing to commit, working tree clean</span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="查詢-Commit-資訊"><a href="#查詢-Commit-資訊" class="headerlink" title="查詢 Commit 資訊"></a><strong>查詢 Commit 資訊</strong></h3><p>指令：<code>$ git log</code></p>
-<p>查看詳細的歷史 commit 資訊。</p>
-<p>前一個指令進行了 commit 的動作，現在嘗試輸入指令 <code>$ git log</code> 來查詢 commit 資訊，從資訊中可以得知詳細的項目內容，如下所示：</p>
+<h3 id="查詢提交紀錄"><a href="#查詢提交紀錄" class="headerlink" title="查詢提交紀錄"></a><strong>查詢提交紀錄</strong></h3><p>指令：<code>$ git log</code></p>
+<p>列出過去幾筆的提交紀錄。</p>
+<p>以下為提交紀錄的顯示內容範例：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git log</span><br><span class="line">commit ce9d92723df3302156a9523453c0fff21f7fdcc0 (HEAD -&gt; master)</span><br><span class="line">Author: Cliff Chu &lt;wave99487chu@gmail.com&gt;</span><br><span class="line">Date:   Sun Jan 23 17:53:08 2022 +0800</span><br><span class="line"></span><br><span class="line">    新增 index</span><br></pre></td></tr></table></figure>
 
-<p>如果要退出畫面，按下鍵盤 “q” 即可返回原內容。</p>
-<h3 id="忽略檔案"><a href="#忽略檔案" class="headerlink" title="忽略檔案"></a><strong>忽略檔案</strong></h3><p>不希望某些檔案被 Git 追蹤時，可以新增一個 “.gitignore” 檔案，透過程式碼編輯器將該檔案開啟後，直接輸入要被忽略的檔案名稱和檔案類型並儲存即可；這裡要注意的是 .gitignore 本身不會被 Git 忽略。</p>
-<p>被忽略檔案的輸入格式分別有以下幾種，這裡以 index.html 為例：</p>
-<p><strong>忽略單一檔案</strong></p>
-<p>輸入格式：<code>index.html</code></p>
-<p><strong>忽略檔案類型</strong></p>
-<p>輸入格式：<code>*.html</code></p>
-<p><strong>忽略單一資料夾</strong></p>
-<p>輸入格式：<code>html/</code></p>
-<h2 id="還原（Reset）"><a href="#還原（Reset）" class="headerlink" title="還原（Reset）"></a>還原（Reset）</h2><p>從這裡開始會介紹 <code>$ git reset</code> 相關指令，在此之前，需要先理解 Reset 指令會用到的三種模式，如下所示：</p>
+<p>顯示的筆數較多時，按下鍵盤 q 即可返回原內容。</p>
+<h2 id="忽略檔案"><a href="#忽略檔案" class="headerlink" title="忽略檔案"></a><strong>忽略檔案</strong></h2><p>不希望某些檔案被 Git 追蹤時，可以建立一個 .gitignore 檔案，透過編輯器開啟檔案後，輸入希望被忽略的檔案名稱和檔案類型並儲存即可；需要注意的是 .gitignore 檔案本身不會被忽略。</p>
+<p>被忽略檔案的輸入格式分別為下列幾種類型：</p>
 <ul>
-<li><code>--mixed</code>（預設模式）：暫存區的檔案會被還原回工作目錄，但是原本工作目錄的檔案不會被影響。</li>
-<li><code>--soft</code>：還原 commit 節點，但是暫存區與工作目錄的檔案皆不會被影響。</li>
-<li><code>--hard</code>：還原 commit 節點、工作目錄與暫存區所有檔案。</li>
+<li><p><strong>忽略單一檔案</strong>：輸入格式：<code>檔案名稱.檔案類型</code></p>
+</li>
+<li><p><strong>忽略檔案類型</strong>：輸入格式：<code>*.檔案類型</code></p>
+</li>
+<li><p><strong>忽略單一資料夾</strong>：輸入格式：<code>資料夾名稱/</code></p>
+</li>
 </ul>
-<p>^ 符號代表要往回還原的版本次數，<code>HEAD^</code> 代表往回一個版本，也可以使用 ~ 加上數字來代替 ^ 符號的數目，@ 符號可以用來代表 <code>HEAD</code>；以 <code>HEAD^^</code> 為例，可以改成 <code>HEAD~2</code>，或 <code>@~2</code>。</p>
-<p>以下 <code>$ git reset</code> 相關指令皆是依據上述三種模式的的原理運作。</p>
-<h3 id="取消加入暫存區"><a href="#取消加入暫存區" class="headerlink" title="取消加入暫存區"></a><strong>取消加入暫存區</strong></h3><p>將暫存區的檔案回到尚未執行 <code>$ git add .</code> 的狀態，相關指令分為下列幾種：</p>
-<p><strong>取消單一檔案加入暫存區</strong></p>
-<p>指令：<code>$ git reset HEAD 檔案名稱</code></p>
-<p><strong>取消所有檔案加入暫存區</strong></p>
-<p>指令：<code>$ git reset HEAD</code></p>
-<h3 id="還原檔案"><a href="#還原檔案" class="headerlink" title="還原檔案"></a>還原檔案</h3><p>將檔案內容回復到最後一次 commit 的狀態，可視情況使用以下指令：</p>
-<p><strong>還原單一檔案</strong></p>
-<p>指令：<code>$ git checkout 檔案名稱.檔案類型</code></p>
-<p><strong>還原工作目錄與暫存區</strong></p>
-<p>指令：<code>$ git reset --hard</code></p>
-<p>需要注意的是，空的資料夾本身會被 git 忽略，因此使用指令後不會被還原；但是資料夾內有存在檔案時，就會被 git 追蹤並還原。</p>
-<h3 id="刪除-Commit-節點"><a href="#刪除-Commit-節點" class="headerlink" title="刪除 Commit 節點"></a>刪除 Commit 節點</h3><p>相關指令分別為以下幾種：</p>
-<p><strong>刪除最新的 Commit 節點</strong></p>
-<p>指令：<code>$ git reset --hard HEAD^</code></p>
-<p>需要注意的是，該指令除了刪除最新的 commit 節點之外，當前加入暫存區的檔案也會被刪除，但是當前工作目錄的檔案不受影響。</p>
-<p><strong>還原刪除的最新 Commit 節點</strong></p>
-<p>指令：<code>$ git reset ORIG_HEAD --hard</code></p>
-<p>還原 <code>$ git reset --hard HEAD^</code> 刪除的 commit 節點，並刪除當前加入暫存區的檔案，但是當前工作目錄不受影響。</p>
-<p>補充說明，上述指令中的 <code>ORIG_HEAD</code> 是當使用者在執行一些危險指令（<code>merge</code>、<code>rebase</code>、<code>reset</code> 等等）時，會先將當前 HEAD 的檔案狀態存放的地方，並隨時可以還原。</p>
-<p>除了上述方法，也可以使用 <code>$ git reset 被刪除的節點 SHA-1 值</code> 來還原狀態，但是被刪除的節點無法透過 <code>$ git log</code> 來查詢；此時可以使用指令 <code>$ git reflog</code> 來檢視歷史的狀態紀錄。</p>
-<p><strong>刪除最新的 Commit 節點但保留異動內容</strong></p>
-<p>指令：<code>$ git reset --soft HEAD^ </code></p>
-<p>可以理解成沒有做最後一次 commit 的動作；而當前的狀態會變成使用 commit 前的所有狀態，加上執行上述指令前的所有狀態。</p>
-<h3 id="修改-Commit-內容"><a href="#修改-Commit-內容" class="headerlink" title="修改 Commit 內容"></a>修改 Commit 內容</h3><p>依修改的內容可視情況使用以下指令：</p>
-<p><strong>修改最新一次 Commit 訊息</strong></p>
-<p>指令：<code>$ git commit --amend -m &quot;修改內容&quot;</code></p>
-<p>修改當前分支最新一次的 commit 訊息，如果要修改更早之前的，則需要使用 <code>$ git rebase</code> 相關指令。</p>
-<p><strong>追加檔案到最新一次 Commit</strong></p>
-<p>指令：<code>$ git commit --amend --no-edit</code></p>
-<p>執行該指令時如果未加上 <code>--no-edit</code> 參數，會跳出 Vim 編輯視窗。</p>
-<h2 id="分支介紹"><a href="#分支介紹" class="headerlink" title="分支介紹"></a>分支介紹</h2><p>分支（branch）是開發者在團隊協作一個專案時，會需要使用到的 Git 架構內容；可以理解成將現階段儲存庫的所有檔案複製一份，而這兩個版本可以獨立修改各自的內容。這樣的好處是如果檔案的內容需要做更動，就可以先建立一個分支並在上面進行修改，同時也不用擔心影響到原始的檔案內容。</p>
+<h2 id="還原（Reset）"><a href="#還原（Reset）" class="headerlink" title="還原（Reset）"></a>還原（Reset）</h2><p>開始介紹 <code>$ git reset</code> 相關指令之前，需要先理解 Reset 會使用到的三種參數模式，如下所示：</p>
+<ul>
+<li><code>--mixed</code>（預設模式）：暫存區的檔案會被丟回工作目錄，但是原本工作目錄的檔案不會被影響。</li>
+<li><code>--soft</code>：移除 commit 節點，但是暫存區與工作目錄的檔案皆不會被影響。</li>
+<li><code>--hard</code>：移除 commit 節點、工作目錄與暫存區所有檔案。</li>
+</ul>
+<p>補充說明：</p>
+<p><code>^</code> 符號代表要往回還原的版本次數，<code>HEAD^</code> 代表往回一個版本，也可以使用 <code>~</code> 加上數字來代替 <code>^</code> 符號的數目，<code>@</code> 符號可以用來代表 <code>HEAD</code>；以 <code>HEAD^^</code> 為例，可以改成 <code>HEAD~2</code>，或 <code>@~2</code>。</p>
+<h3 id="還原暫存區單一檔案回工作目錄"><a href="#還原暫存區單一檔案回工作目錄" class="headerlink" title="還原暫存區單一檔案回工作目錄"></a><strong>還原暫存區單一檔案回工作目錄</strong></h3><p>指令：<code>$ git reset HEAD 檔案名稱</code></p>
+<h3 id="還原暫存區所有檔案回工作目錄"><a href="#還原暫存區所有檔案回工作目錄" class="headerlink" title="還原暫存區所有檔案回工作目錄"></a><strong>還原暫存區所有檔案回工作目錄</strong></h3><p>指令：<code>$ git reset HEAD</code></p>
+<h3 id="還原單一檔案內容"><a href="#還原單一檔案內容" class="headerlink" title="還原單一檔案內容"></a>還原單一檔案內容</h3><p>指令：<code>$ git checkout 檔案名稱.檔案類型</code></p>
+<p>指定檔案內容還原回最後一次提交的狀態。</p>
+<h3 id="還原工作目錄與暫存區"><a href="#還原工作目錄與暫存區" class="headerlink" title="還原工作目錄與暫存區"></a><strong>還原工作目錄與暫存區</strong></h3><p>指令：<code>$ git reset --hard</code></p>
+<p>當前工作目錄與暫存區，皆還原回最後一次提交時的狀態。</p>
+<p>需要注意空的資料夾本身會被 git 忽略，因此不會被指令還原；但是資料夾內有存在檔案時，就會被 git 追蹤並還原。</p>
+<h3 id="移除最新的提交節點"><a href="#移除最新的提交節點" class="headerlink" title="移除最新的提交節點"></a><strong>移除最新的提交節點</strong></h3><p>指令：<code>$ git reset HEAD^ --hard</code></p>
+<p>除了移除最新的節點之外，當前暫存區的檔案也會被移除，但是當前工作目錄的檔案不受影響。</p>
+<h3 id="還原被移除的最新提交節點"><a href="#還原被移除的最新提交節點" class="headerlink" title="還原被移除的最新提交節點"></a><strong>還原被移除的最新提交節點</strong></h3><p>指令：<code>$ git reset ORIG_HEAD --hard</code></p>
+<p>還原指令 <code>$ git reset --hard HEAD^</code> 移除的節點，並移除當前暫存區的檔案，但是當前工作目錄不受影響。</p>
+<p>補充說明：</p>
+<p>指令中的 <code>ORIG_HEAD</code> 是當使用者在執行一些較危險的指令（<code>merge</code>、<code>rebase</code>、<code>reset</code> …）時，當前 HEAD 的檔案狀態會事先存放的地方，隨時可以還原。</p>
+<p>除了上述方法，也可以使用以下指令來還原狀態：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset 89cb75  # 指令中的亂數為被刪除節點的 SHA-1 值</span><br></pre></td></tr></table></figure>
+
+<p>需要注意被刪除的節點無法透過 <code>$ git log</code> 來查詢，查詢的方式可以使用指令 <code>$ git reflog</code> 來檢視歷史的狀態紀錄。</p>
+<h3 id="移除最新的提交節點並保留檔案狀態"><a href="#移除最新的提交節點並保留檔案狀態" class="headerlink" title="移除最新的提交節點並保留檔案狀態"></a><strong>移除最新的提交節點並保留檔案狀態</strong></h3><p>指令：<code>$ git reset HEAD^ --soft </code></p>
+<p>可以理解成沒有執行最後一次的提交動作。</p>
+<h3 id="修改最新提交節點的描述"><a href="#修改最新提交節點的描述" class="headerlink" title="修改最新提交節點的描述"></a><strong>修改最新提交節點的描述</strong></h3><p>指令：<code>$ git commit --amend -m &quot;修改描述&quot;</code></p>
+<p>修改當前分支最新一次的提交描述。</p>
+<h3 id="追加檔案到最新的提交節點"><a href="#追加檔案到最新的提交節點" class="headerlink" title="追加檔案到最新的提交節點"></a><strong>追加檔案到最新的提交節點</strong></h3><p>指令：<code>$ git commit --amend --no-edit</code></p>
+<p>執行指令時如果未加上 <code>--no-edit</code> 參數，會跳出 Vim 編輯視窗。</p>
+<h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><p>分支（branch）是開發者在團隊協作一個專案時，會需要使用到的 Git 架構內容；可以理解成將當前儲存庫的所有檔案複製一份，而這兩個版本可以獨立進行檔案新增、編輯與修改。這樣的好處是檔案的內容如果需要做更動，就可以先移動到另一個分支動作，同時也不用擔心影響到原本的檔案狀態。</p>
 <p>以下列出常見分支名稱與主要用途：</p>
 <ul>
-<li>master 預設分支 - 合併時才會產生 commit 節點</li>
-<li>develop 開發分支 - 合併時才會產生 commit 節點</li>
-<li>feature 開發新功能分支</li>
+<li>master（預設分支）：用來合併 develop，合併時才會產生提交節點。</li>
+<li>develop（開發分支）：用來合併 feature 分支，合併時才會產生提交節點。</li>
+<li>feature：用來開發功能、修改錯誤。</li>
 </ul>
-<p>開始進入分支之前，必須先對 HEAD 指標有些概念，可以把它理解成目前所在的分支；也可以在資料夾路徑看到目前 HEAD 的指向，如下圖，可以看到目前 HEAD 正指向 master 分支。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user@DESKTOP-LV1TU83 MINGW64 ~/Desktop/Project (master)</span><br></pre></td></tr></table></figure>
-
-
+<p>進入分支之前，需要先對 HEAD 指標有些概念，可以把它理解成當前分支上的所在位置；資料夾路徑可以看到目前 HEAD 的指向，如下圖所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user@DESKTOP-LV1TU83 MINGW64 ~/Desktop/Project (master)  # 目前 HEAD 正指向 master 分支</span><br></pre></td></tr></table></figure>
 
 <h3 id="檢視當前所有分支"><a href="#檢視當前所有分支" class="headerlink" title="檢視當前所有分支"></a>檢視當前所有分支</h3><p>指令：<code>$ git branch</code></p>
-<p>用來查詢目前本地端儲存庫的所有分支。</p>
-<p>這裡以 Project 為例，透過上述指令查詢後出現以下訊息；可以得知目前本地端有兩個分支，分別為 develop 與 master，而標示星號的分支表示目前 HEAD 指向的分支。</p>
+<p>查詢目前本地端儲存庫的所有分支。</p>
+<p>以 Project（本地端儲存庫）為例，輸入指令後顯示以下訊息，表示目前本地端有兩個分支，分別為 develop 與 master，而符號 <code>*</code> 表示當前 HEAD 正指向的分支。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git branch</span><br><span class="line">  develop</span><br><span class="line">* master</span><br></pre></td></tr></table></figure>
 
-
-
-<h3 id="移動-HEAD-到指定-Commit-節點"><a href="#移動-HEAD-到指定-Commit-節點" class="headerlink" title="移動 HEAD 到指定 Commit 節點"></a>移動 HEAD 到指定 Commit 節點</h3><p>指令：<code>$ git checkout SHA-1值前4碼</code></p>
+<h3 id="移動-HEAD-到指定提交節點"><a href="#移動-HEAD-到指定提交節點" class="headerlink" title="移動 HEAD 到指定提交節點"></a>移動 HEAD 到指定提交節點</h3><p>指令：<code>$ git checkout SHA-1前4碼</code></p>
 <p>用來查看某一次的 commit 內容；而 SHA-1 值可透過 <code>$ git log</code> 查詢，如下所示：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">commit ce9d92723df3302156a9523453c0fff21f7fdcc0</span><br><span class="line">Author: Cliff Chu &lt;wave99487chu@gmail.com&gt;</span><br><span class="line">Date:   Sun Jan 23 17:53:08 2022 +0800</span><br><span class="line"></span><br><span class="line">    新增 index</span><br></pre></td></tr></table></figure>
 
@@ -442,102 +438,108 @@
 <h3 id="建立分支"><a href="#建立分支" class="headerlink" title="建立分支"></a>建立分支</h3><p>指令：<code>$ git branch 分支名稱</code></p>
 <p>建立一個新的分支，但是 HEAD 的指向不變。</p>
 <h3 id="切換當前分支"><a href="#切換當前分支" class="headerlink" title="切換當前分支"></a>切換當前分支</h3><p>指令：<code>$ git checkout 分支名稱</code></p>
-<p>HEAD 的指向會移動到指定分支的最後一次 commit 節點上。</p>
-<h3 id="合併分支"><a href="#合併分支" class="headerlink" title="合併分支"></a>合併分支</h3><p>可視情況使用以下兩種合併模式：</p>
-<p><strong>快轉模式（Fast-Forward）</strong></p>
-<p>指令：<code>$ git merge 合併的分支名稱</code></p>
-<p>快轉模式下，兩分支合併後回重疊，並且不會產生額外的 commit 節點。</p>
-<p>如果合併前兩個分支的最後 commit 節點相同，合併時就會產生快轉模式（Fast - Forward），以下面這張圖為例：</p>
-<p><img src="https://i.imgur.com/uRzQ0zw.png"></p>
-<p>圖中左邊的部分為 master 分支與 feature 分支合併前的狀態；可以得知 feature 分支的 commit 節點有兩個，依序為 add css 與 add js，而 master 分支並沒有做變動；接著再將 HEAD 切換回 master 分支後，執行指令 <code>$ git merge feature</code> ，狀態變為右邊的部分，可以發現合併後 master 分支的位置移動到 feature 分支 add js 的節點上，也就是說兩個分支的差別只是 feature 分支多了兩次 commit 而已，因為兩者都是同一個節點分出去的，所以 master 分支有的內容 feature 分支也都有；因此 master 分支只是在合併自己未來的版本而已，而這種合併模式就稱為 “快轉模式（Fast - Forward）”。</p>
-<p><strong>非快轉模式（–no-ff）</strong></p>
-<p>指令：<code>$ git merge 合併的分支名稱 --no-ff</code></p>
-<p>非快轉模式下，兩分支合併後會產生額外的 commit 節點。</p>
-<p>前面提到分支在合併時，如果兩者最後一次的 commit 節點相同，合併時就會進行快轉模式；雖然兩者最後都會合併到同一個節點上，但是以開發者的角度來思考，都會盡可能的區隔每個分支所做的工作，這也是分支的意義；因此如果要更明確的區隔兩個分支，就可以使用指令 <code>$ git merge 合併的分支名稱 --no-ff</code>，來關閉快轉模式進行合併；以下面這張圖為例：</p>
-<p><img src="https://i.imgur.com/KFo2foP.png"></p>
-<p>圖中左邊的部分所做的事情與前一張圖是相同的，但是兩個分支在關閉快轉模式進行合併時，可以發現 master 分支與 feature 分支合併後，額外產生出一個新的 commit 節點，但是 feature 分支並沒有與 master 分支重疊，並且進行路線停留在合併前最後一次的節點 add js 上，而這種合併模式就稱為 ＂非快轉模式＂。</p>
-<!-- 也許內容可以描述更明確 -->
+<p>移動 HEAD 到指定分支的最後一次提交節點。</p>
+<h3 id="合併分支-快轉模式（Fast-Forward）"><a href="#合併分支-快轉模式（Fast-Forward）" class="headerlink" title="合併分支 - 快轉模式（Fast-Forward）"></a><strong>合併分支 - 快轉模式（Fast-Forward）</strong></h3><p>指令：<code>$ git merge 合併的分支名稱</code></p>
+<p>快轉模式下，兩分支合併後路線重疊，並且不會產生額外的提交節點。</p>
+<p>兩分支合併之前，如果最後提交節點都在同一個位置，合併時就會產生快轉模式（Fast - Forward），如下圖所示：</p>
+<p><img src="https://i.imgur.com/q0db0Wg.png"></p>
+<p>已知合併前的圖中，feature 分支比 master 分支多了兩次提交節點，但是 master 並沒有新增自己的節點，所以 master 分支的檔案在 feature 分支也都有，可以理解成 feature 分支只是 master 分支未來的版本而已，因此進行合併後，master 分支與 feature 分支會重疊，並且不會產生額外的合併節點，這種合併模式稱為 “快轉模式（Fast - Forward）”。</p>
+<h3 id="合併分支-關閉快轉模式"><a href="#合併分支-關閉快轉模式" class="headerlink" title="合併分支 - 關閉快轉模式"></a><strong>合併分支 - 關閉快轉模式</strong></h3><p>指令：$ git merge 合併的分支名稱 –no-ff</p>
+<p>非快轉模式下，兩分支合併後會產生額外的提交節點。</p>
+<p>下圖為加上參數 <code>--no-ff</code> 關閉快轉模式的例子：</p>
+<p><img src="https://i.imgur.com/zpwHsHZ.png"></p>
+<p>圖中合併前的狀態前面的案例相同，因此在正常情況下合併兩分支就會產生快轉模式；但是也可以在合併時加上參數 <code>--no-ff</code> 來關閉快轉模式，如此一來，兩分支在合併後不但不會重疊，並且會額外產生新的提交節點。</p>
+<p>補充說明：</p>
+<p>兩分支在非快轉模式下進行合併時，可能會跳出以下訊息，表示需要輸入合併的原因；此時可以按下 i 進入輸入模式，接著將黃色文字的部分改成合併的簡單敘述（同 commit 訊息），輸入完畢後再按下 Esc 退出輸入模式，最後在底部輸入 <code>：wq</code> 即可完成合併並回到原來的畫面。</p>
+<p><img src="https://i.imgur.com/LVudQXm.png"></p>
+<h3 id="將當前分支合併到指定分支前"><a href="#將當前分支合併到指定分支前" class="headerlink" title="將當前分支合併到指定分支前"></a><strong>將當前分支合併到指定分支前</strong></h3><p>指令： <code>$ git rebase 要合併的分支名稱</code></p>
+<p>複製當前分支所有的提交節點，合併在指定的分支前面。</p>
+<p>需要注意複製的提交節點會重新產生個別的 SHA-1，與原先的節點彼此並不相同，而原先的節點會隨著時間被 Git 機制回收。</p>
+<p>補充說明：</p>
+<p>使用 <code>rebase</code> 合併後，無法透過 <code>$ git reset HEAD^</code> 還原回合併前的狀態，而是會還原到前一個節點上；如果要還原回合併前的狀態，可以使用指令 <code>$ git reset ORIG_HEAD --hard</code>。</p>
+<p>下列圖片為兩分支在使用 <code>rebase</code> 合併時，可能產生的衝突：</p>
+<p><img src="https://i.imgur.com/sz7xcOB.png"></p>
+<p>合併時顯示上述訊息，表示檔案內容有衝突，此時可以開啟編輯器查看衝突的部分，以下圖為例：</p>
+<p><img src="https://i.imgur.com/wxaxXFa.png"></p>
+<p>確認完衝突的檔案內容後，只需要在終端機再次將檔案加入暫存區，接著輸入以下指令再次嘗試合併即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git rebase --continue</span><br></pre></td></tr></table></figure>
 
-<p>補充說明一點，使用指令 <code>$ git merge 合併的分支名稱 --no-ff</code> 來合併兩個分支時，可能會出現以下的訊息：</p>
-<p><img src="https://i.imgur.com/6MWIo44.png"></p>
-<p>如果跳出上圖的訊息，代表需要輸入合併的原因；此時可以按下鍵盤 “ i “ 進入輸入模式，接著把黃色文字的部分改成合併原因的簡單說明（同 commit 訊息），輸入完畢後再按下鍵盤 “ Esc “ 退出輸入模式，最後在最下方輸入 <code>：wq</code> 即可回到原來的畫面。</p>
-<p><strong>手動合併（衝突）</strong></p>
-<p>內容待編輯。</p>
-<p><strong>複製當前的分支合併在指定分支前</strong></p>
-<p>指令： <code>$ git rebase 要合併的分支名稱</code></p>
-<p>將當前分支從最初分歧的節點至當前 commit 節點整串複製一份，並合併在指定的分支前面。</p>
-<p>需要注意的是，複製下來的分支中的每個 commit 節點會重新產生自己的 SHA-1 值，因此與原先的節點彼此是不同的，而原先的節點會隨著時間流逝被 Git 回收。</p>
-<p>另一個需要注意的是，使用指令 <code>$ git rebase</code> 後如果要復原，透過 <code>$ git reset HEAD^</code> 的話並無法復原到執行前的狀態，而是會退回到當前 commit 節點的上一個節點；如果要復原的話，可以使用指令 <code>$ git reset ORIG_HEAD --hard</code>。</p>
-<p>只要合併都可能會產生衝突，下圖為兩分支在使用 <code>rebase</code> 合併時，產生的常見衝突：</p>
-<p><img src="https://i.imgur.com/VnZbZBn.png"></p>
-<p>此時切換到編輯器，查看衝突的部分，如下所示：</p>
-<p><img src="https://i.imgur.com/mL55SQw.png"></p>
-<p>解決衝突後，只需要在終端機再次將檔案加入暫存區，接著執行指令 <code>$ git rebase --continue</code> 再次嘗試合併即可。</p>
-<!-- cherry-pick 待說明 -->
 
-<p><strong>指定幾個 commit 複製並接在當前分支前</strong></p>
-<p>指令： <code>$ git cherry-pick SHA-1值</code></p>
-<p>挑選指定的單一或數個 commit 節點，複製到當前分支前面。</p>
-<p>以下圖為例，目前本地端有兩個分支，分別為 <code>master</code>、<code>feature</code>：</p>
-<p><img src="https://i.imgur.com/2o2yYEc.png"></p>
-<p>圖中左邊的部分為兩分支原始的狀態，如果要將 feature 分支上的 add 02 與 add 04 兩個 commit 節點合併在當前的分支 master 前面，可以輸入指令 <code>$ git cherry-pick 6465c29 bfd46fd</code>，此時狀態會是圖中右邊的部分，可以發現被指定的兩個節點合併到當前分支 master 前面，而原先的節點並沒有影響。</p>
-<p>如果希望被複製過來的 commit 節點不要直接進行合併，可以在指令後方加上參數 <code>--no-commit</code>，如下所示：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">＄ git cherry-pick 6465c29 bfd46fd --no-commit</span><br></pre></td></tr></table></figure>
 
-<p>此時被複製過來的 commit 節點會先被加入暫存區等待合併，可以透過 <code>$ git status</code> 來查詢狀態，會發現暫存區目前有兩個檔案，如下所示：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)</span><br><span class="line">        new file:   02.html</span><br><span class="line">        new file:   04.html</span><br></pre></td></tr></table></figure>
+<h3 id="指定提交節點合併到當前分支前"><a href="#指定提交節點合併到當前分支前" class="headerlink" title="指定提交節點合併到當前分支前"></a><strong>指定提交節點合併到當前分支前</strong></h3><p>指令： <code>$ git cherry-pick SHA-1 SHA-1</code></p>
+<p>複製指定的單一或數個提交節點，合併在當前分支前面。</p>
+<p>以下圖為例，嘗試將 feature 分支的 add style 與 add js 兩個合併節點，合併在 master 分支前面：</p>
+<p><img src="https://i.imgur.com/UyuDjy1.png"></p>
+<p>可以從 sourcetree 介面中的右側看到每個節點的 SHA-1，在取得 add style 與 add js 兩個節點的值後，在 master 分支執行以下指令，即可複製被指定的兩個節點，並合併在當前分支前面。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">＄ git cherry-pick 7316ad7 3372681</span><br></pre></td></tr></table></figure>
 
-<p>接著確認檔案沒問題後，就可以進行 commit，結果如下圖所示：</p>
-<p><img src="https://i.imgur.com/b6I6vGO.png"></p>
-<h2 id="標籤（Tag）"><a href="#標籤（Tag）" class="headerlink" title="標籤（Tag）"></a>標籤（Tag）</h2><p>開發專案的過程中，會因為檔案不斷新增、編輯或刪除而增加許多 commit 節點，雖然彼此都有自己的版本內容，但是這樣很難去區分彼此之間的重要程度，比方說不同時期的上線版本；因此為了有效區別，可以使用標籤的相關指令。</p>
-<p>標籤和分支一樣都是指向某一個 commit 節點的指標，但兩者的差別在於標籤只會指向固定的 commit 節點，而分支會隨著 commit 的推進而移動到最新的節點。</p>
-<h3 id="加入輕量標籤"><a href="#加入輕量標籤" class="headerlink" title="加入輕量標籤"></a>加入輕量標籤</h3><p>指令：<code>$ git tag 標籤名稱</code></p>
-<p>可以在當前的節點上新增一個標籤；後續要查詢標籤時，可使用指令 <code>$ git tag</code> 來做查詢。</p>
-<h3 id="加入標示標籤"><a href="#加入標示標籤" class="headerlink" title="加入標示標籤"></a>加入標示標籤</h3><p>指令：<code>$ git tag -am &quot;標示內容&quot; 標籤名稱</code></p>
-<p>除了可以在當前的節點上新增一個標籤外，還能加入一些詳細的描述；可以使用指令 <code>$ git tag -n</code> 來查詢標籤的詳細資訊。</p>
+<p>如果希望被複製過來的節點不要直接進行合併，可以在指令後方加上參數 <code>--no-commit</code>，如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">＄ git cherry-pick 7316ad7 3372681 --no-commit</span><br></pre></td></tr></table></figure>
+
+<p>此時被複製過來的節點會被拆除，並將節點的檔案加入暫存區，也可以透過 <code>$ git status</code> 查詢狀態，會發現暫存區目前有兩個檔案等待提交，如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)</span><br><span class="line">        new file:   all.js</span><br><span class="line">        new file:   style.css</span><br></pre></td></tr></table></figure>
+
+<p>確認檔案沒問題後，就可以進行提交，結果如下圖所示：</p>
+<p><img src="https://i.imgur.com/wJeP32p.png"></p>
+<h2 id="標籤（Tag）"><a href="#標籤（Tag）" class="headerlink" title="標籤（Tag）"></a>標籤（Tag）</h2><p>開發專案過程中，會因為檔案不斷新增、刪除或修改而增加許多提交節點，雖然彼此都有獨自的版本描述，但是這樣很難去區分彼此之間的重要程度，如不同時間點的上線版本；因此為了有效區別，可以使用標籤相關指令。</p>
+<p>補充說明：</p>
+<p>標籤和分支都是指向某一個提交節點的指標，但是兩者的差別在於標籤只會指向固定的提交節點，而分支會隨著提交的增加而移動到最新的節點。</p>
+<h3 id="新增標籤"><a href="#新增標籤" class="headerlink" title="新增標籤"></a>新增標籤</h3><p>指令：<code>$ git tag 標籤名稱</code></p>
+<p>在當前位置新增一個標籤，可使用指令 <code>$ git tag</code> 來查詢標籤。</p>
+<h3 id="新增標示標籤"><a href="#新增標示標籤" class="headerlink" title="新增標示標籤"></a>新增標示標籤</h3><p>指令：<code>$ git tag -am &quot;標示內容&quot; 標籤名稱</code></p>
+<p>在當前位置新增一個標籤，並加入詳細的敘述，可以使用指令 <code>$ git tag -n</code> 來檢視標籤的詳細內容。</p>
 <h3 id="刪除標籤"><a href="#刪除標籤" class="headerlink" title="刪除標籤"></a>刪除標籤</h3><p>指令：<code>$ git tag -d 標籤名稱</code></p>
-<p>可以將標籤想像成一張貼紙，撕掉並不會影響 commit 的內容。</p>
-<h3 id="移動至指定標籤位置"><a href="#移動至指定標籤位置" class="headerlink" title="移動至指定標籤位置"></a>移動至指定標籤位置</h3><p>指令：<code>$ git checkout 標籤名稱</code></p>
-<p>可以移動 HEAD 的位置到指定標籤上查看檔案內容，輸入 <code>$ git checkout 分支名稱</code> 即可回到原本內容。</p>
+<p>可以將標籤想像成一張貼紙，撕掉並不會影響提交的檔案狀態。</p>
+<h3 id="移動到指定標籤位置"><a href="#移動到指定標籤位置" class="headerlink" title="移動到指定標籤位置"></a>移動到指定標籤位置</h3><p>指令：<code>$ git checkout 標籤名稱</code></p>
+<p>移動 HEAD 的位置到指定標籤上查看檔案狀態，輸入 <code>$ git checkout 分支名稱</code> 即可回到原本內容。</p>
 <!-- 標籤類似快照，移動過去時無法編輯檔案，待補充說明 -->
 
-<h2 id="暫存（Stash）"><a href="#暫存（Stash）" class="headerlink" title="暫存（Stash）"></a>暫存（Stash）</h2><p>團隊開發專案的過程中，偶爾會開發到一半時，出現臨時的狀況要處理；其中一種作法是，先將目前的工作內容加入暫存區並 commit，處理完緊急狀況後，再透過指令 <code>$ git reset --soft HEAD^</code> 將最後一次 commit 節點刪除，同時保留當時 commit 前的所有狀態；另一種方式則是使用 <code>$ git stash</code> 相關指令來暫存檔案內容。</p>
-<p>這裡的暫存（stash）和暫存區（Staging Area）兩者屬於不同的概念。</p>
+<h2 id="暫存（Stash）"><a href="#暫存（Stash）" class="headerlink" title="暫存（Stash）"></a>暫存（Stash）</h2><p>團隊開發專案的過程中，常常會開發到一半出現突發狀況要處理，其中一種作法是，先將目前的工作內容加入暫存區並提交，解決突發狀況後，再透過指令 <code>$ git reset --soft HEAD^</code> 刪除最後一次的提交節點，並還原提交前的所有狀態；另外一種做法則是透過 <code>$ git stash</code> 相關指令來暫存檔案狀態。</p>
+<p>補充說明：</p>
+<p>暫存（stash）和暫存區（Staging Area）兩者屬於不同的概念。</p>
 <!-- 什麼不同概念，待補充 -->
 
-<h3 id="暫存當前目錄"><a href="#暫存當前目錄" class="headerlink" title="暫存當前目錄"></a>暫存當前目錄</h3><p>指令：<code>$ git stash</code></p>
-<p>將當前工作目錄已被追蹤和暫存區（Staging Area）的檔案內容，無論有沒有編輯都暫存起來。</p>
+<h3 id="暫存當前的檔案狀態"><a href="#暫存當前的檔案狀態" class="headerlink" title="暫存當前的檔案狀態"></a>暫存當前的檔案狀態</h3><p>指令：<code>$ git stash</code></p>
+<p>暫存當前工作目錄已被追蹤與暫存區（Staging Area）的檔案狀態，暫存後無法透過 <code>$ git status</code> 查詢檔案。</p>
 <h3 id="檢視暫存列表"><a href="#檢視暫存列表" class="headerlink" title="檢視暫存列表"></a>檢視暫存列表</h3><p>指令：<code>$ git stash list</code></p>
-<p>透過指令 <code>$ git stash</code> 暫存的檔案可以使用上述指令來查詢，查詢結果會以列表的方式依序顯示，如下所示：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git stash list</span><br><span class="line">stash@&#123;0&#125;: WIP on master: ce9d927 新增 index</span><br></pre></td></tr></table></figure>
+<p>透過指令 <code>$ git stash</code> 暫存的檔案可以使用上述指令來查詢，以下為查詢結果範例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git stash list</span><br><span class="line">stash@&#123;0&#125;: WIP on master: 15988d5 add index</span><br></pre></td></tr></table></figure>
 
-<h3 id="還原暫存的目錄"><a href="#還原暫存的目錄" class="headerlink" title="還原暫存的目錄"></a>還原暫存的目錄</h3><p>指令：<code>$ git stash pop</code></p>
-<p>將暫存的檔案內容還原到當前分支上，有搬運資料的功能。</p>
+<h3 id="還原暫存的檔案狀態"><a href="#還原暫存的檔案狀態" class="headerlink" title="還原暫存的檔案狀態"></a>還原暫存的檔案狀態</h3><p>指令：<code>$ git stash pop</code></p>
+<p>將暫存的檔案狀態還原到當前分支上，有搬運檔案的功能。</p>
 <h3 id="清除最新暫存"><a href="#清除最新暫存" class="headerlink" title="清除最新暫存"></a>清除最新暫存</h3><p>指令：<code>$ git stash drop</code></p>
-<p>刪除最後一次的暫存檔案並無法還原。</p>
+<p>刪除暫存列表最新的暫存紀錄，並無法還原。</p>
 <h3 id="清除全部暫存"><a href="#清除全部暫存" class="headerlink" title="清除全部暫存"></a>清除全部暫存</h3><p>指令：<code>$ git stash clear</code></p>
 <p>刪除暫存列表所有的暫存紀錄，並無法還原。</p>
-<h2 id="遠端儲存庫操作指令"><a href="#遠端儲存庫操作指令" class="headerlink" title="遠端儲存庫操作指令"></a>遠端儲存庫操作指令</h2><p>這裡開始會介紹推送本地端資料到遠端儲存庫時，較常會用到的指令；本篇筆記主要是在著重講述 Git 的基本操作，因此先不討論遠端儲存庫的建立方式與相關內容。</p>
+<h2 id="遠端儲存庫操作指令"><a href="#遠端儲存庫操作指令" class="headerlink" title="遠端儲存庫操作指令"></a>遠端儲存庫操作指令</h2><p>本篇內容主要是在著重講述 Git 的基本操作，因此先不討論遠端儲存庫的建立方式與相關內容。</p>
 <h3 id="連結遠端儲存庫"><a href="#連結遠端儲存庫" class="headerlink" title="連結遠端儲存庫"></a>連結遠端儲存庫</h3><p>指令：<code>$ git remote add origin 遠端儲存庫網址</code></p>
-<p>指令中的 <code>origin</code> 為遠端儲存庫的預設名稱；在實務上通常會有多個儲存庫，像是正式主機與測試主機；因此名稱也會有所不同。</p>
+<p>指令中的 <code>origin</code> 為遠端儲存庫的預設名稱；實務上通常會有多個儲存庫，如正式主機與測試主機；使用者可根據儲存庫用途來自訂名稱。</p>
 <h3 id="查詢遠端儲存庫"><a href="#查詢遠端儲存庫" class="headerlink" title="查詢遠端儲存庫"></a>查詢遠端儲存庫</h3><p>指令：<code>$ git remote</code></p>
-<p>遠端資料與本地端建立連結時，可以使用該指令來查詢遠端儲存庫的名稱；也可以使用指令 <code>$ git remote -v</code> 來查詢目前連結的所有遠端儲存庫名稱與路徑。</p>
+<p>查詢與本地端連結的遠端儲存庫的名稱；加入參數 <code>-v</code> 可以查詢詳細名稱與路徑。</p>
 <h3 id="複製遠端儲存庫"><a href="#複製遠端儲存庫" class="headerlink" title="複製遠端儲存庫"></a>複製遠端儲存庫</h3><p>指令：<code>$ git clone 遠端儲存庫網址</code></p>
-<p>複製遠端資料到本地端資料夾，並建立工作目錄與本地端儲存庫（.git 資料夾），可以在指令後方加上 <code>-b 遠端分支名稱</code> 來指定要複製的遠端分支，該指令通常使用在本地端尚未有遠端的資料時；而後續本地端的資料更新都是透過接下來會介紹的指令 <code>$ git pull</code> 來操作。</p>
-<h3 id="推送本地端分支至遠端分支"><a href="#推送本地端分支至遠端分支" class="headerlink" title="推送本地端分支至遠端分支"></a>推送本地端分支至遠端分支</h3><p>指令：<code>$ git push 遠端儲存庫名稱 遠端分支名稱</code></p>
-<p>需要注意的是，第一次使用該指令推送時，可以輸入成 <code>$ git push -u 遠端儲存庫名稱 遠端分支名稱</code> ，這樣可以使 Git 將這次的推送行為紀錄起來，後續在推送本地端資料到遠端時，只需要輸入指令 <code>$ git push</code> 即可；但是也可能會遇到無法推送的情形，這部分會在後面 <code>$ git pull</code> 的地方說明。</p>
-<p>補充說明，如果本地端連結的遠端儲存庫有多個，在推送的時候要注意指令中 <code>遠端儲存庫名稱</code> 的地方，需要改成要推送的遠端儲存庫名稱，避免推送到錯誤的地方。</p>
-<h3 id="變更遠端儲存庫名稱"><a href="#變更遠端儲存庫名稱" class="headerlink" title="變更遠端儲存庫名稱"></a>變更遠端儲存庫名稱</h3><p>指令：<code>$ git remote rename 原始儲存庫名稱 修改後名稱</code></p>
-<p>先前說明到，當遠端資料被複製到本地端時，預設的遠端儲存庫名稱為 “ origin “，但是也可以使用上述指令來變更遠端儲存庫的名稱；需要注意的是後續在推送時，遠端儲存庫的路徑要改成新的名稱，假設修改後的名稱為 “newRepo”，推送指令就要輸入 <code>$ git push -u newRepo 遠端分支名稱</code> 。</p>
+<p>複製遠端資料到本地端資料夾，並建立工作目錄與本地端儲存庫（.git 資料夾），在指令後方加上 <code>-b 遠端分支名稱</code> 可以指定要複製的遠端分支。</p>
+<p>補充說明：</p>
+<p>上述指令通常會在本地端尚未存在遠端的資料的形況下執行；而後續本地端的資料更新都是透過 <code>$ git pull</code> 相關指令來操作。</p>
+<h3 id="推送本地端分支到遠端分支"><a href="#推送本地端分支到遠端分支" class="headerlink" title="推送本地端分支到遠端分支"></a>推送本地端分支到遠端分支</h3><p>指令：<code>$ git push 遠端儲存庫名稱 遠端分支名稱</code></p>
+<p>與本地端連結的遠端儲存庫如果有一個以上，在推送的時候要注意遠端儲存庫名稱，是否與要推送的遠端儲存庫相同，避免推送到錯誤的遠端。</p>
+<p>補充說明：</p>
+<p>第一次在推送時，如果在指令中加入參數 <code>-u</code>，Git 就會記錄這次的推送行為，後續在推送本地端資料回遠端時，只需要輸入指令 <code>$ git push</code> 即可，但是也會遇到無法推送的情形，這部分會在 <code>$ git pull</code> 的部分說明。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u 遠端儲存庫名稱 遠端分支名稱</span><br></pre></td></tr></table></figure>
+
+<h3 id="變更遠端儲存庫名稱"><a href="#變更遠端儲存庫名稱" class="headerlink" title="變更遠端儲存庫名稱"></a>變更遠端儲存庫名稱</h3><p>指令：<code>$ git remote rename 原儲存庫名稱 修改後名稱</code></p>
+<p>預設的遠端儲存庫名稱為 <code>origin</code>。</p>
 <h3 id="複製遠端儲存庫分支與本地端分支合併"><a href="#複製遠端儲存庫分支與本地端分支合併" class="headerlink" title="複製遠端儲存庫分支與本地端分支合併"></a>複製遠端儲存庫分支與本地端分支合併</h3><p>指令：<code>$ git pull 遠端儲存庫名稱 遠端分支名稱</code></p>
-<p>團隊協作開發專案時，因為每個人的進度不同，常會需要將遠端最新的資料更新到本地端，這種情況就會使用到上述指令；與 <code>$ git clone</code> 不同的是， <code>$ git pull</code> 是使用在本地端已經下載過遠端的資料，但是需要做更新時。</p>
-<p>前面 <code>$ git push</code> 的地方有提到，在推送本地端資料回遠端時，偶爾會遇到無法推送的情況；通常造成此情形的原因可能是遠端資料已更新，導致本地端在推送時產生衝突，下列是在推送時可能會出現錯誤訊息：</p>
-<p><img src="https://i.imgur.com/WYOmVjP.png"></p>
-<p>圖中左邊的部分是推送本地端資料到遠端時，因為遠端資料有更動所出現推送被拒絕的訊息，這種狀況需要使用 <code>$ git pull</code> 先將本地端做資料更新，執行指令後可能會出現右邊部分的訊息，主要是要求遠端儲存庫與本地端進行合併（merge）分支的動作。</p>
-<p>由此可知，指令 <code>$ git pull</code> 所做的事情是將遠端分支複製一份到本地端，再做合併的動作。</p>
-<h3 id="複製遠端儲存庫分支與本地端分支待合併"><a href="#複製遠端儲存庫分支與本地端分支待合併" class="headerlink" title="複製遠端儲存庫分支與本地端分支待合併"></a>複製遠端儲存庫分支與本地端分支待合併</h3><p>指令：<code>$ git fetch 遠端儲存庫名稱 遠端分支名稱</code></p>
-<p>與 <code>$ git push</code> 不同的是，使用 <code>$ git fetch</code> 取得的遠端最新檔案會產生一個 FETCH_HEAD，表示遠端分支的最新狀態 <code>遠端儲存庫名稱 / 遠端儲存庫分支</code> 與 <code>遠端儲存庫名稱 / HEAD</code>，並額外產生 commit 節點在本地端分支前面，讓使用者檢查後再決定是否要與本地端分支合併，合併的指令為 <code>$ git merge 遠端儲存庫名稱/遠端儲存庫分支</code>。</p>
-<p>以上的敘述也可以理解成，<code>$ git push</code> 的行為就等於 <code>$ git fetch</code> 加上 <code>$ git merge</code>。</p>
+<p>團隊協作開發專案時，因為每個人的進度不同，會需要不定時更新遠端的資料回本地端；與 <code>$ git clone</code> 不同的是，<code>$ git pull</code> 是使用在本地端已經存在遠端的資料，但是需要更新檔案進度時。</p>
+<p>推送本地端資料回遠端前，如果遠端資料已更新，本地端在推送時就會出現以下衝突訊息：</p>
+<p><img src="https://i.imgur.com/5Pu4KZi.png"></p>
+<p>此時需要使用 <code>$ git pull</code> 先將遠端最新的資料更新（複製）到本地端，在複製遠端資料時會跳出以下訊息，表示需要將遠端資料與本地端進行合併。</p>
+<p><img src="https://i.imgur.com/PnkSzXM.png"></p>
+<p>從上述行為可得知，指令 <code>$ git pull</code> 做的事情是將遠端分支複製一份到本地端，再直接進行合併的動作。</p>
+<h3 id="複製遠端儲存庫分支與本地端分支等待合併"><a href="#複製遠端儲存庫分支與本地端分支等待合併" class="headerlink" title="複製遠端儲存庫分支與本地端分支等待合併"></a>複製遠端儲存庫分支與本地端分支等待合併</h3><p>指令：<code>$ git fetch 遠端儲存庫名稱 遠端分支名稱</code></p>
+<p>與 <code>$ git push</code> 不同的是，使用 <code>$ git fetch</code> 取得的遠端最新檔案會產生一個 FETCH_HEAD，表示遠端分支的最新狀態 <code>遠端儲存庫名稱/遠端儲存庫分支</code> 與 <code>遠端儲存庫名稱/HEAD</code>，並額外產生提交節點在本地端當前分支前面，使用者檢查後再決定是否要與本地端分支合併，合併指令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git merge 遠端儲存庫名稱/遠端儲存庫分支</span><br></pre></td></tr></table></figure>
+
+<p>從上述行為可得知，<code>$ git push</code> 做的動作相當於 <code>$ git fetch</code> 加上 <code>$ git merge</code>。</p>
 <!-- 可以補充說明 -->
 
 <h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>

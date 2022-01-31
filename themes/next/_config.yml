@@ -28,7 +28,7 @@ custom_file_path:
   #bodyEnd: source/_data/body-end.njk
   #variable: source/_data/variables.styl
   #mixin: source/_data/mixins.styl
-  #style: source/_data/styles.styl
+  style: source/_data/styles.styl
 
 
 # ---------------------------------------------------------------
@@ -244,8 +244,8 @@ post_meta:
 # Post wordcount display settings
 # Dependencies: https://github.com/next-theme/hexo-word-counter
 symbols_count_time:
-  separated_meta: false  # 是否單行顯示
-  item_text_post: true  # 設定 false 則僅顯示圖標和數字
+  separated_meta: true  # 是否單行顯示
+  item_text_post: false  # 設定 false 則僅顯示圖標和數字
   item_text_total: false  # 是否顯示總字數與閱讀時間
   awl: 4
   wpm: 275

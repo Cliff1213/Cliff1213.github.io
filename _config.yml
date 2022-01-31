@@ -4,7 +4,7 @@
 
 # Site
 title: CliffのBlog
-subtitle: '前端學習日誌'
+subtitle: '前端學習隨筆'
 description: 'Cliffの學習筆記'
 keywords: CliffのBlog
 author: Cliff Chu
@@ -102,7 +102,7 @@ theme: next #landscape
 # Count
 symbols_count_time:
   symbols: true # 文章字數統計顯示
-  time: false # 文章閱讀時間顯示
+  time: true # 文章閱讀時間顯示
   total_symbols: false # 網頁底部字數統計顯示
   total_time: false # 網頁底部閱讀時間顯示
   exclude_codeblock: false

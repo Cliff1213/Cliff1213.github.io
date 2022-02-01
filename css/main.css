@@ -1732,8 +1732,8 @@ pre code {
 }
 .reading-progress-bar {
   --progress: 0;
-  background: #732de3;
-  height: 8px;
+  background: #fc0;
+  height: 4px;
   position: fixed;
   z-index: 50;
   width: var(--progress);
@@ -2458,6 +2458,9 @@ ul.breadcrumb li:last-child {
   border-bottom-color: #111;
   color: #111;
 }
+.utterances {
+  max-width: unset;
+}
 .search-active {
   overflow: hidden;
 }
@@ -2739,7 +2742,6 @@ mark.search-keyword {
   position: sticky;
   top: 12px;
   width: 240px;
-  visibility: hidden;
 }
 @media (max-width: 991px) {
   .sidebar {

@@ -389,8 +389,8 @@ reading_progress:
   # Available values: top | bottom
   position: bottom
   reversed: false
-  color: "#732DE3"
-  height: 8px
+  color: "#FFCC00"
+  height: 4px
 
 # Bookmark Support
 bookmark:
@@ -633,12 +633,13 @@ gitalk:
 # Utterances
 # For more information: https://utteranc.es
 utterances:
-  enable: false
-  repo: # Github repository name
+  enable: true
+  # 以下相關參數已添加在 comments.njk
+  # repo: Cliff1213/cliff1213.github.io  # Github repository name
   # Available values: pathname | url | title | og:title
-  issue_term: pathname
+  # issue_term: pathname
   # Available values: github-light | github-dark | preferred-color-scheme | github-dark-orange | icy-dark | dark-blue | photon-dark | boxy-light
-  theme: github-light
+  # theme: github-light
 
 # Isso
 # For more information: https://posativ.org/isso/
@@ -834,7 +835,7 @@ mermaid:
 # Use Animate.css to animate everything.
 # For more information: https://animate.style
 motion:
-  enable: true
+  enable: false
   async: false
   transition:
     # All available transition variants: https://theme-next.js.org/animate/

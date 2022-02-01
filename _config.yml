@@ -3,10 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: CliffのBlog
-subtitle: '前端學習隨筆'
-description: 'Cliffの學習筆記'
-keywords: CliffのBlog
+title: Cliff Have A Dream
+subtitle: '網路潛水日常'
+description: '前端學習隨筆'
+keywords: Cliff Have A Dream
 author: Cliff Chu
 language: zh-TW
 timezone: ''
@@ -114,4 +114,4 @@ deploy:
   type: git
   repo: https://github.com/Cliff1213/cliff1213.github.io.git
   branch: master
-  message: "add utterances"
+  message: "amend blog title"

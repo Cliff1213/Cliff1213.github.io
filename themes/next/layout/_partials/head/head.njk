@@ -60,3 +60,13 @@
 
 {{ next_data('main', next_config()) }}
 {{- next_js('config.js') }}
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-106NQBHYEM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-106NQBHYEM');
+</script>

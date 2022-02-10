@@ -6,7 +6,6 @@ tags:
  - [六角學院]
 categories: "心得文"
 keywords: 六角學院UI觀念直播班
-description: "課程心得"
 ---
 
 ## 前言：

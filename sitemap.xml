@@ -2,12 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://cliff1213.github.io/2022-01-20-git-note/</loc>
+    
+    <lastmod>2022-02-10</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://cliff1213.github.io/2022-02-07-npm-note/</loc>
     
-    <lastmod>2022-02-07</lastmod>
+    <lastmod>2022-02-10</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cliff1213.github.io/2022-01-17-hexschool-UI/</loc>
+    
+    <lastmod>2022-02-10</lastmod>
+    
   </url>
   
   <url>
@@ -15,17 +27,6 @@
     
     <lastmod>2022-02-01</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cliff1213.github.io/categories/index.html</loc>
-    
-    <lastmod>2022-02-01</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
   
   <url>
@@ -33,8 +34,13 @@
     
     <lastmod>2022-02-01</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cliff1213.github.io/categories/index.html</loc>
+    
+    <lastmod>2022-02-01</lastmod>
+    
   </url>
   
   <url>
@@ -42,26 +48,6 @@
     
     <lastmod>2022-02-01</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cliff1213.github.io/2022-01-20-git-note/</loc>
-    
-    <lastmod>2022-01-31</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cliff1213.github.io/2022-01-17-hexschool-UI/</loc>
-    
-    <lastmod>2022-01-28</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
   
 
@@ -76,36 +62,36 @@
   <url>
     <loc>https://cliff1213.github.io/tags/UI-UX/</loc>
     <lastmod>2022-02-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://cliff1213.github.io/tags/%E5%85%AD%E8%A7%92%E5%AD%B8%E9%99%A2/</loc>
     <lastmod>2022-02-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://cliff1213.github.io/tags/NPM/</loc>
     <lastmod>2022-02-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://cliff1213.github.io/tags/NodeJS/</loc>
     <lastmod>2022-02-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://cliff1213.github.io/tags/Git/</loc>
     <lastmod>2022-02-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
   </url>
   
 
@@ -113,15 +99,15 @@
   <url>
     <loc>https://cliff1213.github.io/categories/%E5%BF%83%E5%BE%97%E6%96%87/</loc>
     <lastmod>2022-02-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://cliff1213.github.io/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/</loc>
     <lastmod>2022-02-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
   </url>
   
 </urlset>

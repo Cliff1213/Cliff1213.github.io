@@ -107,6 +107,10 @@ symbols_count_time:
   total_time: false # 網頁底部閱讀時間顯示
   exclude_codeblock: false
 
+# Sitemap
+sitemap:
+    path: sitemap.xml
+#    template: ./sitemap_template.xml
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
@@ -114,4 +118,4 @@ deploy:
   type: git
   repo: https://github.com/Cliff1213/cliff1213.github.io.git
   branch: master
-  message: "add new article npm"
+  message: "add sitemap"

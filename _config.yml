@@ -114,8 +114,10 @@ sitemap:
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
+
+
 deploy:
   type: git
   repo: https://github.com/Cliff1213/cliff1213.github.io.git
   branch: master
-  message: "add sitemap"
+  message: "reset sitemap"

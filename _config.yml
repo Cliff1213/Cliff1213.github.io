@@ -6,7 +6,7 @@
 title: Cliff Have A Dream
 subtitle: '網路潛水日常'
 description: '前端學習筆記'
-keywords: 前端筆記
+keywords:
 author: Cliff Chu
 language: zh-TW
 timezone: ''
@@ -17,9 +17,6 @@ url: https://cliff1213.github.io
 root: /
 permalink: :title/
 permalink_defaults:
-pretty_urls:
-  trailing_index: false # Set to false to remove trailing 'index.html' from permalinks
-  trailing_html: false # Set to false to remove trailing '.html' from permalinks
 
 # Directory
 source_dir: source
@@ -63,7 +60,7 @@ prismjs:
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
   path: ''
-  per_page: 10
+  per_page: 6
   order_by: -date
 
 # Category & Tag
@@ -110,8 +107,11 @@ symbols_count_time:
 
 # Sitemap
 sitemap:
-    path: sitemap.xml
-#    template: ./sitemap_template.xml
+  path: sitemap.xml
+  # template: ./sitemap_template.xml
+  rel: false
+  tags: false
+  categories: false
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
@@ -121,4 +121,4 @@ deploy:
   type: git
   repo: https://github.com/Cliff1213/cliff1213.github.io.git
   branch: master
-  message: "set url"
+  message: "set config"

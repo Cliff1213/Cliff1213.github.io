@@ -46,7 +46,7 @@
 <meta property="og:image" content="https://i.imgur.com/5Pu4KZi.png">
 <meta property="og:image" content="https://i.imgur.com/PnkSzXM.png">
 <meta property="article:published_time" content="2022-01-19T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-02-21T15:24:38.299Z">
+<meta property="article:modified_time" content="2022-03-02T09:48:15.697Z">
 <meta property="article:author" content="Cliff Chu">
 <meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
@@ -275,7 +275,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2022-02-21 23:24:38" itemprop="dateModified" datetime="2022-02-21T23:24:38+08:00">2022-02-21</time>
+      <time title="修改時間：2022-03-02 17:48:15" itemprop="dateModified" datetime="2022-03-02T17:48:15+08:00">2022-03-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -566,10 +566,10 @@
 <p><img src="https://i.imgur.com/PnkSzXM.png"></p>
 <p>從上述行為可得知，指令 <code>$ git pull</code> 做的事情是將遠端分支複製一份到本地端，再直接進行合併的動作。</p>
 <h3 id="複製遠端儲存庫分支與本地端分支等待合併"><a href="#複製遠端儲存庫分支與本地端分支等待合併" class="headerlink" title="複製遠端儲存庫分支與本地端分支等待合併"></a>複製遠端儲存庫分支與本地端分支等待合併</h3><p>指令：<code>$ git fetch 遠端儲存庫名稱 遠端分支名稱</code></p>
-<p>與 <code>$ git push</code> 不同的是，使用 <code>$ git fetch</code> 取得的遠端最新檔案會產生一個 FETCH_HEAD，表示遠端分支的最新狀態 <code>遠端儲存庫名稱/遠端儲存庫分支</code> 與 <code>遠端儲存庫名稱/HEAD</code>，並額外產生提交節點在本地端當前分支前面，使用者檢查後再決定是否要與本地端分支合併，合併指令如下：</p>
+<p>與 <code>$ git pull</code> 不同的是，使用 <code>$ git fetch</code> 取得的遠端最新檔案會產生一個 FETCH_HEAD，表示遠端分支的最新狀態 <code>遠端儲存庫名稱/遠端儲存庫分支</code> 與 <code>遠端儲存庫名稱/HEAD</code>，並額外產生提交節點在本地端當前分支前面，使用者檢查後再決定是否要與本地端分支合併，合併指令如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git merge 遠端儲存庫名稱/遠端儲存庫分支</span><br></pre></td></tr></table></figure>
 
-<p>從上述行為可得知，<code>$ git push</code> 做的動作相當於 <code>$ git fetch</code> 加上 <code>$ git merge</code>。</p>
+<p>從上述行為可得知，<code>$ git pull</code> 做的動作相當於 <code>$ git fetch</code> 加上 <code>$ git merge</code>。</p>
 <!-- 可以補充說明 -->
 
 <hr>

@@ -1,46 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>六角學院 UI 觀念直播班心得</title>
-    <url>/2022-01-17-hexschool-UI/</url>
-    <content><![CDATA[<h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>本身不是設計相關科系，但還是希望能透過這次的＂六角學院－UI設計觀念必修直播班＂來增進一點 UI/UX 的相關知識，雖然很遺憾沒有完美的走到終點，但還是幫自己記錄一下這次參與直播班的心路歷程。</p>
-<span id="more"></span>
-
-<h2 id="報名這堂課的契機是？"><a href="#報名這堂課的契機是？" class="headerlink" title="報名這堂課的契機是？"></a>報名這堂課的契機是？</h2><p>相信在仿間與 UI/UX 設計相關的課程一定數不勝數，但是為什麼我會選擇”六角學院”的課程？原因很簡單，<del>就是信仰（沒</del>，其實早在先前就有報名六角的切版班了，而六角學院整體給我的氛圍是很團結的；你會有自己的小組以及永遠在前線待命等你發問的助教，當然少不了最敬業的老師。而因為你是跟著大家一起學習，所以當腦海衍生出想偷懶的想法同時，也會有一種被人從後面拍肩膀並對你說「欸我先走一步哩，你就繼續耍廢。」的感覺，讓你在學習上能自律。</p>
-<h2 id="每週的學習過程："><a href="#每週的學習過程：" class="headerlink" title="每週的學習過程："></a>每週的學習過程：</h2><p>這一次表訂為期四週的直播課程大綱如下：</p>
-<ul>
-<li><p><strong>Week 1：掌握頁面所有元件</strong></p>
-<p>本次主要使用的設計工具為 Figma，算是目前的主流之一。而這週就是帶你認識軟體的操作介面；雖然我在開課前有先觀看課前釋出的體驗營直播錄影，但是自己在操作上還是有許多不解的地方；不過在聽完第一週的直播後，我私下就利用時間把直播錄影再看一次並且針對操作上比較複雜的地方寫了筆記，<del>對我來說都很複雜所以筆記滿到哭</del>，而這些後續幫助我在練習軟體上幫助很多。</p>
-</li>
-<li><p><strong>Week 2：帶你從草稿到完稿</strong></p>
-<p>這週認識了一些網頁在設計的過程中比較常見會遇到的設計模式，像是C.R.A.P的設計準則，或是在規劃網頁時常用的 AIDA Modal；再來會介紹甚麼是 Wireframe。這週基本上每個人會開始設計第一個 Landing Page，對我這個設計白癡來說算是頗有挑戰性的，<del>（我做的很像釣魚網站</del>。</p>
-</li>
-<li><p><strong>Week 3：伸縮自如的響應式設計</strong></p>
-<p>RWD對我來說雖然早就不陌生，但是這堂課讓我更加的理解網頁在不同寬度的視窗做切換時的一些細節以及過往不懂的知識，像是中斷點、網格切換時的邏輯或是兩個物件之間的間距都是一個學問。</p>
-</li>
-<li><p><strong>Week 4：讓介面動起來</strong></p>
-<p>這週的直播內容算是比較有趣的一次，主要都是在介紹 Prototype 的運作，很多動畫都是在網頁中常見的，但是直播以外的時間幾乎都是拿來做最終作品，從這週開始會覺得時間緊湊起來。</p>
-</li>
-<li><p><strong>Week 5：加碼內容</strong></p>
-<p>標題說是表訂為期四週，但怎麼會還有第五週呢？原因是老師擔心有些同學工作比較忙碌，可能會沒有時間做最終作品，因此開放最終作品有達到一定進度的同學提供額外的一次直播並且延長作品繳交的期限<del>（老師你是神吧</del>，而加碼直播課程的內容是如何把作品上傳到 Behance 以及作品呈現的排版建議；為了拿到這張門票我花了不少時間不反覆改我的作品版型，但一切都值得。</p>
-</li>
-</ul>
-<h2 id="建議："><a href="#建議：" class="headerlink" title="建議："></a>建議：</h2><p>無論你是不是設計背景，或是你有想轉職 UI 設計師的想法但是沒有明確的學習目標，不仿可以考慮看看六角學院的 UI 設計直播課程；好的學習環境跟課程規劃這裡都提供給你了，但能不能有所成長還是決定在自己身上，以我自己為例，很多觀念在直播上課的當下我是充滿疑惑的，但課後我會盡可能的把當天的直播錄影重頭到尾看一次並且隨時暫停錄影做筆記，因為對我來說暫停的當下會先思考一次問題的所在，而作筆記的時候會間接複習剛剛思考的問題，這確實大幅提升了我的學習效率，當然這是我自己的做法，每個人的學習方式不盡相同，但這裡要表達的重點是自己必須要有所規劃，再搭配現有的資源去做結合，才能最有效率的學習。</p>
-<h2 id="結語："><a href="#結語：" class="headerlink" title="結語："></a>結語：</h2><p>雖然這次的過程對我來說真的不容易，但還是很榮幸可以跟到這次的直播課程，畢竟這是我有史以來最認真跟 UI/UX 相處的一段時間。很喜歡一個人專注在思考或是做某一件事情時的感覺，而這次直播班讓我深刻體會到了，遺憾的是我沒有在時間內完成最終作品，雖然對特別延長繳交期限的老師很不好意思，但這個作品我還是會利用時間把它完成，至少有始有終也算是對參與這個課程的自己負責吧。</p>
-<p>最後我要特別感謝<strong>熾炎鐵甲狼</strong>的組員，特別是組長都會幫忙繳交小組作業以及提醒繳交的時間，也要感謝其他組員都會提出疑問和幫忙解答，雖然各位都很忙，但都盡可能的參與小組任務，這邊讓我私心合影紀念一下。</p>
-<p><img src="https://i.imgur.com/kQuBKJ5.png" alt="img"></p>
-<p>最後的最後，要感謝聲音自帶磁性的俊儀老師和唯一的 Joanne 助教願意回答我提出的蠢問題<del>（假日問跨年也問，吵到真的不好意思</del>，雖然最後階段的作品屢次被退回，但每次的建議我都有仔細看，讓我這個設計肢障提升了設計觀念之餘，也培養了專注思考的能力，感謝兩位的用力鞭打，也辛苦你們了。</p>
-<p><img src="https://i.imgur.com/GIbWClM.png?1"></p>
-]]></content>
-      <categories>
-        <category>心得文</category>
-      </categories>
-      <tags>
-        <tag>UI/UX</tag>
-        <tag>六角學院</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>NPM 筆記</title>
     <url>/2022-02-07-npm-note/</url>
     <content><![CDATA[<p>最近開始接觸 JS 套件，但在過程中因為版本之間的相容問題，幾乎是讓我踩到一堆深不見底的坑，後來開始找了很多資料並參考其他開發者使用以及管理套件的方式，然而相關資料都離不開 NPM，於是決定來找它泡茶一下，順便紀錄一下過程中學到的知識。</p>
@@ -120,18 +80,138 @@
 </ul>
 ]]></content>
       <categories>
-        <category>學習筆記</category>
+        <category>NPM</category>
       </categories>
       <tags>
         <tag>NPM</tag>
-        <tag>NodeJS</tag>
+        <tag>學習筆記</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>六角學院 UI 觀念直播班心得</title>
+    <url>/2022-01-17-hexschool-UI/</url>
+    <content><![CDATA[<h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>本身不是設計相關科系，但還是希望能透過這次的＂六角學院－UI設計觀念必修直播班＂來增進一點 UI/UX 的相關知識，雖然很遺憾沒有完美的走到終點，但還是幫自己記錄一下這次參與直播班的心路歷程。</p>
+<span id="more"></span>
+
+<h2 id="報名這堂課的契機是？"><a href="#報名這堂課的契機是？" class="headerlink" title="報名這堂課的契機是？"></a>報名這堂課的契機是？</h2><p>相信在仿間與 UI/UX 設計相關的課程一定數不勝數，但是為什麼我會選擇”六角學院”的課程？原因很簡單，<del>就是信仰（沒</del>，其實早在先前就有報名六角的切版班了，而六角學院整體給我的氛圍是很團結的；你會有自己的小組以及永遠在前線待命等你發問的助教，當然少不了最敬業的老師。而因為你是跟著大家一起學習，所以當腦海衍生出想偷懶的想法同時，也會有一種被人從後面拍肩膀並對你說「欸我先走一步哩，你就繼續耍廢。」的感覺，讓你在學習上能自律。</p>
+<h2 id="每週的學習過程："><a href="#每週的學習過程：" class="headerlink" title="每週的學習過程："></a>每週的學習過程：</h2><p>這一次表訂為期四週的直播課程大綱如下：</p>
+<ul>
+<li><p><strong>Week 1：掌握頁面所有元件</strong></p>
+<p>本次主要使用的設計工具為 Figma，算是目前的主流之一。而這週就是帶你認識軟體的操作介面；雖然我在開課前有先觀看課前釋出的體驗營直播錄影，但是自己在操作上還是有許多不解的地方；不過在聽完第一週的直播後，我私下就利用時間把直播錄影再看一次並且針對操作上比較複雜的地方寫了筆記，<del>對我來說都很複雜所以筆記滿到哭</del>，而這些後續幫助我在練習軟體上幫助很多。</p>
+</li>
+<li><p><strong>Week 2：帶你從草稿到完稿</strong></p>
+<p>這週認識了一些網頁在設計的過程中比較常見會遇到的設計模式，像是C.R.A.P的設計準則，或是在規劃網頁時常用的 AIDA Modal；再來會介紹甚麼是 Wireframe。這週基本上每個人會開始設計第一個 Landing Page，對我這個設計白癡來說算是頗有挑戰性的，<del>（我做的很像釣魚網站</del>。</p>
+</li>
+<li><p><strong>Week 3：伸縮自如的響應式設計</strong></p>
+<p>RWD對我來說雖然早就不陌生，但是這堂課讓我更加的理解網頁在不同寬度的視窗做切換時的一些細節以及過往不懂的知識，像是中斷點、網格切換時的邏輯或是兩個物件之間的間距都是一個學問。</p>
+</li>
+<li><p><strong>Week 4：讓介面動起來</strong></p>
+<p>這週的直播內容算是比較有趣的一次，主要都是在介紹 Prototype 的運作，很多動畫都是在網頁中常見的，但是直播以外的時間幾乎都是拿來做最終作品，從這週開始會覺得時間緊湊起來。</p>
+</li>
+<li><p><strong>Week 5：加碼內容</strong></p>
+<p>標題說是表訂為期四週，但怎麼會還有第五週呢？原因是老師擔心有些同學工作比較忙碌，可能會沒有時間做最終作品，因此開放最終作品有達到一定進度的同學提供額外的一次直播並且延長作品繳交的期限<del>（老師你是神吧</del>，而加碼直播課程的內容是如何把作品上傳到 Behance 以及作品呈現的排版建議；為了拿到這張門票我花了不少時間不反覆改我的作品版型，但一切都值得。</p>
+</li>
+</ul>
+<h2 id="建議："><a href="#建議：" class="headerlink" title="建議："></a>建議：</h2><p>無論你是不是設計背景，或是你有想轉職 UI 設計師的想法但是沒有明確的學習目標，不仿可以考慮看看六角學院的 UI 設計直播課程；好的學習環境跟課程規劃這裡都提供給你了，但能不能有所成長還是決定在自己身上，以我自己為例，很多觀念在直播上課的當下我是充滿疑惑的，但課後我會盡可能的把當天的直播錄影重頭到尾看一次並且隨時暫停錄影做筆記，因為對我來說暫停的當下會先思考一次問題的所在，而作筆記的時候會間接複習剛剛思考的問題，這確實大幅提升了我的學習效率，當然這是我自己的做法，每個人的學習方式不盡相同，但這裡要表達的重點是自己必須要有所規劃，再搭配現有的資源去做結合，才能最有效率的學習。</p>
+<h2 id="結語："><a href="#結語：" class="headerlink" title="結語："></a>結語：</h2><p>雖然這次的過程對我來說真的不容易，但還是很榮幸可以跟到這次的直播課程，畢竟這是我有史以來最認真跟 UI/UX 相處的一段時間。很喜歡一個人專注在思考或是做某一件事情時的感覺，而這次直播班讓我深刻體會到了，遺憾的是我沒有在時間內完成最終作品，雖然對特別延長繳交期限的老師很不好意思，但這個作品我還是會利用時間把它完成，至少有始有終也算是對參與這個課程的自己負責吧。</p>
+<p>最後我要特別感謝<strong>熾炎鐵甲狼</strong>的組員，特別是組長都會幫忙繳交小組作業以及提醒繳交的時間，也要感謝其他組員都會提出疑問和幫忙解答，雖然各位都很忙，但都盡可能的參與小組任務，這邊讓我私心合影紀念一下。</p>
+<p><img src="https://i.imgur.com/kQuBKJ5.png" alt="img"></p>
+<p>最後的最後，要感謝聲音自帶磁性的俊儀老師和唯一的 Joanne 助教願意回答我提出的蠢問題<del>（假日問跨年也問，吵到真的不好意思</del>，雖然最後階段的作品屢次被退回，但每次的建議我都有仔細看，讓我這個設計肢障提升了設計觀念之餘，也培養了專注思考的能力，感謝兩位的用力鞭打，也辛苦你們了。</p>
+<p><img src="https://i.imgur.com/GIbWClM.png?1"></p>
+]]></content>
+      <categories>
+        <category>心得文</category>
+      </categories>
+      <tags>
+        <tag>UI/UX</tag>
+        <tag>六角學院</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CSS Font-Family 淺規則</title>
+    <url>/2022-03-02-font-family/</url>
+    <content><![CDATA[<p>回想過去在初學網頁的時候，對於 font-family 這個屬性一直處於很難相處的狀態，常會發生明明設定了字體，也沒有語法上的錯誤，但是網頁上呈現出來的結果總是不如預期；剛好前陣子在練習切版的時候又遇到了這方面的問題，於是決定投入一點時間研究問題的所在，藉此讓自己重新認識這個屬性。</p>
+<blockquote>
+<p>本篇僅討論 font-family 字體設定的基本觀念，沒有過多的字體介紹，主要方便自己做後續的查閱用途。</p>
+</blockquote>
+<span id="more"></span>
+
+<hr>
+<h2 id="Font-Family-設定規則"><a href="#Font-Family-設定規則" class="headerlink" title="Font-Family 設定規則"></a>Font-Family 設定規則</h2><p>基本上只要是網頁設計，都會使用到的屬性，可以自訂頁面上的文字字體，但是初學者在使用這個屬性之前，為了避免結果不如預期，建議需要先理解一些設定上的規則。</p>
+<h3 id="字體套用邏輯"><a href="#字體套用邏輯" class="headerlink" title="字體套用邏輯"></a>字體套用邏輯</h3><p>Font-Family 雖然可以設定多個屬性值，但是並不會將所有寫入的字體都一起套用，而是會根據瀏覽器對該字體的支援與否，由左至右依序判斷，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: 字體A, 字體B, 字體C;</span><br></pre></td></tr></table></figure>
+
+<p>假設使用者的電腦系統中僅存在 “字體B”，此時瀏覽器載入網頁時，會根據上述設定先判斷系統內是否有對應的字體A，但因為系統中找不到這個字體，因此會跳過該字體並判斷下一個字體B，此時找到字體B之後，就會套用該字體，並且不再往下進行判斷。</p>
+<h3 id="語法注意事項"><a href="#語法注意事項" class="headerlink" title="語法注意事項"></a>語法注意事項</h3><p>在部分字體的選用上，同一個字體可以選擇使用中文名稱或英文名稱的屬性值設定，其結果會相同，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: <span class="string">&quot;Microsoft JhengHei&quot;</span>;</span><br><span class="line"><span class="attribute">font-family</span>: 微軟正黑體;</span><br></pre></td></tr></table></figure>
+
+<p>從上述語法中可以發現，第一行的字體加上了雙引號，這是因為該字體的名稱之間如果存在空白，在不加上雙引號的情形下，瀏覽器會無法辨識而導致讀取失敗。</p>
+<p>另一個值得注意的是，雖然使用中文名稱來設定字體結果與英文名稱相同，但是只單獨設定中文名稱的話，可能會遇到編碼的問題而導致結果不如預期，因此會建議使用英文名稱的屬性值，或是中、英文一起使用，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: <span class="string">&quot;Microsoft JhengHei&quot;</span>, 微軟正黑體;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Font-Family-字體類型"><a href="#Font-Family-字體類型" class="headerlink" title="Font-Family 字體類型"></a>Font-Family 字體類型</h2><p>在當今這麼大量的字體中，主要可以分為 “指定字體” 與 “通用字體” 兩種類型。</p>
+<h3 id="指定字體（family-name）"><a href="#指定字體（family-name）" class="headerlink" title="指定字體（family-name）"></a>指定字體（family-name）</h3><p>不同的字體也會影響網頁的視覺感受，因此在選用字體時，通常會優先使用指定的字體。</p>
+<h3 id="通用字體（generic-family）"><a href="#通用字體（generic-family）" class="headerlink" title="通用字體（generic-family）"></a>通用字體（generic-family）</h3><p>通用字體可以理解成多數的電腦系統中，內建就已存在的字體，常見的通用字體有以下五種，其中無襯線體、襯線體使用最為廣泛：</p>
+<ul>
+<li>sans-serif（無襯線體 / 黑體）</li>
+<li>serif（襯線體 / 明體）</li>
+<li>cursive（手寫體）</li>
+<li>monospace（等寬體）</li>
+<li>fantasy（幻想體）</li>
+</ul>
+<h3 id="設定方式"><a href="#設定方式" class="headerlink" title="設定方式"></a>設定方式</h3><p>雖然可以透過指定字體名稱的方式，來達到自訂網頁上想要呈現的字體，但是並非所有電腦系統都有對應的指定字體，因此在使用指定字體時，通常都會在 font-family 屬性值的<strong>最後方位置</strong>設定預設的通用字體；而前面有提到 font-family 是由左至右判斷屬性值，所以當瀏覽器不支援或無法從系統中找到前方所對應的指定字體時，就會套用最後設定的通用字體，設定格式如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: 指定字體, <span class="string">&quot;指定 字體&quot;</span>, 通用字體;</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h2 id="字體順序觀念"><a href="#字體順序觀念" class="headerlink" title="字體順序觀念"></a>字體順序觀念</h2><p>本篇一開始在設定規則的地方有簡單提到字體是由左邊開始判斷，但是在順序方面還有一些重要觀念需要熟記。</p>
+<h3 id="中、英文順序"><a href="#中、英文順序" class="headerlink" title="中、英文順序"></a>中、英文順序</h3><p>一個網頁通常會存在多個語言（以中、英文為例），但是並非所有的字體都同時支援中、英文，因此許多網頁會利用這個由左至右判斷的技巧，分別針對中文與英文各別設定不同的字體，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: Arial, 微軟正黑體;</span><br></pre></td></tr></table></figure>
+
+<p>上述設定中，Arial 只有英文字體，而微軟正黑體則是中、英文字體都有，因此瀏覽器在判斷 Arial 之後，就會因為符合條件而套用英文字體，而中文會因為找不到對應字體則往下判斷微軟正黑體並套用，此時網頁上的中文與英文就會呈現不同字體的效果。</p>
+<p>但是如果順序換成微軟正黑體在前面，瀏覽器就會先判斷微軟正黑體，因為該字體中、英文都可以使用，所以網頁上的兩種語言都會套用成微軟正黑體，而後面的 Arial 會因為英文字體已套用成微軟正黑體而不會被讀取。</p>
+<p>因此，正確的屬性值順序為<strong>英文字體在前面，中文字體在後面。</strong></p>
+<h3 id="字體使用率與順序"><a href="#字體使用率與順序" class="headerlink" title="字體使用率與順序"></a>字體使用率與順序</h3><p>每個作業系統都有自己的系統字體，例如 -apple-system 與 BlinkMacSystemFont 分別是 iOS 以及 macOS 的系統字體，並且前者只能使用在 Safari 瀏覽器上，後者則是用於 Chrome，像這種只能使用在特定系統或瀏覽器的字體，順序就需要放在前面，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: -apple-system, BlinkMacSystemFont, <span class="string">&quot;Segoe UI&quot;</span>, <span class="string">&quot;Microsoft JhengHei&quot;</span>, Roboto, <span class="string">&quot;Helvetica Neue&quot;</span>, Arial, sans-serif;</span><br><span class="line">	     <span class="comment">/* mac系統字體, iOS系統字體,	windows英文系統字體, 微軟正黑體, Android系統字體, iOS系統字體, 通用字體, 通用字體 */</span></span><br></pre></td></tr></table></figure>
+
+<p>假設使用者電腦系統為 windows，瀏覽器因為在系統中找不到 -apple-system 與 BlinkMacSystemFont 而直接跳過這兩個字體，而下一個 Segoe UI 屬於 windows 的英文系統字體，因此英文字體就會套用 Segoe UI，中文字體則是因為 Segoe UI 並沒有對應的中文而判斷下一個值，最終套用 Microsoft JhengHei。</p>
+<p>如果電腦系統是 macOS 並且使用 Chrome 瀏覽網頁，當瀏覽器在讀取到 -apple-system 時，就會套用對應的中文及英文字體，並且不再往下判斷。</p>
+<p>因此，為了適應各種不同的瀏覽器與作業系統，在設定字體時需要把<strong>較少使用到的字體放前面，較常使用到的字體放後面。</strong></p>
+<hr>
+<h2 id="實務範例"><a href="#實務範例" class="headerlink" title="實務範例"></a>實務範例</h2><p>附上幾個知名企業的字體設定當作參考，有興趣的也可以自行研究順序邏輯。</p>
+<p>Apple（台灣）：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: <span class="string">&quot;SF Pro TC&quot;</span>, <span class="string">&quot;SF Pro Text&quot;</span>, <span class="string">&quot;SF Pro Icons&quot;</span>, <span class="string">&quot;PingFang TC&quot;</span>, <span class="string">&quot;Helvetica Neue&quot;</span>, <span class="string">&quot;Helvetica&quot;</span>, <span class="string">&quot;Arial&quot;</span>, sans-serif;</span><br></pre></td></tr></table></figure>
+
+<p>微軟台灣：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: <span class="string">&#x27;Segoe UI&#x27;</span>, SegoeUI, <span class="string">&#x27;Microsoft JhengHei&#x27;</span>, 微軟正黑體, <span class="string">&quot;Helvetica Neue&quot;</span>, Helvetica, Arial, sans-serif;</span><br></pre></td></tr></table></figure>
+
+<p>Google：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: arial, sans-serif;  <span class="comment">/* 不愧是 Google，連字體設定都這麼簡約 */</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a href="https://www.oxxostudio.tw/articles/201811/css-font-family.html">CSS font-family 詳細介紹</a></li>
+<li><a href="https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/180456/#outline__1_2_1">最標準的系統字型規範 font-family</a></li>
+<li><a href="https://www.casper.tw/css/2014/01/01/font-family/">font-family要怎麼玩</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>css</tag>
+        <tag>font-family</tag>
       </tags>
   </entry>
   <entry>
     <title>Git 指令概述</title>
     <url>/2022-01-20-git-note/</url>
     <content><![CDATA[<p>在初接觸到網頁領域的時候，偶爾會聽到版本控制一詞，當時的理解是把每一個完整的專案，當作一次的版本發佈到網路空間呈現出來；事實上確實是如此，但是實際在接觸到 Git 之後，才理解到版本控制背後有很多深層的學問可以探究；這段時間為了拓展技能樹，不斷的逼自己學習新的技能，近期剛好把 Git 告一個段落，順便藉由這次機會把學到的知識做個筆記。</p>
-<p><em>備註：本篇僅記錄這段時間學習 Git 所做的筆記，主要是用來找資料與複習，內容較為白話也沒有過多專有名詞的解釋。</em></p>
+<blockquote>
+<p>本篇僅記錄這段時間學習 Git 所做的筆記，主要是用來找資料與複習，內容較為白話也沒有過多專有名詞的解釋。</p>
+</blockquote>
 <span id="more"></span>
 
 <hr>
@@ -397,9 +477,10 @@
 </ul>
 ]]></content>
       <categories>
-        <category>學習筆記</category>
+        <category>Git</category>
       </categories>
       <tags>
+        <tag>學習筆記</tag>
         <tag>Git</tag>
       </tags>
   </entry>

@@ -2,21 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://cliff1213.github.io/2022-02-07-npm-note/</loc>
+    
+    <lastmod>2022-03-07</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://cliff1213.github.io/2022-03-02-font-family/</loc>
+    
+    <lastmod>2022-03-07</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://cliff1213.github.io/2022-01-20-git-note/</loc>
     
-    <lastmod>2022-03-02</lastmod>
+    <lastmod>2022-03-07</lastmod>
     
   </url>
   
   <url>
     <loc>https://cliff1213.github.io/about/index.html</loc>
-    
-    <lastmod>2022-02-21</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://cliff1213.github.io/2022-02-07-npm-note/</loc>
     
     <lastmod>2022-02-21</lastmod>
     
@@ -60,7 +67,7 @@
 
   <url>
     <loc>https://cliff1213.github.io/</loc>
-    <lastmod>2022-03-02</lastmod>
+    <lastmod>2022-03-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>

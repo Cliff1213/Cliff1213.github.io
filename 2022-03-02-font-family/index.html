@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-Cat.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_32px.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_16px.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"cliff1213.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-106NQBHYEM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-106NQBHYEM');
+</script><meta name="description" content="回想過去在初學網頁的時候，對於 font-family 這個屬性一直處於很難相處的狀態，常會發生明明設定了字體，也沒有語法上的錯誤，但是網頁上呈現出來的結果總是不如預期；剛好前陣子在練習切版的時候又遇到了這方面的問題，於是決定投入一點時間研究問題的所在，藉此讓自己重新認識這個屬性。  本篇僅討論 font-family 字體設定的基本觀念，沒有過多的字體介紹，主要方便自己做後續的查閱用途。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS Font-Family 淺規則">
+<meta property="og:url" content="https://cliff1213.github.io/2022-03-02-font-family/index.html">
+<meta property="og:site_name" content="Cliff Blog">
+<meta property="og:description" content="回想過去在初學網頁的時候，對於 font-family 這個屬性一直處於很難相處的狀態，常會發生明明設定了字體，也沒有語法上的錯誤，但是網頁上呈現出來的結果總是不如預期；剛好前陣子在練習切版的時候又遇到了這方面的問題，於是決定投入一點時間研究問題的所在，藉此讓自己重新認識這個屬性。  本篇僅討論 font-family 字體設定的基本觀念，沒有過多的字體介紹，主要方便自己做後續的查閱用途。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2022-03-01T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-03-07T14:48:43.215Z">
+<meta property="article:author" content="Cliff Chu">
+<meta property="article:tag" content="css">
+<meta property="article:tag" content="font-family">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://cliff1213.github.io/2022-03-02-font-family/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://cliff1213.github.io/2022-03-02-font-family/","path":"2022-03-02-font-family/","title":"CSS Font-Family 淺規則"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>CSS Font-Family 淺規則 | Cliff Blog - 個人技術部落格</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-106NQBHYEM"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-106NQBHYEM","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Cliff Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">個人技術部落格</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站內搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Font-Family-%E8%A8%AD%E5%AE%9A%E8%A6%8F%E5%89%87"><span class="nav-number">1.</span> <span class="nav-text">Font-Family 設定規則</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E9%AB%94%E5%A5%97%E7%94%A8%E9%82%8F%E8%BC%AF"><span class="nav-number">1.1.</span> <span class="nav-text">字體套用邏輯</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AA%9E%E6%B3%95%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85"><span class="nav-number">1.2.</span> <span class="nav-text">語法注意事項</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Font-Family-%E5%AD%97%E9%AB%94%E9%A1%9E%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">Font-Family 字體類型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E5%AE%9A%E5%AD%97%E9%AB%94%EF%BC%88family-name%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">指定字體（family-name）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E7%94%A8%E5%AD%97%E9%AB%94%EF%BC%88generic-family%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">通用字體（generic-family）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A8%AD%E5%AE%9A%E6%96%B9%E5%BC%8F"><span class="nav-number">2.3.</span> <span class="nav-text">設定方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E9%AB%94%E9%A0%86%E5%BA%8F%E8%A7%80%E5%BF%B5"><span class="nav-number">3.</span> <span class="nav-text">字體順序觀念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E3%80%81%E8%8B%B1%E6%96%87%E9%A0%86%E5%BA%8F"><span class="nav-number">3.1.</span> <span class="nav-text">中、英文順序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E9%AB%94%E4%BD%BF%E7%94%A8%E7%8E%87%E8%88%87%E9%A0%86%E5%BA%8F"><span class="nav-number">3.2.</span> <span class="nav-text">字體使用率與順序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%A6%E5%8B%99%E7%AF%84%E4%BE%8B"><span class="nav-number">4.</span> <span class="nav-text">實務範例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">5.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Cliff Chu"
+      src="/images/new_avatar.png">
+  <p class="site-author-name" itemprop="name">Cliff Chu</p>
+  <div class="site-description" itemprop="description">前端學習筆記</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Cliff1213" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Cliff1213" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wave99487chu@gmail.com" title="E-Mail → mailto:wave99487chu@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://cliff1213.github.io/2022-03-02-font-family/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/new_avatar.png">
+      <meta itemprop="name" content="Cliff Chu">
+      <meta itemprop="description" content="前端學習筆記">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cliff Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CSS Font-Family 淺規則
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2022-03-02 00:00:00" itemprop="dateCreated datePublished" datetime="2022-03-02T00:00:00+08:00">2022-03-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2022-03-07 22:48:43" itemprop="dateModified" datetime="2022-03-07T22:48:43+08:00">2022-03-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="文章字數">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+<!-- 移除文章字數統計
+      <span class="post-meta-item-text">文章字數：</span>
+-->
+      <span>2.9k</span>
+    </span>
+    <span class="post-meta-item" title="閱讀時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+<!-- 移除閱讀時間
+      <span class="post-meta-item-text">閱讀時間 &asymp;</span>
+-->
+      <span>3 分鐘</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>回想過去在初學網頁的時候，對於 font-family 這個屬性一直處於很難相處的狀態，常會發生明明設定了字體，也沒有語法上的錯誤，但是網頁上呈現出來的結果總是不如預期；剛好前陣子在練習切版的時候又遇到了這方面的問題，於是決定投入一點時間研究問題的所在，藉此讓自己重新認識這個屬性。</p>
+<blockquote>
+<p>本篇僅討論 font-family 字體設定的基本觀念，沒有過多的字體介紹，主要方便自己做後續的查閱用途。</p>
+</blockquote>
+<span id="more"></span>
+
+<hr>
+<h2 id="Font-Family-設定規則"><a href="#Font-Family-設定規則" class="headerlink" title="Font-Family 設定規則"></a>Font-Family 設定規則</h2><p>基本上只要是網頁設計，都會使用到的屬性，可以自訂頁面上的文字字體，但是初學者在使用這個屬性之前，為了避免結果不如預期，建議需要先理解一些設定上的規則。</p>
+<h3 id="字體套用邏輯"><a href="#字體套用邏輯" class="headerlink" title="字體套用邏輯"></a>字體套用邏輯</h3><p>Font-Family 雖然可以設定多個屬性值，但是並不會將所有寫入的字體都一起套用，而是會根據瀏覽器對該字體的支援與否，由左至右依序判斷，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: 字體A, 字體B, 字體C;</span><br></pre></td></tr></table></figure>
+
+<p>假設使用者的電腦系統中僅存在 “字體B”，此時瀏覽器載入網頁時，會根據上述設定先判斷系統內是否有對應的字體A，但因為系統中找不到這個字體，因此會跳過該字體並判斷下一個字體B，此時找到字體B之後，就會套用該字體，並且不再往下進行判斷。</p>
+<h3 id="語法注意事項"><a href="#語法注意事項" class="headerlink" title="語法注意事項"></a>語法注意事項</h3><p>在部分字體的選用上，同一個字體可以選擇使用中文名稱或英文名稱的屬性值設定，其結果會相同，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: <span class="string">&quot;Microsoft JhengHei&quot;</span>;</span><br><span class="line"><span class="attribute">font-family</span>: 微軟正黑體;</span><br></pre></td></tr></table></figure>
+
+<p>從上述語法中可以發現，第一行的字體加上了雙引號，這是因為該字體的名稱之間如果存在空白，在不加上雙引號的情形下，瀏覽器會無法辨識而導致讀取失敗。</p>
+<p>另一個值得注意的是，雖然使用中文名稱來設定字體結果與英文名稱相同，但是只單獨設定中文名稱的話，可能會遇到編碼的問題而導致結果不如預期，因此會建議使用英文名稱的屬性值，或是中、英文一起使用，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: <span class="string">&quot;Microsoft JhengHei&quot;</span>, 微軟正黑體;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Font-Family-字體類型"><a href="#Font-Family-字體類型" class="headerlink" title="Font-Family 字體類型"></a>Font-Family 字體類型</h2><p>在當今這麼大量的字體中，主要可以分為 “指定字體” 與 “通用字體” 兩種類型。</p>
+<h3 id="指定字體（family-name）"><a href="#指定字體（family-name）" class="headerlink" title="指定字體（family-name）"></a>指定字體（family-name）</h3><p>不同的字體也會影響網頁的視覺感受，因此在選用字體時，通常會優先使用指定的字體。</p>
+<h3 id="通用字體（generic-family）"><a href="#通用字體（generic-family）" class="headerlink" title="通用字體（generic-family）"></a>通用字體（generic-family）</h3><p>通用字體可以理解成多數的電腦系統中，內建就已存在的字體，常見的通用字體有以下五種，其中無襯線體、襯線體使用最為廣泛：</p>
+<ul>
+<li>sans-serif（無襯線體 / 黑體）</li>
+<li>serif（襯線體 / 明體）</li>
+<li>cursive（手寫體）</li>
+<li>monospace（等寬體）</li>
+<li>fantasy（幻想體）</li>
+</ul>
+<h3 id="設定方式"><a href="#設定方式" class="headerlink" title="設定方式"></a>設定方式</h3><p>雖然可以透過指定字體名稱的方式，來達到自訂網頁上想要呈現的字體，但是並非所有電腦系統都有對應的指定字體，因此在使用指定字體時，通常都會在 font-family 屬性值的<strong>最後方位置</strong>設定預設的通用字體；而前面有提到 font-family 是由左至右判斷屬性值，所以當瀏覽器不支援或無法從系統中找到前方所對應的指定字體時，就會套用最後設定的通用字體，設定格式如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: 指定字體, <span class="string">&quot;指定 字體&quot;</span>, 通用字體;</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h2 id="字體順序觀念"><a href="#字體順序觀念" class="headerlink" title="字體順序觀念"></a>字體順序觀念</h2><p>本篇一開始在設定規則的地方有簡單提到字體是由左邊開始判斷，但是在順序方面還有一些重要觀念需要熟記。</p>
+<h3 id="中、英文順序"><a href="#中、英文順序" class="headerlink" title="中、英文順序"></a>中、英文順序</h3><p>一個網頁通常會存在多個語言（以中、英文為例），但是並非所有的字體都同時支援中、英文，因此許多網頁會利用這個由左至右判斷的技巧，分別針對中文與英文各別設定不同的字體，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: Arial, 微軟正黑體;</span><br></pre></td></tr></table></figure>
+
+<p>上述設定中，Arial 只有英文字體，而微軟正黑體則是中、英文字體都有，因此瀏覽器在判斷 Arial 之後，就會因為符合條件而套用英文字體，而中文會因為找不到對應字體則往下判斷微軟正黑體並套用，此時網頁上的中文與英文就會呈現不同字體的效果。</p>
+<p>但是如果順序換成微軟正黑體在前面，瀏覽器就會先判斷微軟正黑體，因為該字體中、英文都可以使用，所以網頁上的兩種語言都會套用成微軟正黑體，而後面的 Arial 會因為英文字體已套用成微軟正黑體而不會被讀取。</p>
+<p>因此，正確的屬性值順序為<strong>英文字體在前面，中文字體在後面。</strong></p>
+<h3 id="字體使用率與順序"><a href="#字體使用率與順序" class="headerlink" title="字體使用率與順序"></a>字體使用率與順序</h3><p>每個作業系統都有自己的系統字體，例如 -apple-system 與 BlinkMacSystemFont 分別是 iOS 以及 macOS 的系統字體，並且前者只能使用在 Safari 瀏覽器上，後者則是用於 Chrome，像這種只能使用在特定系統或瀏覽器的字體，順序就需要放在前面，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: -apple-system, BlinkMacSystemFont, <span class="string">&quot;Segoe UI&quot;</span>, <span class="string">&quot;Microsoft JhengHei&quot;</span>, Roboto, <span class="string">&quot;Helvetica Neue&quot;</span>, Arial, sans-serif;</span><br><span class="line">	     <span class="comment">/* mac系統字體, iOS系統字體,	windows英文系統字體, 微軟正黑體, Android系統字體, iOS系統字體, 通用字體, 通用字體 */</span></span><br></pre></td></tr></table></figure>
+
+<p>假設使用者電腦系統為 windows，瀏覽器因為在系統中找不到 -apple-system 與 BlinkMacSystemFont 而直接跳過這兩個字體，而下一個 Segoe UI 屬於 windows 的英文系統字體，因此英文字體就會套用 Segoe UI，中文字體則是因為 Segoe UI 並沒有對應的中文而判斷下一個值，最終套用 Microsoft JhengHei。</p>
+<p>如果電腦系統是 macOS 並且使用 Chrome 瀏覽網頁，當瀏覽器在讀取到 -apple-system 時，就會套用對應的中文及英文字體，並且不再往下判斷。</p>
+<p>因此，為了適應各種不同的瀏覽器與作業系統，在設定字體時需要把<strong>較少使用到的字體放前面，較常使用到的字體放後面。</strong></p>
+<hr>
+<h2 id="實務範例"><a href="#實務範例" class="headerlink" title="實務範例"></a>實務範例</h2><p>附上幾個知名企業的字體設定當作參考，有興趣的也可以自行研究順序邏輯。</p>
+<p>Apple（台灣）：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: <span class="string">&quot;SF Pro TC&quot;</span>, <span class="string">&quot;SF Pro Text&quot;</span>, <span class="string">&quot;SF Pro Icons&quot;</span>, <span class="string">&quot;PingFang TC&quot;</span>, <span class="string">&quot;Helvetica Neue&quot;</span>, <span class="string">&quot;Helvetica&quot;</span>, <span class="string">&quot;Arial&quot;</span>, sans-serif;</span><br></pre></td></tr></table></figure>
+
+<p>微軟台灣：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: <span class="string">&#x27;Segoe UI&#x27;</span>, SegoeUI, <span class="string">&#x27;Microsoft JhengHei&#x27;</span>, 微軟正黑體, <span class="string">&quot;Helvetica Neue&quot;</span>, Helvetica, Arial, sans-serif;</span><br></pre></td></tr></table></figure>
+
+<p>Google：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: arial, sans-serif;  <span class="comment">/* 不愧是 Google，連字體設定都這麼簡約 */</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.oxxostudio.tw/articles/201811/css-font-family.html">CSS font-family 詳細介紹</a></li>
+<li><a target="_blank" rel="noopener" href="https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/180456/#outline__1_2_1">最標準的系統字型規範 font-family</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.casper.tw/css/2014/01/01/font-family/">font-family要怎麼玩</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>作者： </strong>Cliff Chu
+  </li>
+  <li class="post-copyright-link">
+      <strong>文章連結：</strong>
+      <a href="https://cliff1213.github.io/2022-03-02-font-family/" title="CSS Font-Family 淺規則">https://cliff1213.github.io/2022-03-02-font-family/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 許可協議。轉載請註明出處！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/css/" rel="tag"># css</a>
+              <a href="/tags/font-family/" rel="tag"># font-family</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022-02-07-npm-note/" rel="prev" title="NPM 筆記">
+                  <i class="fa fa-chevron-left"></i> NPM 筆記
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+  <!-- 以下為留言板 -->
+  <script src="https://utteranc.es/client.js"
+        repo="Cliff1213/cliff1213.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+  </script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Cliff Chu / 轉貼須註明出處ㄛ！</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

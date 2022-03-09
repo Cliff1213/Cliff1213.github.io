@@ -36,7 +36,7 @@
 <meta property="og:description" content="回想過去在初學網頁的時候，對於 font-family 這個屬性一直處於很難相處的狀態，常會發生明明設定了字體，也沒有語法上的錯誤，但是網頁上呈現出來的結果總是不如預期；剛好前陣子在練習切版的時候又遇到了這方面的問題，於是決定投入一點時間研究問題的所在，藉此讓自己重新認識這個屬性。  本篇僅討論 font-family 字體設定的基本觀念，沒有過多的字體介紹，主要方便自己做後續的查閱用途。">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2022-03-01T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-03-07T14:48:43.215Z">
+<meta property="article:modified_time" content="2022-03-09T09:06:47.066Z">
 <meta property="article:author" content="Cliff Chu">
 <meta property="article:tag" content="css">
 <meta property="article:tag" content="font-family">
@@ -265,7 +265,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2022-03-07 22:48:43" itemprop="dateModified" datetime="2022-03-07T22:48:43+08:00">2022-03-07</time>
+      <time title="修改時間：2022-03-09 17:06:47" itemprop="dateModified" datetime="2022-03-09T17:06:47+08:00">2022-03-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -286,7 +286,7 @@
 <!-- 移除文章字數統計
       <span class="post-meta-item-text">文章字數：</span>
 -->
-      <span>2.9k</span>
+      <span>3k</span>
     </span>
     <span class="post-meta-item" title="閱讀時間">
       <span class="post-meta-item-icon">
@@ -342,7 +342,12 @@
 
 
 <hr>
-<h2 id="字體順序觀念"><a href="#字體順序觀念" class="headerlink" title="字體順序觀念"></a>字體順序觀念</h2><p>本篇一開始在設定規則的地方有簡單提到字體是由左邊開始判斷，但是在順序方面還有一些重要觀念需要熟記。</p>
+<h2 id="字體順序觀念"><a href="#字體順序觀念" class="headerlink" title="字體順序觀念"></a>字體順序觀念</h2><p>本篇一開始在設定規則的地方有簡單提到字體是由左邊開始判斷，但是在順序方面還有一些重要觀念需要熟記，這邊先記住以下設定順序，後續會說明原因：</p>
+<p>設定順序：<strong>英文字體 &gt; Linux &gt; Mac &gt; Windows &gt; 通用字體</strong></p>
+<!-- 這部分一直沒有比較好的解釋 -->
+
+
+
 <h3 id="中、英文順序"><a href="#中、英文順序" class="headerlink" title="中、英文順序"></a>中、英文順序</h3><p>一個網頁通常會存在多個語言（以中、英文為例），但是並非所有的字體都同時支援中、英文，因此許多網頁會利用這個由左至右判斷的技巧，分別針對中文與英文各別設定不同的字體，以下方原始碼為例：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: Arial, 微軟正黑體;</span><br></pre></td></tr></table></figure>
 

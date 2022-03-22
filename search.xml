@@ -128,7 +128,7 @@
       </tags>
   </entry>
   <entry>
-    <title>CSS Font-Family 淺規則</title>
+    <title>CSS Font-Family 潛規則</title>
     <url>/2022-03-02-font-family/</url>
     <content><![CDATA[<p>回想過去在初學網頁的時候，對於 font-family 這個屬性一直處於很難相處的狀態，常會發生明明設定了字體，也沒有語法上的錯誤，但是網頁上呈現出來的結果總是不如預期；剛好前陣子在練習切版的時候又遇到了這方面的問題，於是決定投入一點時間研究問題的所在，藉此讓自己重新認識這個屬性。</p>
 <blockquote>
@@ -208,6 +208,155 @@
       <tags>
         <tag>css</tag>
         <tag>font-family</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>RWD 雜談</title>
+    <url>/2022-03-14-rwd-note/</url>
+    <content><![CDATA[<p>本篇內容會記錄一些 RWD 的小知識，以及設計過程中可以注意的小細節，撰寫目的主要是希望能透過這些筆記，來培養自己響應式網頁的設計思維。</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="RWD-在做什麼？"><a href="#RWD-在做什麼？" class="headerlink" title="RWD 在做什麼？"></a>RWD 在做什麼？</h2><p>響應式網頁設計（Responsive Web Design），是為了因應現今網頁瀏覽裝置的多樣性，而衍生出來的一網頁設計模式；能夠讓一個網頁在多種裝置寬度下，呈現出不同的內容排版。</p>
+<hr>
+<h2 id="初始設置"><a href="#初始設置" class="headerlink" title="初始設置"></a>初始設置</h2><h3 id="語法"><a href="#語法" class="headerlink" title="語法"></a>語法</h3><p>要使網頁符合 RWD 條件，就必須在 head 標籤內層加入以下設定：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>上述語法中的 viewport 代表視埠，可以理解成可視區域，在後方可以看到 width=device-width 與 initial-scale=1.0 兩個參數，前者表示強制讓網頁的解析度等於瀏覽裝置的寬度，後者則是設定網頁的縮放比例為 1 倍。</p>
+<p>viewport 可設定參數分別有以下幾種：</p>
+<ul>
+<li>width（設定寬度）</li>
+<li>height（設定高度）</li>
+<li>initial-scale（設定初始縮放比例）</li>
+<li>minimum-scale（設定最小縮放比例）</li>
+<li>maximum-scale（設定最大縮放比例）</li>
+<li>user-scalable（是否允許畫面縮放）</li>
+</ul>
+<h3 id="檢視前後差異"><a href="#檢視前後差異" class="headerlink" title="檢視前後差異"></a>檢視前後差異</h3><p>以 Chrome 瀏覽器為例，網頁在加上 viewport 的語法後，可以透過開發人員工具的 toggle device toolbar 功能來檢視是否載入成功，而先前的語法中分別設定了 width 以及 initial-scale，因此將瀏覽裝置變更為手機後，網頁中的文字會保持原本大小，並且內容會被侷限在裝置的寬度範圍裡，<strong>不會產生 x 軸</strong>。</p>
+<blockquote>
+<p>補充說明：上述提到的 x 軸，是指瀏覽器底部的水平移動軸（scroll bar）。</p>
+</blockquote>
+<hr>
+<h2 id="Media-Queries"><a href="#Media-Queries" class="headerlink" title="Media Queries"></a>Media Queries</h2><p>media 是在設計響應式網頁時，必然會使用到的語法，而 Media Queries（媒體查詢）的作用是偵測使用者目前裝置的屬性（如裝置寬度），並針對這些屬性定義樣式。 </p>
+<h3 id="媒體類型"><a href="#媒體類型" class="headerlink" title="媒體類型"></a>媒體類型</h3><p>根據 <a href="https://www.w3schools.com/css/css3_mediaqueries.asp">W3C</a> 文件中所列出的媒體類型，目前主要有以下幾種：</p>
+<ul>
+<li>all（所有裝置）</li>
+<li>print（印刷裝置）</li>
+<li>screen（螢幕裝置）</li>
+<li>speech（朗讀裝置）</li>
+</ul>
+<blockquote>
+<p>備註：後續內容會著重在網頁上會使用的相關設定。</p>
+</blockquote>
+<h3 id="設定方式（CSS）"><a href="#設定方式（CSS）" class="headerlink" title="設定方式（CSS）"></a>設定方式（CSS）</h3><p>以下原始碼只有指定 media 類型，因此只要裝置類型為螢幕（screen）時，就會載入樣式。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@media</span> screen &#123;</span><br><span class="line">    <span class="comment">/* CSS Style */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以下原始碼除了指定 media 類型之外，還使用了 Queries 的判斷條件 and，此時需要符合裝置為螢幕，以及畫面的最大寬度為 768 像素，才會載入樣式。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> ( <span class="attribute">max-width</span>: <span class="number">768px</span> ) &#123;</span><br><span class="line">    <span class="comment">/* CSS Style */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>判斷條件也可以設定多個，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> ( <span class="attribute">min-width</span>: <span class="number">375px</span> ) <span class="keyword">and</span> ( <span class="attribute">max-width</span>: <span class="number">768px</span> ) &#123;</span><br><span class="line">    <span class="comment">/* CSS Style */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>除了上述的 and，還可以使用 or、not、only 來設定判斷條件，在此不討論。</p>
+</blockquote>
+<p>如果不指定 media 類型，判斷的裝置類型就會是 all（所有裝置），此時 and 也可以省略，設定方式如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@media</span> ( <span class="attribute">max-width</span>: <span class="number">768px</span> ) &#123;</span><br><span class="line">    <span class="comment">/* CSS Style */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="網頁常見的判斷語法"><a href="#網頁常見的判斷語法" class="headerlink" title="網頁常見的判斷語法"></a>網頁常見的判斷語法</h2><p>因為響應式網頁的運作方式是根據裝置的寬度，因此相關的判斷條件有以下兩種：</p>
+<h3 id="max-width"><a href="#max-width" class="headerlink" title="max-width"></a>max-width</h3><p>表示最大寬度在設定的數值（含）以下時，範例原始碼如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 假設 h1 父層為 body */</span></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 斷點一 */</span></span><br><span class="line"><span class="keyword">@media</span> ( <span class="attribute">max-width</span>: <span class="number">768px</span> ) &#123;</span><br><span class="line">    <span class="selector-tag">h1</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>: green;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 斷點二 */</span></span><br><span class="line"><span class="keyword">@media</span> ( <span class="attribute">max-width</span>: <span class="number">375px</span> ) &#123;</span><br><span class="line">    <span class="selector-tag">h1</span> &#123;</span><br><span class="line">        <span class="attribute">font-size</span>: <span class="number">24px</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>假設目前瀏覽器寬度為 1024 像素，此時 h1 的字體顏色為紅色，接著嘗試使用 iPad Mini 進行瀏覽後，因為 iPad Mini 的解析度為 768*1024，因此就會滿足斷點一的條件並載入樣式，使 h1 的顏色變更為綠色。</p>
+<blockquote>
+<p>因為 CSS 權重觀念，Media Queries 的樣式載入後，前者相同屬性的樣式就會被後者載入的樣式覆蓋。</p>
+</blockquote>
+<p>同理，如果將瀏覽裝置切換成 iPhone SE，當前裝置的解析度變更為 375*667，此時就會滿足斷點二的條件，並將 h1 的字體大小設定為 24 像素。</p>
+<p>從上述範例可以得知，max-width 會先設定電腦版的樣式，再依序調整平版與行動版，因此適合用於瀏覽裝置以<strong>電腦版為主</strong>的網頁。</p>
+<h3 id="min-width"><a href="#min-width" class="headerlink" title="min-width"></a>min-width</h3><p>表示最小寬度在設定的數值（含）以上時，範例原始碼如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 假設 h1 父層為 body */</span></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: green;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">24px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 斷點一 */</span></span><br><span class="line"><span class="keyword">@media</span> ( <span class="attribute">min-width</span>: <span class="number">375px</span> ) &#123;</span><br><span class="line">    <span class="selector-tag">h1</span> &#123;</span><br><span class="line">        <span class="attribute">font-size</span>: <span class="number">32px</span>; <span class="comment">/* h1 預設大小為 32px */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 斷點二 */</span></span><br><span class="line"><span class="keyword">@media</span> ( <span class="attribute">min-width</span>: <span class="number">768px</span> ) &#123;</span><br><span class="line">    <span class="selector-tag">h1</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>: red;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述原始碼所呈現的結果與先前的 max-width 是相同的，但是與 max-width 不同的點在於 min-width 會從行動版開始設定網頁樣式，接著調整平版再到電腦版，因此適合用於瀏覽裝置以<strong>行動版為主</strong>的網頁。</p>
+<h3 id="差異與影響"><a href="#差異與影響" class="headerlink" title="差異與影響"></a>差異與影響</h3><p>因為 CSS 的載入邏輯是先判斷權重，再判斷先後順序，因此如果是使用 max-width 來設計響應式網頁，在行動裝置上 Media Queries 就會因為符合條件而優先載入電腦版樣式，接著再載入平版的樣式，最後才是行動裝置，這樣會使行動裝置上載入的 CSS 資源比使用 min-width 設計的網頁多載入一些。</p>
+<p>另外在樣式設定方面，如果優先決定設計電腦版的網頁，後續在平版與行動版的排版上，限制會比較多；同理，如果優先設計行動版的網頁，在進行高解析度的排版時，自由度也會與行動版有所落差。</p>
+<hr>
+<h2 id="讓網頁自適應寬度"><a href="#讓網頁自適應寬度" class="headerlink" title="讓網頁自適應寬度"></a>讓網頁自適應寬度</h2><p>一般網頁在沒有設計響應式的情況下，最外層容器都會設定一個固定寬度，範例如下：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTML --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">clss</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">header</span>&gt;</span>...<span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* CSS */</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">1000px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是在響應式網頁中，如果使用 width 來設定容器寬度，會造成網頁在縮放時，因為寬度固定而無法使內容自適應寬度，導致產生 x 軸，以上方範例來說，手動調整瀏覽器寬度到 1000 像素以下時，網頁的寬度還是 1000 像素，因此部分內容會被隱藏到可視範圍外，需要拖曳瀏覽器底部的 x 軸，才能看到被隱藏的內容。</p>
+<p>所以如果要讓上方原始碼具有響應式網頁的功能，就必須將最外層容器原本設定的屬性 width 更改為 max-width（最大寬度），設定方式如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* CSS */</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">max-width</span>: <span class="number">1000px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如此一來，任意調整瀏覽器寬度時，最外層容器的寬度就會是瀏覽器當下的寬度，並且最大不會超過容器本身的寬度。</p>
+<hr>
+<h2 id="CSS-Reset"><a href="#CSS-Reset" class="headerlink" title="CSS Reset"></a>CSS Reset</h2><p>大部分的網頁在開始設定樣式之前，都會先載入習慣的 CSS Reset 設定，而在響應式網頁中，會建議另外加上幾個 Reset 設定。</p>
+<h3 id="設定圖片"><a href="#設定圖片" class="headerlink" title="設定圖片"></a>設定圖片</h3><p>設定方式如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line">    <span class="attribute">max-width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">height</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>假設網頁中的任意一張圖片原始大小為 900 像素，此時如果將瀏覽器寬度調整至小於 900 像素時，圖片預設還是會保持原本的大小，造成網頁產生 x 軸，但如果使用上述設定，圖片就會根據父層元素的寬度，以原始比例自動調整大小，並且最大不會超過圖片原始大小。</p>
+<blockquote>
+<p>屬性 max-width 若改為 width，可能會因為圖片解析度較小而失真。</p>
+</blockquote>
+<h3 id="設定容器寬度"><a href="#設定容器寬度" class="headerlink" title="設定容器寬度"></a>設定容器寬度</h3><p>一般情況下，網頁容器設定 Padding、Margin 或 Border 後，容器本身實際寬度都會改變，以下方原始碼為例：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTML --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* CSS */</span></span><br><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">5px</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述 box 區塊在載入樣式後，寬度不是 width 所設定的 100 像素，而是 100 + 10 * 2 + 5 * 2，因此實際寬度會變成 130 像素，這樣在網頁排版時，會因為需要計算容器寬度而變得相當麻煩。</p>
+<p>為了避免發生這方面的問題，可以在排版之前先加入以下設定：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">*,*<span class="selector-pseudo">::before</span>,*<span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">    <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>加入這段設定後，容器的寬度與高度就不會包含 Padding、Margin、Border 所產生的距離，而只是單純計算內容的寬高。</p>
+<hr>
+<h2 id="使用百分比控制寬度"><a href="#使用百分比控制寬度" class="headerlink" title="使用百分比控制寬度"></a>使用百分比控制寬度</h2><p>在響應式網頁中，也常會使用百分比（%）單位來設計網頁元素的排版，而使用百分比的元素會根據父層元素的寬度，自適應調整自身的寬度與高度。</p>
+<p>以下方原始碼為例：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTML --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;wrap&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">h2</span>&gt;</span>圖片一<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;path&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;desc&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">h2</span>&gt;</span>圖片二<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;path&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;desc&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">h2</span>&gt;</span>圖片三<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;path&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;desc&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* CSS / 假設已載入 meyerweb reset */</span></span><br><span class="line">*,*<span class="selector-pseudo">::before</span>,*<span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">    <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line">    <span class="attribute">max-width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">height</span>: auto;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.wrap</span> &#123;</span><br><span class="line">    <span class="attribute">max-width</span>: <span class="number">1000px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">ul</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">flex-wrap</span>: wrap;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">li</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">33.33%</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 斷點一 */</span></span><br><span class="line"><span class="keyword">@media</span> ( <span class="attribute">max-width</span>: <span class="number">768px</span> ) &#123;</span><br><span class="line">    <span class="selector-tag">li</span> &#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">50%</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述範例在 ul 使用了 flex 屬性值，讓內層的元素 li 並排，而 li 因為設定了寬度 33.33%，因此當瀏覽器寬度在 1000 像素或以上時，li 會以三個並排的方式呈現；當瀏覽器寬度在 768 像素或以下時，斷點一的條件就會滿足，使該斷點的樣式設定覆蓋原先的設定，因為 ul 有設定 wrap 屬性值，因此 li 會以兩個並排的方式呈現。</p>
+<hr>
+<h2 id="斷點規劃"><a href="#斷點規劃" class="headerlink" title="斷點規劃"></a>斷點規劃</h2><p>雖然在設計響應式網頁時，可以新增斷點讓網頁在不同瀏覽裝置上呈現不同排版，但是礙於現今裝置的多樣性，並沒有辦法透過幾個斷點就兼容所有瀏覽裝置，因此只能針對當下較熱門的解析度來設定斷點內容。</p>
+<blockquote>
+<p>可以使用 <a href="https://gs.statcounter.com/browser-market-share/all/taiwan/#monthly-202101-202201">statcounter</a> 工具來查詢目前熱門的螢幕解析度，並規劃網頁的斷點。</p>
+</blockquote>
+<hr>
+<h2 id="表格設計"><a href="#表格設計" class="headerlink" title="表格設計"></a>表格設計</h2><p>電腦版網頁中的表格在轉換至行動版時，為了避免瀏覽器寬度不足而擠壓到內容，可透過 display 設定屬性來將較不重要的欄位隱藏，以下為範例：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTML --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;wrap&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span> <span class="attr">class</span>=<span class="string">&quot;d-none&quot;</span>&gt;</span>訂單編號<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>姓名<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>品項<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>產品價格<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">&quot;d-none&quot;</span>&gt;</span>001<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>皮卡丘<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>雷之石<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>1500<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* CSS */</span></span><br><span class="line"><span class="selector-class">.wrap</span> &#123;</span><br><span class="line">    <span class="attribute">max-width</span>: <span class="number">500px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">table</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">th</span>, <span class="selector-tag">td</span> &#123;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#eee</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@media</span> ( <span class="attribute">max-width</span>: <span class="number">375px</span> ) &#123;</span><br><span class="line">    <span class="selector-class">.d-none</span> &#123;</span><br><span class="line">        <span class="attribute">display</span>: none;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述為簡易的後台訂單表格，因為在 CSS 第 12 行設定了 Media Queries 的斷點設定，因此該表格在瀏覽器寬度 375 像素以下時，被加上 d-none 類別的 th 標籤與 td 標籤就會被隱藏。</p>
+<p>但如果遇到在行動裝置上，表格的所有欄位都要顯示時，也可以透過以下方式來保留所有內容並防止內容擠壓，範例原始碼如下：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTML --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;wrap&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>訂單編號<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>姓名<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>品項<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>產品價格<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>001<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>皮卡丘<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>雷之石<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>1500<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* CSS */</span></span><br><span class="line"><span class="selector-class">.wrap</span> &#123;</span><br><span class="line">    <span class="attribute">max-width</span>: <span class="number">500px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">table</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">th</span>, <span class="selector-tag">td</span> &#123;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#eee</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@media</span> ( <span class="attribute">max-width</span>: <span class="number">375px</span> ) &#123;</span><br><span class="line">    <span class="selector-class">.wrap</span> &#123;</span><br><span class="line">        <span class="attribute">overflow-x</span>: auto;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-tag">table</span> &#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">375px</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述範例與先前內容相同，但是在 Media Queries 的設定裡，針對表格的外容器 wrap 設定了 overflow-x 的屬性與對應值 auto，這種設定方式能夠使內容因擠壓而超出元素寬度時，使該容器本身產生 x 軸，而在 CSS 第16 行的部分因為將表格設定了固定寬度，因此就算瀏覽器寬度小於表格寬度也不會被擠壓，而是隱藏在外容器產生的 x 軸外。</p>
+<hr>
+<h2 id="網頁優化"><a href="#網頁優化" class="headerlink" title="網頁優化"></a>網頁優化</h2><p>這一部分的內容與 RWD 較不相關，但也建議學會的小技巧！</p>
+<h3 id="使用圖片取代文字"><a href="#使用圖片取代文字" class="headerlink" title="使用圖片取代文字"></a>使用圖片取代文字</h3><p>LOGO 是用來識別一個網站的重要圖片元素，而 h1 標籤通常是網頁中最重要的內容之一，可以透過以下技巧，將 LOGO 以 h1 標籤的方式撰寫，並將 h1 標籤中的文字隱藏不顯示，範例原始碼如下：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTML --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;logo&quot;</span> <span class="attr">href</span>=<span class="string">&quot;index.html&quot;</span>&gt;</span>最重要網頁標題<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* CSS */</span></span><br><span class="line"><span class="selector-tag">h1</span> <span class="selector-class">.logo</span> &#123;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">&#x27;images/logo.svg&#x27;</span>); <span class="comment">/* 推薦使用 svg 圖片格式 */</span></span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200px</span>; <span class="comment">/* 視圖片本身寬度而定 */</span></span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>; <span class="comment">/* 視圖片本身高度而定 */</span></span><br><span class="line">    <span class="attribute">background-size</span>: contain; <span class="comment">/* 使圖片自適應在寬度與高度（200*100）之中 */</span></span><br><span class="line">    <span class="attribute">text-indent</span>: <span class="number">101%</span>;</span><br><span class="line">    <span class="attribute">white-space</span>: nowrap;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述範例中，CSS 第 3~7 行的部分較容易理解，主要是設定背景圖片，而第 8 行開始，text-indent 的屬性值設定 101% 可使文字縮排至本身寬度以外，white-space 的屬性值 nowrap 則是能讓內容超過最大寬度時不會自動斷行，最後再透過 overflow 使寬度以外的部分隱藏不顯示。</p>
+<p>圖片取代文字的用意，在於 LOGO 在網頁上呈現的結果雖然是一張圖片，但是搜索引擎的爬蟲機器人還是能夠抓取到被隱藏的文字內容，會比較有利於 SEO。</p>
+<hr>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a href="https://www.w3schools.com/css/css_rwd_viewport.asp">RWD - The Viewport</a></li>
+<li><a href="https://www.oxxostudio.tw/articles/201810/css-media-queries.html">CSS Media Queries 詳細介紹</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>RWD</category>
+      </categories>
+      <tags>
+        <tag>學習筆記</tag>
+        <tag>RWD</tag>
       </tags>
   </entry>
   <entry>

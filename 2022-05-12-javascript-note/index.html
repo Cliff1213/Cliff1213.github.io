@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-Cat.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_32px.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_16px.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"cliff1213.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-106NQBHYEM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-106NQBHYEM');
+</script><meta name="description" content="這段期間開始重溫 JS，為了加深相關基本觀念，因此將學習過程中所撰寫的筆記紀錄於此，並提供後續的資料查詢。  本篇筆記會陸續增加內容。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 學習筆記">
+<meta property="og:url" content="https://cliff1213.github.io/2022-05-12-javascript-note/index.html">
+<meta property="og:site_name" content="Cliff Blog">
+<meta property="og:description" content="這段期間開始重溫 JS，為了加深相關基本觀念，因此將學習過程中所撰寫的筆記紀錄於此，並提供後續的資料查詢。  本篇筆記會陸續增加內容。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2022-05-12T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-05-13T12:58:36.231Z">
+<meta property="article:author" content="Cliff Chu">
+<meta property="article:tag" content="學習筆記">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://cliff1213.github.io/2022-05-12-javascript-note/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://cliff1213.github.io/2022-05-12-javascript-note/","path":"2022-05-12-javascript-note/","title":"JavaScript 學習筆記"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>JavaScript 學習筆記 | Cliff Blog - 個人技術部落格</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-106NQBHYEM"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-106NQBHYEM","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Cliff Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">個人技術部落格</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站內搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%A3%E5%91%8A"><span class="nav-number">1.</span> <span class="nav-text">宣告</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#let"><span class="nav-number">1.1.</span> <span class="nav-text">let</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#const"><span class="nav-number">1.2.</span> <span class="nav-text">const</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#var"><span class="nav-number">1.3.</span> <span class="nav-text">var</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9E%8B%E5%88%A5"><span class="nav-number">2.</span> <span class="nav-text">型別</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B8%E5%AD%97%EF%BC%88Number%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">數字（Number）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#NaN"><span class="nav-number">2.1.1.</span> <span class="nav-text">NaN</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E4%B8%B2%EF%BC%88String%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">字串（String）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E4%B8%B2%E7%9B%B8%E5%8A%A0"><span class="nav-number">2.2.1.</span> <span class="nav-text">字串相加</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E4%B8%B2%E9%95%B7%E5%BA%A6"><span class="nav-number">2.2.2.</span> <span class="nav-text">字串長度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%8B%95%E8%BD%89%E5%9E%8B"><span class="nav-number">2.2.3.</span> <span class="nav-text">自動轉型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%8B%E5%8B%95%E8%BD%89%E5%9E%8B"><span class="nav-number">2.2.4.</span> <span class="nav-text">手動轉型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#value-%E6%8C%87%E5%90%91"><span class="nav-number">2.2.5.</span> <span class="nav-text">value 指向</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A3%E6%9D%BF%E5%AD%97%E9%9D%A2%E5%80%BC"><span class="nav-number">2.2.6.</span> <span class="nav-text">樣板字面值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%83%E6%9E%97%E5%80%BC%EF%BC%88Boolean%EF%BC%89"><span class="nav-number">2.3.</span> <span class="nav-text">布林值（Boolean）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.4.</span> <span class="nav-text">undefined</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">2.5.</span> <span class="nav-text">null</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%8B%E7%AE%97%E5%AD%90"><span class="nav-number">3.</span> <span class="nav-text">運算子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AF%94%E8%BC%83%E9%81%8B%E7%AE%97%E5%AD%90"><span class="nav-number">3.1.</span> <span class="nav-text">比較運算子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AF%94%E8%BC%83%E9%81%8B%E7%AE%97%E5%AD%90%E8%A3%9C%E5%85%85%E8%A7%80%E5%BF%B5"><span class="nav-number">3.1.1.</span> <span class="nav-text">比較運算子補充觀念</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%82%8F%E8%BC%AF%E9%81%8B%E7%AE%97%E5%AD%90"><span class="nav-number">3.2.</span> <span class="nav-text">邏輯運算子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B3%A6%E5%80%BC%E9%81%8B%E7%AE%97%E5%AD%90"><span class="nav-number">3.3.</span> <span class="nav-text">賦值運算子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B3%A6%E5%80%BC%E9%81%8B%E7%AE%97%E5%AD%90%E7%B8%AE%E5%AF%AB"><span class="nav-number">3.3.1.</span> <span class="nav-text">賦值運算子縮寫</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Cliff Chu"
+      src="/images/new_avatar.png">
+  <p class="site-author-name" itemprop="name">Cliff Chu</p>
+  <div class="site-description" itemprop="description">前端學習筆記</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Cliff1213" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Cliff1213" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wave99487chu@gmail.com" title="E-Mail → mailto:wave99487chu@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://cliff1213.github.io/2022-05-12-javascript-note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/new_avatar.png">
+      <meta itemprop="name" content="Cliff Chu">
+      <meta itemprop="description" content="前端學習筆記">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cliff Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JavaScript 學習筆記
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2022-05-13 00:00:00 / 修改時間：20:58:36" itemprop="dateCreated datePublished" datetime="2022-05-13T00:00:00+08:00">2022-05-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="文章字數">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+<!-- 移除文章字數統計
+      <span class="post-meta-item-text">文章字數：</span>
+-->
+      <span>5.7k</span>
+    </span>
+    <span class="post-meta-item" title="閱讀時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+<!-- 移除閱讀時間
+      <span class="post-meta-item-text">閱讀時間 &asymp;</span>
+-->
+      <span>5 分鐘</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>這段期間開始重溫 JS，為了加深相關基本觀念，因此將學習過程中所撰寫的筆記紀錄於此，並提供後續的資料查詢。</p>
+<blockquote>
+<p>本篇筆記會陸續增加內容。</p>
+</blockquote>
+<span id="more"></span>
+
+<hr>
+<h2 id="宣告"><a href="#宣告" class="headerlink" title="宣告"></a>宣告</h2><h3 id="let"><a href="#let" class="headerlink" title="let"></a>let</h3><p>宣告的值為區域變數，可重新賦予值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 宣告一變數 &quot;price&quot;，並賦予值為 60</span></span><br><span class="line"><span class="keyword">let</span> price = <span class="number">60</span>;</span><br><span class="line"><span class="comment">// 重新賦予變數 &quot;price&quot; 值為 80</span></span><br><span class="line">price = <span class="number">80</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="const"><a href="#const" class="headerlink" title="const"></a>const</h3><p>宣告的值為常數，僅可讀取不可重新賦予值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 宣告一變數 &quot;sunNum&quot; 並賦予值為 1，該變數值無法在重新賦予</span></span><br><span class="line"><span class="keyword">const</span> sunNum = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="var"><a href="#var" class="headerlink" title="var"></a>var</h3><p>宣告的值為全域變數，可重新賦予值</p>
+<blockquote>
+<p>宣告變數的名稱若撞到部分保留字，會無法宣告，保留字可參考此<a target="_blank" rel="noopener" href="http://www.w3bai.com/zh-TW/js/js_reserved.html">連結</a>。</p>
+</blockquote>
+<hr>
+<h2 id="型別"><a href="#型別" class="headerlink" title="型別"></a>型別</h2><p>字串（String）、數字（Number）、布林值（Boolean）…等，可透過 <code>typeof</code> 來判斷變數型別，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 範例一</span></span><br><span class="line"><span class="keyword">let</span> num = <span class="number">10</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> num);</span><br><span class="line"><span class="comment">// 輸出結果為 Number</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 範例二</span></span><br><span class="line"><span class="keyword">let</span> num = <span class="string">&#x27;10&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> num);</span><br><span class="line"><span class="comment">// 輸出結果為 String</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>更多型別內容可參考此<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Data_structures">連結</a>。</p>
+</blockquote>
+<h3 id="數字（Number）"><a href="#數字（Number）" class="headerlink" title="數字（Number）"></a>數字（Number）</h3><p>只要是數字，並且沒有使用單、雙引號的值，型別都屬於數字，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">10</span>;</span><br><span class="line"><span class="built_in">console</span>.log( <span class="keyword">typeof</span> num );</span><br><span class="line"><span class="comment">// 輸出結果為 Number</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="NaN"><a href="#NaN" class="headerlink" title="NaN"></a>NaN</h4><p>當兩變數無法進行計算時，會出現 <code>NaN</code> 的結果，產生時機範例如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> c = a * b;</span><br><span class="line"><span class="built_in">console</span>.log( c, <span class="keyword">typeof</span> c );</span><br><span class="line"><span class="comment">// 輸出結果為 NaN number</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>NaN 主要告知輸出結果有異常，而型別屬於 number。</p>
+</blockquote>
+<h3 id="字串（String）"><a href="#字串（String）" class="headerlink" title="字串（String）"></a>字串（String）</h3><h4 id="字串相加"><a href="#字串相加" class="headerlink" title="字串相加"></a>字串相加</h4><p>字串相加寫法如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 寫法一</span></span><br><span class="line"><span class="keyword">let</span> text = <span class="string">&#x27;hello &#x27;</span> + <span class="string">&#x27;world&#x27;</span>; <span class="comment">// 變數值中帶有半形空白</span></span><br><span class="line"><span class="comment">// 此時變數 text 的結果為 hello world</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 寫法二</span></span><br><span class="line"><span class="keyword">let</span> name = <span class="string">&#x27;Cliff&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> word = <span class="string">&#x27;Hello!&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log( content + <span class="string">&#x27; &#x27;</span> + name ); <span class="comment">// 使用 &#x27; &#x27; 取代寫法一的半形空白</span></span><br><span class="line"><span class="comment">// 此時輸出結果為 Hello! Cliff</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 寫法三</span></span><br><span class="line"><span class="keyword">let</span> name = <span class="string">&#x27;Cliff&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> word = <span class="string">&#x27;Hello!&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> content = name + <span class="string">&#x27; &#x27;</span> + word;</span><br><span class="line"><span class="built_in">console</span>.log( content );</span><br><span class="line"><span class="comment">// 此時輸出結果為 Hello! Cliff</span></span><br></pre></td></tr></table></figure>
+
+<p>寫法一在變數中使用空白，但實務上會比較建議使用寫法二、三的做法。</p>
+<h4 id="字串長度"><a href="#字串長度" class="headerlink" title="字串長度"></a>字串長度</h4><p>可使用 <code>length</code> 來查詢字串的長度，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> message = <span class="string">&#x27; Hello! &#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log( message.length );</span><br><span class="line"><span class="comment">// 輸出結果為 9</span></span><br></pre></td></tr></table></figure>
+
+<p>上述透過 <code>length</code> 所計算出來的結果，會包含空白，因此若希望輸出結果自動過濾左右兩側的空白，可使用 <code>trim()</code> 語法，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> message = <span class="string">&#x27; Hello ! &#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log( message.trim().length );</span><br><span class="line"><span class="comment">// 輸出結果為 7</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="自動轉型"><a href="#自動轉型" class="headerlink" title="自動轉型"></a>自動轉型</h4><p>因為 Javascript 屬於弱型別，因此有些情況下，變數的型別會被自動轉型，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;10&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> num = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">let</span> mixBoth = str + num;</span><br><span class="line"><span class="built_in">console</span>.log( mixboth, <span class="keyword">typeof</span> mixboth );</span><br><span class="line"><span class="comment">// 輸出結果為 105 string</span></span><br></pre></td></tr></table></figure>
+
+<p>上述範例中，變數 <code>str</code> 與 <code>num</code> 兩變數值的型別分別屬於字串與數字，而變數 <code>mixboth</code> 將兩者相加，從最後輸出的結果中可以發現，相加的過程中，變數 <code>num</code> 的值被自動轉型為字串。</p>
+<h4 id="手動轉型"><a href="#手動轉型" class="headerlink" title="手動轉型"></a>手動轉型</h4><p><strong>字串轉數字</strong></p>
+<p>可使用 <code>parseInt()</code> 將型別 string 轉為型別 number，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;10&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> num = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">let</span> mixBoth = <span class="built_in">parseInt</span>(str) + num;</span><br><span class="line"><span class="built_in">console</span>.log( mixboth, <span class="keyword">typeof</span> mixboth );</span><br><span class="line"><span class="comment">// 輸出結果為 15 number</span></span><br></pre></td></tr></table></figure>
+
+<p>因為字串與數字相加後的型別會是字串，因此若要正確計算上述兩變數值時，需要透過 <code>parseInt()</code> 將變數 <code>str</code> 的值型別轉為數字。</p>
+<blockquote>
+<p><code>parseInt()</code> 使用的時機像是需要取出 <code>input[type=text]</code> 表單內容時。</p>
+</blockquote>
+<p>如果變數的值為非數字的字串，則無法正確轉型，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="built_in">parseInt</span>(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log( num, <span class="keyword">typeof</span> num );</span><br><span class="line"><span class="comment">// 輸出結果為 NaN number</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>數字轉字串</strong></p>
+<p>可使用 <code>toString()</code> 將型別 number 轉為型別 string，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">let</span> num2 = <span class="number">20</span>;</span><br><span class="line">num2 = num2.toString(); <span class="comment">// 將原本的型別 Number 轉為 String，並重新賦予值</span></span><br><span class="line"><span class="keyword">let</span> mixBoth = num + num2;</span><br><span class="line"><span class="built_in">console</span>.log( mixBoth, <span class="keyword">typeof</span> mixBoth );</span><br><span class="line"><span class="comment">// 輸出結果為 1020 string</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>toString()</code> 使用的時機像是需要將電話號碼的區域碼，與後方的號碼做分隔時，就會需要字串與字串相加。</p>
+</blockquote>
+<h4 id="value-指向"><a href="#value-指向" class="headerlink" title="value 指向"></a>value 指向</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 範例一</span></span><br><span class="line"><span class="keyword">let</span> email = <span class="string">&#x27;test@mail.com&#x27;</span>;</span><br><span class="line">email.length;</span><br><span class="line"><span class="built_in">console</span>.log( email );</span><br><span class="line"><span class="comment">// 輸出結果為 test@mail.com</span></span><br></pre></td></tr></table></figure>
+
+<p>上述範例最終輸出結果為 <code>test@mail.com</code> 而非 <code>13</code>，因為 <code>length</code> 只是計算變數的長度，並沒有實際賦予變數一個新值，因此變數 <code>email</code> 的值並沒有改變指向。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 範例二</span></span><br><span class="line"><span class="keyword">let</span> email = <span class="string">&#x27; test@mail.com &#x27;</span>; <span class="comment">// 兩側加入空白</span></span><br><span class="line"><span class="keyword">let</span> emailLength = email.length;</span><br><span class="line">email.trim();</span><br><span class="line"><span class="built_in">console</span>.log( email, emailLength );</span><br><span class="line"><span class="comment">// 輸出結果為 &#x27; test@mail.com &#x27; 15</span></span><br></pre></td></tr></table></figure>
+
+<p>上述範例分別宣告了 <code>email</code>、<code>emailLength</code> 兩個變數並賦予值，而第四行雖然執行了 <code>trim()</code> 來過濾變數 <code>email</code> 兩側的空白，但並沒有使用 <code>=</code> 符號重新賦予該變數新的值，因此最終輸出結果不變，如果希望輸出的值不包含兩側空白，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> email = <span class="string">&#x27; test@mail.com &#x27;</span>; <span class="comment">// 兩側加入空白</span></span><br><span class="line"><span class="keyword">let</span> emailLength = email.length;</span><br><span class="line"><span class="keyword">let</span> updateEmail = email.trim();</span><br><span class="line">email.trim();</span><br><span class="line"><span class="built_in">console</span>.log( email, emailLength, updateEmail );</span><br><span class="line"><span class="comment">// 輸出結果為 &#x27; test@mail.com &#x27; 15 &#x27;test@mail.com&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>上述宣告一變數 <code>updateEmail</code> 並賦予值為 <code>email.trim()</code>，因此最終輸出結果為 <code>&#39;test@mail.com&#39;</code>。</p>
+<h4 id="樣板字面值"><a href="#樣板字面值" class="headerlink" title="樣板字面值"></a>樣板字面值</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="string">&#x27;Cliff&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> age = <span class="number">20</span>;</span><br><span class="line"><span class="keyword">let</span> content = <span class="string">&#x27;我是&#x27;</span>+name+<span class="string">&#x27;，今年&#x27;</span>+age+<span class="string">&#x27;歲。&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log( content );</span><br><span class="line"><span class="comment">// 輸出結果為 &#x27;我是Cliff，今年20歲。&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>上述變數 <code>content</code> 的值雖透過 <code>+</code> 符號來組成一段文字內容，但這種方式較為麻煩且閱讀起來較困難，因此建議使用樣板字面值，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="string">&#x27;Cliff&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> age = <span class="number">20</span>;</span><br><span class="line"><span class="keyword">let</span> content = <span class="string">`我是<span class="subst">$&#123;name&#125;</span>，今年<span class="subst">$&#123;age&#125;</span>歲。`</span>;</span><br><span class="line"><span class="built_in">console</span>.log( content );</span><br><span class="line"><span class="comment">// 輸出結果為 &#x27;我是Cliff，今年20歲。&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>樣板字面值會使用兩個反引號（tab 上方按鍵）符號將內容包覆在其中，而變數使用 <code>$&#123; 變數名稱 &#125;</code> 方式插入。</p>
+</blockquote>
+<h3 id="布林值（Boolean）"><a href="#布林值（Boolean）" class="headerlink" title="布林值（Boolean）"></a>布林值（Boolean）</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> isSingle = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">console</span>.log( isSingle, <span class="keyword">typeof</span> isSingle );</span><br><span class="line"><span class="comment">// 輸出結果為 true &#x27;boolean&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>上述宣告一變數 <code>isSingle</code> 並賦予值 <code>true</code>，最終輸出型別為 <code>boolean</code>（布林值），與數字、字串型別不同的是，布林值只有 <code>true</code>、<code>false</code> 兩個值，通常用於判斷是或不是。</p>
+<p>判斷 100⁹⁹ 與 99¹⁰⁰ 兩數值大小，如下所示：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log( <span class="number">100</span>**<span class="number">99</span> &gt; <span class="number">99</span>**<span class="number">100</span> );</span><br><span class="line"><span class="comment">// 輸出結果為 false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="undefined"><a href="#undefined" class="headerlink" title="undefined"></a>undefined</h3><p>除了前面提到的三種型別之外，較常見的還有 <code>undefined</code>，當宣告的變數未賦予（使用 <code>=</code> 符號）一個實際的值時，該變數的值與型別就會是 <code>undefined</code>，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a;</span><br><span class="line"><span class="built_in">console</span>.log( a, type a );</span><br><span class="line"><span class="comment">// 輸出結果為 undefined &#x27;undefined&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>undefinde</code> 表示該變數 “尚未被賦予值”。</p>
+</blockquote>
+<h3 id="null"><a href="#null" class="headerlink" title="null"></a>null</h3><p><code>null</code> 表示該變數有被賦予一個值，但是是屬於空值，簡單範例如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">10</span>;</span><br><span class="line">a = <span class="literal">null</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a, <span class="keyword">typeof</span> a);</span><br><span class="line"><span class="comment">// 輸出結果為 null &#x27;object&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>null</code> 通常會在需要清空物件或陣列中的資料內容時使用。</p>
+</blockquote>
+<hr>
+<h2 id="運算子"><a href="#運算子" class="headerlink" title="運算子"></a>運算子</h2><blockquote>
+<p>補充知識：流程圖的形狀代表意義，橢圓 = 流程起點 / 終點，矩形 = 處理流程，菱形 = 判斷是否。</p>
+</blockquote>
+<h3 id="比較運算子"><a href="#比較運算子" class="headerlink" title="比較運算子"></a>比較運算子</h3><p>常見的比較運算子如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">| &gt; 大於 | &lt; 小於 | &gt;= 大於且等於 | &lt;= 小於且等於 | == 等於 | != 不等於 | === 等於（包含型別） | !== 不等於（包含型別） |</span><br></pre></td></tr></table></figure>
+
+<p>比較運算子所運算的結果會以布林值（Boolean）表示，如下所示：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">50</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">let</span> c = a &gt; b;</span><br><span class="line"><span class="built_in">console</span>.log( a &gt; b );</span><br><span class="line"><span class="comment">// 輸出結果為 true</span></span><br><span class="line"><span class="built_in">console</span>.log( ( b**<span class="number">2</span> ) &gt; a );</span><br><span class="line"><span class="comment">// 輸出結果為 true</span></span><br><span class="line"><span class="built_in">console</span>.log( c );</span><br><span class="line"><span class="comment">// 變數 c 的值會先在記憶體中計算出結果，再回傳計算後的結果 true 並賦予變數值，因此最終輸出結果為 true</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="比較運算子補充觀念"><a href="#比較運算子補充觀念" class="headerlink" title="比較運算子補充觀念"></a>比較運算子補充觀念</h4><p><strong>觀念一</strong></p>
+<p><code>=</code> 與 <code>==</code> 兩者在作用上的差異在於前者表示 “賦予” 一個變數值，後者則是判斷兩變數的值 “是否相等”。</p>
+<p><strong>觀念二</strong></p>
+<p><code>==</code> 與 <code>===</code> 都是用來判斷兩變數的值是否相等，但有些許差異，差異如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="string">&#x27;10&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log( a == b );</span><br><span class="line"><span class="comment">// 輸出結果為 true</span></span><br><span class="line"><span class="built_in">console</span>.log( a === b );</span><br><span class="line"><span class="comment">// 輸出結果為 false</span></span><br></pre></td></tr></table></figure>
+
+<p>從上述範例可以得知，<code>==</code> 在比較的過程中如果內容相同但型別不同，就會自動轉型變數的型別，而 <code>===</code> 除了比較內容之外，也會判斷兩變數的型別是否相等，因此後者較為嚴謹。</p>
+<blockquote>
+<p>上述範例同理 <code>!=</code> 與 <code>!==</code>。</p>
+</blockquote>
+<h3 id="邏輯運算子"><a href="#邏輯運算子" class="headerlink" title="邏輯運算子"></a>邏輯運算子</h3><p>邏輯運算子會使用的符號為 <code>&amp;&amp;</code>（and）、<code>||</code>（or），分別表示 “同時滿足條件”、”滿足其中一個條件” ，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">50</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">let</span> c = <span class="number">100</span>;</span><br><span class="line"><span class="built_in">console</span>.log( a &gt;= b &amp;&amp; a &gt; c ); <span class="comment">// a &gt;= b 且 a &lt; c / 兩條件皆必須為 true</span></span><br><span class="line"><span class="comment">// 輸出結果為 false</span></span><br><span class="line"><span class="built_in">console</span>.log( a &gt;= b || a &gt; c ); <span class="comment">// a &gt;= b 或 a &lt; c / 其中一個條件為 true 即可</span></span><br><span class="line"><span class="comment">// 輸出結果為 true</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>邏輯運算子常見的情境像是百貨公司周年慶 e.g 同款項第二件九折，若單筆消費超過兩千元，則送百元折價券。</p>
+</blockquote>
+<p>邏輯運算子也可以用來判斷兩個以上的條件，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> sex = <span class="string">&#x27;male&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> age = <span class="number">18</span>;</span><br><span class="line"><span class="keyword">let</span> isSingle = <span class="literal">false</span>;</span><br><span class="line"><span class="built_in">console</span>.log( sex == <span class="string">&#x27;male&#x27;</span> &amp;&amp; age &gt;= <span class="number">18</span> &amp;&amp; isSingle == <span class="literal">true</span> );</span><br><span class="line"><span class="comment">// 不滿足 isSingle == true 條件，因此輸出結果為 false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="賦值運算子"><a href="#賦值運算子" class="headerlink" title="賦值運算子"></a>賦值運算子</h3><p>賦值運算子會使用 <code>+=</code>, <code>-=</code> 等方式來變更變數值，以下範例為變更一個變數值的方法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> wallet = <span class="number">500</span>; <span class="comment">// 錢包總共有 500 元</span></span><br><span class="line">wallect = <span class="number">400</span>; <span class="comment">// 買了 100 元的早餐，剩餘 400 元</span></span><br><span class="line">wallet = <span class="number">450</span>; <span class="comment">// 路上撿到 50 元，現在總共有 450 元</span></span><br><span class="line"><span class="built_in">console</span>.log( wallect );</span><br><span class="line"><span class="comment">// 輸出結果為 450</span></span><br></pre></td></tr></table></figure>
+
+<p>上述範例若使用賦值運算子，寫法如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> wallet = <span class="number">500</span>; <span class="comment">// 錢包總共有 500 元</span></span><br><span class="line">wallect = wallet - <span class="number">100</span>; <span class="comment">// 買了 100 元的早餐，剩餘 400 元</span></span><br><span class="line">wallect = wallect + <span class="number">50</span>;</span><br><span class="line"><span class="built_in">console</span>.log( wallect );</span><br><span class="line"><span class="comment">// 輸出結果為 450</span></span><br></pre></td></tr></table></figure>
+
+<p>如上述情境所示，透過賦值運算子來計算花費的金額，邏輯與可辨識性相較前者高。</p>
+<h4 id="賦值運算子縮寫"><a href="#賦值運算子縮寫" class="headerlink" title="賦值運算子縮寫"></a>賦值運算子縮寫</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">1</span>;</span><br><span class="line">num = num + <span class="number">1</span>;</span><br><span class="line"><span class="comment">// num 最終的值為 2</span></span><br></pre></td></tr></table></figure>
+
+<p>將上述範例使用縮寫撰寫，如下所示：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 縮寫</span></span><br><span class="line"><span class="keyword">let</span> num = <span class="number">1</span>;</span><br><span class="line">num += <span class="number">1</span>;</span><br><span class="line"><span class="comment">// num 最終的值為 2</span></span><br></pre></td></tr></table></figure>
+
+<p>若只需要針對變數值進行 <code>+=1</code> 或 <code>-=1</code> 的動作，可以使用 <code>++</code> 或 <code>--</code>，範例如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="number">2</span>;</span><br><span class="line">a++;</span><br><span class="line">b--;</span><br><span class="line"><span class="built_in">console</span>.log( a, b );</span><br><span class="line"><span class="comment">// 輸出結果為 2, 1</span></span><br></pre></td></tr></table></figure>
+
+<p>雖然 <code>++</code> 本身沒有 <code>=</code> 符號，但也會重新賦予變數值，因此上述三種方式的運作方式與結果皆相同。</p>
+<blockquote>
+<p>更多相關運算子內容可參考此<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Expressions_and_Operators">連結</a>。</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>作者： </strong>Cliff Chu
+  </li>
+  <li class="post-copyright-link">
+      <strong>文章連結：</strong>
+      <a href="https://cliff1213.github.io/2022-05-12-javascript-note/" title="JavaScript 學習筆記">https://cliff1213.github.io/2022-05-12-javascript-note/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 許可協議。轉載請註明出處！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/" rel="tag"># 學習筆記</a>
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022-04-27-Bootstrap5-%E5%8D%B3%E6%99%82%E7%AD%86%E8%A8%98/" rel="prev" title="Bootstrap5 即時筆記">
+                  <i class="fa fa-chevron-left"></i> Bootstrap5 即時筆記
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+  <!-- 以下為留言板 -->
+  <script src="https://utteranc.es/client.js"
+        repo="Cliff1213/cliff1213.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+  </script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Cliff Chu / 轉貼須註明出處ㄛ！</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

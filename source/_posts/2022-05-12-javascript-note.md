@@ -295,13 +295,11 @@ console.log(a, typeof a);
 
 ## 運算子
 
-> 補充知識：流程圖的形狀代表意義，橢圓 = 流程起點 / 終點，矩形 = 處理流程，菱形 = 判斷是否。
-
 ### 比較運算子
 
 常見的比較運算子如下所示：
 
-```txt
+```tex
 | > 大於 | < 小於 | >= 大於且等於 | <= 小於且等於 | == 等於 | != 不等於 | === 等於（包含型別） | !== 不等於（包含型別） |
 ```
 
@@ -423,4 +421,143 @@ console.log( a, b );
 雖然 `++` 本身沒有 `=` 符號，但也會重新賦予變數值，因此上述三種方式的運作方式與結果皆相同。
 
 > 更多相關運算子內容可參考此[連結](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Expressions_and_Operators)。
+
+## if 流程判斷
+
+流程判斷會使用到的判斷方式有 `if`、`else if`、`else` 三種，分別可以理解成 "如果"、"或是"、"否則"，如下方範例情境所示：
+
+**情境一**
+
+```js
+// 情境：判斷是否下雨，若是，則待在家不出門
+let isRain = true;
+if( isRain == true ){ // 判斷結果為 true
+    console.log('待在家不出門');
+}
+// 輸出結果為 '待在家不出門'
+```
+
+上述範例中，`if` 右方小括弧中的內容稱為條件式，若條件式的判斷結果為 `true`（滿足條件式），則執行大括弧中的內容。
+
+**情境二**
+
+```js
+// 情境：判斷是否消費滿 1000 元，若是，則打九折，若否，則不打折
+let cost = 800;
+if( cost >= 1000 ){
+    console.log('消費滿千，可以折扣');
+} else {
+    console.log('未滿千元，沒有折扣');
+}
+// 輸出結果為 '未滿千元，沒有折扣'
+```
+
+上述範例中，因為條件式 `cost >= 1000` 判斷結果為 `false`，因此跳過第 4 行的內容而執行 `else` 的內容。
+
+> 若 `if` 判斷的結果為 `false`，但沒有給予對應的 `else` 內容，就會終止判斷且不會執行任何內容。
+
+**情境三**
+
+```js
+// 情境：判斷錢包的錢是否夠買麵配可樂
+let wallet = 110;
+let noodlePrice = 120;
+let cokePrice = 40;
+if( wallet >= ( noodlePrice + cokePrice ) ){
+    console.log('午餐吃麵配可樂，真爽');
+}else if( wallet > noodlePrice && wallet < ( noodlePrice + cokePrice ) ){
+    console.log('午餐只能吃麵');
+}else {
+    console.log('午餐只喝可樂，e04');
+}
+```
+
+**情境四**
+
+```js
+// 情境：今天計畫要出門，如果下毛毛雨就帶輕便雨衣，如果下小雨就帶傘，但如果下豪雨就不出門。
+let weather = '小雨';
+console.log(`現在外面${weather}，所以`);
+if( weather == '無雨' ){
+    console.log('不需要攜帶雨具');
+}else if( weather == '毛毛雨' ){
+    console.log('攜帶輕便雨衣');
+}else if( weather == '小雨' ){
+    console.log('攜帶一把傘');
+}else if( weather == '小雨' ){
+    console.log('攜帶一把傘');
+}else if( weather == '豪雨' ){
+    console.log('待在家不出門');
+}else{
+    console.log('狀態異常');
+}
+// 輸出結果為 現在外面小雨，所以 攜帶一把傘
+```
+
+如上述範例所示，`else if` 可以使用多個，而 `if`、`else` 僅可頭尾分別存在一個。
+
+**情境五**
+
+```js
+// 情境：判斷考試成績區間
+let point;
+point = 89;
+console.log(point, typeof point)
+if( point >= 80 && (typeof point) != undefined ){
+    console.log('成績優異');
+}else if( 80 > point && point >= 60 && (typeof point) != undefined ){
+    console.log('請保持');
+}else if( 60 > point && (typeof point) != undefined ){
+    console.log('請再加油');
+}else{
+    console.log('資料有誤');
+}
+```
+
+> 範例程式碼中，最後的 `else` 主要用於判斷程式碼若不符合前面所有條件時，所產生的異常狀態，有利於除錯。
+
+### 流程圖
+
+初學者在撰寫流程判斷時，若有事先規劃的流程圖，可以有效提高撰寫的效率與程式邏輯思維，流程圖的形狀代表意義如下：
+
+```
+箭頭 = 流程走向
+橢圓 = 起止符號 = 流程起點/終點
+矩形 = 處理流程 = 一系列的程式去改變數值、形式、數據的位置
+菱形 = 決策判斷 = 判斷條件，視情況決定下一步走向，通常以是/否決定。
+```
+
+> 推薦使用 [Whimsical](https://whimsical.com/) 線上工具來設計流程圖，流程圖參考範例：[範例一](https://i.imgur.com/7KufOX3.png)、[範例二](https://i.imgur.com/zzvsblf.png)。
+
+### if 巢狀運用
+
+if 在判斷條件式後，執行的內容中也能夠放入其他細部判斷式，流程圖可參考此[連結](https://i.imgur.com/g1WaOjc.png)，範例如下：
+
+```js
+// 情境：判斷不同性別的體態狀況
+// 測試資料
+let sex = 'male';
+let centimeter = 88;
+// 將測用的資料帶入流程判斷
+if( sex == 'male' ){
+    if( centimeter >= 90 ){
+        console.log('男生體態過胖');
+    }else{
+        console.log('男生體態正常');
+    }
+}else if( sex == 'woman' ){
+    if( centimeter >= 80 ){
+        console.log('女生體態過胖');
+    }else{
+        console.log('女生體態正常');
+    }
+}else{
+    console.log('您輸入的資料有誤');
+}
+// 輸出結果為 男生體態正常
+```
+
+上述範例中，資料首先在第 6 行開始進行判斷式 `sex == 'male'` 的判斷，符合條件後執行下方內容，再執行內容中 `if` 的判斷式 `centimeter >= 90`，判斷後不符合條件，最後執行 `else` 的內容，執行完畢後終止該判斷流程。
+
+> if 只要滿足其中一個條件（判斷式結果為 `true`），就會在執行該條件的內容後，終止判斷流程（不再進行後續判斷式判斷）。
 

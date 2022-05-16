@@ -122,7 +122,7 @@ console.log( content );
 
 #### 字串長度
 
-可使用 `length` 來查詢字串的長度，範例如下：
+可使用 `length` 來查詢變數內容的長度，範例如下：
 
 ```js
 let message = ' Hello! ';
@@ -560,4 +560,318 @@ if( sex == 'male' ){
 上述範例中，資料首先在第 6 行開始進行判斷式 `sex == 'male'` 的判斷，符合條件後執行下方內容，再執行內容中 `if` 的判斷式 `centimeter >= 90`，判斷後不符合條件，最後執行 `else` 的內容，執行完畢後終止該判斷流程。
 
 > if 只要滿足其中一個條件（判斷式結果為 `true`），就會在執行該條件的內容後，終止判斷流程（不再進行後續判斷式判斷）。
+
+## 資料結構
+
+### 陣列（Array）
+
+一般的情況下，一個變數只能賦予一個值，但是在多筆資料的狀況下，難以針對每一個變數去賦予對應的值，因此在處理多筆資料時，通常會將這些資料透過一個陣列來表示，並賦予到一個變數中，範例如下：
+
+```js
+// 資料可以是各種型態
+let data = ['red', 'yellow', 'green'];
+let data = [30, 12, 15, 20];
+let data = [true, false, false];
+let data = ['red', 30, true];
+let data = []; // 表示沒有資料的空陣列
+```
+
+> 陣列中的所有資料會放入一個中括號內，且每筆資料會使用半形逗號隔開。
+
+#### 取得陣列資料
+
+進行抓取指定資料前，需要先理解陣列中的每筆內容是有順序排列的，而第一筆會由 0 開始計算，範例如下：
+
+```js
+let data = ['red', 'yellow', 'green'];
+console.log( data );
+// 輸出結果 ----
+(3) ['red', 'yellow', 'green']
+0: "red"
+1: "yellow"
+2: "green"
+length: 3
+[[Prototype]]: Array(0)
+// ----
+```
+
+從上述範例結果中，可以得知該陣列的每筆資料內容、長度以及資料結構類型，此時假設如果要取得該陣列的第二筆資料內容時，可以在該變數後方加上 `[1]`，如下所示：
+
+```js
+let data = ['red', 'yellow', 'green'];
+console.log( data[1] ); // 第一筆以 [0] 表示，因此第二筆為 [1]，依此類推
+// 輸出結果為 yellow
+```
+
+#### 陣列取值賦予新變數
+
+可指定陣列中的資料，並將該資料內容賦予至一個新變數中，範例如下：
+
+```js
+let musicGenres = ['Pop', 'Rock', 'Rap'];
+let myHobby = musicGenres[0];
+console.log( myHobby );
+// 輸出結果為 Pop
+```
+
+#### 取得陣列長度
+
+先前在型別有提到可使用 `length` 來查詢變數的內容長度，而該作法在陣列上的使用方式也是相同的，範例如下：
+
+```js
+let ary = [1, 2, 3, 4, 5];
+let aryLength = ary.length;
+console.log( aryLength );
+// 輸出結果為 5
+```
+
+#### 新增陣列資料
+
+以空陣列為例，如下所示：
+
+```js
+// 範例一：指定陣列中第一筆資料並賦予值
+let ary = [];
+ary[0] = '新增資料';
+console.log( ary );
+// 輸出結果 ----
+['新增資料']
+0: "新增資料"
+length: 1
+[[Prototype]]: Array(0)
+// ----
+```
+
+```js
+// 範例二：分別指定陣列中第一筆資料與第三筆資料並賦予值
+let ary = [];
+ary[0] = '第一筆資料';
+ary[2] = '第二筆資料';
+console.log( ary, ary[1] );
+// 輸出結果 ----
+(3) ['第一筆資料', empty, '第二筆資料'] undefined
+0: "第一筆資料"
+2: "第二筆資料"
+length: 3
+[[Prototype]]: Array(0)
+// ----
+```
+
+> 範例二中的第二筆資料因為沒有賦予值，因此該筆資料為空資料 `empty`，但是空值不代表該筆資料不存在，而是尚未定義資料內容（undefined），因此也會被納入陣列的長度（length）中。
+
+#### push 新增資料
+
+`push()` 是新增資料到陣列中的一種方法，使用該方式所加入的值，會被放到陣列**最末端**的位置，範例如下：
+
+```js
+let colors = ['red', 'yellow', 'green'];
+colors.push('blue');
+console.log( colors );
+// 輸出結果 ----
+(4) ['red', 'yellow', 'green', 'blue'] // blue 位置在最後
+0: "red"
+1: "yellow"
+2: "green"
+3: "blue"
+length: 4
+[[Prototype]]: Array(0)
+// ----
+```
+
+#### unshift 新增資料
+
+運作的原理與 `push()` 相同，差異在於透過 `unshift()` 所加入陣列的值，位置會在該陣列的**最前端**，範例如下：
+
+```js
+let colors = ['red', 'yellow', 'green'];
+colors.unshift('blue');
+console.log( colors );
+// 輸出結果 ----
+(4) ['blue', 'red', 'yellow', 'green'] // blue 位置在最前
+0: "blue"
+1: "red"
+2: "yellow"
+3: "green"
+length: 4
+[[Prototype]]: Array(0)
+// ----
+```
+
+#### pop 刪除資料
+
+在一個陣列後方加入 `pop()` 方法之後，該陣列的**最後一筆**資料會被刪除，範例如下：
+
+```js
+let colors = ['red', 'yellow', 'green'];
+colors.pop();
+console.log( colors );
+// 輸出結果 ----
+(2) ['red', 'yellow'] // 最後一筆 green 被刪除
+0: "red"
+1: "yellow"
+length: 2
+[[Prototype]]: Array(0)
+// ----
+```
+
+#### shift 刪除資料
+
+運作的原理與 `pop()` 相同，差異在於 `shift()` 所刪除的資料，是陣列中的**第一筆**，範例如下：
+
+```js
+let colors = ['red', 'yellow', 'green'];
+colors.shift();
+console.log( colors );
+// 輸出結果 ----
+(2) ['yellow', 'green'] // 第一筆 red 被刪除
+0: "yellow"
+1: "green"
+length: 2
+[[Prototype]]: Array(0)
+// ----
+```
+
+#### splice 刪除指定資料
+
+使用 `splice()` 方法刪除陣列中的資料時，會加入兩個參數，範例如下：
+
+```js
+let colors = ['red', 'yellow', 'green', 'blue'];
+colors.splice(1, 2);
+console.log( colors );
+// 輸出結果 ----
+(2) ['red', 'blue'] // 從 green 開始，刪除兩筆資料
+0: "red"
+1: "blue"
+length: 2
+[[Prototype]]: Array(0)
+// ----
+```
+
+上述範例中，`splice(1, 2)` 兩個參數依序分別代表刪除資料的起始位置，以及刪除資料的筆數，因此會以第二筆開始刪除，並刪除兩筆資料，因此 `green` 與 `blue` 被刪除。
+
+> 無論使用上述任何方法新增、刪除陣列中的資料，該陣列的長度都會有所改變。
+
+> 關於陣列的處理方法還有 `filter()` , `find()` , `forEach()` , `map()` , `every()` , `some()` , `reduce()`，以上內容會在函式（function）的部分說明。
+
+### 物件（Object）
+
+當一筆資料需要詳細紀錄不同的細部資訊時，會以物件的形式來表示，並賦予至一個變數中，範例如下：
+
+```js
+let myInfo = {
+    name: 'Mark', // 屬性: 屬性值
+    sex: 'male',
+    age: 18,
+    email: 'test@email.com',
+    isSingle: true
+};
+console.log( myInfo );
+// 輸出結果 ----
+{name: 'Mark', sex: 'male', age: 18, email: 'test@email.com', isSingle: true}
+age: 18
+email: "test@email.com"
+isSingle: true
+name: "Mark"
+sex: "male"
+[[Prototype]]: Object
+// ----
+```
+
+> 物件的內容會放入一個大括號內，而物件中每個細項會有一個屬性名稱與對應的屬性值，且屬性之間會使用半形逗號隔開。
+
+#### 取得物件資料
+
+物件中會存在各種不同名稱的屬性與對應的值，如果要取得指定的屬性值，第一種方式會使用 `.` 符號，範例如下：
+
+```js
+let myInfo = {
+    name: 'Mark',
+    age: 18,
+    isSingle: true
+};
+console.log( myInfo.name ); // 取得物件 myInfo 中的屬性 name 的值
+// 輸出結果為 Mark
+```
+
+除了前面提到使用 `.` 來取得屬性值，還可以使用中括號 `[屬性名稱]` 的方式來取得，範例如下：
+
+```js
+let myInfo = {
+    name: 'Mark',
+    age: 18,
+    isSingle: true
+};
+console.log( myInfo['name'] ); // 取得物件 myInfo 中的屬性 name 的值
+// 輸出結果為 Mark
+```
+
+此外，也可以將物件的屬性名稱賦予至一變數，並透過 `[變數]` 的方式來取得物件中的屬性值，範例如下：
+
+```js
+let myInfo = {
+    name: 'Mark',
+    age: 18,
+    isSingle: true
+};
+let myName = 'name';
+console.log( myInfo[myName] ); // 原理等同於 myInfo['name']
+// 輸出結果為 Mark
+```
+
+> 使用 `.` 或是 `[]` 都可以取得物件中的屬性值，而前者在取得某些 JSON 格式的資料時可能會導致程式碼無法辨識。
+
+#### 新增物件屬性
+
+以空物件為例，如下所示：
+
+```js
+let myInfo = {};
+myInfo.name = 'Mark'; // 在 myInfo 物件中新增一個 name 屬性，並賦予屬性值 'Mark'
+console.log( myInfo );
+```
+
+#### 修改物件屬性值
+
+物件中的屬性值修改方式原理與變數相同，範例如下：
+
+```js
+let myInfo = {
+    name: 'Mark',
+    age: 18,
+    isSingle: true
+};
+// 以下透過賦值運算子改變屬性值
+myInfo.name = 'Fuck';
+myInfo.age += 1;
+isSingle = false;
+console.log( myInfo );
+// 輸出結果 ----
+{name: 'Fuck', age: 19, isSingle: true}
+age: 19
+isSingle: true
+name: "Fuck"
+[[Prototype]]: Object
+// ----
+```
+
+#### 刪除物件資料
+
+物件中的屬性，可以透過 `delete` 來指定刪除，範例如下：
+
+```js
+let myInfo = {
+    name: 'Mark',
+    age: 18,
+    isSingle: true
+};
+delete myInfo.isSingle; // 刪除 myInfo 物件中的 isSingle 屬性與值
+console.log( myInfo, myInfo.isSingle );
+// 輸出結果 ----
+{name: 'Mark', age: 18} undefined // 刪除後找不到 isSingle 相關屬性
+age: 18
+name: "Mark"
+[[Prototype]]: Object
+// ----
+```
 

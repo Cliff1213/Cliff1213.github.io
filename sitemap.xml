@@ -4,7 +4,7 @@
   <url>
     <loc>https://cliff1213.github.io/2022-05-12-javascript-note/</loc>
     
-    <lastmod>2022-05-15</lastmod>
+    <lastmod>2022-05-16</lastmod>
     
   </url>
   
@@ -72,14 +72,14 @@
   </url>
   
   <url>
-    <loc>https://cliff1213.github.io/categories/index.html</loc>
+    <loc>https://cliff1213.github.io/archives/index.html</loc>
     
     <lastmod>2022-02-01</lastmod>
     
   </url>
   
   <url>
-    <loc>https://cliff1213.github.io/archives/index.html</loc>
+    <loc>https://cliff1213.github.io/categories/index.html</loc>
     
     <lastmod>2022-02-01</lastmod>
     
@@ -88,7 +88,7 @@
 
   <url>
     <loc>https://cliff1213.github.io/</loc>
-    <lastmod>2022-05-15</lastmod>
+    <lastmod>2022-05-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>

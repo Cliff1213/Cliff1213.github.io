@@ -422,6 +422,8 @@ console.log( a, b );
 
 > 更多相關運算子內容可參考此[連結](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Expressions_and_Operators)。
 
+---
+
 ## if 流程判斷
 
 流程判斷會使用到的判斷方式有 `if`、`else if`、`else` 三種，分別可以理解成 "如果"、"或是"、"否則"，如下方範例情境所示：
@@ -560,6 +562,8 @@ if( sex == 'male' ){
 上述範例中，資料首先在第 6 行開始進行判斷式 `sex == 'male'` 的判斷，符合條件後執行下方內容，再執行內容中 `if` 的判斷式 `centimeter >= 90`，判斷後不符合條件，最後執行 `else` 的內容，執行完畢後終止該判斷流程。
 
 > if 只要滿足其中一個條件（判斷式結果為 `true`），就會在執行該條件的內容後，終止判斷流程（不再進行後續判斷式判斷）。
+
+---
 
 ## 資料結構
 
@@ -875,3 +879,262 @@ name: "Mark"
 // ----
 ```
 
+---
+
+## 物件結合陣列
+
+陣列除了可以放入一般的變數之外，也能夠放入多個物件，範例如下：
+
+```js
+// 範例：水果的詳細資訊
+let fruitDetail = [
+    {
+        name: 'Apple',
+        price: 30,
+        isSoldOut: false
+    },{
+        name: 'banana',
+        price: 20,
+        isSoldOut: true
+    }
+]
+console.log( fruitDetail );
+// 輸出結果 ----
+(2) [{…}, {…}]
+0: {name: 'Apple', price: 30, isSoldOut: false}
+1: {name: 'banana', price: 20, isSoldOut: true}
+length: 2
+[[Prototype]]: Array(0)
+// ----
+```
+
+> 陣列中的每個物件之間會使用一個半形逗號隔開。
+
+先前提到陣列會使用 `[順序]` 的方式來取值，而在陣列內容結構為物件的情況下也是相同的，會使用 `[]` 來指定物件，並透過 `.` 或是 `[]` 來取得屬性內容，範例如下：
+
+```js
+let fruitDetail = [
+    { // 第 1 筆 [0]
+        name: 'Apple',
+        price: 30,
+        isSoldOut: false
+    },{ // 第 2 筆 [1]
+        name: 'banana',
+        price: 20,
+        isSoldOut: true
+    }
+];
+console.log( fruitDetail[1] ); // 取得陣列 fruitDetail 的第二個物件內容
+console.log( fruitDetail[1].name ); // 指定陣列 fruitDetail 的第二個物件，並取得該物件中屬性 name 的值
+// 輸出結果1 ----
+{name: 'banana', price: 20, isSoldOut: true}
+isSoldOut: true
+name: "banana"
+price: 20
+[[Prototype]]: Object
+// 輸出結果2 ----
+banana
+// ----
+```
+
+### JSON 格式
+
+JSON 是用於程式語言的一種資料結構，方便閱讀，目前也是多種語言通用的資料格式，範例如下：
+
+```js
+// 範例 - 來源取自 wikipedia
+[
+    {
+        "text": "This is the text",
+        "color": "dark_red",
+        "bold": "true",
+        "strikethough": "true",
+        "clickEvent":
+        {
+            "action": "open_url",
+            "value": "zh.wikipedia.org"
+        },
+        "hoverEvent":
+        {
+            "action": "show_text",
+            "value":
+            {
+                "extra": "something"
+            }
+        }
+    },
+    {
+        "translate": "item.dirt.name",
+        "color": "blue",
+        "italic": "true"
+    }
+];
+```
+
+### 物件巢狀運用
+
+物件中的屬性值也能以物件結構表示，範例如下：
+
+```js
+// 巢狀物件
+let fruit = { // 外層物件
+    name: 'Apple',
+    price: 30,
+    isSoldOut: { // 內層物件
+        storeA: true,
+        storeB: false
+    }
+}
+console.log( fruit ); // 取得物件整體內容
+console.log( fruit.isSoldOut.storeA ); // 取得物件內的物件資料
+// 輸出結果1----
+{name: 'Apple', price: 30, isSoldOut: {…}}
+isSoldOut: {storeA: true, storeB: false}
+name: "Apple"
+price: 30
+[[Prototype]]: Object
+// 輸出結果2----
+true
+// ----
+```
+
+#### 取得 JSON 資料
+
+**範例一**
+
+以此[公開資料](https://api.kcg.gov.tw/api/service/get/4278fc6a-c3ea-4192-8ce0-40f00cdb40dd)為例，假設已將該資料賦予至變數 `jsonData` 中，嘗試取得屬性 `data` 中第 3 筆資料的 `車站中文名稱` 屬性值，做法如下：
+
+```js
+console.log( jsonData.data[2].車站中文名稱);
+// 輸出結果為 草衙
+```
+
+**範例二**
+
+```js
+let data = {
+  "contentType": "application/json; charset=utf-8",
+  "isImage": false,
+  "data": {
+    "XML_Head": {
+      "Listname": "1",
+      "Language": "C",
+      "Orgname": "397000000A",
+      "Updatetime": "2021/01/20 08:40:00",
+      "Infos": {
+        "Info": [
+          {
+            "Id": "C1_397000000A_000230",
+            "Status": "2",
+            "Name": "田寮月世界",
+            "Zone": "",
+            "Toldescribe": "田寮「月世界」特殊景觀在地理學上稱為「惡地」，是由於地殼的「回春作用」，經年累月的經由雨水與河水強烈侵蝕，將泥沙堆積在泥岩上，地層變動後，泥沙更與泥岩混合再經由風化、沉積作用，形成今日地貌，僅適於耐旱、耐鹽的淺根植物（如：箭竹）、濱海植物生長。從田寮到旗山台28線沿路除了月世界景觀，還有大小不等的二十多個泥火山，常呈現間歇性的噴發現象，噴發的規模則視地底天然氣與泥漿的累積壓力而定，噴發後的泥流堆積地區。",
+            "Description": "田寮「月世界」特殊景觀在地理學稱為「惡地」，經年累月由雨、河水侵蝕，將泥沙堆積在泥岩上，泥沙與泥岩混合經由風化形成。",
+            "Tel": "886-7-6367036",
+            "Add": "高雄市823田寮區崇德里月球路36號",
+            "Zipcode": "823",
+            "Travellinginfo": "無障礙交通：高鐵台南站 → 沙旗美月世界快線公車 → 月世界 → 旗山高鐵左營站 → 旗美快線公車 → 旗山 → 轉搭沙旗美月世界快線公車 → 月世界",
+            "Opentime": "遊客中心：09:00–17:00月世界：全天候開放",
+            "Gov": "397000000A",
+            "Px": "120.38898",
+            "Py": "22.88600"
+          },
+          {
+            "Id": "C1_397000000A_000234",
+            "Status": "2",
+            "Name": "西子灣風景區",
+            "Zone": "",
+            "Toldescribe": "西子灣以夕陽美景及天然礁石聞名，區內包括了西子灣海水浴場、海濱公園、打狗英國領事館....等景點；可觀海景、遠眺高雄港；海水浴場極富熱帶氣息、南國風情，每當夜幕低垂，晚霞的照耀，漁船燈火閃爍其間，呈現海天一色美景。",
+            "Description": "西子灣以夕陽美景及天然礁石聞名，區內包括了西子灣海水浴場、海濱公園、打狗英國領事館....等景點。",
+            "Tel": "886-7-5250005",
+            "Add": "高雄市804鼓山區蓮海路51號",
+            "Zipcode": "804",
+            "Travellinginfo": "搭高鐵至左營站下或搭臺鐵至高雄站下 → 轉搭高雄捷運至西子灣站下 → 轉搭高雄市公車(99路、橘1A路)至西子灣站下。",
+            "Opentime": "西子灣海水浴場：10:00–16:00",
+            "Gov": "397000000A",
+            "Px": "120.26391",
+            "Py": "22.62442"
+          }
+        ]
+      }
+    }
+  },
+  "id": "b69ffff9-23a5-44a6-a398-089b11a5f84c",
+  "success": true
+};
+```
+
+上述內容為一個 JSON 格式資料，嘗試完成註解中的內容：
+
+```js
+// 取得 Info 的陣列資料，並賦予至 newData 變數
+let newData = data.data.XML_Head.Infos.Info;
+
+// 取得 Info 陣列中第 2 筆資料的 Opentime 屬性值
+console.log( data.data.XML_Head.Infos.Info[1].Opentime ); // 做法一
+console.log( newData[1].Opentime ); // 做法二
+// 輸出結果皆為 西子灣海水浴場：10:00–16:00
+```
+
+### 物件結合 if 判斷
+
+簡單範例如下：
+
+```js
+let myData = {
+    name: 'Mark',
+    age: 18,
+    state: '',
+}
+if( myData.age >= 18 ){
+    myData.state = '符合入場條件';
+}else{
+    myData.state = '不符合入場條件';
+}
+console.log( myData );
+// 輸出結果 ----
+{name: 'Mark', age: 18, state: '符合入場條件'}
+age: 18
+name: "Mark"
+state: "符合入場條件"
+[[Prototype]]: Object
+// ----
+```
+
+### 物件結合陣列與 if 判斷
+
+簡單範例如下：
+
+```js
+// 情境：判斷 Mark 是否成年，若未成年則不得入場
+let peopleData = [
+    {
+        name: 'Mark',
+        age: 18,
+        state: ''
+    },{
+        name: 'Vivian',
+        age: 15,
+        state: ''
+    }
+];
+if( peopleData[0].age >= 18 ){
+    peopleData[0].state = '符合入場條件'; // 符合條件就重新賦予 state 屬性值
+}else{
+    peopleData[0].state = '不符合入場條件';
+}
+console.log( peopleData[0] );
+// 輸出結果 ----
+{name: 'Mark', age: 18, state: '符合入場條件'}
+age: 18
+name: "Mark"
+state: "符合入場條件"
+[[Prototype]]: Object
+// ----
+```
+
+> 以上只是運作流程與邏輯的參考，而通常資料會有數筆，因此如果像上述範例一樣每有一筆資料就處理一次，效率就會很差且不易閱讀，因此通常會透過迴圈的方式來處理大批資料。
+
+---
+
+## 函式

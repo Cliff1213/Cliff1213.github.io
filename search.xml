@@ -41,89 +41,6 @@
       </tags>
   </entry>
   <entry>
-    <title>CSS Font-Family 潛規則</title>
-    <url>/2022-03-02-font-family/</url>
-    <content><![CDATA[<p>回想過去在初學網頁的時候，對於 font-family 這個屬性一直處於很難相處的狀態，常會發生明明設定了字體，也沒有語法上的錯誤，但是網頁上呈現出來的結果總是不如預期；剛好前陣子在練習切版的時候又遇到了這方面的問題，於是決定投入一點時間研究問題的所在，藉此讓自己重新認識這個屬性。</p>
-<blockquote>
-<p>本篇僅討論 font-family 字體設定的基本觀念，沒有過多的字體介紹，主要方便自己做後續的查閱用途。</p>
-</blockquote>
-<span id="more"></span>
-
-<hr>
-<h2 id="Font-Family-設定規則"><a href="#Font-Family-設定規則" class="headerlink" title="Font-Family 設定規則"></a>Font-Family 設定規則</h2><p>基本上只要是網頁設計，都會使用到的屬性，可以自訂頁面上的文字字體，但是初學者在使用這個屬性之前，為了避免結果不如預期，建議需要先理解一些設定上的規則。</p>
-<h3 id="字體套用邏輯"><a href="#字體套用邏輯" class="headerlink" title="字體套用邏輯"></a>字體套用邏輯</h3><p>Font-Family 雖然可以設定多個屬性值，但是並不會將所有寫入的字體都一起套用，而是會根據瀏覽器對該字體的支援與否，由左至右依序判斷，以下方原始碼為例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: 字體A, 字體B, 字體C;</span><br></pre></td></tr></table></figure>
-
-<p>假設使用者的電腦系統中僅存在 “字體B”，此時瀏覽器載入網頁時，會根據上述設定先判斷系統內是否有對應的字體A，但因為系統中找不到這個字體，因此會跳過該字體並判斷下一個字體B，此時找到字體B之後，就會套用該字體，並且不再往下進行判斷。</p>
-<h3 id="語法注意事項"><a href="#語法注意事項" class="headerlink" title="語法注意事項"></a>語法注意事項</h3><p>在部分字體的選用上，同一個字體可以選擇使用中文名稱或英文名稱的屬性值設定，其結果會相同，以下方原始碼為例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: <span class="string">&quot;Microsoft JhengHei&quot;</span>;</span><br><span class="line"><span class="attribute">font-family</span>: 微軟正黑體;</span><br></pre></td></tr></table></figure>
-
-<p>從上述語法中可以發現，第一行的字體加上了雙引號，這是因為該字體的名稱之間如果存在空白，在不加上雙引號的情形下，瀏覽器會無法辨識而導致讀取失敗。</p>
-<p>另一個值得注意的是，雖然使用中文名稱來設定字體結果與英文名稱相同，但是只單獨設定中文名稱的話，可能會遇到編碼的問題而導致結果不如預期，因此會建議使用英文名稱的屬性值，或是中、英文一起使用，以下方原始碼為例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: <span class="string">&quot;Microsoft JhengHei&quot;</span>, 微軟正黑體;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="Font-Family-字體類型"><a href="#Font-Family-字體類型" class="headerlink" title="Font-Family 字體類型"></a>Font-Family 字體類型</h2><p>在當今這麼大量的字體中，主要可以分為 “指定字體” 與 “通用字體” 兩種類型。</p>
-<h3 id="指定字體（family-name）"><a href="#指定字體（family-name）" class="headerlink" title="指定字體（family-name）"></a>指定字體（family-name）</h3><p>不同的字體也會影響網頁的視覺感受，因此在選用字體時，通常會優先使用指定的字體。</p>
-<h3 id="通用字體（generic-family）"><a href="#通用字體（generic-family）" class="headerlink" title="通用字體（generic-family）"></a>通用字體（generic-family）</h3><p>通用字體可以理解成多數的電腦系統中，內建就已存在的字體，常見的通用字體有以下五種，其中無襯線體、襯線體使用最為廣泛：</p>
-<ul>
-<li>sans-serif（無襯線體 / 黑體）</li>
-<li>serif（襯線體 / 明體）</li>
-<li>cursive（手寫體）</li>
-<li>monospace（等寬體）</li>
-<li>fantasy（幻想體）</li>
-</ul>
-<h3 id="設定方式"><a href="#設定方式" class="headerlink" title="設定方式"></a>設定方式</h3><p>雖然可以透過指定字體名稱的方式，來達到自訂網頁上想要呈現的字體，但是並非所有電腦系統都有對應的指定字體，因此在使用指定字體時，通常都會在 font-family 屬性值的<strong>最後方位置</strong>設定預設的通用字體；而前面有提到 font-family 是由左至右判斷屬性值，所以當瀏覽器不支援或無法從系統中找到前方所對應的指定字體時，就會套用最後設定的通用字體，設定格式如下：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: 指定字體, <span class="string">&quot;指定 字體&quot;</span>, 通用字體;</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h2 id="字體順序觀念"><a href="#字體順序觀念" class="headerlink" title="字體順序觀念"></a>字體順序觀念</h2><p>本篇一開始在設定規則的地方有簡單提到字體是由左邊開始判斷，但是在順序方面還有一些重要觀念需要熟記，這邊先記住以下設定順序，後續會說明原因：</p>
-<p>設定順序：<strong>英文字體 &gt; Linux &gt; Mac &gt; Windows &gt; 通用字體</strong></p>
-<!-- 這部分一直沒有比較好的解釋 -->
-
-
-
-<h3 id="中、英文順序"><a href="#中、英文順序" class="headerlink" title="中、英文順序"></a>中、英文順序</h3><p>一個網頁通常會存在多個語言（以中、英文為例），但是並非所有的字體都同時支援中、英文，因此許多網頁會利用這個由左至右判斷的技巧，分別針對中文與英文各別設定不同的字體，以下方原始碼為例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: Arial, 微軟正黑體;</span><br></pre></td></tr></table></figure>
-
-<p>上述設定中，Arial 只有英文字體，而微軟正黑體則是中、英文字體都有，因此瀏覽器在判斷 Arial 之後，就會因為符合條件而套用英文字體，而中文會因為找不到對應字體則往下判斷微軟正黑體並套用，此時網頁上的中文與英文就會呈現不同字體的效果。</p>
-<p>但是如果順序換成微軟正黑體在前面，瀏覽器就會先判斷微軟正黑體，因為該字體中、英文都可以使用，所以網頁上的兩種語言都會套用成微軟正黑體，而後面的 Arial 會因為英文字體已套用成微軟正黑體而不會被讀取。</p>
-<p>因此，正確的屬性值順序為<strong>英文字體在前面，中文字體在後面。</strong></p>
-<h3 id="字體使用率與順序"><a href="#字體使用率與順序" class="headerlink" title="字體使用率與順序"></a>字體使用率與順序</h3><p>每個作業系統都有自己的系統字體，例如 -apple-system 與 BlinkMacSystemFont 分別是 iOS 以及 macOS 的系統字體，並且前者只能使用在 Safari 瀏覽器上，後者則是用於 Chrome，像這種只能使用在特定系統或瀏覽器的字體，順序就需要放在前面，以下方原始碼為例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: -apple-system, BlinkMacSystemFont, <span class="string">&quot;Segoe UI&quot;</span>, <span class="string">&quot;Microsoft JhengHei&quot;</span>, Roboto, <span class="string">&quot;Helvetica Neue&quot;</span>, Arial, sans-serif;</span><br><span class="line">	     <span class="comment">/* mac系統字體, iOS系統字體,	windows英文系統字體, 微軟正黑體, Android系統字體, iOS系統字體, 通用字體, 通用字體 */</span></span><br></pre></td></tr></table></figure>
-
-<p>假設使用者電腦系統為 windows，瀏覽器因為在系統中找不到 -apple-system 與 BlinkMacSystemFont 而直接跳過這兩個字體，而下一個 Segoe UI 屬於 windows 的英文系統字體，因此英文字體就會套用 Segoe UI，中文字體則是因為 Segoe UI 並沒有對應的中文而判斷下一個值，最終套用 Microsoft JhengHei。</p>
-<p>如果電腦系統是 macOS 並且使用 Chrome 瀏覽網頁，當瀏覽器在讀取到 -apple-system 時，就會套用對應的中文及英文字體，並且不再往下判斷。</p>
-<p>因此，為了適應各種不同的瀏覽器與作業系統，在設定字體時需要把<strong>較少使用到的字體放前面，較常使用到的字體放後面。</strong></p>
-<hr>
-<h2 id="實務範例"><a href="#實務範例" class="headerlink" title="實務範例"></a>實務範例</h2><p>附上幾個知名企業的字體設定當作參考，有興趣的也可以自行研究順序邏輯。</p>
-<p>Apple（台灣）：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: <span class="string">&quot;SF Pro TC&quot;</span>, <span class="string">&quot;SF Pro Text&quot;</span>, <span class="string">&quot;SF Pro Icons&quot;</span>, <span class="string">&quot;PingFang TC&quot;</span>, <span class="string">&quot;Helvetica Neue&quot;</span>, <span class="string">&quot;Helvetica&quot;</span>, <span class="string">&quot;Arial&quot;</span>, sans-serif;</span><br></pre></td></tr></table></figure>
-
-<p>微軟台灣：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: <span class="string">&#x27;Segoe UI&#x27;</span>, SegoeUI, <span class="string">&#x27;Microsoft JhengHei&#x27;</span>, 微軟正黑體, <span class="string">&quot;Helvetica Neue&quot;</span>, Helvetica, Arial, sans-serif;</span><br></pre></td></tr></table></figure>
-
-<p>Google：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: arial, sans-serif;  <span class="comment">/* 不愧是 Google，連字體設定都這麼簡約 */</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
-<li><a href="https://www.oxxostudio.tw/articles/201811/css-font-family.html">CSS font-family 詳細介紹</a></li>
-<li><a href="https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/180456/#outline__1_2_1">最標準的系統字型規範 font-family</a></li>
-<li><a href="https://www.casper.tw/css/2014/01/01/font-family/">font-family要怎麼玩</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>CSS</category>
-      </categories>
-      <tags>
-        <tag>css</tag>
-        <tag>font-family</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>NPM 筆記</title>
     <url>/2022-02-07-npm-note/</url>
     <content><![CDATA[<p>最近開始接觸 JS 套件，但在過程中因為版本之間的相容問題，幾乎是讓我踩到一堆深不見底的坑，後來開始找了很多資料並參考其他開發者使用以及管理套件的方式，然而相關資料都離不開 NPM，於是決定來找它泡茶一下，順便紀錄一下過程中學到的知識。</p>
@@ -357,6 +274,89 @@
       <tags>
         <tag>學習筆記</tag>
         <tag>RWD</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CSS Font-Family 潛規則</title>
+    <url>/2022-03-02-font-family/</url>
+    <content><![CDATA[<p>回想過去在初學網頁的時候，對於 font-family 這個屬性一直處於很難相處的狀態，常會發生明明設定了字體，也沒有語法上的錯誤，但是網頁上呈現出來的結果總是不如預期；剛好前陣子在練習切版的時候又遇到了這方面的問題，於是決定投入一點時間研究問題的所在，藉此讓自己重新認識這個屬性。</p>
+<blockquote>
+<p>本篇僅討論 font-family 字體設定的基本觀念，沒有過多的字體介紹，主要方便自己做後續的查閱用途。</p>
+</blockquote>
+<span id="more"></span>
+
+<hr>
+<h2 id="Font-Family-設定規則"><a href="#Font-Family-設定規則" class="headerlink" title="Font-Family 設定規則"></a>Font-Family 設定規則</h2><p>基本上只要是網頁設計，都會使用到的屬性，可以自訂頁面上的文字字體，但是初學者在使用這個屬性之前，為了避免結果不如預期，建議需要先理解一些設定上的規則。</p>
+<h3 id="字體套用邏輯"><a href="#字體套用邏輯" class="headerlink" title="字體套用邏輯"></a>字體套用邏輯</h3><p>Font-Family 雖然可以設定多個屬性值，但是並不會將所有寫入的字體都一起套用，而是會根據瀏覽器對該字體的支援與否，由左至右依序判斷，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: 字體A, 字體B, 字體C;</span><br></pre></td></tr></table></figure>
+
+<p>假設使用者的電腦系統中僅存在 “字體B”，此時瀏覽器載入網頁時，會根據上述設定先判斷系統內是否有對應的字體A，但因為系統中找不到這個字體，因此會跳過該字體並判斷下一個字體B，此時找到字體B之後，就會套用該字體，並且不再往下進行判斷。</p>
+<h3 id="語法注意事項"><a href="#語法注意事項" class="headerlink" title="語法注意事項"></a>語法注意事項</h3><p>在部分字體的選用上，同一個字體可以選擇使用中文名稱或英文名稱的屬性值設定，其結果會相同，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: <span class="string">&quot;Microsoft JhengHei&quot;</span>;</span><br><span class="line"><span class="attribute">font-family</span>: 微軟正黑體;</span><br></pre></td></tr></table></figure>
+
+<p>從上述語法中可以發現，第一行的字體加上了雙引號，這是因為該字體的名稱之間如果存在空白，在不加上雙引號的情形下，瀏覽器會無法辨識而導致讀取失敗。</p>
+<p>另一個值得注意的是，雖然使用中文名稱來設定字體結果與英文名稱相同，但是只單獨設定中文名稱的話，可能會遇到編碼的問題而導致結果不如預期，因此會建議使用英文名稱的屬性值，或是中、英文一起使用，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: <span class="string">&quot;Microsoft JhengHei&quot;</span>, 微軟正黑體;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Font-Family-字體類型"><a href="#Font-Family-字體類型" class="headerlink" title="Font-Family 字體類型"></a>Font-Family 字體類型</h2><p>在當今這麼大量的字體中，主要可以分為 “指定字體” 與 “通用字體” 兩種類型。</p>
+<h3 id="指定字體（family-name）"><a href="#指定字體（family-name）" class="headerlink" title="指定字體（family-name）"></a>指定字體（family-name）</h3><p>不同的字體也會影響網頁的視覺感受，因此在選用字體時，通常會優先使用指定的字體。</p>
+<h3 id="通用字體（generic-family）"><a href="#通用字體（generic-family）" class="headerlink" title="通用字體（generic-family）"></a>通用字體（generic-family）</h3><p>通用字體可以理解成多數的電腦系統中，內建就已存在的字體，常見的通用字體有以下五種，其中無襯線體、襯線體使用最為廣泛：</p>
+<ul>
+<li>sans-serif（無襯線體 / 黑體）</li>
+<li>serif（襯線體 / 明體）</li>
+<li>cursive（手寫體）</li>
+<li>monospace（等寬體）</li>
+<li>fantasy（幻想體）</li>
+</ul>
+<h3 id="設定方式"><a href="#設定方式" class="headerlink" title="設定方式"></a>設定方式</h3><p>雖然可以透過指定字體名稱的方式，來達到自訂網頁上想要呈現的字體，但是並非所有電腦系統都有對應的指定字體，因此在使用指定字體時，通常都會在 font-family 屬性值的<strong>最後方位置</strong>設定預設的通用字體；而前面有提到 font-family 是由左至右判斷屬性值，所以當瀏覽器不支援或無法從系統中找到前方所對應的指定字體時，就會套用最後設定的通用字體，設定格式如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: 指定字體, <span class="string">&quot;指定 字體&quot;</span>, 通用字體;</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h2 id="字體順序觀念"><a href="#字體順序觀念" class="headerlink" title="字體順序觀念"></a>字體順序觀念</h2><p>本篇一開始在設定規則的地方有簡單提到字體是由左邊開始判斷，但是在順序方面還有一些重要觀念需要熟記，這邊先記住以下設定順序，後續會說明原因：</p>
+<p>設定順序：<strong>英文字體 &gt; Linux &gt; Mac &gt; Windows &gt; 通用字體</strong></p>
+<!-- 這部分一直沒有比較好的解釋 -->
+
+
+
+<h3 id="中、英文順序"><a href="#中、英文順序" class="headerlink" title="中、英文順序"></a>中、英文順序</h3><p>一個網頁通常會存在多個語言（以中、英文為例），但是並非所有的字體都同時支援中、英文，因此許多網頁會利用這個由左至右判斷的技巧，分別針對中文與英文各別設定不同的字體，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: Arial, 微軟正黑體;</span><br></pre></td></tr></table></figure>
+
+<p>上述設定中，Arial 只有英文字體，而微軟正黑體則是中、英文字體都有，因此瀏覽器在判斷 Arial 之後，就會因為符合條件而套用英文字體，而中文會因為找不到對應字體則往下判斷微軟正黑體並套用，此時網頁上的中文與英文就會呈現不同字體的效果。</p>
+<p>但是如果順序換成微軟正黑體在前面，瀏覽器就會先判斷微軟正黑體，因為該字體中、英文都可以使用，所以網頁上的兩種語言都會套用成微軟正黑體，而後面的 Arial 會因為英文字體已套用成微軟正黑體而不會被讀取。</p>
+<p>因此，正確的屬性值順序為<strong>英文字體在前面，中文字體在後面。</strong></p>
+<h3 id="字體使用率與順序"><a href="#字體使用率與順序" class="headerlink" title="字體使用率與順序"></a>字體使用率與順序</h3><p>每個作業系統都有自己的系統字體，例如 -apple-system 與 BlinkMacSystemFont 分別是 iOS 以及 macOS 的系統字體，並且前者只能使用在 Safari 瀏覽器上，後者則是用於 Chrome，像這種只能使用在特定系統或瀏覽器的字體，順序就需要放在前面，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: -apple-system, BlinkMacSystemFont, <span class="string">&quot;Segoe UI&quot;</span>, <span class="string">&quot;Microsoft JhengHei&quot;</span>, Roboto, <span class="string">&quot;Helvetica Neue&quot;</span>, Arial, sans-serif;</span><br><span class="line">	     <span class="comment">/* mac系統字體, iOS系統字體,	windows英文系統字體, 微軟正黑體, Android系統字體, iOS系統字體, 通用字體, 通用字體 */</span></span><br></pre></td></tr></table></figure>
+
+<p>假設使用者電腦系統為 windows，瀏覽器因為在系統中找不到 -apple-system 與 BlinkMacSystemFont 而直接跳過這兩個字體，而下一個 Segoe UI 屬於 windows 的英文系統字體，因此英文字體就會套用 Segoe UI，中文字體則是因為 Segoe UI 並沒有對應的中文而判斷下一個值，最終套用 Microsoft JhengHei。</p>
+<p>如果電腦系統是 macOS 並且使用 Chrome 瀏覽網頁，當瀏覽器在讀取到 -apple-system 時，就會套用對應的中文及英文字體，並且不再往下判斷。</p>
+<p>因此，為了適應各種不同的瀏覽器與作業系統，在設定字體時需要把<strong>較少使用到的字體放前面，較常使用到的字體放後面。</strong></p>
+<hr>
+<h2 id="實務範例"><a href="#實務範例" class="headerlink" title="實務範例"></a>實務範例</h2><p>附上幾個知名企業的字體設定當作參考，有興趣的也可以自行研究順序邏輯。</p>
+<p>Apple（台灣）：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: <span class="string">&quot;SF Pro TC&quot;</span>, <span class="string">&quot;SF Pro Text&quot;</span>, <span class="string">&quot;SF Pro Icons&quot;</span>, <span class="string">&quot;PingFang TC&quot;</span>, <span class="string">&quot;Helvetica Neue&quot;</span>, <span class="string">&quot;Helvetica&quot;</span>, <span class="string">&quot;Arial&quot;</span>, sans-serif;</span><br></pre></td></tr></table></figure>
+
+<p>微軟台灣：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: <span class="string">&#x27;Segoe UI&#x27;</span>, SegoeUI, <span class="string">&#x27;Microsoft JhengHei&#x27;</span>, 微軟正黑體, <span class="string">&quot;Helvetica Neue&quot;</span>, Helvetica, Arial, sans-serif;</span><br></pre></td></tr></table></figure>
+
+<p>Google：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: arial, sans-serif;  <span class="comment">/* 不愧是 Google，連字體設定都這麼簡約 */</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a href="https://www.oxxostudio.tw/articles/201811/css-font-family.html">CSS font-family 詳細介紹</a></li>
+<li><a href="https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/180456/#outline__1_2_1">最標準的系統字型規範 font-family</a></li>
+<li><a href="https://www.casper.tw/css/2014/01/01/font-family/">font-family要怎麼玩</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>css</tag>
+        <tag>font-family</tag>
       </tags>
   </entry>
   <entry>
@@ -792,6 +792,7 @@
 <blockquote>
 <p>更多相關運算子內容可參考此<a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Expressions_and_Operators">連結</a>。</p>
 </blockquote>
+<hr>
 <h2 id="if-流程判斷"><a href="#if-流程判斷" class="headerlink" title="if 流程判斷"></a>if 流程判斷</h2><p>流程判斷會使用到的判斷方式有 <code>if</code>、<code>else if</code>、<code>else</code> 三種，分別可以理解成 “如果”、”或是”、”否則”，如下方範例情境所示：</p>
 <p><strong>情境一</strong></p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 情境：判斷是否下雨，若是，則待在家不出門</span></span><br><span class="line"><span class="keyword">let</span> isRain = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">if</span>( isRain == <span class="literal">true</span> )&#123; <span class="comment">// 判斷結果為 true</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;待在家不出門&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 輸出結果為 &#x27;待在家不出門&#x27;</span></span><br></pre></td></tr></table></figure>
@@ -830,6 +831,7 @@
 <blockquote>
 <p>if 只要滿足其中一個條件（判斷式結果為 <code>true</code>），就會在執行該條件的內容後，終止判斷流程（不再進行後續判斷式判斷）。</p>
 </blockquote>
+<hr>
 <h2 id="資料結構"><a href="#資料結構" class="headerlink" title="資料結構"></a>資料結構</h2><h3 id="陣列（Array）"><a href="#陣列（Array）" class="headerlink" title="陣列（Array）"></a>陣列（Array）</h3><p>一般的情況下，一個變數只能賦予一個值，但是在多筆資料的狀況下，難以針對每一個變數去賦予對應的值，因此在處理多筆資料時，通常會將這些資料透過一個陣列來表示，並賦予到一個變數中，範例如下：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 資料可以是各種型態</span></span><br><span class="line"><span class="keyword">let</span> data = [<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;yellow&#x27;</span>, <span class="string">&#x27;green&#x27;</span>];</span><br><span class="line"><span class="keyword">let</span> data = [<span class="number">30</span>, <span class="number">12</span>, <span class="number">15</span>, <span class="number">20</span>];</span><br><span class="line"><span class="keyword">let</span> data = [<span class="literal">true</span>, <span class="literal">false</span>, <span class="literal">false</span>];</span><br><span class="line"><span class="keyword">let</span> data = [<span class="string">&#x27;red&#x27;</span>, <span class="number">30</span>, <span class="literal">true</span>];</span><br><span class="line"><span class="keyword">let</span> data = []; <span class="comment">// 表示沒有資料的空陣列</span></span><br></pre></td></tr></table></figure>
 
@@ -905,7 +907,43 @@
 <h4 id="刪除物件資料"><a href="#刪除物件資料" class="headerlink" title="刪除物件資料"></a>刪除物件資料</h4><p>物件中的屬性，可以透過 <code>delete</code> 來指定刪除，範例如下：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> myInfo = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Mark&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    <span class="attr">isSingle</span>: <span class="literal">true</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">delete</span> myInfo.isSingle; <span class="comment">// 刪除 myInfo 物件中的 isSingle 屬性與值</span></span><br><span class="line"><span class="built_in">console</span>.log( myInfo, myInfo.isSingle );</span><br><span class="line"><span class="comment">// 輸出結果 ----</span></span><br><span class="line">&#123;<span class="attr">name</span>: <span class="string">&#x27;Mark&#x27;</span>, <span class="attr">age</span>: <span class="number">18</span>&#125; <span class="literal">undefined</span> <span class="comment">// 刪除後找不到 isSingle 相關屬性</span></span><br><span class="line"><span class="attr">age</span>: <span class="number">18</span></span><br><span class="line"><span class="attr">name</span>: <span class="string">&quot;Mark&quot;</span></span><br><span class="line">[[Prototype]]: <span class="built_in">Object</span></span><br><span class="line"><span class="comment">// ----</span></span><br></pre></td></tr></table></figure>
 
-]]></content>
+<hr>
+<h2 id="物件結合陣列"><a href="#物件結合陣列" class="headerlink" title="物件結合陣列"></a>物件結合陣列</h2><p>陣列除了可以放入一般的變數之外，也能夠放入多個物件，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 範例：水果的詳細資訊</span></span><br><span class="line"><span class="keyword">let</span> fruitDetail = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&#x27;Apple&#x27;</span>,</span><br><span class="line">        <span class="attr">price</span>: <span class="number">30</span>,</span><br><span class="line">        <span class="attr">isSoldOut</span>: <span class="literal">false</span></span><br><span class="line">    &#125;,&#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&#x27;banana&#x27;</span>,</span><br><span class="line">        <span class="attr">price</span>: <span class="number">20</span>,</span><br><span class="line">        <span class="attr">isSoldOut</span>: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">]</span><br><span class="line"><span class="built_in">console</span>.log( fruitDetail );</span><br><span class="line"><span class="comment">// 輸出結果 ----</span></span><br><span class="line">(<span class="number">2</span>) [&#123;…&#125;, &#123;…&#125;]</span><br><span class="line"><span class="number">0</span>: &#123;<span class="attr">name</span>: <span class="string">&#x27;Apple&#x27;</span>, <span class="attr">price</span>: <span class="number">30</span>, <span class="attr">isSoldOut</span>: <span class="literal">false</span>&#125;</span><br><span class="line"><span class="number">1</span>: &#123;<span class="attr">name</span>: <span class="string">&#x27;banana&#x27;</span>, <span class="attr">price</span>: <span class="number">20</span>, <span class="attr">isSoldOut</span>: <span class="literal">true</span>&#125;</span><br><span class="line"><span class="attr">length</span>: <span class="number">2</span></span><br><span class="line">[[Prototype]]: <span class="built_in">Array</span>(<span class="number">0</span>)</span><br><span class="line"><span class="comment">// ----</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>陣列中的每個物件之間會使用一個半形逗號隔開。</p>
+</blockquote>
+<p>先前提到陣列會使用 <code>[順序]</code> 的方式來取值，而在陣列內容結構為物件的情況下也是相同的，會使用 <code>[]</code> 來指定物件，並透過 <code>.</code> 或是 <code>[]</code> 來取得屬性內容，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> fruitDetail = [</span><br><span class="line">    &#123; <span class="comment">// 第 1 筆 [0]</span></span><br><span class="line">        <span class="attr">name</span>: <span class="string">&#x27;Apple&#x27;</span>,</span><br><span class="line">        <span class="attr">price</span>: <span class="number">30</span>,</span><br><span class="line">        <span class="attr">isSoldOut</span>: <span class="literal">false</span></span><br><span class="line">    &#125;,&#123; <span class="comment">// 第 2 筆 [1]</span></span><br><span class="line">        <span class="attr">name</span>: <span class="string">&#x27;banana&#x27;</span>,</span><br><span class="line">        <span class="attr">price</span>: <span class="number">20</span>,</span><br><span class="line">        <span class="attr">isSoldOut</span>: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">];</span><br><span class="line"><span class="built_in">console</span>.log( fruitDetail[<span class="number">1</span>] ); <span class="comment">// 取得陣列 fruitDetail 的第二個物件內容</span></span><br><span class="line"><span class="built_in">console</span>.log( fruitDetail[<span class="number">1</span>].name ); <span class="comment">// 指定陣列 fruitDetail 的第二個物件，並取得該物件中屬性 name 的值</span></span><br><span class="line"><span class="comment">// 輸出結果1 ----</span></span><br><span class="line">&#123;<span class="attr">name</span>: <span class="string">&#x27;banana&#x27;</span>, <span class="attr">price</span>: <span class="number">20</span>, <span class="attr">isSoldOut</span>: <span class="literal">true</span>&#125;</span><br><span class="line"><span class="attr">isSoldOut</span>: <span class="literal">true</span></span><br><span class="line"><span class="attr">name</span>: <span class="string">&quot;banana&quot;</span></span><br><span class="line"><span class="attr">price</span>: <span class="number">20</span></span><br><span class="line">[[Prototype]]: <span class="built_in">Object</span></span><br><span class="line"><span class="comment">// 輸出結果2 ----</span></span><br><span class="line">banana</span><br><span class="line"><span class="comment">// ----</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="JSON-格式"><a href="#JSON-格式" class="headerlink" title="JSON 格式"></a>JSON 格式</h3><p>JSON 是用於程式語言的一種資料結構，方便閱讀，目前也是多種語言通用的資料格式，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 範例 - 來源取自 wikipedia</span></span><br><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&quot;text&quot;</span>: <span class="string">&quot;This is the text&quot;</span>,</span><br><span class="line">        <span class="string">&quot;color&quot;</span>: <span class="string">&quot;dark_red&quot;</span>,</span><br><span class="line">        <span class="string">&quot;bold&quot;</span>: <span class="string">&quot;true&quot;</span>,</span><br><span class="line">        <span class="string">&quot;strikethough&quot;</span>: <span class="string">&quot;true&quot;</span>,</span><br><span class="line">        <span class="string">&quot;clickEvent&quot;</span>:</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&quot;action&quot;</span>: <span class="string">&quot;open_url&quot;</span>,</span><br><span class="line">            <span class="string">&quot;value&quot;</span>: <span class="string">&quot;zh.wikipedia.org&quot;</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">&quot;hoverEvent&quot;</span>:</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&quot;action&quot;</span>: <span class="string">&quot;show_text&quot;</span>,</span><br><span class="line">            <span class="string">&quot;value&quot;</span>:</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="string">&quot;extra&quot;</span>: <span class="string">&quot;something&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&quot;translate&quot;</span>: <span class="string">&quot;item.dirt.name&quot;</span>,</span><br><span class="line">        <span class="string">&quot;color&quot;</span>: <span class="string">&quot;blue&quot;</span>,</span><br><span class="line">        <span class="string">&quot;italic&quot;</span>: <span class="string">&quot;true&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<h3 id="物件巢狀運用"><a href="#物件巢狀運用" class="headerlink" title="物件巢狀運用"></a>物件巢狀運用</h3><p>物件中的屬性值也能以物件結構表示，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 巢狀物件</span></span><br><span class="line"><span class="keyword">let</span> fruit = &#123; <span class="comment">// 外層物件</span></span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Apple&#x27;</span>,</span><br><span class="line">    <span class="attr">price</span>: <span class="number">30</span>,</span><br><span class="line">    <span class="attr">isSoldOut</span>: &#123; <span class="comment">// 內層物件</span></span><br><span class="line">        <span class="attr">storeA</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">storeB</span>: <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log( fruit ); <span class="comment">// 取得物件整體內容</span></span><br><span class="line"><span class="built_in">console</span>.log( fruit.isSoldOut.storeA ); <span class="comment">// 取得物件內的物件資料</span></span><br><span class="line"><span class="comment">// 輸出結果1----</span></span><br><span class="line">&#123;<span class="attr">name</span>: <span class="string">&#x27;Apple&#x27;</span>, <span class="attr">price</span>: <span class="number">30</span>, <span class="attr">isSoldOut</span>: &#123;…&#125;&#125;</span><br><span class="line"><span class="attr">isSoldOut</span>: &#123;<span class="attr">storeA</span>: <span class="literal">true</span>, <span class="attr">storeB</span>: <span class="literal">false</span>&#125;</span><br><span class="line"><span class="attr">name</span>: <span class="string">&quot;Apple&quot;</span></span><br><span class="line"><span class="attr">price</span>: <span class="number">30</span></span><br><span class="line">[[Prototype]]: <span class="built_in">Object</span></span><br><span class="line"><span class="comment">// 輸出結果2----</span></span><br><span class="line"><span class="literal">true</span></span><br><span class="line"><span class="comment">// ----</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="取得-JSON-資料"><a href="#取得-JSON-資料" class="headerlink" title="取得 JSON 資料"></a>取得 JSON 資料</h4><p><strong>範例一</strong></p>
+<p>以此<a href="https://api.kcg.gov.tw/api/service/get/4278fc6a-c3ea-4192-8ce0-40f00cdb40dd">公開資料</a>為例，假設已將該資料賦予至變數 <code>jsonData</code> 中，嘗試取得屬性 <code>data</code> 中第 3 筆資料的 <code>車站中文名稱</code> 屬性值，做法如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log( jsonData.data[<span class="number">2</span>].車站中文名稱);</span><br><span class="line"><span class="comment">// 輸出結果為 草衙</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>範例二</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> data = &#123;</span><br><span class="line">  <span class="string">&quot;contentType&quot;</span>: <span class="string">&quot;application/json; charset=utf-8&quot;</span>,</span><br><span class="line">  <span class="string">&quot;isImage&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="string">&quot;data&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;XML_Head&quot;</span>: &#123;</span><br><span class="line">      <span class="string">&quot;Listname&quot;</span>: <span class="string">&quot;1&quot;</span>,</span><br><span class="line">      <span class="string">&quot;Language&quot;</span>: <span class="string">&quot;C&quot;</span>,</span><br><span class="line">      <span class="string">&quot;Orgname&quot;</span>: <span class="string">&quot;397000000A&quot;</span>,</span><br><span class="line">      <span class="string">&quot;Updatetime&quot;</span>: <span class="string">&quot;2021/01/20 08:40:00&quot;</span>,</span><br><span class="line">      <span class="string">&quot;Infos&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;Info&quot;</span>: [</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="string">&quot;Id&quot;</span>: <span class="string">&quot;C1_397000000A_000230&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Status&quot;</span>: <span class="string">&quot;2&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Name&quot;</span>: <span class="string">&quot;田寮月世界&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Zone&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Toldescribe&quot;</span>: <span class="string">&quot;田寮「月世界」特殊景觀在地理學上稱為「惡地」，是由於地殼的「回春作用」，經年累月的經由雨水與河水強烈侵蝕，將泥沙堆積在泥岩上，地層變動後，泥沙更與泥岩混合再經由風化、沉積作用，形成今日地貌，僅適於耐旱、耐鹽的淺根植物（如：箭竹）、濱海植物生長。從田寮到旗山台28線沿路除了月世界景觀，還有大小不等的二十多個泥火山，常呈現間歇性的噴發現象，噴發的規模則視地底天然氣與泥漿的累積壓力而定，噴發後的泥流堆積地區。&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Description&quot;</span>: <span class="string">&quot;田寮「月世界」特殊景觀在地理學稱為「惡地」，經年累月由雨、河水侵蝕，將泥沙堆積在泥岩上，泥沙與泥岩混合經由風化形成。&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Tel&quot;</span>: <span class="string">&quot;886-7-6367036&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Add&quot;</span>: <span class="string">&quot;高雄市823田寮區崇德里月球路36號&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Zipcode&quot;</span>: <span class="string">&quot;823&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Travellinginfo&quot;</span>: <span class="string">&quot;無障礙交通：高鐵台南站 → 沙旗美月世界快線公車 → 月世界 → 旗山高鐵左營站 → 旗美快線公車 → 旗山 → 轉搭沙旗美月世界快線公車 → 月世界&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Opentime&quot;</span>: <span class="string">&quot;遊客中心：09:00–17:00月世界：全天候開放&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Gov&quot;</span>: <span class="string">&quot;397000000A&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Px&quot;</span>: <span class="string">&quot;120.38898&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Py&quot;</span>: <span class="string">&quot;22.88600&quot;</span></span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="string">&quot;Id&quot;</span>: <span class="string">&quot;C1_397000000A_000234&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Status&quot;</span>: <span class="string">&quot;2&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Name&quot;</span>: <span class="string">&quot;西子灣風景區&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Zone&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Toldescribe&quot;</span>: <span class="string">&quot;西子灣以夕陽美景及天然礁石聞名，區內包括了西子灣海水浴場、海濱公園、打狗英國領事館....等景點；可觀海景、遠眺高雄港；海水浴場極富熱帶氣息、南國風情，每當夜幕低垂，晚霞的照耀，漁船燈火閃爍其間，呈現海天一色美景。&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Description&quot;</span>: <span class="string">&quot;西子灣以夕陽美景及天然礁石聞名，區內包括了西子灣海水浴場、海濱公園、打狗英國領事館....等景點。&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Tel&quot;</span>: <span class="string">&quot;886-7-5250005&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Add&quot;</span>: <span class="string">&quot;高雄市804鼓山區蓮海路51號&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Zipcode&quot;</span>: <span class="string">&quot;804&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Travellinginfo&quot;</span>: <span class="string">&quot;搭高鐵至左營站下或搭臺鐵至高雄站下 → 轉搭高雄捷運至西子灣站下 → 轉搭高雄市公車(99路、橘1A路)至西子灣站下。&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Opentime&quot;</span>: <span class="string">&quot;西子灣海水浴場：10:00–16:00&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Gov&quot;</span>: <span class="string">&quot;397000000A&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Px&quot;</span>: <span class="string">&quot;120.26391&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Py&quot;</span>: <span class="string">&quot;22.62442&quot;</span></span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;id&quot;</span>: <span class="string">&quot;b69ffff9-23a5-44a6-a398-089b11a5f84c&quot;</span>,</span><br><span class="line">  <span class="string">&quot;success&quot;</span>: <span class="literal">true</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>上述內容為一個 JSON 格式資料，嘗試完成註解中的內容：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 取得 Info 的陣列資料，並賦予至 newData 變數</span></span><br><span class="line"><span class="keyword">let</span> newData = data.data.XML_Head.Infos.Info;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得 Info 陣列中第 2 筆資料的 Opentime 屬性值</span></span><br><span class="line"><span class="built_in">console</span>.log( data.data.XML_Head.Infos.Info[<span class="number">1</span>].Opentime ); <span class="comment">// 做法一</span></span><br><span class="line"><span class="built_in">console</span>.log( newData[<span class="number">1</span>].Opentime ); <span class="comment">// 做法二</span></span><br><span class="line"><span class="comment">// 輸出結果皆為 西子灣海水浴場：10:00–16:00</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="物件結合-if-判斷"><a href="#物件結合-if-判斷" class="headerlink" title="物件結合 if 判斷"></a>物件結合 if 判斷</h3><p>簡單範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> myData = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Mark&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    <span class="attr">state</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>( myData.age &gt;= <span class="number">18</span> )&#123;</span><br><span class="line">    myData.state = <span class="string">&#x27;符合入場條件&#x27;</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    myData.state = <span class="string">&#x27;不符合入場條件&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log( myData );</span><br><span class="line"><span class="comment">// 輸出結果 ----</span></span><br><span class="line">&#123;<span class="attr">name</span>: <span class="string">&#x27;Mark&#x27;</span>, <span class="attr">age</span>: <span class="number">18</span>, <span class="attr">state</span>: <span class="string">&#x27;符合入場條件&#x27;</span>&#125;</span><br><span class="line"><span class="attr">age</span>: <span class="number">18</span></span><br><span class="line"><span class="attr">name</span>: <span class="string">&quot;Mark&quot;</span></span><br><span class="line"><span class="attr">state</span>: <span class="string">&quot;符合入場條件&quot;</span></span><br><span class="line">[[Prototype]]: <span class="built_in">Object</span></span><br><span class="line"><span class="comment">// ----</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="物件結合陣列與-if-判斷"><a href="#物件結合陣列與-if-判斷" class="headerlink" title="物件結合陣列與 if 判斷"></a>物件結合陣列與 if 判斷</h3><p>簡單範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 情境：判斷 Mark 是否成年，若未成年則不得入場</span></span><br><span class="line"><span class="keyword">let</span> peopleData = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&#x27;Mark&#x27;</span>,</span><br><span class="line">        <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">        <span class="attr">state</span>: <span class="string">&#x27;&#x27;</span></span><br><span class="line">    &#125;,&#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&#x27;Vivian&#x27;</span>,</span><br><span class="line">        <span class="attr">age</span>: <span class="number">15</span>,</span><br><span class="line">        <span class="attr">state</span>: <span class="string">&#x27;&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">];</span><br><span class="line"><span class="keyword">if</span>( peopleData[<span class="number">0</span>].age &gt;= <span class="number">18</span> )&#123;</span><br><span class="line">    peopleData[<span class="number">0</span>].state = <span class="string">&#x27;符合入場條件&#x27;</span>; <span class="comment">// 符合條件就重新賦予 state 屬性值</span></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    peopleData[<span class="number">0</span>].state = <span class="string">&#x27;不符合入場條件&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log( peopleData[<span class="number">0</span>] );</span><br><span class="line"><span class="comment">// 輸出結果 ----</span></span><br><span class="line">&#123;<span class="attr">name</span>: <span class="string">&#x27;Mark&#x27;</span>, <span class="attr">age</span>: <span class="number">18</span>, <span class="attr">state</span>: <span class="string">&#x27;符合入場條件&#x27;</span>&#125;</span><br><span class="line"><span class="attr">age</span>: <span class="number">18</span></span><br><span class="line"><span class="attr">name</span>: <span class="string">&quot;Mark&quot;</span></span><br><span class="line"><span class="attr">state</span>: <span class="string">&quot;符合入場條件&quot;</span></span><br><span class="line">[[Prototype]]: <span class="built_in">Object</span></span><br><span class="line"><span class="comment">// ----</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>以上只是運作流程與邏輯的參考，而通常資料會有數筆，因此如果像上述範例一樣每有一筆資料就處理一次，效率就會很差且不易閱讀，因此通常會透過迴圈的方式來處理大批資料。</p>
+</blockquote>
+<hr>
+<h2 id="函式"><a href="#函式" class="headerlink" title="函式"></a>函式</h2>]]></content>
       <categories>
         <category>JavaScript</category>
       </categories>

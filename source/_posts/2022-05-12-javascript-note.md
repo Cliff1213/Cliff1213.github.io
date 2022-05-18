@@ -1138,3 +1138,158 @@ state: "符合入場條件"
 ---
 
 ## 函式
+
+函式（function）的作用主要是把一系列相關的程式透過一個指令來包裝，並視情況執行，起手式如下：
+
+```js
+function showText(){
+    console.log('一段文字內容');
+}
+showText(); // 執行函式 showText
+// 輸出結果為 一段文字內容
+```
+
+> 一組函式在註冊完成後並不會立即執行，需要透過 `functionName();` 方式來執行，而該函式在執行完內容後，就會終止。
+
+### 巢狀函式
+
+範例如下：
+
+```js
+function showText(){
+    console.log('文字內容一');
+    showText2();
+}
+function showText2(){
+    console.log('文字內容二');
+}
+showText();
+// 輸出結果 ----
+文字內容一
+文字內容二
+// ----
+```
+
+> 函式中若存在別的函式，則會先搜尋是否有該函式的存在，若有就執行該函式的內容，執行完畢後再跳回原本的函式接續執行後續的內容。
+
+### 代入參數
+
+一個函式在執行時，是可以帶入參數的，如下所示：
+
+```js
+function calculate(num, num2){
+    console.log( num + num2 );
+}
+calculate(2, 3);
+console.log( num, num2 );
+// 輸出結果 ----
+5
+num is not defined
+// ----
+```
+
+上述範例在執行函式 `calculate` 時，代入了 `2`、`3` 兩個參數，此時第 2 行開始運算並得出結果為 `5`，而在函式外嘗試取得 `num` 的值後，輸出結果為顯示找不到相關內容，由此可知函式所代入的參數只能在該函式中作運用。
+
+### return 回傳結果
+
+前面提到函式所代入的參數只能使用在該函式中，但如果要在函式外做使用，可以透過 `return` 來將**函式運算後的結果**回傳到指定的地點，範例如下：
+
+```js
+function calculate(num, num2){
+    return num + num2; // 將運算結果回傳到第 4 行
+}
+let result = calculate(5, 10);
+console.log( result );
+// 輸出結果為 15
+```
+
+除了上述範例在函式內直接回傳 `num + num2` 的運算結果之外，也可以先將運算結果賦予到一變數中，再透過 `return` 回傳**該變數的值**，如下所示：
+
+```js
+function calculate(num, num2){
+    let sum = num + num2;
+    return sum;
+}
+let result = calculate(5, 10);
+console.log( `運算結果等於${result}` );
+// 輸出結果為 '運算結果等於15'
+```
+
+> 函式內所宣告的變數與參數一樣，只能在該函式內使用，而 `return` 回傳的只有運算後的結果，並非該變數本身。
+
+### return 中斷函式
+
+return 除了能夠回傳結果，還具有中斷函式執行的作用，範例如下：
+
+```js
+function calculate(num, num2){
+    let sum = num + num2;
+    return sum;  // 回傳結果後在此中斷
+    console.log('一段文字內容'); // 因 return 中斷而不執行
+}
+let result = calculate(5, 10);
+console.log( result );
+// 輸出結果為 15
+```
+
+### return 使用情境
+
+**情境一**
+
+```js
+// 判斷成績是否及格
+function checkScore(score){
+  if( 100 >= score && score >= 60 ){
+      return '成績及格';
+  }else if( 60 > score && score >= 0 ){
+      return '成績不及格'; // 回傳結果至 exam 後程式在此中斷
+  }
+  return '資料有誤'; // 回傳結果至 exam2 後程式在此中斷
+}
+let exam = checkScore(50);
+let exam2 = checkScore(120);
+console.log( exam, exam2 );
+// 輸出結果為 '成績不及格' '資料有誤'
+```
+
+**情境二**
+
+```js
+// 判斷兩數字相除是否可整除
+function calculate(num, num2){
+  let remainder = num % num2;
+  if( remainder == 0 ){
+      return '可以整除';
+  }else{
+      return `餘數為${remainder}，不可整除`; // 回傳結果至 result 後程式在此中斷
+  }
+}
+let result =  calculate(100, 12);
+console.log( result );
+// 輸出結果為 '餘數為4，不可整除'
+```
+
+**情境三**
+
+```js
+// 判斷計算結果總次數
+let calcNum = 0; // 全域變數
+function calculate(num, num2){
+  calcNum += 1;
+  let remainder = num % num2;
+  if( remainder == 0 ){
+      return '可以整除';
+  }else{
+      return `餘數為${remainder}，不可整除`; // 回傳結果至 result 後程式在此中斷
+  }
+}
+let result =  calculate(100, 50);
+console.log( result, `目前總共計算${calcNum}次` );
+// 輸出結果為 '可以整除' '目前總共計算1次'
+```
+
+> 從範例中第 4 行可得知，當函式中找不到宣告的變數時，會往全域搜尋是否存在相同名稱的變數。
+
+---
+
+## 迴圈

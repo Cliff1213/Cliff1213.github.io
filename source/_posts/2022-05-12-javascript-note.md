@@ -971,6 +971,8 @@ JSON 是用於程式語言的一種資料結構，方便閱讀，目前也是多
 ];
 ```
 
+> 若是使用 Chrome 瀏覽器，可安裝 JSONView 擴充功能，該工具可將網頁上壓縮後的 JSON 格式資料進行自動整理以提高可讀性。
+
 ### 物件巢狀運用
 
 物件中的屬性值也能以物件結構表示，範例如下：
@@ -1293,3 +1295,127 @@ console.log( result, `目前總共計算${calcNum}次` );
 ---
 
 ## 迴圈
+
+相同性質的資料若資料筆數過多，通常會透過迴圈的方式重複執行相同的事，來取得資料內容。
+
+### for 迴圈
+
+```js
+// 範例：運作原理
+for( var i=0; i<3; i++ ){
+    console.log( i );
+}
+// 輸出結果 ----
+0
+1
+2
+// ----
+```
+
+上述範例中，`for` 小括號的三個項目依序分別表示**初始狀態**、**執行條件**、**變更值**，在此宣告一個變數 `i` 初始值為 `0`，當 `i` 值小於 `3` 的判斷結果為 `true` 時，執行大括號中的內容，每執行完一次 `i` 值 `+1`，接著運行第二次直到不滿足執行條件為止。
+
+> for 迴圈的小括號中使用 `var` 宣告變數 `i` 時，該變數會屬於全域變數。
+
+#### for 結合陣列
+
+**情境一**
+
+```js
+// 情境：列出所有種類的水果名稱
+let fruitDetail = [
+    {
+        name: 'Apple',
+        price: 30,
+    },{
+        name: 'banana',
+        price: 20,
+    }
+]
+let fruitNum = fruitDetail.length;
+for( var i=0; i<fruitNum; i++ ){
+    console.log( fruitDetail[i].name );
+}
+// 輸出結果 ----
+Apple
+banana
+// ----
+```
+
+**情境二**
+
+```js
+// 情境：加總所有學校的學生人數
+let school = [
+    {
+        name: '學校A',
+        studentNum: 35
+    },{
+        name: '學校B',
+        studentNum: 32
+    }
+];
+let schoolNum = school.length;
+let studentTotal = 0;
+for( let i=0; i<schoolNum; i++ ){
+    studentTotal += school[i].studentNum;
+}
+console.log( `全部學生總共有${studentTotal}人` );
+// 輸出結果為 全部學生總共有67人
+```
+
+#### for 結合 if
+
+```js
+// 範例：列出正在下雨的城市
+let cityStatus = [
+    {
+        city: '高雄',
+        state: '晴天'
+    },{
+        city: '台南',
+        state: '下雨'
+    },{
+        city: '台北',
+        state: '下雨'
+    }
+];
+let cityNum = cityStatus.length;
+for( let i=0; i<cityNum; i++ ){
+    if( cityStatus[i].state == '下雨' ){
+        console.log( `${cityStatus[i].city}天氣為雨天` );
+    }
+}
+// 輸出結果 ----
+台南天氣為雨天
+台北天氣為雨天
+// ----
+```
+
+#### break 中斷迴圈
+
+若希望 for 迴圈在執行過程中當滿足了某些條件後，就終止迴圈執行，可以使用 `break` 來中斷動作，範例如下：
+
+```js
+// 範例：集點活動，找出最先累積滿 100 點的人
+let people = [
+    {
+        name: 'Mark',
+        points: 89
+    },{
+        name: 'Vivian',
+        points: 102
+    },{
+        name: 'Leo',
+        points: 115
+    }
+];
+for( let i=0; i<people.length; i++ ){
+    if( people[i].points >= 100 ){
+        console.log( `最先累積滿100點的人是${people[i].name}，總共有${people[i].points}點!` );
+        break; // 迴圈運行到第2筆時達成條件，因此終止迴圈
+    }
+}
+// 輸出結果為 最先累積滿100點的人是Vivian，總共有102點!
+```
+
+> 範例中若未加上 `break`，則輸出結果會列出所有滿足 `points >= 100` 的內容，而 break 僅能在 for 迴圈中使用。

@@ -41,6 +41,89 @@
       </tags>
   </entry>
   <entry>
+    <title>CSS Font-Family 潛規則</title>
+    <url>/2022-03-02-font-family/</url>
+    <content><![CDATA[<p>回想過去在初學網頁的時候，對於 font-family 這個屬性一直處於很難相處的狀態，常會發生明明設定了字體，也沒有語法上的錯誤，但是網頁上呈現出來的結果總是不如預期；剛好前陣子在練習切版的時候又遇到了這方面的問題，於是決定投入一點時間研究問題的所在，藉此讓自己重新認識這個屬性。</p>
+<blockquote>
+<p>本篇僅討論 font-family 字體設定的基本觀念，沒有過多的字體介紹，主要方便自己做後續的查閱用途。</p>
+</blockquote>
+<span id="more"></span>
+
+<hr>
+<h2 id="Font-Family-設定規則"><a href="#Font-Family-設定規則" class="headerlink" title="Font-Family 設定規則"></a>Font-Family 設定規則</h2><p>基本上只要是網頁設計，都會使用到的屬性，可以自訂頁面上的文字字體，但是初學者在使用這個屬性之前，為了避免結果不如預期，建議需要先理解一些設定上的規則。</p>
+<h3 id="字體套用邏輯"><a href="#字體套用邏輯" class="headerlink" title="字體套用邏輯"></a>字體套用邏輯</h3><p>Font-Family 雖然可以設定多個屬性值，但是並不會將所有寫入的字體都一起套用，而是會根據瀏覽器對該字體的支援與否，由左至右依序判斷，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: 字體A, 字體B, 字體C;</span><br></pre></td></tr></table></figure>
+
+<p>假設使用者的電腦系統中僅存在 “字體B”，此時瀏覽器載入網頁時，會根據上述設定先判斷系統內是否有對應的字體A，但因為系統中找不到這個字體，因此會跳過該字體並判斷下一個字體B，此時找到字體B之後，就會套用該字體，並且不再往下進行判斷。</p>
+<h3 id="語法注意事項"><a href="#語法注意事項" class="headerlink" title="語法注意事項"></a>語法注意事項</h3><p>在部分字體的選用上，同一個字體可以選擇使用中文名稱或英文名稱的屬性值設定，其結果會相同，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: <span class="string">&quot;Microsoft JhengHei&quot;</span>;</span><br><span class="line"><span class="attribute">font-family</span>: 微軟正黑體;</span><br></pre></td></tr></table></figure>
+
+<p>從上述語法中可以發現，第一行的字體加上了雙引號，這是因為該字體的名稱之間如果存在空白，在不加上雙引號的情形下，瀏覽器會無法辨識而導致讀取失敗。</p>
+<p>另一個值得注意的是，雖然使用中文名稱來設定字體結果與英文名稱相同，但是只單獨設定中文名稱的話，可能會遇到編碼的問題而導致結果不如預期，因此會建議使用英文名稱的屬性值，或是中、英文一起使用，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: <span class="string">&quot;Microsoft JhengHei&quot;</span>, 微軟正黑體;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Font-Family-字體類型"><a href="#Font-Family-字體類型" class="headerlink" title="Font-Family 字體類型"></a>Font-Family 字體類型</h2><p>在當今這麼大量的字體中，主要可以分為 “指定字體” 與 “通用字體” 兩種類型。</p>
+<h3 id="指定字體（family-name）"><a href="#指定字體（family-name）" class="headerlink" title="指定字體（family-name）"></a>指定字體（family-name）</h3><p>不同的字體也會影響網頁的視覺感受，因此在選用字體時，通常會優先使用指定的字體。</p>
+<h3 id="通用字體（generic-family）"><a href="#通用字體（generic-family）" class="headerlink" title="通用字體（generic-family）"></a>通用字體（generic-family）</h3><p>通用字體可以理解成多數的電腦系統中，內建就已存在的字體，常見的通用字體有以下五種，其中無襯線體、襯線體使用最為廣泛：</p>
+<ul>
+<li>sans-serif（無襯線體 / 黑體）</li>
+<li>serif（襯線體 / 明體）</li>
+<li>cursive（手寫體）</li>
+<li>monospace（等寬體）</li>
+<li>fantasy（幻想體）</li>
+</ul>
+<h3 id="設定方式"><a href="#設定方式" class="headerlink" title="設定方式"></a>設定方式</h3><p>雖然可以透過指定字體名稱的方式，來達到自訂網頁上想要呈現的字體，但是並非所有電腦系統都有對應的指定字體，因此在使用指定字體時，通常都會在 font-family 屬性值的<strong>最後方位置</strong>設定預設的通用字體；而前面有提到 font-family 是由左至右判斷屬性值，所以當瀏覽器不支援或無法從系統中找到前方所對應的指定字體時，就會套用最後設定的通用字體，設定格式如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: 指定字體, <span class="string">&quot;指定 字體&quot;</span>, 通用字體;</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h2 id="字體順序觀念"><a href="#字體順序觀念" class="headerlink" title="字體順序觀念"></a>字體順序觀念</h2><p>本篇一開始在設定規則的地方有簡單提到字體是由左邊開始判斷，但是在順序方面還有一些重要觀念需要熟記，這邊先記住以下設定順序，後續會說明原因：</p>
+<p>設定順序：<strong>英文字體 &gt; Linux &gt; Mac &gt; Windows &gt; 通用字體</strong></p>
+<!-- 這部分一直沒有比較好的解釋 -->
+
+
+
+<h3 id="中、英文順序"><a href="#中、英文順序" class="headerlink" title="中、英文順序"></a>中、英文順序</h3><p>一個網頁通常會存在多個語言（以中、英文為例），但是並非所有的字體都同時支援中、英文，因此許多網頁會利用這個由左至右判斷的技巧，分別針對中文與英文各別設定不同的字體，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: Arial, 微軟正黑體;</span><br></pre></td></tr></table></figure>
+
+<p>上述設定中，Arial 只有英文字體，而微軟正黑體則是中、英文字體都有，因此瀏覽器在判斷 Arial 之後，就會因為符合條件而套用英文字體，而中文會因為找不到對應字體則往下判斷微軟正黑體並套用，此時網頁上的中文與英文就會呈現不同字體的效果。</p>
+<p>但是如果順序換成微軟正黑體在前面，瀏覽器就會先判斷微軟正黑體，因為該字體中、英文都可以使用，所以網頁上的兩種語言都會套用成微軟正黑體，而後面的 Arial 會因為英文字體已套用成微軟正黑體而不會被讀取。</p>
+<p>因此，正確的屬性值順序為<strong>英文字體在前面，中文字體在後面。</strong></p>
+<h3 id="字體使用率與順序"><a href="#字體使用率與順序" class="headerlink" title="字體使用率與順序"></a>字體使用率與順序</h3><p>每個作業系統都有自己的系統字體，例如 -apple-system 與 BlinkMacSystemFont 分別是 iOS 以及 macOS 的系統字體，並且前者只能使用在 Safari 瀏覽器上，後者則是用於 Chrome，像這種只能使用在特定系統或瀏覽器的字體，順序就需要放在前面，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: -apple-system, BlinkMacSystemFont, <span class="string">&quot;Segoe UI&quot;</span>, <span class="string">&quot;Microsoft JhengHei&quot;</span>, Roboto, <span class="string">&quot;Helvetica Neue&quot;</span>, Arial, sans-serif;</span><br><span class="line">	     <span class="comment">/* mac系統字體, iOS系統字體,	windows英文系統字體, 微軟正黑體, Android系統字體, iOS系統字體, 通用字體, 通用字體 */</span></span><br></pre></td></tr></table></figure>
+
+<p>假設使用者電腦系統為 windows，瀏覽器因為在系統中找不到 -apple-system 與 BlinkMacSystemFont 而直接跳過這兩個字體，而下一個 Segoe UI 屬於 windows 的英文系統字體，因此英文字體就會套用 Segoe UI，中文字體則是因為 Segoe UI 並沒有對應的中文而判斷下一個值，最終套用 Microsoft JhengHei。</p>
+<p>如果電腦系統是 macOS 並且使用 Chrome 瀏覽網頁，當瀏覽器在讀取到 -apple-system 時，就會套用對應的中文及英文字體，並且不再往下判斷。</p>
+<p>因此，為了適應各種不同的瀏覽器與作業系統，在設定字體時需要把<strong>較少使用到的字體放前面，較常使用到的字體放後面。</strong></p>
+<hr>
+<h2 id="實務範例"><a href="#實務範例" class="headerlink" title="實務範例"></a>實務範例</h2><p>附上幾個知名企業的字體設定當作參考，有興趣的也可以自行研究順序邏輯。</p>
+<p>Apple（台灣）：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: <span class="string">&quot;SF Pro TC&quot;</span>, <span class="string">&quot;SF Pro Text&quot;</span>, <span class="string">&quot;SF Pro Icons&quot;</span>, <span class="string">&quot;PingFang TC&quot;</span>, <span class="string">&quot;Helvetica Neue&quot;</span>, <span class="string">&quot;Helvetica&quot;</span>, <span class="string">&quot;Arial&quot;</span>, sans-serif;</span><br></pre></td></tr></table></figure>
+
+<p>微軟台灣：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: <span class="string">&#x27;Segoe UI&#x27;</span>, SegoeUI, <span class="string">&#x27;Microsoft JhengHei&#x27;</span>, 微軟正黑體, <span class="string">&quot;Helvetica Neue&quot;</span>, Helvetica, Arial, sans-serif;</span><br></pre></td></tr></table></figure>
+
+<p>Google：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: arial, sans-serif;  <span class="comment">/* 不愧是 Google，連字體設定都這麼簡約 */</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a href="https://www.oxxostudio.tw/articles/201811/css-font-family.html">CSS font-family 詳細介紹</a></li>
+<li><a href="https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/180456/#outline__1_2_1">最標準的系統字型規範 font-family</a></li>
+<li><a href="https://www.casper.tw/css/2014/01/01/font-family/">font-family要怎麼玩</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>css</tag>
+        <tag>font-family</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>NPM 筆記</title>
     <url>/2022-02-07-npm-note/</url>
     <content><![CDATA[<p>最近開始接觸 JS 套件，但在過程中因為版本之間的相容問題，幾乎是讓我踩到一堆深不見底的坑，後來開始找了很多資料並參考其他開發者使用以及管理套件的方式，然而相關資料都離不開 NPM，於是決定來找它泡茶一下，順便紀錄一下過程中學到的知識。</p>
@@ -274,89 +357,6 @@
       <tags>
         <tag>學習筆記</tag>
         <tag>RWD</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CSS Font-Family 潛規則</title>
-    <url>/2022-03-02-font-family/</url>
-    <content><![CDATA[<p>回想過去在初學網頁的時候，對於 font-family 這個屬性一直處於很難相處的狀態，常會發生明明設定了字體，也沒有語法上的錯誤，但是網頁上呈現出來的結果總是不如預期；剛好前陣子在練習切版的時候又遇到了這方面的問題，於是決定投入一點時間研究問題的所在，藉此讓自己重新認識這個屬性。</p>
-<blockquote>
-<p>本篇僅討論 font-family 字體設定的基本觀念，沒有過多的字體介紹，主要方便自己做後續的查閱用途。</p>
-</blockquote>
-<span id="more"></span>
-
-<hr>
-<h2 id="Font-Family-設定規則"><a href="#Font-Family-設定規則" class="headerlink" title="Font-Family 設定規則"></a>Font-Family 設定規則</h2><p>基本上只要是網頁設計，都會使用到的屬性，可以自訂頁面上的文字字體，但是初學者在使用這個屬性之前，為了避免結果不如預期，建議需要先理解一些設定上的規則。</p>
-<h3 id="字體套用邏輯"><a href="#字體套用邏輯" class="headerlink" title="字體套用邏輯"></a>字體套用邏輯</h3><p>Font-Family 雖然可以設定多個屬性值，但是並不會將所有寫入的字體都一起套用，而是會根據瀏覽器對該字體的支援與否，由左至右依序判斷，以下方原始碼為例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: 字體A, 字體B, 字體C;</span><br></pre></td></tr></table></figure>
-
-<p>假設使用者的電腦系統中僅存在 “字體B”，此時瀏覽器載入網頁時，會根據上述設定先判斷系統內是否有對應的字體A，但因為系統中找不到這個字體，因此會跳過該字體並判斷下一個字體B，此時找到字體B之後，就會套用該字體，並且不再往下進行判斷。</p>
-<h3 id="語法注意事項"><a href="#語法注意事項" class="headerlink" title="語法注意事項"></a>語法注意事項</h3><p>在部分字體的選用上，同一個字體可以選擇使用中文名稱或英文名稱的屬性值設定，其結果會相同，以下方原始碼為例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: <span class="string">&quot;Microsoft JhengHei&quot;</span>;</span><br><span class="line"><span class="attribute">font-family</span>: 微軟正黑體;</span><br></pre></td></tr></table></figure>
-
-<p>從上述語法中可以發現，第一行的字體加上了雙引號，這是因為該字體的名稱之間如果存在空白，在不加上雙引號的情形下，瀏覽器會無法辨識而導致讀取失敗。</p>
-<p>另一個值得注意的是，雖然使用中文名稱來設定字體結果與英文名稱相同，但是只單獨設定中文名稱的話，可能會遇到編碼的問題而導致結果不如預期，因此會建議使用英文名稱的屬性值，或是中、英文一起使用，以下方原始碼為例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: <span class="string">&quot;Microsoft JhengHei&quot;</span>, 微軟正黑體;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="Font-Family-字體類型"><a href="#Font-Family-字體類型" class="headerlink" title="Font-Family 字體類型"></a>Font-Family 字體類型</h2><p>在當今這麼大量的字體中，主要可以分為 “指定字體” 與 “通用字體” 兩種類型。</p>
-<h3 id="指定字體（family-name）"><a href="#指定字體（family-name）" class="headerlink" title="指定字體（family-name）"></a>指定字體（family-name）</h3><p>不同的字體也會影響網頁的視覺感受，因此在選用字體時，通常會優先使用指定的字體。</p>
-<h3 id="通用字體（generic-family）"><a href="#通用字體（generic-family）" class="headerlink" title="通用字體（generic-family）"></a>通用字體（generic-family）</h3><p>通用字體可以理解成多數的電腦系統中，內建就已存在的字體，常見的通用字體有以下五種，其中無襯線體、襯線體使用最為廣泛：</p>
-<ul>
-<li>sans-serif（無襯線體 / 黑體）</li>
-<li>serif（襯線體 / 明體）</li>
-<li>cursive（手寫體）</li>
-<li>monospace（等寬體）</li>
-<li>fantasy（幻想體）</li>
-</ul>
-<h3 id="設定方式"><a href="#設定方式" class="headerlink" title="設定方式"></a>設定方式</h3><p>雖然可以透過指定字體名稱的方式，來達到自訂網頁上想要呈現的字體，但是並非所有電腦系統都有對應的指定字體，因此在使用指定字體時，通常都會在 font-family 屬性值的<strong>最後方位置</strong>設定預設的通用字體；而前面有提到 font-family 是由左至右判斷屬性值，所以當瀏覽器不支援或無法從系統中找到前方所對應的指定字體時，就會套用最後設定的通用字體，設定格式如下：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: 指定字體, <span class="string">&quot;指定 字體&quot;</span>, 通用字體;</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h2 id="字體順序觀念"><a href="#字體順序觀念" class="headerlink" title="字體順序觀念"></a>字體順序觀念</h2><p>本篇一開始在設定規則的地方有簡單提到字體是由左邊開始判斷，但是在順序方面還有一些重要觀念需要熟記，這邊先記住以下設定順序，後續會說明原因：</p>
-<p>設定順序：<strong>英文字體 &gt; Linux &gt; Mac &gt; Windows &gt; 通用字體</strong></p>
-<!-- 這部分一直沒有比較好的解釋 -->
-
-
-
-<h3 id="中、英文順序"><a href="#中、英文順序" class="headerlink" title="中、英文順序"></a>中、英文順序</h3><p>一個網頁通常會存在多個語言（以中、英文為例），但是並非所有的字體都同時支援中、英文，因此許多網頁會利用這個由左至右判斷的技巧，分別針對中文與英文各別設定不同的字體，以下方原始碼為例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: Arial, 微軟正黑體;</span><br></pre></td></tr></table></figure>
-
-<p>上述設定中，Arial 只有英文字體，而微軟正黑體則是中、英文字體都有，因此瀏覽器在判斷 Arial 之後，就會因為符合條件而套用英文字體，而中文會因為找不到對應字體則往下判斷微軟正黑體並套用，此時網頁上的中文與英文就會呈現不同字體的效果。</p>
-<p>但是如果順序換成微軟正黑體在前面，瀏覽器就會先判斷微軟正黑體，因為該字體中、英文都可以使用，所以網頁上的兩種語言都會套用成微軟正黑體，而後面的 Arial 會因為英文字體已套用成微軟正黑體而不會被讀取。</p>
-<p>因此，正確的屬性值順序為<strong>英文字體在前面，中文字體在後面。</strong></p>
-<h3 id="字體使用率與順序"><a href="#字體使用率與順序" class="headerlink" title="字體使用率與順序"></a>字體使用率與順序</h3><p>每個作業系統都有自己的系統字體，例如 -apple-system 與 BlinkMacSystemFont 分別是 iOS 以及 macOS 的系統字體，並且前者只能使用在 Safari 瀏覽器上，後者則是用於 Chrome，像這種只能使用在特定系統或瀏覽器的字體，順序就需要放在前面，以下方原始碼為例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: -apple-system, BlinkMacSystemFont, <span class="string">&quot;Segoe UI&quot;</span>, <span class="string">&quot;Microsoft JhengHei&quot;</span>, Roboto, <span class="string">&quot;Helvetica Neue&quot;</span>, Arial, sans-serif;</span><br><span class="line">	     <span class="comment">/* mac系統字體, iOS系統字體,	windows英文系統字體, 微軟正黑體, Android系統字體, iOS系統字體, 通用字體, 通用字體 */</span></span><br></pre></td></tr></table></figure>
-
-<p>假設使用者電腦系統為 windows，瀏覽器因為在系統中找不到 -apple-system 與 BlinkMacSystemFont 而直接跳過這兩個字體，而下一個 Segoe UI 屬於 windows 的英文系統字體，因此英文字體就會套用 Segoe UI，中文字體則是因為 Segoe UI 並沒有對應的中文而判斷下一個值，最終套用 Microsoft JhengHei。</p>
-<p>如果電腦系統是 macOS 並且使用 Chrome 瀏覽網頁，當瀏覽器在讀取到 -apple-system 時，就會套用對應的中文及英文字體，並且不再往下判斷。</p>
-<p>因此，為了適應各種不同的瀏覽器與作業系統，在設定字體時需要把<strong>較少使用到的字體放前面，較常使用到的字體放後面。</strong></p>
-<hr>
-<h2 id="實務範例"><a href="#實務範例" class="headerlink" title="實務範例"></a>實務範例</h2><p>附上幾個知名企業的字體設定當作參考，有興趣的也可以自行研究順序邏輯。</p>
-<p>Apple（台灣）：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: <span class="string">&quot;SF Pro TC&quot;</span>, <span class="string">&quot;SF Pro Text&quot;</span>, <span class="string">&quot;SF Pro Icons&quot;</span>, <span class="string">&quot;PingFang TC&quot;</span>, <span class="string">&quot;Helvetica Neue&quot;</span>, <span class="string">&quot;Helvetica&quot;</span>, <span class="string">&quot;Arial&quot;</span>, sans-serif;</span><br></pre></td></tr></table></figure>
-
-<p>微軟台灣：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: <span class="string">&#x27;Segoe UI&#x27;</span>, SegoeUI, <span class="string">&#x27;Microsoft JhengHei&#x27;</span>, 微軟正黑體, <span class="string">&quot;Helvetica Neue&quot;</span>, Helvetica, Arial, sans-serif;</span><br></pre></td></tr></table></figure>
-
-<p>Google：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: arial, sans-serif;  <span class="comment">/* 不愧是 Google，連字體設定都這麼簡約 */</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
-<li><a href="https://www.oxxostudio.tw/articles/201811/css-font-family.html">CSS font-family 詳細介紹</a></li>
-<li><a href="https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/180456/#outline__1_2_1">最標準的系統字型規範 font-family</a></li>
-<li><a href="https://www.casper.tw/css/2014/01/01/font-family/">font-family要怎麼玩</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>CSS</category>
-      </categories>
-      <tags>
-        <tag>css</tag>
-        <tag>font-family</tag>
       </tags>
   </entry>
   <entry>
@@ -920,6 +920,9 @@
 <h3 id="JSON-格式"><a href="#JSON-格式" class="headerlink" title="JSON 格式"></a>JSON 格式</h3><p>JSON 是用於程式語言的一種資料結構，方便閱讀，目前也是多種語言通用的資料格式，範例如下：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 範例 - 來源取自 wikipedia</span></span><br><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&quot;text&quot;</span>: <span class="string">&quot;This is the text&quot;</span>,</span><br><span class="line">        <span class="string">&quot;color&quot;</span>: <span class="string">&quot;dark_red&quot;</span>,</span><br><span class="line">        <span class="string">&quot;bold&quot;</span>: <span class="string">&quot;true&quot;</span>,</span><br><span class="line">        <span class="string">&quot;strikethough&quot;</span>: <span class="string">&quot;true&quot;</span>,</span><br><span class="line">        <span class="string">&quot;clickEvent&quot;</span>:</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&quot;action&quot;</span>: <span class="string">&quot;open_url&quot;</span>,</span><br><span class="line">            <span class="string">&quot;value&quot;</span>: <span class="string">&quot;zh.wikipedia.org&quot;</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">&quot;hoverEvent&quot;</span>:</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&quot;action&quot;</span>: <span class="string">&quot;show_text&quot;</span>,</span><br><span class="line">            <span class="string">&quot;value&quot;</span>:</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="string">&quot;extra&quot;</span>: <span class="string">&quot;something&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&quot;translate&quot;</span>: <span class="string">&quot;item.dirt.name&quot;</span>,</span><br><span class="line">        <span class="string">&quot;color&quot;</span>: <span class="string">&quot;blue&quot;</span>,</span><br><span class="line">        <span class="string">&quot;italic&quot;</span>: <span class="string">&quot;true&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
 
+<blockquote>
+<p>若是使用 Chrome 瀏覽器，可安裝 JSONView 擴充功能，該工具可將網頁上壓縮後的 JSON 格式資料進行自動整理以提高可讀性。</p>
+</blockquote>
 <h3 id="物件巢狀運用"><a href="#物件巢狀運用" class="headerlink" title="物件巢狀運用"></a>物件巢狀運用</h3><p>物件中的屬性值也能以物件結構表示，範例如下：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 巢狀物件</span></span><br><span class="line"><span class="keyword">let</span> fruit = &#123; <span class="comment">// 外層物件</span></span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Apple&#x27;</span>,</span><br><span class="line">    <span class="attr">price</span>: <span class="number">30</span>,</span><br><span class="line">    <span class="attr">isSoldOut</span>: &#123; <span class="comment">// 內層物件</span></span><br><span class="line">        <span class="attr">storeA</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">storeB</span>: <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log( fruit ); <span class="comment">// 取得物件整體內容</span></span><br><span class="line"><span class="built_in">console</span>.log( fruit.isSoldOut.storeA ); <span class="comment">// 取得物件內的物件資料</span></span><br><span class="line"><span class="comment">// 輸出結果1----</span></span><br><span class="line">&#123;<span class="attr">name</span>: <span class="string">&#x27;Apple&#x27;</span>, <span class="attr">price</span>: <span class="number">30</span>, <span class="attr">isSoldOut</span>: &#123;…&#125;&#125;</span><br><span class="line"><span class="attr">isSoldOut</span>: &#123;<span class="attr">storeA</span>: <span class="literal">true</span>, <span class="attr">storeB</span>: <span class="literal">false</span>&#125;</span><br><span class="line"><span class="attr">name</span>: <span class="string">&quot;Apple&quot;</span></span><br><span class="line"><span class="attr">price</span>: <span class="number">30</span></span><br><span class="line">[[Prototype]]: <span class="built_in">Object</span></span><br><span class="line"><span class="comment">// 輸出結果2----</span></span><br><span class="line"><span class="literal">true</span></span><br><span class="line"><span class="comment">// ----</span></span><br></pre></td></tr></table></figure>
 
@@ -943,7 +946,69 @@
 <p>以上只是運作流程與邏輯的參考，而通常資料會有數筆，因此如果像上述範例一樣每有一筆資料就處理一次，效率就會很差且不易閱讀，因此通常會透過迴圈的方式來處理大批資料。</p>
 </blockquote>
 <hr>
-<h2 id="函式"><a href="#函式" class="headerlink" title="函式"></a>函式</h2>]]></content>
+<h2 id="函式"><a href="#函式" class="headerlink" title="函式"></a>函式</h2><p>函式（function）的作用主要是把一系列相關的程式透過一個指令來包裝，並視情況執行，起手式如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showText</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;一段文字內容&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line">showText(); <span class="comment">// 執行函式 showText</span></span><br><span class="line"><span class="comment">// 輸出結果為 一段文字內容</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>一組函式在註冊完成後並不會立即執行，需要透過 <code>functionName();</code> 方式來執行，而該函式在執行完內容後，就會終止。</p>
+</blockquote>
+<h3 id="巢狀函式"><a href="#巢狀函式" class="headerlink" title="巢狀函式"></a>巢狀函式</h3><p>範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showText</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;文字內容一&#x27;</span>);</span><br><span class="line">    showText2();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showText2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;文字內容二&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line">showText();</span><br><span class="line"><span class="comment">// 輸出結果 ----</span></span><br><span class="line">文字內容一</span><br><span class="line">文字內容二</span><br><span class="line"><span class="comment">// ----</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>函式中若存在別的函式，則會先搜尋是否有該函式的存在，若有就執行該函式的內容，執行完畢後再跳回原本的函式接續執行後續的內容。</p>
+</blockquote>
+<h3 id="代入參數"><a href="#代入參數" class="headerlink" title="代入參數"></a>代入參數</h3><p>一個函式在執行時，是可以帶入參數的，如下所示：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">calculate</span>(<span class="params">num, num2</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( num + num2 );</span><br><span class="line">&#125;</span><br><span class="line">calculate(<span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line"><span class="built_in">console</span>.log( num, num2 );</span><br><span class="line"><span class="comment">// 輸出結果 ----</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line">num is not defined</span><br><span class="line"><span class="comment">// ----</span></span><br></pre></td></tr></table></figure>
+
+<p>上述範例在執行函式 <code>calculate</code> 時，代入了 <code>2</code>、<code>3</code> 兩個參數，此時第 2 行開始運算並得出結果為 <code>5</code>，而在函式外嘗試取得 <code>num</code> 的值後，輸出結果為顯示找不到相關內容，由此可知函式所代入的參數只能在該函式中作運用。</p>
+<h3 id="return-回傳結果"><a href="#return-回傳結果" class="headerlink" title="return 回傳結果"></a>return 回傳結果</h3><p>前面提到函式所代入的參數只能使用在該函式中，但如果要在函式外做使用，可以透過 <code>return</code> 來將<strong>函式運算後的結果</strong>回傳到指定的地點，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">calculate</span>(<span class="params">num, num2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num + num2; <span class="comment">// 將運算結果回傳到第 4 行</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> result = calculate(<span class="number">5</span>, <span class="number">10</span>);</span><br><span class="line"><span class="built_in">console</span>.log( result );</span><br><span class="line"><span class="comment">// 輸出結果為 15</span></span><br></pre></td></tr></table></figure>
+
+<p>除了上述範例在函式內直接回傳 <code>num + num2</code> 的運算結果之外，也可以先將運算結果賦予到一變數中，再透過 <code>return</code> 回傳<strong>該變數的值</strong>，如下所示：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">calculate</span>(<span class="params">num, num2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> sum = num + num2;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> result = calculate(<span class="number">5</span>, <span class="number">10</span>);</span><br><span class="line"><span class="built_in">console</span>.log( <span class="string">`運算結果等於<span class="subst">$&#123;result&#125;</span>`</span> );</span><br><span class="line"><span class="comment">// 輸出結果為 &#x27;運算結果等於15&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>函式內所宣告的變數與參數一樣，只能在該函式內使用，而 <code>return</code> 回傳的只有運算後的結果，並非該變數本身。</p>
+</blockquote>
+<h3 id="return-中斷函式"><a href="#return-中斷函式" class="headerlink" title="return 中斷函式"></a>return 中斷函式</h3><p>return 除了能夠回傳結果，還具有中斷函式執行的作用，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">calculate</span>(<span class="params">num, num2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> sum = num + num2;</span><br><span class="line">    <span class="keyword">return</span> sum;  <span class="comment">// 回傳結果後在此中斷</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;一段文字內容&#x27;</span>); <span class="comment">// 因 return 中斷而不執行</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> result = calculate(<span class="number">5</span>, <span class="number">10</span>);</span><br><span class="line"><span class="built_in">console</span>.log( result );</span><br><span class="line"><span class="comment">// 輸出結果為 15</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="return-使用情境"><a href="#return-使用情境" class="headerlink" title="return 使用情境"></a>return 使用情境</h3><p><strong>情境一</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 判斷成績是否及格</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkScore</span>(<span class="params">score</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>( <span class="number">100</span> &gt;= score &amp;&amp; score &gt;= <span class="number">60</span> )&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">&#x27;成績及格&#x27;</span>;</span><br><span class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>( <span class="number">60</span> &gt; score &amp;&amp; score &gt;= <span class="number">0</span> )&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">&#x27;成績不及格&#x27;</span>; <span class="comment">// 回傳結果至 exam 後程式在此中斷</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&#x27;資料有誤&#x27;</span>; <span class="comment">// 回傳結果至 exam2 後程式在此中斷</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> exam = checkScore(<span class="number">50</span>);</span><br><span class="line"><span class="keyword">let</span> exam2 = checkScore(<span class="number">120</span>);</span><br><span class="line"><span class="built_in">console</span>.log( exam, exam2 );</span><br><span class="line"><span class="comment">// 輸出結果為 &#x27;成績不及格&#x27; &#x27;資料有誤&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>情境二</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 判斷兩數字相除是否可整除</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">calculate</span>(<span class="params">num, num2</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> remainder = num % num2;</span><br><span class="line">  <span class="keyword">if</span>( remainder == <span class="number">0</span> )&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">&#x27;可以整除&#x27;</span>;</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">`餘數為<span class="subst">$&#123;remainder&#125;</span>，不可整除`</span>; <span class="comment">// 回傳結果至 result 後程式在此中斷</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> result =  calculate(<span class="number">100</span>, <span class="number">12</span>);</span><br><span class="line"><span class="built_in">console</span>.log( result );</span><br><span class="line"><span class="comment">// 輸出結果為 &#x27;餘數為4，不可整除&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>情境三</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 判斷計算結果總次數</span></span><br><span class="line"><span class="keyword">let</span> calcNum = <span class="number">0</span>; <span class="comment">// 全域變數</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">calculate</span>(<span class="params">num, num2</span>)</span>&#123;</span><br><span class="line">  calcNum += <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">let</span> remainder = num % num2;</span><br><span class="line">  <span class="keyword">if</span>( remainder == <span class="number">0</span> )&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">&#x27;可以整除&#x27;</span>;</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">`餘數為<span class="subst">$&#123;remainder&#125;</span>，不可整除`</span>; <span class="comment">// 回傳結果至 result 後程式在此中斷</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> result =  calculate(<span class="number">100</span>, <span class="number">50</span>);</span><br><span class="line"><span class="built_in">console</span>.log( result, <span class="string">`目前總共計算<span class="subst">$&#123;calcNum&#125;</span>次`</span> );</span><br><span class="line"><span class="comment">// 輸出結果為 &#x27;可以整除&#x27; &#x27;目前總共計算1次&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>從範例中第 4 行可得知，當函式中找不到宣告的變數時，會往全域搜尋是否存在相同名稱的變數。</p>
+</blockquote>
+<hr>
+<h2 id="迴圈"><a href="#迴圈" class="headerlink" title="迴圈"></a>迴圈</h2><p>相同性質的資料若資料筆數過多，通常會透過迴圈的方式重複執行相同的事，來取得資料內容。</p>
+<h3 id="for-迴圈"><a href="#for-迴圈" class="headerlink" title="for 迴圈"></a>for 迴圈</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 範例：運作原理</span></span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="number">3</span>; i++ )&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( i );</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 輸出結果 ----</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="comment">// ----</span></span><br></pre></td></tr></table></figure>
+
+<p>上述範例中，<code>for</code> 小括號的三個項目依序分別表示<strong>初始狀態</strong>、<strong>執行條件</strong>、<strong>變更值</strong>，在此宣告一個變數 <code>i</code> 初始值為 <code>0</code>，當 <code>i</code> 值小於 <code>3</code> 的判斷結果為 <code>true</code> 時，執行大括號中的內容，每執行完一次 <code>i</code> 值 <code>+1</code>，接著運行第二次直到不滿足執行條件為止。</p>
+<blockquote>
+<p>for 迴圈的小括號中使用 <code>var</code> 宣告變數 <code>i</code> 時，該變數會屬於全域變數。</p>
+</blockquote>
+<h4 id="for-結合陣列"><a href="#for-結合陣列" class="headerlink" title="for 結合陣列"></a>for 結合陣列</h4><p><strong>情境一</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 情境：列出所有種類的水果名稱</span></span><br><span class="line"><span class="keyword">let</span> fruitDetail = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&#x27;Apple&#x27;</span>,</span><br><span class="line">        <span class="attr">price</span>: <span class="number">30</span>,</span><br><span class="line">    &#125;,&#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&#x27;banana&#x27;</span>,</span><br><span class="line">        <span class="attr">price</span>: <span class="number">20</span>,</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br><span class="line"><span class="keyword">let</span> fruitNum = fruitDetail.length;</span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i=<span class="number">0</span>; i&lt;fruitNum; i++ )&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( fruitDetail[i].name );</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 輸出結果 ----</span></span><br><span class="line">Apple</span><br><span class="line">banana</span><br><span class="line"><span class="comment">// ----</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>情境二</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 情境：加總所有學校的學生人數</span></span><br><span class="line"><span class="keyword">let</span> school = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&#x27;學校A&#x27;</span>,</span><br><span class="line">        <span class="attr">studentNum</span>: <span class="number">35</span></span><br><span class="line">    &#125;,&#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&#x27;學校B&#x27;</span>,</span><br><span class="line">        <span class="attr">studentNum</span>: <span class="number">32</span></span><br><span class="line">    &#125;</span><br><span class="line">];</span><br><span class="line"><span class="keyword">let</span> schoolNum = school.length;</span><br><span class="line"><span class="keyword">let</span> studentTotal = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">let</span> i=<span class="number">0</span>; i&lt;schoolNum; i++ )&#123;</span><br><span class="line">    studentTotal += school[i].studentNum;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log( <span class="string">`全部學生總共有<span class="subst">$&#123;studentTotal&#125;</span>人`</span> );</span><br><span class="line"><span class="comment">// 輸出結果為 全部學生總共有67人</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="for-結合-if"><a href="#for-結合-if" class="headerlink" title="for 結合 if"></a>for 結合 if</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 範例：列出正在下雨的城市</span></span><br><span class="line"><span class="keyword">let</span> cityStatus = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">city</span>: <span class="string">&#x27;高雄&#x27;</span>,</span><br><span class="line">        <span class="attr">state</span>: <span class="string">&#x27;晴天&#x27;</span></span><br><span class="line">    &#125;,&#123;</span><br><span class="line">        <span class="attr">city</span>: <span class="string">&#x27;台南&#x27;</span>,</span><br><span class="line">        <span class="attr">state</span>: <span class="string">&#x27;下雨&#x27;</span></span><br><span class="line">    &#125;,&#123;</span><br><span class="line">        <span class="attr">city</span>: <span class="string">&#x27;台北&#x27;</span>,</span><br><span class="line">        <span class="attr">state</span>: <span class="string">&#x27;下雨&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">];</span><br><span class="line"><span class="keyword">let</span> cityNum = cityStatus.length;</span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">let</span> i=<span class="number">0</span>; i&lt;cityNum; i++ )&#123;</span><br><span class="line">    <span class="keyword">if</span>( cityStatus[i].state == <span class="string">&#x27;下雨&#x27;</span> )&#123;</span><br><span class="line">        <span class="built_in">console</span>.log( <span class="string">`<span class="subst">$&#123;cityStatus[i].city&#125;</span>天氣為雨天`</span> );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 輸出結果 ----</span></span><br><span class="line">台南天氣為雨天</span><br><span class="line">台北天氣為雨天</span><br><span class="line"><span class="comment">// ----</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="break-中斷迴圈"><a href="#break-中斷迴圈" class="headerlink" title="break 中斷迴圈"></a>break 中斷迴圈</h4><p>若希望 for 迴圈在執行過程中當滿足了某些條件後，就終止迴圈執行，可以使用 <code>break</code> 來中斷動作，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 範例：集點活動，找出最先累積滿 100 點的人</span></span><br><span class="line"><span class="keyword">let</span> people = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&#x27;Mark&#x27;</span>,</span><br><span class="line">        <span class="attr">points</span>: <span class="number">89</span></span><br><span class="line">    &#125;,&#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&#x27;Vivian&#x27;</span>,</span><br><span class="line">        <span class="attr">points</span>: <span class="number">102</span></span><br><span class="line">    &#125;,&#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&#x27;Leo&#x27;</span>,</span><br><span class="line">        <span class="attr">points</span>: <span class="number">115</span></span><br><span class="line">    &#125;</span><br><span class="line">];</span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">let</span> i=<span class="number">0</span>; i&lt;people.length; i++ )&#123;</span><br><span class="line">    <span class="keyword">if</span>( people[i].points &gt;= <span class="number">100</span> )&#123;</span><br><span class="line">        <span class="built_in">console</span>.log( <span class="string">`最先累積滿100點的人是<span class="subst">$&#123;people[i].name&#125;</span>，總共有<span class="subst">$&#123;people[i].points&#125;</span>點!`</span> );</span><br><span class="line">        <span class="keyword">break</span>; <span class="comment">// 迴圈運行到第2筆時達成條件，因此終止迴圈</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 輸出結果為 最先累積滿100點的人是Vivian，總共有102點!</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>範例中若未加上 <code>break</code>，則輸出結果會列出所有滿足 <code>points &gt;= 100</code> 的內容，而 break 僅能在 for 迴圈中使用。</p>
+</blockquote>
+]]></content>
       <categories>
         <category>JavaScript</category>
       </categories>

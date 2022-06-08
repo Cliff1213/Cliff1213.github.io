@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://cliff1213.github.io/2022-06-06-swiper-breakpoint-note/</loc>
+    <loc>https://cliff1213.github.io/2022-06-06-swiper-note/</loc>
     
-    <lastmod>2022-06-06</lastmod>
+    <lastmod>2022-06-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://cliff1213.github.io/2022-06-07-sass-note-md/</loc>
+    
+    <lastmod>2022-06-08</lastmod>
     
   </url>
   
@@ -95,7 +102,7 @@
 
   <url>
     <loc>https://cliff1213.github.io/</loc>
-    <lastmod>2022-06-06</lastmod>
+    <lastmod>2022-06-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>

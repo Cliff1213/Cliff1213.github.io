@@ -41,7 +41,7 @@ const sunNum = 1;
 
 宣告的值為全域變數，可重新賦予值
 
-> 宣告變數的名稱若撞到部分保留字，會無法宣告，保留字可參考此[連結](http://www.w3bai.com/zh-TW/js/js_reserved.html)。
+> 宣告變數的名稱可使用駝峰式命名，此外，若撞到部分保留字，會無法宣告，保留字可參考此[連結](http://www.w3bai.com/zh-TW/js/js_reserved.html)。
 
 ---
 
@@ -90,6 +90,8 @@ console.log( c, typeof c );
 > NaN 主要告知輸出結果有異常，而型別屬於 number。
 
 ### 字串（String）
+
+型別為字串的值會加上單或雙引號來表示。
 
 #### 字串相加
 
@@ -590,12 +592,12 @@ let data = []; // 表示沒有資料的空陣列
 let data = ['red', 'yellow', 'green'];
 console.log( data );
 // 輸出結果 ----
-(3) ['red', 'yellow', 'green']
-0: "red"
-1: "yellow"
-2: "green"
-length: 3
-[[Prototype]]: Array(0)
+// (3) ['red', 'yellow', 'green']
+// 0: "red"
+// 1: "yellow"
+// 2: "green"
+// length: 3
+// [[Prototype]]: Array(0)
 // ----
 ```
 
@@ -639,10 +641,10 @@ let ary = [];
 ary[0] = '新增資料';
 console.log( ary );
 // 輸出結果 ----
-['新增資料']
-0: "新增資料"
-length: 1
-[[Prototype]]: Array(0)
+// ['新增資料']
+// 0: "新增資料"
+// length: 1
+// [[Prototype]]: Array(0)
 // ----
 ```
 
@@ -653,11 +655,11 @@ ary[0] = '第一筆資料';
 ary[2] = '第二筆資料';
 console.log( ary, ary[1] );
 // 輸出結果 ----
-(3) ['第一筆資料', empty, '第二筆資料'] undefined
-0: "第一筆資料"
-2: "第二筆資料"
-length: 3
-[[Prototype]]: Array(0)
+// (3) ['第一筆資料', empty, '第二筆資料'] undefined
+// 0: "第一筆資料"
+// 2: "第二筆資料"
+// length: 3
+// [[Prototype]]: Array(0)
 // ----
 ```
 
@@ -672,13 +674,13 @@ let colors = ['red', 'yellow', 'green'];
 colors.push('blue');
 console.log( colors );
 // 輸出結果 ----
-(4) ['red', 'yellow', 'green', 'blue'] // blue 位置在最後
-0: "red"
-1: "yellow"
-2: "green"
-3: "blue"
-length: 4
-[[Prototype]]: Array(0)
+// (4) ['red', 'yellow', 'green', 'blue'] // blue 位置在最後
+// 0: "red"
+// 1: "yellow"
+// 2: "green"
+// 3: "blue"
+// length: 4
+// [[Prototype]]: Array(0)
 // ----
 ```
 
@@ -691,13 +693,13 @@ let colors = ['red', 'yellow', 'green'];
 colors.unshift('blue');
 console.log( colors );
 // 輸出結果 ----
-(4) ['blue', 'red', 'yellow', 'green'] // blue 位置在最前
-0: "blue"
-1: "red"
-2: "yellow"
-3: "green"
-length: 4
-[[Prototype]]: Array(0)
+// (4) ['blue', 'red', 'yellow', 'green'] // blue 位置在最前
+// 0: "blue"
+// 1: "red"
+// 2: "yellow"
+// 3: "green"
+// length: 4
+// [[Prototype]]: Array(0)
 // ----
 ```
 
@@ -710,11 +712,11 @@ let colors = ['red', 'yellow', 'green'];
 colors.pop();
 console.log( colors );
 // 輸出結果 ----
-(2) ['red', 'yellow'] // 最後一筆 green 被刪除
-0: "red"
-1: "yellow"
-length: 2
-[[Prototype]]: Array(0)
+// (2) ['red', 'yellow'] // 最後一筆 green 被刪除
+// 0: "red"
+// 1: "yellow"
+// length: 2
+// [[Prototype]]: Array(0)
 // ----
 ```
 
@@ -727,11 +729,11 @@ let colors = ['red', 'yellow', 'green'];
 colors.shift();
 console.log( colors );
 // 輸出結果 ----
-(2) ['yellow', 'green'] // 第一筆 red 被刪除
-0: "yellow"
-1: "green"
-length: 2
-[[Prototype]]: Array(0)
+// (2) ['yellow', 'green'] // 第一筆 red 被刪除
+// 0: "yellow"
+// 1: "green"
+// length: 2
+// [[Prototype]]: Array(0)
 // ----
 ```
 
@@ -744,11 +746,11 @@ let colors = ['red', 'yellow', 'green', 'blue'];
 colors.splice(1, 2);
 console.log( colors );
 // 輸出結果 ----
-(2) ['red', 'blue'] // 從 green 開始，刪除兩筆資料
-0: "red"
-1: "blue"
-length: 2
-[[Prototype]]: Array(0)
+// (2) ['red', 'blue'] // 從 green 開始，刪除兩筆資料
+// 0: "red"
+// 1: "blue"
+// length: 2
+// [[Prototype]]: Array(0)
 // ----
 ```
 
@@ -772,13 +774,13 @@ let myInfo = {
 };
 console.log( myInfo );
 // 輸出結果 ----
-{name: 'Mark', sex: 'male', age: 18, email: 'test@email.com', isSingle: true}
-age: 18
-email: "test@email.com"
-isSingle: true
-name: "Mark"
-sex: "male"
-[[Prototype]]: Object
+// {name: 'Mark', sex: 'male', age: 18, email: 'test@email.com', isSingle: true}
+// age: 18
+// email: "test@email.com"
+// isSingle: true
+// name: "Mark"
+// sex: "male"
+// [[Prototype]]: Object
 // ----
 ```
 
@@ -851,11 +853,11 @@ myInfo.age += 1;
 isSingle = false;
 console.log( myInfo );
 // 輸出結果 ----
-{name: 'Fuck', age: 19, isSingle: true}
-age: 19
-isSingle: true
-name: "Fuck"
-[[Prototype]]: Object
+// {name: 'Fuck', age: 19, isSingle: true}
+// age: 19
+// isSingle: true
+// name: "Fuck"
+// [[Prototype]]: Object
 // ----
 ```
 
@@ -872,10 +874,10 @@ let myInfo = {
 delete myInfo.isSingle; // 刪除 myInfo 物件中的 isSingle 屬性與值
 console.log( myInfo, myInfo.isSingle );
 // 輸出結果 ----
-{name: 'Mark', age: 18} undefined // 刪除後找不到 isSingle 相關屬性
-age: 18
-name: "Mark"
-[[Prototype]]: Object
+// {name: 'Mark', age: 18} undefined // 刪除後找不到 isSingle 相關屬性
+// age: 18
+// name: "Mark"
+// [[Prototype]]: Object
 // ----
 ```
 
@@ -900,11 +902,11 @@ let fruitDetail = [
 ]
 console.log( fruitDetail );
 // 輸出結果 ----
-(2) [{…}, {…}]
-0: {name: 'Apple', price: 30, isSoldOut: false}
-1: {name: 'banana', price: 20, isSoldOut: true}
-length: 2
-[[Prototype]]: Array(0)
+// (2) [{…}, {…}]
+// 0: {name: 'Apple', price: 30, isSoldOut: false}
+// 1: {name: 'banana', price: 20, isSoldOut: true}
+// length: 2
+// [[Prototype]]: Array(0)
 // ----
 ```
 
@@ -927,13 +929,13 @@ let fruitDetail = [
 console.log( fruitDetail[1] ); // 取得陣列 fruitDetail 的第二個物件內容
 console.log( fruitDetail[1].name ); // 指定陣列 fruitDetail 的第二個物件，並取得該物件中屬性 name 的值
 // 輸出結果1 ----
-{name: 'banana', price: 20, isSoldOut: true}
-isSoldOut: true
-name: "banana"
-price: 20
-[[Prototype]]: Object
+// {name: 'banana', price: 20, isSoldOut: true}
+// isSoldOut: true
+// name: "banana"
+// price: 20
+// [[Prototype]]: Object
 // 輸出結果2 ----
-banana
+// banana
 // ----
 ```
 
@@ -990,13 +992,13 @@ let fruit = { // 外層物件
 console.log( fruit ); // 取得物件整體內容
 console.log( fruit.isSoldOut.storeA ); // 取得物件內的物件資料
 // 輸出結果1----
-{name: 'Apple', price: 30, isSoldOut: {…}}
-isSoldOut: {storeA: true, storeB: false}
-name: "Apple"
-price: 30
-[[Prototype]]: Object
+// {name: 'Apple', price: 30, isSoldOut: {…}}
+// isSoldOut: {storeA: true, storeB: false}
+// name: "Apple"
+// price: 30
+// [[Prototype]]: Object
 // 輸出結果2----
-true
+// true
 // ----
 ```
 
@@ -1095,11 +1097,11 @@ if( myData.age >= 18 ){
 }
 console.log( myData );
 // 輸出結果 ----
-{name: 'Mark', age: 18, state: '符合入場條件'}
-age: 18
-name: "Mark"
-state: "符合入場條件"
-[[Prototype]]: Object
+// {name: 'Mark', age: 18, state: '符合入場條件'}
+// age: 18
+// name: "Mark"
+// state: "符合入場條件"
+// [[Prototype]]: Object
 // ----
 ```
 
@@ -1127,11 +1129,11 @@ if( peopleData[0].age >= 18 ){
 }
 console.log( peopleData[0] );
 // 輸出結果 ----
-{name: 'Mark', age: 18, state: '符合入場條件'}
-age: 18
-name: "Mark"
-state: "符合入場條件"
-[[Prototype]]: Object
+// {name: 'Mark', age: 18, state: '符合入場條件'}
+// age: 18
+// name: "Mark"
+// state: "符合入場條件"
+// [[Prototype]]: Object
 // ----
 ```
 
@@ -1167,8 +1169,8 @@ function showText2(){
 }
 showText();
 // 輸出結果 ----
-文字內容一
-文字內容二
+// 文字內容一
+// 文字內容二
 // ----
 ```
 
@@ -1185,8 +1187,8 @@ function calculate(num, num2){
 calculate(2, 3);
 console.log( num, num2 );
 // 輸出結果 ----
-5
-num is not defined
+// 5
+// num is not defined
 // ----
 ```
 
@@ -1294,6 +1296,409 @@ console.log( result, `目前總共計算${calcNum}次` );
 
 ---
 
+## DOM
+
+DOM（Document Object Model）簡單來說，就是將一個 HTML 的文件組成內容（標籤、文字、圖片等），以樹狀結構來表示的模型，詳細資料可參考此[連結](https://developer.mozilla.org/zh-TW/docs/Web/API/Document_Object_Model)。
+
+### querySelector
+
+透過 querySelector 可以選取網頁中的元素（標籤、class 選擇器、id 選擇器），語法格式為 `document.querySelector('網頁元素')`，以 id 選擇器為例，如下所示：
+
+```html
+<!-- HTML -->
+<botton id="btn">Botton</botton>
+```
+
+```js
+// js
+const el = document.querySelector('#btn');
+console.log(el);
+// 輸出結果 ----
+// <botton id="btn">Botton</botton>
+// ----
+```
+
+### querySelectorAll
+
+雖然 querySelector 可以選取網頁中的元素，但是相同名稱的元素存在多個時，只有第一個會被選取到，此時可以使用 querySelectorAll 來選取多個元素，範例如下：
+
+```html
+<!-- HTML -->
+<ul>
+  <li><a href="#">Link1</a></li>
+  <li><a href="#">Link2</a></li>
+  <li><a href="#">Link3</a></li>
+</ul>
+```
+
+```js
+// js
+const els = document.querySelectorAll('a');
+console.log(a);
+// 輸出結果 ----
+// NodeList[3]
+// 0: a
+// 1: a
+// 2: a
+// length: 3
+// [[Prototype]]: NodeList
+// ----
+```
+
+上述 JS 範例中得知，透過 querySelectorAll 的方式選取到所有的 a 標籤，而資料結構 `NodeList` 是一種有序的節點列表，也屬於陣列，因此可以透過中括號的方式來指定想要選取的內容，延續先前範例，如下所示：
+
+```js
+const els = document.querySelectorAll('a');
+console.log(els[2]);
+// 輸出結果為 a
+```
+
+> querySelector 會回傳一個 DOM，而 querySelector 則是回傳一個陣列。
+
+### textContent
+
+如果需要修改元素的純文字內容，可以使用 textContent，範例如下：
+
+```html
+<!-- HTML -->
+<h1 class="title">Title</h1>
+```
+
+```js
+// js
+const el = document.querySelector('.title');
+el.textContent = 'hello';
+```
+
+上述 JS 範例中，第 3 行將元素 `.title` 的文字內容 Title 修改為 Hello。
+
+### innerHTML
+
+與先前 textContent 的差異在於，innerHTML 除了純文字以外，還可以新增 HTML 標籤與相關內容，範例如下：
+
+```html
+<!-- HTML -->
+<div class="links"></div>
+```
+
+```js
+// js
+const el = document.querySelector('.links');
+el.innerHTML = `
+<ul><li>Google</li>
+<li>Yahoo</li>
+<li>Youtube</li></ul>`;
+```
+
+上述 JS 範例中，第 3 行使用 `innerHTML` 新增一組列表 `ul` 與其文字內容，而所新增的元素內容可透過**反引號**（樣板字面值）的方式來包覆。
+
+> 使用 `innerHTML` 新增標籤後，若區塊內原先已有其他標籤，舊有的標籤內容會直接被清空並取代為新增的標籤內容。
+
+此外，透過 innerHTML 所加入的標籤中，也能夠帶入變數，延續先前範例，如下所示：
+
+```js
+// 未帶入變數
+const el = document.querySelector('.links');
+el.innerHTML = `
+<ul><li>Google</li>
+<li>Yahoo</li>
+<li><a href="https://www.youtube.com/">Youtube</a></li></ul>`;
+```
+
+```js
+// 帶入變數
+const el = document.querySelector('.links');
+const myLink = 'https://www.youtube.com/';
+el.innerHTML = `
+<ul><li>Google</li>
+<li>Yahoo</li>
+<li><a href=${myLink}>Youtube</a></li></ul>`;
+```
+
+### setAttribute
+
+透過 setAttribute 可設定 HTML 標籤中的屬性，格式為 `setAttribute('標籤屬性','屬性內容')`，範例如下：
+
+```html
+<!-- HTML -->
+<a href="#" class="link">Link</a>
+```
+
+```css
+/* css */
+.text-primary {
+  color: red;
+}
+```
+
+```js
+// js
+const myLink = document.querySelector('.link');
+myLink.setAttribute('href','https://www.google.com/');
+myLink.setAttribute('class','red');
+```
+
+
+
+### 取得節點內容
+
+前面介紹到的 textContent、innerHTML、setAttribute 都是屬於寫入內容，若要取得內容可以使用以下做法：
+
+**取得標籤中的純文字**
+
+textContent 可寫入純文字，也可以取得標籤中的純文字內容，範例如下：
+
+```html
+<!-- HTML -->
+<h1 class="title">Title</h1>
+```
+
+```js
+// js
+const el = document.querySelector('.title');
+console.log(el.textContent); // 取得 h1 標籤中的純文字內容
+// 輸出結果為 Title
+```
+
+> 透過 textContent 所寫入的純文字，也可透過上述方式來取得純文字內容。
+
+**取得 HTML 標籤**
+
+innerHTML 可寫入標籤，同時也可以取得標籤，範例如下：
+
+```html
+<!-- HTML -->
+<div class="links">
+  <ul>
+    <li>Google</li>
+    <li>Yahoo</li>
+    <li>Youtube</li>
+  </ul>
+</div>
+```
+
+```js
+// js
+const el = document.querySelector('.links');
+console.log(el.innerHTML); // 取得 .links 區塊中的標籤內容
+// 輸出結果 ----
+// <ul>
+//   <li>Google</li>
+//   <li>Yahoo</li>
+//   <li>Youtube</li>
+// </ul>
+// ----
+```
+
+> 透過 innerHTML 所寫入的標籤，也可透過上述方式來取得標籤內容。
+
+**取得標籤屬性內容**
+
+標籤屬性相關內容可透過 getAttribute 來取得，範例如下：
+
+```html
+<!-- HTML -->
+<a href="https://www.google.com/" class="link">Link</a>
+```
+
+```js
+// js
+const el = document.querySelector('.link');
+console.log(el.getAttribute('href')); // 取得 a 標籤的 href 屬性內容
+console.log(el.getAttribute('class')); // 取得 a 標籤的 class 屬性名稱
+// 輸出結果 ----
+// 'https://www.google.com/'
+// 'link'
+// ----
+```
+
+### 表單值取得與修改
+
+```html
+<!-- HTML -->
+<input type="text" class="txt" value="文字內容">
+<select name="" id="city">
+  <option value="高雄">高雄</option>
+  <option value="台北">台北</option>
+</select>
+```
+
+**取得表單值**
+
+```js
+// js
+const el = document.querySelector('.txt');
+const el2 = document.querySelector('#city');
+console.log(el.value, el2.value);
+// 輸出結果為 '文字內容' '高雄'
+```
+
+**修改表單值**
+
+```js
+// js
+const el = document.querySelector('.txt');
+el.value = '修改後的文字內容'; // 重新賦予 .txt 的 value 值
+const el2 = document.querySelector('#city');
+el2.value = '台北'; // 變更預設顯示的值
+```
+
+### nodeName
+
+透過 nodeName 可以回傳目前 DOM 的節點名稱，範例如下：
+
+```html
+<!-- HTML -->
+<button type="button" class="btn">Button</button>
+```
+
+```js
+// js
+const btn = document.querySelector('.btn');
+console.log(btn.nodeName);
+// 輸出結果為 BUTTON
+```
+
+---
+
+## event 事件
+
+event 表示在一個 DOM 元素上所觸發的事件，像常見的滑鼠點擊就屬於事件的一種，其他事件可參考此[連結](https://www.w3school.com.cn/jsref/dom_obj_event.asp)。
+
+### addEventListener
+
+DOM 的觸發事件可以透過 addEventListener() 方法來進行註冊，而該方法會有三個參數，分別是事件名稱、觸發後執行的函式、捕獲或冒泡階段的執行（在此不做說明），以點擊事件 `click` 為例，範例如下：
+
+```html
+<!-- HTML -->
+<button type="button" class="btn">Button</button>
+```
+
+```js
+// js
+const btn = document.querySelector('.btn');
+btn.addEventListener('click', function(e) { // 註冊事件監聽
+  console.log('已被點擊');
+})
+// 觸發事件時輸出結果為 已被點擊
+```
+
+> 事件監聽中的函式僅在事件觸發後才會執行。
+
+事件監聽中的函式，會帶入一個參數 `e`（event），而這個參數的結構是一個物件，主要是存放與該事件有關的所有屬性與其相關資訊，以前面範例來說，當事件觸發時，回傳結果如下：
+
+```js
+PointerEvent {isTrusted: true, pointerId: 0, width: 1, height: 1, pressure: 0, …}
+```
+
+因為是物件的關係，也可以指定想要顯示的資訊，如事件觸發後，回傳觸發事件的 DOM 當前位置，做法如下：
+
+```js
+// js
+const btn = document.querySelector('.btn');
+btn.addEventListener('click', function(e) {
+  console.log(e.target);
+})
+// 觸發事件時輸出結果為 <button type="button" class="btn">Button</button>
+```
+
+### target 當前位置
+
+在上個範例有提到，事件監聽中的函式所帶入的參數 `e` 會回傳一個紀錄所有相關屬性的物件，而其中的屬性 `target` 代表觸發事件的元素位置。
+
+```html
+<!-- HTML -->
+<button type="button" class="btn">Button</button>
+```
+
+```js
+// js
+const btn = document.querySelector('.btn');
+btn.addEventListener('click', function(e) {
+  console.log(e.target);
+})
+// 觸發事件時輸出結果為 <button type="button" class="btn">Button</button>
+```
+
+但是有些時候可能會希望一個範圍內的所有元素，都能夠觸發事件，此時事件監聽的對象也會視情況而有所不同，範例如下：
+
+```html
+<!-- HTML -->
+<ul class="list">
+  <li class="item-1">item-1</li>
+  <li class="item-2">item-2</li>
+  <li class="item-3">item-3</li>
+  <li class="item-4">item-4</li>
+</ul>
+```
+
+```js
+// js
+const els = document.querySelector('.list'); // 監聽整個 ul 範圍
+els.addEventListener('click', function(e){
+  console.log(e.target); // 輸出觸發對象的純文字內容
+});
+// 觸發事件時輸出結果 ----
+// 點擊 item-1 範圍時，輸出結果為 <li class="item-1">item-1</li>
+// 點擊 item-2 範圍時，輸出結果為 <li class="item-2">item-2</li>
+// 點擊 item-3 範圍時，輸出結果為 <li class="item-3">item-3</li>
+// 點擊 item-4 範圍時，輸出結果為 <li class="item-4">item-4</li>
+// ----
+```
+
+從上方範例可得知，因為事件監聽的範圍為整個 `ul`，因此當範圍內的不同元素所佔有的範圍被點擊時，輸出的結果也會對應到不同的內容。
+
+**簡單範例應用**
+
+```html
+<!-- HTML -->
+<ul class="list">
+  <li>
+    <h1 class="title">Title</h1>
+  </li>
+  <li>
+    <input type="button" class="btn" value="Button">
+  </li>
+</ul>
+```
+
+```js
+// js
+const list = document.querySelector('.list');
+list.addEventListener('click', function(e) {
+  if(e.target.nodeName == 'INPUT') {
+    console.log('點擊到按鈕');
+  }else{
+    console.log('未點擊到按鈕', `目前點擊的對象是 ${e.target.nodeName}`);
+  }
+})
+```
+
+如上述範例，事件監聽範圍為 `.list` 區塊，當範圍內點擊事件觸發時，判斷觸發對象的節點名稱是否為 `INPUT` 而輸出對應的內容。
+
+### 取消默認行為
+
+HTML 標籤會存在一些默認行為，以 a 標籤來說，點擊標籤的連結會跳轉到指定的頁面就屬於一種默認的行為，如果要避免這些行為的話，可以使用 `e.preventDefault()` 方法來達成，範例如下：
+
+```html
+<!-- HTML -->
+<a href="https://www.google.com/">Google</a>
+```
+
+```js
+// js
+const link = document.querySelector('a');
+link.addEventListener('click', function(e) {
+  e.preventDefault();
+  console.log('未跳轉新頁面');
+})
+// 當點擊 a 標籤時，網頁不會跳轉，且輸出結果為 '未跳轉新頁面'
+```
+
+
+
+---
+
 ## 迴圈
 
 相同性質的資料若資料筆數過多，通常會透過迴圈的方式重複執行相同的事，來取得資料內容。
@@ -1306,9 +1711,9 @@ for( var i=0; i<3; i++ ){
     console.log( i );
 }
 // 輸出結果 ----
-0
-1
-2
+// 0
+// 1
+// 2
 // ----
 ```
 
@@ -1336,8 +1741,8 @@ for( var i=0; i<fruitNum; i++ ){
     console.log( fruitDetail[i].name );
 }
 // 輸出結果 ----
-Apple
-banana
+// Apple
+// banana
 // ----
 ```
 
@@ -1386,8 +1791,8 @@ for( let i=0; i<cityNum; i++ ){
     }
 }
 // 輸出結果 ----
-台南天氣為雨天
-台北天氣為雨天
+// 台南天氣為雨天
+// 台北天氣為雨天
 // ----
 ```
 
@@ -1419,3 +1824,223 @@ for( let i=0; i<people.length; i++ ){
 ```
 
 > 範例中若未加上 `break`，則輸出結果會列出所有滿足 `points >= 100` 的內容，而 break 僅能在 for 迴圈中使用。
+
+### forEach 迴圈
+
+```js
+// 範例：運作原理
+let data = ['red','green','blue'];
+data.forEach(function(item, index, array) {
+  console.log(item, index, array);
+});
+console.log('結束迴圈');
+// 輸出結果 ----
+// red 1 (3) ['blue', 'red', 'green']
+// green 2 (3) ['blue', 'red', 'green']
+// blue 0 (3) ['blue', 'red', 'green']
+// 結束迴圈
+// ----
+```
+
+上述範例中，第 3 行的部分可以看到 `forEach()` 會放入一個函式，而這個函式的執行次數，會根據陣列中的資料筆數而定，以範例來說，`data` 陣列中的資料總共有三筆，因此會執行三次，接著該函式可以帶入三個變數，分別表示**當前對象的值**、**索引值**、**陣列中所有資料**，直到陣列中的所有資料都執行完畢後，才會接著執行下方的程式碼。
+
+#### forEach 陣列應用
+
+以下為簡易的 forEach 陣列操作範例。
+
+**範例一**
+
+```js
+// 數值累加
+let data = [10,5,30,12];
+let calcNum = 0;
+data.forEach(function(item, index) {
+  calcNum += item;
+});
+console.log(calcNum);
+// 輸出結果為 57
+```
+
+如上述範例所示，宣告變數 `calcNum` 且值為 `0`，此時當 `data` 透過 `forEach` 執行第一次時，變數 `calcNum` 的值會加上陣列 `data` 中的第一個數值 `10`，接著相同的動作再進行第二次，依此類推，最終完成迴圈後的加總結果為 `57`。
+
+接下來的範例邏輯大同小異，因此不另外做說明。
+
+**範例二**
+
+```js
+// 計算 data 中所有偶數的加總
+let data = [1,2,3,4,5,6,7,8,9,10];
+let evenTotal = 0;
+data.forEach(function(item, index) {
+  if( item % 2 == 0 ) {
+    evenTotal  += item;
+  }
+});
+console.log(evenTotal);
+// 輸出結果為 30
+```
+
+**範例三**
+
+```js
+// 加總所有學校的學生人數
+let school = [
+  {
+    name: "學校A",
+    studentNum: 35
+  },{
+    name: "學校B",
+    studentNum: 32
+  }
+];
+let studentTotal = 0;
+school.forEach(function(item, index) {
+  studentTotal += item.studentNum;
+})
+console.log(studentTotal);
+// 輸出結果為 67
+```
+
+**範例四**
+
+```js
+// 計算及格與不及格人數
+let data = [
+  {
+    name: 'Marry',
+    sex: 'girl',
+    score: 85
+  },{
+    name: 'Leo',
+    sex: 'boy',
+    score: 59
+  },{
+    name: 'Alvin',
+    sex: 'boy',
+    score: 90
+  },{
+    name: 'Jack',
+    sex: 'boy',
+    score: 48
+  },{
+    name: 'sophia',
+    sex: 'girl',
+    score: 75
+  }
+];
+let boyPass = 0;
+let girlPass = 0;
+data.forEach(function(item, index) {
+  if( item.sex == 'boy' && item.score >= 60 ) {
+    boyPass ++;
+  }else if( item.sex == 'girl' && item.score >= 60 ){
+    girlPass ++;
+  }
+});
+console.log(`男生及格人數 ${boyPass} 人，女生及格人數 ${girlPass} 人`);
+// 輸出結果為 男生及格人數 1 人，女生及格人數 2 人
+```
+
+**範例五**
+
+```JS
+// 篩選出免費與投幣式的充電站
+let data = [
+  {
+    name: 'A充電站',
+    charge: '投幣式'
+  }, {
+    name: 'B充電站',
+    charge: '投幣式'
+  }, {
+    name: 'C充電站',
+    charge: '免費'
+  }
+];
+let newData = { // 整合新的資料
+  pay: [],
+  free: []
+};
+data.forEach(function(item, index) {
+  if( item.charge == '投幣式' ) {
+    newData.pay.push(item.name);
+  }else{
+    newData.free.push(item.name);
+  }
+});
+console.log(newData);
+console.log(`收費充電站總共 ${newData.pay.length} 個，免費充電站總共 ${newData.free.length} 個`);
+// 輸出結果 ----
+// {pay: Array(2), free: Array(1)}
+// free: ['C充電站']
+// pay: (2) ['A充電站', 'B充電站']
+// [[Prototype]]: Object
+// 收費充電站總共 2 個，免費充電站總共 1 個
+// ----
+```
+
+**範例六**
+
+```html
+<!-- HTML -->
+<ul class="list">
+  <li></li>
+</ul>
+```
+
+```js
+// js
+let cityStatus = [
+  {
+    city: "高雄",
+    state: "晴天"
+  },{
+    city: "台南",
+    state: "下雨"
+  },{
+    city: "台北",
+    state: "下雨"
+  }
+];
+function init() { // 初始化（預設載入）
+  const list = document.querySelector('.list');
+  let str = '';
+  cityStatus.forEach(function(item, index) {
+    let content = `<li>${item.city}目前${item.state}。</li>`
+   	str += content;
+  });
+  list.innerHTML = str;
+  console.log(list.textContent); // 測試
+}
+init(); // 網頁載入時執行
+
+// 輸出結果為 高雄目前晴天。台南目前下雨。台北目前下雨。
+```
+
+有時候會希望網頁載入時，某些程式碼就立即執行（如載入伺服器資料等），即初始化，此時可以參考上述範例 `init()` 的做法。
+
+---
+
+## AJAX
+
+AJAX（Asynchronous JavaScript and XML）是一種非同步的 JavaScript 與 XML 技術，主要的功用是能夠讓網頁在更新內容時，不需要重新載入整個頁面，達到網址不需要變動就能夠更新局部內容效果。
+
+### 網路請求
+
+網路請求（HTTP Request）簡單來說，就是使用者向伺服器發出請求後，伺服器經驗證再從資料庫取得資料，並提供給使用者的過程。以瀏覽器來說，輸入網址並按下 Enter，就屬於網路請求的一種。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---

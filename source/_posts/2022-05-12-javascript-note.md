@@ -2021,7 +2021,7 @@ init(); // 網頁載入時執行
 
 ---
 
-## AJAX
+## AJAX 簡述
 
 AJAX（Asynchronous JavaScript and XML）是一種非同步的 JavaScript 與 XML 技術，主要的功用是能夠讓網頁在更新內容時，不需要重新載入整個頁面，達到網址不需要變動就能夠更新局部內容效果。
 
@@ -2029,18 +2029,163 @@ AJAX（Asynchronous JavaScript and XML）是一種非同步的 JavaScript 與 XM
 
 網路請求（HTTP Request）簡單來說，就是使用者向伺服器發出請求後，伺服器經驗證再從資料庫取得資料，並提供給使用者的過程。以瀏覽器來說，輸入網址並按下 Enter，就屬於網路請求的一種。
 
+以下方原始碼為例：
 
+```html
+<!-- HTML -->
+<!DOCTYPE html>
+<html lang="zh-hant">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <img src="xxx/xxx/img.png"> <!-- 第二次請求 -->
+  <script src="./all.js"></script> <!-- 第三次請求 -->
+</body>
+</html>
+```
 
+當網址送出時，瀏覽器會向伺服器發出一次網路請求，若確認網址無誤，便會回傳資料庫內容給瀏覽器，接著開始載入並解析 HTML 結構，若存在如上述範例第 11 行的 `img` 圖片網址等相關內容，就會再發出一次請求，以上述範例來說，總共對伺服器發出三次網路請求。
 
+> 網路請求並非同時進行，以上述範例來說，是先載入 HTML 結構，再由上往下依序判斷程式碼。而網路請求的順序與相關內容可從開發人員工具 > Network 查看（需重新整理頁面）。
 
+### 狀態碼
 
+HTTP 狀態碼是伺服器端回應請求結果的狀態，根據不同的請求結果所回應的狀態碼也會不同，常見的狀態碼如 200（請求成功）、404（伺服器找不到請求的資源）、500（伺服器端錯誤）等。
 
+> 狀態碼可從開發人員工具 >  Network > Status 查看，HTTP 狀態碼相關內容可參考此[連結](https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Status)。
 
+### Request / Response
 
+Request 即瀏覽器發出的請求，而 Response 為伺服器端回傳的內容，兩者的相關資訊可從開發人員工具 > Network > Headers 中查看，以瀏覽器發出請求的基本資訊來說，主要會記錄在 Request Headers 中，而伺服器端的回應資訊則是會記錄在 Response Headers 內。
 
+除了請求與回傳的基本資訊外，伺服器端所回傳的主要資料內容，可以在開發人員工具 > Network > Response 中查看。
 
+### JavaScript 網路請求
 
+JavaScript 可以使用原生寫法 [XMLHttpRequert](https://developer.mozilla.org/zh-TW/docs/Web/API/XMLHttpRequest)、[Fetch](https://developer.mozilla.org/zh-TW/docs/Web/API/Fetch_API/Using_Fetch)，或是透過套件 [axios](https://github.com/axios/axios) 來發出網路請求，而本篇以 axios 來做說明。
 
+#### 環境安裝
 
+**NPM**
+
+```js
+$ npm install axios
+```
+
+**CDN**
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+```
+
+#### 語法
+
+**GET 請求**
+
+```js
+// 網址來源為 JSONPlaceholder 假資料
+axios.get('https://jsonplaceholder.typicode.com/todos/1')
+  .then(function (response) {
+    console.log(response.data); // 主要資料內容
+    console.log(response.status); // 狀態碼
+    // console.log(response.statusText);
+    // console.log(response.headers);
+    // console.log(response.config);
+  });
+// 回傳結果 ----
+// {data: {…}, status: 200, statusText: '', headers: {…}, config: {…}, …}
+// config: {transitional: {…}, transformRequest: Array(1), transformResponse: Array(1), timeout: 0, adapter: ƒ, …}
+// data: {userId: 1, id: 1, title: 'delectus aut autem', completed: false}
+// headers: {cache-control: 'max-age=43200', content-type: 'application/json; charset=utf-8', expires: '-1', pragma: 'no-cache'}
+// request: XMLHttpRequest {onreadystatechange: null, readyState: 4, timeout: 0, withCredentials: false, upload: XMLHttpRequestUpload, …}
+// status: 200
+// statusText: ""
+// [[Prototype]]: Object
+// 200
+// ----
+```
+
+使用 `get` 發出請求時，第一個參數會帶入資料的網址，當伺服器的資料成功回傳時，`.then` 函式就會執行，而回傳資料的型態會整理成物件，並帶入參數 `response` 中，因此可透過點記法來取得屬性資料。
+
+接著，嘗試將資料中的 `title` 屬性內容呈現在網頁上，如下所示：
+
+```js
+axios.get('https://jsonplaceholder.typicode.com/todos/1')
+  .then(function (response) {
+    let title = document.querySelector('.title');
+    title.textContent = response.data.title;
+  });
+```
+
+#### axios 非同步觀念
+
+```js
+let data = [];
+axios.get('url')
+  .then(function(response) {
+    data.push(response.data);
+    console.log(data, 1); // 位置 1
+})
+console.log(data, 2); // 位置 2
+// 輸出結果 ----
+// [] 2
+// [{…}] 1
+// ----
+```
+
+以上述範例來說，第 5 行將伺服器回傳的內容賦予至陣列 `data` 中，因此從位置一的輸出結果可以看到值有被賦予到陣列中，但是位置二的輸出結果卻是空陣列，而導致這種結果的原因是，當 axios 在發出網路請求時，為了避免資料過於龐大而導致網頁渲染出現延遲等問題，因此伺服器即使尚未將資料回傳至瀏覽器，後方程式碼依然會繼續執行，直到所有資料都回傳完畢，`.then` 的函式才會執行並將資料內容帶入變數 `response` 中，而從輸出結果也能看到，程式碼的執行順序是位置 2 > 位置 1。
+
+**透過函式處理非同步**
+
+```js
+let data = [];
+axios.get('url')
+  .then(function(response) {
+    data.push(response.data);
+    console.log(data, 1); // 位置 1
+    console.log('資料已回傳');
+    renderData();
+})
+function renderData() {
+  console.log(data, 2); // 位置 2
+}
+// 輸出結果 ----
+// [{…}] 1
+// 資料已回傳
+// [{…}] 2
+// ----
+```
+
+如上述範例所示，將位置 2 的程式碼透過函式 `renderData()` 包裝並寫入 `.then` 函式中，從輸出結果可看到執行順序為位置 1 > 完成資料回傳 > 位置 2，並且陣列 `data` 也成功被賦予值。
+
+原因是 `.then` 函式會等待資料回傳到瀏覽器後才執行，而函式 `renderData()` 的執行位置也在函式 `.then` 之中，所以資料回傳後就會依序執行函式中的程式碼，如此一來，就能確保伺服器的資料回傳完畢後，程式碼能夠同步被執行。
+
+**非同步處理範例**
+
+```html
+<!-- HTML -->
+<h1 class="title"></h1>
+```
+
+```js
+// js
+let data = [];
+axios.get('https://jsonplaceholder.typicode.com/todos/1')
+  .then(function(response) {
+    console.log('資料已回傳');
+    dataTitle = response.data.title;
+    renderData();
+})
+function renderData() {
+  const title = document.querySelector('.title');
+  title.textContent = dataTitle;
+}
+```
+
+上述 JS 範例中， 因為函式 `renderData()` 位置在第 7 行，而函式 `.then` 在伺服器回傳資料給瀏覽器後就依序執行，換言之，函式 `renderData()` 會在 `dataTitle` 被賦予值（第 6 行）之後執行，因此第 11 行 `title` 才能正確讀取到 `dataTitle` 的值，並渲染純文字在畫面中。
 
 ---

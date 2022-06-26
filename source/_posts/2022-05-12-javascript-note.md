@@ -1602,7 +1602,7 @@ btn.addEventListener('click', function(e) {
 // 觸發事件時輸出結果為 <button type="button" class="btn">Button</button>
 ```
 
-### target 當前位置
+### 觸發事件目標
 
 在上個範例有提到，事件監聽中的函式所帶入的參數 `e` 會回傳一個紀錄所有相關屬性的物件，而其中的屬性 `target` 代表觸發事件的元素位置。
 
@@ -1620,7 +1620,9 @@ btn.addEventListener('click', function(e) {
 // 觸發事件時輸出結果為 <button type="button" class="btn">Button</button>
 ```
 
-但是有些時候可能會希望一個範圍內的所有元素，都能夠觸發事件，此時事件監聽的對象也會視情況而有所不同，範例如下：
+### 範圍取值
+
+在項目較多的情情形下，如果都針對個別元素進行事件監聽，程式碼可能會較為繁雜，因此有時候會希望一個範圍內的所有元素都能夠觸發事件，做法如下：
 
 ```html
 <!-- HTML -->
@@ -1648,7 +1650,7 @@ els.addEventListener('click', function(e){
 
 從上方範例可得知，因為事件監聽的範圍為整個 `ul`，因此當範圍內的不同元素所佔有的範圍被點擊時，輸出的結果也會對應到不同的內容。
 
-**簡單範例應用**
+**範例一**
 
 ```html
 <!-- HTML -->
@@ -1675,6 +1677,91 @@ list.addEventListener('click', function(e) {
 ```
 
 如上述範例，事件監聽範圍為 `.list` 區塊，當範圍內點擊事件觸發時，判斷觸發對象的節點名稱是否為 `INPUT` 而輸出對應的內容。
+
+**範例二**
+
+```html
+<!-- HTML -->
+<div class="item">
+  <h3>Title</h3>
+  <p>Content</p>
+  <input type="button" class="btn" value="點擊到按鈕">
+</div>
+```
+
+```js
+// js
+const item = document.querySelector('.item');
+item.addEventListener('click', function(e) {
+  if(e.target.getAttribute('class') == 'btn') {
+    console.log(e.target.getAttribute('value'));
+  }
+})
+```
+
+上述範例則是透過 `getAttribute` 來判斷點擊到的元素標籤屬性 `class` 值是否為 `btn`，若是才會執行下方程式碼。
+
+**範例三**
+
+```html
+<!-- HTML -->
+<div class="item-list">
+  <div class="item">
+    <h3>Title-1</h3>
+    <p>Content</p>
+    <input type="button" value="按鈕1">
+  </div>
+  <div class="item">
+    <h3>Title-2</h3>
+    <p>Content</p>
+    <input type="button" value="按鈕2">
+  </div>
+  <div class="item">
+    <h3>Title-3</h3>
+    <p>Content</p>
+    <input type="button" value="按鈕3">
+  </div>
+</div>
+```
+
+```js
+//js
+const itemList = document.querySelector('.item-list');
+itemList.addEventListener('click', function(e) {
+  if(e.target.getAttribute('class') !== 'btn') {
+    return;
+  }else{
+    console.log(e.target.getAttribute('value'));
+  }
+})
+```
+
+上述範例同理範例二，只是判斷條件變成點擊到的元素標籤屬性 `class` 值若不是 `btn`，則中斷程式碼。
+
+### data- 屬性取值
+
+有些時候可能會額外加入一些需要使用的自訂屬性名稱，而為了讓這類型的屬性名稱達到通用，HTML5 新增了 `data-` 的屬性，格式為 `data-自訂名稱='自訂值'`，範例如下：
+
+```html
+<!-- HTML -->
+<ul class="list">
+  <li data-order="1">...</li>
+  <li data-order="2">...</li>
+  <li data-order="3">...</li>
+</ul>
+```
+
+```js
+// js
+const list = document.querySelector('.list');
+list.addEventListener('click', function(e) {
+  if(e.target.nodeName == 'LI') {
+    console.log(e.target.getAttribute('data-order'));
+  }
+})
+```
+
+
 
 ### 取消默認行為
 
@@ -1843,6 +1930,8 @@ console.log('結束迴圈');
 ```
 
 上述範例中，第 3 行的部分可以看到 `forEach()` 會放入一個函式，而這個函式的執行次數，會根據陣列中的資料筆數而定，以範例來說，`data` 陣列中的資料總共有三筆，因此會執行三次，接著該函式可以帶入三個變數，分別表示**當前對象的值**、**索引值**、**陣列中所有資料**，直到陣列中的所有資料都執行完畢後，才會接著執行下方的程式碼。
+
+> forEach 無法被 return 等語法中斷。
 
 #### forEach 陣列應用
 
@@ -2056,13 +2145,13 @@ AJAX（Asynchronous JavaScript and XML）是一種非同步的 JavaScript 與 XM
 
 HTTP 狀態碼是伺服器端回應請求結果的狀態，根據不同的請求結果所回應的狀態碼也會不同，常見的狀態碼如 200（請求成功）、404（伺服器找不到請求的資源）、500（伺服器端錯誤）等。
 
-> 狀態碼可從開發人員工具 >  Network > Status 查看，HTTP 狀態碼相關內容可參考此[連結](https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Status)。
+> 狀態碼可從開發人員工具 ➔  Network ➔ Status 查看，HTTP 狀態碼相關內容可參考此[連結](https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Status)。
 
 ### Request / Response
 
-Request 即瀏覽器發出的請求，而 Response 為伺服器端回傳的內容，兩者的相關資訊可從開發人員工具 > Network > Headers 中查看，以瀏覽器發出請求的基本資訊來說，主要會記錄在 Request Headers 中，而伺服器端的回應資訊則是會記錄在 Response Headers 內。
+Request 即瀏覽器發出的請求，而 Response 為伺服器端回傳的內容，兩者的相關資訊可從開發人員工具 ➔ Network ➔ Headers 中查看，以瀏覽器發出請求的基本資訊來說，主要會記錄在 Request Headers 中，而伺服器端的回應資訊則是會記錄在 Response Headers 內。
 
-除了請求與回傳的基本資訊外，伺服器端所回傳的主要資料內容，可以在開發人員工具 > Network > Response 中查看。
+除了請求與回傳的基本資訊外，伺服器端所回傳的主要資料內容，可以在開發人員工具 ➔ Network ➔ Response 中查看。
 
 ### JavaScript 網路請求
 
@@ -2085,6 +2174,8 @@ $ npm install axios
 #### 語法
 
 **GET 請求**
+
+`get` 請求只應用於**取得資料**。
 
 ```js
 // 網址來源為 JSONPlaceholder 假資料
@@ -2121,6 +2212,187 @@ axios.get('https://jsonplaceholder.typicode.com/todos/1')
   });
 ```
 
+**POST 請求**
+
+`post` 方法用於**提交指定資料**，以提供伺服器進行驗證，並依驗證結果成功與否回傳對應內容；當瀏覽器透過 `post` 發出請求或是接收伺服器回傳的資訊時，都會夾帶 headers 資訊（開發人員工具 ➔ Network ➔ Headers）以及 data 資料（開發人員工具 ➔ Network ➔ Payload）。
+
+此外，data 的資料格式又有好幾種分別，常見的資料格式（Content-Type）如下：
+
+1. application/x-www-form-urlencoded
+2. application/json
+3. multipart/form-data
+4. text/plain
+
+> axios 預設使用的資料格式為 application/json，本篇未記載其他資料格式與轉換方式（沒有研究），Content-Type 相關內容可參考此[文章](https://www.796t.com/article.php?id=192469)。
+
+```js
+// axios post 範例
+axios.post(url, {  // post(url, obj)
+    firstName: 'Amy',
+    lastName: 'Lin'
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+```
+
+若是透過 `post` 發出請求，則會帶入兩個參數，分別是網址與傳送至伺服器端的 data 資料（物件格式且屬性與伺服器相同），這個 data 會對應到瀏覽器發出請求時，所夾帶的 data 內容，而 `.then` 與 `.catch` 則分別會回傳請求成功或失敗的對應資訊。
+
+**POST 應用範例**
+
+下列為 [六角學院練習用 API](https://github.com/hexschool/nodejs_ajax_tutorial)：
+
+***註冊*** - 新增一個帳號
+
+- **Method:** `POST`
+
+- **URL:** `https://hexschool-tutorial.herokuapp.com/api/signup`
+
+- **Data:** 
+
+  ```js
+  {
+    email: 'lovef2e@hexschool.com',
+    password: '12345678'
+  }
+  ```
+
+- **Success Response:**
+
+  ```js
+  {
+    "success": true,
+    "result": {},
+    "message": "帳號註冊成功"
+  }
+  ```
+
+- **Error Response:**
+
+  ```js
+  {
+    "success": false,
+    "result": {},
+    "message": "此帳號已被使用"
+  }
+  ```
+
+***登入*** - 登入一個已存在的帳號
+
+- **Method:** `POST`
+
+- **URL:** `https://hexschool-tutorial.herokuapp.com/api/signin`
+
+- **Data:** 
+
+  ```js
+  {
+    email: 'lovef2e@hexschool.com',
+    password: '12345678'
+  }
+  ```
+
+- **Success Response:**
+
+  ```js
+  {
+    "success": true,
+    "result": {},
+    "message": "登入成功"
+  }
+  ```
+
+- **Error Response:**
+
+  ```js
+  {
+    "success": false,
+    "result": {},
+    "message": "此帳號不存在或帳號密碼錯誤"
+  }
+  ```
+
+在上述文件註冊或登入內文中，可以看到 Method（請求方法）、URL（伺服器網址路徑）、Data（傳送至伺服器的資料格式）、Success Response（請求成功的回傳內容）以及 Error Response（請求失敗的回傳內容）。
+
+> 不同伺服器的請求格式規範也會不同。
+
+以上述範例 API 為例，嘗試使用 axios 來進行註冊的 post 網路請求，如下所示：
+
+**範例一**
+
+```js
+let url = 'https://hexschool-tutorial.herokuapp.com/api/signup';
+let data = {
+  email: 'testacc123@gmail.com',
+  password: 'testpwd456'
+}
+axios.post(url, data)
+  .then(function(response) {
+    console.log(response);
+  })
+  .catch(function(error) {
+    .console.log(error);
+  })
+// 回傳結果 ----
+// config: {transitional: {…}, transformRequest: Array(1), transformResponse: Array(1), timeout: 0, adapter: ƒ, …}
+// data: {success: true, result: {…}, message: '帳號註冊成功'}
+// headers: {content-length: '59', content-type: 'application/json; charset=utf-8'}
+// request: XMLHttpRequest {onreadystatechange: null, readyState: 4, timeout: 0, withCredentials: false, upload: XMLHttpRequestUpload, …}
+// status: 200
+// statusText: "OK"
+// [[Prototype]]: Object
+// ----
+```
+
+在上述回傳資訊中可以看到各種屬性與其對應的值，狀態碼 `200` 表示請求成功，其中物件 `data` 的值與範例 API 文件的 Success Response 內容相同。
+
+**範例二**
+
+```html
+<!-- HTML -->
+<label for="account">帳號：</label>
+<input type="text" id="account">
+<label for="password">密碼：</label>
+<input type="password" id="password">
+<input type="button" id="btn" value="送出">
+```
+
+```js
+// js
+const account = document.querySelector('#account');
+const password = document.querySelector('#password');
+const btn = document.querySelector('#btn');
+
+btn.addEventListener('click', function(e) {
+  callSignUp();
+})
+
+function callSignUp() {
+  let data = {
+    email: '',
+    password: ''
+  }
+  if(account.value == '' || password.value == '') {
+    alert('帳號或密碼不得為空白！');
+    return;
+  }
+  data.email = account.value;
+  data.password = password.value;
+  
+  axios.post('https://hexschool-tutorial.herokuapp.com/api/signup', data)
+  .then(function(response) {
+    console.log(response.data);
+    alert(response.data.message);
+  })
+  .catch(function(error) {
+    console.log(error);
+  })
+}
+```
+
 #### axios 非同步觀念
 
 ```js
@@ -2137,7 +2409,7 @@ console.log(data, 2); // 位置 2
 // ----
 ```
 
-以上述範例來說，第 5 行將伺服器回傳的內容賦予至陣列 `data` 中，因此從位置一的輸出結果可以看到值有被賦予到陣列中，但是位置二的輸出結果卻是空陣列，而導致這種結果的原因是，當 axios 在發出網路請求時，為了避免資料過於龐大而導致網頁渲染出現延遲等問題，因此伺服器即使尚未將資料回傳至瀏覽器，後方程式碼依然會繼續執行，直到所有資料都回傳完畢，`.then` 的函式才會執行並將資料內容帶入變數 `response` 中，而從輸出結果也能看到，程式碼的執行順序是位置 2 > 位置 1。
+以上述範例來說，第 5 行將伺服器回傳的內容賦予至陣列 `data` 中，因此從位置一的輸出結果可以看到值有被賦予到陣列中，但是位置二的輸出結果卻是空陣列，而導致這種結果的原因是，當 axios 在發出網路請求時，為了避免資料過於龐大而導致網頁渲染出現延遲等問題，因此伺服器即使尚未將資料回傳至瀏覽器，後方程式碼依然會繼續執行，直到所有資料都回傳完畢，`.then` 的函式才會執行並將資料內容帶入變數 `response` 中，而從輸出結果也能看到，程式碼的執行順序是位置 2 ➔ 位置 1。
 
 **透過函式處理非同步**
 
@@ -2160,7 +2432,7 @@ function renderData() {
 // ----
 ```
 
-如上述範例所示，將位置 2 的程式碼透過函式 `renderData()` 包裝並寫入 `.then` 函式中，從輸出結果可看到執行順序為位置 1 > 完成資料回傳 > 位置 2，並且陣列 `data` 也成功被賦予值。
+如上述範例所示，將位置 2 的程式碼透過函式 `renderData()` 包裝並寫入 `.then` 函式中，從輸出結果可看到執行順序為位置 1 ➔ 完成資料回傳 ➔ 位置 2，並且陣列 `data` 也成功被賦予值。
 
 原因是 `.then` 函式會等待資料回傳到瀏覽器後才執行，而函式 `renderData()` 的執行位置也在函式 `.then` 之中，所以資料回傳後就會依序執行函式中的程式碼，如此一來，就能確保伺服器的資料回傳完畢後，程式碼能夠同步被執行。
 
@@ -2188,4 +2460,11 @@ function renderData() {
 
 上述 JS 範例中， 因為函式 `renderData()` 位置在第 7 行，而函式 `.then` 在伺服器回傳資料給瀏覽器後就依序執行，換言之，函式 `renderData()` 會在 `dataTitle` 被賦予值（第 6 行）之後執行，因此第 11 行 `title` 才能正確讀取到 `dataTitle` 的值，並渲染純文字在畫面中。
 
+
+
 ---
+
+## 參考資料
+
+- [前端利用formData格式進行資料上傳，前端 formData 傳值和 json 傳值的區別？](https://www.796t.com/article.php?id=192469)
+

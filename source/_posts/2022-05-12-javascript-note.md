@@ -1761,7 +1761,74 @@ list.addEventListener('click', function(e) {
 })
 ```
 
+**應用範例 - todolist**
 
+```html
+<!-- HTML -->
+<input type="text" class="txt" placeholder="輸入代辦事項">
+<input type="button" class="save" value="新增代辦事項">
+<ul class="list">
+  <li>
+    <!--
+    <p>待辦事項</p>
+    <input type="button" class="delete" value="刪除">
+    -->
+  </li>
+</ul>
+```
+
+```js
+// js
+const txt = document.querySelector(".txt");
+const save = document.querySelector(".save");
+const list = document.querySelector(".list");
+
+let data = [
+  // {
+  //   content: "待辦事項"
+  // }
+];
+// 初始畫面渲染
+function renderData() {
+  const list = document.querySelector(".list");
+  let str = "";
+  data.forEach(function (item, index) { // 帶入參數 index 並渲染為 data-order 的屬性值
+    str += `
+  <li>
+    <p>${item.content}</p>
+    <input type="button" class="delete" data-order="${index}" value="刪除">
+  </li>`;
+  });
+  list.innerHTML = str;
+}
+renderData();
+
+// 新增邏輯
+save.addEventListener("click", function (e) {
+  if (txt.value == "") {
+    return;
+  }
+  let addData = {};
+  addData.content = txt.value;
+  data.push(addData);
+  renderData(); // 新增資料後再次渲染畫面
+  txt.value = "";
+});
+
+// 刪除邏輯
+list.addEventListener("click", function (e) {
+  if (e.target.nodeName !== "INPUT") {
+    return;
+  }
+  let orderNum = e.target.getAttribute("data-order");
+  data.splice(orderNum, 1);
+  renderData(); // 刪除資料後再次渲染畫面
+});
+```
+
+以上範例使用了先前提到的範圍取值方式來進行事件監聽，並且運用自訂的屬性 `data-` 來搭配 `forEach` 迴圈中的參數 `index`，來達到刪除資料功能。
+
+在 JS 程式碼的 19 行組合的字串樣板中加入了自訂屬性 `data-`，而屬性值使用參數來帶入 `data` 的 `index`，因此渲染出來的標籤屬性 `data-order` 的值都會帶入索引值，如此一來，刪除邏輯的部分就能夠透過 `.splice` 的方式來刪除所點擊的項目。
 
 ### 取消默認行為
 
@@ -2460,7 +2527,9 @@ function renderData() {
 
 上述 JS 範例中， 因為函式 `renderData()` 位置在第 7 行，而函式 `.then` 在伺服器回傳資料給瀏覽器後就依序執行，換言之，函式 `renderData()` 會在 `dataTitle` 被賦予值（第 6 行）之後執行，因此第 11 行 `title` 才能正確讀取到 `dataTitle` 的值，並渲染純文字在畫面中。
 
+---
 
+## 箭頭函式
 
 ---
 

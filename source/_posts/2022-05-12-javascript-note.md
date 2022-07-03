@@ -1853,11 +1853,11 @@ link.addEventListener('click', function(e) {
 
 ---
 
-## 迴圈
+## 迴圈/陣列操作
 
-相同性質的資料若資料筆數過多，通常會透過迴圈的方式重複執行相同的事，來取得資料內容。
+相同性質的資料若資料筆數過多，通常會透過迴圈迭代的方式，來重複執行相同的動作以取得或組合資料內容，而迴圈常聽到的迭代指的是重複過程的意思，一次迭代表示一次的重複過程。
 
-### for 迴圈
+### for 
 
 ```js
 // 範例：運作原理
@@ -1875,7 +1875,7 @@ for( var i=0; i<3; i++ ){
 
 > for 迴圈的小括號中使用 `var` 宣告變數 `i` 時，該變數會屬於全域變數。
 
-#### for 結合陣列
+#### for 陣列操作範例
 
 **情境一**
 
@@ -1922,7 +1922,9 @@ console.log( `全部學生總共有${studentTotal}人` );
 // 輸出結果為 全部學生總共有67人
 ```
 
-#### for 結合 if
+**情境三**
+
+加入 if 條件判斷
 
 ```js
 // 範例：列出正在下雨的城市
@@ -1979,7 +1981,7 @@ for( let i=0; i<people.length; i++ ){
 
 > 範例中若未加上 `break`，則輸出結果會列出所有滿足 `points >= 100` 的內容，而 break 僅能在 for 迴圈中使用。
 
-### forEach 迴圈
+### forEach
 
 ```js
 // 範例：運作原理
@@ -1998,11 +2000,9 @@ console.log('結束迴圈');
 
 上述範例中，第 3 行的部分可以看到 `forEach()` 會放入一個函式，而這個函式的執行次數，會根據陣列中的資料筆數而定，以範例來說，`data` 陣列中的資料總共有三筆，因此會執行三次，接著該函式可以帶入三個變數，分別表示**當前對象的值**、**索引值**、**陣列中所有資料**，直到陣列中的所有資料都執行完畢後，才會接著執行下方的程式碼。
 
-> forEach 無法被 return 等語法中斷。
+> forEach 無法被 return 等語法中斷（無法中斷迴圈執行）。
 
-#### forEach 陣列應用
-
-以下為簡易的 forEach 陣列操作範例。
+#### forEach 陣列操作範例
 
 **範例一**
 
@@ -2175,6 +2175,283 @@ init(); // 網頁載入時執行
 
 有時候會希望網頁載入時，某些程式碼就立即執行（如載入伺服器資料等），即初始化，此時可以參考上述範例 `init()` 的做法。
 
+>  大部分的陣列處理方法都會回傳一個結果，而 forEach 不會。
+
+### map
+
+```js
+// 範例：運作原理
+const arr = [1, 2, 3]; // 原陣列
+const newArr = arr.map(function(item, index, array) { // 產生的新陣列
+  return item * 5;
+})
+console.log(arr, newArr);
+// 輸出結果為 [1, 2, 3] [5, 10, 15]
+```
+
+使用 `map` 在處理陣列時，會將原始陣列中的內容經過逐一運算並**回傳結果**，再將運算結果重新組合一個新的陣列，因此兩陣列長度會相同，如上述範例，將原陣列 `arr` 進行 `map` 陣列處理後所回傳的結果，賦予至新的陣列 `newArr` 中，而原陣列並沒有變化。
+
+#### map 陣列操作範例
+
+**範例一**
+
+```js
+// 將原陣列判斷後的結果賦予至物件中，並重組成新陣列
+const arr = [20, 18, 28];
+const newArr = arr.map(function(item) {
+  let calcNum = {};
+  calcNum.result = item > 20;
+  return calcNum;
+})
+console.log(newArr);
+// 輸出結果為 [{result: false}, {result: false}, {result: ture}]
+```
+
+補充說明：`map` 與 `forEach` 雖然都是陣列處理的方法，但是以 `map` 來說，需要使用 `return` 來回傳計算後的結果，即使不加上 `return` 也會回傳 `undefined`；而 `forEach` 無法使用 `return`，換句話說就是**不會回傳任何東西**，因此上述範例若改用 `forEach` 來處理陣列，會因為陣列本身並沒有被賦予值，所以輸出結果會是 `undefined`。
+
+以使用時機來說，`forEach` 較適合用於需要逐一將陣列中的內容進行運算，或是組合成自訂的資料格式（HTML、物件等）時，但若是需要一個所有元素皆為原陣列回傳運算結果的新陣列，則較適合使用 `map`。
+
+**範例二**
+
+```js
+// 將原陣列的價格進行運算後新增屬性，並賦予至新陣列中
+const foodList = [
+  {
+    name: "豚骨拉麵",
+    price: 130
+  },{
+    name: "親子丼飯",
+    price: 80
+  }
+];
+const newList = foodList.map(function(item, index) {
+  item.newPrice = item.price * 0.8; // 新增屬性
+  return item;
+});
+console.log(newList);
+// 輸出結果為 [{name: '豚骨拉麵', price: 130, newPrice: 104}, {name: '親子丼飯', price: 80, newPrice: 64}]
+```
+
+#### join 陣列轉字串
+
+```js
+// 範例：運作原理
+let arr = ['Red', 'Green', 'Blue'];
+console.log(arr.join(), arr.join(''), arr.join('-'));
+// 輸出結果 ----
+// Red,Green,Blue   // 不加入任何內容（預設為 ","）
+// RedGreenBlue     // 加入空字串
+// Red-Green-Blue   // 加入 "-" 符號
+// ----
+```
+
+`join()` 可將陣列中的分隔符號更改為自訂的內容，並將該陣列轉換為一個字串，格式為 `array.jion(分隔符號/其他內容)`，預設（不加入任何內容）為半形逗號。
+
+**範例**
+
+```html
+<!-- HTML -->
+<ul class="list">
+  <li></li>
+</ul>
+```
+
+```js
+// js
+const foodList = [
+  {
+    name: "豚骨拉麵",
+    price: 130
+  },{
+    name: "親子丼飯",
+    price: 80
+  }
+];
+const list = document.querySelector('.list');
+const newList = foodList.map(function(item, index) {
+  item.newPrice = item.price * 0.8; // 新增屬性
+  return `<li>${item.name} 目前特價 ${item.newPrice} 元</li>`;
+});
+list.innerHTML = newList; // 渲染到頁面中
+console.log(newList);
+// 輸出結果為 ['<li>豚骨拉麵 目前特價 104 元</li>', '<li>親子丼飯 目前特價 64 元</li>']
+```
+
+以上範例將原陣列 `foodList` 中每筆資料的屬性 `price` 進行運算，並重組成一個新陣列 `newList`，最後希望將新陣列的內容組成字串，並透過 `innerHTML` 渲染到網頁上，但是如輸出結果所示，`map` 會產生一個陣列，因此每個項目之間會存在半形逗號，而這些逗號也會跟著被渲染到網頁中，此時就能使用 `join` 方法來將陣列轉為字串 。
+
+在上述範例 `map` 方法末端加入 `.join('')`，做法如下所示，此時陣列 `newList` 中的所有半形逗號就會替換為空字串，而陣列本身也會被轉為一個字串，在渲染頁面時便不會出現半形逗號。
+
+```js
+const newList = foodList.map(function(item, index) {
+  item.newPrice = item.price * 0.8;
+  return `<li>${item.name} 目前特價 ${item.newPrice} 元</li>`;
+}).join(''); // 陣列轉字串
+list.innerHTML = newList;
+console.log(newList);
+// 輸出結果為 '<li>豚骨拉麵 目前特價 104 元</li><li>親子丼飯 目前特價 64 元</li>'
+```
+
+### filter
+
+```js
+// 範例：運作原理
+let data = [
+  {
+    name: 'Marry',
+    score: 85
+  },{
+    name: 'Leo',
+    score: 59
+  },{
+    name: 'Alvin',
+    score: 90
+  }
+];
+let newData = data.filter(function(item, index, array) {
+  return item.score >= 60;
+});
+console.log(newData);
+// 輸出結果為 [{name: 'Marry', score: 85}, {name: 'Alvin', score: 90}]
+```
+
+使用 `filter` 在處理陣列時，會將原陣列進行**條件判斷**並回傳為 `true` 的項目，再將這些項目組合成一個新陣列且不影響原陣列，如上述範例，篩選出符合條件的學生，並組成新陣列 `newData`，因此 `filter` 適合使用在需要針陣列中的項目進行條件篩選的情況下。
+
+### find
+
+```js
+// 範例：運作原理
+let data = [
+  {
+    name: 'Marry',
+    score: 85
+  },{
+    name: 'Leo',
+    score: 59
+  },{
+    name: 'Alvin',
+    score: 90
+  }
+];
+let newData = data.find(function(item, index, array) {
+  return item.score >= 60;
+});
+console.log(newData);
+// 輸出結果為 [{name: 'Marry', score: 85}]
+```
+
+前面提到 `filter` 會回傳原陣列所有符合條件的項目並組合成新陣列，而 `find` 與 `filter` 相似，差別在於 `find` **只回傳一次**結果，並且是原陣列中**第一筆**為 `true` 的項目，如上述範例，雖然 `item[0]`、`item[2]` 都符合 `>=60` 條件，但是從輸出結果中可以發現，僅 `item[0]` 有被回傳。
+
+### findIndex
+
+```js
+// 範例：運作原理
+let data = [
+  {
+    name: 'Marry',
+    product: '茄子',
+    orderNum: 130450
+  },{
+    name: 'Leo',
+    product: '榴槤',
+    orderNum: 100257
+  },{
+    name: 'Alvin',
+    product: '三色豆',
+    orderNum: 100595
+  }
+];
+const orderId = data.findIndex(function(item) {
+  return item.orderNum == '100595';
+})
+console.log(`索引值為 ${orderId}`);
+console.log(`顧客姓名 ${data[orderId].name}，購買品項 ${data[orderId].product}`);
+// 輸出結果 ----
+// 索引值為 2
+// 顧客姓名 Alvin，購買品項 三色豆
+// ----
+```
+
+`findIndex` 與 `find` 兩者都**只回傳一次**結果，且回傳原陣列中**第一筆**符合判斷條件（為 true）的項目，差別在於 `findIndex` 只回傳該項目的**索引值**，如上述範例所示，透過判斷訂單編號來回傳對應的索引值，並根據索引值取得其他相關屬性內容。
+
+### reduce
+
+```js
+// 範例：運作原理
+const num = [1, 2, 3, 4, 5];
+let totalNum = num.reduce(function(accumulator, currentValue, currentIndex, array) {
+
+  // accumulator：  每次迭代/累加的回傳值
+  // currentValue： 當前迭代的項目
+  // accumulator：  當前迭代的項目索引值（可有可無）
+  // array：        陣列本身（可有可無）
+
+  console.log(`累加值 ${accumulator}，當前值 ${currentValue}，回傳結果 ${currentValue + accumulator}`);
+  return accumulator + currentValue;
+}) // initialValue：初始值/第一次傳入 accumulator 的值（可有可無/預設為陣列第一筆項目）
+console.log(totalNum);
+// 輸出結果 ----
+// 累加值 1，當前值 2，回傳結果 3
+// 累加值 3，當前值 3，回傳結果 6
+// 累加值 6，當前值 4，回傳結果 10
+// 累加值 10，當前值 5，回傳結果 15
+// 15
+// ----
+```
+
+先前提到的陣列處理方法（`map`、`filter` 等）都是回傳一個陣列，相較之下 `reduce` 方法在邏輯與結構都有較大的差異，`reduce` 會回傳一個值而非陣列，而 `reduce` 能讓每次迭代回傳的值再次運算。
+
+如上述範例，`reduce` 需要代入兩個參數 `accumulator` 與 `currentValue`，分別表示**累計值**與**當前的項目**，範例中嘗試將陣列 `num` 中的所有值進行加總並回傳到變數 `totalNum`，過程中第 11 行的部分將兩個參數相加並 `return`，而這邊因為沒有加入初始值（`reduce` 函式結尾處）的關係，所以參數 `accumulator` 預設會代入陣列第一筆項目的值 `1`，此時因為參數 `currentValue` 會與前一個項目的值進行累加，前一個值取自第一筆項目，因此當前項目 `currentValue` 就會是第二筆，代入當前項目的值 `2` 之後，就開始進行第一次迴圈，運算的結果值會傳入累加值 `accumulator` 再以相同過程進行下一次迴圈，依此類推。
+
+> 可以理解成每次 `return` 的值都會傳入累計值 `accumulator` 當中，再以這個累計值執行下一次的迴圈，且累計值與當前項目兩者存在**關聯性**，詳細資訊可參考此[文章](https://www.casper.tw/javascript/2017/06/29/es6-native-array/#Array-prototype-reduce)、[MDN](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce)。
+
+### sort
+
+```js
+// 範例：運作原理
+const arr = [17, 3, 22, 15];
+arr.sort(function(a, b) {
+  console.log(`比較 a: ${a}，b: ${b}`);
+});
+console.log(arr);
+// 輸出結果 ----
+// 比較 a: 3，b: 17
+// 比較 a: 22，b: 3
+// 比較 a: 15，b: 22
+// ----
+```
+
+`sort` 可以將陣列中的項目進行排序，如果要針對**數字**進行排序，需要在括號中加入一個函式（compareFunction）與兩個參數，然後會根據兩個參數的回傳值來進行排序；從上述的輸出結果可以發現，函式中的參數位置 `a` 皆為順序在後的值、`b` 皆為順序在前的值，且每次都是後者去與前者進行比較，在參數 `a` 與 `b` 比較時，會根據以下邏輯來進行排序：
+
+- 若函式的回傳值小於 0，`a` 會排在 `b` 前面。
+- 若函式的回傳值大於 0，`b` 會排在 `a` 前面。
+- 若函式的回傳值為 0，`a` 與 `b` 位置不變（兩個相同值的排序位置，會根據瀏覽器而有所差異）。
+
+如此一來，在比較陣列中的數值時，就可以透過將兩個參數相減，並根據回傳的結果是正值或負值來自訂排序的順序。
+
+**範例**
+
+```js
+// 由小到大排序
+const arr = [17, 3, 22, 15];
+const newArr = arr.sort(function(a, b) {
+  console.log(`${a} - ${b} = ${a-b}`);
+  return a - b;
+})
+console.log(newArr);
+// 輸出結果 ----
+// 3 - 17 = -14 // 結果為負值，因此 a（17）排在 b（3）之前，後面依此類推。
+// 22 - 3 = 19
+// 22 - 17 = 5
+// 15 - 17 = -2
+// 15 - 3 = 12
+// [3, 15, 17, 22]
+// ----
+```
+
+上述輸出結果能看到每次在比較時，參數 `a` 與 `b` 所代入的值，且同時會根據回傳結果排序兩數值的前後順序。
+
+> 使用 `sort()` 時，若不加入 compareFunction，陣列中的數值會被轉換成字串，並以 Unicode 編碼位置進行比較來排序，本篇僅論數字的排序方法，相關內容可參考 [MDN](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)。
+
 ---
 
 ## AJAX 簡述
@@ -2206,7 +2483,7 @@ AJAX（Asynchronous JavaScript and XML）是一種非同步的 JavaScript 與 XM
 
 當網址送出時，瀏覽器會向伺服器發出一次網路請求，若確認網址無誤，便會回傳資料庫內容給瀏覽器，接著開始載入並解析 HTML 結構，若存在如上述範例第 11 行的 `img` 圖片網址等相關內容，就會再發出一次請求，以上述範例來說，總共對伺服器發出三次網路請求。
 
-> 網路請求並非同時進行，以上述範例來說，是先載入 HTML 結構，再由上往下依序判斷程式碼。而網路請求的順序與相關內容可從開發人員工具 > Network 查看（需重新整理頁面）。
+> 網路請求並非同時進行，以上述範例來說，是先載入 HTML 結構，再由上往下依序判斷程式碼。而網路請求的順序與相關內容可從開發人員工具 ➔ Network 查看（需重新整理頁面）。
 
 ### 狀態碼
 
@@ -2536,4 +2813,5 @@ function renderData() {
 ## 參考資料
 
 - [前端利用formData格式進行資料上傳，前端 formData 傳值和 json 傳值的區別？](https://www.796t.com/article.php?id=192469)
-
+- [JavaScript 陣列處理方法 [filter(), find(), forEach(), map(), every(), some(), reduce()]](https://www.casper.tw/javascript/2017/06/29/es6-native-array/#Array-prototype-reduce)
+- [JavaScript Array sort() (陣列排序)](https://www.fooish.com/javascript/array/sort.html#%E8%87%AA%E5%AE%9A%E7%BE%A9%E6%8E%92%E5%BA%8F-custom-sort)

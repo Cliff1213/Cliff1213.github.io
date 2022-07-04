@@ -28,12 +28,12 @@
   gtag('js', new Date());
 
   gtag('config', 'G-106NQBHYEM');
-</script><meta name="description" content="最近開始接觸 JS 套件，但在過程中因為版本之間的相容問題，幾乎是讓我踩到一堆深不見底的坑，後來開始找了很多資料並參考其他開發者使用以及管理套件的方式，然而相關資料都離不開 NPM，於是決定來找它泡茶一下，順便紀錄一下過程中學到的知識。">
+</script><meta name="description" content="學習 JavaScript 套件過程讓我懷疑人生，多虧了套件版本這個巨坑，才讓我有想要先學 NPM 的想法，真是謝了。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NPM 筆記">
+<meta property="og:title" content="NPM 簡述">
 <meta property="og:url" content="https://cliff1213.github.io/2022-02-07-npm-note/index.html">
-<meta property="og:site_name" content="Cliff Blog">
-<meta property="og:description" content="最近開始接觸 JS 套件，但在過程中因為版本之間的相容問題，幾乎是讓我踩到一堆深不見底的坑，後來開始找了很多資料並參考其他開發者使用以及管理套件的方式，然而相關資料都離不開 NPM，於是決定來找它泡茶一下，順便紀錄一下過程中學到的知識。">
+<meta property="og:site_name" content="Cliff 筆記空間">
+<meta property="og:description" content="學習 JavaScript 套件過程讓我懷疑人生，多虧了套件版本這個巨坑，才讓我有想要先學 NPM 的想法，真是謝了。">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://i.imgur.com/O3WVkU4.png">
 <meta property="og:image" content="https://i.imgur.com/zOGuPaZ.png">
@@ -41,8 +41,8 @@
 <meta property="og:image" content="https://i.imgur.com/yjjj8ZV.png">
 <meta property="og:image" content="https://i.imgur.com/n1jRC8k.png">
 <meta property="article:published_time" content="2022-02-06T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-03-07T14:48:43.215Z">
-<meta property="article:author" content="Cliff Chu">
+<meta property="article:modified_time" content="2022-07-04T15:27:27.143Z">
+<meta property="article:author" content="Cliff">
 <meta property="article:tag" content="NPM">
 <meta property="article:tag" content="學習筆記">
 <meta name="twitter:card" content="summary">
@@ -53,10 +53,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://cliff1213.github.io/2022-02-07-npm-note/","path":"2022-02-07-npm-note/","title":"NPM 筆記"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://cliff1213.github.io/2022-02-07-npm-note/","path":"2022-02-07-npm-note/","title":"NPM 簡述"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>NPM 筆記 | Cliff Blog - 個人技術部落格</title>
+<title>NPM 簡述 | Cliff 筆記空間 - 個人技術部落格</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-106NQBHYEM"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-106NQBHYEM","only_pageview":false}</script>
@@ -88,7 +88,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <p class="site-title">Cliff Blog</p>
+      <p class="site-title">Cliff 筆記空間</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">個人技術部落格</p>
@@ -172,9 +172,9 @@
 
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Cliff Chu"
+    <img class="site-author-image" itemprop="image" alt="Cliff"
       src="/images/new_avatar.png">
-  <p class="site-author-name" itemprop="name">Cliff Chu</p>
+  <p class="site-author-name" itemprop="name">Cliff</p>
   <div class="site-description" itemprop="description">前端學習筆記</div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
@@ -197,14 +197,6 @@
       </div>
   </nav>
 </div>
-  <div class="links-of-author site-overview-item animated">
-      <span class="links-of-author-item">
-        <a href="https://github.com/Cliff1213" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Cliff1213" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="mailto:wave99487chu@gmail.com" title="E-Mail → mailto:wave99487chu@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
-      </span>
-  </div>
 
 
 
@@ -244,16 +236,16 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/new_avatar.png">
-      <meta itemprop="name" content="Cliff Chu">
+      <meta itemprop="name" content="Cliff">
       <meta itemprop="description" content="前端學習筆記">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cliff Blog">
+      <meta itemprop="name" content="Cliff 筆記空間">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          NPM 筆記
+          NPM 簡述
         </h1>
 
         <div class="post-meta-container">
@@ -271,7 +263,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2022-03-07 22:48:43" itemprop="dateModified" datetime="2022-03-07T22:48:43+08:00">2022-03-07</time>
+      <time title="修改時間：2022-07-04 23:27:27" itemprop="dateModified" datetime="2022-07-04T23:27:27+08:00">2022-07-04</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -292,7 +284,7 @@
 <!-- 移除文章字數統計
       <span class="post-meta-item-text">文章字數：</span>
 -->
-      <span>1.9k</span>
+      <span>1.8k</span>
     </span>
     <span class="post-meta-item" title="閱讀時間">
       <span class="post-meta-item-icon">
@@ -312,7 +304,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>最近開始接觸 JS 套件，但在過程中因為版本之間的相容問題，幾乎是讓我踩到一堆深不見底的坑，後來開始找了很多資料並參考其他開發者使用以及管理套件的方式，然而相關資料都離不開 NPM，於是決定來找它泡茶一下，順便紀錄一下過程中學到的知識。</p>
+        <blockquote>
+<p><em>學習 JavaScript 套件過程讓我懷疑人生，多虧了套件版本這個巨坑，才讓我有想要先學 NPM 的想法，真是謝了。</em></p>
+</blockquote>
 <span id="more"></span>
 
 <hr>
@@ -400,11 +394,11 @@
 <div class="post-copyright">
 <ul>
   <li class="post-copyright-author">
-      <strong>作者： </strong>Cliff Chu
+      <strong>作者： </strong>Cliff
   </li>
   <li class="post-copyright-link">
       <strong>文章連結：</strong>
-      <a href="https://cliff1213.github.io/2022-02-07-npm-note/" title="NPM 筆記">https://cliff1213.github.io/2022-02-07-npm-note/</a>
+      <a href="https://cliff1213.github.io/2022-02-07-npm-note/" title="NPM 簡述">https://cliff1213.github.io/2022-02-07-npm-note/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 許可協議。轉載請註明出處！
@@ -421,13 +415,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022-01-20-git-note/" rel="prev" title="Git 指令概述">
-                  <i class="fa fa-chevron-left"></i> Git 指令概述
+                <a href="/2022-01-20-git-note/" rel="prev" title="Git 學習筆記">
+                  <i class="fa fa-chevron-left"></i> Git 學習筆記
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022-03-02-font-family/" rel="next" title="CSS Font-Family 潛規則">
-                  CSS Font-Family 潛規則 <i class="fa fa-chevron-right"></i>
+                <a href="/2022-03-02-font-family/" rel="next" title="Font-Family 規則">
+                  Font-Family 規則 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -462,7 +456,7 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Cliff Chu / 轉貼須註明出處ㄛ！</span>
+  <span class="author" itemprop="copyrightHolder">Cliff / 轉貼須註明出處ㄛ！</span>
 </div>
 
     </div>

@@ -7,7 +7,7 @@ tags:
 categories: JavaScript
 ---
 
-這篇內容只是記錄 Swiper 套件的一些相關常見配置。
+> *這篇內容記錄 Swiper 套件的一些相關常見配置。*
 
 <!--more-->
 

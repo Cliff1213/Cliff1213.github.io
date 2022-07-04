@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Cliff Blog
+title: Cliff 筆記空間
 subtitle: '個人技術部落格'
 description: '前端學習筆記'
 keywords:
-author: Cliff Chu
+author: Cliff
 language: zh-TW
 timezone: ''
 
@@ -132,4 +132,4 @@ deploy:
   repo: https://github.com/Cliff1213/cliff1213.github.io.git
   branch: master
   ignore_hidden: false
-  message: "add new post"
+  message: "modified config"

@@ -1194,18 +1194,20 @@ console.log( num, num2 );
 
 上述範例在執行函式 `calculate` 時，代入了 `2`、`3` 兩個參數，此時第 2 行開始運算並得出結果為 `5`，而在函式外嘗試取得 `num` 的值後，輸出結果為顯示找不到相關內容，由此可知函式所代入的參數只能在該函式中作運用。
 
-### return 回傳結果
+### return 回傳結果到函式外部
 
-前面提到函式所代入的參數只能使用在該函式中，但如果要在函式外做使用，可以透過 `return` 來將**函式運算後的結果**回傳到指定的地點，範例如下：
+前面提到函式所代入的參數只能使用在該函式中，但如果要在函式外做使用，可以透過 `return` 來將**函式運算後的結果**傳遞到函式的外部，此時就可以透過宣告變數等方式，來接收被傳遞到函式外的值，範例如下：
 
 ```js
 function calculate(num, num2){
-    return num + num2; // 將運算結果回傳到第 4 行
+    return num + num2; // 將運算結果回傳到函式之外（第 4 行）
 }
 let result = calculate(5, 10);
 console.log( result );
 // 輸出結果為 15
 ```
+
+> 換句話說，`calculate(5, 10)` 可以直接當作 `15`。
 
 除了上述範例在函式內直接回傳 `num + num2` 的運算結果之外，也可以先將運算結果賦予到一變數中，再透過 `return` 回傳**該變數的值**，如下所示：
 
@@ -1236,7 +1238,7 @@ console.log( result );
 // 輸出結果為 15
 ```
 
-### return 使用情境
+### return 應用範例
 
 **情境一**
 
@@ -2806,7 +2808,107 @@ function renderData() {
 
 ---
 
-## 箭頭函式
+## 函式-延伸內容
+
+### 陳述式與表達式
+
+JavaScript 函式建立的方式有以下兩種：
+
+**函式陳述式**
+
+```js
+function statement() {
+  console.log('Hello!');
+}
+statement();
+// 輸出結果為 Hello!
+```
+
+以上範例是先前提到的類型，這種直接具名的形式稱為**函式陳述式**（Function Statement），這種直接宣的告函式，可以在函式被宣告之前呼叫，如下所示：
+
+```js
+statement(); // 在函式註冊之前執行
+function statement() {
+  console.log('Hello!');
+}
+// 輸出結果為 Hello!
+```
+
+**函式表達式**
+
+```js
+const expression = function() {
+  console.log('Hello!');
+}
+expression();
+```
+
+另一種形式是將一個匿名的函式指定到一個變數中，這種形式稱為**函式表達式**（Function Expression），與陳述式的差別在於，表達式函式的呼叫位置如果在該函式被建立之前，該函式就無法執行，如下所示：
+
+```js
+expression(); // 在函式註冊之前執行
+const expression = function() {
+  console.log('Hello!');
+}
+// 顯示錯誤
+```
+
+> 函式陳述式與表達式的運行差異與 [Hosting](https://developer.mozilla.org/zh-TW/docs/Glossary/Hoisting)（提升）有關，而 `var` 的提升現象與 `let`、`const` 也有所差異，這裡不討論。
+
+### 箭頭函式
+
+一般函式的組成結構會有關鍵字 `function` 加上函式名稱、`()` 中的參數列表、`{}` 中的主要程式碼，範例如下：
+
+```js
+// 普通函式一
+function funcName(num, num2) {
+  return num + num2;
+}
+```
+
+```js
+// 普通函式二
+let funcName = function(num, num2) {
+  return num + num2;
+}
+```
+
+而箭頭函式在寫法上相較一般函式來得簡短，以上述範例來說，箭頭函式的寫法如下：
+
+```js
+// 箭頭函式
+let funcName = (num, num2) => {
+  return num + num2;
+}
+```
+
+上述範例可以看到關鍵字 `function` 被省略，而參數列表與主要程式碼之間加入了 `=>` 符號，用來表示這是一個箭頭函式。
+
+除此之外，箭頭函式的主要程式碼中，如果**只存在一個回傳值敘述**（return）而沒有其他程式碼時，可以將回傳值寫入一個小括號中，或是**只寫回傳值**，而大括號、`return` 與回傳值的結尾分號可以省略，以下方範例來說，兩者結果相同：
+
+```js
+// 箭頭函式（簡化）
+let funcName = (num, num2) => (num + num2);
+let funcName = (num, num2) => num + num2;
+```
+
+最後，如果箭頭函式的參數只存在一個，則包覆參數列表的小括號也能省略，範例如下：
+
+```js
+let funcName = num => num * num;
+```
+
+> 箭頭函式若沒有參數，依然需要加上一組小括號來表示參數列表。
+
+這裡補上不可以簡化的箭頭函式，範例如下：
+
+```js
+// 箭頭函式（不可簡化）
+let funcName = (num, num2) => {
+  let result = num + num2; // 存在除了 return 以外的程式碼
+  return result;
+}
+```
 
 ---
 

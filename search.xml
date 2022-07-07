@@ -525,9 +525,9 @@
 <span id="more"></span>
 
 <hr>
-<h2 id="環境安裝"><a href="#環境安裝" class="headerlink" title="環境安裝"></a>環境安裝</h2><p>在進入正題之前，必須先根據電腦的作業系統安裝 <a href="https://git-scm.com/">Git</a> 的環境，安裝成功後在 Git 資料夾中會有 “Git Bash” 的應用程式，可以透過它來操作 Git 指令；或是使用電腦本身就有的命令提示字元 / 終端機也可以，依使用者習慣為主。</p>
+<h2 id="環境安裝"><a href="#環境安裝" class="headerlink" title="環境安裝"></a>環境安裝</h2><p>在進入正題之前，必須先根據電腦的作業系統安裝 <a href="https://git-scm.com/">Git</a> 的環境，安裝成功後在 Git 資料夾中會有 “Git Bash” 的應用程式，可以透過它來操作 Git 指令；或是使用自己習慣的終端機也可以。</p>
 <hr>
-<h2 id="終端機基本指令"><a href="#終端機基本指令" class="headerlink" title="終端機基本指令"></a>終端機基本指令</h2><p>使用 Git 時，通常還會搭配一些終端機的基本指令去輔助操作，常用的 command line 指令如下：</p>
+<h2 id="終端機基本指令"><a href="#終端機基本指令" class="headerlink" title="終端機基本指令"></a>終端機基本指令</h2><p>使用 Git 時，通常還會搭配一些終端機的基本指令去輔助操作，常用的指令如下：</p>
 <h3 id="移動到指定目錄"><a href="#移動到指定目錄" class="headerlink" title="移動到指定目錄"></a><strong>移動到指定目錄</strong></h3><p>指令：<code>cd 資料夾路徑</code></p>
 <p>除了直接輸入路徑，也可以直接將資料夾拖曳至終端機視窗中。</p>
 <h3 id="展開當前目錄"><a href="#展開當前目錄" class="headerlink" title="展開當前目錄"></a><strong>展開當前目錄</strong></h3><p>指令：<code>ls</code></p>
@@ -540,7 +540,8 @@
 <p>在當前目錄下建立一個資料夾。</p>
 <h3 id="新增檔案"><a href="#新增檔案" class="headerlink" title="新增檔案"></a><strong>新增檔案</strong></h3><p>指令：<code>touch 檔案名稱.檔案類型</code></p>
 <p>在當前目錄建立一個檔案。</p>
-<h3 id="刪除檔案"><a href="#刪除檔案" class="headerlink" title="刪除檔案"></a>刪除檔案</h3><p>指令：<code>del 檔案名稱.檔案類型</code></p>
+<h3 id="刪除檔案"><a href="#刪除檔案" class="headerlink" title="刪除檔案"></a><strong>刪除檔案</strong></h3><p>指令：<code>rm 檔案名稱.檔案類型</code></p>
+<p>刪除當前目錄中指定檔案，若要刪除指定資料夾（含內容所有檔案）可輸入 <code>rm -r 資料夾名稱</code>。</p>
 <hr>
 <h2 id="Git-版本檢視"><a href="#Git-版本檢視" class="headerlink" title="Git 版本檢視"></a>Git 版本檢視</h2><p>環境安裝完成後開啟終端機，嘗試輸入指令 <code>$ git version</code> ，如果若出現 Git 版本訊息即表示安裝成功。</p>
 <p>版本訊息範例：</p>

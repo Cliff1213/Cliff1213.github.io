@@ -45,177 +45,6 @@
       </tags>
   </entry>
   <entry>
-    <title>NPM 簡述</title>
-    <url>/2022-02-07-npm-note/</url>
-    <content><![CDATA[<blockquote>
-<p><em>學習 JavaScript 套件過程讓我懷疑人生，多虧了套件版本這個巨坑，才讓我有想要先學 NPM 的想法，真是謝了。</em></p>
-</blockquote>
-<span id="more"></span>
-
-<hr>
-<h2 id="甚麼是-NPM？"><a href="#甚麼是-NPM？" class="headerlink" title="甚麼是 NPM？"></a>甚麼是 NPM？</h2><p>全名 Node Package Manager，是一種套件管理工具，簡言之就是匯集各種 Node js 套件的線上庫。</p>
-<hr>
-<h2 id="安裝-Node-JS-amp-NPM"><a href="#安裝-Node-JS-amp-NPM" class="headerlink" title="安裝 Node JS &amp; NPM"></a>安裝 Node JS &amp; NPM</h2><p><img src="https://i.imgur.com/O3WVkU4.png"></p>
-<p>上圖是 <a href="https://nodejs.org/en/">Node js 官網</a>所提供的下載點，可以看到分成兩個部分，左邊為 LTS（Long Term Support），屬於長期支援維護的版本，可以理解成較穩定的版本；右邊 Current 的部分則是最近、最新的版本。</p>
-<p>Node js 官方在版本的釋出上有自己的邏輯，通常會在每年四月份發布偶數版本，十月份發布奇數版本，可以從下圖看到近期的版本維護狀態：</p>
-<p><img src="https://i.imgur.com/zOGuPaZ.png"></p>
-<p>新的版本在發布後，版本號如果是奇數，六個月後就不會再維護；但版本號如果是偶數，半年後就會進入長期維護（Active LTS）的狀態，並保證在接下來的三十個月內會更新與修復各種問題，因此新專案通常會選擇安裝 LTS 的版本。</p>
-<p>接著進入正題，要如何安裝 NPM？這個問題其實在安裝 Node 後就已經解決了，因為 NPM 是 Node js 開發環境預設的套件管理工具（Packge Manager），因此在安裝 Node 的同時，NPM 會跟著一起安裝。</p>
-<blockquote>
-<p>因為每個專案所使用的 Node 版本不盡相同，因此為了避免產生版本與套件之間的相容問題，建議使用 NVM（Node Version Manager）來切換 Node 版本。</p>
-</blockquote>
-<p>安裝完成後，開啟任一終端機即可開始操作。</p>
-<hr>
-<h2 id="檢視版本"><a href="#檢視版本" class="headerlink" title="檢視版本"></a>檢視版本</h2><p>在終端機輸入以下指令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm -v</span><br></pre></td></tr></table></figure>
-
-<p>如果顯示 npm 版本號，表示安裝成功，如下所示：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">6.9.0</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="初始化目錄"><a href="#初始化目錄" class="headerlink" title="初始化目錄"></a>初始化目錄</h2><p>指定任一資料夾為目錄，輸入以下指令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm init</span><br></pre></td></tr></table></figure>
-
-<p>此時會顯示訊息要求輸入專案的一些資訊，如下所示：</p>
-<p><img src="https://i.imgur.com/bGQsEeb.png"></p>
-<p>上述部分只需要持續按下 Enter 即可。</p>
-<p>接著透過編輯器開啟專案資料夾，可以看到一個 package.json 的檔案，這是資料夾在進行 npm 初始化後所產生的 json 格式檔案，內容主要是紀錄專案的資訊，如下所示：</p>
-<p><img src="https://i.imgur.com/yjjj8ZV.png"></p>
-<hr>
-<h2 id="安裝套件"><a href="#安裝套件" class="headerlink" title="安裝套件"></a>安裝套件</h2><h3 id="安裝至全域"><a href="#安裝至全域" class="headerlink" title="安裝至全域"></a><strong>安裝至全域</strong></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g 套件名稱</span><br></pre></td></tr></table></figure>
-
-<p>安裝套件時，在指令加入 <code>-g</code>，套件就會被安裝在全域，也就是當前使用的電腦上；這樣做的好處是，當有其他專案需要使用這個套件時，就不用再另外安裝該套件在專案資料夾中。</p>
-<h3 id="安裝至指定目錄"><a href="#安裝至指定目錄" class="headerlink" title="安裝至指定目錄"></a><strong>安裝至指定目錄</strong></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install --save 套件名稱</span><br></pre></td></tr></table></figure>
-
-<p>以指定專案資料夾為目錄並執行上述指令，套件就會被安裝在該資料夾中，在加入 <code>--save</code> 參數後，這個套件就會被記錄在 package.json 檔案裡，下列以安裝 jquery 為範例：</p>
-<p><img src="https://i.imgur.com/n1jRC8k.png"></p>
-<p>可以看到檔案中新增了一個 dependencies 項目，並且在下方可以看到已安裝的 jquery 套件與對應版本。</p>
-<p>因為不同專案所使用的套件與套件版本不同，因此在接手別人開發的專案時，可以先依據 dependencies 中的資訊來安裝對應的套件。</p>
-<hr>
-<h2 id="安裝指定版本套件"><a href="#安裝指定版本套件" class="headerlink" title="安裝指定版本套件"></a>安裝指定版本套件</h2><p>正常的情況下，安裝下來的套件預設會是最新的版本，但一些較舊的專案可能不支援新版本的套件，此時就可以使用以下指令來安裝指定版本的套件。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install 套件名稱@版本號</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="版本數字意義"><a href="#版本數字意義" class="headerlink" title="版本數字意義"></a>版本數字意義</h2><p>通常套件的版本會以 3 個數字的格式來表示，但每個數字所代表的意義其實不同，下列以 jquery 為例：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&quot;jquery&quot;： &quot;^3.6.0&quot;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>3</code> - 主要版本，通常會因為重大改版而增加版本號。</li>
-<li><code>6</code> - 次要版本，依當前的主要版本為基準，新增功能時增加版本號。</li>
-<li><code>0</code> - 修正版本，依當前的主要版本為基準，修正錯誤時增加版本號。</li>
-</ul>
-<p>開發的過程中通常不會直接更新主要版本，因為這樣有極高的機率毀掉專案，正常的情況下只會更新次要版本或修正版本，依專案的開發情形而定。</p>
-<hr>
-<h2 id="版本標示符號"><a href="#版本標示符號" class="headerlink" title="版本標示符號"></a>版本標示符號</h2><ul>
-<li><code>^x.x.x</code> - 安裝套件時，自動更新次要與修正版本，主要版本不做更動。</li>
-<li><code>~x.x.x</code> - 安裝套件時，自動更新修正版本，主要與次要版本不做更動。</li>
-<li><code>latest</code> - 安裝套件時，自動安裝最新版本。</li>
-<li>未加入任何符號，表示只安裝當前輸入的版本。</li>
-</ul>
-<p>更新套件版本的方式，只需要將專案資料夾中的 node_modules 刪除，再重新執行以下指令，系統就會根據該專案中的 package.json 檔案設置來安裝所有會使用到的套件。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="移除套件"><a href="#移除套件" class="headerlink" title="移除套件"></a>移除套件</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm uninstall 套件名稱</span><br></pre></td></tr></table></figure>
-
-<p>需要注意的是，上述指令只會將專案資料夾中的套件移除，但是並不會同時更新 package.json 檔案中的設置，如果有這個需求，只需要在指令中加入 <code>--save</code> 參數即可。</p>
-<hr>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
-<li><a href="https://medium.com/html-test/%E5%BE%9E%E9%9B%B6%E9%96%8B%E5%A7%8B-%E4%BD%BF%E7%94%A8npm%E5%A5%97%E4%BB%B6-317beefdf182"><em>從零開始：使用NPM套件</em></a></li>
-<li><em><a href="https://linyencheng.github.io/2020/03/22/tool-npm/">npm 入門到進階</a></em></li>
-</ul>
-]]></content>
-      <categories>
-        <category>NPM</category>
-      </categories>
-      <tags>
-        <tag>NPM</tag>
-        <tag>學習筆記</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Font-Family 規則</title>
-    <url>/2022-03-02-font-family/</url>
-    <content><![CDATA[<blockquote>
-<p><em>紀錄 font-family 字體設定的基本觀念。</em></p>
-</blockquote>
-<span id="more"></span>
-
-<hr>
-<h2 id="Font-Family-設定規則"><a href="#Font-Family-設定規則" class="headerlink" title="Font-Family 設定規則"></a>Font-Family 設定規則</h2><p>基本上只要是網頁設計，都會使用到的屬性，可以自訂頁面上的文字字體，但是初學者在使用這個屬性之前，為了避免結果不如預期，建議需要先理解一些設定上的規則。</p>
-<h3 id="字體套用邏輯"><a href="#字體套用邏輯" class="headerlink" title="字體套用邏輯"></a>字體套用邏輯</h3><p>Font-Family 雖然可以設定多個屬性值，但是並不會將所有寫入的字體都一起套用，而是會根據瀏覽器對該字體的支援與否，由左至右依序判斷，以下方原始碼為例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: 字體A, 字體B, 字體C;</span><br></pre></td></tr></table></figure>
-
-<p>假設使用者的電腦系統中僅存在 “字體B”，此時瀏覽器載入網頁時，會根據上述設定先判斷系統內是否有對應的字體A，但因為系統中找不到這個字體，因此會跳過該字體並判斷下一個字體B，此時找到字體B之後，就會套用該字體，並且不再往下進行判斷。</p>
-<h3 id="語法注意事項"><a href="#語法注意事項" class="headerlink" title="語法注意事項"></a>語法注意事項</h3><p>在部分字體的選用上，同一個字體可以選擇使用中文名稱或英文名稱的屬性值設定，其結果會相同，以下方原始碼為例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: <span class="string">&quot;Microsoft JhengHei&quot;</span>;</span><br><span class="line"><span class="attribute">font-family</span>: 微軟正黑體;</span><br></pre></td></tr></table></figure>
-
-<p>從上述語法中可以發現，第一行的字體加上了雙引號，這是因為該字體的名稱之間如果存在空白，在不加上雙引號的情形下，瀏覽器會無法辨識而導致讀取失敗。</p>
-<p>另一個值得注意的是，雖然使用中文名稱來設定字體結果與英文名稱相同，但是只單獨設定中文名稱的話，可能會遇到編碼的問題而導致結果不如預期，因此會建議使用英文名稱的屬性值，或是中、英文一起使用，以下方原始碼為例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: <span class="string">&quot;Microsoft JhengHei&quot;</span>, 微軟正黑體;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="Font-Family-字體類型"><a href="#Font-Family-字體類型" class="headerlink" title="Font-Family 字體類型"></a>Font-Family 字體類型</h2><p>在當今這麼大量的字體中，主要可以分為 “指定字體” 與 “通用字體” 兩種類型。</p>
-<h3 id="指定字體（family-name）"><a href="#指定字體（family-name）" class="headerlink" title="指定字體（family-name）"></a>指定字體（family-name）</h3><p>不同的字體也會影響網頁的視覺感受，因此在選用字體時，通常會優先使用指定的字體。</p>
-<h3 id="通用字體（generic-family）"><a href="#通用字體（generic-family）" class="headerlink" title="通用字體（generic-family）"></a>通用字體（generic-family）</h3><p>通用字體可以理解成多數的電腦系統中，內建就已存在的字體，常見的通用字體有以下五種，其中無襯線體、襯線體使用最為廣泛：</p>
-<ul>
-<li>sans-serif（無襯線體 / 黑體）</li>
-<li>serif（襯線體 / 明體）</li>
-<li>cursive（手寫體）</li>
-<li>monospace（等寬體）</li>
-<li>fantasy（幻想體）</li>
-</ul>
-<h3 id="設定方式"><a href="#設定方式" class="headerlink" title="設定方式"></a>設定方式</h3><p>雖然可以透過指定字體名稱的方式，來達到自訂網頁上想要呈現的字體，但是並非所有電腦系統都有對應的指定字體，因此在使用指定字體時，通常都會在 font-family 屬性值的<strong>最後方位置</strong>設定預設的通用字體；而前面有提到 font-family 是由左至右判斷屬性值，所以當瀏覽器不支援或無法從系統中找到前方所對應的指定字體時，就會套用最後設定的通用字體，設定格式如下：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: 指定字體, <span class="string">&quot;指定 字體&quot;</span>, 通用字體;</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h2 id="字體順序觀念"><a href="#字體順序觀念" class="headerlink" title="字體順序觀念"></a>字體順序觀念</h2><p>本篇一開始在設定規則的地方有簡單提到字體是由左邊開始判斷，但是在順序方面還有一些重要觀念需要熟記，這邊先記住以下設定順序，後續會說明原因：</p>
-<p>設定順序：<strong>英文字體 &gt; Linux &gt; Mac &gt; Windows &gt; 通用字體</strong></p>
-<!-- 這部分一直沒有比較好的解釋 -->
-
-
-
-<h3 id="中、英文順序"><a href="#中、英文順序" class="headerlink" title="中、英文順序"></a>中、英文順序</h3><p>一個網頁通常會存在多個語言（以中、英文為例），但是並非所有的字體都同時支援中、英文，因此許多網頁會利用這個由左至右判斷的技巧，分別針對中文與英文各別設定不同的字體，以下方原始碼為例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: Arial, 微軟正黑體;</span><br></pre></td></tr></table></figure>
-
-<p>上述設定中，Arial 只有英文字體，而微軟正黑體則是中、英文字體都有，因此瀏覽器在判斷 Arial 之後，就會因為符合條件而套用英文字體，而中文會因為找不到對應字體則往下判斷微軟正黑體並套用，此時網頁上的中文與英文就會呈現不同字體的效果。</p>
-<p>但是如果順序換成微軟正黑體在前面，瀏覽器就會先判斷微軟正黑體，因為該字體中、英文都可以使用，所以網頁上的兩種語言都會套用成微軟正黑體，而後面的 Arial 會因為英文字體已套用成微軟正黑體而不會被讀取。</p>
-<p>因此，正確的屬性值順序為<strong>英文字體在前面，中文字體在後面。</strong></p>
-<h3 id="字體使用率與順序"><a href="#字體使用率與順序" class="headerlink" title="字體使用率與順序"></a>字體使用率與順序</h3><p>每個作業系統都有自己的系統字體，例如 -apple-system 與 BlinkMacSystemFont 分別是 iOS 以及 macOS 的系統字體，並且前者只能使用在 Safari 瀏覽器上，後者則是用於 Chrome，像這種只能使用在特定系統或瀏覽器的字體，順序就需要放在前面，以下方原始碼為例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: -apple-system, BlinkMacSystemFont, <span class="string">&quot;Segoe UI&quot;</span>, <span class="string">&quot;Microsoft JhengHei&quot;</span>, Roboto, <span class="string">&quot;Helvetica Neue&quot;</span>, Arial, sans-serif;</span><br><span class="line">	     <span class="comment">/* mac系統字體, iOS系統字體,	windows英文系統字體, 微軟正黑體, Android系統字體, iOS系統字體, 通用字體, 通用字體 */</span></span><br></pre></td></tr></table></figure>
-
-<p>假設使用者電腦系統為 windows，瀏覽器因為在系統中找不到 -apple-system 與 BlinkMacSystemFont 而直接跳過這兩個字體，而下一個 Segoe UI 屬於 windows 的英文系統字體，因此英文字體就會套用 Segoe UI，中文字體則是因為 Segoe UI 並沒有對應的中文而判斷下一個值，最終套用 Microsoft JhengHei。</p>
-<p>如果電腦系統是 macOS 並且使用 Chrome 瀏覽網頁，當瀏覽器在讀取到 -apple-system 時，就會套用對應的中文及英文字體，並且不再往下判斷。</p>
-<p>因此，為了適應各種不同的瀏覽器與作業系統，在設定字體時需要把<strong>較少使用到的字體放前面，較常使用到的字體放後面。</strong></p>
-<hr>
-<h2 id="實務範例"><a href="#實務範例" class="headerlink" title="實務範例"></a>實務範例</h2><p>附上幾個知名企業的字體設定當作參考，有興趣的也可以自行研究順序邏輯。</p>
-<p>Apple（台灣）：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: <span class="string">&quot;SF Pro TC&quot;</span>, <span class="string">&quot;SF Pro Text&quot;</span>, <span class="string">&quot;SF Pro Icons&quot;</span>, <span class="string">&quot;PingFang TC&quot;</span>, <span class="string">&quot;Helvetica Neue&quot;</span>, <span class="string">&quot;Helvetica&quot;</span>, <span class="string">&quot;Arial&quot;</span>, sans-serif;</span><br></pre></td></tr></table></figure>
-
-<p>微軟台灣：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: <span class="string">&#x27;Segoe UI&#x27;</span>, SegoeUI, <span class="string">&#x27;Microsoft JhengHei&#x27;</span>, 微軟正黑體, <span class="string">&quot;Helvetica Neue&quot;</span>, Helvetica, Arial, sans-serif;</span><br></pre></td></tr></table></figure>
-
-<p>Google：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: arial, sans-serif;  <span class="comment">/* 不愧是 Google，連字體設定都這麼簡約 */</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
-<li><a href="https://www.oxxostudio.tw/articles/201811/css-font-family.html">CSS font-family 詳細介紹</a></li>
-<li><a href="https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/180456/#outline__1_2_1">最標準的系統字型規範 font-family</a></li>
-<li><a href="https://www.casper.tw/css/2014/01/01/font-family/">font-family要怎麼玩</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>CSS</category>
-      </categories>
-      <tags>
-        <tag>css</tag>
-        <tag>font-family</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>RWD 雜談</title>
     <url>/2022-03-14-rwd-note/</url>
     <content><![CDATA[<blockquote>
@@ -362,69 +191,179 @@
         <category>RWD</category>
       </categories>
       <tags>
-        <tag>學習筆記</tag>
         <tag>RWD</tag>
+        <tag>學習筆記</tag>
       </tags>
   </entry>
   <entry>
-    <title>Swiper 輪播效果</title>
-    <url>/2022-06-06-swiper-note/</url>
+    <title>NPM 簡述</title>
+    <url>/2022-02-07-npm-note/</url>
     <content><![CDATA[<blockquote>
-<p><em>這篇內容記錄 Swiper 套件的一些相關常見配置。</em></p>
+<p><em>學習 JavaScript 套件過程讓我懷疑人生，多虧了套件版本這個巨坑，才讓我有想要先學 NPM 的想法，真是謝了。</em></p>
 </blockquote>
 <span id="more"></span>
 
 <hr>
-<h2 id="Swiper-套件"><a href="#Swiper-套件" class="headerlink" title="Swiper 套件"></a>Swiper 套件</h2><p><a href="https://swiperjs.com/get-started">Swiper</a> 是一個製作網頁輪播效果的 JavaScript 插件。</p>
-<h2 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h2><h3 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h3><p>透過 CDN 方式安裝 Swiper 時，需要同時引入 <code>swiper-bundle.min.css</code> 與 <code>swiper-bundle.min.js</code> 兩個檔案，引入壓縮後的版本即可。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- In head --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;https://unpkg.com/swiper@8/swiper-bundle.min.css&quot;</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- In front of body end tag --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/swiper@8/swiper-bundle.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install swiper</span><br></pre></td></tr></table></figure>
-
+<h2 id="甚麼是-NPM？"><a href="#甚麼是-NPM？" class="headerlink" title="甚麼是 NPM？"></a>甚麼是 NPM？</h2><p>全名 Node Package Manager，是一種套件管理工具，簡言之就是匯集各種 Node js 套件的線上庫。</p>
 <hr>
-<h2 id="基礎結構"><a href="#基礎結構" class="headerlink" title="基礎結構"></a>基礎結構</h2><h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><p>使用 Swiper 時，<code>swiper-container</code>、<code>swiper-wrapper</code>、<code>swiper-slide</code> 三者為必要存在的元素。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Slider main container --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-container&quot;</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- Additional required wrapper --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-wrapper&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Slides --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    ...  <span class="comment">&lt;!-- 新增 swiper-slide 數量 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- If we need pagination --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-pagination&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- If we need navigation buttons --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-button-prev&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-button-next&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- If we need scrollbar --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-scrollbar&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>需要進行輪播的內容，會放在 <code>swiper-slide</code> 之中，數量可依需求自行新增。</p>
-<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><p>Swiper 在初始化時，會帶入一個 DOM / CSS Selector，以及一個參數（字串），如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> swiper = <span class="keyword">new</span> Swiper( swiperContainer, parameter );</span><br></pre></td></tr></table></figure>
-
-<p>官方範例如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> swiper = <span class="keyword">new</span> Swiper(<span class="string">&quot;.swiper-container&quot;</span>, &#123;</span><br><span class="line">  <span class="comment">// Optional parameters / 加入參數與設定值</span></span><br><span class="line">  <span class="attr">direction</span>: <span class="string">&quot;vertical&quot;</span>, <span class="comment">// 輪播方向</span></span><br><span class="line">  <span class="attr">loop</span>: <span class="literal">true</span>, <span class="comment">// 重複顯示</span></span><br><span class="line">  <span class="comment">// If we need pagination / 是否顯示分頁</span></span><br><span class="line">  <span class="attr">pagination</span>: &#123;</span><br><span class="line">    <span class="attr">el</span>: <span class="string">&quot;.swiper-pagination&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// Navigation arrows / 是否加入上、下一頁方向圖示</span></span><br><span class="line">  <span class="attr">navigation</span>: &#123;</span><br><span class="line">    <span class="attr">nextEl</span>: <span class="string">&quot;.swiper-button-next&quot;</span>,</span><br><span class="line">    <span class="attr">prevEl</span>: <span class="string">&quot;.swiper-button-prev&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// And if we need scrollbar / 是否顯示滾動軸</span></span><br><span class="line">  <span class="attr">scrollbar</span>: &#123;</span><br><span class="line">    <span class="attr">el</span>: <span class="string">&quot;.swiper-scrollbar&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="設定容器寬度"><a href="#設定容器寬度" class="headerlink" title="設定容器寬度"></a>設定容器寬度</h3><p>可自訂意義 Swiper 容器大小，範例如下：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.swiper</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">600px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="常見參數"><a href="#常見參數" class="headerlink" title="常見參數"></a>常見參數</h2><p>除了先前官方範例提到的參數之外，以下列出一些在不同的版型下，可能會使用到的參數設定，更多可使用的參數可查閱<a href="https://swiperjs.com/swiper-api">官方文件</a>。</p>
-<p><strong><code>effect</code></strong></p>
-<p>主要用來變更輪播時的轉場效果，預設值為 <code>slide</code>，其他可使用效果還有 <code>fade</code>、<code>cube</code>、<code>coverflow</code>、<code>flip</code>、<code>creative</code>、<code>cards</code>。</p>
-<p><strong><code>autoplay</code></strong></p>
-<p>該參數屬於一個物件，會依據給予的屬性設定來自定義自動輪播的形式，範例如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> swiper = <span class="keyword">new</span> Swiper(<span class="string">&quot;.swiper-container&quot;</span>, &#123;</span><br><span class="line">  <span class="attr">autoplay</span>: &#123;</span><br><span class="line">    <span class="attr">delay</span>: <span class="number">5000</span>, <span class="comment">// 自動輪播延遲時間</span></span><br><span class="line">    <span class="attr">disableOnInteraction</span>: <span class="literal">false</span>, <span class="comment">// 手動滑動後，停止自動撥放，預設值為 true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p><strong><code>slidesPerView</code></strong></p>
-<p>該參數可以決定輪播時，同時顯示的 <code>swiper-slide</code> 數量，範例如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> swiper = <span class="keyword">new</span> Swiper(<span class="string">&quot;.swiper-container&quot;</span>, &#123;</span><br><span class="line">  <span class="attr">slidesPerView</span>: <span class="number">3</span> <span class="comment">// 同時顯示 3 個 swiper-slide</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
+<h2 id="安裝-Node-JS-amp-NPM"><a href="#安裝-Node-JS-amp-NPM" class="headerlink" title="安裝 Node JS &amp; NPM"></a>安裝 Node JS &amp; NPM</h2><p><img src="https://i.imgur.com/O3WVkU4.png"></p>
+<p>上圖是 <a href="https://nodejs.org/en/">Node js 官網</a>所提供的下載點，可以看到分成兩個部分，左邊為 LTS（Long Term Support），屬於長期支援維護的版本，可以理解成較穩定的版本；右邊 Current 的部分則是最近、最新的版本。</p>
+<p>Node js 官方在版本的釋出上有自己的邏輯，通常會在每年四月份發布偶數版本，十月份發布奇數版本，可以從下圖看到近期的版本維護狀態：</p>
+<p><img src="https://i.imgur.com/zOGuPaZ.png"></p>
+<p>新的版本在發布後，版本號如果是奇數，六個月後就不會再維護；但版本號如果是偶數，半年後就會進入長期維護（Active LTS）的狀態，並保證在接下來的三十個月內會更新與修復各種問題，因此新專案通常會選擇安裝 LTS 的版本。</p>
+<p>接著進入正題，要如何安裝 NPM？這個問題其實在安裝 Node 後就已經解決了，因為 NPM 是 Node js 開發環境預設的套件管理工具（Packge Manager），因此在安裝 Node 的同時，NPM 會跟著一起安裝。</p>
 <blockquote>
-<p>加入參數 <code>slidesPerView</code> 後，<code>swiper-slide</code> 的寬度會根據 swiper-container 來均分。</p>
+<p>因為每個專案所使用的 Node 版本不盡相同，因此為了避免產生版本與套件之間的相容問題，建議使用 NVM（Node Version Manager）來切換 Node 版本。</p>
 </blockquote>
-<p><strong><code>breakpoints</code></strong></p>
-<p>加入該參數後，配合參數 <code>slidesPerView</code> 可根據所設定的斷點來達成響應式的效果，範例如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> swiper = <span class="keyword">new</span> Swiper(<span class="string">&#x27;.swiper&#x27;</span>, &#123;</span><br><span class="line">  <span class="comment">// 預設的顯示數量為 1</span></span><br><span class="line">  <span class="attr">slidesPerView</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="comment">// 以下為斷點設定</span></span><br><span class="line">  <span class="attr">breakpoints</span>: &#123;</span><br><span class="line">    <span class="comment">// 當頁面寬度大於 768px 時，同時顯示數量為 2</span></span><br><span class="line">    <span class="number">768</span>: &#123;</span><br><span class="line">      <span class="attr">slidesPerView</span>: <span class="number">2</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 當頁面寬度大於 992px 時，同時顯示數量為 3</span></span><br><span class="line">    <span class="number">992</span>: &#123;</span><br><span class="line">      <span class="attr">slidesPerView</span>: <span class="number">3</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>安裝完成後，開啟任一終端機即可開始操作。</p>
+<hr>
+<h2 id="檢視版本"><a href="#檢視版本" class="headerlink" title="檢視版本"></a>檢視版本</h2><p>在終端機輸入以下指令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm -v</span><br></pre></td></tr></table></figure>
 
-<p><strong><code>spacebetween</code></strong></p>
-<p>該參數可以設定每個 <code>swiper-slide</code> 之間的間隙，範例如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> swiper = <span class="keyword">new</span> Swiper(<span class="string">&#x27;.swiper&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">slidesPerView</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">spacebetween</span>: <span class="number">16</span>, <span class="comment">// 預設間隔為 20px</span></span><br><span class="line">  <span class="attr">breakpoints</span>: &#123;</span><br><span class="line">    <span class="number">768</span>: &#123;</span><br><span class="line">      <span class="attr">slidesPerView</span>: <span class="number">3</span>,</span><br><span class="line">      <span class="attr">spacebetween</span>: <span class="number">24</span> <span class="comment">// 當頁面寬度大於 768px 時，間隔為 24px</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>如果顯示 npm 版本號，表示安裝成功，如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">6.9.0</span><br></pre></td></tr></table></figure>
 
+<hr>
+<h2 id="初始化目錄"><a href="#初始化目錄" class="headerlink" title="初始化目錄"></a>初始化目錄</h2><p>指定任一資料夾為目錄，輸入以下指令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm init</span><br></pre></td></tr></table></figure>
+
+<p>此時會顯示訊息要求輸入專案的一些資訊，如下所示：</p>
+<p><img src="https://i.imgur.com/bGQsEeb.png"></p>
+<p>上述部分只需要持續按下 Enter 即可。</p>
+<p>接著透過編輯器開啟專案資料夾，可以看到一個 package.json 的檔案，這是資料夾在進行 npm 初始化後所產生的 json 格式檔案，內容主要是紀錄專案的資訊，如下所示：</p>
+<p><img src="https://i.imgur.com/yjjj8ZV.png"></p>
+<hr>
+<h2 id="安裝套件"><a href="#安裝套件" class="headerlink" title="安裝套件"></a>安裝套件</h2><h3 id="安裝至全域"><a href="#安裝至全域" class="headerlink" title="安裝至全域"></a><strong>安裝至全域</strong></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g 套件名稱</span><br></pre></td></tr></table></figure>
+
+<p>安裝套件時，在指令加入 <code>-g</code>，套件就會被安裝在全域，也就是當前使用的電腦上；這樣做的好處是，當有其他專案需要使用這個套件時，就不用再另外安裝該套件在專案資料夾中。</p>
+<h3 id="安裝至指定目錄"><a href="#安裝至指定目錄" class="headerlink" title="安裝至指定目錄"></a><strong>安裝至指定目錄</strong></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install --save 套件名稱</span><br></pre></td></tr></table></figure>
+
+<p>以指定專案資料夾為目錄並執行上述指令，套件就會被安裝在該資料夾中，在加入 <code>--save</code> 參數後，這個套件就會被記錄在 package.json 檔案裡，下列以安裝 jquery 為範例：</p>
+<p><img src="https://i.imgur.com/n1jRC8k.png"></p>
+<p>可以看到檔案中新增了一個 dependencies 項目，並且在下方可以看到已安裝的 jquery 套件與對應版本。</p>
+<p>因為不同專案所使用的套件與套件版本不同，因此在接手別人開發的專案時，可以先依據 dependencies 中的資訊來安裝對應的套件。</p>
+<hr>
+<h2 id="安裝指定版本套件"><a href="#安裝指定版本套件" class="headerlink" title="安裝指定版本套件"></a>安裝指定版本套件</h2><p>正常的情況下，安裝下來的套件預設會是最新的版本，但一些較舊的專案可能不支援新版本的套件，此時就可以使用以下指令來安裝指定版本的套件。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install 套件名稱@版本號</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="版本數字意義"><a href="#版本數字意義" class="headerlink" title="版本數字意義"></a>版本數字意義</h2><p>通常套件的版本會以 3 個數字的格式來表示，但每個數字所代表的意義其實不同，下列以 jquery 為例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&quot;jquery&quot;： &quot;^3.6.0&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>3</code> - 主要版本，通常會因為重大改版而增加版本號。</li>
+<li><code>6</code> - 次要版本，依當前的主要版本為基準，新增功能時增加版本號。</li>
+<li><code>0</code> - 修正版本，依當前的主要版本為基準，修正錯誤時增加版本號。</li>
+</ul>
+<p>開發的過程中通常不會直接更新主要版本，因為這樣有極高的機率毀掉專案，正常的情況下只會更新次要版本或修正版本，依專案的開發情形而定。</p>
+<hr>
+<h2 id="版本標示符號"><a href="#版本標示符號" class="headerlink" title="版本標示符號"></a>版本標示符號</h2><ul>
+<li><code>^x.x.x</code> - 安裝套件時，自動更新次要與修正版本，主要版本不做更動。</li>
+<li><code>~x.x.x</code> - 安裝套件時，自動更新修正版本，主要與次要版本不做更動。</li>
+<li><code>latest</code> - 安裝套件時，自動安裝最新版本。</li>
+<li>未加入任何符號，表示只安裝當前輸入的版本。</li>
+</ul>
+<p>更新套件版本的方式，只需要將專案資料夾中的 node_modules 刪除，再重新執行以下指令，系統就會根據該專案中的 package.json 檔案設置來安裝所有會使用到的套件。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="移除套件"><a href="#移除套件" class="headerlink" title="移除套件"></a>移除套件</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm uninstall 套件名稱</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，上述指令只會將專案資料夾中的套件移除，但是並不會同時更新 package.json 檔案中的設置，如果有這個需求，只需要在指令中加入 <code>--save</code> 參數即可。</p>
+<hr>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a href="https://medium.com/html-test/%E5%BE%9E%E9%9B%B6%E9%96%8B%E5%A7%8B-%E4%BD%BF%E7%94%A8npm%E5%A5%97%E4%BB%B6-317beefdf182"><em>從零開始：使用NPM套件</em></a></li>
+<li><em><a href="https://linyencheng.github.io/2020/03/22/tool-npm/">npm 入門到進階</a></em></li>
+</ul>
 ]]></content>
       <categories>
-        <category>JavaScript</category>
+        <category>NPM</category>
       </categories>
       <tags>
-        <tag>Swiper</tag>
-        <tag>套件</tag>
+        <tag>學習筆記</tag>
+        <tag>NPM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Font-Family 規則</title>
+    <url>/2022-03-02-font-family/</url>
+    <content><![CDATA[<blockquote>
+<p><em>紀錄 font-family 字體設定的基本觀念。</em></p>
+</blockquote>
+<span id="more"></span>
+
+<hr>
+<h2 id="Font-Family-設定規則"><a href="#Font-Family-設定規則" class="headerlink" title="Font-Family 設定規則"></a>Font-Family 設定規則</h2><p>基本上只要是網頁設計，都會使用到的屬性，可以自訂頁面上的文字字體，但是初學者在使用這個屬性之前，為了避免結果不如預期，建議需要先理解一些設定上的規則。</p>
+<h3 id="字體套用邏輯"><a href="#字體套用邏輯" class="headerlink" title="字體套用邏輯"></a>字體套用邏輯</h3><p>Font-Family 雖然可以設定多個屬性值，但是並不會將所有寫入的字體都一起套用，而是會根據瀏覽器對該字體的支援與否，由左至右依序判斷，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: 字體A, 字體B, 字體C;</span><br></pre></td></tr></table></figure>
+
+<p>假設使用者的電腦系統中僅存在 “字體B”，此時瀏覽器載入網頁時，會根據上述設定先判斷系統內是否有對應的字體A，但因為系統中找不到這個字體，因此會跳過該字體並判斷下一個字體B，此時找到字體B之後，就會套用該字體，並且不再往下進行判斷。</p>
+<h3 id="語法注意事項"><a href="#語法注意事項" class="headerlink" title="語法注意事項"></a>語法注意事項</h3><p>在部分字體的選用上，同一個字體可以選擇使用中文名稱或英文名稱的屬性值設定，其結果會相同，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: <span class="string">&quot;Microsoft JhengHei&quot;</span>;</span><br><span class="line"><span class="attribute">font-family</span>: 微軟正黑體;</span><br></pre></td></tr></table></figure>
+
+<p>從上述語法中可以發現，第一行的字體加上了雙引號，這是因為該字體的名稱之間如果存在空白，在不加上雙引號的情形下，瀏覽器會無法辨識而導致讀取失敗。</p>
+<p>另一個值得注意的是，雖然使用中文名稱來設定字體結果與英文名稱相同，但是只單獨設定中文名稱的話，可能會遇到編碼的問題而導致結果不如預期，因此會建議使用英文名稱的屬性值，或是中、英文一起使用，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: <span class="string">&quot;Microsoft JhengHei&quot;</span>, 微軟正黑體;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Font-Family-字體類型"><a href="#Font-Family-字體類型" class="headerlink" title="Font-Family 字體類型"></a>Font-Family 字體類型</h2><p>在當今這麼大量的字體中，主要可以分為 “指定字體” 與 “通用字體” 兩種類型。</p>
+<h3 id="指定字體（family-name）"><a href="#指定字體（family-name）" class="headerlink" title="指定字體（family-name）"></a>指定字體（family-name）</h3><p>不同的字體也會影響網頁的視覺感受，因此在選用字體時，通常會優先使用指定的字體。</p>
+<h3 id="通用字體（generic-family）"><a href="#通用字體（generic-family）" class="headerlink" title="通用字體（generic-family）"></a>通用字體（generic-family）</h3><p>通用字體可以理解成多數的電腦系統中，內建就已存在的字體，常見的通用字體有以下五種，其中無襯線體、襯線體使用最為廣泛：</p>
+<ul>
+<li>sans-serif（無襯線體 / 黑體）</li>
+<li>serif（襯線體 / 明體）</li>
+<li>cursive（手寫體）</li>
+<li>monospace（等寬體）</li>
+<li>fantasy（幻想體）</li>
+</ul>
+<h3 id="設定方式"><a href="#設定方式" class="headerlink" title="設定方式"></a>設定方式</h3><p>雖然可以透過指定字體名稱的方式，來達到自訂網頁上想要呈現的字體，但是並非所有電腦系統都有對應的指定字體，因此在使用指定字體時，通常都會在 font-family 屬性值的<strong>最後方位置</strong>設定預設的通用字體；而前面有提到 font-family 是由左至右判斷屬性值，所以當瀏覽器不支援或無法從系統中找到前方所對應的指定字體時，就會套用最後設定的通用字體，設定格式如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: 指定字體, <span class="string">&quot;指定 字體&quot;</span>, 通用字體;</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h2 id="字體順序觀念"><a href="#字體順序觀念" class="headerlink" title="字體順序觀念"></a>字體順序觀念</h2><p>本篇一開始在設定規則的地方有簡單提到字體是由左邊開始判斷，但是在順序方面還有一些重要觀念需要熟記，這邊先記住以下設定順序，後續會說明原因：</p>
+<p>設定順序：<strong>英文字體 &gt; Linux &gt; Mac &gt; Windows &gt; 通用字體</strong></p>
+<!-- 這部分一直沒有比較好的解釋 -->
+
+
+
+<h3 id="中、英文順序"><a href="#中、英文順序" class="headerlink" title="中、英文順序"></a>中、英文順序</h3><p>一個網頁通常會存在多個語言（以中、英文為例），但是並非所有的字體都同時支援中、英文，因此許多網頁會利用這個由左至右判斷的技巧，分別針對中文與英文各別設定不同的字體，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: Arial, 微軟正黑體;</span><br></pre></td></tr></table></figure>
+
+<p>上述設定中，Arial 只有英文字體，而微軟正黑體則是中、英文字體都有，因此瀏覽器在判斷 Arial 之後，就會因為符合條件而套用英文字體，而中文會因為找不到對應字體則往下判斷微軟正黑體並套用，此時網頁上的中文與英文就會呈現不同字體的效果。</p>
+<p>但是如果順序換成微軟正黑體在前面，瀏覽器就會先判斷微軟正黑體，因為該字體中、英文都可以使用，所以網頁上的兩種語言都會套用成微軟正黑體，而後面的 Arial 會因為英文字體已套用成微軟正黑體而不會被讀取。</p>
+<p>因此，正確的屬性值順序為<strong>英文字體在前面，中文字體在後面。</strong></p>
+<h3 id="字體使用率與順序"><a href="#字體使用率與順序" class="headerlink" title="字體使用率與順序"></a>字體使用率與順序</h3><p>每個作業系統都有自己的系統字體，例如 -apple-system 與 BlinkMacSystemFont 分別是 iOS 以及 macOS 的系統字體，並且前者只能使用在 Safari 瀏覽器上，後者則是用於 Chrome，像這種只能使用在特定系統或瀏覽器的字體，順序就需要放在前面，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: -apple-system, BlinkMacSystemFont, <span class="string">&quot;Segoe UI&quot;</span>, <span class="string">&quot;Microsoft JhengHei&quot;</span>, Roboto, <span class="string">&quot;Helvetica Neue&quot;</span>, Arial, sans-serif;</span><br><span class="line">	     <span class="comment">/* mac系統字體, iOS系統字體,	windows英文系統字體, 微軟正黑體, Android系統字體, iOS系統字體, 通用字體, 通用字體 */</span></span><br></pre></td></tr></table></figure>
+
+<p>假設使用者電腦系統為 windows，瀏覽器因為在系統中找不到 -apple-system 與 BlinkMacSystemFont 而直接跳過這兩個字體，而下一個 Segoe UI 屬於 windows 的英文系統字體，因此英文字體就會套用 Segoe UI，中文字體則是因為 Segoe UI 並沒有對應的中文而判斷下一個值，最終套用 Microsoft JhengHei。</p>
+<p>如果電腦系統是 macOS 並且使用 Chrome 瀏覽網頁，當瀏覽器在讀取到 -apple-system 時，就會套用對應的中文及英文字體，並且不再往下判斷。</p>
+<p>因此，為了適應各種不同的瀏覽器與作業系統，在設定字體時需要把<strong>較少使用到的字體放前面，較常使用到的字體放後面。</strong></p>
+<hr>
+<h2 id="實務範例"><a href="#實務範例" class="headerlink" title="實務範例"></a>實務範例</h2><p>附上幾個知名企業的字體設定當作參考，有興趣的也可以自行研究順序邏輯。</p>
+<p>Apple（台灣）：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: <span class="string">&quot;SF Pro TC&quot;</span>, <span class="string">&quot;SF Pro Text&quot;</span>, <span class="string">&quot;SF Pro Icons&quot;</span>, <span class="string">&quot;PingFang TC&quot;</span>, <span class="string">&quot;Helvetica Neue&quot;</span>, <span class="string">&quot;Helvetica&quot;</span>, <span class="string">&quot;Arial&quot;</span>, sans-serif;</span><br></pre></td></tr></table></figure>
+
+<p>微軟台灣：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: <span class="string">&#x27;Segoe UI&#x27;</span>, SegoeUI, <span class="string">&#x27;Microsoft JhengHei&#x27;</span>, 微軟正黑體, <span class="string">&quot;Helvetica Neue&quot;</span>, Helvetica, Arial, sans-serif;</span><br></pre></td></tr></table></figure>
+
+<p>Google：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: arial, sans-serif;  <span class="comment">/* 不愧是 Google，連字體設定都這麼簡約 */</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a href="https://www.oxxostudio.tw/articles/201811/css-font-family.html">CSS font-family 詳細介紹</a></li>
+<li><a href="https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/180456/#outline__1_2_1">最標準的系統字型規範 font-family</a></li>
+<li><a href="https://www.casper.tw/css/2014/01/01/font-family/">font-family要怎麼玩</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>css</tag>
+        <tag>font-family</tag>
       </tags>
   </entry>
   <entry>
@@ -514,6 +453,67 @@
       <tags>
         <tag>css</tag>
         <tag>Sass</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Swiper 輪播效果</title>
+    <url>/2022-06-06-swiper-note/</url>
+    <content><![CDATA[<blockquote>
+<p><em>這篇內容記錄 Swiper 套件的一些相關常見配置。</em></p>
+</blockquote>
+<span id="more"></span>
+
+<hr>
+<h2 id="Swiper-套件"><a href="#Swiper-套件" class="headerlink" title="Swiper 套件"></a>Swiper 套件</h2><p><a href="https://swiperjs.com/get-started">Swiper</a> 是一個製作網頁輪播效果的 JavaScript 插件。</p>
+<h2 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h2><h3 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h3><p>透過 CDN 方式安裝 Swiper 時，需要同時引入 <code>swiper-bundle.min.css</code> 與 <code>swiper-bundle.min.js</code> 兩個檔案，引入壓縮後的版本即可。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- In head --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;https://unpkg.com/swiper@8/swiper-bundle.min.css&quot;</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- In front of body end tag --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/swiper@8/swiper-bundle.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install swiper</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="基礎結構"><a href="#基礎結構" class="headerlink" title="基礎結構"></a>基礎結構</h2><h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><p>使用 Swiper 時，<code>swiper-container</code>、<code>swiper-wrapper</code>、<code>swiper-slide</code> 三者為必要存在的元素。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Slider main container --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-container&quot;</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- Additional required wrapper --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-wrapper&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Slides --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    ...  <span class="comment">&lt;!-- 新增 swiper-slide 數量 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- If we need pagination --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-pagination&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- If we need navigation buttons --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-button-prev&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-button-next&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- If we need scrollbar --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-scrollbar&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>需要進行輪播的內容，會放在 <code>swiper-slide</code> 之中，數量可依需求自行新增。</p>
+<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><p>Swiper 在初始化時，會帶入一個 DOM / CSS Selector，以及一個參數（字串），如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> swiper = <span class="keyword">new</span> Swiper( swiperContainer, parameter );</span><br></pre></td></tr></table></figure>
+
+<p>官方範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> swiper = <span class="keyword">new</span> Swiper(<span class="string">&quot;.swiper-container&quot;</span>, &#123;</span><br><span class="line">  <span class="comment">// Optional parameters / 加入參數與設定值</span></span><br><span class="line">  <span class="attr">direction</span>: <span class="string">&quot;vertical&quot;</span>, <span class="comment">// 輪播方向</span></span><br><span class="line">  <span class="attr">loop</span>: <span class="literal">true</span>, <span class="comment">// 重複顯示</span></span><br><span class="line">  <span class="comment">// If we need pagination / 是否顯示分頁</span></span><br><span class="line">  <span class="attr">pagination</span>: &#123;</span><br><span class="line">    <span class="attr">el</span>: <span class="string">&quot;.swiper-pagination&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// Navigation arrows / 是否加入上、下一頁方向圖示</span></span><br><span class="line">  <span class="attr">navigation</span>: &#123;</span><br><span class="line">    <span class="attr">nextEl</span>: <span class="string">&quot;.swiper-button-next&quot;</span>,</span><br><span class="line">    <span class="attr">prevEl</span>: <span class="string">&quot;.swiper-button-prev&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// And if we need scrollbar / 是否顯示滾動軸</span></span><br><span class="line">  <span class="attr">scrollbar</span>: &#123;</span><br><span class="line">    <span class="attr">el</span>: <span class="string">&quot;.swiper-scrollbar&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="設定容器寬度"><a href="#設定容器寬度" class="headerlink" title="設定容器寬度"></a>設定容器寬度</h3><p>可自訂意義 Swiper 容器大小，範例如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.swiper</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">600px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="常見參數"><a href="#常見參數" class="headerlink" title="常見參數"></a>常見參數</h2><p>除了先前官方範例提到的參數之外，以下列出一些在不同的版型下，可能會使用到的參數設定，更多可使用的參數可查閱<a href="https://swiperjs.com/swiper-api">官方文件</a>。</p>
+<p><strong><code>effect</code></strong></p>
+<p>主要用來變更輪播時的轉場效果，預設值為 <code>slide</code>，其他可使用效果還有 <code>fade</code>、<code>cube</code>、<code>coverflow</code>、<code>flip</code>、<code>creative</code>、<code>cards</code>。</p>
+<p><strong><code>autoplay</code></strong></p>
+<p>該參數屬於一個物件，會依據給予的屬性設定來自定義自動輪播的形式，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> swiper = <span class="keyword">new</span> Swiper(<span class="string">&quot;.swiper-container&quot;</span>, &#123;</span><br><span class="line">  <span class="attr">autoplay</span>: &#123;</span><br><span class="line">    <span class="attr">delay</span>: <span class="number">5000</span>, <span class="comment">// 自動輪播延遲時間</span></span><br><span class="line">    <span class="attr">disableOnInteraction</span>: <span class="literal">false</span>, <span class="comment">// 手動滑動後，停止自動撥放，預設值為 true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong><code>slidesPerView</code></strong></p>
+<p>該參數可以決定輪播時，同時顯示的 <code>swiper-slide</code> 數量，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> swiper = <span class="keyword">new</span> Swiper(<span class="string">&quot;.swiper-container&quot;</span>, &#123;</span><br><span class="line">  <span class="attr">slidesPerView</span>: <span class="number">3</span> <span class="comment">// 同時顯示 3 個 swiper-slide</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>加入參數 <code>slidesPerView</code> 後，<code>swiper-slide</code> 的寬度會根據 swiper-container 來均分。</p>
+</blockquote>
+<p><strong><code>breakpoints</code></strong></p>
+<p>加入該參數後，配合參數 <code>slidesPerView</code> 可根據所設定的斷點來達成響應式的效果，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> swiper = <span class="keyword">new</span> Swiper(<span class="string">&#x27;.swiper&#x27;</span>, &#123;</span><br><span class="line">  <span class="comment">// 預設的顯示數量為 1</span></span><br><span class="line">  <span class="attr">slidesPerView</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="comment">// 以下為斷點設定</span></span><br><span class="line">  <span class="attr">breakpoints</span>: &#123;</span><br><span class="line">    <span class="comment">// 當頁面寬度大於 768px 時，同時顯示數量為 2</span></span><br><span class="line">    <span class="number">768</span>: &#123;</span><br><span class="line">      <span class="attr">slidesPerView</span>: <span class="number">2</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 當頁面寬度大於 992px 時，同時顯示數量為 3</span></span><br><span class="line">    <span class="number">992</span>: &#123;</span><br><span class="line">      <span class="attr">slidesPerView</span>: <span class="number">3</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong><code>spacebetween</code></strong></p>
+<p>該參數可以設定每個 <code>swiper-slide</code> 之間的間隙，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> swiper = <span class="keyword">new</span> Swiper(<span class="string">&#x27;.swiper&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">slidesPerView</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">spacebetween</span>: <span class="number">16</span>, <span class="comment">// 預設間隔為 20px</span></span><br><span class="line">  <span class="attr">breakpoints</span>: &#123;</span><br><span class="line">    <span class="number">768</span>: &#123;</span><br><span class="line">      <span class="attr">slidesPerView</span>: <span class="number">3</span>,</span><br><span class="line">      <span class="attr">spacebetween</span>: <span class="number">24</span> <span class="comment">// 當頁面寬度大於 768px 時，間隔為 24px</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>Swiper</tag>
+        <tag>套件</tag>
       </tags>
   </entry>
   <entry>

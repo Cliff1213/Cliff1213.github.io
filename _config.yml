@@ -130,6 +130,6 @@ encrypt: # hexo-blog-encrypt
 deploy:
   type: git
   repo: https://github.com/Cliff1213/cliff1213.github.io.git
-  branch: master
+  branch: main
   ignore_hidden: false
-  message: "modified config"
+  message: "change d branch"

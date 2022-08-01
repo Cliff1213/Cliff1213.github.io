@@ -1318,6 +1318,8 @@ console.log(el);
 // ----
 ```
 
+> 如果選取的元素有綁定 id 屬性，也能使用 getElementById 方式來取得該元素節點。
+
 ### querySelectorAll
 
 雖然 querySelector 可以選取網頁中的元素，但是相同名稱的元素存在多個時，只有第一個會被選取到，此時可以使用 querySelectorAll 來選取多個元素，範例如下：
@@ -1559,6 +1561,55 @@ console.log(btn.nodeName);
 // 輸出結果為 BUTTON
 ```
 
+### classList
+
+如果是針對 class 的屬性值，可以透過 classList 來達成某些動作，如下所示：
+
+```html
+<!-- HTML -->
+<input type="checkbox" id="checkBox" class="check active">
+```
+
+```js
+const checkBox = document.getElementById('checkBox');
+console.log(checkBox.classList);
+// 輸出結果 ----
+// 0: "check"
+// 1: "active"
+// length: 2
+// value: "check active"
+// ----
+```
+
+**新增 class**
+
+```js
+checkBox.classList.add('className');
+```
+
+**移除 class**
+
+```js
+checkBox.classList.remove('className');
+```
+
+**切換 class**
+
+```js
+checkBox.classList.toggle('className');
+```
+
+> 上述 toggle 會根據 class 名稱是否存在來執行動作，有就移除該類別名稱，沒有則是加入。
+
+此外，classList 也能搭配 contains 來判斷 class 列表中，是否存在指定的**一個**類別名稱，以前面範例來說，結果如下：
+
+```js
+console.log(checkBox.classList.contains('active'));
+// 輸出結果為 true
+```
+
+
+
 ---
 
 ## event 事件
@@ -1761,7 +1812,43 @@ list.addEventListener('click', function(e) {
 })
 ```
 
-**應用範例 - todolist**
+補充知識：有時候會在 html 標籤中埋入 `data-id` 屬性，而該屬性通常會對應陣列中每筆物件的 id 類型屬性，為了確保每個 id 的獨一無二，可以使用 Date 物件的方式來達成，做法如下：
+
+```js
+let obj = {
+  id: new Date().getTime(); // 不同時間生成的物件，id 值都不同
+}
+```
+
+> Date 物件儲存了世界標準時間（UTC）自 1979/01/01 開始至今的時間，以毫秒單位儲存，透過上述方式可以取得不同的時間戳，因此適合做為 id 使用，相關內容可參考此[文章](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Date)。
+
+### closest 最近節點
+
+有時候可能會因為 HTML 結構較複雜（層數較多）導致 `e.target` 無法選取到指定的元素，此時透過 `closest` 就能夠取得距離該元素最近的指定節點，範例如下：
+
+```html
+<!-- HTML -->
+<ul class="list">
+  <li><a>項目</a></li>
+</ul>
+```
+
+```js
+// js
+const listItem = document.querySelector('.list li');
+listItem.addEventListener('click', (e) => {
+  console.log(e.target);
+  console.log(e.target.closest('.list'));
+  console.log(e.target.closest('a'));
+});
+// 點擊時輸出結果 ----
+// <a>項目</a>
+// <ul class="list">...</ul>
+// <li><a>項目</a></li>
+// ----
+```
+
+**應用範例 - 簡易 todolist**
 
 ```html
 <!-- HTML -->
@@ -1792,11 +1879,11 @@ let data = [
 function renderData() {
   const list = document.querySelector(".list");
   let str = "";
-  data.forEach(function (item, index) { // 帶入參數 index 並渲染為 data-order 的屬性值
+  data.forEach(function (item) {
     str += `
   <li>
     <p>${item.content}</p>
-    <input type="button" class="delete" data-order="${index}" value="刪除">
+    <input type="button" class="delete" data-id="${item.id}" value="刪除">
   </li>`;
   });
   list.innerHTML = str;
@@ -1810,6 +1897,7 @@ save.addEventListener("click", function (e) {
   }
   let addData = {};
   addData.content = txt.value;
+  addData.id = new Date().getTime().toString();
   data.push(addData);
   renderData(); // 新增資料後再次渲染畫面
   txt.value = "";
@@ -1820,15 +1908,16 @@ list.addEventListener("click", function (e) {
   if (e.target.nodeName !== "INPUT") {
     return;
   }
-  let orderNum = e.target.getAttribute("data-order");
-  data.splice(orderNum, 1);
+  let deleteId = data.findIndex((item) => item.id === e.target.dataset.id); // 取得刪除資料的索引值
+  data.splice(deleteId, 1);
   renderData(); // 刪除資料後再次渲染畫面
 });
 ```
 
-以上範例使用了先前提到的範圍取值方式來進行事件監聽，並且運用自訂的屬性 `data-` 來搭配 `forEach` 迴圈中的參數 `index`，來達到刪除資料功能。
+以上範例使用了先前提到的範圍取值方式來進行事件監聽，並且透過 `findIndex` 取得自訂屬性 `data-id` 值，再透過 `splice` 達到刪除點擊的項目，呈現結果如下：
 
-在 JS 程式碼的 19 行組合的字串樣板中加入了自訂屬性 `data-`，而屬性值使用參數來帶入 `data` 的 `index`，因此渲染出來的標籤屬性 `data-order` 的值都會帶入索引值，如此一來，刪除邏輯的部分就能夠透過 `.splice` 的方式來刪除所點擊的項目。
+{% iframe https://codepen.io/Cliff_hex/embed/BarBpVd?default-tab=resault %}
+
 
 ### 取消默認行為
 

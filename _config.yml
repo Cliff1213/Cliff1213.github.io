@@ -132,4 +132,4 @@ deploy:
   repo: https://github.com/Cliff1213/cliff1213.github.io.git
   branch: main
   ignore_hidden: false
-  message: "add js content"
+  message: "article correct"

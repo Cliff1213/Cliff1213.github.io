@@ -203,7 +203,7 @@ footer:
     color: "#ffcc00"
 
   # If not defined, `author` from Hexo `_config.yml` will be used.
-  copyright: "Cliff / 轉貼須註明出處ㄛ！"
+  copyright: "Cliff / 轉貼麻煩註明出處"
 
   # Powered by Hexo & NexT
   powered: false

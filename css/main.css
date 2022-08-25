@@ -184,7 +184,7 @@ body {
   background: var(--body-bg-color);
   box-sizing: border-box;
   color: var(--text-color);
-  font-family: Lato, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Noto Sans TC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 1em;
   line-height: 2;
   min-height: 100%;
@@ -197,7 +197,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: Lato, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Noto Sans TC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-weight: bold;
   line-height: 1.5;
   margin: 30px 0 15px;
@@ -1204,7 +1204,7 @@ pre code {
   color: var(--brand-hover-color);
 }
 .site-title {
-  font-family: Lato, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Noto Sans TC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 1.375em;
   font-weight: normal;
   line-height: 1.5;
@@ -1624,7 +1624,7 @@ pre code {
   width: 100%;
 }
 .with-love {
-  color: #fc0;
+  color: #89cffd;
   display: inline-block;
   margin: 0 5px;
 }
@@ -1729,16 +1729,6 @@ pre code {
 }
 .back-to-top.back-to-top-on {
   bottom: 30px;
-}
-.reading-progress-bar {
-  --progress: 0;
-  background: #fc0;
-  height: 2px;
-  position: fixed;
-  z-index: 50;
-  width: var(--progress);
-  left: 0;
-  bottom: 0;
 }
 .rtl.post-body p,
 .rtl.post-body a,
@@ -1878,7 +1868,7 @@ pre code {
   width: 4px;
 }
 .post-body {
-  font-family: Lato, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Noto Sans TC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   overflow-wrap: break-word;
 }
 @media (min-width: 1200px) {
@@ -2065,7 +2055,7 @@ pre code {
 }
 .posts-expand .post-meta-container {
   color: #999;
-  font-family: Lato, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Noto Sans TC, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 0.75em;
   margin-top: 3px;
 }
@@ -2710,7 +2700,7 @@ mark.search-keyword {
   text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
 }
 .main-menu .menu-item-active::after {
-  background: #fc0;
+  background: #89cffd;
   border-radius: 50%;
   content: ' ';
   height: 6px;
@@ -2829,6 +2819,98 @@ mark.search-keyword {
     margin-bottom: 10px;
   }
 }
-body {
-  background-color: #e5e5e5;
+:root {
+  --theme-color: #1f3144;
+  --body-bg-color: #181c27;
+  --content-bg-color: #252d38;
+  --link-color: #c4c6c9;
+  --text-color: #c4c6c9;
+  --blockquote-color: #c4c6c9;
+  --highlight-background: #ddd;
+  --link-hover-color: #30a9de;
+  --menu-item-bg-color: rgba(245,245,245,0.1);
+  --btn-default-hover-bg: #fff;
+  --btn-default-hover-border-color: #fff;
+  --btn-default-border-color: #c4c6c9;
+  --btn-default-bg: transparent;
+  --btn-default-color: #c4c6c9;
+  --btn-default-hover-color: #222;
+  --card-bg-color: #f5f5f5;
+}
+.post-toc .nav .active > a {
+  border-bottom-color: #30a9de;
+  color: #30a9de;
+}
+.sidebar-toc-active .sidebar-nav-toc,
+.sidebar-overview-active .sidebar-nav-overview {
+  border-bottom-color: #30a9de;
+  color: #30a9de;
+}
+.menu-item a:hover,
+.menu-item a.menu-item-active {
+  background: var(--menu-item-bg-color, 0.5);
+}
+.sidebar-nav li:hover {
+  color: #30a9de;
+}
+code {
+  background: rgba(62,75,94,0.5);
+  color: #e8a0bf;
+  border-radius: 3px;
+  font-size: 0.875em;
+  padding: 2px 4px;
+  overflow-wrap: break-word;
+}
+figure.highlight {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.hljs-type,
+.hljs-string,
+.hljs-number,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-quote,
+.hljs-template-tag,
+.hljs-deletion {
+  color: #b93160;
+}
+.btn {
+  border: 2px solid var(--btn-default-border-color);
+  border-radius: 2px;
+  color: var(--btn-default-color);
+  display: inline-block;
+  font-size: 0.875em;
+  line-height: 2;
+  padding: 0 20px;
+  transition: background-color 0.2s ease-in-out;
+}
+.post-copyright {
+  padding: 0.5em 1em;
+  background: #fdf8ea;
+  border-left: 3px solid #f0ad4e;
+  margin: 1em 0 0;
+  border-radius: 4px;
+  color: #3c4858;
+}
+.pagination .prev:hover,
+.pagination .next:hover,
+.pagination .page-number:hover {
+  border-top-color: #ccc;
+}
+*::selection {
+  background: rgba(48,169,222,0.5);
+}
+.back-to-top:hover {
+  color: #30a9de;
+}
+.posts-collapse .post-content .post-header:hover {
+  border-bottom-color: var(--link-color);
+  color: #30a9de;
+}
+.pagination .page-number {
+  border-bottom: none;
+  border-top: none;
+  transition: border-color 0.2s ease-in-out;
 }

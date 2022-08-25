@@ -50,10 +50,10 @@ darkmode: false
 # ---------------------------------------------------------------
 
 favicon:
-  small: /images/favicon_16px.png
-  medium: /images/favicon_32px.png
-  apple_touch_icon: /images/apple-touch-icon-Cat.png
-  safari_pinned_tab: /images/logo.svg
+  small: /images/favicon.png
+  medium: /images/favicon.png
+  apple_touch_icon: /images/favicon.png
+  safari_pinned_tab: /images/favicon.png
   #android_manifest: /manifest.json
 
 # Custom Logo (Warning: Do not support scheme Mist)
@@ -127,7 +127,7 @@ sidebar:
 # Sidebar Avatar
 avatar:
   # Replace the default image and set the url here.
-  url: /images/new_avatar.png #/images/avatar.gif
+  url: /images/avatar.png #/images/avatar.gif
   # If true, the avatar will be displayed in circle.
   rounded: false
   # If true, the avatar will be rotated with the cursor.
@@ -200,7 +200,7 @@ footer:
     # If you want to animate the icon, set it to true.
     animated: false
     # Change the color of icon, using Hex Code.
-    color: "#ffcc00"
+    color: "#89CFFD"
 
   # If not defined, `author` from Hexo `_config.yml` will be used.
   copyright: "Cliff / 轉貼麻煩註明出處"
@@ -383,13 +383,13 @@ back2top:
 
 # Reading progress bar
 reading_progress:
-  enable: true
+  enable: false
   # Available values: left | right
   start_at: left
   # Available values: top | bottom
   position: bottom
   reversed: false
-  color: "#FFCC00"
+  color: "#ffcc00"
   height: 2px
 
 # Bookmark Support
@@ -421,7 +421,7 @@ github_banner:
 # ---------------------------------------------------------------
 
 font:
-  enable: false
+  enable: true
 
   # Uri of fonts host, e.g. https://fonts.googleapis.com (Default).
   host:
@@ -434,7 +434,8 @@ font:
   # Global font settings used for all elements inside <body>.
   global:
     external: true
-    family: Lato
+    # family: Lato
+    family: Noto Sans TC
     size:
 
   # Font settings for site title (.site-title).

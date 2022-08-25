@@ -2,91 +2,91 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://cliff1213.github.io/2022-03-14-rwd-note/</loc>
+    <loc>http://kurifu.tw/2022-03-14-rwd-note/</loc>
     
     <lastmod>2022-08-25</lastmod>
     
   </url>
   
   <url>
-    <loc>https://cliff1213.github.io/2022-05-12-javascript-note/</loc>
+    <loc>http://kurifu.tw/2022-05-12-javascript-note/</loc>
     
     <lastmod>2022-08-01</lastmod>
     
   </url>
   
   <url>
-    <loc>https://cliff1213.github.io/about/index.html</loc>
+    <loc>http://kurifu.tw/about/index.html</loc>
     
     <lastmod>2022-07-07</lastmod>
     
   </url>
   
   <url>
-    <loc>https://cliff1213.github.io/2022-01-20-git-note/</loc>
+    <loc>http://kurifu.tw/2022-01-20-git-note/</loc>
     
     <lastmod>2022-07-07</lastmod>
     
   </url>
   
   <url>
-    <loc>https://cliff1213.github.io/2022-06-07-sass-note-md/</loc>
+    <loc>http://kurifu.tw/2022-06-07-sass-note-md/</loc>
     
     <lastmod>2022-07-04</lastmod>
     
   </url>
   
   <url>
-    <loc>https://cliff1213.github.io/2022-06-06-swiper-note/</loc>
+    <loc>http://kurifu.tw/2022-06-06-swiper-note/</loc>
     
     <lastmod>2022-07-04</lastmod>
     
   </url>
   
   <url>
-    <loc>https://cliff1213.github.io/2022-03-02-font-family/</loc>
+    <loc>http://kurifu.tw/2022-03-02-font-family/</loc>
     
     <lastmod>2022-07-04</lastmod>
     
   </url>
   
   <url>
-    <loc>https://cliff1213.github.io/2022-02-07-npm-note/</loc>
+    <loc>http://kurifu.tw/2022-02-07-npm-note/</loc>
     
     <lastmod>2022-07-04</lastmod>
     
   </url>
   
   <url>
-    <loc>https://cliff1213.github.io/2022-01-17-hexschool-UI/</loc>
+    <loc>http://kurifu.tw/2022-01-17-hexschool-UI/</loc>
     
     <lastmod>2022-07-04</lastmod>
     
   </url>
   
   <url>
-    <loc>https://cliff1213.github.io/404.html</loc>
+    <loc>http://kurifu.tw/404.html</loc>
     
     <lastmod>2022-02-21</lastmod>
     
   </url>
   
   <url>
-    <loc>https://cliff1213.github.io/tags/index.html</loc>
+    <loc>http://kurifu.tw/tags/index.html</loc>
     
     <lastmod>2022-02-01</lastmod>
     
   </url>
   
   <url>
-    <loc>https://cliff1213.github.io/categories/index.html</loc>
+    <loc>http://kurifu.tw/archives/index.html</loc>
     
     <lastmod>2022-02-01</lastmod>
     
   </url>
   
   <url>
-    <loc>https://cliff1213.github.io/archives/index.html</loc>
+    <loc>http://kurifu.tw/categories/index.html</loc>
     
     <lastmod>2022-02-01</lastmod>
     
@@ -94,7 +94,7 @@
   
 
   <url>
-    <loc>https://cliff1213.github.io/</loc>
+    <loc>http://kurifu.tw/</loc>
     <lastmod>2022-08-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>

@@ -75,7 +75,7 @@ $color-primary: #00cc99;
 變數值可使用的格式分別有以下幾種：
 
 - 數字：2、16px、2rem
-- 字串："文字內容"、"./images/logo.png"
+- 字串："文字"、"./img/logo.png"
 - 顏色：blue、#00CC99、rgba(0,0,0,0.5)
 - 布林：true、false
 - 空值：null

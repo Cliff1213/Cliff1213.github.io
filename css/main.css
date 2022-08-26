@@ -2862,9 +2862,6 @@ mark.search-keyword {
   --highlight-gutter-background: #d3d3d3;
 /* 程式碼區塊左側數字 */
   --highlight-gutter-foreground: #555;
-/* -----版權聲明區塊----- */
-/* 版權聲明區塊背景 */
-  --card-bg-color: #f5f5f5;
 }
 /* -----左側文章目錄區塊----- */
 /* 區塊標題文字 hover */
@@ -2898,17 +2895,6 @@ mark.search-keyword {
 figure.highlight {
   border-radius: 4px;
   overflow: hidden;
-}
-/* 類別文字 */
-.hljs-type,
-.hljs-string,
-.hljs-number,
-.hljs-selector-id,
-.hljs-selector-class,
-.hljs-quote,
-.hljs-template-tag,
-.hljs-deletion {
-  color: #b93160;
 }
 /* 圓點 */
 .main-menu .menu-item-active::after: {
@@ -2947,4 +2933,15 @@ mark.search-keyword {
 /* 內容文字 */
 .search-result-list a {
   color: #707070;
+}
+/* -----版權聲明----- */
+.post-copyright {
+  background: #fdf8ea;
+  border-left: 6px solid #f0ad4e;
+  color: #252d38;
+  padding: 4px 16px;
+  border-radius: 8px;
+}
+.post-copyright a {
+  color: #1f3144;
 }

@@ -36,7 +36,7 @@
 <meta property="og:description" content="記錄一些 RWD 的小知識，以及設計過程中可以注意的小細節。">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2022-03-13T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-08-25T04:50:05.482Z">
+<meta property="article:modified_time" content="2022-08-26T06:48:57.245Z">
 <meta property="article:author" content="Cliff">
 <meta property="article:tag" content="學習筆記">
 <meta property="article:tag" content="RWD">
@@ -256,7 +256,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2022-08-25 12:50:05" itemprop="dateModified" datetime="2022-08-25T12:50:05+08:00">2022-08-25</time>
+      <time title="修改時間：2022-08-26 14:48:57" itemprop="dateModified" datetime="2022-08-26T14:48:57+08:00">2022-08-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -393,7 +393,10 @@
 <p>為了避免發生這方面的問題，可以在排版之前先加入以下設定：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*,*<span class="selector-pseudo">::before</span>,*<span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">    <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>加入這段設定後，容器的寬度與高度就不會包含 Padding、Margin、Border 所產生的距離，而只是單純計算內容的寬高。</p>
+<p>加入這段設定後，元素的寬度與高度就不會包含 Padding、Border 所產生的距離，可以理解成實際寬度等於設定的寬度（width、max-width）。</p>
+<blockquote>
+<p>margin 不在 border-box 範疇之內。</p>
+</blockquote>
 <hr>
 <h2 id="使用百分比控制寬度"><a href="#使用百分比控制寬度" class="headerlink" title="使用百分比控制寬度"></a>使用百分比控制寬度</h2><p>在響應式網頁中，也常會使用百分比（%）單位來設計網頁元素的排版，而使用百分比的元素會根據父層元素的寬度，自適應調整自身的寬度與高度。</p>
 <p>以下方原始碼為例：</p>

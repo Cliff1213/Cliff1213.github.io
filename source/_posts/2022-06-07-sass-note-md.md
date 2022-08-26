@@ -1,5 +1,5 @@
 ---
-title: Sass 實用技巧
+title: Sass 實用語法
 date: 2022-06-07
 tags:
  - Sass

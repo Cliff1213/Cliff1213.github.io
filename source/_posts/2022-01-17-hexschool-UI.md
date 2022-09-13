@@ -1,9 +1,9 @@
 ---
-title: 六角學院 UI 觀念直播班心得
+title: UI 觀念直播班心得
 date: 2022-01-17
 tags:
  - UI/UX
- - 六角學院
+ - 課程心得
 categories: 心得文
 ---
 

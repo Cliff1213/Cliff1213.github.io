@@ -7,7 +7,7 @@ tags:
 categories: JavaScript
 ---
 
-> *這是一篇 JavaScript 的學習筆記，視情況陸續增加內容。*
+*這是一篇 JavaScript 的學習筆記，視情況陸續增加內容。*
 
 <!--more-->
 

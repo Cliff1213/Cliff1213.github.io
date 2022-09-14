@@ -74,5 +74,17 @@ mark.search-keyword {
 }
 .post-button .btn:hover {
   box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
-  background-image: linear-gradient(90deg, #E7F6F2 0%, #fff 25%, #fff 50%, #fff 75%, #E7F6F2 100%);
+  background-image: linear-gradient(90deg, #eee 0%, #fff 25%, #fff 50%, #fff 75%, #eee 100%);
+}
+
+// 手幾版文字對齊
+.post-body, .post-button {
+  @media(max-width: 767px) {
+    text-align: center;
+  }
+}
+
+// 側邊欄
+.site-state-item:not(:first-child) {
+  border-left: 1px solid rgba(#eee, .3);
 }

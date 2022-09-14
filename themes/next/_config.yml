@@ -867,6 +867,7 @@ canvas_ribbon:
   alpha: 0.6 # The transparency of the ribbon
   zIndex: -1 # The display level of the ribbon
 
+canvas_nest: true
 
 # ---------------------------------------------------------------
 # CDN Settings

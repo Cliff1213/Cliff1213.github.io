@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: I'm Cliff
+title: Cliff blog
 subtitle: '個人筆記部落格'
 description: 想像貓一樣慵懶
 keywords:
@@ -132,4 +132,4 @@ deploy:
   repo: https://github.com/Cliff1213/cliff1213.github.io.git
   branch: main
   ignore_hidden: false
-  message: "頁面&內容樣式調整"
+  message: "新增文章"

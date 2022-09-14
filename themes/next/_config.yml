@@ -37,8 +37,8 @@ custom_file_path:
 
 # Schemes
 # scheme: Muse
-#scheme: Mist
-scheme: Pisces
+scheme: Mist
+# scheme: Pisces
 #scheme: Gemini
 
 # Dark Mode
@@ -203,7 +203,7 @@ footer:
     color: "#89CFFD"
 
   # If not defined, `author` from Hexo `_config.yml` will be used.
-  copyright: "Cliff / 轉貼麻煩註明出處"
+  copyright: "Cliff / 轉貼麻煩註明原出處"
 
   # Powered by Hexo & NexT
   powered: false
@@ -237,8 +237,8 @@ post_meta:
   item_text: true
   created_at: true
   updated_at:
-    enable: true
-    another_day: true
+    enable: false
+    another_day: false
   categories: true
 
 # Post wordcount display settings

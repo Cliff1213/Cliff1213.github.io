@@ -4,7 +4,8 @@ date: 2022-01-17
 tags:
  - UI/UX
  - 課程心得
-categories: 心得文
+ - 六角學院
+categories: 心得
 ---
 
 > *UI 直播班的心路歷程，推！*

@@ -1,155 +1,78 @@
-:root {
-
-/* -----主題背景----- */
-
-  /* 部落格標題背景 */          --theme-color: #1f3144;
-
-  /* 頁面底層背景 */            --body-bg-color: #181c27;
-
-  /* 主要內容背景 */            --content-bg-color: #252d38;
-
-  /* 選單背景 hover */          --menu-item-bg-color: rgba(#f5f5f5, .1);
-
-
-
-/* -----文字----- */
-
-  /* 部落格標題文字 */          --brand-color: #fff;
-
-  /* 連結文字 */               --link-color: #c4c6c9;
-
-  /* 連結文字 hover */         --link-hover-color: #89cffd;
-
-  /* 一般文字 */               --text-color: #c4c6c9;
-
-  /* 引用文字 */               --blockquote-color: #c4c6c9;
-
-
-
-/* -----按鈕----- */
-
-  /* 按鈕預設邊框 */           --btn-default-border-color: #c4c6c9;
-
-  /* 按鈕預設文字 */           --btn-default-color: #c4c6c9;
-  
-  /* 按鈕預設背景 */           --btn-default-bg: transparent;
-
-  /* 按鈕效果背景 */           --btn-default-hover-bg: #fff;
-  
-  /* 按鈕效果邊框 */           --btn-default-hover-border-color: #fff;
-
-  /* 按鈕效果文字 */           --btn-default-hover-color: #181c27;
-  
-
-
-/* -----程式碼區塊----- */
-
-  /* 程式碼區塊背景 */          --highlight-background: #ddd;
-
-  /* HTML 標籤 & 屬性 */       --highlight-foreground: #444;
-
-  /* 程式碼區塊左側背景 */      --highlight-gutter-background: #d3d3d3;
-
-  /* 程式碼區塊左側數字 */      --highlight-gutter-foreground: #555;
-
-
+// 程式碼區塊圓角
+figure.highlight {
+  border-radius: 4px;
+  overflow: hidden;
 }
 
 
-/* -----左側文章目錄區塊----- */
+// 站內搜尋
+  // 關鍵字
+mark.search-keyword {
+  border-bottom: 1px dashed #30a9de;
+  color: #30a9de;
+}
+  // 內容文字
+.search-result-list a {
+  color: #707070;
+}
 
-  /* 區塊標題文字 hover */
+
+// 文章目錄區塊
+  // 標題文字 hover
 .sidebar-nav li:hover {
     color: #89cffd;
 }
-
-  /* 區塊標題文字 active */
+  // 標題文字 active
 .sidebar-toc-active .sidebar-nav-toc, .sidebar-overview-active .sidebar-nav-overview {
     border-bottom-color: #30a9de;
     color: #30a9de;
 }
-
-  /* 區塊標題文字 active 時 hover */
+  // 標題文字 active hover
 .sidebar-toc-active .sidebar-nav-toc:hover, .sidebar-overview-active .sidebar-nav-overview:hover {
     border-bottom-color: #89cffd;
     color: #89cffd;
 }
-
-  /* 區塊內容章節 active */
+  // 內容章節 active
 .post-toc .nav .active > a {
     border-bottom-color: #30a9de;
     color: #30a9de;
 }
-
-  /* 區塊內容章節 hover */
+  // 內容章節 hover
 .post-toc .nav .active > a:hover {
     border-bottom-color: #89cffd;
     color: #89cffd;
 }
-
-
-/* -----左側文章目錄區塊----- */
-
-  /* 區塊圓角 */
-figure.highlight {
-    border-radius: 4px;
-    overflow: hidden;
+  // 內容章節 active hover
+.sidebar a:hover {
+    border-bottom-color: #89cffd;
+    color: #89cffd;
 }
 
-
-  /* 圓點 */
-.main-menu .menu-item-active::after: {
-    background: #30a9de;
+// 滾動軸
+::-webkit-scrollbar {
+  width: 5px;
+  height: 4px;
+  background: transparent;
+}
+::-webkit-scrollbar-track {
+  margin: 0 12px;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
 }
 
-
-/* -----回頂部 hover----- */
-.back-to-top:hover {
-    color: #30a9de;
+// Read More 按鈕樣式
+.post-button .btn {
+  color: #555 !important;
+  background-color: rgb(255, 255, 255);
+  border-radius: 3px;
+  font-size: 15px;
+  box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
+  border: none !important;
+  transition-property: unset;
+  padding: 0px 15px;
 }
-
-/* -----程式碼標籤----- */
-code {
-    color: #e8a0bf;
-    background: rgba(62,75,94,0.5);
-}
-
-/* -----底部分頁 hover----- */
-.pagination .prev:hover, .pagination .next:hover, .pagination .page-number:hover {
-    border-top-color: transparent;
-}
-
-/* -----標籤頁文字預設----- */
-.tag-cloud-5 {
-    border-bottom-color: #aaa;
-    color: #aaa;
-}
-.tag-cloud-10 {
-    border-bottom-color: #aaa;
-    color: #aaa;
-}
-
-
-/* -----站內搜尋文字----- */
-  /* 關鍵字 */
-mark.search-keyword {
-    border-bottom: 1px dashed #30a9de;
-    color: #30a9de;
-}
-
-  /* 內容文字 */
-.search-result-list a {
-    color: #707070;
-}
-
-/* -----版權聲明----- */
-.post-copyright {
-  background: #fdf8ea;
-  border-left: 6px solid #f0ad4e;
-  color: #252d38;
-  padding: 4px 16px;
-  border-radius: 8px;
-}
-.post-copyright a {
-  color: #1f3144;
+.post-button .btn:hover {
+  box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  background-image: linear-gradient(90deg, #E7F6F2 0%, #fff 25%, #fff 50%, #fff 75%, #E7F6F2 100%);
 }

@@ -120,16 +120,16 @@ sitemap:
 #Security
 encrypt: # hexo-blog-encrypt 
   silent: true 
-  abstract: 本篇屬於及時撰寫的筆記，後續會刪除，內容雜亂僅供個人瀏覽。
-  message: 這是一篇加密文章，需要密碼才能繼續閱讀。
+  abstract: 這是一篇加密文章 ヾ(´ε`ヾ)。
+  message: 內容已加密，請輸入密碼。
   # tags: 
   # - {name: private, password: hello} 
-  wrong_pass_message: 您輸入的密碼有誤，請不要重新嘗試。
-  wrong_hash_message: 當前文章不能被校驗。
+  wrong_pass_message: 請輸入正確密碼。
+  wrong_hash_message: 該文章無法校驗。
 
 deploy:
   type: git
   repo: https://github.com/Cliff1213/cliff1213.github.io.git
   branch: main
   ignore_hidden: false
-  message: "修正文字對齊"
+  message: "新增文章&加密功能"

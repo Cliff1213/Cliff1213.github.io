@@ -7,7 +7,7 @@ tags:
 categories: CSS
 ---
 
-*紀錄 font-family 字體設定的基本觀念。*
+紀錄 font-family 字體設定的基本觀念。
 
 <!--more-->
 

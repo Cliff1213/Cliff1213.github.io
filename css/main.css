@@ -2816,7 +2816,7 @@ hr {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #c18b41;
+  background: #4f52ff;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2911,4 +2911,17 @@ mark.search-keyword {
 }
 .site-state-item:not(:first-child) {
   border-left: 1px solid rgba(238,238,238,0.3);
+}
+.hbe-input {
+  min-width: 0 !important;
+}
+.hbe-input-label-default {
+  padding: 4px 8px !important;
+  font-size: 16px !important;
+}
+.hbe-input-label-default::before {
+  background: #ccc !important;
+}
+.hbe-input-field {
+  padding: 4px 8px !important;
 }

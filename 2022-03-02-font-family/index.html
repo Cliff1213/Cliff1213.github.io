@@ -38,7 +38,7 @@
 <meta property="og:description" content="紀錄 font-family 字體設定的基本觀念。">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2022-03-01T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-09-18T06:05:13.669Z">
+<meta property="article:modified_time" content="2022-09-20T16:57:04.251Z">
 <meta property="article:author" content="Cliff">
 <meta property="article:tag" content="css">
 <meta property="article:tag" content="font-family">
@@ -162,7 +162,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Font-Family-%E8%A8%AD%E5%AE%9A%E8%A6%8F%E5%89%87"><span class="nav-number">1.</span> <span class="nav-text">Font-Family 設定規則</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E9%AB%94%E5%A5%97%E7%94%A8%E9%82%8F%E8%BC%AF"><span class="nav-number">1.1.</span> <span class="nav-text">字體套用邏輯</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AA%9E%E6%B3%95%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85"><span class="nav-number">1.2.</span> <span class="nav-text">語法注意事項</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Font-Family-%E5%AD%97%E9%AB%94%E9%A1%9E%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">Font-Family 字體類型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E5%AE%9A%E5%AD%97%E9%AB%94%EF%BC%88family-name%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">指定字體（family-name）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E7%94%A8%E5%AD%97%E9%AB%94%EF%BC%88generic-family%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">通用字體（generic-family）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A8%AD%E5%AE%9A%E6%96%B9%E5%BC%8F"><span class="nav-number">2.3.</span> <span class="nav-text">設定方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E9%AB%94%E9%A0%86%E5%BA%8F%E8%A7%80%E5%BF%B5"><span class="nav-number">3.</span> <span class="nav-text">字體順序觀念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E3%80%81%E8%8B%B1%E6%96%87%E9%A0%86%E5%BA%8F"><span class="nav-number">3.1.</span> <span class="nav-text">中、英文順序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E9%AB%94%E4%BD%BF%E7%94%A8%E7%8E%87%E8%88%87%E9%A0%86%E5%BA%8F"><span class="nav-number">3.2.</span> <span class="nav-text">字體使用率與順序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%A6%E5%8B%99%E7%AF%84%E4%BE%8B"><span class="nav-number">4.</span> <span class="nav-text">實務範例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">5.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Font-Family-%E8%A8%AD%E5%AE%9A%E8%A6%8F%E5%89%87"><span class="nav-number">1.</span> <span class="nav-text">Font-Family 設定規則</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E9%AB%94%E5%A5%97%E7%94%A8%E9%82%8F%E8%BC%AF"><span class="nav-number">1.1.</span> <span class="nav-text">字體套用邏輯</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AA%9E%E6%B3%95%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85"><span class="nav-number">1.2.</span> <span class="nav-text">語法注意事項</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Font-Family-%E5%AD%97%E9%AB%94%E9%A1%9E%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">Font-Family 字體類型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E5%AE%9A%E5%AD%97%E9%AB%94%EF%BC%88family-name%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">指定字體（family-name）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E7%94%A8%E5%AD%97%E9%AB%94%EF%BC%88generic-family%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">通用字體（generic-family）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A8%AD%E5%AE%9A%E6%96%B9%E5%BC%8F"><span class="nav-number">2.3.</span> <span class="nav-text">設定方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E9%AB%94%E9%A0%86%E5%BA%8F%E8%A7%80%E5%BF%B5"><span class="nav-number">3.</span> <span class="nav-text">字體順序觀念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E3%80%81%E8%8B%B1%E6%96%87%E9%A0%86%E5%BA%8F"><span class="nav-number">3.1.</span> <span class="nav-text">中、英文順序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E9%AB%94%E4%BD%BF%E7%94%A8%E7%8E%87%E8%88%87%E9%A0%86%E5%BA%8F"><span class="nav-number">3.2.</span> <span class="nav-text">字體使用率與順序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%A6%E5%8B%99%E7%AF%84%E4%BE%8B"><span class="nav-number">4.</span> <span class="nav-text">實務範例</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -177,7 +177,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -188,7 +188,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -355,7 +355,8 @@
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">font-family</span>: arial, sans-serif;  <span class="comment">/* 不愧是 Google，連字體設定都這麼簡約 */</span></span><br></pre></td></tr></table></figure>
 
 <hr>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<p><strong>參考資料：</strong></p>
+<ul>
 <li><a target="_blank" rel="noopener" href="https://www.oxxostudio.tw/articles/201811/css-font-family.html">CSS font-family 詳細介紹</a></li>
 <li><a target="_blank" rel="noopener" href="https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/180456/#outline__1_2_1">最標準的系統字型規範 font-family</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.casper.tw/css/2014/01/01/font-family/">font-family要怎麼玩</a></li>

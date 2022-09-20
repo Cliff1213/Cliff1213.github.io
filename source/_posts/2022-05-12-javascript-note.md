@@ -2999,7 +2999,7 @@ let funcName = (num, num2) => {
 
 ---
 
-## 參考資料
+**參考資料：**
 
 - [前端利用formData格式進行資料上傳，前端 formData 傳值和 json 傳值的區別？](https://www.796t.com/article.php?id=192469)
 - [JavaScript 陣列處理方法 [filter(), find(), forEach(), map(), every(), some(), reduce()]](https://www.casper.tw/javascript/2017/06/29/es6-native-array/#Array-prototype-reduce)

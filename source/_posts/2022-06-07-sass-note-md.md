@@ -316,7 +316,7 @@ $colors: (
 
 ---
 
-## 參考資料
+**參考資料：**
 
 - [什麼是Sass 7-1架構?](https://medium.com/ivycodefive/4-%E4%BB%80%E9%BA%BC%E6%98%AFsass-7-1%E6%9E%B6%E6%A7%8B-8687e9a10a64)
 - [鐵人賽 25 - 實戰心法 - Sass Map 快出產出大量樣式](https://www.casper.tw/css/2016/12/25/sass-map/)

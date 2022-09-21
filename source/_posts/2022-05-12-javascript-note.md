@@ -3001,6 +3001,6 @@ let funcName = (num, num2) => {
 
 **參考資料：**
 
-- [前端利用formData格式進行資料上傳，前端 formData 傳值和 json 傳值的區別？](https://www.796t.com/article.php?id=192469)
-- [JavaScript 陣列處理方法 [filter(), find(), forEach(), map(), every(), some(), reduce()]](https://www.casper.tw/javascript/2017/06/29/es6-native-array/#Array-prototype-reduce)
-- [JavaScript Array sort() (陣列排序)](https://www.fooish.com/javascript/array/sort.html#%E8%87%AA%E5%AE%9A%E7%BE%A9%E6%8E%92%E5%BA%8F-custom-sort)
+[前端利用formData格式進行資料上傳，前端 formData 傳值和 json 傳值的區別？](https://www.796t.com/article.php?id=192469)
+[JavaScript 陣列處理方法 [filter(), find(), forEach(), map(), every(), some(), reduce()]](https://www.casper.tw/javascript/2017/06/29/es6-native-array/#Array-prototype-reduce)
+[JavaScript Array sort() (陣列排序)](https://www.fooish.com/javascript/array/sort.html#%E8%87%AA%E5%AE%9A%E7%BE%A9%E6%8E%92%E5%BA%8F-custom-sort)

@@ -2816,7 +2816,7 @@ hr {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #8ab5e2;
+  background: #5bff78;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2906,7 +2906,7 @@ mark.search-keyword {
 @media (max-width: 767px) {
   .post-body p:nth-child(1),
   .post-button {
-    text-align: center;
+    text-align: center !important;
   }
 }
 .site-state-item:not(:first-child) {

@@ -127,8 +127,8 @@
         <category>NPM</category>
       </categories>
       <tags>
-        <tag>學習筆記</tag>
         <tag>NPM</tag>
+        <tag>學習筆記</tag>
       </tags>
   </entry>
   <entry>
@@ -423,6 +423,41 @@
       </tags>
   </entry>
   <entry>
+    <title>網頁切版直播班心得</title>
+    <url>/2022-09-10-hexschool-web/</url>
+    <content><![CDATA[<p>2022 夏，切版直播班心得。</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>八週結束了，你學到了甚麼？</p>
+<p>我自己也不是很清楚，課堂上很多知識也還是似懂非懂，即使完成 100% 也感覺不到自己有所成長，這是去年直播班結束之後當下的心得，會有這樣的想法不是因為六角的學習環境不好，而是我自己在心態與學習方法上出現了問題。</p>
+<p>先來說說目前為止在六角學習下來的感受，六角學院與其他仿間的機構在教學模式上有著很大的不同，除了每週的直播與作業之外，每天還會釋出配合當週教學內容的每日任務；在解惑方面，無論是作業遇到卡關或是觀念上不清楚，都能夠透過每日助教或是直接請教同學來尋求解答，除此之外，還能藉由小組討論的方式分享解決問題的方法，學習資源應有盡有。</p>
+<p>但這樣真的足夠了？就在去年直播班結業後果斷否定了這個問題。本來以為只要每週直播不缺席，並且盡可能完成每個作業就可以達到最低限度的就業水準了，但事實證明這種想法太過不切實際了，即便乖乖的完成課程交代的作業，課程結束後我還是對所學的東西一知半解，更別說是去完成一個作品了。</p>
+<p>雖然很挫折，但是自己很享受學習過程中所帶來的一點點成就感，因此放棄從來都不在選項中。於是也閱讀了其他學員的學習心得，發現也有不少人跟我一樣是非本科系，但在學習上的付出程度實在差太多了，頓時覺得自己很廢，但也因此被激勵到了不少。</p>
+<p>整頓一下心態後我開始重頭來過，為了避免學了就忘開始嘗試把所學的內容透過撰寫筆記的方式記錄下來，從先前的直播到後來也購入了六角的線上錄影課程，也開始透過參考其他人的文章來做中學；不得不說寫筆記對初學者來說真的是一個能有效記憶知識的好方法，也不用在意寫得多爛，因為筆記是寫給自己看的，就這樣以這樣的模式渡過了一段時間。</p>
+<h2 id="報名契機"><a href="#報名契機" class="headerlink" title="報名契機"></a>報名契機</h2><p>今年年四月左右參加了為期一個月的公益體驗營，然而在體驗營結束前夕，學院按照慣例會推坑下一次的活動，這次是切版直播班，不過內容相較過去更為豐富，教學大綱除了舊有的 Bootstrap 到近幾年盛行的 Tailwind，思索一番之後還是報名了。其實原本是衝著 Tailwind 來的，但礙於過去在切版方面都是純手刻又覺得 Bootstrap 很困難而遲遲不去面對，導致自己連一個 CSS 框架都不會，另一方面自己在新技能的學習上會需要花不少時間來吸收，擔心一次學兩個會應付不來，因此就把目標先轉向了目前使用率較高的 Bootstrap；除此之外，這次也要求自己必須把八週主線任務的所有頁面都切出來，既然都全職學習了，至少這一點是能做到的吧。</p>
+<h2 id="每週學習歷程"><a href="#每週學習歷程" class="headerlink" title="每週學習歷程"></a>每週學習歷程</h2><h3 id="直播"><a href="#直播" class="headerlink" title="直播"></a>直播</h3><p>雖然每週直播的教學內容算是在複習錄影，但是現場跟大家一起聽課的氛圍比起自己看錄影兩者還是有差的，而且常常會有同學在聊天室提出一些平常可能不太會注意到的有趣問題，也能當作是一種額外的知識吸收，此外當然也少不了校長的嘴砲模式以及心靈雞湯，畢竟學程式容易產生焦慮，長時間學習下還是需要找地方宣洩一下情緒。八週的直播形式基本上都是前面提到的這樣，整體的感覺不錯，這部分也沒有需要特別需要補充甚麼了，不過直播班本來就是以大量輸出為前提，每週花費在作業上的時間自然就比較多。</p>
+<p>另外這次直播班每週是有兩場直播的，上述提到的是週五例行的直播，另一場則是週三的 Tailwind 主題，雖然大部分心思都投入在 Bootstrap 上面，但是每週還是有聽課並把作業都做過一次，整體感覺其實是很不錯的。</p>
+<h3 id="小組討論"><a href="#小組討論" class="headerlink" title="小組討論"></a>小組討論</h3><p>這次被分配到的組別還不錯，每週的小組討論出席率都很高，只是大多數的組員平時都比較忙，也有組員加班到很晚還趕回來餐與討論，辛苦各位了，無法出席的人也會透過線下時間把作業補齊，也要特別感謝組長主持以及做資料彙整，不得不說組長真的很認真好學，小組伺服器的發問次數也是最多的，自己也從不少問題中學到各種額外的知識，賺爛了。</p>
+<h3 id="每日任務"><a href="#每日任務" class="headerlink" title="每日任務"></a>每日任務</h3><p>不得不說每日任務真的是很棒的學習資源，每天會釋出一道小題目給學員練習，有時候作業卡關也能從這邊找到線索，也可以學到很多平常不知道的知識，算是一個小寶庫；不過後半段的部分因為都在趕主線任務的進度，幾乎都是用補交的就是了。</p>
+<h3 id="主線任務"><a href="#主線任務" class="headerlink" title="主線任務"></a>主線任務</h3><p>作業方面主線任務難度是最高的，前兩週比較像是在試水溫，但是從第三週開始版型就是一個完整的電商網站了，印象中在做第三週時，平均一頁包含 RWD 就花了幾乎一天的時間，切完所有頁面後開始地毯式搜索看有甚麼地方沒處理仔細或是可以再調整，也嘗試透過簡單的 JS 加入了一些小功能和效果，結果自己很滿意。</p>
+<p>第四週設計稿和第三週是同一份，差別在於第四週需要透過 Gulp 來做，講白一點這已經不是切版的範疇了，但是提早面對終端機指令、版本相容性或是編譯等問題對未來學習上無疑是好事，不過 Gulp 要怎麼寫任務就要靠自己學了，可惡！好想學會自己寫 Gulp 啊！！</p>
+<p>第五週是後台版型，也開始嘗試使用以前一直不敢面對的 Bootstrap，然而這週的作業是一邊看官方文件一邊做的，大部分的時間都花在看文件而不是切版，為了讓自己能早一點習慣使用 Bootstrap，有好幾天晚上睡前用手機都不是在看社群，而是在看官方文件…。</p>
+<p>校長在第一次直播時，有大概用折線圖描述一下每週的作業難度，印象中第六週的難度是僅次於第八週的，而且第六週開始被要求使用 CSS 框架來做，還好前一段時間花了不少時間研究 Bootstrap，現在通用類別與元件在使用上已經熟練了非常多，頓時覺得自己以前只是懶的去看密密麻麻的文件而已。除此之外，第六週設計稿部分區塊還需要引入 JS 套件，從 Discord 作業討論頻道也可以看到不少學員受到 Swiper 無情肆虐。自己也花費將近一週的時間才做完，就順便整合第七週一起繳交了，然而心想終於可以休息一下，結果第八週設計稿就提前釋出，害我差點就忘記自己還在通往地獄的列車上。</p>
+<p>第八週的設計稿很特別，充斥著各式各樣酷炫的排版。在這過程中也做了很多以往沒做過的嘗試，首先是開始自己設計元件，先前看到其他同學不用 Pages 資料夾就能做出所有頁面，自己早就想嘗試看看了，意外的是然辦到了！果然有些事如果不做永遠不知道結果；另外也學會了客製化通用類別的方法，不得不說使用起來很方便可惜相見恨晚。不過最麻煩的部分還是 JS 套件，這部分花了很多時間不斷嘗試和理解才做出來，從拿到設計稿到切完所有頁面大概用了一個多禮拜的時間，真的好累啊…。</p>
+<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>本來以為自己會倒在第八週，但意外的挺過來了，不得不說即便是全職學習還是覺得時間很緊迫，真心佩服那些平時有工作還來進修的同學。總結來說，這次直播班真的扎扎實實的學到很多知識，同時也深刻體會到學習是沒有捷徑的，追求卓越的唯一方法只有不斷的練習，最後非常感謝六角學院提供這麼棒的學習資源和環境，兩位講師和每位助教都辛苦了，小心肝啊！！</p>
+<p>（長嘆，肝了無數個夜晚終於可以休息一下了，啊~原來我報名了 JS 直播班，差點忘記我搭的是不停靠的直達列車了。</p>
+]]></content>
+      <categories>
+        <category>心得</category>
+      </categories>
+      <tags>
+        <tag>課程心得</tag>
+        <tag>六角學院</tag>
+        <tag>網頁切版</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Sass 實用語法</title>
     <url>/2022-06-07-sass-note-md/</url>
     <content><![CDATA[<p>簡單整理一下自己常用且覺得方便的一些 Sass 相關語法。</p>
@@ -511,6 +546,42 @@
       </tags>
   </entry>
   <entry>
+    <title>JavaScript 觀念 - 同步與非同步</title>
+    <url>/2022-09-20-sync-async/</url>
+    <content><![CDATA[<p>校正一下自己的觀念。</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="JavaScript-中的同步（Synchronous）"><a href="#JavaScript-中的同步（Synchronous）" class="headerlink" title="JavaScript 中的同步（Synchronous）"></a>JavaScript 中的同步（Synchronous）</h2><p>「同步」在你的認知上會怎麼解釋？我自己原本的想法是同時處理很多事情，但這個說法在 JavaScript 中卻有些出入，原因在於 JavaScript 是以「單執行緒（單線程）」的方式在執行程序，特性是「一次只做一件事，前面的事做完才會依序做下一件事」。</p>
+<blockquote>
+<p>執行緒相關內容可參考此<a href="https://www.itread01.com/ixyfq.html">文章</a>。</p>
+</blockquote>
+<p>以下方程式碼為例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printNum</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;1&#x27;</span>);</span><br><span class="line">&#125; </span><br><span class="line">printNum();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;2&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>以上述程式碼來說，會先執行函式 <code>printNum</code> 印出 1，接著再印出 2，並且兩者是有先後順序的，屬於同步執行。</p>
+<hr>
+<h2 id="何謂非同步（Asynchronous）"><a href="#何謂非同步（Asynchronous）" class="headerlink" title="何謂非同步（Asynchronous）"></a>何謂非同步（Asynchronous）</h2><p>非同步的特性則是「可以同時做很多事，並且不需要等待前面的事做完就能做下一件事」，其實就是一開始自己對同步的認知…</p>
+<p>以下方程式碼為例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(printNum, <span class="number">2000</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printNum</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;1&#x27;</span>);</span><br><span class="line">&#125; </span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;2&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>setTimeout</code> 會分別帶入 <code>callback</code>、<code>等待毫秒</code> 兩個參數，如範例所示，回調函式 <code>printNum</code> 被設定 2 秒後才執行，但是在這過程中，排在後方的 <code>console.log</code> 並不會等待前面的函式 <code>printNum</code>  執行完才動作，而是先印出 2，而 2 秒之後呼叫函式 <code>printNum</code> 並印出 1。</p>
+<p>…不對呀，JavaScript 屬於單執行緒，所以一次只能做一件事才對，為什麼會有範例中非同步的狀況？原因在於 JavaScript 需要在一些特定的引擎上面才能運行，以 V8（JavaScript 引擎）來說，引擎在運作時是同步的，但是除了引擎內的 JavaScript 原始碼之外，瀏覽器也會提供許多 Web APIs（如：document、MouseEvent、setTimeout…等等），這些並不屬於 V8 引擎的範疇，但是可以透過呼叫並使用它們做到非同步的行為，並且不會影響到 JavaScript 主程式的運行，換句話說，JavaScript 需要依賴 Web APIs 才能達成非同步的效果。</p>
+<p>而 <code>setTimeout</code> 等待的期間，程式碼為甚麼能夠繼續往下執行？原因是當 Web APIs 與自己寫的 JavaScript 在瀏覽器一起執行時，透過 Web APIs 非同步呼叫的 callback function 會被放到 Callback Queue（儲列 / 佇列）待命，等到其他程式碼都執行完之後才會被回調執行。</p>
+<hr>
+<p><strong>參考資料：</strong></p>
+<p><a href="https://chanchandev.com/js/Async/async-sync-intro/2534378084/">Javascript 非同步 &amp; Event Loop！10 分鐘輕鬆圖解學習！</a></p>
+<p><a href="https://5xruby.tw/posts/how-js-synchronous-works">無痛理解 JS | 非同步怎麼運作？</a></p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>synchronous</tag>
+        <tag>asynchronous</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用 Flex 水平置中，子元素溢出不被裁切</title>
     <url>/2022-09-17-max-content/</url>
     <content><![CDATA[<p>記錄一下解決問題的方法。</p>
@@ -548,73 +619,6 @@
         <tag>Flex</tag>
         <tag>overflow</tag>
         <tag>max-content</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>網頁切版直播班心得</title>
-    <url>/2022-09-10-hexschool-web/</url>
-    <content><![CDATA[<p>2022 夏，切版直播班心得。</p>
-<span id="more"></span>
-
-<hr>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>八週結束了，你學到了甚麼？</p>
-<p>我自己也不是很清楚，課堂上很多知識也還是似懂非懂，即使完成 100% 也感覺不到自己有所成長，這是去年直播班結束之後當下的心得，會有這樣的想法不是因為六角的學習環境不好，而是我自己在心態與學習方法上出現了問題。</p>
-<p>先來說說目前為止在六角學習下來的感受，六角學院與其他仿間的機構在教學模式上有著很大的不同，除了每週的直播與作業之外，每天還會釋出配合當週教學內容的每日任務；在解惑方面，無論是作業遇到卡關或是觀念上不清楚，都能夠透過每日助教或是直接請教同學來尋求解答，除此之外，還能藉由小組討論的方式分享解決問題的方法，學習資源應有盡有。</p>
-<p>但這樣真的足夠了？就在去年直播班結業後果斷否定了這個問題。本來以為只要每週直播不缺席，並且盡可能完成每個作業就可以達到最低限度的就業水準了，但事實證明這種想法太過不切實際了，即便乖乖的完成課程交代的作業，課程結束後我還是對所學的東西一知半解，更別說是去完成一個作品了。</p>
-<p>雖然很挫折，但是自己很享受學習過程中所帶來的一點點成就感，因此放棄從來都不在選項中。於是也閱讀了其他學員的學習心得，發現也有不少人跟我一樣是非本科系，但在學習上的付出程度實在差太多了，頓時覺得自己很廢，但也因此被激勵到了不少。</p>
-<p>整頓一下心態後我開始重頭來過，為了避免學了就忘開始嘗試把所學的內容透過撰寫筆記的方式記錄下來，從先前的直播到後來也購入了六角的線上錄影課程，也開始透過參考其他人的文章來做中學；不得不說寫筆記對初學者來說真的是一個能有效記憶知識的好方法，也不用在意寫得多爛，因為筆記是寫給自己看的，就這樣以這樣的模式渡過了一段時間。</p>
-<h2 id="報名契機"><a href="#報名契機" class="headerlink" title="報名契機"></a>報名契機</h2><p>今年年四月左右參加了為期一個月的公益體驗營，然而在體驗營結束前夕，學院按照慣例會推坑下一次的活動，這次是切版直播班，不過內容相較過去更為豐富，教學大綱除了舊有的 Bootstrap 到近幾年盛行的 Tailwind，思索一番之後還是報名了。其實原本是衝著 Tailwind 來的，但礙於過去在切版方面都是純手刻又覺得 Bootstrap 很困難而遲遲不去面對，導致自己連一個 CSS 框架都不會，另一方面自己在新技能的學習上會需要花不少時間來吸收，擔心一次學兩個會應付不來，因此就把目標先轉向了目前使用率較高的 Bootstrap；除此之外，這次也要求自己必須把八週主線任務的所有頁面都切出來，既然都全職學習了，至少這一點是能做到的吧。</p>
-<h2 id="每週學習歷程"><a href="#每週學習歷程" class="headerlink" title="每週學習歷程"></a>每週學習歷程</h2><h3 id="直播"><a href="#直播" class="headerlink" title="直播"></a>直播</h3><p>雖然每週直播的教學內容算是在複習錄影，但是現場跟大家一起聽課的氛圍比起自己看錄影兩者還是有差的，而且常常會有同學在聊天室提出一些平常可能不太會注意到的有趣問題，也能當作是一種額外的知識吸收，此外當然也少不了校長的嘴砲模式以及心靈雞湯，畢竟學程式容易產生焦慮，長時間學習下還是需要找地方宣洩一下情緒。八週的直播形式基本上都是前面提到的這樣，整體的感覺不錯，這部分也沒有需要特別需要補充甚麼了，不過直播班本來就是以大量輸出為前提，每週花費在作業上的時間自然就比較多。</p>
-<p>另外這次直播班每週是有兩場直播的，上述提到的是週五例行的直播，另一場則是週三的 Tailwind 主題，雖然大部分心思都投入在 Bootstrap 上面，但是每週還是有聽課並把作業都做過一次，整體感覺其實是很不錯的。</p>
-<h3 id="小組討論"><a href="#小組討論" class="headerlink" title="小組討論"></a>小組討論</h3><p>這次被分配到的組別還不錯，每週的小組討論出席率都很高，只是大多數的組員平時都比較忙，也有組員加班到很晚還趕回來餐與討論，辛苦各位了，無法出席的人也會透過線下時間把作業補齊，也要特別感謝組長主持以及做資料彙整，不得不說組長真的很認真好學，小組伺服器的發問次數也是最多的，自己也從不少問題中學到各種額外的知識，賺爛了。</p>
-<h3 id="每日任務"><a href="#每日任務" class="headerlink" title="每日任務"></a>每日任務</h3><p>不得不說每日任務真的是很棒的學習資源，每天會釋出一道小題目給學員練習，有時候作業卡關也能從這邊找到線索，也可以學到很多平常不知道的知識，算是一個小寶庫；不過後半段的部分因為都在趕主線任務的進度，幾乎都是用補交的就是了。</p>
-<h3 id="主線任務"><a href="#主線任務" class="headerlink" title="主線任務"></a>主線任務</h3><p>作業方面主線任務難度是最高的，前兩週比較像是在試水溫，但是從第三週開始版型就是一個完整的電商網站了，印象中在做第三週時，平均一頁包含 RWD 就花了幾乎一天的時間，切完所有頁面後開始地毯式搜索看有甚麼地方沒處理仔細或是可以再調整，也嘗試透過簡單的 JS 加入了一些小功能和效果，結果自己很滿意。</p>
-<p>第四週設計稿和第三週是同一份，差別在於第四週需要透過 Gulp 來做，講白一點這已經不是切版的範疇了，但是提早面對終端機指令、版本相容性或是編譯等問題對未來學習上無疑是好事，不過 Gulp 要怎麼寫任務就要靠自己學了，可惡！好想學會自己寫 Gulp 啊！！</p>
-<p>第五週是後台版型，也開始嘗試使用以前一直不敢面對的 Bootstrap，然而這週的作業是一邊看官方文件一邊做的，大部分的時間都花在看文件而不是切版，為了讓自己能早一點習慣使用 Bootstrap，有好幾天晚上睡前用手機都不是在看社群，而是在看官方文件…。</p>
-<p>校長在第一次直播時，有大概用折線圖描述一下每週的作業難度，印象中第六週的難度是僅次於第八週的，而且第六週開始被要求使用 CSS 框架來做，還好前一段時間花了不少時間研究 Bootstrap，現在通用類別與元件在使用上已經熟練了非常多，頓時覺得自己以前只是懶的去看密密麻麻的文件而已。除此之外，第六週設計稿部分區塊還需要引入 JS 套件，從 Discord 作業討論頻道也可以看到不少學員受到 Swiper 無情肆虐。自己也花費將近一週的時間才做完，就順便整合第七週一起繳交了，然而心想終於可以休息一下，結果第八週設計稿就提前釋出，害我差點就忘記自己還在通往地獄的列車上。</p>
-<p>第八週的設計稿很特別，充斥著各式各樣酷炫的排版。在這過程中也做了很多以往沒做過的嘗試，首先是開始自己設計元件，先前看到其他同學不用 Pages 資料夾就能做出所有頁面，自己早就想嘗試看看了，意外的是然辦到了！果然有些事如果不做永遠不知道結果；另外也學會了客製化通用類別的方法，不得不說使用起來很方便可惜相見恨晚。不過最麻煩的部分還是 JS 套件，這部分花了很多時間不斷嘗試和理解才做出來，從拿到設計稿到切完所有頁面大概用了一個多禮拜的時間，真的好累啊…。</p>
-<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>本來以為自己會倒在第八週，但意外的挺過來了，不得不說即便是全職學習還是覺得時間很緊迫，真心佩服那些平時有工作還來進修的同學。總結來說，這次直播班真的扎扎實實的學到很多知識，同時也深刻體會到學習是沒有捷徑的，追求卓越的唯一方法只有不斷的練習，最後非常感謝六角學院提供這麼棒的學習資源和環境，兩位講師和每位助教都辛苦了，小心肝啊！！</p>
-<p>（長嘆，肝了無數個夜晚終於可以休息一下了，啊~原來我報名了 JS 直播班，差點忘記我搭的是不停靠的直達列車了。</p>
-]]></content>
-      <categories>
-        <category>心得</category>
-      </categories>
-      <tags>
-        <tag>課程心得</tag>
-        <tag>六角學院</tag>
-        <tag>網頁切版</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript 觀念 - 同步與非同步</title>
-    <url>/2022-09-20-sync-async/</url>
-    <content><![CDATA[<p>JavaScript 觀念筆記。</p>
-<span id="more"></span>
-
-<hr>
-<h2 id="JavaScript-中的同步（synchronous）"><a href="#JavaScript-中的同步（synchronous）" class="headerlink" title="JavaScript 中的同步（synchronous）"></a>JavaScript 中的同步（synchronous）</h2><p>「同步」在你的認知上會怎麼解釋？我自己原本的想法是同時處理很多事情，但這個說法在 JavaScript 中卻有些出入，原因在於 JavaScript 是以「單執行緒（單線程）」的方式在執行程序，特性是「一次只做一件事，前面的事做完才會依序做下一件事」。</p>
-<p>以下方程式碼為例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showMsg</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;1&#x27;</span>);</span><br><span class="line">&#125; </span><br><span class="line">showMsg();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;2&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>以上述程式碼來說，會先執行函式 <code>showMsg()</code> 印出 1，接著再印出 2，並且兩者是有先後順序的，屬於同步執行。</p>
-<hr>
-<h2 id="何謂非同步（Asynchronous）"><a href="#何謂非同步（Asynchronous）" class="headerlink" title="何謂非同步（Asynchronous）"></a>何謂非同步（Asynchronous）</h2><p>非同步的特性則是「可以同時做很多事，並且不需要等待前面的事做完就能做下一件事」，其實就是一開始自己對同步的認知…</p>
-<p>以下方程式碼為例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(showMsg, <span class="number">2000</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showMsg</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;1&#x27;</span>);</span><br><span class="line">&#125; </span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;2&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<p><code>setTimeout()</code> 會分別帶入 <code>callback</code>、<code>等待毫秒</code> 兩個參數，如範例所示，回調函式 <code>showMsg</code> 被設定 2 秒後才執行，但是在這過程中，排在後方的 <code>console.log</code> 並不會等待前面的函式 <code>showMsg</code>  執行完才動作，而是先印出 2，而 2 秒之後呼叫函式 <code>showMsg</code> 並印出 1。</p>
-<p>…不對呀，JavaScript 屬於單執行緒，所以一次只能做一件事才對，為什麼會有範例中非同步的狀況？原因在於 JavaScript 需要在一些特定的引擎上面才能運行，以 V8（JavaScript 引擎）來說，引擎在運作時是同步的，但是除了引擎之外，瀏覽器也會提供許多 Web APIs（如：document、MouseEvent、setTimeout…等等），這些並不屬於 V8 引擎的範疇，但是可以透過呼叫來使用並完成非同步的事件處理，換句話說，JavaScript 需要依賴 Web APIs 才能打到非同步的效果。</p>
-<hr>
-<p><strong>參考資料：</strong></p>
-<p><a href="https://www.itread01.com/ixyfq.html">如何理解單執行緒、多執行緒？如何選擇多執行緒、多程序？</a></p>
-<p><a href="https://5xruby.tw/posts/how-js-synchronous-works">無痛理解 JS | 非同步怎麼運作？</a></p>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>synchronous</tag>
-        <tag>asynchronous</tag>
       </tags>
   </entry>
   <entry>
@@ -1439,8 +1443,8 @@
         <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>JavaScript</tag>
         <tag>學習筆記</tag>
+        <tag>JavaScript</tag>
       </tags>
   </entry>
 </search>

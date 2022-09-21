@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://kurifu.tw/2022-09-20-sync-async/</loc>
+    
+    <lastmod>2022-09-21</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://kurifu.tw/2022-06-07-sass-note-md/</loc>
     
     <lastmod>2022-09-20</lastmod>
@@ -38,13 +45,6 @@
   
   <url>
     <loc>http://kurifu.tw/2022-01-20-git-note/</loc>
-    
-    <lastmod>2022-09-20</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kurifu.tw/2022-09-20-sync-async/</loc>
     
     <lastmod>2022-09-20</lastmod>
     
@@ -116,7 +116,7 @@
 
   <url>
     <loc>http://kurifu.tw/</loc>
-    <lastmod>2022-09-20</lastmod>
+    <lastmod>2022-09-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>

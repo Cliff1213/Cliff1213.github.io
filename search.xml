@@ -39,7 +39,6 @@
       </categories>
       <tags>
         <tag>UI/UX</tag>
-        <tag>課程心得</tag>
         <tag>六角學院</tag>
       </tags>
   </entry>
@@ -125,7 +124,6 @@
       </categories>
       <tags>
         <tag>學習筆記</tag>
-        <tag>NPM</tag>
       </tags>
   </entry>
   <entry>
@@ -201,7 +199,6 @@
         <category>CSS</category>
       </categories>
       <tags>
-        <tag>css</tag>
         <tag>font-family</tag>
       </tags>
   </entry>
@@ -350,7 +347,6 @@
       </categories>
       <tags>
         <tag>學習筆記</tag>
-        <tag>RWD</tag>
       </tags>
   </entry>
   <entry>
@@ -409,7 +405,6 @@
       </categories>
       <tags>
         <tag>Swiper</tag>
-        <tag>套件</tag>
       </tags>
   </entry>
   <entry>
@@ -422,7 +417,7 @@
 <h2 id="入門技巧"><a href="#入門技巧" class="headerlink" title="入門技巧"></a>入門技巧</h2><h3 id="使用-amp-表示父選擇器"><a href="#使用-amp-表示父選擇器" class="headerlink" title="使用 &amp; 表示父選擇器"></a>使用 &amp; 表示父選擇器</h3><p>以下是一個簡單的 Scss 格式設定：</p>
 <figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.header</span> &#123;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">  <span class="selector-class">.header-title</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">2rem</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-tag">a</span> &#123;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">8</span> <span class="number">16px</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#eee</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#ddd</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>上述例子可以改用 &amp; 的方式來撰寫，以 &amp; 符號來表示父曾，其運行結果想同，如下所示：</p>
+<p>上述例子可以改用 &amp; 的方式來撰寫，以 &amp; 符號來表示父層，其運行結果想同，如下所示：</p>
 <figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.header</span> &#123;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">  &amp;-title &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">2rem</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-tag">a</span> &#123;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">8</span> <span class="number">16px</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#eee</span>;</span><br><span class="line">    &amp;<span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">      <span class="attribute">background</span>: <span class="number">#ddd</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="Variable-變數"><a href="#Variable-變數" class="headerlink" title="Variable 變數"></a>Variable 變數</h3><p>一個設定可能會在許多不同的區塊重複被使用，此時就能夠透過變數來統一管理，好處是後續若需要修改值，只需要修改變數值即可，而變數格式為 <code>$name: value</code>，以顏色為範例，如下所示：</p>
@@ -484,18 +479,14 @@
 
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*  編譯後的 .css  */</span></span><br><span class="line"><span class="selector-class">.footer-btn</span>, <span class="selector-class">.section-btn</span>, <span class="selector-class">.header-btn</span> &#123; <span class="comment">/* 相同設定合併在一起 */</span></span><br><span class="line">  <span class="attribute">display</span>: inline-block;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">8px</span> <span class="number">16px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.header-btn</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#007bff</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.section-btn</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#6c757d</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.footer-btn</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#28a745</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>可能會有人說，直接將共通的設定寫在一個 <code>.btn</code> 裡面不是比較方便且簡潔嗎？確實是這樣，而上述使用 <code>%btn-base</code> 來當作案例，主要是為了方便理解 <code>@extend</code> 的運作原理，實際上較不會透過以上做法來設定按鈕的共通樣式，至於什麼時候會用到 <code>@extend</code> 來合併設定呢？等你覺得也許可以用的時候，不妨再自己嘗試看看吧。</p>
+<p>可能會有人說，直接將共通的設定寫在一個 <code>.btn</code> 裡面不是比較方便且簡潔嗎？確實是這樣，而上述使用 <code>%btn-base</code> 來當作案例，主要是為了方便理解 <code>@extend</code> 的運作原理，實際上較不會透過以上做法來設定按鈕的共通樣式。</p>
 <hr>
 <p><strong>參考資料：</strong></p>
 <p><a href="https://medium.com/ivycodefive/4-%E4%BB%80%E9%BA%BC%E6%98%AFsass-7-1%E6%9E%B6%E6%A7%8B-8687e9a10a64">什麼是Sass 7-1架構?</a><br><a href="https://www.casper.tw/css/2016/12/25/sass-map/">鐵人賽 25 - 實戰心法 - Sass Map 快出產出大量樣式</a></p>
 ]]></content>
       <categories>
-        <category>CSS</category>
+        <category>SCSS</category>
       </categories>
-      <tags>
-        <tag>css</tag>
-        <tag>Sass</tag>
-      </tags>
   </entry>
   <entry>
     <title>網頁切版直播班心得</title>
@@ -527,9 +518,66 @@
         <category>心得</category>
       </categories>
       <tags>
-        <tag>課程心得</tag>
         <tag>六角學院</tag>
         <tag>網頁切版</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript 觀念 - 函式</title>
+    <url>/2022-09-19-function/</url>
+    <content><![CDATA[<p>function 觀念筆記。</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="函式（Function）簡述"><a href="#函式（Function）簡述" class="headerlink" title="函式（Function）簡述"></a>函式（Function）簡述</h2><p>可以將自訂的程式碼進行包裝，並且能在需要時使用，同時減少撰寫重複的程式碼。此外，函式也能接收一個值（參數），並將接收的值進行運算後再回傳，但也可以選擇不接收、不回傳任何值，以「執行某一段邏輯」的目的存在。</p>
+<h2 id="函式結構"><a href="#函式結構" class="headerlink" title="函式結構"></a>函式結構</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomeThing</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> num ** num;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>基本的函式可以使用關鍵字 <code>function</code> 來宣告，後方需要加上自訂的函式名稱，透過這種方式宣告的函式稱為「具名函式」，而函式名稱後方的小括號中可放入接收的值（參數），中括號中則是放入想要執行的程式指令，另外可將傳入的值帶入程式中運算，而函式執行後的結果可使用 <code>return</code> 決定要回傳的內容，也可以不回傳，但是若有使用 <code>return</code> 但是後方沒有接任何要回傳的值，則會回傳 <code>undefined</code>。</p>
+<p>return 差異如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomeThing</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> num ** num; <span class="comment">// 指定回傳的結果</span></span><br><span class="line">&#125;</span><br><span class="line">doSomeThing(<span class="number">2</span>); <span class="comment">// 回傳結果 4</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomeThing</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span>; <span class="comment">// 未指定回傳結果</span></span><br><span class="line">&#125;</span><br><span class="line">doSomeThing(<span class="number">2</span>); <span class="comment">// 回傳結果 undefined</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="函式執行"><a href="#函式執行" class="headerlink" title="函式執行"></a>函式執行</h2><p>函式在寫好的當下式不會立即執行的，如果要執行，則需要在函式名稱的後方加上一組小括號，這個動作又稱為「呼叫（Invoke）」；而小括號若加在型別非函式的變數後方會產生錯誤，因此不可隨意加上。</p>
+<p>執行 / 呼叫函式：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">functionName(); <span class="comment">// 括號中可決定是否要傳入參數值</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="函式終止"><a href="#函式終止" class="headerlink" title="函式終止"></a>函式終止</h2><p>函式在被呼叫後，會將函式內的程式碼從第一行執行到最後，接著就會終止函式，但是如果有使用到 <code>return</code>，該函式則會提前終止，並回傳 <code>return</code> 後方的值。</p>
+<p>使用 return 終止函式：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">calculate</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> result = num + num;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">  </span><br><span class="line">  result ++; <span class="comment">// 提前終止而未被執行</span></span><br><span class="line">&#125;</span><br><span class="line">calculate(<span class="number">5</span>); <span class="comment">// 回傳結果 10</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="陳述式與表達式"><a href="#陳述式與表達式" class="headerlink" title="陳述式與表達式"></a>陳述式與表達式</h2><p>JavaScript 語法上有區分陳述式、表達式兩種類型。</p>
+<ul>
+<li><p>陳述式（Statement）：如同名稱一樣，可想像成在描述一件事情或是對邏輯的描述（如：if 邏輯判斷、具名函式），而陳述式會執行一系列的操作，但是<strong>不會回傳結果</strong>。</p>
+<blockquote>
+<p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Expressions_and_Operators#%E9%81%8B%E7%AE%97%E5%BC%8F">MDN 文件 - 陳述式</a></p>
+</blockquote>
+</li>
+<li><p>表達式（Expression）：只要程式在執行結束之後<strong>會回傳一個結果</strong>，就屬於表達式，換句話說表達式是一段能被 JavaScript 運算並產生數值的程式碼。</p>
+<blockquote>
+<p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Expressions_and_Operators">MDN 文件 - 表達式</a></p>
+</blockquote>
+</li>
+</ul>
+<p>陳述 / 表達式範例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 變數宣告</span></span><br><span class="line"><span class="keyword">var</span> x;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 指派值</span></span><br><span class="line">x = <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 判斷式</span></span><br><span class="line"><span class="keyword">if</span>(x === <span class="number">10</span>) &#123;</span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>可分別將上述程式碼放在開發人員工具 console 中執行查看，變數在宣告後回傳 undefined，屬於陳述式；指派一個值給變數，而變數會回傳指派的值，屬於表達式；而判斷式本身並不會回傳任何值，因此屬於陳述式。</p>
+<h3 id="函式陳述式"><a href="#函式陳述式" class="headerlink" title="函式陳述式"></a>函式陳述式</h3><p>前面所提到透過給予函式名稱的所宣告的函式，稱為函式陳述式 / 具名函式。</p>
+<h3 id="函式表達式"><a href="#函式表達式" class="headerlink" title="函式表達式"></a>函式表達式</h3><p>除了前面提到的函式宣告方式，也就是函式陳述式之外，還可以將函式指派給一個變數，因為函式本身也屬於物件的一種，因此能夠當作一個被指派的值，而這種方式產生的函式曾為函式表達式 / 匿名函式。</p>
+<p>函式表達式範例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> expressionFn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>function</tag>
       </tags>
   </entry>
   <entry>
@@ -628,7 +676,6 @@
       </categories>
       <tags>
         <tag>學習筆記</tag>
-        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -1426,7 +1473,6 @@
         <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>JavaScript</tag>
         <tag>學習筆記</tag>
       </tags>
   </entry>

@@ -523,6 +523,42 @@
       </tags>
   </entry>
   <entry>
+    <title>JavaScript 觀念 - 同步與非同步</title>
+    <url>/2022-09-20-sync-async/</url>
+    <content><![CDATA[<p>校正一下自己的觀念。</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="JavaScript-中的同步"><a href="#JavaScript-中的同步" class="headerlink" title="JavaScript 中的同步"></a>JavaScript 中的同步</h2><p>「同步（Synchronous）」在你的認知上會怎麼解釋？我自己原本的想法是同時處理很多事情，但這個說法在 JavaScript 中卻有些出入，原因在於 JavaScript 是以「單執行緒（單線程）」的方式在執行程序，特性是「一次只做一件事，前面的事做完才會依序做下一件事」。</p>
+<blockquote>
+<p>執行緒相關內容可參考此<a href="https://www.itread01.com/ixyfq.html">文章</a>。</p>
+</blockquote>
+<p>以下方程式碼為例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printNum</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;1&#x27;</span>);</span><br><span class="line">&#125; </span><br><span class="line">printNum();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;2&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>以上述程式碼來說，會先執行函式 <code>printNum</code> 印出 1，接著再印出 2，並且兩者是有先後順序的，屬於同步執行。</p>
+<hr>
+<h2 id="何謂非同步"><a href="#何謂非同步" class="headerlink" title="何謂非同步"></a>何謂非同步</h2><p>「非同步（Asynchronous）」的特性則是「可以同時做很多事，並且不需要等待前面的事做完就能做下一件事」，其實就是一開始自己對同步的認知…</p>
+<p>以下方程式碼為例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(printNum, <span class="number">2000</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printNum</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;1&#x27;</span>);</span><br><span class="line">&#125; </span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;2&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>setTimeout</code> 會分別帶入 <code>callback</code>、<code>等待毫秒</code> 兩個參數，如範例所示，回調函式 <code>printNum</code> 被設定 2 秒後才執行，但是在這過程中，排在後方的 <code>console.log</code> 並不會等待前面的函式 <code>printNum</code>  執行完才動作，而是先印出 2，而 2 秒之後呼叫函式 <code>printNum</code> 並印出 1。</p>
+<p>…不對呀，JavaScript 屬於單執行緒，所以一次只能做一件事才對，為什麼會有範例中非同步的狀況？原因在於 JavaScript 需要在一些特定的引擎上面才能運行，以 V8（JavaScript 引擎）來說，引擎在運作時是同步的，但是除了引擎內的 JavaScript 原始碼之外，瀏覽器也會提供許多 Web APIs（如：document、MouseEvent、setTimeout…等等），這些並不屬於 V8 引擎的範疇，但是可以透過呼叫並使用它們做到非同步的行為，並且不會影響到 JavaScript 主程式的運行，換句話說，JavaScript 需要依賴 Web APIs 才能達成非同步的效果。</p>
+<p>而 <code>setTimeout</code> 等待的期間，程式碼為甚麼能夠繼續往下執行？原因是當 Web APIs 與自己寫的 JavaScript 在瀏覽器一起執行時，透過 Web APIs 非同步呼叫的 callback function 會被放到 Callback Queue（儲列 / 佇列）待命，等到其他程式碼都執行完之後才會被回調執行。</p>
+<hr>
+<p><strong>參考資料：</strong></p>
+<p><a href="https://chanchandev.com/js/Async/async-sync-intro/2534378084/">Javascript 非同步 &amp; Event Loop！10 分鐘輕鬆圖解學習！</a></p>
+<p><a href="https://5xruby.tw/posts/how-js-synchronous-works">無痛理解 JS | 非同步怎麼運作？</a></p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>synchronous</tag>
+        <tag>asynchronous</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JavaScript 觀念 - 函式</title>
     <url>/2022-09-19-function/</url>
     <content><![CDATA[<p>function 觀念筆記。</p>
@@ -566,9 +602,9 @@
 
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 判斷式</span></span><br><span class="line"><span class="keyword">if</span>(x === <span class="number">10</span>) &#123;</span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p>可分別將上述程式碼放在開發人員工具 console 中執行查看，變數在宣告後回傳 undefined，屬於陳述式；指派一個值給變數，而變數會回傳指派的值，屬於表達式；而判斷式本身並不會回傳任何值，因此屬於陳述式。</p>
-<h3 id="函式陳述式"><a href="#函式陳述式" class="headerlink" title="函式陳述式"></a>函式陳述式</h3><p>前面所提到透過給予函式名稱的所宣告的函式，稱為函式陳述式 / 具名函式。</p>
-<h3 id="函式表達式"><a href="#函式表達式" class="headerlink" title="函式表達式"></a>函式表達式</h3><p>除了前面提到的函式宣告方式，也就是函式陳述式之外，還可以將函式指派給一個變數，因為函式本身也屬於物件的一種，因此能夠當作一個被指派的值，而這種方式產生的函式曾為函式表達式 / 匿名函式。</p>
+<p>可分別將上述程式碼放在開發人員工具 console 中執行查看，變數在宣告後回傳 <code>undefined</code>，屬於陳述式；指派一個值給變數，而變數會回傳指派的值，屬於表達式；而判斷式本身並不會回傳任何值，因此屬於陳述式。</p>
+<h2 id="函式陳述式"><a href="#函式陳述式" class="headerlink" title="函式陳述式"></a>函式陳述式</h2><p>前面所提到透過給予函式名稱的所宣告的函式，稱為函式陳述式 / 具名函式。</p>
+<h2 id="函式表達式"><a href="#函式表達式" class="headerlink" title="函式表達式"></a>函式表達式</h2><p>除了前面提到的函式宣告方式，也就是函式陳述式之外，還可以將函式指派給一個變數，因為函式本身也屬於物件的一種，因此能夠當作一個被指派的值，而這種方式產生的函式曾為函式表達式 / 匿名函式。</p>
 <p>函式表達式範例：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> expressionFn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -618,42 +654,6 @@
         <tag>Flex</tag>
         <tag>overflow</tag>
         <tag>max-content</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript 觀念 - 同步與非同步</title>
-    <url>/2022-09-20-sync-async/</url>
-    <content><![CDATA[<p>校正一下自己的觀念。</p>
-<span id="more"></span>
-
-<hr>
-<h2 id="JavaScript-中的同步（Synchronous）"><a href="#JavaScript-中的同步（Synchronous）" class="headerlink" title="JavaScript 中的同步（Synchronous）"></a>JavaScript 中的同步（Synchronous）</h2><p>「同步」在你的認知上會怎麼解釋？我自己原本的想法是同時處理很多事情，但這個說法在 JavaScript 中卻有些出入，原因在於 JavaScript 是以「單執行緒（單線程）」的方式在執行程序，特性是「一次只做一件事，前面的事做完才會依序做下一件事」。</p>
-<blockquote>
-<p>執行緒相關內容可參考此<a href="https://www.itread01.com/ixyfq.html">文章</a>。</p>
-</blockquote>
-<p>以下方程式碼為例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printNum</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;1&#x27;</span>);</span><br><span class="line">&#125; </span><br><span class="line">printNum();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;2&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>以上述程式碼來說，會先執行函式 <code>printNum</code> 印出 1，接著再印出 2，並且兩者是有先後順序的，屬於同步執行。</p>
-<hr>
-<h2 id="何謂非同步（Asynchronous）"><a href="#何謂非同步（Asynchronous）" class="headerlink" title="何謂非同步（Asynchronous）"></a>何謂非同步（Asynchronous）</h2><p>非同步的特性則是「可以同時做很多事，並且不需要等待前面的事做完就能做下一件事」，其實就是一開始自己對同步的認知…</p>
-<p>以下方程式碼為例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(printNum, <span class="number">2000</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printNum</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;1&#x27;</span>);</span><br><span class="line">&#125; </span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;2&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<p><code>setTimeout</code> 會分別帶入 <code>callback</code>、<code>等待毫秒</code> 兩個參數，如範例所示，回調函式 <code>printNum</code> 被設定 2 秒後才執行，但是在這過程中，排在後方的 <code>console.log</code> 並不會等待前面的函式 <code>printNum</code>  執行完才動作，而是先印出 2，而 2 秒之後呼叫函式 <code>printNum</code> 並印出 1。</p>
-<p>…不對呀，JavaScript 屬於單執行緒，所以一次只能做一件事才對，為什麼會有範例中非同步的狀況？原因在於 JavaScript 需要在一些特定的引擎上面才能運行，以 V8（JavaScript 引擎）來說，引擎在運作時是同步的，但是除了引擎內的 JavaScript 原始碼之外，瀏覽器也會提供許多 Web APIs（如：document、MouseEvent、setTimeout…等等），這些並不屬於 V8 引擎的範疇，但是可以透過呼叫並使用它們做到非同步的行為，並且不會影響到 JavaScript 主程式的運行，換句話說，JavaScript 需要依賴 Web APIs 才能達成非同步的效果。</p>
-<p>而 <code>setTimeout</code> 等待的期間，程式碼為甚麼能夠繼續往下執行？原因是當 Web APIs 與自己寫的 JavaScript 在瀏覽器一起執行時，透過 Web APIs 非同步呼叫的 callback function 會被放到 Callback Queue（儲列 / 佇列）待命，等到其他程式碼都執行完之後才會被回調執行。</p>
-<hr>
-<p><strong>參考資料：</strong></p>
-<p><a href="https://chanchandev.com/js/Async/async-sync-intro/2534378084/">Javascript 非同步 &amp; Event Loop！10 分鐘輕鬆圖解學習！</a></p>
-<p><a href="https://5xruby.tw/posts/how-js-synchronous-works">無痛理解 JS | 非同步怎麼運作？</a></p>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>synchronous</tag>
-        <tag>asynchronous</tag>
       </tags>
   </entry>
   <entry>

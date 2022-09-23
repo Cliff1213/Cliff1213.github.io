@@ -2816,7 +2816,7 @@ hr {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #ffff54;
+  background: #04ff42;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2902,12 +2902,6 @@ mark.search-keyword {
 .post-button .btn:hover {
   box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.5);
   background-image: linear-gradient(90deg, #eee 0%, #fff 25%, #fff 50%, #fff 75%, #eee 100%);
-}
-@media (max-width: 767px) {
-  .post-body p:nth-child(1),
-  .post-button {
-    text-align: center !important;
-  }
 }
 .site-state-item:not(:first-child) {
   border-left: 1px solid rgba(238,238,238,0.3);

@@ -34,11 +34,11 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript 觀念 - 同步與非同步">
 <meta property="og:url" content="http://kurifu.tw/2022-09-20-sync-async/index.html">
-<meta property="og:site_name" content="Cliff 筆記">
+<meta property="og:site_name" content="Cliff 前端筆記">
 <meta property="og:description" content="校正一下自己的觀念。">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2022-09-19T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-09-23T17:03:00.155Z">
+<meta property="article:modified_time" content="2022-09-23T17:29:06.890Z">
 <meta property="article:author" content="Cliff">
 <meta property="article:tag" content="synchronous">
 <meta property="article:tag" content="asynchronous">
@@ -52,7 +52,7 @@
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"http://kurifu.tw/2022-09-20-sync-async/","path":"2022-09-20-sync-async/","title":"JavaScript 觀念 - 同步與非同步"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>JavaScript 觀念 - 同步與非同步 | Cliff 筆記 - </title>
+<title>JavaScript 觀念 - 同步與非同步 | Cliff 前端筆記 - 個人部落格</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-106NQBHYEM"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-106NQBHYEM","only_pageview":false}</script>
@@ -84,9 +84,10 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <p class="site-title">Cliff 筆記</p>
+      <p class="site-title">Cliff 前端筆記</p>
       <i class="logo-line"></i>
     </a>
+      <p class="site-subtitle" itemprop="description">個人部落格</p>
   </div>
 
   <div class="site-nav-right">
@@ -161,7 +162,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript-%E4%B8%AD%E7%9A%84%E5%90%8C%E6%AD%A5%EF%BC%88Synchronous%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">JavaScript 中的同步（Synchronous）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%95%E8%AC%82%E9%9D%9E%E5%90%8C%E6%AD%A5%EF%BC%88Asynchronous%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">何謂非同步（Asynchronous）</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript-%E4%B8%AD%E7%9A%84%E5%90%8C%E6%AD%A5"><span class="nav-number">1.</span> <span class="nav-text">JavaScript 中的同步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%95%E8%AC%82%E9%9D%9E%E5%90%8C%E6%AD%A5"><span class="nav-number">2.</span> <span class="nav-text">何謂非同步</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -235,7 +236,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cliff 筆記">
+      <meta itemprop="name" content="Cliff 前端筆記">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -295,7 +296,7 @@
 <span id="more"></span>
 
 <hr>
-<h2 id="JavaScript-中的同步（Synchronous）"><a href="#JavaScript-中的同步（Synchronous）" class="headerlink" title="JavaScript 中的同步（Synchronous）"></a>JavaScript 中的同步（Synchronous）</h2><p>「同步」在你的認知上會怎麼解釋？我自己原本的想法是同時處理很多事情，但這個說法在 JavaScript 中卻有些出入，原因在於 JavaScript 是以「單執行緒（單線程）」的方式在執行程序，特性是「一次只做一件事，前面的事做完才會依序做下一件事」。</p>
+<h2 id="JavaScript-中的同步"><a href="#JavaScript-中的同步" class="headerlink" title="JavaScript 中的同步"></a>JavaScript 中的同步</h2><p>「同步（Synchronous）」在你的認知上會怎麼解釋？我自己原本的想法是同時處理很多事情，但這個說法在 JavaScript 中卻有些出入，原因在於 JavaScript 是以「單執行緒（單線程）」的方式在執行程序，特性是「一次只做一件事，前面的事做完才會依序做下一件事」。</p>
 <blockquote>
 <p>執行緒相關內容可參考此<a target="_blank" rel="noopener" href="https://www.itread01.com/ixyfq.html">文章</a>。</p>
 </blockquote>
@@ -304,7 +305,7 @@
 
 <p>以上述程式碼來說，會先執行函式 <code>printNum</code> 印出 1，接著再印出 2，並且兩者是有先後順序的，屬於同步執行。</p>
 <hr>
-<h2 id="何謂非同步（Asynchronous）"><a href="#何謂非同步（Asynchronous）" class="headerlink" title="何謂非同步（Asynchronous）"></a>何謂非同步（Asynchronous）</h2><p>非同步的特性則是「可以同時做很多事，並且不需要等待前面的事做完就能做下一件事」，其實就是一開始自己對同步的認知…</p>
+<h2 id="何謂非同步"><a href="#何謂非同步" class="headerlink" title="何謂非同步"></a>何謂非同步</h2><p>「非同步（Asynchronous）」的特性則是「可以同時做很多事，並且不需要等待前面的事做完就能做下一件事」，其實就是一開始自己對同步的認知…</p>
 <p>以下方程式碼為例：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(printNum, <span class="number">2000</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printNum</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;1&#x27;</span>);</span><br><span class="line">&#125; </span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;2&#x27;</span>);</span><br></pre></td></tr></table></figure>
 

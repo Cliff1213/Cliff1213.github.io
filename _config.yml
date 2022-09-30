@@ -3,8 +3,8 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Cliff 前端筆記
-subtitle: '個人部落格'
+title: Cliff Blog
+subtitle: '筆記部落格'
 description: 想像貓一樣慵懶
 keywords:
 author: Cliff
@@ -134,4 +134,4 @@ deploy:
   repo: https://github.com/Cliff1213/cliff1213.github.io.git
   branch: main
   ignore_hidden: false
-  message: "update"
+  message: "add post"

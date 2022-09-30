@@ -1,5 +1,5 @@
 ---
-title: 使用 Flex 水平置中，子元素溢出不被裁切
+title: Flex 水平置中，子元素溢出不被裁切
 date: 2022-09-17
 tags:
  - Flex

@@ -1,12 +1,12 @@
 ---
-title: Swiper 輪播效果
+title: JavaScript 套件 - Swiper
 date: 2022-06-01
 tags:
  - Swiper
 categories: JavaScript
 ---
 
-這篇內容記錄 Swiper 套件的一些相關常見配置。
+這篇內容記錄 Swiper 套件的常見配置。
 
 <!--more-->
 

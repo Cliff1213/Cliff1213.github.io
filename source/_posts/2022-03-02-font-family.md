@@ -1,5 +1,5 @@
 ---
-title: Font-Family 規則
+title: Font-Family 設定
 date: 2022-03-02
 tags:
  - font-family

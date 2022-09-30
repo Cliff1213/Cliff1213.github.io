@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/touch-icon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"kurifu.tw","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-106NQBHYEM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-106NQBHYEM');
+</script>
+
+<meta name="description" content="Hoisting 觀念筆記。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 觀念 - 提升">
+<meta property="og:url" content="http://kurifu.tw/2022-09-19-hoisting/index.html">
+<meta property="og:site_name" content="Cliff Blog">
+<meta property="og:description" content="Hoisting 觀念筆記。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2022-09-23T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-09-29T13:18:02.959Z">
+<meta property="article:author" content="Cliff">
+<meta property="article:tag" content="hoisting">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://kurifu.tw/2022-09-19-hoisting/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"http://kurifu.tw/2022-09-19-hoisting/","path":"2022-09-19-hoisting/","title":"JavaScript 觀念 - 提升"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>JavaScript 觀念 - 提升 | Cliff Blog - 筆記部落格</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-106NQBHYEM"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-106NQBHYEM","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Cliff Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">筆記部落格</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>站內搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Cliff"
+      src="/images/avatar2.jpg">
+  <p class="site-author-name" itemprop="name">Cliff</p>
+  <div class="site-description" itemprop="description">想像貓一樣慵懶</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://kurifu.tw/2022-09-19-hoisting/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar2.jpg">
+      <meta itemprop="name" content="Cliff">
+      <meta itemprop="description" content="想像貓一樣慵懶">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cliff Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JavaScript 觀念 - 提升
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2022-09-24 00:00:00" itemprop="dateCreated datePublished" datetime="2022-09-24T00:00:00+08:00">2022-09-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="文章字數">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+<!-- 移除文章字數統計
+      <span class="post-meta-item-text">文章字數：</span>
+-->
+      <span>1.9k</span>
+    </span>
+    <span class="post-meta-item" title="閱讀時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+<!-- 移除閱讀時間
+      <span class="post-meta-item-text">閱讀時間 &asymp;</span>
+-->
+      <span>2 分鐘</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Hoisting 觀念筆記。</p>
+<span id="more"></span>
+
+<hr>
+<p>「提升（Hoisting）」是 JavaScript 特有的一種現象，它的意思是當一個變數或函式在被宣告之前就可以被使用，並且不會出現錯誤。</p>
+<p>範例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="comment">// Uncaught ReferenceError: x is not defined</span></span><br></pre></td></tr></table></figure>
+
+<p>以上範例只針對 <code>x</code> 取值，但是在取值之前並沒有宣告一個名為 <code>x</code> 的變數，因此會找不到該變數而回報錯誤。而正常的情況如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x;</span><br><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>這樣就是一個正常的流程，程式碼會從第一行開始由上往下執行，所以在使用變數之前需要先宣告變數，以確保這個變數是存在的，否則就會回報錯誤。</p>
+<p>接著嘗試把第 1、2 行位置進行對調，如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="keyword">var</span> x;</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>按照前面的說法，上述程式碼應該會回報錯誤，但是得到的結果卻是 <code>undefined</code>，而這就是提升所造成的現象，感覺就像是 <code>var x</code> 這段程式碼被提升到所有程式碼的最上方。</p>
+<p>大多數的程式語言中，變數在被使用之前是需要先宣告的，但是 JavaScript 可以在變數宣告之前就使用該變數，所以一開始才會說提升是 JavaScript 特有的現象，不過關於提升還有一些地方需要特別留意，就是會被提升的只有<strong>宣告的行為</strong>，值的指派並不會被提升，如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">7</span>; <span class="comment">// 宣告變數並指派值</span></span><br><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="comment">// 7</span></span><br></pre></td></tr></table></figure>
+
+<p>以上範例跟前面的相同，只是多了一個指派數值的動作，而最後也印出預期的結果，這個時候如果再將 1、2 行位置進行對調，印出的結果會是 <code>7</code> 嗎？</p>
+<p>結果如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="keyword">var</span> x = <span class="number">7</span>;</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>答案是 <code>undefined</code>，照理來說宣告的變數會被提升，可是得到的結果卻不是 <code>7</code>，原因其實很簡單，前面有提到會被提升的只有宣告的動作，而範例中宣告的動作指的是 <code>var x</code>，後方的 <code>= 7</code> 屬於值的指派，並不會跟著宣告一起被提升，但是結果為甚麼會是 <code>undefined</code>？這是因為 JavaScript 在開始執行你撰寫的程式碼之前，會先把所有宣告的變數、函式都預留一個記憶體空間（全域記憶體），但不會馬上指派值給變數，這個預留記憶體空間的動作就是提升，而到這邊為止屬於「創造階段」，在這個階段結束之後，變數才會被賦值；而 <code>undefined</code> 就是變數在透過 <code>var</code> 宣告時，預設給予的初始值。</p>
+<p>可以將上面的程式碼拆解成以下寫法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="keyword">var</span> x; <span class="comment">// 宣告變數（會被提升）</span></span><br><span class="line">x = <span class="number">7</span>; <span class="comment">// 指派值</span></span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>到目前為止已經知道會被提升的只有宣告的動作，但是除了變數之外，函式也能夠透過宣告的方式建立，因此函式也會被提升。</p>
+<p>範例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fn();</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// hello</span></span><br></pre></td></tr></table></figure>
+
+<p>嘗試在函式被宣告之前呼叫，也可以順利執行且不會回報錯誤，不過需要注意的是，範例中的函式是透過函式宣告的方式也就是具名函式所建立的，而這也呼應了前面所提到的「會被提升的只有宣告的行為」，因此在呼叫函式 <code>fn</code> 時才不會出錯。</p>
+<p>那匿名函式就不會被提升嗎？答案是會，我們嘗試將範例改成以匿名函式的方式建立，如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fn();</span><br><span class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Uncaught TypeError: fn is not a function</span></span><br></pre></td></tr></table></figure>
+
+<p>結果出現錯誤了，不過是不是有似曾相似的感覺？其實就跟前面的變數概念是一樣的，這裡的程式碼確實有被提升，但是被提升的只有變數的宣告 <code>var fn</code>，因此在創造階段有預留記憶體空間的只有 <code>fn</code> 這個變數，此時還沒開始指派函式資料，所以 <code>fn</code> 給定的值還是 <code>undefined</code>，而 <code>undefined</code> 並非函式所以無法被呼叫。</p>
+<p>雖然無法呼叫，但是可以透過取值的方式來驗證上述說法，如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(fn);</span><br><span class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(fn);</span><br><span class="line"><span class="keyword">var</span> fn;</span><br><span class="line">fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>兩種結果是一樣的。</p>
+<p>最後做個總結，JavaScript 中的「提升（Hoisting）」指的是宣告變數的提升，而值的賦予並不會提升；此外，提升並不會移動變數的位置，只是感覺像是整段程式碼被移動到最上方。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/hoisting/" rel="tag"># hoisting</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022-09-20-sync-async/" rel="prev" title="JavaScript 觀念 - 同步與非同步">
+                  <i class="fa fa-chevron-left"></i> JavaScript 觀念 - 同步與非同步
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+  <!-- 以下為留言板 -->
+  <script src="https://utteranc.es/client.js"
+        repo="Cliff1213/cliff1213.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+  </script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Cliff / 轉貼麻煩註明原出處</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -38,12 +38,11 @@
         <category>心得</category>
       </categories>
       <tags>
-        <tag>UI/UX</tag>
         <tag>六角學院</tag>
       </tags>
   </entry>
   <entry>
-    <title>NPM 簡述</title>
+    <title>NPM 基本指令</title>
     <url>/2022-02-07-npm-note/</url>
     <content><![CDATA[<p>學習 JavaScript 套件過程讓我懷疑人生，多虧了套件版本這個巨坑，才萌生想要先理解 NPM 的想法，真是謝了。</p>
 <span id="more"></span>
@@ -127,7 +126,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Font-Family 規則</title>
+    <title>Font-Family 設定</title>
     <url>/2022-03-02-font-family/</url>
     <content><![CDATA[<p>紀錄 font-family 字體設定的基本觀念。</p>
 <span id="more"></span>
@@ -203,7 +202,7 @@
       </tags>
   </entry>
   <entry>
-    <title>RWD 雜談</title>
+    <title>RWD 響應式設計</title>
     <url>/2022-03-14-rwd-note/</url>
     <content><![CDATA[<p>記錄一些 RWD 的小知識，以及設計過程中可以注意的小細節。</p>
 <span id="more"></span>
@@ -350,9 +349,9 @@
       </tags>
   </entry>
   <entry>
-    <title>Swiper 輪播效果</title>
+    <title>JavaScript 套件 - Swiper</title>
     <url>/2022-06-06-swiper-note/</url>
-    <content><![CDATA[<p>這篇內容記錄 Swiper 套件的一些相關常見配置。</p>
+    <content><![CDATA[<p>這篇內容記錄 Swiper 套件的常見配置。</p>
 <span id="more"></span>
 
 <hr>
@@ -519,43 +518,46 @@
       </categories>
       <tags>
         <tag>六角學院</tag>
-        <tag>網頁切版</tag>
       </tags>
   </entry>
   <entry>
-    <title>JavaScript 觀念 - 同步與非同步</title>
-    <url>/2022-09-20-sync-async/</url>
-    <content><![CDATA[<p>校正一下自己的觀念。</p>
+    <title>Flex 水平置中，子元素溢出不被裁切</title>
+    <url>/2022-09-17-max-content/</url>
+    <content><![CDATA[<p>記錄一下解決問題的方法。</p>
 <span id="more"></span>
 
 <hr>
-<h2 id="JavaScript-中的同步"><a href="#JavaScript-中的同步" class="headerlink" title="JavaScript 中的同步"></a>JavaScript 中的同步</h2><p>「同步（Synchronous）」在你的認知上會怎麼解釋？我自己原本的想法是同時處理很多事情，但這個說法在 JavaScript 中卻有些出入，原因在於 JavaScript 是以「單執行緒（單線程）」的方式在執行程序，特性是「一次只做一件事，前面的事做完才會依序做下一件事」。</p>
+<p>前一段時間在切版時，遇到一個有趣的問題，範例如下：</p>
+<p><img src="https://i.imgur.com/TK9ZZcF.png"></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTML --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">&quot;section mt-3&quot;</span>&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;list&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;list-item&quot;</span>&gt;</span>item<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;list-item&quot;</span>&gt;</span>item<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;list-item&quot;</span>&gt;</span>item<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;list-item&quot;</span>&gt;</span>item<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;list-item&quot;</span>&gt;</span>item<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;list-item&quot;</span>&gt;</span>item<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">&quot;section-title&quot;</span>&gt;</span>Section Title<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* CSS（上方列表區塊） */</span></span><br><span class="line"><span class="selector-class">.list</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">justify-content</span>: center;</span><br><span class="line">  <span class="attribute">overflow</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述範例中，上方 <code>.list</code> 區塊使用 <code>display: flex</code> 加上 <code>justify-content: center</code> 讓子元素置中，同時希望瀏覽器寬度縮小至子元素溢出時，溢出的部分以水平軸方式呈現，因此加入了 <code>overflow: auto</code> 設定，呈現畫面如下：</p>
+<p><img src="https://i.imgur.com/Sn1BMH4.png"></p>
+<p>然而將水平軸向左滾動至最底時，溢出的部分卻被裁切了，而問題就在 <code>justify-content: center</code> 這個屬性上，移除該屬性之後，子元素溢出的部分就會正常呈現，如下：</p>
+<p><img src="https://i.imgur.com/6GYarUd.png"></p>
+<p>此時問題來了，在不使用 <code>justify-content: center</code> 的情況下，要如何同時滿足子元素保持置中，但是溢出情況下不會被裁切呢？在思索一番後想到另一個能使區塊水平置中的語法，就是 <code>margin: 0 auto</code>，不過這個語法只適用具有實際寬度但非滿版的區塊，而範例中的 <code>.list</code> 區塊因為 <code>display: flex</code> 的關係佔了滿版的寬，因此並沒有如預期置中。下圖是區塊實際佔用的空間：</p>
+<p><img src="https://i.imgur.com/WnJz6ud.png"></p>
+<p><strong>解決方式：</strong></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* CSS（上方列表區塊） */</span></span><br><span class="line"><span class="selector-class">.list</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">max-width</span>: max-content;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">  <span class="attribute">overflow</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>僅需在 <code>.list</code> 區塊加上 <code>max-width: max-content</code> 語法即可，而 <code>max-content</code> 最基本的作用是讓區塊寬度或高度自適應子元素，並且當子元素溢出時，內容不會受到擠壓而換行；此處正好利用了前者特性，使 <code>.list</code> 最大寬度等於所有子元素（<code>.list-item</code>）寬度的加總，此時再配合 <code>margin: 0 auto</code> 之後區塊得以置中，並且當子元素溢出時不會被裁切。結果如下圖所示：</p>
+<p><img src="https://i.imgur.com/MLip3hT.png"></p>
+<p><strong>實作範例：</strong></p>
+<iframe src="https://codepen.io/Cliff_hex/embed/bGMqLOq?default-tab=css,result" width="100%" height="300" frameborder="0" loading="lazy" allowfullscreen></iframe>
+
 <blockquote>
-<p>執行緒相關內容可參考此<a href="https://www.itread01.com/ixyfq.html">文章</a>。</p>
+<p>max-content 詳細說明請參考此<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/max-content">文章</a></p>
 </blockquote>
-<p>以下方程式碼為例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printNum</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;1&#x27;</span>);</span><br><span class="line">&#125; </span><br><span class="line">printNum();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;2&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>以上述程式碼來說，會先執行函式 <code>printNum</code> 印出 1，接著再印出 2，並且兩者是有先後順序的，屬於同步執行。</p>
-<hr>
-<h2 id="何謂非同步"><a href="#何謂非同步" class="headerlink" title="何謂非同步"></a>何謂非同步</h2><p>「非同步（Asynchronous）」的特性則是「可以同時做很多事，並且不需要等待前面的事做完就能做下一件事」，其實就是一開始自己對同步的認知…</p>
-<p>以下方程式碼為例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(printNum, <span class="number">2000</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printNum</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;1&#x27;</span>);</span><br><span class="line">&#125; </span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;2&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<p><code>setTimeout</code> 會分別帶入 <code>callback</code>、<code>等待毫秒</code> 兩個參數，如範例所示，回調函式 <code>printNum</code> 被設定 2 秒後才執行，但是在這過程中，排在後方的 <code>console.log</code> 並不會等待前面的函式 <code>printNum</code>  執行完才動作，而是先印出 2，而 2 秒之後呼叫函式 <code>printNum</code> 並印出 1。</p>
-<p>…不對呀，JavaScript 屬於單執行緒，所以一次只能做一件事才對，為什麼會有範例中非同步的狀況？原因在於 JavaScript 需要在一些特定的引擎上面才能運行，以 V8（JavaScript 引擎）來說，引擎在運作時是同步的，但是除了引擎內的 JavaScript 原始碼之外，瀏覽器也會提供許多 Web APIs（如：document、MouseEvent、setTimeout…等等），這些並不屬於 V8 引擎的範疇，但是可以透過呼叫並使用它們做到非同步的行為，並且不會影響到 JavaScript 主程式的運行，換句話說，JavaScript 需要依賴 Web APIs 才能達成非同步的效果。</p>
-<p>而 <code>setTimeout</code> 等待的期間，程式碼為甚麼能夠繼續往下執行？原因是當 Web APIs 與自己寫的 JavaScript 在瀏覽器一起執行時，透過 Web APIs 非同步呼叫的 callback function 會被放到 Callback Queue（儲列 / 佇列）待命，等到其他程式碼都執行完之後才會被回調執行。</p>
-<hr>
-<p><strong>參考資料：</strong></p>
-<p><a href="https://chanchandev.com/js/Async/async-sync-intro/2534378084/">Javascript 非同步 &amp; Event Loop！10 分鐘輕鬆圖解學習！</a></p>
-<p><a href="https://5xruby.tw/posts/how-js-synchronous-works">無痛理解 JS | 非同步怎麼運作？</a></p>
 ]]></content>
       <categories>
-        <category>JavaScript</category>
+        <category>CSS</category>
       </categories>
       <tags>
-        <tag>synchronous</tag>
-        <tag>asynchronous</tag>
+        <tag>Flex</tag>
+        <tag>overflow</tag>
+        <tag>max-content</tag>
       </tags>
   </entry>
   <entry>
@@ -617,43 +619,93 @@
       </tags>
   </entry>
   <entry>
-    <title>使用 Flex 水平置中，子元素溢出不被裁切</title>
-    <url>/2022-09-17-max-content/</url>
-    <content><![CDATA[<p>記錄一下解決問題的方法。</p>
+    <title>JavaScript 觀念 - 提升</title>
+    <url>/2022-09-19-hoisting/</url>
+    <content><![CDATA[<p>Hoisting 觀念筆記。</p>
 <span id="more"></span>
 
 <hr>
-<p>前一段時間在切版時，遇到一個有趣的問題，範例如下：</p>
-<p><img src="https://i.imgur.com/TK9ZZcF.png"></p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTML --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">&quot;section mt-3&quot;</span>&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;list&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;list-item&quot;</span>&gt;</span>item<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;list-item&quot;</span>&gt;</span>item<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;list-item&quot;</span>&gt;</span>item<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;list-item&quot;</span>&gt;</span>item<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;list-item&quot;</span>&gt;</span>item<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;list-item&quot;</span>&gt;</span>item<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">&quot;section-title&quot;</span>&gt;</span>Section Title<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>「提升（Hoisting）」是 JavaScript 特有的一種現象，它的意思是當一個變數或函式在被宣告之前就可以被使用，並且不會出現錯誤。</p>
+<p>範例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="comment">// Uncaught ReferenceError: x is not defined</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* CSS（上方列表區塊） */</span></span><br><span class="line"><span class="selector-class">.list</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">justify-content</span>: center;</span><br><span class="line">  <span class="attribute">overflow</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上範例只針對 <code>x</code> 取值，但是在取值之前並沒有宣告一個名為 <code>x</code> 的變數，因此會找不到該變數而回報錯誤。而正常的情況如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x;</span><br><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
 
-<p>上述範例中，上方 <code>.list</code> 區塊使用 <code>display: flex</code> 加上 <code>justify-content: center</code> 讓子元素置中，同時希望瀏覽器寬度縮小至子元素溢出時，溢出的部分以水平軸方式呈現，因此加入了 <code>overflow: auto</code> 設定，呈現畫面如下：</p>
-<p><img src="https://i.imgur.com/Sn1BMH4.png"></p>
-<p>然而將水平軸向左滾動至最底時，溢出的部分卻被裁切了，而問題就在 <code>justify-content: center</code> 這個屬性上，移除該屬性之後，子元素溢出的部分就會正常呈現，如下：</p>
-<p><img src="https://i.imgur.com/6GYarUd.png"></p>
-<p>此時問題來了，在不使用 <code>justify-content: center</code> 的情況下，要如何同時滿足子元素保持置中，但是溢出情況下不會被裁切呢？在思索一番後想到另一個能使區塊水平置中的語法，就是 <code>margin: 0 auto</code>，不過這個語法只適用具有實際寬度但非滿版的區塊，而範例中的 <code>.list</code> 區塊因為 <code>display: flex</code> 的關係佔了滿版的寬，因此並沒有如預期置中。下圖是區塊實際佔用的空間：</p>
-<p><img src="https://i.imgur.com/WnJz6ud.png"></p>
-<p><strong>解決方式：</strong></p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* CSS（上方列表區塊） */</span></span><br><span class="line"><span class="selector-class">.list</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">max-width</span>: max-content;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">  <span class="attribute">overflow</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>這樣就是一個正常的流程，程式碼會從第一行開始由上往下執行，所以在使用變數之前需要先宣告變數，以確保這個變數是存在的，否則就會回報錯誤。</p>
+<p>接著嘗試把第 1、2 行位置進行對調，如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="keyword">var</span> x;</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
 
-<p>僅需在 <code>.list</code> 區塊加上 <code>max-width: max-content</code> 語法即可，而 <code>max-content</code> 最基本的作用是讓區塊寬度或高度自適應子元素，並且當子元素溢出時，內容不會受到擠壓而換行；此處正好利用了前者特性，使 <code>.list</code> 最大寬度等於所有子元素（<code>.list-item</code>）寬度的加總，此時再配合 <code>margin: 0 auto</code> 之後區塊得以置中，並且當子元素溢出時不會被裁切。結果如下圖所示：</p>
-<p><img src="https://i.imgur.com/MLip3hT.png"></p>
-<p><strong>實作範例：</strong></p>
-<iframe src="https://codepen.io/Cliff_hex/embed/bGMqLOq?default-tab=css,result" width="100%" height="300" frameborder="0" loading="lazy" allowfullscreen></iframe>
+<p>按照前面的說法，上述程式碼應該會回報錯誤，但是得到的結果卻是 <code>undefined</code>，而這就是提升所造成的現象，感覺就像是 <code>var x</code> 這段程式碼被提升到所有程式碼的最上方。</p>
+<p>大多數的程式語言中，變數在被使用之前是需要先宣告的，但是 JavaScript 可以在變數宣告之前就使用該變數，所以一開始才會說提升是 JavaScript 特有的現象，不過關於提升還有一些地方需要特別留意，就是會被提升的只有<strong>宣告的行為</strong>，值的指派並不會被提升，如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">7</span>; <span class="comment">// 宣告變數並指派值</span></span><br><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="comment">// 7</span></span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>max-content 詳細說明請參考此<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/max-content">文章</a></p>
-</blockquote>
+<p>以上範例跟前面的相同，只是多了一個指派數值的動作，而最後也印出預期的結果，這個時候如果再將 1、2 行位置進行對調，印出的結果會是 <code>7</code> 嗎？</p>
+<p>結果如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="keyword">var</span> x = <span class="number">7</span>;</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>答案是 <code>undefined</code>，照理來說宣告的變數會被提升，可是得到的結果卻不是 <code>7</code>，原因其實很簡單，前面有提到會被提升的只有宣告的動作，而範例中宣告的動作指的是 <code>var x</code>，後方的 <code>= 7</code> 屬於值的指派，並不會跟著宣告一起被提升，但是結果為甚麼會是 <code>undefined</code>？這是因為 JavaScript 在開始執行你撰寫的程式碼之前，會先把所有宣告的變數、函式都預留一個記憶體空間（全域記憶體），但不會馬上指派值給變數，這個預留記憶體空間的動作就是提升，而到這邊為止屬於「創造階段」，在這個階段結束之後，變數才會被賦值；而 <code>undefined</code> 就是變數在透過 <code>var</code> 宣告時，預設給予的初始值。</p>
+<p>可以將上面的程式碼拆解成以下寫法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="keyword">var</span> x; <span class="comment">// 宣告變數（會被提升）</span></span><br><span class="line">x = <span class="number">7</span>; <span class="comment">// 指派值</span></span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>到目前為止已經知道會被提升的只有宣告的動作，但是除了變數之外，函式也能夠透過宣告的方式建立，因此函式也會被提升。</p>
+<p>範例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">fn();</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// hello</span></span><br></pre></td></tr></table></figure>
+
+<p>嘗試在函式被宣告之前呼叫，也可以順利執行且不會回報錯誤，不過需要注意的是，範例中的函式是透過函式宣告的方式也就是具名函式所建立的，而這也呼應了前面所提到的「會被提升的只有宣告的行為」，因此在呼叫函式 <code>fn</code> 時才不會出錯。</p>
+<p>那匿名函式就不會被提升嗎？答案是會，我們嘗試將範例改成以匿名函式的方式建立，如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">fn();</span><br><span class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Uncaught TypeError: fn is not a function</span></span><br></pre></td></tr></table></figure>
+
+<p>結果出現錯誤了，不過是不是有似曾相似的感覺？其實就跟前面的變數概念是一樣的，這裡的程式碼確實有被提升，但是被提升的只有變數的宣告 <code>var fn</code>，因此在創造階段有預留記憶體空間的只有 <code>fn</code> 這個變數，此時還沒開始指派函式資料，所以 <code>fn</code> 給定的值還是 <code>undefined</code>，而 <code>undefined</code> 並非函式所以無法被呼叫。</p>
+<p>雖然無法呼叫，但是可以透過取值的方式來驗證上述說法，如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(fn);</span><br><span class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(fn);</span><br><span class="line"><span class="keyword">var</span> fn;</span><br><span class="line">fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>兩種結果是一樣的。</p>
+<p>最後做個總結，JavaScript 中的「提升（Hoisting）」指的是宣告變數的提升，而值的賦予並不會提升；此外，提升並不會移動變數的位置，只是感覺像是整段程式碼被移動到最上方。</p>
 ]]></content>
       <categories>
-        <category>CSS</category>
+        <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>Flex</tag>
-        <tag>overflow</tag>
-        <tag>max-content</tag>
+        <tag>hoisting</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript 觀念 - 同步與非同步</title>
+    <url>/2022-09-20-sync-async/</url>
+    <content><![CDATA[<p>校正一下自己的觀念。</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="JavaScript-中的同步"><a href="#JavaScript-中的同步" class="headerlink" title="JavaScript 中的同步"></a>JavaScript 中的同步</h2><p>「同步（Synchronous）」在你的認知上會怎麼解釋？我自己原本的想法是同時處理很多事情，但這個說法在 JavaScript 中卻有些出入，原因在於 JavaScript 是以「單執行緒（單線程）」的方式在執行程序，特性是「一次只做一件事，前面的事做完才會依序做下一件事」。</p>
+<blockquote>
+<p>執行緒相關內容可參考此<a href="https://www.itread01.com/ixyfq.html">文章</a>。</p>
+</blockquote>
+<p>以下方程式碼為例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printNum</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;1&#x27;</span>);</span><br><span class="line">&#125; </span><br><span class="line">printNum();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;2&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>以上述程式碼來說，會先執行函式 <code>printNum</code> 印出 1，接著再印出 2，並且兩者是有先後順序的，屬於同步執行。</p>
+<hr>
+<h2 id="何謂非同步"><a href="#何謂非同步" class="headerlink" title="何謂非同步"></a>何謂非同步</h2><p>「非同步（Asynchronous）」的特性則是「可以同時做很多事，並且不需要等待前面的事做完就能做下一件事」，其實就是一開始自己對同步的認知…</p>
+<p>以下方程式碼為例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(printNum, <span class="number">2000</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printNum</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;1&#x27;</span>);</span><br><span class="line">&#125; </span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;2&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>setTimeout</code> 會分別帶入 <code>callback</code>、<code>等待毫秒</code> 兩個參數，如範例所示，回調函式 <code>printNum</code> 被設定 2 秒後才執行，但是在這過程中，排在後方的 <code>console.log</code> 並不會等待前面的函式 <code>printNum</code>  執行完才動作，而是先印出 2，而 2 秒之後呼叫函式 <code>printNum</code> 並印出 1。</p>
+<p>…不對呀，JavaScript 屬於單執行緒，所以一次只能做一件事才對，為什麼會有範例中非同步的狀況？原因在於 JavaScript 需要在一些特定的引擎上面才能運行，以 V8（JavaScript 引擎）來說，引擎在運作時是同步的，但是除了引擎內的 JavaScript 原始碼之外，瀏覽器也會提供許多 Web APIs（如：document、MouseEvent、setTimeout…等等），這些並不屬於 V8 引擎的範疇，但是可以透過呼叫並使用它們做到非同步的行為，並且不會影響到 JavaScript 主程式的運行，換句話說，JavaScript 需要依賴 Web APIs 才能達成非同步的效果。</p>
+<p>而 <code>setTimeout</code> 等待的期間，程式碼為甚麼能夠繼續往下執行？原因是當 Web APIs 與自己寫的 JavaScript 在瀏覽器一起執行時，透過 Web APIs 非同步呼叫的 callback function 會被放到 Callback Queue（儲列 / 佇列）待命，等到其他程式碼都執行完之後才會被回調執行。</p>
+<hr>
+<p><strong>參考資料：</strong></p>
+<p><a href="https://chanchandev.com/js/Async/async-sync-intro/2534378084/">Javascript 非同步 &amp; Event Loop！10 分鐘輕鬆圖解學習！</a></p>
+<p><a href="https://5xruby.tw/posts/how-js-synchronous-works">無痛理解 JS | 非同步怎麼運作？</a></p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>synchronous</tag>
+        <tag>asynchronous</tag>
       </tags>
   </entry>
   <entry>

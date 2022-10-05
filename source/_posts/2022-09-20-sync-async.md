@@ -5,6 +5,10 @@ tags:
  - synchronous
  - asynchronous
 categories: JavaScript
+banner:
+  url: /images/banner/banner_js.jpg
+  width: 1280
+  height: 720
 ---
 
 校正一下自己的觀念。

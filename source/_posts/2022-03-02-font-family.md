@@ -1,12 +1,16 @@
 ---
-title: Font-Family 設定
+title: 關於 CSS Font-Family
 date: 2022-03-02
 tags:
  - font-family
 categories: CSS
+banner:
+  url: /images/banner/banner_font.jpg
+  width: 1280
+  height: 720
 ---
 
-紀錄 font-family 字體設定的基本觀念。
+字體設定規則有點複雜，趁現在還記得順便紀錄一下。
 
 <!--more-->
 
@@ -134,7 +138,7 @@ font-family: 'Segoe UI', SegoeUI, 'Microsoft JhengHei', 微軟正黑體, "Helvet
 Google：
 
 ```css
-font-family: arial, sans-serif;  /* 不愧是 Google，連字體設定都這麼簡約 */
+font-family: arial, sans-serif;  /* 這絕對不是懶(? */
 ```
 
 ---

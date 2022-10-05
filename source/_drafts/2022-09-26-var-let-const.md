@@ -6,11 +6,6 @@ tags:
 categories: JavaScript
 ---
 
-記錄宣告方式的差異。
-
-<!--more-->
-
-------
 
 JavaScript 變數的宣告方式有三種，分別是 `var`、`let` 以及 `const`，後兩者是 ES6 新增的語法，而這三種方式所宣告的變數也會有不同的作用。
 

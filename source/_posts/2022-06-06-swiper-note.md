@@ -3,10 +3,15 @@ title: JavaScript 套件 - Swiper
 date: 2022-06-01
 tags:
  - Swiper
-categories: JavaScript
+ - Package
+categories: Package
+banner:
+  url: /images/banner/banner_20220601.jpg
+  width: 1280
+  height: 720
 ---
 
-這篇內容記錄 Swiper 套件的常見配置。
+輪播效果小幫手。
 
 <!--more-->
 

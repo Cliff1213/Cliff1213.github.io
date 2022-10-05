@@ -2,13 +2,16 @@
 title: Flex 水平置中，子元素溢出不被裁切
 date: 2022-09-17
 tags:
- - Flex
+ - flex-box
  - overflow
- - max-content
 categories: CSS
+banner:
+  url: /images/banner/banner_20220910-2.jpg
+  width: 1280
+  height: 720
 ---
 
-記錄一下解決問題的方法。
+記錄一下遇到的切版問題的解法。
 
 <!--more-->
 

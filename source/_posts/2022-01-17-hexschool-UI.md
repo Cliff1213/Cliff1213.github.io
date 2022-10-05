@@ -4,6 +4,10 @@ date: 2022-01-17
 tags:
  - 六角學院
 categories: 心得
+banner:
+  url: /images/banner/banner_20220117.jpg
+  width: 1280
+  height: 720
 ---
 
 2021 冬，UI 直播班心得，推！

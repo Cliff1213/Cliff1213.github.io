@@ -2,11 +2,15 @@
 title: JavaScript 學習筆記
 date: 2022-05-13
 tags:
- - 學習筆記
+ - note
 categories: JavaScript
+banner:
+  url: /images/banner/banner_js.jpg
+  width: 1280
+  height: 720
 ---
 
-這是一篇 JavaScript 的學習筆記，視情況陸續增加內容。
+初學 JavaScript 的筆記，基本上學到什麼就寫什麼，內容很長很繁雜。
 
 <!--more-->
 

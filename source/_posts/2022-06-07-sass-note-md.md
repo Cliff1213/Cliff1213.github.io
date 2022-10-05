@@ -1,11 +1,16 @@
 ---
 title: Sass 實用語法
 date: 2022-06-07
-# tags:
+tags:
+ - note
 categories: SCSS
+banner:
+  url: /images/banner/banner_20220607.jpg
+  width: 1280
+  height: 720
 ---
 
-簡單整理一下自己常用且覺得方便的一些 Sass 相關語法。
+簡單整理一些新手必須知道的 Sass 語法。
 
 
 <!--more-->
@@ -72,13 +77,13 @@ $color-primary: #00cc99;
 
 變數值可使用的格式分別有以下幾種：
 
-- 數字：2、16px、2rem
-- 字串："文字"、"./img/logo.png"
-- 顏色：blue、#00CC99、rgba(0,0,0,0.5)
-- 布林：true、false
-- 空值：null
-- 值列：16px 8px、"arial, sans-serif"
-- 運算：1rem * 1.25
+- 數字：<code>2</code>、<code>16px</code>、<code>2rem</code>
+- 字串：<code>"文字"</code>、<code>"./img/logo.png"</code>
+- 顏色：<code>blue</code>、<code>#00CC99</code>、<code>rgba(0,0,0,0.5)</code>
+- 布林：<code>true</code>、<code>false</code>
+- 空值：<code>null</code>
+- 值列：<code>16px 8px</code>、<code>"arial, sans-serif"</code>
+- 運算：<code>1rem * 1.25</code>
 
 ### 調整色彩明度
 
@@ -160,7 +165,7 @@ h1 .logo {
 
 ---
 
-## 進階技巧
+## 基本技巧
 
 ### @for 運作原理
 

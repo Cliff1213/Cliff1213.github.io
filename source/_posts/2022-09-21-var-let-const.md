@@ -14,9 +14,9 @@ JS 宣告方式與作用域相關筆記。
 
 <!--more-->
 
-JavaScript 變數的宣告方式有三種，分別是 `var`、`let` 以及 `const`，後兩者是 ES6 新增的語法，而這三種方式所宣告的變數也會有不同的作用。
-
 ---
+
+JavaScript 變數的宣告方式有三種，分別是 `var`、`let` 以及 `const`，後兩者是 ES6 新增的語法，而這三種方式所宣告的變數也會有不同的作用。
 
 ## 重複宣告
 
@@ -34,7 +34,7 @@ var a = 2;
 ```js
 let a = 1;
 let a = 2;
-// Uncaught SyntaxError: Identifier 'a' has already been declared
+// SyntaxError: Identifier 'a' has already been declared
 ```
 
 ```js
@@ -48,24 +48,24 @@ console.log(a); // 2
 ```js
 const a = 1;
 const a = 2;
-// Uncaught SyntaxError: Identifier 'a' has already been declared
+// SyntaxError: Identifier 'a' has already been declared
 ```
 
 ```js
 const a = 1;
 a = 2;
-// Uncaught TypeError: Assignment to constant variable.
+// TypeError: Assignment to constant variable.
 ```
 
 ---
 
 ## 作用域
 
-「作用域（Scope）」可以理解成一個變數能夠被存取 / 使用的範圍。ES6 之前的作用域有兩種，分別是**全域作用域**以及**函式作用域**，而 ES6 新增了**區塊作用域**。
+「作用域（Scope）」可以理解成一個變數能夠被存取/使用的範圍。ES6 之前的作用域有兩種，分別是**全域作用域**以及**函式作用域**，而 ES6 新增了**區塊作用域**。
 
 ### 全域作用域（Global Scope）
 
-只要不是在函式或區塊裡面宣告的變數，作用域就是全域。
+不是在 `function` 或 `block` 裡面宣告的變數，作用域就是全域。
 
 ```js
 var a = 1;
@@ -78,7 +78,7 @@ for(let i=0; i<=5; i++) {
 }
 ```
 
-上方範例中的變數 `a` 是在全域環境下被宣告的，而全域變數可以在檔案中的任何地方取用。
+上方範例中的變數 `a` 是在全域環境下被宣告的，而全域變數可以在檔案中的任何地方存取。
 
 ### 函式作用域（Function Scope）
 
@@ -89,12 +89,12 @@ function fn() {
 }
 fn();
 console.log(a, 'global'); // 1 "global"
-console.log(b, 'function'); // Uncaught ReferenceError: b is not defined
+console.log(b, 'function'); // ReferenceError: b is not defined
 ```
 
-上方範例嘗試在全域環境下取得變數 `b` 值，結果會因為沒有這個變數而出現錯誤，原因在於 `var` 宣告的變數是屬於**函式作用域**，而變數 `b` 是在函式 `fn` 裡面被宣告的，因此就只能在這個函式裡面被使用，無法從函式外取用該變數。
+上方範例嘗試在全域環境下取得變數 `b` 值，結果會因為沒有這個變數而出現錯誤，原因在於 `var` 宣告的變數是屬於**函式作用域**，而變數 `b` 是在函式 `fn` 裡面被宣告的，因此就只能在這個函式裡面被使用，無法從函式外存取該變數。
 
-不過函式裡面可以使用函式外面的變數，如果在函式裡找不到變數，預設就會向外查找是否有相同名稱的變數。
+而函式裡面可以使用函式外面的變數，如果在函式裡找不到變數，預設就會向外查找是否有相同名稱的變數。
 
 ```js
 var a = 1;
@@ -109,6 +109,23 @@ fn();
 
 上方範例第 5 行因為函式內不存在 `a` 變數，因此就會使用外層的全域變數 `a`，而 `b` 因為函式內已宣告，所以即使全域環境下也有同名的變數 `b`，也會優先使用函式裡面的變數，而全域變數 `b` 與函式中的區域變數 `b` 彼此是不同的兩個變數。
 
+同樣都是函式作用域，那兩個不同函式的變數可以互相存取嗎？
+
+```js
+function fnA() {
+  var a = 'hello';
+}
+function fnB() {
+  var b = 'world';
+  console.log(a + b);
+}
+fnA();
+fnB();
+// ReferenceError: a is not defined
+```
+
+答案是不行，函式裡面宣告的變數，存取範圍只能在當前的函式或是內層的函式。
+
 ### 區塊作用域（Block Scope）
 
 ES6 之前只能只能使用 `function` 來定義作用域，ES6 開始因為新增了 `let`、`const` 兩種宣告方式，使變數能夠以區塊（Block）來規範作用域，而區塊作用域指的是一對大括號 `{}` 裡面的範圍，常見區塊像是 `if` 判斷式、`for` 迴圈等等。
@@ -121,11 +138,11 @@ ES6 之前只能只能使用 `function` 來定義作用域，ES6 開始因為新
 }
 console.log(a, b, c);
 // 1
-// Uncaught ReferenceError: b is not defined
-// Uncaught ReferenceError: c is not defined
+// ReferenceError: b is not defined
+// ReferenceError: c is not defined
 ```
 
-以上可以看到區塊外無法取用區塊內透過 `let`、`const` 宣告的變數，而 `var` 宣告的變數作用域是函式，變數 `a` 並不是在函式裡被宣告的，因此作用域還是全域。
+以上可以看到區塊外無法存取區塊內透過 `let`、`const` 宣告的變數，因為 `var` 宣告的變數是函式作用域，所以變數 `a` 並不會被區塊限制作用域，因此作用域會是全域。
 
 以 `if` 判斷式為例：
 
@@ -135,10 +152,12 @@ if(true) {
 }
 console.log(a);
 // 1
-// Uncaught ReferenceError: a is not defined
+// ReferenceError: a is not defined
 ```
 
-變數 `a` 因為是在 `if` 區塊中宣告的，因此無法從區塊之外取用該變數。
+變數 `a` 因為是在 `if` 區塊中宣告的，因此無法從區塊之外存取該變數。
+
+到這邊可以知道一件事，無論變數的作用域是函式還是區塊，都能夠存取外層的變數，外層則無法存取內層變數，為單向性。
 
 ### 變數與物件屬性
 
@@ -179,4 +198,4 @@ console.log(window.aaa); // undefined
 
 可以發現 `aaa` 成功被刪除了。
 
-**重點結論**：使用關鍵字 `var` 宣告的變數無法被刪除，而沒有宣告行為的全域屬性，是可以被刪除的。
+因此，使用關鍵字 `var` 宣告的變數無法被刪除，而沒有宣告行為的全域屬性，是可以被刪除的。

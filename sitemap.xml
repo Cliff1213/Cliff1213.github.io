@@ -51,6 +51,13 @@
   </url>
   
   <url>
+    <loc>http://kurifu.tw/2022-09-10-js-loop/</loc>
+    
+    <lastmod>2022-10-07</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://kurifu.tw/2022-09-17-max-content/</loc>
     
     <lastmod>2022-09-16</lastmod>
@@ -72,16 +79,16 @@
   </url>
   
   <url>
-    <loc>http://kurifu.tw/2022-09-21-var-let-const/</loc>
+    <loc>http://kurifu.tw/2022-09-24-hoisting/</loc>
     
-    <lastmod>2022-09-20</lastmod>
+    <lastmod>2022-09-23</lastmod>
     
   </url>
   
   <url>
-    <loc>http://kurifu.tw/2022-09-24-hoisting/</loc>
+    <loc>http://kurifu.tw/2022-09-21-var-let-const/</loc>
     
-    <lastmod>2022-09-23</lastmod>
+    <lastmod>2022-09-20</lastmod>
     
   </url>
   
@@ -107,16 +114,16 @@
   </url>
   
   <url>
-    <loc>http://kurifu.tw/archives/index.html</loc>
+    <loc>http://kurifu.tw/about/index.html</loc>
     
-    <lastmod>2022-01-20</lastmod>
+    <lastmod>2022-01-19</lastmod>
     
   </url>
   
   <url>
-    <loc>http://kurifu.tw/about/index.html</loc>
+    <loc>http://kurifu.tw/archives/index.html</loc>
     
-    <lastmod>2022-01-19</lastmod>
+    <lastmod>2022-01-20</lastmod>
     
   </url>
   

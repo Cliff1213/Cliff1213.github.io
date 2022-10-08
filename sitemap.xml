@@ -107,16 +107,16 @@
   </url>
   
   <url>
-    <loc>http://kurifu.tw/about/index.html</loc>
+    <loc>http://kurifu.tw/archives/index.html</loc>
     
-    <lastmod>2022-01-19</lastmod>
+    <lastmod>2022-01-20</lastmod>
     
   </url>
   
   <url>
-    <loc>http://kurifu.tw/archives/index.html</loc>
+    <loc>http://kurifu.tw/about/index.html</loc>
     
-    <lastmod>2022-01-20</lastmod>
+    <lastmod>2022-01-19</lastmod>
     
   </url>
   
@@ -137,7 +137,7 @@
 
   <url>
     <loc>http://kurifu.tw/</loc>
-    <lastmod>2022-10-06</lastmod>
+    <lastmod>2022-10-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>

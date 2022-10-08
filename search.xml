@@ -575,7 +575,7 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript 觀念 - function</title>
+    <title>JavaScript 觀念 - 函式</title>
     <url>/2022-09-19-function/</url>
     <content><![CDATA[<img src="/images/banner/banner_js.jpg"/><p>JS 函式觀念筆記。</p>
 <span id="more"></span>
@@ -620,7 +620,7 @@
 
 <p>可分別將上述程式碼放在開發人員工具 console 中執行查看，變數在宣告後回傳 <code>undefined</code>，屬於陳述式；指派一個值給變數，而變數會回傳指派的值，屬於表達式；而判斷式本身並不會回傳任何值，因此屬於陳述式。</p>
 <h2 id="函式陳述式"><a href="#函式陳述式" class="headerlink" title="函式陳述式"></a>函式陳述式</h2><p>前面所提到透過給予函式名稱的所宣告的函式，稱為函式陳述式 / 具名函式。</p>
-<h2 id="函式表達式"><a href="#函式表達式" class="headerlink" title="函式表達式"></a>函式表達式</h2><p>除了前面提到的函式宣告方式，也就是函式陳述式之外，還可以將函式指派給一個變數，因為函式本身也屬於物件的一種，因此能夠當作一個被指派的值，而這種方式產生的函式曾為函式表達式 / 匿名函式。</p>
+<h2 id="函式表達式"><a href="#函式表達式" class="headerlink" title="函式表達式"></a>函式表達式</h2><p>除了一般的的函式宣告，還可以將函式指派給一個變數，因為函式本身也屬於物件的一種，因此能夠當作一個被指派的值，而這種方式產生的函式曾為函式表達式 / 匿名函式。</p>
 <p>函式表達式範例：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> expressionFn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -639,22 +639,22 @@
 <span id="more"></span>
 
 <hr>
-<h2 id="JavaScript-中的同步"><a href="#JavaScript-中的同步" class="headerlink" title="JavaScript 中的同步"></a>JavaScript 中的同步</h2><p>「同步（Synchronous）」在你的認知上會怎麼解釋？我自己原本的想法是同時處理很多事情，但這個說法在 JavaScript 中卻有些出入，原因在於 JavaScript 是以「單執行緒（單線程）」的方式在執行程序，特性是「一次只做一件事，前面的事做完才會依序做下一件事」。</p>
+<h2 id="JavaScript-中的同步"><a href="#JavaScript-中的同步" class="headerlink" title="JavaScript 中的同步"></a>JavaScript 中的同步</h2><p>「同步（Synchronous）」在你的認知上會怎麼解釋？我自己原本的想法是同時處理很多事情，但這個說法在 JavaScript 卻有些出入，原因在於 JavaScript 是以「單執行緒（單線程）」的方式在執行程序，特性是「一次只做一件事，前面的事做完才會依序做下一件事」。</p>
 <blockquote>
 <p>執行緒相關內容可參考此<a href="https://www.itread01.com/ixyfq.html">文章</a>。</p>
 </blockquote>
-<p>以下方程式碼為例：</p>
+<p>範例：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printNum</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;1&#x27;</span>);</span><br><span class="line">&#125; </span><br><span class="line">printNum();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;2&#x27;</span>);</span><br></pre></td></tr></table></figure>
 
-<p>以上述程式碼來說，會先執行函式 <code>printNum</code> 印出 1，接著再印出 2，並且兩者是有先後順序的，屬於同步執行。</p>
+<p>以上面程式碼來說，會先執行函式 <code>printNum</code> 印出 <code>1</code>，接著再印出 <code>2</code>，並且兩者是有先後順序的，屬於同步執行。</p>
 <hr>
-<h2 id="何謂非同步"><a href="#何謂非同步" class="headerlink" title="何謂非同步"></a>何謂非同步</h2><p>「非同步（Asynchronous）」的特性則是「可以同時做很多事，並且不需要等待前面的事做完就能做下一件事」，其實就是一開始自己對同步的認知…</p>
-<p>以下方程式碼為例：</p>
+<h2 id="何謂非同步"><a href="#何謂非同步" class="headerlink" title="何謂非同步"></a>何謂非同步</h2><p>「非同步（Asynchronous）」特性是「可以同時做很多事，並且不需要等待前面的事做完就能做下一件事」，其實就是自己一開始對同步的認知。</p>
+<p>範例：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(printNum, <span class="number">2000</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printNum</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;1&#x27;</span>);</span><br><span class="line">&#125; </span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;2&#x27;</span>);</span><br></pre></td></tr></table></figure>
 
-<p><code>setTimeout</code> 會分別帶入 <code>callback</code>、<code>等待毫秒</code> 兩個參數，如範例所示，回調函式 <code>printNum</code> 被設定 2 秒後才執行，但是在這過程中，排在後方的 <code>console.log</code> 並不會等待前面的函式 <code>printNum</code>  執行完才動作，而是先印出 2，而 2 秒之後呼叫函式 <code>printNum</code> 並印出 1。</p>
-<p>…不對呀，JavaScript 屬於單執行緒，所以一次只能做一件事才對，為什麼會有範例中非同步的狀況？原因在於 JavaScript 需要在一些特定的引擎上面才能運行，以 V8（JavaScript 引擎）來說，引擎在運作時是同步的，但是除了引擎內的 JavaScript 原始碼之外，瀏覽器也會提供許多 Web APIs（如：document、MouseEvent、setTimeout…等等），這些並不屬於 V8 引擎的範疇，但是可以透過呼叫並使用它們做到非同步的行為，並且不會影響到 JavaScript 主程式的運行，換句話說，JavaScript 需要依賴 Web APIs 才能達成非同步的效果。</p>
-<p>而 <code>setTimeout</code> 等待的期間，程式碼為甚麼能夠繼續往下執行？原因是當 Web APIs 與自己寫的 JavaScript 在瀏覽器一起執行時，透過 Web APIs 非同步呼叫的 callback function 會被放到 Callback Queue（儲列 / 佇列）待命，等到其他程式碼都執行完之後才會被回調執行。</p>
+<p>程式碼中 <code>setTimeout</code> 會分別帶入 <code>callback</code>、<code>等待毫秒</code> 兩個參數，而回調函式 <code>printNum</code> 被設定 2 秒後才執行，但是這程中第 5 行的程式碼並不會等待前面的函式 <code>printNum</code>  執行完才動作，而是先印出 <code>2</code>，等待 2 秒之後呼叫函式 <code>printNum</code> 並印出 <code>1</code>。</p>
+<p>但是 JavaScript 屬於單執行緒，所以一次應該只會做一件事，為什麼會有範例中非同步的狀況？原因是 JavaScript 在 V8 引擎（JavaScript 引擎）運行時，引擎在運作時是同步的，但是除了引擎內的 JavaScript 原始程式碼之外，瀏覽器也會提供許多 Web APIs（如：document、MouseEvent、setTimeout…等等），這些並不屬於 V8 引擎的範疇，但是可以透過呼叫並使用它們做到非同步的行為，並且不會影響到 JavaScript 主程式的運行，可以理解成 JavaScript 需要依賴 Web APIs 才能達成非同步的效果。</p>
+<p>而 <code>setTimeout</code> 等待的期間，程式碼為甚麼能夠繼續往下執行？原因是當 Web APIs 與自己寫的 JavaScript 在瀏覽器一起執行時，透過 Web APIs 非同步呼叫的 callback function 會被放到 Callback Queue（儲列 / 佇列）待命，等到其他程式碼都執行完之後才會被呼叫。</p>
 <hr>
 <p><strong>參考資料：</strong></p>
 <p><a href="https://chanchandev.com/js/Async/async-sync-intro/2534378084/">Javascript 非同步 &amp; Event Loop！10 分鐘輕鬆圖解學習！</a></p>
@@ -674,43 +674,48 @@
     <content><![CDATA[<img src="/images/banner/banner_js.jpg"/><p>JS 宣告方式與作用域相關筆記。</p>
 <span id="more"></span>
 
-<p>JavaScript 變數的宣告方式有三種，分別是 <code>var</code>、<code>let</code> 以及 <code>const</code>，後兩者是 ES6 新增的語法，而這三種方式所宣告的變數也會有不同的作用。</p>
 <hr>
+<p>JavaScript 變數的宣告方式有三種，分別是 <code>var</code>、<code>let</code> 以及 <code>const</code>，後兩者是 ES6 新增的語法，而這三種方式所宣告的變數也會有不同的作用。</p>
 <h2 id="重複宣告"><a href="#重複宣告" class="headerlink" title="重複宣告"></a>重複宣告</h2><p>透過 <code>var</code> 宣告的變數，重複宣告的行為不會回報錯誤：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
 
 <p>雖然 JavaScript 允許上面這種行為，但是一般情況下，一個變數只會進行一次宣告。</p>
 <p><code>let</code> 不可重複宣告，但是可以重新賦值：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="comment">// Uncaught SyntaxError: Identifier &#x27;a&#x27; has already been declared</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="comment">// SyntaxError: Identifier &#x27;a&#x27; has already been declared</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line">a = <span class="number">2</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
 
 <p><code>const</code> 則是不可重複宣告，也無法重新賦值：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="comment">// Uncaught SyntaxError: Identifier &#x27;a&#x27; has already been declared</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="comment">// SyntaxError: Identifier &#x27;a&#x27; has already been declared</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> a = <span class="number">1</span>;</span><br><span class="line">a = <span class="number">2</span>;</span><br><span class="line"><span class="comment">// Uncaught TypeError: Assignment to constant variable.</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> a = <span class="number">1</span>;</span><br><span class="line">a = <span class="number">2</span>;</span><br><span class="line"><span class="comment">// TypeError: Assignment to constant variable.</span></span><br></pre></td></tr></table></figure>
 
 <hr>
-<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>「作用域（Scope）」可以理解成一個變數能夠被存取 / 使用的範圍。ES6 之前的作用域有兩種，分別是<strong>全域作用域</strong>以及<strong>函式作用域</strong>，而 ES6 新增了<strong>區塊作用域</strong>。</p>
-<h3 id="全域作用域（Global-Scope）"><a href="#全域作用域（Global-Scope）" class="headerlink" title="全域作用域（Global Scope）"></a>全域作用域（Global Scope）</h3><p>只要不是在函式或區塊裡面宣告的變數，作用域就是全域。</p>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>「作用域（Scope）」可以理解成一個變數能夠被存取/使用的範圍。ES6 之前的作用域有兩種，分別是<strong>全域作用域</strong>以及<strong>函式作用域</strong>，而 ES6 新增了<strong>區塊作用域</strong>。</p>
+<h3 id="全域作用域（Global-Scope）"><a href="#全域作用域（Global-Scope）" class="headerlink" title="全域作用域（Global Scope）"></a>全域作用域（Global Scope）</h3><p>不是在 <code>function</code> 或 <code>block</code> 裡面宣告的變數，作用域就是全域。</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;=<span class="number">5</span>; i++) &#123;</span><br><span class="line">  a += i;</span><br><span class="line">  <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>上方範例中的變數 <code>a</code> 是在全域環境下被宣告的，而全域變數可以在檔案中的任何地方取用。</p>
-<h3 id="函式作用域（Function-Scope）"><a href="#函式作用域（Function-Scope）" class="headerlink" title="函式作用域（Function Scope）"></a>函式作用域（Function Scope）</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> b = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">fn();</span><br><span class="line"><span class="built_in">console</span>.log(a, <span class="string">&#x27;global&#x27;</span>); <span class="comment">// 1 &quot;global&quot;</span></span><br><span class="line"><span class="built_in">console</span>.log(b, <span class="string">&#x27;function&#x27;</span>); <span class="comment">// Uncaught ReferenceError: b is not defined</span></span><br></pre></td></tr></table></figure>
+<p>上方範例中的變數 <code>a</code> 是在全域環境下被宣告的，而全域變數可以在檔案中的任何地方存取。</p>
+<h3 id="函式作用域（Function-Scope）"><a href="#函式作用域（Function-Scope）" class="headerlink" title="函式作用域（Function Scope）"></a>函式作用域（Function Scope）</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> b = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">fn();</span><br><span class="line"><span class="built_in">console</span>.log(a, <span class="string">&#x27;global&#x27;</span>); <span class="comment">// 1 &quot;global&quot;</span></span><br><span class="line"><span class="built_in">console</span>.log(b, <span class="string">&#x27;function&#x27;</span>); <span class="comment">// ReferenceError: b is not defined</span></span><br></pre></td></tr></table></figure>
 
-<p>上方範例嘗試在全域環境下取得變數 <code>b</code> 值，結果會因為沒有這個變數而出現錯誤，原因在於 <code>var</code> 宣告的變數是屬於<strong>函式作用域</strong>，而變數 <code>b</code> 是在函式 <code>fn</code> 裡面被宣告的，因此就只能在這個函式裡面被使用，無法從函式外取用該變數。</p>
-<p>不過函式裡面可以使用函式外面的變數，如果在函式裡找不到變數，預設就會向外查找是否有相同名稱的變數。</p>
+<p>上方範例嘗試在全域環境下取得變數 <code>b</code> 值，結果會因為沒有這個變數而出現錯誤，原因在於 <code>var</code> 宣告的變數是屬於<strong>函式作用域</strong>，而變數 <code>b</code> 是在函式 <code>fn</code> 裡面被宣告的，因此就只能在這個函式裡面被使用，無法從函式外存取該變數。</p>
+<p>而函式裡面可以使用函式外面的變數，如果在函式裡找不到變數，預設就會向外查找是否有相同名稱的變數。</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> b = <span class="number">20</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(a + b);</span><br><span class="line">&#125;</span><br><span class="line">fn();</span><br><span class="line"><span class="comment">// 21</span></span><br></pre></td></tr></table></figure>
 
 <p>上方範例第 5 行因為函式內不存在 <code>a</code> 變數，因此就會使用外層的全域變數 <code>a</code>，而 <code>b</code> 因為函式內已宣告，所以即使全域環境下也有同名的變數 <code>b</code>，也會優先使用函式裡面的變數，而全域變數 <code>b</code> 與函式中的區域變數 <code>b</code> 彼此是不同的兩個變數。</p>
+<p>同樣都是函式作用域，那兩個不同函式的變數可以互相存取嗎？</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fnA</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fnB</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> b = <span class="string">&#x27;world&#x27;</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(a + b);</span><br><span class="line">&#125;</span><br><span class="line">fnA();</span><br><span class="line">fnB();</span><br><span class="line"><span class="comment">// ReferenceError: a is not defined</span></span><br></pre></td></tr></table></figure>
+
+<p>答案是不行，函式裡面宣告的變數，存取範圍只能在當前的函式或是內層的函式。</p>
 <h3 id="區塊作用域（Block-Scope）"><a href="#區塊作用域（Block-Scope）" class="headerlink" title="區塊作用域（Block Scope）"></a>區塊作用域（Block Scope）</h3><p>ES6 之前只能只能使用 <code>function</code> 來定義作用域，ES6 開始因為新增了 <code>let</code>、<code>const</code> 兩種宣告方式，使變數能夠以區塊（Block）來規範作用域，而區塊作用域指的是一對大括號 <code>&#123;&#125;</code> 裡面的範圍，常見區塊像是 <code>if</code> 判斷式、<code>for</code> 迴圈等等。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">let</span> b = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">const</span> c = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(a, b, c);</span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// Uncaught ReferenceError: b is not defined</span></span><br><span class="line"><span class="comment">// Uncaught ReferenceError: c is not defined</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">let</span> b = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">const</span> c = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(a, b, c);</span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// ReferenceError: b is not defined</span></span><br><span class="line"><span class="comment">// ReferenceError: c is not defined</span></span><br></pre></td></tr></table></figure>
 
-<p>以上可以看到區塊外無法取用區塊內透過 <code>let</code>、<code>const</code> 宣告的變數，而 <code>var</code> 宣告的變數作用域是函式，變數 <code>a</code> 並不是在函式裡被宣告的，因此作用域還是全域。</p>
+<p>以上可以看到區塊外無法存取區塊內透過 <code>let</code>、<code>const</code> 宣告的變數，因為 <code>var</code> 宣告的變數是函式作用域，所以變數 <code>a</code> 並不會被區塊限制作用域，因此作用域會是全域。</p>
 <p>以 <code>if</code> 判斷式為例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// Uncaught ReferenceError: a is not defined</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// ReferenceError: a is not defined</span></span><br></pre></td></tr></table></figure>
 
-<p>變數 <code>a</code> 因為是在 <code>if</code> 區塊中宣告的，因此無法從區塊之外取用該變數。</p>
+<p>變數 <code>a</code> 因為是在 <code>if</code> 區塊中宣告的，因此無法從區塊之外存取該變數。</p>
+<p>到這邊可以知道一件事，無論變數的作用域是函式還是區塊，都能夠存取外層的變數，外層則無法存取內層變數，為單向性。</p>
 <h3 id="變數與物件屬性"><a href="#變數與物件屬性" class="headerlink" title="變數與物件屬性"></a>變數與物件屬性</h3><p>使用 <code>var</code>、<code>let</code>、 <code>const</code> 與不做關鍵字宣告行為有甚麼差別？</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> aa = <span class="number">10</span>;</span><br><span class="line">aaa = <span class="number">100</span>;</span><br></pre></td></tr></table></figure>
 
@@ -726,7 +731,7 @@
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">aaa = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">delete</span> <span class="built_in">window</span>.aaa;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.aaa); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
 
 <p>可以發現 <code>aaa</code> 成功被刪除了。</p>
-<p><strong>重點結論</strong>：使用關鍵字 <code>var</code> 宣告的變數無法被刪除，而沒有宣告行為的全域屬性，是可以被刪除的。</p>
+<p>因此，使用關鍵字 <code>var</code> 宣告的變數無法被刪除，而沒有宣告行為的全域屬性，是可以被刪除的。</p>
 ]]></content>
       <categories>
         <category>JavaScript</category>
@@ -742,45 +747,61 @@
 <span id="more"></span>
 
 <hr>
-<p>「提升（Hoisting）」是 JavaScript 特有的一種現象，它的意思是當一個變數或函式在被宣告之前就可以被使用，並且不會出現錯誤。</p>
-<p>範例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="comment">// Uncaught ReferenceError: x is not defined</span></span><br></pre></td></tr></table></figure>
+<p>「提升（Hoisting）」是 JavaScript 特有的一種現象，它的意思是當一個變數或函式在被宣告之前就可以被使用，並且不會出現錯誤，另外 ES6 以前都是使用 <code>var</code> 來宣告變數，與 ES6 新增的 <code>let</code>、<code>const</code> 在提升行為會也有所不同。</p>
+<h2 id="ES6-以前的提升"><a href="#ES6-以前的提升" class="headerlink" title="ES6 以前的提升"></a>ES6 以前的提升</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="comment">// ReferenceError: x is not defined</span></span><br></pre></td></tr></table></figure>
 
-<p>以上範例只針對 <code>x</code> 取值，但是在取值之前並沒有宣告一個名為 <code>x</code> 的變數，因此會找不到該變數而回報錯誤。而正常的情況如下：</p>
+<p>以上針對 <code>x</code> 取值，但是在這之前並沒有宣告一個名為 <code>x</code> 的變數，因此會找不到該變數而回報錯誤，下面是正常的做法：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x;</span><br><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
 
-<p>這樣就是一個正常的流程，程式碼會從第一行開始由上往下執行，所以在使用變數之前需要先宣告變數，以確保這個變數是存在的，否則就會回報錯誤。</p>
-<p>接著嘗試把第 1、2 行位置進行對調，如下：</p>
+<p>這樣就是一個正常的流程，程式碼會從第一行開始由上往下執行，所以在使用變數之前需要先宣告變數，以確保這個變數是存在的。</p>
+<p>接著下面嘗試把第 1、2 行位置進行對調：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="keyword">var</span> x;</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
 
-<p>按照前面的說法，上述程式碼應該會回報錯誤，但是得到的結果卻是 <code>undefined</code>，而這就是提升所造成的現象，感覺就像是 <code>var x</code> 這段程式碼被提升到所有程式碼的最上方。</p>
-<p>大多數的程式語言中，變數在被使用之前是需要先宣告的，但是 JavaScript 可以在變數宣告之前就使用該變數，所以一開始才會說提升是 JavaScript 特有的現象，不過關於提升還有一些地方需要特別留意，就是會被提升的只有<strong>宣告的行為</strong>，值的指派並不會被提升，如下：</p>
+<p>按照前面的說法，上述程式碼應該會回報錯誤，但是得到的結果卻是 <code>undefined</code>，而這就是提升所造成的現象，感覺像是 <code>var x</code> 這段程式碼被提升到所有程式碼之前。</p>
+<p>大多數的程式語言中，變數在被使用之前是需要先宣告的，但是 JavaScript 可以在變數宣告之前就使用該變數，不過關於提升還有一些注意事項，就是會被提升的只有<strong>宣告的行為</strong>，值的指派並不會被提升，以下面程式碼為例：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">7</span>; <span class="comment">// 宣告變數並指派值</span></span><br><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="comment">// 7</span></span><br></pre></td></tr></table></figure>
 
-<p>以上範例跟前面的相同，只是多了一個指派數值的動作，而最後也印出預期的結果，這個時候如果再將 1、2 行位置進行對調，印出的結果會是 <code>7</code> 嗎？</p>
-<p>結果如下：</p>
+<p>範例跟前面的相同，只是多了一個指派數值的動作，而最後也印出預期的結果，這個時候如果再將 1、2 行位置進行對調，印出的結果會是 <code>7</code> 嗎？</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="keyword">var</span> x = <span class="number">7</span>;</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
 
-<p>答案是 <code>undefined</code>，照理來說宣告的變數會被提升，可是得到的結果卻不是 <code>7</code>，原因其實很簡單，前面有提到會被提升的只有宣告的動作，而範例中宣告的動作指的是 <code>var x</code>，後方的 <code>= 7</code> 屬於值的指派，並不會跟著宣告一起被提升，但是結果為甚麼會是 <code>undefined</code>？這是因為 JavaScript 在開始執行你撰寫的程式碼之前，會先把所有宣告的變數、函式都預留一個記憶體空間（全域記憶體），但不會馬上指派值給變數，這個預留記憶體空間的動作就是提升，而到這邊為止屬於「創造階段」，在這個階段結束之後，變數才會被賦值；而 <code>undefined</code> 就是變數在透過 <code>var</code> 宣告時，預設給予的初始值。</p>
-<p>可以將上面的程式碼拆解成以下寫法：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="keyword">var</span> x; <span class="comment">// 宣告變數（會被提升）</span></span><br><span class="line">x = <span class="number">7</span>; <span class="comment">// 指派值</span></span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<p>答案是 <code>undefined</code>，照理來說宣告的變數會被提升，可是得到的結果卻不是 <code>7</code>，原因其實就如前面提到的，會被提升的只有宣告的動作，而範例中宣告的動作指的是 <code>var x</code>，後方的 <code>= 7</code> 屬於值的指派，並不會跟著宣告一起被提升。</p>
+<p>但是結果為甚麼會是 <code>undefined</code>？原因在於 JavaScript 在開始執行你撰寫的程式碼之前，會先把所有宣告的變數、一般函式都預留一個記憶體空間，但不會馬上指派值給變數，這個預留記憶體空間的動作就是提升，到這邊為止屬於「創造階段」，而這個階段結束之後，變數才會被賦值，這個賦值的過程則是「執行階段」，<code>undefined</code> 就是變數在創造階段建立記憶體空間時，預設給定的初始值。</p>
+<p>可以將上面的程式碼運作流程理解成以下形式：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x; <span class="comment">// 宣告變數（會被提升）</span></span><br><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line">x = <span class="number">7</span>; <span class="comment">// 指派值</span></span><br></pre></td></tr></table></figure>
 
-<p>到目前為止已經知道會被提升的只有宣告的動作，但是除了變數之外，函式也能夠透過宣告的方式建立，因此函式也會被提升。</p>
-<p>範例：</p>
+<p>目前為止已經知道會被提升的只有宣告的動作，但是除了變數之外，一般的函式宣告也會被提升，以下面程式碼為例：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">fn();</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// hello</span></span><br></pre></td></tr></table></figure>
 
-<p>嘗試在函式被宣告之前呼叫，也可以順利執行且不會回報錯誤，不過需要注意的是，範例中的函式是透過函式宣告的方式也就是具名函式所建立的，而這也呼應了前面所提到的「會被提升的只有宣告的行為」，因此在呼叫函式 <code>fn</code> 時才不會出錯。</p>
-<p>那匿名函式就不會被提升嗎？答案是會，我們嘗試將範例改成以匿名函式的方式建立，如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">fn();</span><br><span class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Uncaught TypeError: fn is not a function</span></span><br></pre></td></tr></table></figure>
+<p>嘗試在函式被宣告之前呼叫，也可以順利執行且不會回報錯誤，因為這是一般的函式宣告（具名函式），整個函式都會被提升，因此就可以在函式宣告之前呼叫。</p>
+<p>那匿名函式就不會被提升嗎？答案是會，下面嘗試將範例改成以匿名函式的方式建立：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">fn();</span><br><span class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// TypeError: fn is not a function</span></span><br></pre></td></tr></table></figure>
 
-<p>結果出現錯誤了，不過是不是有似曾相似的感覺？其實就跟前面的變數概念是一樣的，這裡的程式碼確實有被提升，但是被提升的只有變數的宣告 <code>var fn</code>，因此在創造階段有預留記憶體空間的只有 <code>fn</code> 這個變數，此時還沒開始指派函式資料，所以 <code>fn</code> 給定的值還是 <code>undefined</code>，而 <code>undefined</code> 並非函式所以無法被呼叫。</p>
-<p>雖然無法呼叫，但是可以透過取值的方式來驗證上述說法，如下：</p>
+<p>結果出現錯誤了，不過是不是與 <code>var</code> 宣告的變數很像？其實概念是一樣的，這裡的程式碼確實有被提升，但是被提升的只有變數的宣告 <code>var fn</code>，函式的資料在執行階段才會指派給變數 <code>fn</code>，此時的 <code>fn</code> 的值為 <code>undefined</code>，而 <code>undefined</code> 並非函式因此呼叫的行為就會回報錯誤。</p>
+<p>雖然無法呼叫，但是能透過變數取值來驗證上述說法：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(fn);</span><br><span class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(fn);</span><br><span class="line"><span class="keyword">var</span> fn;</span><br><span class="line">fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<p>而程式碼實際運作流程就像下面這樣：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> fn;</span><br><span class="line"><span class="built_in">console</span>.log(fn);</span><br><span class="line">fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>兩種結果是一樣的。</p>
-<p>最後做個總結，JavaScript 中的「提升（Hoisting）」指的是宣告變數的提升，而值的賦予並不會提升；此外，提升並不會移動變數的位置，只是感覺像是整段程式碼被移動到最上方。</p>
+<p>總結來說，JavaScript 中的「提升（Hoisting）」指的是宣告變數的提升，而值的賦予並不會提升；此外，提升並不會變更程式碼的位置，只是感覺像是整段程式碼被移動到最上方。</p>
+<hr>
+<h2 id="let、const-的提升"><a href="#let、const-的提升" class="headerlink" title="let、const 的提升"></a>let、const 的提升</h2><p>關於 <code>let</code>、<code>const</code> 有沒有提升行為，一開始我自己也是透過以下方法來作結論的：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// ReferenceError: a is not defined</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<p>原本看到上面的結果，是認為 <code>let</code>、<code>const</code> 沒有提升行為的，直到看到一篇文章寫了下面這段程式碼：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fnA</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a);</span><br><span class="line">  <span class="keyword">let</span> a = <span class="number">100</span>;</span><br><span class="line">&#125;</span><br><span class="line">fnA();</span><br><span class="line"><span class="comment">// ReferenceError: Cannot access &#x27;a&#x27; before initialization</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到在函式 <code>fnA</code> 裡面，嘗試在變數 <code>a</code> 被宣告之前取值，照理來說，如果 <code>let</code> 沒有提升行為，第 3 行的變數 <code>a</code> 應該會指向到函式外層的變數 <code>a</code>，因此印出結果應該是 <code>1</code> 才對，但是最終卻得到 <code>Cannot access &#39;a&#39; before initialization</code> 的錯誤訊息，而這就證明了 <code>let</code> 是有提升行為的，只是不允許在變數宣告之前被存取。</p>
+<p>而前面提到 <code>var</code> 在提升時，也就是創造階段預設會給定初始值 <code>undefined</code>，而 <code>let</code>、<code>const</code> 則不會，所以在變數實際賦值前嘗試存取就會出現上面的錯誤，而提升後到賦值之前的這一個區間，稱為「暫時性死區（TDZ）」。</p>
+<p>最後再補充一下 <code>var</code>、<code>let</code> 與 <code>const</code> 的使用時機：</p>
+<ul>
+<li>預設都以 <code>const</code> 為主</li>
+<li>當變數需要重新指向時使用 <code>let</code></li>
+<li>盡可能避免使用 <code>var</code></li>
+</ul>
+<hr>
+<p><strong>參考資料：</strong></p>
+<p><a href="https://blog.techbridge.cc/2018/11/10/javascript-hoisting/">我知道你懂 hoisting，可是你了解到多深？</a></p>
 ]]></content>
       <categories>
         <category>JavaScript</category>

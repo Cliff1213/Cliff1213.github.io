@@ -127,7 +127,7 @@
   </entry>
   <entry>
     <title>關於 CSS Font-Family</title>
-    <url>/2022-03-02-font-family/</url>
+    <url>/2022-03-02-css-font-family/</url>
     <content><![CDATA[<img src="/images/banner/banner_font.jpg"/><p>字體設定規則有點複雜，趁現在還記得順便紀錄一下。</p>
 <span id="more"></span>
 
@@ -492,6 +492,46 @@
       </tags>
   </entry>
   <entry>
+    <title>JavaScript 筆記 - 迴圈</title>
+    <url>/2022-09-10-08-javascript-loop/</url>
+    <content><![CDATA[<img src="/images/banner/banner_loop.jpg"/><p>Looooooop。</p>
+<span id="more"></span>
+
+<hr>
+<p>迴圈（Loop）指的就是不斷重複做一件事情，當條件滿足就執行一次，一直到不符合條件就終止迴圈，常見的迴圈有 for、while，還有一個 do…while，不過這篇筆記先不提。</p>
+<p>說個笑話，廢物如我一直把迴圈跟陣列方法當作是同類型的東西。</p>
+<h2 id="for"><a href="#for" class="headerlink" title="for"></a>for</h2><p>範例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> step = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt;= <span class="number">10</span>; i++) &#123;</span><br><span class="line">  step += i;</span><br><span class="line">  <span class="built_in">console</span>.log(i); <span class="comment">// 0, 1, 2...10</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(step); <span class="comment">// 55</span></span><br></pre></td></tr></table></figure>
+
+<p>for 迴圈小括號中的 <code>i</code> 是一個變數，而左到右依序分別代表<strong>初始值</strong>、<strong>條件</strong>以及<strong>結束時的變動</strong>，以範例來說，<code>i</code> 從 <code>0</code> 開始，如果  <code>i &lt;= 10</code> 條件為 true，就執行大括號<code>&#123;&#125;</code>裡面的程式碼，執行結束後 <code>i</code> 就加 <code>1</code>，反覆循環直到條件為 false 時，就跳出迴圈。</p>
+<p>使用 for 迴圈需要注意小括號中的變數 <code>i</code>，盡可能都使用 <code>let</code> 來宣告，如果用 <code>var</code> 宣告，則變數 <code>i</code> 的作用域就不會在 for 迴圈的大括號裡面。</p>
+<h2 id="while"><a href="#while" class="headerlink" title="while"></a>while</h2><p>範例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span>(i &lt;= <span class="number">10</span>) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i); <span class="comment">// 0, 1, 2...10</span></span><br><span class="line">  i ++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(i); <span class="comment">// 11</span></span><br></pre></td></tr></table></figure>
+
+<p>while 迴圈比較直白，可以將一個變數放入小括號中進行條件判斷，當判斷為 true 時，就執行大括號 <code>&#123;&#125;</code> 中的程式碼，而結束時的變動需加入執行的程式碼當中，如大括號中的 <code>i ++</code>。</p>
+<blockquote>
+<p>無論是使用 for 還是 white，終止迴圈的條件都要多加留意，以避免造成無窮迴圈，無窮迴圈意味著你的迴圈永遠不會終止，以上面 white 迴圈為例，如果不加上 <code>i ++</code>，每次判斷都會是 true。</p>
+</blockquote>
+<h2 id="break-與-continue"><a href="#break-與-continue" class="headerlink" title="break 與 continue"></a>break 與 continue</h2><p>雖然迴圈可以重複執行程式碼，但是有時候可能會希望迴圈在達到某個目的時，就終止迴圈而非一路執行到底，此時就可以使用 break 或是 continue，通常會搭配 if 一起使用。</p>
+<h3 id="break"><a href="#break" class="headerlink" title="break"></a>break</h3><p>break 能夠直接終止迴圈，以下面程式碼為例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> numList = [<span class="number">9</span>,<span class="number">5</span>,<span class="number">12</span>,<span class="number">21</span>,<span class="number">7</span>,<span class="number">11</span>,<span class="number">16</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt;= numList.length-<span class="number">1</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span>(i % <span class="number">3</span> === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(numList[i]);</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 9</span></span><br></pre></td></tr></table></figure>
+
+<p>找出陣列中第一個能夠被 3 整除的數字，找到後終止迴圈。</p>
+<h3 id="continue"><a href="#continue" class="headerlink" title="continue"></a>continue</h3><p>continue 可以在執行迴圈的過程中，跳過一些指定特定的條件：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> numList = [<span class="number">9</span>,<span class="number">5</span>,<span class="number">12</span>,<span class="number">21</span>,<span class="number">7</span>,<span class="number">11</span>,<span class="number">16</span>];</span><br><span class="line"><span class="keyword">const</span> newAry = [];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt;= numList.length-<span class="number">1</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span>(i % <span class="number">3</span> === <span class="number">0</span>) &#123;</span><br><span class="line">    newAry.push(numList[i]);</span><br><span class="line">    <span class="keyword">continue</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(newAry); <span class="comment">// [9, 21, 16]</span></span><br></pre></td></tr></table></figure>
+
+<p>將陣列 <code>numList</code> 中符合 3 的倍數的項目篩選出來，再依序加入新陣列 <code>newAry</code> 中。</p>
+<hr>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>note</tag>
+        <tag>loop</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>網頁切版直播班心得</title>
     <url>/2022-09-10-hexschool-web/</url>
     <content><![CDATA[<img src="/images/banner/banner_20220910.jpg"/><p>2022 夏，切版直播班心得。</p>
@@ -536,48 +576,8 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript 筆記 - 迴圈</title>
-    <url>/2022-09-10-js-loop/</url>
-    <content><![CDATA[<img src="/images/banner/banner_loop.jpg"/><p>Looooooop。</p>
-<span id="more"></span>
-
-<hr>
-<p>迴圈（Loop）指的就是不斷重複做一件事情，當條件滿足就執行一次，一直到不符合條件就終止迴圈，常見的迴圈有 for、while，還有一個 do…while，不過這篇筆記先不提。</p>
-<p>說個笑話，廢物如我一直把迴圈跟陣列方法當作是同類型的東西。</p>
-<h2 id="for"><a href="#for" class="headerlink" title="for"></a>for</h2><p>範例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> step = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt;= <span class="number">10</span>; i++) &#123;</span><br><span class="line">  step += i;</span><br><span class="line">  <span class="built_in">console</span>.log(i); <span class="comment">// 0, 1, 2...10</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(step); <span class="comment">// 55</span></span><br></pre></td></tr></table></figure>
-
-<p>for 迴圈小括號中的 <code>i</code> 是一個變數，而左到右依序分別代表<strong>初始值</strong>、<strong>條件</strong>以及<strong>結束時的變動</strong>，以範例來說，<code>i</code> 從 <code>0</code> 開始，如果  <code>i &lt;= 10</code> 條件為 true，就執行大括號<code>&#123;&#125;</code>裡面的程式碼，執行結束後 <code>i</code> 就加 <code>1</code>，反覆循環直到條件為 false 時，就跳出迴圈。</p>
-<p>使用 for 迴圈需要注意小括號中的變數 <code>i</code>，盡可能都使用 <code>let</code> 來宣告，如果用 <code>var</code> 宣告，則變數 <code>i</code> 的作用域就不會在 for 迴圈的大括號裡面。</p>
-<h2 id="while"><a href="#while" class="headerlink" title="while"></a>while</h2><p>範例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span>(i &lt;= <span class="number">10</span>) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i); <span class="comment">// 0, 1, 2...10</span></span><br><span class="line">  i ++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(i); <span class="comment">// 11</span></span><br></pre></td></tr></table></figure>
-
-<p>while 迴圈比較直白，可以將一個變數放入小括號中進行條件判斷，當判斷為 true 時，就執行大括號 <code>&#123;&#125;</code> 中的程式碼，而結束時的變動需加入執行的程式碼當中，如大括號中的 <code>i ++</code>。</p>
-<blockquote>
-<p>無論是使用 for 還是 white，終止迴圈的條件都要多加留意，以避免造成無窮迴圈，無窮迴圈意味著你的迴圈永遠不會終止，以上面 white 迴圈為例，如果不加上 <code>i ++</code>，每次判斷都會是 true。</p>
-</blockquote>
-<h2 id="break-與-continue"><a href="#break-與-continue" class="headerlink" title="break 與 continue"></a>break 與 continue</h2><p>雖然迴圈可以重複執行程式碼，但是有時候可能會希望迴圈在達到某個目的時，就終止迴圈而非一路執行到底，此時就可以使用 break 或是 continue，通常會搭配 if 一起使用。</p>
-<h3 id="break"><a href="#break" class="headerlink" title="break"></a>break</h3><p>break 能夠直接終止迴圈，以下面程式碼為例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> numList = [<span class="number">9</span>,<span class="number">5</span>,<span class="number">12</span>,<span class="number">21</span>,<span class="number">7</span>,<span class="number">11</span>,<span class="number">16</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt;= numList.length-<span class="number">1</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span>(i % <span class="number">3</span> === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(numList[i]);</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 9</span></span><br></pre></td></tr></table></figure>
-
-<p>找出陣列中第一個能夠被 3 整除的數字，找到後終止迴圈。</p>
-<h3 id="continue"><a href="#continue" class="headerlink" title="continue"></a>continue</h3><p>continue 可以在執行迴圈的過程中，跳過一些指定特定的條件：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> numList = [<span class="number">9</span>,<span class="number">5</span>,<span class="number">12</span>,<span class="number">21</span>,<span class="number">7</span>,<span class="number">11</span>,<span class="number">16</span>];</span><br><span class="line"><span class="keyword">const</span> newAry = [];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt;= numList.length-<span class="number">1</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span>(i % <span class="number">3</span> === <span class="number">0</span>) &#123;</span><br><span class="line">    newAry.push(numList[i]);</span><br><span class="line">    <span class="keyword">continue</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(newAry); <span class="comment">// [9, 21, 16]</span></span><br></pre></td></tr></table></figure>
-
-<p>將陣列 <code>numList</code> 中符合 3 的倍數的項目篩選出來，再依序加入新陣列 <code>newAry</code> 中。</p>
-<hr>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>note</tag>
-        <tag>loop</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Flex 水平置中，子元素溢出不被裁切</title>
-    <url>/2022-09-17-max-content/</url>
+    <url>/2022-09-17-css-max-content/</url>
     <content><![CDATA[<img src="/images/banner/banner_20220910-2.jpg"/><p>記錄一下遇到的切版問題的解法。</p>
 <span id="more"></span>
 
@@ -616,7 +616,7 @@
   </entry>
   <entry>
     <title>JavaScript 觀念 - 函式</title>
-    <url>/2022-09-19-function/</url>
+    <url>/2022-09-19-javascript-function/</url>
     <content><![CDATA[<img src="/images/banner/banner_js.jpg"/><p>很基本的函式相關筆記。</p>
 <span id="more"></span>
 
@@ -674,7 +674,7 @@
   </entry>
   <entry>
     <title>JavaScript 觀念 - 同步與非同步</title>
-    <url>/2022-09-20-sync-async/</url>
+    <url>/2022-09-20-javascript-sync-async/</url>
     <content><![CDATA[<img src="/images/banner/banner_js.jpg"/><p>好像沒有重點。</p>
 <span id="more"></span>
 
@@ -709,72 +709,8 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript 觀念 - 提升</title>
-    <url>/2022-09-24-hoisting/</url>
-    <content><![CDATA[<img src="/images/banner/banner_js.jpg"/><p>ES6 前後的 Hoisting 觀念筆記。</p>
-<span id="more"></span>
-
-<hr>
-<p>「提升（Hoisting）」是 JavaScript 特有的一種現象，它的意思是當一個變數或函式在被宣告之前就可以被使用，並且不會出現錯誤，另外 ES6 以前都是使用 <code>var</code> 來宣告變數，與 ES6 新增的 <code>let</code>、<code>const</code> 在提升行為會也有所不同。</p>
-<h2 id="ES6-以前的提升"><a href="#ES6-以前的提升" class="headerlink" title="ES6 以前的提升"></a>ES6 以前的提升</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="comment">// ReferenceError: x is not defined</span></span><br></pre></td></tr></table></figure>
-
-<p>以上針對 <code>x</code> 取值，但是在這之前並沒有宣告一個名為 <code>x</code> 的變數，因此會找不到該變數而回報錯誤，下面是正常的做法：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x;</span><br><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
-
-<p>這樣就是一個正常的流程，程式碼會從第一行開始由上往下執行，所以在使用變數之前需要先宣告變數，以確保這個變數是存在的。</p>
-<p>接著下面嘗試把第 1、2 行位置進行對調：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="keyword">var</span> x;</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
-
-<p>按照前面的說法，上述程式碼應該會回報錯誤，但是得到的結果卻是 <code>undefined</code>，而這就是提升所造成的現象，感覺像是 <code>var x</code> 這段程式碼被提升到所有程式碼之前。</p>
-<p>大多數的程式語言中，變數在被使用之前是需要先宣告的，但是 JavaScript 可以在變數宣告之前就使用該變數，不過關於提升還有一些注意事項，就是會被提升的只有<strong>宣告的行為</strong>，值的指派並不會被提升，以下面程式碼為例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">7</span>; <span class="comment">// 宣告變數並指派值</span></span><br><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="comment">// 7</span></span><br></pre></td></tr></table></figure>
-
-<p>範例跟前面的相同，只是多了一個指派數值的動作，而最後也印出預期的結果，這個時候如果再將 1、2 行位置進行對調，印出的結果會是 <code>7</code> 嗎？</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="keyword">var</span> x = <span class="number">7</span>;</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
-
-<p>答案是 <code>undefined</code>，照理來說宣告的變數會被提升，可是得到的結果卻不是 <code>7</code>，原因其實就如前面提到的，會被提升的只有宣告的動作，而範例中宣告的動作指的是 <code>var x</code>，後方的 <code>= 7</code> 屬於值的指派，並不會跟著宣告一起被提升。</p>
-<p>但是結果為甚麼會是 <code>undefined</code>？原因在於 JavaScript 在開始執行你撰寫的程式碼之前，會先把所有宣告的變數、一般函式都預留一個記憶體空間，但不會馬上指派值給變數，這個預留記憶體空間的動作就是提升，到這邊為止屬於「創造階段」，而這個階段結束之後，變數才會被賦值，這個賦值的過程則是「執行階段」，<code>undefined</code> 就是變數在創造階段建立記憶體空間時，預設給定的初始值。</p>
-<p>可以將上面的程式碼運作流程理解成以下形式：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x; <span class="comment">// 宣告變數（會被提升）</span></span><br><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line">x = <span class="number">7</span>; <span class="comment">// 指派值</span></span><br></pre></td></tr></table></figure>
-
-<p>目前為止已經知道會被提升的只有宣告的動作，但是除了變數之外，一般的函式宣告也會被提升，以下面程式碼為例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">fn();</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// hello</span></span><br></pre></td></tr></table></figure>
-
-<p>嘗試在函式被宣告之前呼叫，也可以順利執行且不會回報錯誤，因為這是一般的函式宣告（具名函式），整個函式都會被提升，因此就可以在函式宣告之前呼叫。</p>
-<p>那匿名函式就不會被提升嗎？答案是會，下面嘗試將範例改成以匿名函式的方式建立：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">fn();</span><br><span class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// TypeError: fn is not a function</span></span><br></pre></td></tr></table></figure>
-
-<p>結果出現錯誤了，不過是不是與 <code>var</code> 宣告的變數很像？其實概念是一樣的，這裡的程式碼確實有被提升，但是被提升的只有變數的宣告 <code>var fn</code>，函式的資料在執行階段才會指派給變數 <code>fn</code>，此時的 <code>fn</code> 的值為 <code>undefined</code>，而 <code>undefined</code> 並非函式因此呼叫的行為就會回報錯誤。</p>
-<p>雖然無法呼叫，但是能透過變數取值來驗證上述說法：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(fn);</span><br><span class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
-
-<p>而程式碼實際運作流程就像下面這樣：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> fn;</span><br><span class="line"><span class="built_in">console</span>.log(fn);</span><br><span class="line">fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>總結來說，JavaScript 中的「提升（Hoisting）」指的是宣告變數的提升，而值的賦予並不會提升；此外，提升並不會變更程式碼的位置，只是感覺像是整段程式碼被移動到最上方。</p>
-<hr>
-<h2 id="let、const-的提升"><a href="#let、const-的提升" class="headerlink" title="let、const 的提升"></a>let、const 的提升</h2><p>關於 <code>let</code>、<code>const</code> 有沒有提升行為，一開始我自己也是透過以下方法來作結論的：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// ReferenceError: a is not defined</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
-
-<p>原本看到上面的結果，是認為 <code>let</code>、<code>const</code> 沒有提升行為的，直到看到一篇文章寫了下面這段程式碼：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fnA</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a);</span><br><span class="line">  <span class="keyword">let</span> a = <span class="number">100</span>;</span><br><span class="line">&#125;</span><br><span class="line">fnA();</span><br><span class="line"><span class="comment">// ReferenceError: Cannot access &#x27;a&#x27; before initialization</span></span><br></pre></td></tr></table></figure>
-
-<p>可以看到在函式 <code>fnA</code> 裡面，嘗試在變數 <code>a</code> 被宣告之前取值，照理來說，如果 <code>let</code> 沒有提升行為，第 3 行的變數 <code>a</code> 應該會指向到函式外層的變數 <code>a</code>，因此印出結果應該是 <code>1</code> 才對，但是最終卻得到 <code>Cannot access &#39;a&#39; before initialization</code> 的錯誤訊息，而這就證明了 <code>let</code> 是有提升行為的，只是不允許在變數宣告之前被存取。</p>
-<p>而前面提到 <code>var</code> 在提升時，也就是創造階段預設會給定初始值 <code>undefined</code>，而 <code>let</code>、<code>const</code> 則不會，所以在變數實際賦值前嘗試存取就會出現上面的錯誤，而提升後到賦值之前的這一個區間，稱為「暫時性死區（TDZ）」。</p>
-<hr>
-<p><strong>參考資料：</strong></p>
-<p><a href="https://blog.techbridge.cc/2018/11/10/javascript-hoisting/">我知道你懂 hoisting，可是你了解到多深？</a></p>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>hoisting</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JavaScript 觀念 - var、let、const 有什麼不同</title>
-    <url>/2022-09-21-var-let-const/</url>
+    <url>/2022-09-21-javascript-var-let-const/</url>
     <content><![CDATA[<img src="/images/banner/banner_js.jpg"/><p>不同宣告方式與作用域相關筆記。</p>
 <span id="more"></span>
 
@@ -852,6 +788,195 @@
       </tags>
   </entry>
   <entry>
+    <title>JavaScript 觀念 - 提升</title>
+    <url>/2022-09-24-javascript-hoisting/</url>
+    <content><![CDATA[<img src="/images/banner/banner_js.jpg"/><p>ES6 前後的 Hoisting 觀念筆記。</p>
+<span id="more"></span>
+
+<hr>
+<p>「提升（Hoisting）」是 JavaScript 特有的一種現象，它的意思是當一個變數或函式在被宣告之前就可以被使用，並且不會出現錯誤，另外 ES6 以前都是使用 <code>var</code> 來宣告變數，與 ES6 新增的 <code>let</code>、<code>const</code> 在提升行為會也有所不同。</p>
+<h2 id="ES6-以前的提升"><a href="#ES6-以前的提升" class="headerlink" title="ES6 以前的提升"></a>ES6 以前的提升</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="comment">// ReferenceError: x is not defined</span></span><br></pre></td></tr></table></figure>
+
+<p>以上針對 <code>x</code> 取值，但是在這之前並沒有宣告一個名為 <code>x</code> 的變數，因此會找不到該變數而回報錯誤，下面是正常的做法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x;</span><br><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>這樣就是一個正常的流程，程式碼會從第一行開始由上往下執行，所以在使用變數之前需要先宣告變數，以確保這個變數是存在的。</p>
+<p>接著下面嘗試把第 1、2 行位置進行對調：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="keyword">var</span> x;</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>按照前面的說法，上述程式碼應該會回報錯誤，但是得到的結果卻是 <code>undefined</code>，而這就是提升所造成的現象，感覺像是 <code>var x</code> 這段程式碼被提升到所有程式碼之前。</p>
+<p>大多數的程式語言中，變數在被使用之前是需要先宣告的，但是 JavaScript 可以在變數宣告之前就使用該變數，不過關於提升還有一些注意事項，就是會被提升的只有<strong>宣告的行為</strong>，值的指派並不會被提升，以下面程式碼為例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">7</span>; <span class="comment">// 宣告變數並指派值</span></span><br><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="comment">// 7</span></span><br></pre></td></tr></table></figure>
+
+<p>範例跟前面的相同，只是多了一個指派數值的動作，而最後也印出預期的結果，這個時候如果再將 1、2 行位置進行對調，印出的結果會是 <code>7</code> 嗎？</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="keyword">var</span> x = <span class="number">7</span>;</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>答案是 <code>undefined</code>，照理來說宣告的變數會被提升，可是得到的結果卻不是 <code>7</code>，原因其實就如前面提到的，會被提升的只有宣告的動作，而範例中宣告的動作指的是 <code>var x</code>，後方的 <code>= 7</code> 屬於值的指派，並不會跟著宣告一起被提升。</p>
+<p>但是結果為甚麼會是 <code>undefined</code>？原因在於 JavaScript 在開始執行你撰寫的程式碼之前，會先把所有宣告的變數、一般函式都預留一個記憶體空間，但不會馬上指派值給變數，這個預留記憶體空間的動作就是提升，到這邊為止屬於「創造階段」，而這個階段結束之後，變數才會被賦值，這個賦值的過程則是「執行階段」，<code>undefined</code> 就是變數在創造階段建立記憶體空間時，預設給定的初始值。</p>
+<p>可以將上面的程式碼運作流程理解成以下形式：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x; <span class="comment">// 宣告變數（會被提升）</span></span><br><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line">x = <span class="number">7</span>; <span class="comment">// 指派值</span></span><br></pre></td></tr></table></figure>
+
+<p>目前為止已經知道會被提升的只有宣告的動作，但是除了變數之外，一般的函式宣告也會被提升，以下面程式碼為例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">fn();</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// hello</span></span><br></pre></td></tr></table></figure>
+
+<p>嘗試在函式被宣告之前呼叫，也可以順利執行且不會回報錯誤，因為這是一般的函式宣告（具名函式），整個函式都會被提升，因此就可以在函式宣告之前呼叫。</p>
+<p>那匿名函式就不會被提升嗎？答案是會，下面嘗試將範例改成以匿名函式的方式建立：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">fn();</span><br><span class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// TypeError: fn is not a function</span></span><br></pre></td></tr></table></figure>
+
+<p>結果出現錯誤了，不過是不是與 <code>var</code> 宣告的變數很像？其實概念是一樣的，這裡的程式碼確實有被提升，但是被提升的只有變數的宣告 <code>var fn</code>，函式的資料在執行階段才會指派給變數 <code>fn</code>，此時的 <code>fn</code> 的值為 <code>undefined</code>，而 <code>undefined</code> 並非函式因此呼叫的行為就會回報錯誤。</p>
+<p>雖然無法呼叫，但是能透過變數取值來驗證上述說法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(fn);</span><br><span class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>而程式碼實際運作流程就像下面這樣：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> fn;</span><br><span class="line"><span class="built_in">console</span>.log(fn);</span><br><span class="line">fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>總結來說，JavaScript 中的「提升（Hoisting）」指的是宣告變數的提升，而值的賦予並不會提升；此外，提升並不會變更程式碼的位置，只是感覺像是整段程式碼被移動到最上方。</p>
+<hr>
+<h2 id="let、const-的提升"><a href="#let、const-的提升" class="headerlink" title="let、const 的提升"></a>let、const 的提升</h2><p>關於 <code>let</code>、<code>const</code> 有沒有提升行為，一開始我自己也是透過以下方法來作結論的：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// ReferenceError: a is not defined</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<p>原本看到上面的結果，是認為 <code>let</code>、<code>const</code> 沒有提升行為的，直到看到一篇文章寫了下面這段程式碼：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fnA</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a);</span><br><span class="line">  <span class="keyword">let</span> a = <span class="number">100</span>;</span><br><span class="line">&#125;</span><br><span class="line">fnA();</span><br><span class="line"><span class="comment">// ReferenceError: Cannot access &#x27;a&#x27; before initialization</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到在函式 <code>fnA</code> 裡面，嘗試在變數 <code>a</code> 被宣告之前取值，照理來說，如果 <code>let</code> 沒有提升行為，第 3 行的變數 <code>a</code> 應該會指向到函式外層的變數 <code>a</code>，因此印出結果應該是 <code>1</code> 才對，但是最終卻得到 <code>Cannot access &#39;a&#39; before initialization</code> 的錯誤訊息，而這就證明了 <code>let</code> 是有提升行為的，只是不允許在變數宣告之前被存取。</p>
+<p>而前面提到 <code>var</code> 在提升時，也就是創造階段預設會給定初始值 <code>undefined</code>，而 <code>let</code>、<code>const</code> 則不會，所以在變數實際賦值前嘗試存取就會出現上面的錯誤，而提升後到賦值之前的這一個區間，稱為「暫時性死區（TDZ）」。</p>
+<hr>
+<p><strong>參考資料：</strong></p>
+<p><a href="https://blog.techbridge.cc/2018/11/10/javascript-hoisting/">我知道你懂 hoisting，可是你了解到多深？</a></p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>hoisting</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript 筆記 - 陣列方法</title>
+    <url>/2022-10-08-javascript-array-methods/</url>
+    <content><![CDATA[<img src="/images/banner/banner_20221008.jpg"/><p>forEach 很萬用，但其他的也不賴。</p>
+<span id="more"></span>
+
+<hr>
+<blockquote>
+<p>傳送門<br><a href="#forEach">forEach</a>、<a href="#map">map</a>、<a href="#filter">filter</a>、<a href="#find">find</a>、<a href="#every">every</a>、<a href="#some">some</a>、<a href="#reduce">reduce</a></p>
+</blockquote>
+<p>範例資料：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> data = [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Leo&#x27;</span>,</span><br><span class="line">    <span class="attr">sex</span>: <span class="string">&#x27;男生&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">22</span></span><br><span class="line">  &#125;,&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Ryan&#x27;</span>,</span><br><span class="line">    <span class="attr">sex</span>: <span class="string">&#x27;男生&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">16</span></span><br><span class="line">  &#125;,&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Amber&#x27;</span>,</span><br><span class="line">    <span class="attr">sex</span>: <span class="string">&#x27;女生&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">20</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h2><p>forEach 會針對陣列中的每一個元素進行操作。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, array</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do something...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>陣列所元素皆傳入函式執行一次，但是不會回傳任何值（<code>reutrn</code> 沒有作用），換言之，forEach 不會產生新陣列。</p>
+<p>callback 函式可傳入以下參數：</p>
+<ul>
+<li><code>item</code> 目前元素</li>
+<li><code>index</code> 目前元素索引（選用）</li>
+<li><code>array</code> 陣列本身（選用）</li>
+</ul>
+<p>範例：依序印出人物資訊</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">data.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;item.name&#125;</span> 是<span class="subst">$&#123;item.sex&#125;</span>，目前 <span class="subst">$&#123;item.age&#125;</span> 歲`</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &quot;Leo 是男生，目前 22 歲&quot;</span></span><br><span class="line"><span class="comment">// &quot;Ryan 是男生，目前 16 歲&quot;</span></span><br><span class="line"><span class="comment">// &quot;Amber 是女生，目前 20 歲&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><p>map 可以把原陣列所有元素進行轉換，並以新的資料形式在新陣列中呈現。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">arr.map(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, array</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do something...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>會建立一個新陣列，內容為原陣列的每一個元素運算、轉換後回傳的值，若不回傳，新陣列所有元素皆為 <code>undefined</code>。</p>
+<p>callback 函式可傳入以下參數：</p>
+<ul>
+<li><code>item</code> 目前元素</li>
+<li><code>index</code> 目前元素索引（選用）</li>
+<li><code>array</code> 陣列本身（選用）</li>
+</ul>
+<p>範例：將所有人的年齡加五歲</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> mapArray = data.map(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> item.age += <span class="number">5</span>;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(mapArray)</span><br><span class="line"><span class="comment">// [27,21,25]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h2><p>filter 就如字面上的意思，可以用來篩選陣列中符合條件的元素。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">arr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, array</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do something...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>會建立一個新陣列，內容為原陣列中所有符合條件的元素。</p>
+<p>callback 函式可傳入以下參數：</p>
+<ul>
+<li><code>item</code> 目前元素</li>
+<li><code>index</code> 目前元素索引（選用）</li>
+<li><code>array</code> 陣列本身（選用）</li>
+</ul>
+<p>範例：篩選出年齡 18 歲以上的人</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> filterArray = data.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> item.age &gt;= <span class="number">18</span>;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(filterArray);</span><br><span class="line"><span class="comment">// [&#123;&quot;name&quot;: &quot;Leo&quot;, &quot;sex&quot;: &quot;男生&quot;&#125;,&#123;&quot;name&quot;: &quot;Amber&quot;, &quot;sex&quot;: &quot;女生&quot;&#125;]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="find"><a href="#find" class="headerlink" title="find"></a>find</h2><p>find 與 filter 類似，差別在於 find 只會找到陣列第一筆符合條件的元素。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">arr.find(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, array</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do something...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>會回傳一個元素，該元素是陣列中第一個符合條件的元素，若都不符合條件則回傳一個 <code>undefined</code>。</p>
+<p>callback 函式可傳入以下參數：</p>
+<ul>
+<li><code>item</code> 目前元素</li>
+<li><code>index</code> 目前元素索引（選用）</li>
+<li><code>array</code> 陣列本身（選用）</li>
+</ul>
+<p>範例：找出第一個女生</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> findItem = data.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> item.sex === <span class="string">&#x27;女生&#x27;</span>;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(findItem)</span><br><span class="line"><span class="comment">// &#123;&quot;name&quot;: &quot;Amber&quot;, &quot;sex&quot;: &quot;女生&quot;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="every"><a href="#every" class="headerlink" title="every"></a>every</h2><p>every 可以檢測陣列是否全部元素都符合條件。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">arr.every(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, array</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do something...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>會回傳一個 <code>boolean</code>，陣列中的元素必須全部符合條件，最終才會回傳 <code>true</code>，否則會回傳 <code>false</code>。</p>
+<p>callback 函式可傳入以下參數：</p>
+<ul>
+<li><code>item</code> 目前元素</li>
+<li><code>index</code> 目前元素索引（選用）</li>
+<li><code>array</code> 陣列本身（選用）</li>
+</ul>
+<p>範例：    判斷是否全部都是男生</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> result = data.every(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> item.sex === <span class="string">&#x27;男生&#x27;</span>;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(result); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="some"><a href="#some" class="headerlink" title="some"></a>some</h2><p>some 與 every 概念類似，差別在於 some 用來檢測陣列是否有任何一個（或以上）元素符合條件，兩個方法從字面上也可以區別。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">arr.some(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, array</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do something...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>最終會回傳一個 <code>boolean</code>，陣列中只要有任何一個元素符合條件，最終就回傳 <code>true</code>，否則回傳 <code>false</code>。</p>
+<p>callback 函式可傳入以下參數：</p>
+<ul>
+<li><code>item</code> 目前元素</li>
+<li><code>index</code> 目前元素索引（選用）</li>
+<li><code>array</code> 陣列本身（選用）</li>
+</ul>
+<p>範例：    判斷是否有未成年的人</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> result = data.some(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> item.age &lt; <span class="number">18</span>;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(result); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h2><p>reduce 與其他陣列方法差異較大，可以將陣列中所有元素累計運算，最終回傳一個累計的結果。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">arr.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">accumulator, currentValue, currentIndex, array</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do something...</span></span><br><span class="line">&#125;, initialValue)</span><br></pre></td></tr></table></figure>
+
+<p>接收一個 callback 函式與一個起始值作為參數，callback 函式可傳入以下參數：</p>
+<ul>
+<li><code>accumulator</code> 前一個元素</li>
+<li><code>currentValue</code> 目前元素</li>
+<li><code>currentIndex</code> 目前元素索引（選用）</li>
+<li><code>array</code> 陣列本身（選用）</li>
+</ul>
+<p>第二個參數為起始值 <code>initialValue</code>（選用），若沒有給定起始值，<code>accumulator</code> 預設會是陣列第一個元素，<code>currentValue</code> 則預設是第二個；反之，如果有給定起始值，<code>accumulator</code> 就會是給定的起始值，而 <code>currentValue</code> 會是陣列第一個元素。</p>
+<p>callback 函式每次呼叫時，會把 <code>accumulator</code> 與 <code>currentValue</code> 相加，再把相加的值再次回傳入 <code>accumulator</code>， 不斷反覆進行累計，換言之，<code>accumulator</code> 除了起始值之外，每次運算的值都是前一次相加累計的值。</p>
+<p>範例一：不指定起始值</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">const</span> totalNum = arr.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">acc, cur</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> acc + cur;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(totalNum); <span class="comment">// 15</span></span><br><span class="line"><span class="comment">// 累加過程：1+2=3 -&gt; 3+3=6 -&gt; 6+4=10 -&gt; 10+5=15</span></span><br></pre></td></tr></table></figure>
+
+<p>範例二：指定起始值為 10</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">const</span> totalNum = arr.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">acc, cur</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> acc + cur;</span><br><span class="line">&#125;, <span class="number">10</span>)</span><br><span class="line"><span class="built_in">console</span>.log(totalNum); <span class="comment">// 25</span></span><br><span class="line"><span class="comment">// 累加過程：10+1=11 -&gt; 11+2=13 -&gt; 13+3=16 -&gt; 16+4=20 -&gt; 20+5=25</span></span><br></pre></td></tr></table></figure>
+
+<p>範例三：加總範例資料中所有人的年齡</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> ageTotal = data.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">acc, cur</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> acc + cur.age;</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line"><span class="built_in">console</span>.log(ageTotal); <span class="comment">// 58</span></span><br><span class="line"><span class="comment">// 累加過程：0+22=22 -&gt; 22+16=38 -&gt; 38+20=58</span></span><br></pre></td></tr></table></figure>
+
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2>]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>function</tag>
+        <tag>array</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Git 學習筆記</title>
     <url>/2022-01-20-git-note/</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="請輸入正確密碼。" data-whm="該文章無法校驗。">
@@ -876,7 +1001,7 @@
   <entry>
     <title>JavaScript 學習筆記</title>
     <url>/2022-05-12-javascript-note/</url>
-    <content><![CDATA[<img src="/images/banner/banner_js.jpg"/><p>初學 JavaScript 的筆記，基本上學到什麼就寫什麼，內容很長很繁雜。</p>
+    <content><![CDATA[<img src="/images/banner/banner_20220512.jpg"/><p>初學 JavaScript 的筆記，基本上學到什麼就記錄下來，內容很長很繁雜。</p>
 <span id="more"></span>
 
 <hr>

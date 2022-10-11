@@ -16,7 +16,7 @@
   </url>
   
   <url>
-    <loc>http://kurifu.tw/2022-03-02-font-family/</loc>
+    <loc>http://kurifu.tw/2022-03-02-css-font-family/</loc>
     
     <lastmod>2022-03-01</lastmod>
     
@@ -44,6 +44,13 @@
   </url>
   
   <url>
+    <loc>http://kurifu.tw/2022-09-10-08-javascript-loop/</loc>
+    
+    <lastmod>2022-10-07</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://kurifu.tw/2022-09-10-hexschool-web/</loc>
     
     <lastmod>2022-09-09</lastmod>
@@ -51,44 +58,44 @@
   </url>
   
   <url>
-    <loc>http://kurifu.tw/2022-09-10-js-loop/</loc>
-    
-    <lastmod>2022-10-07</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kurifu.tw/2022-09-17-max-content/</loc>
+    <loc>http://kurifu.tw/2022-09-17-css-max-content/</loc>
     
     <lastmod>2022-09-16</lastmod>
     
   </url>
   
   <url>
-    <loc>http://kurifu.tw/2022-09-19-function/</loc>
+    <loc>http://kurifu.tw/2022-09-19-javascript-function/</loc>
     
     <lastmod>2022-09-18</lastmod>
     
   </url>
   
   <url>
-    <loc>http://kurifu.tw/2022-09-20-sync-async/</loc>
+    <loc>http://kurifu.tw/2022-09-20-javascript-sync-async/</loc>
     
     <lastmod>2022-09-19</lastmod>
     
   </url>
   
   <url>
-    <loc>http://kurifu.tw/2022-09-24-hoisting/</loc>
+    <loc>http://kurifu.tw/2022-09-21-javascript-var-let-const/</loc>
+    
+    <lastmod>2022-09-20</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kurifu.tw/2022-09-24-javascript-hoisting/</loc>
     
     <lastmod>2022-09-23</lastmod>
     
   </url>
   
   <url>
-    <loc>http://kurifu.tw/2022-09-21-var-let-const/</loc>
+    <loc>http://kurifu.tw/2022-10-08-javascript-array-methods/</loc>
     
-    <lastmod>2022-09-20</lastmod>
+    <lastmod>2022-10-08</lastmod>
     
   </url>
   
@@ -128,14 +135,14 @@
   </url>
   
   <url>
-    <loc>http://kurifu.tw/categories/index.html</loc>
+    <loc>http://kurifu.tw/tags/index.html</loc>
     
     <lastmod>2022-01-19</lastmod>
     
   </url>
   
   <url>
-    <loc>http://kurifu.tw/tags/index.html</loc>
+    <loc>http://kurifu.tw/categories/index.html</loc>
     
     <lastmod>2022-01-19</lastmod>
     
@@ -144,7 +151,7 @@
 
   <url>
     <loc>http://kurifu.tw/</loc>
-    <lastmod>2022-10-08</lastmod>
+    <lastmod>2022-10-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>

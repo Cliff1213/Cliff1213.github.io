@@ -1,0 +1,141 @@
+<!DOCTYPE html><html lang="zh-TW"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>JavaScript 筆記 - 陣列方法 | Cliff Blog</title><link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/css/highlights/dracula.css"><link rel="canonical" href="http://kurifu.tw/2022-10-08-javascript-array-methods/"/>
+<meta name="description" content="forEach 很萬用，但其他的也不賴。     傳送門forEach、map、filter、find、every、some、reduce  範例資料： 123456789101112131415const data &#x3D; [  &amp;#123;    name:…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 筆記 - 陣列方法">
+<meta property="og:url" content="http://kurifu.tw/2022-10-08-javascript-array-methods/">
+<meta property="og:site_name" content="Cliff Blog">
+<meta property="og:description" content="forEach 很萬用，但其他的也不賴。     傳送門forEach、map、filter、find、every、some、reduce  範例資料： 123456789101112131415const data &#x3D; [  &amp;#123;    name:…">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="http://kurifu.tw/images/banner/banner_20221008.jpg">
+<meta property="article:published_time" content="2022-10-08T14:59:09.000Z">
+<meta property="article:author" content="Cliff Chu">
+<meta property="article:tag" content="function">
+<meta property="article:tag" content="array">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://kurifu.tw/images/banner/banner_20221008.jpg"><meta property="article:author" content="Cliff Chu"><meta property="twitter:label1" content="Published at"><meta property="twitter:data1" content="2022-10-08 22:59:09"><meta property="twitter:label2" content="Written by"><meta property="twitter:data2" content="Cliff Chu"><link rel="icon" href="/images/touch-icon.png"><script>(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'G-106NQBHYEM', 'auto');
+ga('send', 'pageview');</script><meta name="generator" content="Hexo 6.0.0"></head><body itemscope itemtype="https://schema.org/WebPage"><nav class="menu" id="menu"><div class="menu-inner"><div class="menu__left-area"><div class="menu__item"><a class="menu__item__link menu__item__link--brand" href="/" title="Home" rel="home"><img class="menu__item__link--brand__image" src="/images/touch-icon.png" alt="Cliff Blog"><span class="menu__item__link--brand__label">Cliff Blog</span></a></div></div><div class="menu__right-area"><div class="menu__item"><a class="menu__item__link" href="/">Home</a></div><div class="menu__item"><a class="menu__item__link" href="/about">About</a></div></div></div></nav><div class="page-background"></div><div class="content-container"><div class="content-outer"><div class="content-inner" itemscope itemtype="https://schema.org/Blog"><article class="article" id="article" itemscope itemtype="https://schema.org/BlogPosting"><h1 class="article__title" itemprop="headline">JavaScript 筆記 - 陣列方法</h1><div class="article__meta"><time class="article__meta__time" datetime="2022-10-08T14:59:09.000Z" itemprop="datePublished">2022-10-08 22:59:09</time><div class="article__meta__categories"><a class="article__meta__categories__item" href="/categories/JavaScript/">JavaScript</a></div></div><div class="article__contents"><img src="/images/banner/banner_20221008.jpg"/><p>forEach 很萬用，但其他的也不賴。</p>
+<span id="more"></span>
+
+<hr>
+<blockquote>
+<p>傳送門<br><a href="#forEach">forEach</a>、<a href="#map">map</a>、<a href="#filter">filter</a>、<a href="#find">find</a>、<a href="#every">every</a>、<a href="#some">some</a>、<a href="#reduce">reduce</a></p>
+</blockquote>
+<p>範例資料：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> data = [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Leo&#x27;</span>,</span><br><span class="line">    <span class="attr">sex</span>: <span class="string">&#x27;男生&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">22</span></span><br><span class="line">  &#125;,&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Ryan&#x27;</span>,</span><br><span class="line">    <span class="attr">sex</span>: <span class="string">&#x27;男生&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">16</span></span><br><span class="line">  &#125;,&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Amber&#x27;</span>,</span><br><span class="line">    <span class="attr">sex</span>: <span class="string">&#x27;女生&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">20</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h2><p>forEach 會針對陣列中的每一個元素進行操作。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, array</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do something...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>陣列所元素皆傳入函式執行一次，但是不會回傳任何值（<code>reutrn</code> 沒有作用），換言之，forEach 不會產生新陣列。</p>
+<p>callback 函式可傳入以下參數：</p>
+<ul>
+<li><code>item</code> 目前元素</li>
+<li><code>index</code> 目前元素索引（選用）</li>
+<li><code>array</code> 陣列本身（選用）</li>
+</ul>
+<p>範例：依序印出人物資訊</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">data.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;item.name&#125;</span> 是<span class="subst">$&#123;item.sex&#125;</span>，目前 <span class="subst">$&#123;item.age&#125;</span> 歲`</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &quot;Leo 是男生，目前 22 歲&quot;</span></span><br><span class="line"><span class="comment">// &quot;Ryan 是男生，目前 16 歲&quot;</span></span><br><span class="line"><span class="comment">// &quot;Amber 是女生，目前 20 歲&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><p>map 可以把原陣列所有元素進行轉換，並以新的資料形式在新陣列中呈現。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr.map(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, array</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do something...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>會建立一個新陣列，內容為原陣列的每一個元素運算、轉換後回傳的值，若不回傳，新陣列所有元素皆為 <code>undefined</code>。</p>
+<p>callback 函式可傳入以下參數：</p>
+<ul>
+<li><code>item</code> 目前元素</li>
+<li><code>index</code> 目前元素索引（選用）</li>
+<li><code>array</code> 陣列本身（選用）</li>
+</ul>
+<p>範例：將所有人的年齡加五歲</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mapArray = data.map(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> item.age += <span class="number">5</span>;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(mapArray)</span><br><span class="line"><span class="comment">// [27,21,25]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h2><p>filter 就如字面上的意思，可以用來篩選陣列中符合條件的元素。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, array</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do something...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>會建立一個新陣列，內容為原陣列中所有符合條件的元素。</p>
+<p>callback 函式可傳入以下參數：</p>
+<ul>
+<li><code>item</code> 目前元素</li>
+<li><code>index</code> 目前元素索引（選用）</li>
+<li><code>array</code> 陣列本身（選用）</li>
+</ul>
+<p>範例：篩選出年齡 18 歲以上的人</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> filterArray = data.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> item.age &gt;= <span class="number">18</span>;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(filterArray);</span><br><span class="line"><span class="comment">// [&#123;&quot;name&quot;: &quot;Leo&quot;, &quot;sex&quot;: &quot;男生&quot;&#125;,&#123;&quot;name&quot;: &quot;Amber&quot;, &quot;sex&quot;: &quot;女生&quot;&#125;]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="find"><a href="#find" class="headerlink" title="find"></a>find</h2><p>find 與 filter 類似，差別在於 find 只會找到陣列第一筆符合條件的元素。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr.find(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, array</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do something...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>會回傳一個元素，該元素是陣列中第一個符合條件的元素，若都不符合條件則回傳一個 <code>undefined</code>。</p>
+<p>callback 函式可傳入以下參數：</p>
+<ul>
+<li><code>item</code> 目前元素</li>
+<li><code>index</code> 目前元素索引（選用）</li>
+<li><code>array</code> 陣列本身（選用）</li>
+</ul>
+<p>範例：找出第一個女生</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> findItem = data.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> item.sex === <span class="string">&#x27;女生&#x27;</span>;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(findItem)</span><br><span class="line"><span class="comment">// &#123;&quot;name&quot;: &quot;Amber&quot;, &quot;sex&quot;: &quot;女生&quot;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="every"><a href="#every" class="headerlink" title="every"></a>every</h2><p>every 可以檢測陣列是否全部元素都符合條件。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr.every(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, array</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do something...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>會回傳一個 <code>boolean</code>，陣列中的元素必須全部符合條件，最終才會回傳 <code>true</code>，否則會回傳 <code>false</code>。</p>
+<p>callback 函式可傳入以下參數：</p>
+<ul>
+<li><code>item</code> 目前元素</li>
+<li><code>index</code> 目前元素索引（選用）</li>
+<li><code>array</code> 陣列本身（選用）</li>
+</ul>
+<p>範例：    判斷是否全部都是男生</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> result = data.every(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> item.sex === <span class="string">&#x27;男生&#x27;</span>;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(result); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="some"><a href="#some" class="headerlink" title="some"></a>some</h2><p>some 與 every 概念類似，差別在於 some 用來檢測陣列是否有任何一個（或以上）元素符合條件，兩個方法從字面上也可以區別。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr.some(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, array</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do something...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>最終會回傳一個 <code>boolean</code>，陣列中只要有任何一個元素符合條件，最終就回傳 <code>true</code>，否則回傳 <code>false</code>。</p>
+<p>callback 函式可傳入以下參數：</p>
+<ul>
+<li><code>item</code> 目前元素</li>
+<li><code>index</code> 目前元素索引（選用）</li>
+<li><code>array</code> 陣列本身（選用）</li>
+</ul>
+<p>範例：    判斷是否有未成年的人</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> result = data.some(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> item.age &lt; <span class="number">18</span>;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(result); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h2><p>reduce 與其他陣列方法差異較大，可以將陣列中所有元素累計運算，最終回傳一個累計的結果。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">accumulator, currentValue, currentIndex, array</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do something...</span></span><br><span class="line">&#125;, initialValue)</span><br></pre></td></tr></table></figure>
+
+<p>接收一個 callback 函式與一個起始值作為參數，callback 函式可傳入以下參數：</p>
+<ul>
+<li><code>accumulator</code> 前一個元素</li>
+<li><code>currentValue</code> 目前元素</li>
+<li><code>currentIndex</code> 目前元素索引（選用）</li>
+<li><code>array</code> 陣列本身（選用）</li>
+</ul>
+<p>第二個參數為起始值 <code>initialValue</code>（選用），若沒有給定起始值，<code>accumulator</code> 預設會是陣列第一個元素，<code>currentValue</code> 則預設是第二個；反之，如果有給定起始值，<code>accumulator</code> 就會是給定的起始值，而 <code>currentValue</code> 會是陣列第一個元素。</p>
+<p>callback 函式每次呼叫時，會把 <code>accumulator</code> 與 <code>currentValue</code> 相加，再把相加的值再次回傳入 <code>accumulator</code>， 不斷反覆進行累計，換言之，<code>accumulator</code> 除了起始值之外，每次運算的值都是前一次相加累計的值。</p>
+<p>範例一：不指定起始值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">const</span> totalNum = arr.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">acc, cur</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> acc + cur;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(totalNum); <span class="comment">// 15</span></span><br><span class="line"><span class="comment">// 累加過程：1+2=3 -&gt; 3+3=6 -&gt; 6+4=10 -&gt; 10+5=15</span></span><br></pre></td></tr></table></figure>
+
+<p>範例二：指定起始值為 10</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">const</span> totalNum = arr.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">acc, cur</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> acc + cur;</span><br><span class="line">&#125;, <span class="number">10</span>)</span><br><span class="line"><span class="built_in">console</span>.log(totalNum); <span class="comment">// 25</span></span><br><span class="line"><span class="comment">// 累加過程：10+1=11 -&gt; 11+2=13 -&gt; 13+3=16 -&gt; 16+4=20 -&gt; 20+5=25</span></span><br></pre></td></tr></table></figure>
+
+<p>範例三：加總範例資料中所有人的年齡</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ageTotal = data.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">acc, cur</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> acc + cur.age;</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line"><span class="built_in">console</span>.log(ageTotal); <span class="comment">// 58</span></span><br><span class="line"><span class="comment">// 累加過程：0+22=22 -&gt; 22+16=38 -&gt; 38+20=58</span></span><br></pre></td></tr></table></figure>
+
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2></div><div class="article__tags"><a class="article__tags__item" href="/tags/function/">function</a><a class="article__tags__item" href="/tags/array/">array</a></div><div class="article__author" itemscope itemprop="author" itemtype="https://schema.org/Person"><img class="article__author__image" src="/images/avatar2.jpg" alt="Cliff Chu"><a class="article__author__link" title="About Cliff Chu" rel="author">Cliff Chu</a><p class="article__author__desc">我是誰？我在哪？</p><meta itemprop="name" content="Cliff Chu"></div><!-- Disqus Code--><!-- Meta Tags for Structured Data--><meta itemprop="dateModified" content="2022-10-11T05:01:29.708Z"><meta itemprop="articleBody" content="forEach 很萬用，但其他的也不賴。
+
+
+
+
+傳送門forEach、map、filter、find、every、some、reduce
+
+範例資料：
+123456789101112131415const data = [  &amp;#123;    name: &amp;#x27;Leo&amp;#x27;,    sex: &amp;#x27;男生&amp;#x27;,    age: 22  &amp;#125;,&amp;#123;..."><meta itemprop="url" content="http://kurifu.tw/2022-10-08-javascript-array-methods/"><meta itemprop="mainEntityOfPage" content="http://kurifu.tw/2022-10-08-javascript-array-methods/"><div itemscope itemtype="https://schema.org/Organization" itemprop="publisher"><meta itemprop="name" content="Cliff Blog"><div itemscope itemprop="logo" itemtype="https://schema.org/ImageObject"><meta itemprop="url" content="http://kurifu.tw/images/touch-icon.png"></div></div><div itemscope itemtype="https://schema.org/ImageObject" itemprop="image"><meta itemprop="contentUrl" content="http://kurifu.tw/images/banner/banner_20221008.jpg"><meta itemprop="url" content="http://kurifu.tw/images/banner/banner_20221008.jpg"><meta itemprop="width" content="1280"><meta itemprop="height" content="720"></div></article></div></div></div><footer id="footer"><div class="widgets"><div class="widgets-inner"><!-- Jade doesn't support dynamic inclusion with `each`.--><!-- So, I just hard coded the file names that will be included.--><div class="widgets__item"><h3 class="widgets__item__heading">Archives</h3><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">九月 2022</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">六月 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">2</span></li></ul></div><div class="widgets__item"><h3 class="widgets__item__heading">Categories</h3><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Package/">Package</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/RWD/">RWD</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SCSS/">SCSS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BF%83%E5%BE%97/">心得</a><span class="category-list-count">2</span></li></ul></div><div class="widgets__item"><h3 class="widgets__item__heading">Tag cloud</h3><div class="tag-cloud"><a href="/tags/Package/" style="font-size: 0.75rem;">Package</a> <a href="/tags/Scope/" style="font-size: 0.75rem;">Scope</a> <a href="/tags/Swiper/" style="font-size: 0.75rem;">Swiper</a> <a href="/tags/array/" style="font-size: 0.75rem;">array</a> <a href="/tags/asynchronous/" style="font-size: 0.75rem;">asynchronous</a> <a href="/tags/flex-box/" style="font-size: 0.75rem;">flex-box</a> <a href="/tags/font-family/" style="font-size: 0.75rem;">font-family</a> <a href="/tags/function/" style="font-size: 1.13rem;">function</a> <a href="/tags/hoisting/" style="font-size: 0.75rem;">hoisting</a> <a href="/tags/loop/" style="font-size: 0.75rem;">loop</a> <a href="/tags/note/" style="font-size: 1.5rem;">note</a> <a href="/tags/npm/" style="font-size: 0.75rem;">npm</a> <a href="/tags/overflow/" style="font-size: 0.75rem;">overflow</a> <a href="/tags/synchronous/" style="font-size: 0.75rem;">synchronous</a> <a href="/tags/%E5%85%AD%E8%A7%92%E5%AD%B8%E9%99%A2/" style="font-size: 1.13rem;">六角學院</a></div></div></div></div><p class="copyright"><small>© 2022 Cliff Chu<br>Powered by <a href="https://hexo.io" rel="external" target="_blank">Hexo</a>, Theme by <a href="https://github.com/hyunseob" rel="external" target="_blank">HyunSeob</a></small></p></footer><!--[if lt IE 10]><script src="/js/classList.min.js"></script><![endif]--><script src="/js/index.min.js"></script></body></html>

@@ -5,12 +5,12 @@ tags:
  - note
 categories: JavaScript
 banner:
-  url: /images/banner/banner_js.jpg
+  url: /images/banner/banner_20220512.jpg
   width: 1280
   height: 720
 ---
 
-初學 JavaScript 的筆記，基本上學到什麼就寫什麼，內容很長很繁雜。
+初學 JavaScript 的筆記，基本上學到什麼就記錄下來，內容很長很繁雜。
 
 <!--more-->
 

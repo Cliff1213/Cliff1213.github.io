@@ -349,66 +349,7 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript 套件 - Swiper</title>
-    <url>/2022-06-06-swiper-note/</url>
-    <content><![CDATA[<img src="/images/banner/banner_20220601.jpg"/><p>輪播效果小幫手。</p>
-<span id="more"></span>
-
-<hr>
-<h2 id="Swiper-套件"><a href="#Swiper-套件" class="headerlink" title="Swiper 套件"></a>Swiper 套件</h2><p><a href="https://swiperjs.com/get-started">Swiper</a> 是一個製作網頁輪播效果的 JavaScript 插件。</p>
-<h2 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h2><h3 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h3><p>透過 CDN 方式安裝 Swiper 時，需要同時引入 <code>swiper-bundle.min.css</code> 與 <code>swiper-bundle.min.js</code> 兩個檔案，引入壓縮後的版本即可。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- In head --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;https://unpkg.com/swiper@8/swiper-bundle.min.css&quot;</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- In front of body end tag --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/swiper@8/swiper-bundle.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install swiper</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="基礎結構"><a href="#基礎結構" class="headerlink" title="基礎結構"></a>基礎結構</h2><h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><p>使用 Swiper 時，<code>swiper-container</code>、<code>swiper-wrapper</code>、<code>swiper-slide</code> 三者為必要存在的元素。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Slider main container --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-container&quot;</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- Additional required wrapper --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-wrapper&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Slides --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    ...  <span class="comment">&lt;!-- 新增 swiper-slide 數量 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- If we need pagination --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-pagination&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- If we need navigation buttons --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-button-prev&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-button-next&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- If we need scrollbar --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-scrollbar&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>需要進行輪播的內容，會放在 <code>swiper-slide</code> 之中，數量可依需求自行新增。</p>
-<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><p>Swiper 在初始化時，會帶入一個 DOM / CSS Selector，以及一個參數（字串），如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> swiper = <span class="keyword">new</span> Swiper( swiperContainer, parameter );</span><br></pre></td></tr></table></figure>
-
-<p>官方範例如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> swiper = <span class="keyword">new</span> Swiper(<span class="string">&quot;.swiper-container&quot;</span>, &#123;</span><br><span class="line">  <span class="comment">// Optional parameters / 加入參數與設定值</span></span><br><span class="line">  <span class="attr">direction</span>: <span class="string">&quot;vertical&quot;</span>, <span class="comment">// 輪播方向</span></span><br><span class="line">  <span class="attr">loop</span>: <span class="literal">true</span>, <span class="comment">// 重複顯示</span></span><br><span class="line">  <span class="comment">// If we need pagination / 是否顯示分頁</span></span><br><span class="line">  <span class="attr">pagination</span>: &#123;</span><br><span class="line">    <span class="attr">el</span>: <span class="string">&quot;.swiper-pagination&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// Navigation arrows / 是否加入上、下一頁方向圖示</span></span><br><span class="line">  <span class="attr">navigation</span>: &#123;</span><br><span class="line">    <span class="attr">nextEl</span>: <span class="string">&quot;.swiper-button-next&quot;</span>,</span><br><span class="line">    <span class="attr">prevEl</span>: <span class="string">&quot;.swiper-button-prev&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// And if we need scrollbar / 是否顯示滾動軸</span></span><br><span class="line">  <span class="attr">scrollbar</span>: &#123;</span><br><span class="line">    <span class="attr">el</span>: <span class="string">&quot;.swiper-scrollbar&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="設定容器寬度"><a href="#設定容器寬度" class="headerlink" title="設定容器寬度"></a>設定容器寬度</h3><p>可自訂意義 Swiper 容器大小，範例如下：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.swiper</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">600px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="常見參數"><a href="#常見參數" class="headerlink" title="常見參數"></a>常見參數</h2><p>除了先前官方範例提到的參數之外，以下列出一些在不同的版型下，可能會使用到的參數設定，更多可使用的參數可查閱<a href="https://swiperjs.com/swiper-api">官方文件</a>。</p>
-<p><strong><code>effect</code></strong></p>
-<p>主要用來變更輪播時的轉場效果，預設值為 <code>slide</code>，其他可使用效果還有 <code>fade</code>、<code>cube</code>、<code>coverflow</code>、<code>flip</code>、<code>creative</code>、<code>cards</code>。</p>
-<p><strong><code>autoplay</code></strong></p>
-<p>該參數屬於一個物件，會依據給予的屬性設定來自定義自動輪播的形式，範例如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> swiper = <span class="keyword">new</span> Swiper(<span class="string">&quot;.swiper-container&quot;</span>, &#123;</span><br><span class="line">  <span class="attr">autoplay</span>: &#123;</span><br><span class="line">    <span class="attr">delay</span>: <span class="number">5000</span>, <span class="comment">// 自動輪播延遲時間</span></span><br><span class="line">    <span class="attr">disableOnInteraction</span>: <span class="literal">false</span>, <span class="comment">// 手動滑動後，停止自動撥放，預設值為 true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p><strong><code>slidesPerView</code></strong></p>
-<p>該參數可以決定輪播時，同時顯示的 <code>swiper-slide</code> 數量，範例如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> swiper = <span class="keyword">new</span> Swiper(<span class="string">&quot;.swiper-container&quot;</span>, &#123;</span><br><span class="line">  <span class="attr">slidesPerView</span>: <span class="number">3</span> <span class="comment">// 同時顯示 3 個 swiper-slide</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>加入參數 <code>slidesPerView</code> 後，<code>swiper-slide</code> 的寬度會根據 swiper-container 來均分。</p>
-</blockquote>
-<p><strong><code>breakpoints</code></strong></p>
-<p>加入該參數後，配合參數 <code>slidesPerView</code> 可根據所設定的斷點來達成響應式的效果，範例如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> swiper = <span class="keyword">new</span> Swiper(<span class="string">&#x27;.swiper&#x27;</span>, &#123;</span><br><span class="line">  <span class="comment">// 預設的顯示數量為 1</span></span><br><span class="line">  <span class="attr">slidesPerView</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="comment">// 以下為斷點設定</span></span><br><span class="line">  <span class="attr">breakpoints</span>: &#123;</span><br><span class="line">    <span class="comment">// 當頁面寬度大於 768px 時，同時顯示數量為 2</span></span><br><span class="line">    <span class="number">768</span>: &#123;</span><br><span class="line">      <span class="attr">slidesPerView</span>: <span class="number">2</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 當頁面寬度大於 992px 時，同時顯示數量為 3</span></span><br><span class="line">    <span class="number">992</span>: &#123;</span><br><span class="line">      <span class="attr">slidesPerView</span>: <span class="number">3</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p><strong><code>spacebetween</code></strong></p>
-<p>該參數可以設定每個 <code>swiper-slide</code> 之間的間隙，範例如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> swiper = <span class="keyword">new</span> Swiper(<span class="string">&#x27;.swiper&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">slidesPerView</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">spacebetween</span>: <span class="number">16</span>, <span class="comment">// 預設間隔為 20px</span></span><br><span class="line">  <span class="attr">breakpoints</span>: &#123;</span><br><span class="line">    <span class="number">768</span>: &#123;</span><br><span class="line">      <span class="attr">slidesPerView</span>: <span class="number">3</span>,</span><br><span class="line">      <span class="attr">spacebetween</span>: <span class="number">24</span> <span class="comment">// 當頁面寬度大於 768px 時，間隔為 24px</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<hr>
-]]></content>
-      <categories>
-        <category>Package</category>
-      </categories>
-      <tags>
-        <tag>Swiper</tag>
-        <tag>Package</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Sass 實用語法</title>
+    <title>SCSS 實用語法</title>
     <url>/2022-06-07-sass-note-md/</url>
     <content><![CDATA[<img src="/images/banner/banner_20220607.jpg"/><p>簡單整理一些新手必須知道的 Sass 語法。</p>
 <span id="more"></span>
@@ -485,10 +426,69 @@
 <p><a href="https://medium.com/ivycodefive/4-%E4%BB%80%E9%BA%BC%E6%98%AFsass-7-1%E6%9E%B6%E6%A7%8B-8687e9a10a64">什麼是Sass 7-1架構?</a><br><a href="https://www.casper.tw/css/2016/12/25/sass-map/">鐵人賽 25 - 實戰心法 - Sass Map 快出產出大量樣式</a></p>
 ]]></content>
       <categories>
-        <category>SCSS</category>
+        <category>Sass/SCSS</category>
       </categories>
       <tags>
         <tag>note</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript 套件 - Swiper</title>
+    <url>/2022-06-06-swiper-note/</url>
+    <content><![CDATA[<img src="/images/banner/banner_20220601.jpg"/><p>輪播效果小幫手。</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="Swiper-套件"><a href="#Swiper-套件" class="headerlink" title="Swiper 套件"></a>Swiper 套件</h2><p><a href="https://swiperjs.com/get-started">Swiper</a> 是一個製作網頁輪播效果的 JavaScript 插件。</p>
+<h2 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h2><h3 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h3><p>透過 CDN 方式安裝 Swiper 時，需要同時引入 <code>swiper-bundle.min.css</code> 與 <code>swiper-bundle.min.js</code> 兩個檔案，引入壓縮後的版本即可。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- In head --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;https://unpkg.com/swiper@8/swiper-bundle.min.css&quot;</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- In front of body end tag --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/swiper@8/swiper-bundle.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install swiper</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="基礎結構"><a href="#基礎結構" class="headerlink" title="基礎結構"></a>基礎結構</h2><h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><p>使用 Swiper 時，<code>swiper-container</code>、<code>swiper-wrapper</code>、<code>swiper-slide</code> 三者為必要存在的元素。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Slider main container --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-container&quot;</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- Additional required wrapper --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-wrapper&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Slides --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    ...  <span class="comment">&lt;!-- 新增 swiper-slide 數量 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- If we need pagination --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-pagination&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- If we need navigation buttons --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-button-prev&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-button-next&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- If we need scrollbar --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-scrollbar&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>需要進行輪播的內容，會放在 <code>swiper-slide</code> 之中，數量可依需求自行新增。</p>
+<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><p>Swiper 在初始化時，會帶入一個 DOM / CSS Selector，以及一個參數（字串），如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> swiper = <span class="keyword">new</span> Swiper( swiperContainer, parameter );</span><br></pre></td></tr></table></figure>
+
+<p>官方範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> swiper = <span class="keyword">new</span> Swiper(<span class="string">&quot;.swiper-container&quot;</span>, &#123;</span><br><span class="line">  <span class="comment">// Optional parameters / 加入參數與設定值</span></span><br><span class="line">  <span class="attr">direction</span>: <span class="string">&quot;vertical&quot;</span>, <span class="comment">// 輪播方向</span></span><br><span class="line">  <span class="attr">loop</span>: <span class="literal">true</span>, <span class="comment">// 重複顯示</span></span><br><span class="line">  <span class="comment">// If we need pagination / 是否顯示分頁</span></span><br><span class="line">  <span class="attr">pagination</span>: &#123;</span><br><span class="line">    <span class="attr">el</span>: <span class="string">&quot;.swiper-pagination&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// Navigation arrows / 是否加入上、下一頁方向圖示</span></span><br><span class="line">  <span class="attr">navigation</span>: &#123;</span><br><span class="line">    <span class="attr">nextEl</span>: <span class="string">&quot;.swiper-button-next&quot;</span>,</span><br><span class="line">    <span class="attr">prevEl</span>: <span class="string">&quot;.swiper-button-prev&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// And if we need scrollbar / 是否顯示滾動軸</span></span><br><span class="line">  <span class="attr">scrollbar</span>: &#123;</span><br><span class="line">    <span class="attr">el</span>: <span class="string">&quot;.swiper-scrollbar&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="設定容器寬度"><a href="#設定容器寬度" class="headerlink" title="設定容器寬度"></a>設定容器寬度</h3><p>可自訂意義 Swiper 容器大小，範例如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.swiper</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">600px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="常見參數"><a href="#常見參數" class="headerlink" title="常見參數"></a>常見參數</h2><p>除了先前官方範例提到的參數之外，以下列出一些在不同的版型下，可能會使用到的參數設定，更多可使用的參數可查閱<a href="https://swiperjs.com/swiper-api">官方文件</a>。</p>
+<p><strong><code>effect</code></strong></p>
+<p>主要用來變更輪播時的轉場效果，預設值為 <code>slide</code>，其他可使用效果還有 <code>fade</code>、<code>cube</code>、<code>coverflow</code>、<code>flip</code>、<code>creative</code>、<code>cards</code>。</p>
+<p><strong><code>autoplay</code></strong></p>
+<p>該參數屬於一個物件，會依據給予的屬性設定來自定義自動輪播的形式，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> swiper = <span class="keyword">new</span> Swiper(<span class="string">&quot;.swiper-container&quot;</span>, &#123;</span><br><span class="line">  <span class="attr">autoplay</span>: &#123;</span><br><span class="line">    <span class="attr">delay</span>: <span class="number">5000</span>, <span class="comment">// 自動輪播延遲時間</span></span><br><span class="line">    <span class="attr">disableOnInteraction</span>: <span class="literal">false</span>, <span class="comment">// 手動滑動後，停止自動撥放，預設值為 true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong><code>slidesPerView</code></strong></p>
+<p>該參數可以決定輪播時，同時顯示的 <code>swiper-slide</code> 數量，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> swiper = <span class="keyword">new</span> Swiper(<span class="string">&quot;.swiper-container&quot;</span>, &#123;</span><br><span class="line">  <span class="attr">slidesPerView</span>: <span class="number">3</span> <span class="comment">// 同時顯示 3 個 swiper-slide</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>加入參數 <code>slidesPerView</code> 後，<code>swiper-slide</code> 的寬度會根據 swiper-container 來均分。</p>
+</blockquote>
+<p><strong><code>breakpoints</code></strong></p>
+<p>加入該參數後，配合參數 <code>slidesPerView</code> 可根據所設定的斷點來達成響應式的效果，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> swiper = <span class="keyword">new</span> Swiper(<span class="string">&#x27;.swiper&#x27;</span>, &#123;</span><br><span class="line">  <span class="comment">// 預設的顯示數量為 1</span></span><br><span class="line">  <span class="attr">slidesPerView</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="comment">// 以下為斷點設定</span></span><br><span class="line">  <span class="attr">breakpoints</span>: &#123;</span><br><span class="line">    <span class="comment">// 當頁面寬度大於 768px 時，同時顯示數量為 2</span></span><br><span class="line">    <span class="number">768</span>: &#123;</span><br><span class="line">      <span class="attr">slidesPerView</span>: <span class="number">2</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 當頁面寬度大於 992px 時，同時顯示數量為 3</span></span><br><span class="line">    <span class="number">992</span>: &#123;</span><br><span class="line">      <span class="attr">slidesPerView</span>: <span class="number">3</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong><code>spacebetween</code></strong></p>
+<p>該參數可以設定每個 <code>swiper-slide</code> 之間的間隙，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> swiper = <span class="keyword">new</span> Swiper(<span class="string">&#x27;.swiper&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">slidesPerView</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">spacebetween</span>: <span class="number">16</span>, <span class="comment">// 預設間隔為 20px</span></span><br><span class="line">  <span class="attr">breakpoints</span>: &#123;</span><br><span class="line">    <span class="number">768</span>: &#123;</span><br><span class="line">      <span class="attr">slidesPerView</span>: <span class="number">3</span>,</span><br><span class="line">      <span class="attr">spacebetween</span>: <span class="number">24</span> <span class="comment">// 當頁面寬度大於 768px 時，間隔為 24px</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<hr>
+]]></content>
+      <categories>
+        <category>Package</category>
+      </categories>
+      <tags>
+        <tag>Swiper</tag>
+        <tag>Package</tag>
       </tags>
   </entry>
   <entry>
@@ -529,6 +529,45 @@
       <tags>
         <tag>note</tag>
         <tag>loop</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Flex 水平置中，子元素溢出不被裁切</title>
+    <url>/2022-09-17-css-max-content/</url>
+    <content><![CDATA[<img src="/images/banner/banner_20220910-2.jpg"/><p>記錄一下遇到的切版問題的解法。</p>
+<span id="more"></span>
+
+<hr>
+<p>前一段時間在切版時，遇到一個有趣的問題，範例如下：</p>
+<p><img src="https://i.imgur.com/TK9ZZcF.png"></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTML --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">&quot;section mt-3&quot;</span>&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;list&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;list-item&quot;</span>&gt;</span>item<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;list-item&quot;</span>&gt;</span>item<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;list-item&quot;</span>&gt;</span>item<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;list-item&quot;</span>&gt;</span>item<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;list-item&quot;</span>&gt;</span>item<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;list-item&quot;</span>&gt;</span>item<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">&quot;section-title&quot;</span>&gt;</span>Section Title<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* CSS（上方列表區塊） */</span></span><br><span class="line"><span class="selector-class">.list</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">justify-content</span>: center;</span><br><span class="line">  <span class="attribute">overflow</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述範例中，上方 <code>.list</code> 區塊使用 <code>display: flex</code> 加上 <code>justify-content: center</code> 讓子元素置中，同時希望瀏覽器寬度縮小至子元素溢出時，溢出的部分以水平軸方式呈現，因此加入了 <code>overflow: auto</code> 設定，呈現畫面如下：</p>
+<p><img src="https://i.imgur.com/Sn1BMH4.png"></p>
+<p>然而將水平軸向左滾動至最底時，溢出的部分卻被裁切了，而問題就在 <code>justify-content: center</code> 這個屬性上，移除該屬性之後，子元素溢出的部分就會正常呈現，如下：</p>
+<p><img src="https://i.imgur.com/6GYarUd.png"></p>
+<p>此時問題來了，在不使用 <code>justify-content: center</code> 的情況下，要如何同時滿足子元素保持置中，但是溢出情況下不會被裁切呢？在思索一番後想到另一個能使區塊水平置中的語法，就是 <code>margin: 0 auto</code>，不過這個語法只適用具有實際寬度但非滿版的區塊，而範例中的 <code>.list</code> 區塊因為 <code>display: flex</code> 的關係佔了滿版的寬，因此並沒有如預期置中。下圖是區塊實際佔用的空間：</p>
+<p><img src="https://i.imgur.com/WnJz6ud.png"></p>
+<p><strong>解決方式：</strong></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* CSS（上方列表區塊） */</span></span><br><span class="line"><span class="selector-class">.list</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">max-width</span>: max-content;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">  <span class="attribute">overflow</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>僅需在 <code>.list</code> 區塊加上 <code>max-width: max-content</code> 語法即可，而 <code>max-content</code> 最基本的作用是讓區塊寬度或高度自適應子元素，並且當子元素溢出時，內容不會受到擠壓而換行；此處正好利用了前者特性，使 <code>.list</code> 最大寬度等於所有子元素（<code>.list-item</code>）寬度的加總，此時再配合 <code>margin: 0 auto</code> 之後區塊得以置中，並且當子元素溢出時不會被裁切。結果如下圖所示：</p>
+<p><img src="https://i.imgur.com/MLip3hT.png"></p>
+<p><strong>實作範例：</strong></p>
+<iframe src="https://codepen.io/Cliff_hex/embed/bGMqLOq?default-tab=css,result" width="100%" height="300" frameborder="0" loading="lazy" allowfullscreen></iframe>
+
+<blockquote>
+<p>max-content 詳細說明請參考此<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/max-content">文章</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>flex</tag>
+        <tag>overflow</tag>
       </tags>
   </entry>
   <entry>
@@ -573,139 +612,6 @@
       </categories>
       <tags>
         <tag>六角學院</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Flex 水平置中，子元素溢出不被裁切</title>
-    <url>/2022-09-17-css-max-content/</url>
-    <content><![CDATA[<img src="/images/banner/banner_20220910-2.jpg"/><p>記錄一下遇到的切版問題的解法。</p>
-<span id="more"></span>
-
-<hr>
-<p>前一段時間在切版時，遇到一個有趣的問題，範例如下：</p>
-<p><img src="https://i.imgur.com/TK9ZZcF.png"></p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTML --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">&quot;section mt-3&quot;</span>&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;list&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;list-item&quot;</span>&gt;</span>item<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;list-item&quot;</span>&gt;</span>item<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;list-item&quot;</span>&gt;</span>item<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;list-item&quot;</span>&gt;</span>item<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;list-item&quot;</span>&gt;</span>item<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;list-item&quot;</span>&gt;</span>item<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">&quot;section-title&quot;</span>&gt;</span>Section Title<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* CSS（上方列表區塊） */</span></span><br><span class="line"><span class="selector-class">.list</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">justify-content</span>: center;</span><br><span class="line">  <span class="attribute">overflow</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上述範例中，上方 <code>.list</code> 區塊使用 <code>display: flex</code> 加上 <code>justify-content: center</code> 讓子元素置中，同時希望瀏覽器寬度縮小至子元素溢出時，溢出的部分以水平軸方式呈現，因此加入了 <code>overflow: auto</code> 設定，呈現畫面如下：</p>
-<p><img src="https://i.imgur.com/Sn1BMH4.png"></p>
-<p>然而將水平軸向左滾動至最底時，溢出的部分卻被裁切了，而問題就在 <code>justify-content: center</code> 這個屬性上，移除該屬性之後，子元素溢出的部分就會正常呈現，如下：</p>
-<p><img src="https://i.imgur.com/6GYarUd.png"></p>
-<p>此時問題來了，在不使用 <code>justify-content: center</code> 的情況下，要如何同時滿足子元素保持置中，但是溢出情況下不會被裁切呢？在思索一番後想到另一個能使區塊水平置中的語法，就是 <code>margin: 0 auto</code>，不過這個語法只適用具有實際寬度但非滿版的區塊，而範例中的 <code>.list</code> 區塊因為 <code>display: flex</code> 的關係佔了滿版的寬，因此並沒有如預期置中。下圖是區塊實際佔用的空間：</p>
-<p><img src="https://i.imgur.com/WnJz6ud.png"></p>
-<p><strong>解決方式：</strong></p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* CSS（上方列表區塊） */</span></span><br><span class="line"><span class="selector-class">.list</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">max-width</span>: max-content;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">  <span class="attribute">overflow</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>僅需在 <code>.list</code> 區塊加上 <code>max-width: max-content</code> 語法即可，而 <code>max-content</code> 最基本的作用是讓區塊寬度或高度自適應子元素，並且當子元素溢出時，內容不會受到擠壓而換行；此處正好利用了前者特性，使 <code>.list</code> 最大寬度等於所有子元素（<code>.list-item</code>）寬度的加總，此時再配合 <code>margin: 0 auto</code> 之後區塊得以置中，並且當子元素溢出時不會被裁切。結果如下圖所示：</p>
-<p><img src="https://i.imgur.com/MLip3hT.png"></p>
-<p><strong>實作範例：</strong></p>
-<iframe src="https://codepen.io/Cliff_hex/embed/bGMqLOq?default-tab=css,result" width="100%" height="300" frameborder="0" loading="lazy" allowfullscreen></iframe>
-
-<blockquote>
-<p>max-content 詳細說明請參考此<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/max-content">文章</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>CSS</category>
-      </categories>
-      <tags>
-        <tag>flex-box</tag>
-        <tag>overflow</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript 觀念 - 函式</title>
-    <url>/2022-09-19-javascript-function/</url>
-    <content><![CDATA[<img src="/images/banner/banner_js.jpg"/><p>很基本的函式相關筆記。</p>
-<span id="more"></span>
-
-<hr>
-<h2 id="函式（Function）簡述"><a href="#函式（Function）簡述" class="headerlink" title="函式（Function）簡述"></a>函式（Function）簡述</h2><p>可以將自訂的程式碼進行包裝，並且能在需要時使用，同時減少撰寫重複的程式碼。此外，函式也能接收一個值（參數），並將接收的值進行運算後再回傳，但也可以選擇不接收、不回傳任何值，以「執行某一段邏輯」的目的存在。</p>
-<h2 id="函式結構"><a href="#函式結構" class="headerlink" title="函式結構"></a>函式結構</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomeThing</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> num ** num;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>基本的函式可以使用關鍵字 <code>function</code> 來宣告，後方需要加上自訂的函式名稱，透過這種方式宣告的函式稱為「具名函式」，而函式名稱後方的小括號中可放入接收的值（參數），中括號中則是放入想要執行的程式指令，另外可將傳入的值帶入程式中運算，而函式執行後的結果可使用 <code>return</code> 決定要回傳的內容，也可以不回傳，但是若有使用 <code>return</code> 但是後方沒有接任何要回傳的值，則會回傳 <code>undefined</code>。</p>
-<p>return 差異如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomeThing</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> num ** num; <span class="comment">// 指定回傳的結果</span></span><br><span class="line">&#125;</span><br><span class="line">doSomeThing(<span class="number">2</span>); <span class="comment">// 回傳結果 4</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomeThing</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span>; <span class="comment">// 未指定回傳結果</span></span><br><span class="line">&#125;</span><br><span class="line">doSomeThing(<span class="number">2</span>); <span class="comment">// 回傳結果 undefined</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="函式執行"><a href="#函式執行" class="headerlink" title="函式執行"></a>函式執行</h2><p>函式在寫好的當下式不會立即執行的，如果要執行，則需要在函式名稱的後方加上一組小括號，這個動作又稱為「呼叫（Invoke）」；而小括號若加在型別非函式的變數後方會產生錯誤，因此不可隨意加上。</p>
-<p>執行 / 呼叫函式：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">functionName(); <span class="comment">// 括號中可決定是否要傳入參數值</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="函式終止"><a href="#函式終止" class="headerlink" title="函式終止"></a>函式終止</h2><p>函式在被呼叫後，會將函式內的程式碼從第一行執行到最後，接著就會終止函式，但是如果有使用到 <code>return</code>，該函式則會提前終止，並回傳 <code>return</code> 後方的值。</p>
-<p>使用 return 終止函式：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">calculate</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> result = num + num;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">  </span><br><span class="line">  result ++; <span class="comment">// 提前終止而未被執行</span></span><br><span class="line">&#125;</span><br><span class="line">calculate(<span class="number">5</span>); <span class="comment">// 回傳結果 10</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="陳述式與表達式"><a href="#陳述式與表達式" class="headerlink" title="陳述式與表達式"></a>陳述式與表達式</h2><p>JavaScript 語法上有區分陳述式、表達式兩種類型。</p>
-<ul>
-<li><p>陳述式（Statement）：如同名稱一樣，可想像成在描述一件事情或是對邏輯的描述（如：if 邏輯判斷、具名函式），而陳述式會執行一系列的操作，但是<strong>不會回傳結果</strong>。</p>
-<blockquote>
-<p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Expressions_and_Operators#%E9%81%8B%E7%AE%97%E5%BC%8F">MDN 文件 - 陳述式</a></p>
-</blockquote>
-</li>
-<li><p>表達式（Expression）：只要程式在執行結束之後<strong>會回傳一個結果</strong>，就屬於表達式，換句話說表達式是一段能被 JavaScript 運算並產生數值的程式碼。</p>
-<blockquote>
-<p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Expressions_and_Operators">MDN 文件 - 表達式</a></p>
-</blockquote>
-</li>
-</ul>
-<p>陳述 / 表達式範例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 變數宣告</span></span><br><span class="line"><span class="keyword">var</span> x;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 指派值</span></span><br><span class="line">x = <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 判斷式</span></span><br><span class="line"><span class="keyword">if</span>(x === <span class="number">10</span>) &#123;</span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>可分別將上述程式碼放在開發人員工具 console 中執行查看，變數在宣告後回傳 <code>undefined</code>，屬於陳述式；指派一個值給變數，而變數會回傳指派的值，屬於表達式；而判斷式本身並不會回傳任何值，因此屬於陳述式。</p>
-<h2 id="函式陳述式"><a href="#函式陳述式" class="headerlink" title="函式陳述式"></a>函式陳述式</h2><p>前面所提到透過給予函式名稱的所宣告的函式，稱為函式陳述式 / 具名函式。</p>
-<h2 id="函式表達式"><a href="#函式表達式" class="headerlink" title="函式表達式"></a>函式表達式</h2><p>除了一般的的函式宣告，還可以將函式指派給一個變數，因為函式本身也屬於物件的一種，因此能夠當作一個被指派的值，而這種方式產生的函式曾為函式表達式 / 匿名函式。</p>
-<p>函式表達式範例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> expressionFn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>function</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript 觀念 - 同步與非同步</title>
-    <url>/2022-09-20-javascript-sync-async/</url>
-    <content><![CDATA[<img src="/images/banner/banner_js.jpg"/><p>好像沒有重點。</p>
-<span id="more"></span>
-
-<hr>
-<h2 id="JavaScript-中的同步"><a href="#JavaScript-中的同步" class="headerlink" title="JavaScript 中的同步"></a>JavaScript 中的同步</h2><p>「同步（Synchronous）」在你的認知上會怎麼解釋？我自己原本的想法是同時處理很多事情，但這個說法在 JavaScript 卻有些出入，原因在於 JavaScript 是以「單執行緒（單線程）」的方式在執行程序，特性是「一次只做一件事，前面的事做完才會依序做下一件事」。</p>
-<blockquote>
-<p>執行緒相關內容可參考此<a href="https://www.itread01.com/ixyfq.html">文章</a>。</p>
-</blockquote>
-<p>範例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printNum</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;1&#x27;</span>);</span><br><span class="line">&#125; </span><br><span class="line">printNum();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;2&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>以上面程式碼來說，會先執行函式 <code>printNum</code> 印出 <code>1</code>，接著再印出 <code>2</code>，並且兩者是有先後順序的，屬於同步執行。</p>
-<hr>
-<h2 id="何謂非同步"><a href="#何謂非同步" class="headerlink" title="何謂非同步"></a>何謂非同步</h2><p>「非同步（Asynchronous）」特性是「可以同時做很多事，並且不需要等待前面的事做完就能做下一件事」，其實就是自己一開始對同步的認知。</p>
-<p>範例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(printNum, <span class="number">2000</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printNum</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;1&#x27;</span>);</span><br><span class="line">&#125; </span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;2&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>程式碼中 <code>setTimeout</code> 會分別帶入 <code>callback</code>、<code>等待毫秒</code> 兩個參數，而回調函式 <code>printNum</code> 被設定 2 秒後才執行，但是這程中第 5 行的程式碼並不會等待前面的函式 <code>printNum</code>  執行完才動作，而是先印出 <code>2</code>，等待 2 秒之後呼叫函式 <code>printNum</code> 並印出 <code>1</code>。</p>
-<p>但是 JavaScript 屬於單執行緒，所以一次應該只會做一件事，為什麼會有範例中非同步的狀況？原因是 JavaScript 在 V8 引擎（JavaScript 引擎）運行時，引擎在運作時是同步的，但是除了引擎內的 JavaScript 原始程式碼之外，瀏覽器也會提供許多 Web APIs（如：document、MouseEvent、setTimeout…等等），這些並不屬於 V8 引擎的範疇，但是可以透過呼叫並使用它們做到非同步的行為，並且不會影響到 JavaScript 主程式的運行，可以理解成 JavaScript 需要依賴 Web APIs 才能達成非同步的效果。</p>
-<p>而 <code>setTimeout</code> 等待的期間，程式碼為甚麼能夠繼續往下執行？原因是當 Web APIs 與自己寫的 JavaScript 在瀏覽器一起執行時，透過 Web APIs 非同步呼叫的 callback function 會被放到 Callback Queue（儲列 / 佇列）待命，等到其他程式碼都執行完之後才會被呼叫。</p>
-<hr>
-<p><strong>參考資料：</strong></p>
-<p><a href="https://chanchandev.com/js/Async/async-sync-intro/2534378084/">Javascript 非同步 &amp; Event Loop！10 分鐘輕鬆圖解學習！</a></p>
-<p><a href="https://5xruby.tw/posts/how-js-synchronous-works">無痛理解 JS | 非同步怎麼運作？</a></p>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>synchronous</tag>
-        <tag>asynchronous</tag>
       </tags>
   </entry>
   <entry>
@@ -788,67 +694,97 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript 觀念 - 提升</title>
-    <url>/2022-09-24-javascript-hoisting/</url>
-    <content><![CDATA[<img src="/images/banner/banner_js.jpg"/><p>ES6 前後的 Hoisting 觀念筆記。</p>
+    <title>JavaScript 觀念 - 函式</title>
+    <url>/2022-09-19-javascript-function/</url>
+    <content><![CDATA[<img src="/images/banner/banner_js.jpg"/><p>很基本的函式相關筆記。</p>
 <span id="more"></span>
 
 <hr>
-<p>「提升（Hoisting）」是 JavaScript 特有的一種現象，它的意思是當一個變數或函式在被宣告之前就可以被使用，並且不會出現錯誤，另外 ES6 以前都是使用 <code>var</code> 來宣告變數，與 ES6 新增的 <code>let</code>、<code>const</code> 在提升行為會也有所不同。</p>
-<h2 id="ES6-以前的提升"><a href="#ES6-以前的提升" class="headerlink" title="ES6 以前的提升"></a>ES6 以前的提升</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="comment">// ReferenceError: x is not defined</span></span><br></pre></td></tr></table></figure>
+<h2 id="函式（Function）簡述"><a href="#函式（Function）簡述" class="headerlink" title="函式（Function）簡述"></a>函式（Function）簡述</h2><p>可以將自訂的程式碼進行包裝，並且能在需要時使用，同時減少撰寫重複的程式碼。此外，函式也能接收一個值（參數），並將接收的值進行運算後再回傳，但也可以選擇不接收、不回傳任何值，以「執行某一段邏輯」的目的存在。</p>
+<h2 id="函式結構"><a href="#函式結構" class="headerlink" title="函式結構"></a>函式結構</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomeThing</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> num ** num;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>以上針對 <code>x</code> 取值，但是在這之前並沒有宣告一個名為 <code>x</code> 的變數，因此會找不到該變數而回報錯誤，下面是正常的做法：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x;</span><br><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<p>基本的函式可以使用關鍵字 <code>function</code> 來宣告，後方需要加上自訂的函式名稱，透過這種方式宣告的函式稱為「具名函式」，而函式名稱後方的小括號中可放入接收的值（參數），中括號中則是放入想要執行的程式指令，另外可將傳入的值帶入程式中運算，而函式執行後的結果可使用 <code>return</code> 決定要回傳的內容，也可以不回傳，但是若有使用 <code>return</code> 但是後方沒有接任何要回傳的值，則會回傳 <code>undefined</code>。</p>
+<p>return 差異如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomeThing</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> num ** num; <span class="comment">// 指定回傳的結果</span></span><br><span class="line">&#125;</span><br><span class="line">doSomeThing(<span class="number">2</span>); <span class="comment">// 回傳結果 4</span></span><br></pre></td></tr></table></figure>
 
-<p>這樣就是一個正常的流程，程式碼會從第一行開始由上往下執行，所以在使用變數之前需要先宣告變數，以確保這個變數是存在的。</p>
-<p>接著下面嘗試把第 1、2 行位置進行對調：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="keyword">var</span> x;</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomeThing</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span>; <span class="comment">// 未指定回傳結果</span></span><br><span class="line">&#125;</span><br><span class="line">doSomeThing(<span class="number">2</span>); <span class="comment">// 回傳結果 undefined</span></span><br></pre></td></tr></table></figure>
 
-<p>按照前面的說法，上述程式碼應該會回報錯誤，但是得到的結果卻是 <code>undefined</code>，而這就是提升所造成的現象，感覺像是 <code>var x</code> 這段程式碼被提升到所有程式碼之前。</p>
-<p>大多數的程式語言中，變數在被使用之前是需要先宣告的，但是 JavaScript 可以在變數宣告之前就使用該變數，不過關於提升還有一些注意事項，就是會被提升的只有<strong>宣告的行為</strong>，值的指派並不會被提升，以下面程式碼為例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">7</span>; <span class="comment">// 宣告變數並指派值</span></span><br><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="comment">// 7</span></span><br></pre></td></tr></table></figure>
+<h2 id="函式執行"><a href="#函式執行" class="headerlink" title="函式執行"></a>函式執行</h2><p>函式在寫好的當下式不會立即執行的，如果要執行，則需要在函式名稱的後方加上一組小括號，這個動作又稱為「呼叫（Invoke）」；而小括號若加在型別非函式的變數後方會產生錯誤，因此不可隨意加上。</p>
+<p>執行 / 呼叫函式：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">functionName(); <span class="comment">// 括號中可決定是否要傳入參數值</span></span><br></pre></td></tr></table></figure>
 
-<p>範例跟前面的相同，只是多了一個指派數值的動作，而最後也印出預期的結果，這個時候如果再將 1、2 行位置進行對調，印出的結果會是 <code>7</code> 嗎？</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="keyword">var</span> x = <span class="number">7</span>;</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<h2 id="函式終止"><a href="#函式終止" class="headerlink" title="函式終止"></a>函式終止</h2><p>函式在被呼叫後，會將函式內的程式碼從第一行執行到最後，接著就會終止函式，但是如果有使用到 <code>return</code>，該函式則會提前終止，並回傳 <code>return</code> 後方的值。</p>
+<p>使用 return 終止函式：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">calculate</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> result = num + num;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">  </span><br><span class="line">  result ++; <span class="comment">// 提前終止而未被執行</span></span><br><span class="line">&#125;</span><br><span class="line">calculate(<span class="number">5</span>); <span class="comment">// 回傳結果 10</span></span><br></pre></td></tr></table></figure>
 
-<p>答案是 <code>undefined</code>，照理來說宣告的變數會被提升，可是得到的結果卻不是 <code>7</code>，原因其實就如前面提到的，會被提升的只有宣告的動作，而範例中宣告的動作指的是 <code>var x</code>，後方的 <code>= 7</code> 屬於值的指派，並不會跟著宣告一起被提升。</p>
-<p>但是結果為甚麼會是 <code>undefined</code>？原因在於 JavaScript 在開始執行你撰寫的程式碼之前，會先把所有宣告的變數、一般函式都預留一個記憶體空間，但不會馬上指派值給變數，這個預留記憶體空間的動作就是提升，到這邊為止屬於「創造階段」，而這個階段結束之後，變數才會被賦值，這個賦值的過程則是「執行階段」，<code>undefined</code> 就是變數在創造階段建立記憶體空間時，預設給定的初始值。</p>
-<p>可以將上面的程式碼運作流程理解成以下形式：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x; <span class="comment">// 宣告變數（會被提升）</span></span><br><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line">x = <span class="number">7</span>; <span class="comment">// 指派值</span></span><br></pre></td></tr></table></figure>
+<h2 id="陳述式與表達式"><a href="#陳述式與表達式" class="headerlink" title="陳述式與表達式"></a>陳述式與表達式</h2><p>JavaScript 語法上有區分陳述式、表達式兩種類型。</p>
+<ul>
+<li><p>陳述式（Statement）：如同名稱一樣，可想像成在描述一件事情或是對邏輯的描述（如：if 邏輯判斷、具名函式），而陳述式會執行一系列的操作，但是<strong>不會回傳結果</strong>。</p>
+<blockquote>
+<p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Expressions_and_Operators#%E9%81%8B%E7%AE%97%E5%BC%8F">MDN 文件 - 陳述式</a></p>
+</blockquote>
+</li>
+<li><p>表達式（Expression）：只要程式在執行結束之後<strong>會回傳一個結果</strong>，就屬於表達式，換句話說表達式是一段能被 JavaScript 運算並產生數值的程式碼。</p>
+<blockquote>
+<p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Expressions_and_Operators">MDN 文件 - 表達式</a></p>
+</blockquote>
+</li>
+</ul>
+<p>陳述 / 表達式範例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 變數宣告</span></span><br><span class="line"><span class="keyword">var</span> x;</span><br></pre></td></tr></table></figure>
 
-<p>目前為止已經知道會被提升的只有宣告的動作，但是除了變數之外，一般的函式宣告也會被提升，以下面程式碼為例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">fn();</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// hello</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 指派值</span></span><br><span class="line">x = <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
 
-<p>嘗試在函式被宣告之前呼叫，也可以順利執行且不會回報錯誤，因為這是一般的函式宣告（具名函式），整個函式都會被提升，因此就可以在函式宣告之前呼叫。</p>
-<p>那匿名函式就不會被提升嗎？答案是會，下面嘗試將範例改成以匿名函式的方式建立：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">fn();</span><br><span class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// TypeError: fn is not a function</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 判斷式</span></span><br><span class="line"><span class="keyword">if</span>(x === <span class="number">10</span>) &#123;</span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p>結果出現錯誤了，不過是不是與 <code>var</code> 宣告的變數很像？其實概念是一樣的，這裡的程式碼確實有被提升，但是被提升的只有變數的宣告 <code>var fn</code>，函式的資料在執行階段才會指派給變數 <code>fn</code>，此時的 <code>fn</code> 的值為 <code>undefined</code>，而 <code>undefined</code> 並非函式因此呼叫的行為就會回報錯誤。</p>
-<p>雖然無法呼叫，但是能透過變數取值來驗證上述說法：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(fn);</span><br><span class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<p>可分別將上述程式碼放在開發人員工具 console 中執行查看，變數在宣告後回傳 <code>undefined</code>，屬於陳述式；指派一個值給變數，而變數會回傳指派的值，屬於表達式；而判斷式本身並不會回傳任何值，因此屬於陳述式。</p>
+<h2 id="函式陳述式"><a href="#函式陳述式" class="headerlink" title="函式陳述式"></a>函式陳述式</h2><p>前面所提到透過給予函式名稱的所宣告的函式，也就是一般函式宣告，就屬於函式陳述式。</p>
+<h2 id="函式表達式"><a href="#函式表達式" class="headerlink" title="函式表達式"></a>函式表達式</h2><p>除了一般的的函式宣告，還可以將函式指派給一個變數，因為函式本身也屬於物件的一種，因此能夠當作一個被指派的值，而這種方式產生的函式曾為函式表達式。</p>
+<p>函式表達式範例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> expressionFn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>而程式碼實際運作流程就像下面這樣：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> fn;</span><br><span class="line"><span class="built_in">console</span>.log(fn);</span><br><span class="line">fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>總結來說，JavaScript 中的「提升（Hoisting）」指的是宣告變數的提升，而值的賦予並不會提升；此外，提升並不會變更程式碼的位置，只是感覺像是整段程式碼被移動到最上方。</p>
-<hr>
-<h2 id="let、const-的提升"><a href="#let、const-的提升" class="headerlink" title="let、const 的提升"></a>let、const 的提升</h2><p>關於 <code>let</code>、<code>const</code> 有沒有提升行為，一開始我自己也是透過以下方法來作結論的：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// ReferenceError: a is not defined</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
-
-<p>原本看到上面的結果，是認為 <code>let</code>、<code>const</code> 沒有提升行為的，直到看到一篇文章寫了下面這段程式碼：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fnA</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a);</span><br><span class="line">  <span class="keyword">let</span> a = <span class="number">100</span>;</span><br><span class="line">&#125;</span><br><span class="line">fnA();</span><br><span class="line"><span class="comment">// ReferenceError: Cannot access &#x27;a&#x27; before initialization</span></span><br></pre></td></tr></table></figure>
-
-<p>可以看到在函式 <code>fnA</code> 裡面，嘗試在變數 <code>a</code> 被宣告之前取值，照理來說，如果 <code>let</code> 沒有提升行為，第 3 行的變數 <code>a</code> 應該會指向到函式外層的變數 <code>a</code>，因此印出結果應該是 <code>1</code> 才對，但是最終卻得到 <code>Cannot access &#39;a&#39; before initialization</code> 的錯誤訊息，而這就證明了 <code>let</code> 是有提升行為的，只是不允許在變數宣告之前被存取。</p>
-<p>而前面提到 <code>var</code> 在提升時，也就是創造階段預設會給定初始值 <code>undefined</code>，而 <code>let</code>、<code>const</code> 則不會，所以在變數實際賦值前嘗試存取就會出現上面的錯誤，而提升後到賦值之前的這一個區間，稱為「暫時性死區（TDZ）」。</p>
-<hr>
-<p><strong>參考資料：</strong></p>
-<p><a href="https://blog.techbridge.cc/2018/11/10/javascript-hoisting/">我知道你懂 hoisting，可是你了解到多深？</a></p>
 ]]></content>
       <categories>
         <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>hoisting</tag>
+        <tag>function</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript 觀念 - 同步與非同步</title>
+    <url>/2022-09-20-javascript-sync-async/</url>
+    <content><![CDATA[<img src="/images/banner/banner_js.jpg"/><p>好像沒有重點。</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="JavaScript-中的同步"><a href="#JavaScript-中的同步" class="headerlink" title="JavaScript 中的同步"></a>JavaScript 中的同步</h2><p>「同步（Synchronous）」在你的認知上會怎麼解釋？我自己原本的想法是同時處理很多事情，但這個說法在 JavaScript 卻有些出入，原因在於 JavaScript 是以「單執行緒（單線程）」的方式在執行程序，特性是「一次只做一件事，前面的事做完才會依序做下一件事」。</p>
+<blockquote>
+<p>執行緒相關內容可參考此<a href="https://www.itread01.com/ixyfq.html">文章</a>。</p>
+</blockquote>
+<p>範例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printNum</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;1&#x27;</span>);</span><br><span class="line">&#125; </span><br><span class="line">printNum();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;2&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>以上面程式碼來說，會先執行函式 <code>printNum</code> 印出 <code>1</code>，接著再印出 <code>2</code>，並且兩者是有先後順序的，屬於同步執行。</p>
+<hr>
+<h2 id="何謂非同步"><a href="#何謂非同步" class="headerlink" title="何謂非同步"></a>何謂非同步</h2><p>「非同步（Asynchronous）」特性是「可以同時做很多事，並且不需要等待前面的事做完就能做下一件事」，其實就是自己一開始對同步的認知。</p>
+<p>範例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(printNum, <span class="number">2000</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printNum</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;1&#x27;</span>);</span><br><span class="line">&#125; </span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;2&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>程式碼中 <code>setTimeout</code> 會分別帶入 <code>callback</code>、<code>等待毫秒</code> 兩個參數，而回調函式 <code>printNum</code> 被設定 2 秒後才執行，但是這程中第 5 行的程式碼並不會等待前面的函式 <code>printNum</code>  執行完才動作，而是先印出 <code>2</code>，等待 2 秒之後呼叫函式 <code>printNum</code> 並印出 <code>1</code>。</p>
+<p>但是 JavaScript 屬於單執行緒，所以一次應該只會做一件事，為什麼會有範例中非同步的狀況？原因是 JavaScript 在 V8 引擎（JavaScript 引擎）運行時，引擎在運作時是同步的，但是除了引擎內的 JavaScript 原始程式碼之外，瀏覽器也會提供許多 Web APIs（如：document、MouseEvent、setTimeout…等等），這些並不屬於 V8 引擎的範疇，但是可以透過呼叫並使用它們做到非同步的行為，並且不會影響到 JavaScript 主程式的運行，可以理解成 JavaScript 需要依賴 Web APIs 才能達成非同步的效果。</p>
+<p>而 <code>setTimeout</code> 等待的期間，程式碼為甚麼能夠繼續往下執行？原因是當 Web APIs 與自己寫的 JavaScript 在瀏覽器一起執行時，透過 Web APIs 非同步呼叫的 callback function 會被放到 Callback Queue（儲列 / 佇列）待命，等到其他程式碼都執行完之後才會被呼叫。</p>
+<hr>
+<p><strong>參考資料：</strong></p>
+<p><a href="https://chanchandev.com/js/Async/async-sync-intro/2534378084/">Javascript 非同步 &amp; Event Loop！10 分鐘輕鬆圖解學習！</a></p>
+<p><a href="https://5xruby.tw/posts/how-js-synchronous-works">無痛理解 JS | 非同步怎麼運作？</a></p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>synchronous</tag>
+        <tag>asynchronous</tag>
       </tags>
   </entry>
   <entry>
@@ -859,7 +795,16 @@
 
 <hr>
 <blockquote>
-<p>傳送門<br><a href="#forEach">forEach</a>、<a href="#map">map</a>、<a href="#filter">filter</a>、<a href="#find">find</a>、<a href="#every">every</a>、<a href="#some">some</a>、<a href="#reduce">reduce</a></p>
+<p>目錄：</p>
+<ul>
+<li><a href="#forEach">forEach</a></li>
+<li><a href="#map">map</a></li>
+<li><a href="#filter">filter</a></li>
+<li><a href="#find">find</a></li>
+<li><a href="#every">every</a></li>
+<li><a href="#some">some</a></li>
+<li><a href="#reduce">reduce</a></li>
+</ul>
 </blockquote>
 <p>範例資料：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> data = [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Leo&#x27;</span>,</span><br><span class="line">    <span class="attr">sex</span>: <span class="string">&#x27;男生&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">22</span></span><br><span class="line">  &#125;,&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Ryan&#x27;</span>,</span><br><span class="line">    <span class="attr">sex</span>: <span class="string">&#x27;男生&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">16</span></span><br><span class="line">  &#125;,&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Amber&#x27;</span>,</span><br><span class="line">    <span class="attr">sex</span>: <span class="string">&#x27;女生&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">20</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
@@ -972,8 +917,199 @@
         <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>function</tag>
         <tag>array</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript 觀念 - 提升</title>
+    <url>/2022-09-24-javascript-hoisting/</url>
+    <content><![CDATA[<img src="/images/banner/banner_js.jpg"/><p>ES6 前後的 Hoisting 觀念筆記。</p>
+<span id="more"></span>
+
+<hr>
+<p>「提升（Hoisting）」是 JavaScript 特有的一種現象，它的意思是當一個變數或函式在被宣告之前就可以被使用，並且不會出現錯誤，另外 ES6 以前都是使用 <code>var</code> 來宣告變數，與 ES6 新增的 <code>let</code>、<code>const</code> 在提升行為會也有所不同。</p>
+<h2 id="ES6-以前的提升"><a href="#ES6-以前的提升" class="headerlink" title="ES6 以前的提升"></a>ES6 以前的提升</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="comment">// ReferenceError: x is not defined</span></span><br></pre></td></tr></table></figure>
+
+<p>以上針對 <code>x</code> 取值，但是在這之前並沒有宣告一個名為 <code>x</code> 的變數，因此會找不到該變數而回報錯誤，下面是正常的做法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x;</span><br><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>這樣就是一個正常的流程，程式碼會從第一行開始由上往下執行，所以在使用變數之前需要先宣告變數，以確保這個變數是存在的。</p>
+<p>接著下面嘗試把第 1、2 行位置進行對調：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="keyword">var</span> x;</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>按照前面的說法，上述程式碼應該會回報錯誤，但是得到的結果卻是 <code>undefined</code>，而這就是提升所造成的現象，感覺像是 <code>var x</code> 這段程式碼被提升到所有程式碼之前。</p>
+<p>大多數的程式語言中，變數在被使用之前是需要先宣告的，但是 JavaScript 可以在變數宣告之前就使用該變數，不過關於提升還有一些注意事項，就是會被提升的只有<strong>宣告的行為</strong>，值的指派並不會被提升，以下面程式碼為例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">7</span>; <span class="comment">// 宣告變數並指派值</span></span><br><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="comment">// 7</span></span><br></pre></td></tr></table></figure>
+
+<p>範例跟前面的相同，只是多了一個指派數值的動作，而最後也印出預期的結果，這個時候如果再將 1、2 行位置進行對調，印出的結果會是 <code>7</code> 嗎？</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="keyword">var</span> x = <span class="number">7</span>;</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>答案是 <code>undefined</code>，照理來說宣告的變數會被提升，可是得到的結果卻不是 <code>7</code>，原因其實就如前面提到的，會被提升的只有宣告的動作，而範例中宣告的動作指的是 <code>var x</code>，後方的 <code>= 7</code> 屬於值的指派，並不會跟著宣告一起被提升。</p>
+<p>但是結果為甚麼會是 <code>undefined</code>？原因在於 JavaScript 在開始執行你撰寫的程式碼之前，會先把所有宣告的變數、一般函式都預留一個記憶體空間，但不會馬上指派值給變數，這個預留記憶體空間的動作就是提升，到這邊為止屬於「創造階段」，而這個階段結束之後，變數才會被賦值，這個賦值的過程則是「執行階段」，<code>undefined</code> 就是變數在創造階段建立記憶體空間時，預設給定的初始值。</p>
+<p>可以將上面的程式碼運作流程理解成以下形式：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x; <span class="comment">// 宣告變數（會被提升）</span></span><br><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line">x = <span class="number">7</span>; <span class="comment">// 指派值</span></span><br></pre></td></tr></table></figure>
+
+<p>目前為止已經知道會被提升的只有宣告的動作，但是除了變數之外，一般的函式宣告也會被提升，以下面程式碼為例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">fn();</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// hello</span></span><br></pre></td></tr></table></figure>
+
+<p>嘗試在函式被宣告之前呼叫，也可以順利執行且不會回報錯誤，因為這是一般的函式宣告（具名函式），整個函式都會被提升，因此就可以在函式宣告之前呼叫。</p>
+<p>那匿名函式就不會被提升嗎？答案是會，下面嘗試將範例改成以匿名函式的方式建立：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">fn();</span><br><span class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// TypeError: fn is not a function</span></span><br></pre></td></tr></table></figure>
+
+<p>結果出現錯誤了，不過是不是與 <code>var</code> 宣告的變數很像？其實概念是一樣的，這裡的程式碼確實有被提升，但是被提升的只有變數的宣告 <code>var fn</code>，函式的資料在執行階段才會指派給變數 <code>fn</code>，此時的 <code>fn</code> 的值為 <code>undefined</code>，而 <code>undefined</code> 並非函式因此呼叫的行為就會回報錯誤。</p>
+<p>雖然無法呼叫，但是能透過變數取值來驗證上述說法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(fn);</span><br><span class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>而程式碼實際運作流程就像下面這樣：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> fn;</span><br><span class="line"><span class="built_in">console</span>.log(fn);</span><br><span class="line">fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>總結來說，JavaScript 中的「提升（Hoisting）」指的是宣告變數的提升，而值的賦予並不會提升；此外，提升並不會變更程式碼的位置，只是感覺像是整段程式碼被移動到最上方。</p>
+<hr>
+<h2 id="let、const-的提升"><a href="#let、const-的提升" class="headerlink" title="let、const 的提升"></a>let、const 的提升</h2><p>關於 <code>let</code>、<code>const</code> 有沒有提升行為，一開始我自己也是透過以下方法來作結論的：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// ReferenceError: a is not defined</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<p>原本看到上面的結果，是認為 <code>let</code>、<code>const</code> 沒有提升行為的，直到看到一篇文章寫了下面這段程式碼：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fnA</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a);</span><br><span class="line">  <span class="keyword">let</span> a = <span class="number">100</span>;</span><br><span class="line">&#125;</span><br><span class="line">fnA();</span><br><span class="line"><span class="comment">// ReferenceError: Cannot access &#x27;a&#x27; before initialization</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到在函式 <code>fnA</code> 裡面，嘗試在變數 <code>a</code> 被宣告之前取值，照理來說，如果 <code>let</code> 沒有提升行為，第 3 行的變數 <code>a</code> 應該會指向到函式外層的變數 <code>a</code>，因此印出結果應該是 <code>1</code> 才對，但是最終卻得到 <code>Cannot access &#39;a&#39; before initialization</code> 的錯誤訊息，而這就證明了 <code>let</code> 是有提升行為的，只是不允許在變數宣告之前被存取。</p>
+<p>而前面提到 <code>var</code> 在提升時，也就是創造階段預設會給定初始值 <code>undefined</code>，而 <code>let</code>、<code>const</code> 則不會，所以在變數實際賦值前嘗試存取就會出現上面的錯誤，而提升後到賦值之前的這一個區間，稱為「暫時性死區（TDZ）」。</p>
+<hr>
+<p><strong>參考資料：</strong></p>
+<p><a href="https://blog.techbridge.cc/2018/11/10/javascript-hoisting/">我知道你懂 hoisting，可是你了解到多深？</a></p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>hoisting</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript 筆記 - 字串方法</title>
+    <url>/2022-10-11-javascript-string-methods/</url>
+    <content><![CDATA[<img src="/images/banner/banner_20221011.jpg"/><p>記錄字串處理的方法。</p>
+<span id="more"></span>
+
+<hr>
+<blockquote>
+<p>目錄：</p>
+<ul>
+<li>取得字串字數：<a href="#length">length</a></li>
+<li>字串分割：<a href="#split">split</a></li>
+<li>字串連接：<a href="#concat">concat</a></li>
+<li>尋找文字索引：<a href="#indexOf">indexOf</a></li>
+<li>替換文字內容：<a href="#replace">replace</a></li>
+<li>匹配文字：<a href="#match">match</a></li>
+<li>取得兩個索引之間的所有文字：<a href="#substring">substring</a>、<a href="#slice">slice</a></li>
+<li>轉換文字大小寫：<a href="#toUpperCase-toLowerCase">toUpperCase / toLowerCase</a></li>
+</ul>
+</blockquote>
+<h2 id="length"><a href="#length" class="headerlink" title="length"></a>length</h2><p>可以取得字串的字數。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">str.length</span><br></pre></td></tr></table></figure>
+
+<p>範例：取得字串字數</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> strLength = str.length;</span><br><span class="line"><span class="built_in">console</span>.log(strLength); <span class="comment">// 11</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="split"><a href="#split" class="headerlink" title="split"></a>split</h2><p>可以將字串分割，並將被分割的字串依序存入一個新陣列中。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">str.split(separator)</span><br></pre></td></tr></table></figure>
+
+<p>參數 <code>separator</code> 表示指定的分割字符（依據甚麼內容做分割）。</p>
+<p>範例一：以半形空白做分割</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&quot;hello world&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> arr = str.split(<span class="string">&quot; &quot;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(arr); <span class="comment">// [&quot;hello&quot;, &quot;world&quot;]</span></span><br></pre></td></tr></table></figure>
+
+<p>範例二：以空字串做分割</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&quot;hello world&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> arr = str.split(<span class="string">&quot;&quot;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(arr); <span class="comment">// [&quot;h&quot;,&quot;e&quot;,&quot;l&quot;,&quot;l&quot;,&quot;o&quot;,&quot; &quot;,&quot;w&quot;,&quot;o&quot;,&quot;r&quot;,&quot;l&quot;,&quot;d&quot;]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="concat"><a href="#concat" class="headerlink" title="concat"></a>concat</h2><p>可以連接多個字串，並且不會影響原字串，如果連接的內容的型別不是字串，則會轉型為字串再連接。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">str.concat(str2, ...strN)</span><br></pre></td></tr></table></figure>
+
+<p>參數 <code>str2</code>、<code>...strN</code> 表示要連接的字串，會被連接在原字串後方。</p>
+<p>範例一：連接字串</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> concatStr = str.concat(<span class="string">&#x27; &#x27;</span>,<span class="string">&#x27;world&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(concatStr); <span class="comment">// &quot;hello world&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>範例二：連接非字串型別</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;123&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> concatStr = str.concat(<span class="number">456</span>);</span><br><span class="line"><span class="built_in">console</span>.log(concatStr); <span class="comment">// &quot;123456&quot;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/concat">MDN</a> 文件中提到，建議使用 +、+= 來取代 concat()。</p>
+</blockquote>
+<h2 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf"></a>indexOf</h2><p>可以尋找字串中指定的字串位置，只會尋找第一個符合的字串，若找不到則回傳 <code>-1</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">str.indexOf(searchValue, position)</span><br></pre></td></tr></table></figure>
+
+<p>參數 <code>searchValue</code> 表示要搜尋的字串內容，<code>position</code> 則是起點的索引（選用）。</p>
+<p>範例一：尋找字串中 “e” 索引位置</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> strIndex = str.indexOf(<span class="string">&#x27;e&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(strIndex); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<p>範例二：尋找指定內容</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> strIndex = str.indexOf(<span class="string">&#x27;world&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(strIndex); <span class="comment">// 6</span></span><br></pre></td></tr></table></figure>
+
+<p>範例三：找不到指定內容</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> strIndex = str.indexOf(<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(strIndex); <span class="comment">// -1</span></span><br></pre></td></tr></table></figure>
+
+<p>範例四：從索引 3 開始尋找字串中 “e” 的位置</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> strIndex = str.indexOf(<span class="string">&#x27;e&#x27;</span>, <span class="number">3</span>);</span><br><span class="line"><span class="built_in">console</span>.log(strIndex); <span class="comment">// -1（起點位置為第 4 個字，因此找不到第二個字 e）</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="replace"><a href="#replace" class="headerlink" title="replace"></a>replace</h2><p>可以將字串內容替換成指定的字串。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">str.replace(oriStr, newStr)</span><br></pre></td></tr></table></figure>
+
+<p>參數 <code>oriStr</code> 表示需要做替換的內容，一般情況下只能取代第一個符合的字串，如果要全部替換，需要搭配正規表達式，<code>newStr</code> 則表示替換後的內容。</p>
+<p>範例一：將字串中的第一個 “o” 替換為 “i”</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> newStr = str.replace(<span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;i&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(newStr); <span class="comment">// &quot;helli world&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>範例二：搭配正規表達式，將字串中所有 “o” 替換為 “i”</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> newStr = str.replace(<span class="regexp">/o/g</span>, <span class="string">&#x27;i&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(newStr); <span class="comment">// &quot;helli wirld&quot;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>若需要全部取代，除了使用正規表達式之外，也可以透過 replaceAll() 方法來達成。</p>
+</blockquote>
+<h2 id="match"><a href="#match" class="headerlink" title="match"></a>match</h2><p>會回傳「匹配到的字串內容」，為一個陣列，若找不到匹配的字串，則回傳 <code>null</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">str.match(regexp)</span><br></pre></td></tr></table></figure>
+
+<p>參數 <code>regexp</code> 表示想要匹配的字串內容，通常會搭配正規表達式，若使用 <code>g</code> 字符，回傳的陣列內容為所有匹配到的字串，反之，則只有第一個匹配到的字串，並且帶有附加屬性。</p>
+<p>範例一：不使用正規表達式</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> newStr = str.match(<span class="string">&#x27;l&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(newStr); <span class="comment">// [&#x27;l&#x27;, index: 2, input: &#x27;hello world&#x27;, groups: undefined]</span></span><br></pre></td></tr></table></figure>
+
+<p>範例二：搭配正規表達式（不使用 <code>g</code> 字符）</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> newStr = str.match(<span class="regexp">/l/</span>);</span><br><span class="line"><span class="built_in">console</span>.log(newStr); <span class="comment">// [&#x27;l&#x27;, index: 2, input: &#x27;hello world&#x27;, groups: undefined]</span></span><br></pre></td></tr></table></figure>
+
+<p>範例三：搭配正規表達式（使用 <code>g</code> 字符）</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> newStr = str.match(<span class="regexp">/l/g</span>);</span><br><span class="line"><span class="built_in">console</span>.log(newStr); <span class="comment">// [&#x27;l&#x27;, &#x27;l&#x27;, &#x27;l&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="substring"><a href="#substring" class="headerlink" title="substring"></a>substring</h2><p>可以取得字串中，兩個索引位置之間的文字內容。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">str.substring(indexStart, indexEnd)</span><br></pre></td></tr></table></figure>
+
+<p>參數 <code>indexStart</code> 表示起始索引，<code>indexEnd</code> 則是結束索引，若不使用結束索引，範圍則會是起始索引到最後一個字之間，此外，起始、結束索引對調不影響結果。</p>
+<p>範例一：取出索引位置 2 到 8 之間的文字</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> newStr = str.substring(<span class="number">2</span>, <span class="number">8</span>);</span><br><span class="line"><span class="built_in">console</span>.log(newStr); <span class="comment">// &quot;llo wo&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>範例二：取得索引位置 6 到最後一個字之間的文字</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> newStr = str.substring(<span class="number">6</span>);</span><br><span class="line"><span class="built_in">console</span>.log(newStr); <span class="comment">// &quot;world&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="slice"><a href="#slice" class="headerlink" title="slice"></a>slice</h2><p>作用與 <code>substring</code> 類似，差別在於 <code>slice</code> 參數可以傳入負數。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">str.slice(indexStart, indexEnd)</span><br></pre></td></tr></table></figure>
+
+<p>參數 <code>indexStart</code> 表示起始索引，若為負值，<code>indexEnd</code> 則是結束索引，若不使用結束索引，範圍則會是起始索引到最後一個字之間，若使用負值，則索引順序會從字串最後一個字往回計算。</p>
+<p>範例一：取得索引位置 2 到 8 之間的文字</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> newStr = str.substring(<span class="number">2</span>, <span class="number">8</span>);</span><br><span class="line"><span class="built_in">console</span>.log(newStr); <span class="comment">// &quot;llo wo&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>範例二：取得倒數第 5 個字，到最後一個字之間的文字</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> newStr = str.slice(-<span class="number">5</span>);</span><br><span class="line"><span class="built_in">console</span>.log(newStr); <span class="comment">// &quot;world&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="toUpperCase-toLowerCase"><a href="#toUpperCase-toLowerCase" class="headerlink" title="toUpperCase / toLowerCase"></a>toUpperCase / toLowerCase</h2><p>可以將字串中的字母轉換為大、小寫</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">str.toUpperCase() <span class="comment">// 轉換為大寫</span></span><br><span class="line">str.toLowerCase() <span class="comment">// 轉換為小寫</span></span><br></pre></td></tr></table></figure>
+
+<p>範例一：轉換為大寫</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> upperCaseStr = str.toUpperCase();</span><br><span class="line"><span class="built_in">console</span>.log(upperCaseStr); <span class="comment">// &quot;HELLO WORLD&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>範例二：轉換為小寫</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;HELLO WORLD&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> lowerCaseStr = str.toLowerCase();</span><br><span class="line"><span class="built_in">console</span>.log(lowerCaseStr); <span class="comment">// &quot;hello world&quot;</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>string</tag>
       </tags>
   </entry>
   <entry>

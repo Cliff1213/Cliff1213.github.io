@@ -1,0 +1,150 @@
+<!DOCTYPE html><html lang="zh-TW"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>JavaScript 筆記 - 字串方法 | Cliff Blog</title><link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/css/highlights/dracula.css"><link rel="canonical" href="http://kurifu.tw/2022-10-11-javascript-string-methods/"/>
+<meta name="description" content="…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 筆記 - 字串方法">
+<meta property="og:url" content="http://kurifu.tw/2022-10-11-javascript-string-methods/">
+<meta property="og:site_name" content="Cliff Blog">
+<meta property="og:description" content="…">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="http://kurifu.tw/images/banner/banner_20221011.jpg">
+<meta property="article:published_time" content="2022-10-11T06:13:04.000Z">
+<meta property="article:author" content="Cliff Chu">
+<meta property="article:tag" content="string">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://kurifu.tw/images/banner/banner_20221011.jpg"><meta property="article:author" content="Cliff Chu"><meta property="twitter:label1" content="Published at"><meta property="twitter:data1" content="2022-10-11 14:13:04"><meta property="twitter:label2" content="Written by"><meta property="twitter:data2" content="Cliff Chu"><link rel="icon" href="/images/touch-icon.png"><script>(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'G-106NQBHYEM', 'auto');
+ga('send', 'pageview');</script><meta name="generator" content="Hexo 6.0.0"></head><body itemscope itemtype="https://schema.org/WebPage"><nav class="menu" id="menu"><div class="menu-inner"><div class="menu__left-area"><div class="menu__item"><a class="menu__item__link menu__item__link--brand" href="/" title="Home" rel="home"><img class="menu__item__link--brand__image" src="/images/touch-icon.png" alt="Cliff Blog"><span class="menu__item__link--brand__label">Cliff Blog</span></a></div></div><div class="menu__right-area"><div class="menu__item"><a class="menu__item__link" href="/">Home</a></div><div class="menu__item"><a class="menu__item__link" href="/about">About</a></div></div></div></nav><div class="page-background"></div><div class="content-container"><div class="content-outer"><div class="content-inner" itemscope itemtype="https://schema.org/Blog"><article class="article" id="article" itemscope itemtype="https://schema.org/BlogPosting"><h1 class="article__title" itemprop="headline">JavaScript 筆記 - 字串方法</h1><div class="article__meta"><time class="article__meta__time" datetime="2022-10-11T06:13:04.000Z" itemprop="datePublished">2022-10-11 14:13:04</time><div class="article__meta__categories"><a class="article__meta__categories__item" href="/categories/JavaScript/">JavaScript</a></div></div><div class="article__contents"><img src="/images/banner/banner_20221011.jpg"/><p>記錄字串處理的方法。</p>
+<span id="more"></span>
+
+<hr>
+<blockquote>
+<p>目錄：</p>
+<ul>
+<li>取得字串字數：<a href="#length">length</a></li>
+<li>字串分割：<a href="#split">split</a></li>
+<li>字串連接：<a href="#concat">concat</a></li>
+<li>尋找文字索引：<a href="#indexOf">indexOf</a></li>
+<li>替換文字內容：<a href="#replace">replace</a></li>
+<li>匹配文字：<a href="#match">match</a></li>
+<li>取得兩個索引之間的所有文字：<a href="#substring">substring</a>、<a href="#slice">slice</a></li>
+<li>轉換文字大小寫：<a href="#toUpperCase-toLowerCase">toUpperCase / toLowerCase</a></li>
+</ul>
+</blockquote>
+<h2 id="length"><a href="#length" class="headerlink" title="length"></a>length</h2><p>可以取得字串的字數。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.length</span><br></pre></td></tr></table></figure>
+
+<p>範例：取得字串字數</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> strLength = str.length;</span><br><span class="line"><span class="built_in">console</span>.log(strLength); <span class="comment">// 11</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="split"><a href="#split" class="headerlink" title="split"></a>split</h2><p>可以將字串分割，並將被分割的字串依序存入一個新陣列中。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.split(separator)</span><br></pre></td></tr></table></figure>
+
+<p>參數 <code>separator</code> 表示指定的分割字符（依據甚麼內容做分割）。</p>
+<p>範例一：以半形空白做分割</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&quot;hello world&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> arr = str.split(<span class="string">&quot; &quot;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(arr); <span class="comment">// [&quot;hello&quot;, &quot;world&quot;]</span></span><br></pre></td></tr></table></figure>
+
+<p>範例二：以空字串做分割</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&quot;hello world&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> arr = str.split(<span class="string">&quot;&quot;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(arr); <span class="comment">// [&quot;h&quot;,&quot;e&quot;,&quot;l&quot;,&quot;l&quot;,&quot;o&quot;,&quot; &quot;,&quot;w&quot;,&quot;o&quot;,&quot;r&quot;,&quot;l&quot;,&quot;d&quot;]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="concat"><a href="#concat" class="headerlink" title="concat"></a>concat</h2><p>可以連接多個字串，並且不會影響原字串，如果連接的內容的型別不是字串，則會轉型為字串再連接。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.concat(str2, ...strN)</span><br></pre></td></tr></table></figure>
+
+<p>參數 <code>str2</code>、<code>...strN</code> 表示要連接的字串，會被連接在原字串後方。</p>
+<p>範例一：連接字串</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> concatStr = str.concat(<span class="string">&#x27; &#x27;</span>,<span class="string">&#x27;world&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(concatStr); <span class="comment">// &quot;hello world&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>範例二：連接非字串型別</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;123&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> concatStr = str.concat(<span class="number">456</span>);</span><br><span class="line"><span class="built_in">console</span>.log(concatStr); <span class="comment">// &quot;123456&quot;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/concat">MDN</a> 文件中提到，建議使用 +、+= 來取代 concat()。</p>
+</blockquote>
+<h2 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf"></a>indexOf</h2><p>可以尋找字串中指定的字串位置，只會尋找第一個符合的字串，若找不到則回傳 <code>-1</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.indexOf(searchValue, position)</span><br></pre></td></tr></table></figure>
+
+<p>參數 <code>searchValue</code> 表示要搜尋的字串內容，<code>position</code> 則是起點的索引（選用）。</p>
+<p>範例一：尋找字串中 “e” 索引位置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> strIndex = str.indexOf(<span class="string">&#x27;e&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(strIndex); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<p>範例二：尋找指定內容</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> strIndex = str.indexOf(<span class="string">&#x27;world&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(strIndex); <span class="comment">// 6</span></span><br></pre></td></tr></table></figure>
+
+<p>範例三：找不到指定內容</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> strIndex = str.indexOf(<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(strIndex); <span class="comment">// -1</span></span><br></pre></td></tr></table></figure>
+
+<p>範例四：從索引 3 開始尋找字串中 “e” 的位置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> strIndex = str.indexOf(<span class="string">&#x27;e&#x27;</span>, <span class="number">3</span>);</span><br><span class="line"><span class="built_in">console</span>.log(strIndex); <span class="comment">// -1（起點位置為第 4 個字，因此找不到第二個字 e）</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="replace"><a href="#replace" class="headerlink" title="replace"></a>replace</h2><p>可以將字串內容替換成指定的字串。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.replace(oriStr, newStr)</span><br></pre></td></tr></table></figure>
+
+<p>參數 <code>oriStr</code> 表示需要做替換的內容，一般情況下只能取代第一個符合的字串，如果要全部替換，需要搭配正規表達式，<code>newStr</code> 則表示替換後的內容。</p>
+<p>範例一：將字串中的第一個 “o” 替換為 “i”</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> newStr = str.replace(<span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;i&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(newStr); <span class="comment">// &quot;helli world&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>範例二：搭配正規表達式，將字串中所有 “o” 替換為 “i”</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> newStr = str.replace(<span class="regexp">/o/g</span>, <span class="string">&#x27;i&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(newStr); <span class="comment">// &quot;helli wirld&quot;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>若需要全部取代，除了使用正規表達式之外，也可以透過 replaceAll() 方法來達成。</p>
+</blockquote>
+<h2 id="match"><a href="#match" class="headerlink" title="match"></a>match</h2><p>會回傳「匹配到的字串內容」，為一個陣列，若找不到匹配的字串，則回傳 <code>null</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.match(regexp)</span><br></pre></td></tr></table></figure>
+
+<p>參數 <code>regexp</code> 表示想要匹配的字串內容，通常會搭配正規表達式，若使用 <code>g</code> 字符，回傳的陣列內容為所有匹配到的字串，反之，則只有第一個匹配到的字串，並且帶有附加屬性。</p>
+<p>範例一：不使用正規表達式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> newStr = str.match(<span class="string">&#x27;l&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(newStr); <span class="comment">// [&#x27;l&#x27;, index: 2, input: &#x27;hello world&#x27;, groups: undefined]</span></span><br></pre></td></tr></table></figure>
+
+<p>範例二：搭配正規表達式（不使用 <code>g</code> 字符）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> newStr = str.match(<span class="regexp">/l/</span>);</span><br><span class="line"><span class="built_in">console</span>.log(newStr); <span class="comment">// [&#x27;l&#x27;, index: 2, input: &#x27;hello world&#x27;, groups: undefined]</span></span><br></pre></td></tr></table></figure>
+
+<p>範例三：搭配正規表達式（使用 <code>g</code> 字符）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> newStr = str.match(<span class="regexp">/l/g</span>);</span><br><span class="line"><span class="built_in">console</span>.log(newStr); <span class="comment">// [&#x27;l&#x27;, &#x27;l&#x27;, &#x27;l&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="substring"><a href="#substring" class="headerlink" title="substring"></a>substring</h2><p>可以取得字串中，兩個索引位置之間的文字內容。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.substring(indexStart, indexEnd)</span><br></pre></td></tr></table></figure>
+
+<p>參數 <code>indexStart</code> 表示起始索引，<code>indexEnd</code> 則是結束索引，若不使用結束索引，範圍則會是起始索引到最後一個字之間，此外，起始、結束索引對調不影響結果。</p>
+<p>範例一：取出索引位置 2 到 8 之間的文字</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> newStr = str.substring(<span class="number">2</span>, <span class="number">8</span>);</span><br><span class="line"><span class="built_in">console</span>.log(newStr); <span class="comment">// &quot;llo wo&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>範例二：取得索引位置 6 到最後一個字之間的文字</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> newStr = str.substring(<span class="number">6</span>);</span><br><span class="line"><span class="built_in">console</span>.log(newStr); <span class="comment">// &quot;world&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="slice"><a href="#slice" class="headerlink" title="slice"></a>slice</h2><p>作用與 <code>substring</code> 類似，差別在於 <code>slice</code> 參數可以傳入負數。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.slice(indexStart, indexEnd)</span><br></pre></td></tr></table></figure>
+
+<p>參數 <code>indexStart</code> 表示起始索引，若為負值，<code>indexEnd</code> 則是結束索引，若不使用結束索引，範圍則會是起始索引到最後一個字之間，若使用負值，則索引順序會從字串最後一個字往回計算。</p>
+<p>範例一：取得索引位置 2 到 8 之間的文字</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> newStr = str.substring(<span class="number">2</span>, <span class="number">8</span>);</span><br><span class="line"><span class="built_in">console</span>.log(newStr); <span class="comment">// &quot;llo wo&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>範例二：取得倒數第 5 個字，到最後一個字之間的文字</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> newStr = str.slice(-<span class="number">5</span>);</span><br><span class="line"><span class="built_in">console</span>.log(newStr); <span class="comment">// &quot;world&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="toUpperCase-toLowerCase"><a href="#toUpperCase-toLowerCase" class="headerlink" title="toUpperCase / toLowerCase"></a>toUpperCase / toLowerCase</h2><p>可以將字串中的字母轉換為大、小寫</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str.toUpperCase() <span class="comment">// 轉換為大寫</span></span><br><span class="line">str.toLowerCase() <span class="comment">// 轉換為小寫</span></span><br></pre></td></tr></table></figure>
+
+<p>範例一：轉換為大寫</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> upperCaseStr = str.toUpperCase();</span><br><span class="line"><span class="built_in">console</span>.log(upperCaseStr); <span class="comment">// &quot;HELLO WORLD&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>範例二：轉換為小寫</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;HELLO WORLD&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> lowerCaseStr = str.toLowerCase();</span><br><span class="line"><span class="built_in">console</span>.log(lowerCaseStr); <span class="comment">// &quot;hello world&quot;</span></span><br></pre></td></tr></table></figure>
+
+</div><div class="article__tags"><a class="article__tags__item" href="/tags/string/">string</a></div><div class="article__author" itemscope itemprop="author" itemtype="https://schema.org/Person"><img class="article__author__image" src="/images/avatar2.jpg" alt="Cliff Chu"><a class="article__author__link" title="About Cliff Chu" rel="author">Cliff Chu</a><p class="article__author__desc">跌倒了可以先躺一下，再爬起來。</p><meta itemprop="name" content="Cliff Chu"></div><!-- Disqus Code--><!-- Meta Tags for Structured Data--><meta itemprop="dateModified" content="2022-10-13T13:26:32.287Z"><meta itemprop="articleBody" content="記錄字串處理的方法。
+
+
+
+
+目錄：
+
+取得字串字數：length
+字串分割：split
+字串連接：concat
+尋找文字索引：indexOf
+替換文字內容：replace
+匹配文字：match
+取得兩個索引之間的所有文字：substring、slice
+轉換文字大小寫：toUpperCase /..."><meta itemprop="url" content="http://kurifu.tw/2022-10-11-javascript-string-methods/"><meta itemprop="mainEntityOfPage" content="http://kurifu.tw/2022-10-11-javascript-string-methods/"><div itemscope itemtype="https://schema.org/Organization" itemprop="publisher"><meta itemprop="name" content="Cliff Blog"><div itemscope itemprop="logo" itemtype="https://schema.org/ImageObject"><meta itemprop="url" content="http://kurifu.tw/images/touch-icon.png"></div></div><div itemscope itemtype="https://schema.org/ImageObject" itemprop="image"><meta itemprop="contentUrl" content="http://kurifu.tw/images/banner/banner_20221011.jpg"><meta itemprop="url" content="http://kurifu.tw/images/banner/banner_20221011.jpg"><meta itemprop="width" content="1280"><meta itemprop="height" content="720"></div></article></div></div></div><footer id="footer"><div class="widgets"><div class="widgets-inner"><!-- Jade doesn't support dynamic inclusion with `each`.--><!-- So, I just hard coded the file names that will be included.--><div class="widgets__item"><h3 class="widgets__item__heading">Archives</h3><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">九月 2022</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">六月 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">2</span></li></ul></div><div class="widgets__item"><h3 class="widgets__item__heading">Categories</h3><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Package/">Package</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/RWD/">RWD</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Sass-SCSS/">Sass/SCSS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BF%83%E5%BE%97/">心得</a><span class="category-list-count">2</span></li></ul></div><div class="widgets__item"><h3 class="widgets__item__heading">Tag cloud</h3><div class="tag-cloud"><a href="/tags/Package/" style="font-size: 0.75rem;">Package</a> <a href="/tags/Scope/" style="font-size: 0.75rem;">Scope</a> <a href="/tags/Swiper/" style="font-size: 0.75rem;">Swiper</a> <a href="/tags/array/" style="font-size: 0.75rem;">array</a> <a href="/tags/asynchronous/" style="font-size: 0.75rem;">asynchronous</a> <a href="/tags/flex/" style="font-size: 0.75rem;">flex</a> <a href="/tags/font-family/" style="font-size: 0.75rem;">font-family</a> <a href="/tags/function/" style="font-size: 0.75rem;">function</a> <a href="/tags/hoisting/" style="font-size: 0.75rem;">hoisting</a> <a href="/tags/loop/" style="font-size: 0.75rem;">loop</a> <a href="/tags/note/" style="font-size: 1.5rem;">note</a> <a href="/tags/npm/" style="font-size: 0.75rem;">npm</a> <a href="/tags/overflow/" style="font-size: 0.75rem;">overflow</a> <a href="/tags/string/" style="font-size: 0.75rem;">string</a> <a href="/tags/synchronous/" style="font-size: 0.75rem;">synchronous</a> <a href="/tags/%E5%85%AD%E8%A7%92%E5%AD%B8%E9%99%A2/" style="font-size: 1.13rem;">六角學院</a></div></div></div></div><p class="copyright"><small>© 2022 Cliff Chu<br>Powered by <a href="https://hexo.io" rel="external" target="_blank">Hexo</a>, Theme by <a href="https://github.com/hyunseob" rel="external" target="_blank">HyunSeob</a></small></p></footer><!--[if lt IE 10]><script src="/js/classList.min.js"></script><![endif]--><script src="/js/index.min.js"></script></body></html>

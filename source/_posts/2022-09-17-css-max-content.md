@@ -2,7 +2,7 @@
 title: Flex 水平置中，子元素溢出不被裁切
 date: 2022-09-17
 tags:
- - flex-box
+ - flex
  - overflow
 categories: CSS
 banner:

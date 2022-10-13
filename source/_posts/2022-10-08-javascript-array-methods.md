@@ -3,7 +3,6 @@ title: JavaScript 筆記 - 陣列方法
 date: 2022-10-08 22:59:09
 tags:
  - array
- - function
 categories: JavaScript
 banner:
   url: /images/banner/banner_20221008.jpg
@@ -17,8 +16,15 @@ forEach 很萬用，但其他的也不賴。
 
 ------
 
-> 傳送門
-> [forEach](#forEach)、[map](#map)、[filter](#filter)、[find](#find)、[every](#every)、[some](#some)、[reduce](#reduce)
+> 目錄：
+>
+> - [forEach](#forEach)
+> - [map](#map)
+> - [filter](#filter)
+> - [find](#find)
+> - [every](#every)
+> - [some](#some)
+> - [reduce](#reduce)
 
 範例資料：
 

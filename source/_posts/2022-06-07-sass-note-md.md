@@ -1,9 +1,9 @@
 ---
-title: Sass 實用語法
+title: SCSS 實用語法
 date: 2022-06-07
 tags:
  - note
-categories: SCSS
+categories: Sass/SCSS
 banner:
   url: /images/banner/banner_20220607.jpg
   width: 1280

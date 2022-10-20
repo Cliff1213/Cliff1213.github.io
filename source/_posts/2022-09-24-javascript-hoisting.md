@@ -4,10 +4,7 @@ date: 2022-09-24
 tags:
  - hoisting
 categories: JavaScript
-banner:
-  url: /images/banner/banner_js.jpg
-  width: 1280
-  height: 720
+index_img: img/banner/banner_js.jpg
 ---
 
 ES6 前後的 Hoisting 觀念筆記。

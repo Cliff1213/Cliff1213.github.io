@@ -4,10 +4,7 @@ date: 2022-09-21
 tags:
  - Scope
 categories: JavaScript
-banner:
-  url: /images/banner/banner_js.jpg
-  width: 1280
-  height: 720
+index_img: img/banner/banner_js.jpg
 ---
 
 不同宣告方式與作用域相關筆記。

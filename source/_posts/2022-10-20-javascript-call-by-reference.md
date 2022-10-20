@@ -4,10 +4,7 @@ date: 2022-10-20 01:20:53
 tags:
  - call by reference
 categories: JavaScript
-banner:
-  url: /images/banner/banner_js.jpg
-  width: 1280
-  height: 720
+index_img: img/banner/banner_js.jpg
 ---
 
 到底傳遞的是值、還是記憶體的參考位址呢？

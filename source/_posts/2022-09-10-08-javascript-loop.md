@@ -5,10 +5,7 @@ tags:
  - loop
  - note
 categories: JavaScript
-banner:
-  url: /images/banner/banner_loop.jpg
-  width: 1280
-  height: 720
+index_img: img/banner/banner_loop.jpg
 ---
 
 Looooooop。

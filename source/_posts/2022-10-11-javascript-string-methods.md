@@ -4,10 +4,7 @@ date: 2022-10-11 14:13:04
 tags:
  - string
 categories: JavaScript
-banner:
-  url: /images/banner/banner_20221011.jpg
-  width: 1280
-  height: 720
+index_img: img/banner/banner_20221011.jpg
 ---
 
 記錄字串處理的方法。

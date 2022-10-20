@@ -5,10 +5,7 @@ tags:
  - Swiper
  - Package
 categories: Package
-banner:
-  url: /images/banner/banner_20220601.jpg
-  width: 1280
-  height: 720
+index_img: img/banner/banner_20220601.jpg
 ---
 
 輪播效果小幫手。

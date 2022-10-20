@@ -4,10 +4,7 @@ date: 2022-09-10
 tags:
  - 六角學院
 categories: 心得
-banner:
-  url: /images/banner/banner_20220910.jpg
-  width: 1280
-  height: 720
+index_img: img/banner/banner_20220910.jpg
 ---
 
 2022 夏，切版直播班心得。

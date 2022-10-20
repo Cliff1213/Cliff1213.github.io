@@ -5,10 +5,7 @@ tags:
  - flex
  - overflow
 categories: CSS
-banner:
-  url: /images/banner/banner_20220910-2.jpg
-  width: 1280
-  height: 720
+index_img: img/banner/banner_20220910-2.jpg
 ---
 
 記錄一下遇到的切版問題的解法。

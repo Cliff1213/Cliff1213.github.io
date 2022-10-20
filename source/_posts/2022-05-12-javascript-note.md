@@ -4,10 +4,7 @@ date: 2022-05-13
 tags:
  - note
 categories: JavaScript
-banner:
-  url: /images/banner/banner_20220512.jpg
-  width: 1280
-  height: 720
+index_img: img/banner/banner_20220512.jpg
 ---
 
 初學 JavaScript 的筆記，基本上學到什麼就記錄下來，內容很長很繁雜。

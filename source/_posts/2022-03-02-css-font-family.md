@@ -4,10 +4,7 @@ date: 2022-03-02
 tags:
  - font-family
 categories: CSS
-banner:
-  url: /images/banner/banner_font.jpg
-  width: 1280
-  height: 720
+index_img: img/banner/banner_font.jpg
 ---
 
 字體設定規則有點複雜，趁現在還記得順便紀錄一下。

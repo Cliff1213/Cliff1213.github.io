@@ -4,13 +4,10 @@ date: 2022-09-19
 tags:
  - function
 categories: JavaScript
-banner:
-  url: /images/banner/banner_js.jpg
-  width: 1280
-  height: 720
+index_img: img/banner/banner_js.jpg
 ---
 
-很基本的函式相關筆記。
+基本的函式相關筆記。
 
 <!--more-->
 

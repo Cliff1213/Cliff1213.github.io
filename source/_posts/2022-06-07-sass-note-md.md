@@ -4,10 +4,7 @@ date: 2022-06-07
 tags:
  - note
 categories: Sass/SCSS
-banner:
-  url: /images/banner/banner_20220607.jpg
-  width: 1280
-  height: 720
+index_img: img/banner/banner_20220607.jpg
 ---
 
 簡單整理一些新手必須知道的 Sass 語法。

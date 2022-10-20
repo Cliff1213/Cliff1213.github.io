@@ -4,10 +4,7 @@ date: 2022-10-08 22:59:09
 tags:
  - array
 categories: JavaScript
-banner:
-  url: /images/banner/banner_20221008.jpg
-  width: 1280
-  height: 720
+index_img: img/banner/banner_20221008.jpg
 ---
 
 forEach 很萬用，但其他的也不賴。

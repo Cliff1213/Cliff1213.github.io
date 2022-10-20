@@ -1,22 +1,280 @@
-<!DOCTYPE html><html lang="zh-TW"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>JavaScript 筆記 - 陣列方法 | Cliff Blog</title><link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/css/highlights/dracula.css"><link rel="canonical" href="http://kurifu.tw/2022-10-08-javascript-array-methods/"/>
-<meta name="description" content="forEach 很萬用，但其他的也不賴。     目錄：  forEach map filter find every some reduce   範例資料： 123456789101112131415const data &#x3D; [  &amp;#123;    name:…">
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/touch-icon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Cliff Chu">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="forEach 很萬用，但其他的也不賴。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript 筆記 - 陣列方法">
-<meta property="og:url" content="http://kurifu.tw/2022-10-08-javascript-array-methods/">
+<meta property="og:url" content="http://kurifu.tw/2022-10-08-javascript-array-methods/index.html">
 <meta property="og:site_name" content="Cliff Blog">
-<meta property="og:description" content="forEach 很萬用，但其他的也不賴。     目錄：  forEach map filter find every some reduce   範例資料： 123456789101112131415const data &#x3D; [  &amp;#123;    name:…">
+<meta property="og:description" content="forEach 很萬用，但其他的也不賴。">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="http://kurifu.tw/images/banner/banner_20221008.jpg">
+<meta property="og:image" content="http://kurifu.tw/img/banner/banner_20221008.jpg">
 <meta property="article:published_time" content="2022-10-08T14:59:09.000Z">
 <meta property="article:author" content="Cliff Chu">
 <meta property="article:tag" content="array">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://kurifu.tw/images/banner/banner_20221008.jpg"><meta property="article:author" content="Cliff Chu"><meta property="twitter:label1" content="Published at"><meta property="twitter:data1" content="2022-10-08 22:59:09"><meta property="twitter:label2" content="Written by"><meta property="twitter:data2" content="Cliff Chu"><link rel="icon" href="/images/touch-icon.png"><script>(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'G-106NQBHYEM', 'auto');
-ga('send', 'pageview');</script><meta name="generator" content="Hexo 6.0.0"></head><body itemscope itemtype="https://schema.org/WebPage"><nav class="menu" id="menu"><div class="menu-inner"><div class="menu__left-area"><div class="menu__item"><a class="menu__item__link menu__item__link--brand" href="/" title="Home" rel="home"><img class="menu__item__link--brand__image" src="/images/touch-icon.png" alt="Cliff Blog"><span class="menu__item__link--brand__label">Cliff Blog</span></a></div></div><div class="menu__right-area"><div class="menu__item"><a class="menu__item__link" href="/">Home</a></div><div class="menu__item"><a class="menu__item__link" href="/about">About</a></div></div></div></nav><div class="page-background"></div><div class="content-container"><div class="content-outer"><div class="content-inner" itemscope itemtype="https://schema.org/Blog"><article class="article" id="article" itemscope itemtype="https://schema.org/BlogPosting"><h1 class="article__title" itemprop="headline">JavaScript 筆記 - 陣列方法</h1><div class="article__meta"><time class="article__meta__time" datetime="2022-10-08T14:59:09.000Z" itemprop="datePublished">2022-10-08 22:59:09</time><div class="article__meta__categories"><a class="article__meta__categories__item" href="/categories/JavaScript/">JavaScript</a></div></div><div class="article__contents"><img src="/images/banner/banner_20221008.jpg"/><p>forEach 很萬用，但其他的也不賴。</p>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://kurifu.tw/img/banner/banner_20221008.jpg">
+  
+  
+  
+  <title>JavaScript 筆記 - 陣列方法 - Cliff Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"kurifu.tw","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":"G-106NQBHYEM","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Cliff Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首頁
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                歸檔
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分類
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                標籤
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                關於
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="JavaScript 筆記 - 陣列方法"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-10-08 22:59" pubdate>
+          2022年10月8日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          31 分鐘
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">JavaScript 筆記 - 陣列方法</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>forEach 很萬用，但其他的也不賴。</p>
 <span id="more"></span>
 
 <hr>
@@ -33,12 +291,12 @@ ga('send', 'pageview');</script><meta name="generator" content="Hexo 6.0.0"></he
 </ul>
 </blockquote>
 <p>範例資料：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> data = [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Leo&#x27;</span>,</span><br><span class="line">    <span class="attr">sex</span>: <span class="string">&#x27;男生&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">22</span></span><br><span class="line">  &#125;,&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Ryan&#x27;</span>,</span><br><span class="line">    <span class="attr">sex</span>: <span class="string">&#x27;男生&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">16</span></span><br><span class="line">  &#125;,&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Amber&#x27;</span>,</span><br><span class="line">    <span class="attr">sex</span>: <span class="string">&#x27;女生&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">20</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> data = [<br>  &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Leo&#x27;</span>,<br>    <span class="hljs-attr">sex</span>: <span class="hljs-string">&#x27;男生&#x27;</span>,<br>    <span class="hljs-attr">age</span>: <span class="hljs-number">22</span><br>  &#125;,&#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Ryan&#x27;</span>,<br>    <span class="hljs-attr">sex</span>: <span class="hljs-string">&#x27;男生&#x27;</span>,<br>    <span class="hljs-attr">age</span>: <span class="hljs-number">16</span><br>  &#125;,&#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Amber&#x27;</span>,<br>    <span class="hljs-attr">sex</span>: <span class="hljs-string">&#x27;女生&#x27;</span>,<br>    <span class="hljs-attr">age</span>: <span class="hljs-number">20</span><br>  &#125;<br>]<br></code></pre></td></tr></table></figure>
 
 
 
 <h2 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h2><p>forEach 會針對陣列中的每一個元素進行操作。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, array</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do something...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">arr.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item, index, array</span>) </span>&#123;<br>  <span class="hljs-comment">// do something...</span><br>&#125;)<br></code></pre></td></tr></table></figure>
 
 <p>陣列所元素皆傳入函式執行一次，但是不會回傳任何值（<code>reutrn</code> 沒有作用），換言之，forEach 不會產生新陣列。</p>
 <p>callback 函式可傳入以下參數：</p>
@@ -48,10 +306,10 @@ ga('send', 'pageview');</script><meta name="generator" content="Hexo 6.0.0"></he
 <li><code>array</code> 陣列本身（選用）</li>
 </ul>
 <p>範例：依序印出人物資訊</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">data.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;item.name&#125;</span> 是<span class="subst">$&#123;item.sex&#125;</span>，目前 <span class="subst">$&#123;item.age&#125;</span> 歲`</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &quot;Leo 是男生，目前 22 歲&quot;</span></span><br><span class="line"><span class="comment">// &quot;Ryan 是男生，目前 16 歲&quot;</span></span><br><span class="line"><span class="comment">// &quot;Amber 是女生，目前 20 歲&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js">data.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">$&#123;item.name&#125;</span> 是<span class="hljs-subst">$&#123;item.sex&#125;</span>，目前 <span class="hljs-subst">$&#123;item.age&#125;</span> 歲`</span>)<br>&#125;)<br><span class="hljs-comment">// &quot;Leo 是男生，目前 22 歲&quot;</span><br><span class="hljs-comment">// &quot;Ryan 是男生，目前 16 歲&quot;</span><br><span class="hljs-comment">// &quot;Amber 是女生，目前 20 歲&quot;</span><br></code></pre></td></tr></table></figure>
 
 <h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><p>map 可以把原陣列所有元素進行轉換，並以新的資料形式在新陣列中呈現。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr.map(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, array</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do something...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">arr.map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item, index, array</span>) </span>&#123;<br>  <span class="hljs-comment">// do something...</span><br>&#125;)<br></code></pre></td></tr></table></figure>
 
 <p>會建立一個新陣列，內容為原陣列的每一個元素運算、轉換後回傳的值，若不回傳，新陣列所有元素皆為 <code>undefined</code>。</p>
 <p>callback 函式可傳入以下參數：</p>
@@ -61,12 +319,12 @@ ga('send', 'pageview');</script><meta name="generator" content="Hexo 6.0.0"></he
 <li><code>array</code> 陣列本身（選用）</li>
 </ul>
 <p>範例：將所有人的年齡加五歲</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mapArray = data.map(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> item.age += <span class="number">5</span>;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(mapArray)</span><br><span class="line"><span class="comment">// [27,21,25]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> mapArray = data.map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> item.age += <span class="hljs-number">5</span>;<br>&#125;)<br><span class="hljs-built_in">console</span>.log(mapArray)<br><span class="hljs-comment">// [27,21,25]</span><br></code></pre></td></tr></table></figure>
 
 
 
 <h2 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h2><p>filter 就如字面上的意思，可以用來篩選陣列中符合條件的元素。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, array</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do something...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">arr.filter(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item, index, array</span>) </span>&#123;<br>  <span class="hljs-comment">// do something...</span><br>&#125;)<br></code></pre></td></tr></table></figure>
 
 <p>會建立一個新陣列，內容為原陣列中所有符合條件的元素。</p>
 <p>callback 函式可傳入以下參數：</p>
@@ -76,10 +334,10 @@ ga('send', 'pageview');</script><meta name="generator" content="Hexo 6.0.0"></he
 <li><code>array</code> 陣列本身（選用）</li>
 </ul>
 <p>範例：篩選出年齡 18 歲以上的人</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> filterArray = data.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> item.age &gt;= <span class="number">18</span>;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(filterArray);</span><br><span class="line"><span class="comment">// [&#123;&quot;name&quot;: &quot;Leo&quot;, &quot;sex&quot;: &quot;男生&quot;&#125;,&#123;&quot;name&quot;: &quot;Amber&quot;, &quot;sex&quot;: &quot;女生&quot;&#125;]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> filterArray = data.filter(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> item.age &gt;= <span class="hljs-number">18</span>;<br>&#125;)<br><span class="hljs-built_in">console</span>.log(filterArray);<br><span class="hljs-comment">// [&#123;&quot;name&quot;: &quot;Leo&quot;, &quot;sex&quot;: &quot;男生&quot;&#125;,&#123;&quot;name&quot;: &quot;Amber&quot;, &quot;sex&quot;: &quot;女生&quot;&#125;]</span><br></code></pre></td></tr></table></figure>
 
 <h2 id="find"><a href="#find" class="headerlink" title="find"></a>find</h2><p>find 與 filter 類似，差別在於 find 只會找到陣列第一筆符合條件的元素。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr.find(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, array</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do something...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">arr.find(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item, index, array</span>) </span>&#123;<br>  <span class="hljs-comment">// do something...</span><br>&#125;)<br></code></pre></td></tr></table></figure>
 
 <p>會回傳一個元素，該元素是陣列中第一個符合條件的元素，若都不符合條件則回傳一個 <code>undefined</code>。</p>
 <p>callback 函式可傳入以下參數：</p>
@@ -89,10 +347,10 @@ ga('send', 'pageview');</script><meta name="generator" content="Hexo 6.0.0"></he
 <li><code>array</code> 陣列本身（選用）</li>
 </ul>
 <p>範例：找出第一個女生</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> findItem = data.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> item.sex === <span class="string">&#x27;女生&#x27;</span>;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(findItem)</span><br><span class="line"><span class="comment">// &#123;&quot;name&quot;: &quot;Amber&quot;, &quot;sex&quot;: &quot;女生&quot;&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> findItem = data.filter(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> item.sex === <span class="hljs-string">&#x27;女生&#x27;</span>;<br>&#125;)<br><span class="hljs-built_in">console</span>.log(findItem)<br><span class="hljs-comment">// &#123;&quot;name&quot;: &quot;Amber&quot;, &quot;sex&quot;: &quot;女生&quot;&#125;</span><br></code></pre></td></tr></table></figure>
 
 <h2 id="every"><a href="#every" class="headerlink" title="every"></a>every</h2><p>every 可以檢測陣列是否全部元素都符合條件。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr.every(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, array</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do something...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">arr.every(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item, index, array</span>) </span>&#123;<br>  <span class="hljs-comment">// do something...</span><br>&#125;)<br></code></pre></td></tr></table></figure>
 
 <p>會回傳一個 <code>boolean</code>，陣列中的元素必須全部符合條件，最終才會回傳 <code>true</code>，否則會回傳 <code>false</code>。</p>
 <p>callback 函式可傳入以下參數：</p>
@@ -102,10 +360,10 @@ ga('send', 'pageview');</script><meta name="generator" content="Hexo 6.0.0"></he
 <li><code>array</code> 陣列本身（選用）</li>
 </ul>
 <p>範例：    判斷是否全部都是男生</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> result = data.every(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> item.sex === <span class="string">&#x27;男生&#x27;</span>;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(result); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> result = data.every(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> item.sex === <span class="hljs-string">&#x27;男生&#x27;</span>;<br>&#125;)<br><span class="hljs-built_in">console</span>.log(result); <span class="hljs-comment">// false</span><br></code></pre></td></tr></table></figure>
 
 <h2 id="some"><a href="#some" class="headerlink" title="some"></a>some</h2><p>some 與 every 概念類似，差別在於 some 用來檢測陣列是否有任何一個（或以上）元素符合條件，兩個方法從字面上也可以區別。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr.some(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, array</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do something...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">arr.some(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item, index, array</span>) </span>&#123;<br>  <span class="hljs-comment">// do something...</span><br>&#125;)<br></code></pre></td></tr></table></figure>
 
 <p>最終會回傳一個 <code>boolean</code>，陣列中只要有任何一個元素符合條件，最終就回傳 <code>true</code>，否則回傳 <code>false</code>。</p>
 <p>callback 函式可傳入以下參數：</p>
@@ -115,10 +373,10 @@ ga('send', 'pageview');</script><meta name="generator" content="Hexo 6.0.0"></he
 <li><code>array</code> 陣列本身（選用）</li>
 </ul>
 <p>範例：    判斷是否有未成年的人</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> result = data.some(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> item.age &lt; <span class="number">18</span>;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(result); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> result = data.some(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> item.age &lt; <span class="hljs-number">18</span>;<br>&#125;)<br><span class="hljs-built_in">console</span>.log(result); <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure>
 
 <h2 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h2><p>reduce 與其他陣列方法差異較大，可以將陣列中所有元素累計運算，最終回傳一個累計的結果。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">accumulator, currentValue, currentIndex, array</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do something...</span></span><br><span class="line">&#125;, initialValue)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">arr.reduce(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">accumulator, currentValue, currentIndex, array</span>) </span>&#123;<br>  <span class="hljs-comment">// do something...</span><br>&#125;, initialValue)<br></code></pre></td></tr></table></figure>
 
 <p>接收一個 callback 函式與一個起始值作為參數，callback 函式可傳入以下參數：</p>
 <ul>
@@ -130,29 +388,410 @@ ga('send', 'pageview');</script><meta name="generator" content="Hexo 6.0.0"></he
 <p>第二個參數為起始值 <code>initialValue</code>（選用），若沒有給定起始值，<code>accumulator</code> 預設會是陣列第一個元素，<code>currentValue</code> 則預設是第二個；反之，如果有給定起始值，<code>accumulator</code> 就會是給定的起始值，而 <code>currentValue</code> 會是陣列第一個元素。</p>
 <p>callback 函式每次呼叫時，會把 <code>accumulator</code> 與 <code>currentValue</code> 相加，再把相加的值再次回傳入 <code>accumulator</code>， 不斷反覆進行累計，換言之，<code>accumulator</code> 除了起始值之外，每次運算的值都是前一次相加累計的值。</p>
 <p>範例一：不指定起始值</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">const</span> totalNum = arr.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">acc, cur</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> acc + cur;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(totalNum); <span class="comment">// 15</span></span><br><span class="line"><span class="comment">// 累加過程：1+2=3 -&gt; 3+3=6 -&gt; 6+4=10 -&gt; 10+5=15</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];<br><span class="hljs-keyword">const</span> totalNum = arr.reduce(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">acc, cur</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> acc + cur;<br>&#125;)<br><span class="hljs-built_in">console</span>.log(totalNum); <span class="hljs-comment">// 15</span><br><span class="hljs-comment">// 累加過程：1+2=3 -&gt; 3+3=6 -&gt; 6+4=10 -&gt; 10+5=15</span><br></code></pre></td></tr></table></figure>
 
 <p>範例二：指定起始值為 10</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">const</span> totalNum = arr.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">acc, cur</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> acc + cur;</span><br><span class="line">&#125;, <span class="number">10</span>)</span><br><span class="line"><span class="built_in">console</span>.log(totalNum); <span class="comment">// 25</span></span><br><span class="line"><span class="comment">// 累加過程：10+1=11 -&gt; 11+2=13 -&gt; 13+3=16 -&gt; 16+4=20 -&gt; 20+5=25</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];<br><span class="hljs-keyword">const</span> totalNum = arr.reduce(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">acc, cur</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> acc + cur;<br>&#125;, <span class="hljs-number">10</span>)<br><span class="hljs-built_in">console</span>.log(totalNum); <span class="hljs-comment">// 25</span><br><span class="hljs-comment">// 累加過程：10+1=11 -&gt; 11+2=13 -&gt; 13+3=16 -&gt; 16+4=20 -&gt; 20+5=25</span><br></code></pre></td></tr></table></figure>
 
 <p>範例三：加總範例資料中所有人的年齡</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ageTotal = data.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">acc, cur</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> acc + cur.age;</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line"><span class="built_in">console</span>.log(ageTotal); <span class="comment">// 58</span></span><br><span class="line"><span class="comment">// 累加過程：0+22=22 -&gt; 22+16=38 -&gt; 38+20=58</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> ageTotal = data.reduce(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">acc, cur</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> acc + cur.age;<br>&#125;, <span class="hljs-number">0</span>)<br><span class="hljs-built_in">console</span>.log(ageTotal); <span class="hljs-comment">// 58</span><br><span class="hljs-comment">// 累加過程：0+22=22 -&gt; 22+16=38 -&gt; 38+20=58</span><br></code></pre></td></tr></table></figure>
 
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2></div><div class="article__tags"><a class="article__tags__item" href="/tags/array/">array</a></div><div class="article__author" itemscope itemprop="author" itemtype="https://schema.org/Person"><img class="article__author__image" src="/images/avatar2.jpg" alt="Cliff Chu"><a class="article__author__link" title="About Cliff Chu" rel="author">Cliff Chu</a><p class="article__author__desc">跌倒了可以先躺一下，再爬起來。</p><meta itemprop="name" content="Cliff Chu"></div><!-- Disqus Code--><!-- Meta Tags for Structured Data--><meta itemprop="dateModified" content="2022-10-19T17:47:51.010Z"><meta itemprop="articleBody" content="forEach 很萬用，但其他的也不賴。
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/JavaScript/" class="category-chain-item">JavaScript</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/array/">#array</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>JavaScript 筆記 - 陣列方法</div>
+      <div>http://kurifu.tw/2022-10-08-javascript-array-methods/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Cliff Chu</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>發布於</div>
+          <div>2022年10月8日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>許可協議</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022-10-11-javascript-string-methods/" title="JavaScript 筆記 - 字串方法">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JavaScript 筆記 - 字串方法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022-09-10-08-javascript-loop/" title="JavaScript 筆記 - 迴圈">
+                        <span class="hidden-mobile">JavaScript 筆記 - 迴圈</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'Cliff1213/cliff1213.github.io');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目錄</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
 
 
 
 
-目錄：
 
-forEach
-map
-filter
-find
-every
-some
-reduce
+  
 
 
-範例資料：
-123456789101112131415const data = [  &amp;#123;    name: &amp;#x27;Leo&amp;#x27;,    sex: &amp;#x27;男生&amp;#x27;,    age: 22 ..."><meta itemprop="url" content="http://kurifu.tw/2022-10-08-javascript-array-methods/"><meta itemprop="mainEntityOfPage" content="http://kurifu.tw/2022-10-08-javascript-array-methods/"><div itemscope itemtype="https://schema.org/Organization" itemprop="publisher"><meta itemprop="name" content="Cliff Blog"><div itemscope itemprop="logo" itemtype="https://schema.org/ImageObject"><meta itemprop="url" content="http://kurifu.tw/images/touch-icon.png"></div></div><div itemscope itemtype="https://schema.org/ImageObject" itemprop="image"><meta itemprop="contentUrl" content="http://kurifu.tw/images/banner/banner_20221008.jpg"><meta itemprop="url" content="http://kurifu.tw/images/banner/banner_20221008.jpg"><meta itemprop="width" content="1280"><meta itemprop="height" content="720"></div></article></div></div></div><footer id="footer"><div class="widgets"><div class="widgets-inner"><!-- Jade doesn't support dynamic inclusion with `each`.--><!-- So, I just hard coded the file names that will be included.--><div class="widgets__item"><h3 class="widgets__item__heading">Archives</h3><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">九月 2022</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">六月 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">2</span></li></ul></div><div class="widgets__item"><h3 class="widgets__item__heading">Categories</h3><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Package/">Package</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/RWD/">RWD</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Sass-SCSS/">Sass/SCSS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BF%83%E5%BE%97/">心得</a><span class="category-list-count">2</span></li></ul></div><div class="widgets__item"><h3 class="widgets__item__heading">Tag cloud</h3><div class="tag-cloud"><a href="/tags/Package/" style="font-size: 0.75rem;">Package</a> <a href="/tags/Scope/" style="font-size: 0.75rem;">Scope</a> <a href="/tags/Swiper/" style="font-size: 0.75rem;">Swiper</a> <a href="/tags/array/" style="font-size: 0.75rem;">array</a> <a href="/tags/asynchronous/" style="font-size: 0.75rem;">asynchronous</a> <a href="/tags/call-by-reference/" style="font-size: 0.75rem;">call by reference</a> <a href="/tags/flex/" style="font-size: 0.75rem;">flex</a> <a href="/tags/font-family/" style="font-size: 0.75rem;">font-family</a> <a href="/tags/function/" style="font-size: 0.75rem;">function</a> <a href="/tags/hoisting/" style="font-size: 0.75rem;">hoisting</a> <a href="/tags/loop/" style="font-size: 0.75rem;">loop</a> <a href="/tags/note/" style="font-size: 1.5rem;">note</a> <a href="/tags/npm/" style="font-size: 0.75rem;">npm</a> <a href="/tags/overflow/" style="font-size: 0.75rem;">overflow</a> <a href="/tags/string/" style="font-size: 0.75rem;">string</a> <a href="/tags/synchronous/" style="font-size: 0.75rem;">synchronous</a> <a href="/tags/%E5%85%AD%E8%A7%92%E5%AD%B8%E9%99%A2/" style="font-size: 1.13rem;">六角學院</a></div></div></div></div><p class="copyright"><small>© 2022 Cliff Chu<br>Powered by <a href="https://hexo.io" rel="external" target="_blank">Hexo</a>, Theme by <a href="https://github.com/hyunseob" rel="external" target="_blank">HyunSeob</a></small></p></footer><!--[if lt IE 10]><script src="/js/classList.min.js"></script><![endif]--><script src="/js/index.min.js"></script></body></html>
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">關鍵字</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允許 JavaScript 運行的環境下瀏覽效果更佳</div>
+  </noscript>
+</body>
+</html>

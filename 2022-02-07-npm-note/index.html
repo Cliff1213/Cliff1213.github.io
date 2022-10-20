@@ -1,31 +1,289 @@
-<!DOCTYPE html><html lang="zh-TW"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>NPM 基本指令 | Cliff Blog</title><link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/css/highlights/dracula.css"><link rel="canonical" href="http://kurifu.tw/2022-02-07-npm-note/"/>
-<meta name="description" content="JavaScript 套件用到懷疑人生，主要是因為被版本造成的各種問題困擾，因此淺淺的紀錄一下相關內容。    甚麼是 NPM？全名 Node Package Manager，是一種套件管理工具，簡言之就是匯集各種 Node js 套件的線上庫。  安裝 Node JS…">
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/touch-icon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Cliff Chu">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="JavaScript 套件用到懷疑人生，主要是因為被版本造成的各種問題困擾，因此淺淺的紀錄一下相關內容。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NPM 基本指令">
-<meta property="og:url" content="http://kurifu.tw/2022-02-07-npm-note/">
+<meta property="og:url" content="http://kurifu.tw/2022-02-07-npm-note/index.html">
 <meta property="og:site_name" content="Cliff Blog">
-<meta property="og:description" content="JavaScript 套件用到懷疑人生，主要是因為被版本造成的各種問題困擾，因此淺淺的紀錄一下相關內容。    甚麼是 NPM？全名 Node Package Manager，是一種套件管理工具，簡言之就是匯集各種 Node js 套件的線上庫。  安裝 Node JS…">
+<meta property="og:description" content="JavaScript 套件用到懷疑人生，主要是因為被版本造成的各種問題困擾，因此淺淺的紀錄一下相關內容。">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="http://kurifu.tw/images/banner/banner_npm.jpg">
+<meta property="og:image" content="http://kurifu.tw/img/banner/banner_npm.jpg">
 <meta property="article:published_time" content="2022-02-06T16:00:00.000Z">
 <meta property="article:author" content="Cliff Chu">
 <meta property="article:tag" content="npm">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://kurifu.tw/images/banner/banner_npm.jpg"><meta property="article:author" content="Cliff Chu"><meta property="twitter:label1" content="Published at"><meta property="twitter:data1" content="2022-02-07 00:00:00"><meta property="twitter:label2" content="Written by"><meta property="twitter:data2" content="Cliff Chu"><link rel="icon" href="/images/touch-icon.png"><script>(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'G-106NQBHYEM', 'auto');
-ga('send', 'pageview');</script><meta name="generator" content="Hexo 6.0.0"></head><body itemscope itemtype="https://schema.org/WebPage"><nav class="menu" id="menu"><div class="menu-inner"><div class="menu__left-area"><div class="menu__item"><a class="menu__item__link menu__item__link--brand" href="/" title="Home" rel="home"><img class="menu__item__link--brand__image" src="/images/touch-icon.png" alt="Cliff Blog"><span class="menu__item__link--brand__label">Cliff Blog</span></a></div></div><div class="menu__right-area"><div class="menu__item"><a class="menu__item__link" href="/">Home</a></div><div class="menu__item"><a class="menu__item__link" href="/about">About</a></div></div></div></nav><div class="page-background"></div><div class="content-container"><div class="content-outer"><div class="content-inner" itemscope itemtype="https://schema.org/Blog"><article class="article" id="article" itemscope itemtype="https://schema.org/BlogPosting"><h1 class="article__title" itemprop="headline">NPM 基本指令</h1><div class="article__meta"><time class="article__meta__time" datetime="2022-02-06T16:00:00.000Z" itemprop="datePublished">2022-02-07 00:00:00</time><div class="article__meta__categories"><a class="article__meta__categories__item" href="/categories/Package/">Package</a></div></div><div class="article__contents"><img src="/images/banner/banner_npm.jpg"/><p>JavaScript 套件用到懷疑人生，主要是因為被版本造成的各種問題困擾，因此淺淺的紀錄一下相關內容。</p>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://kurifu.tw/img/banner/banner_npm.jpg">
+  
+  
+  
+  <title>NPM 基本指令 - Cliff Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"kurifu.tw","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":"G-106NQBHYEM","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Cliff Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首頁
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                歸檔
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分類
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                標籤
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                關於
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="NPM 基本指令"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-02-07 00:00" pubdate>
+          2022年2月7日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          16 分鐘
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">NPM 基本指令</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>JavaScript 套件用到懷疑人生，主要是因為被版本造成的各種問題困擾，因此淺淺的紀錄一下相關內容。</p>
 <span id="more"></span>
 
 <hr>
 <h2 id="甚麼是-NPM？"><a href="#甚麼是-NPM？" class="headerlink" title="甚麼是 NPM？"></a>甚麼是 NPM？</h2><p>全名 Node Package Manager，是一種套件管理工具，簡言之就是匯集各種 Node js 套件的線上庫。</p>
 <hr>
-<h2 id="安裝-Node-JS-amp-NPM"><a href="#安裝-Node-JS-amp-NPM" class="headerlink" title="安裝 Node JS &amp; NPM"></a>安裝 Node JS &amp; NPM</h2><p><img src="https://i.imgur.com/O3WVkU4.png"></p>
+<h2 id="安裝-Node-JS-amp-NPM"><a href="#安裝-Node-JS-amp-NPM" class="headerlink" title="安裝 Node JS &amp; NPM"></a>安裝 Node JS &amp; NPM</h2><p><img src="https://i.imgur.com/O3WVkU4.png" srcset="/img/loading.gif" lazyload></p>
 <p>上圖是 <a target="_blank" rel="noopener" href="https://nodejs.org/en/">Node js 官網</a>所提供的下載點，可以看到分成兩個部分，左邊為 LTS（Long Term Support），屬於長期支援維護的版本，可以理解成較穩定的版本；右邊 Current 的部分則是最近、最新的版本。</p>
 <p>Node js 官方在版本的釋出上有自己的邏輯，通常會在每年四月份發布偶數版本，十月份發布奇數版本，可以從下圖看到近期的版本維護狀態：</p>
-<p><img src="https://i.imgur.com/zOGuPaZ.png"></p>
+<p><img src="https://i.imgur.com/zOGuPaZ.png" srcset="/img/loading.gif" lazyload></p>
 <p>新的版本在發布後，版本號如果是奇數，六個月後就不會再維護；但版本號如果是偶數，半年後就會進入長期維護（Active LTS）的狀態，並保證在接下來的三十個月內會更新與修復各種問題，因此新專案通常會選擇安裝 LTS 的版本。</p>
 <p>接著進入正題，要如何安裝 NPM？這個問題其實在安裝 Node 後就已經解決了，因為 NPM 是 Node js 開發環境預設的套件管理工具（Packge Manager），因此在安裝 Node 的同時，NPM 會跟著一起安裝。</p>
 <blockquote>
@@ -34,37 +292,37 @@ ga('send', 'pageview');</script><meta name="generator" content="Hexo 6.0.0"></he
 <p>安裝完成後，開啟任一終端機即可開始操作。</p>
 <hr>
 <h2 id="檢視版本"><a href="#檢視版本" class="headerlink" title="檢視版本"></a>檢視版本</h2><p>在終端機輸入以下指令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">npm</span> -v<br></code></pre></td></tr></table></figure>
 
 <p>如果顯示 npm 版本號，表示安裝成功，如下所示：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">6.9.0</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">6</span>.<span class="hljs-number">9</span>.<span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
 
 <hr>
 <h2 id="初始化目錄"><a href="#初始化目錄" class="headerlink" title="初始化目錄"></a>初始化目錄</h2><p>指定任一資料夾為目錄，輸入以下指令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init</span><br></pre></td></tr></table></figure>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">npm</span> init<br></code></pre></td></tr></table></figure>
 
 <p>此時會顯示訊息要求輸入專案的一些資訊，如下所示：</p>
-<p><img src="https://i.imgur.com/bGQsEeb.png"></p>
+<p><img src="https://i.imgur.com/bGQsEeb.png" srcset="/img/loading.gif" lazyload></p>
 <p>上述部分只需要持續按下 Enter 即可。</p>
 <p>接著透過編輯器開啟專案資料夾，可以看到一個 package.json 的檔案，這是資料夾在進行 npm 初始化後所產生的 json 格式檔案，內容主要是紀錄專案的資訊，如下所示：</p>
-<p><img src="https://i.imgur.com/yjjj8ZV.png"></p>
+<p><img src="https://i.imgur.com/yjjj8ZV.png" srcset="/img/loading.gif" lazyload></p>
 <hr>
-<h2 id="安裝套件"><a href="#安裝套件" class="headerlink" title="安裝套件"></a>安裝套件</h2><h3 id="全域安裝"><a href="#全域安裝" class="headerlink" title="全域安裝"></a><strong>全域安裝</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g 套件名稱</span><br></pre></td></tr></table></figure>
+<h2 id="安裝套件"><a href="#安裝套件" class="headerlink" title="安裝套件"></a>安裝套件</h2><h3 id="全域安裝"><a href="#全域安裝" class="headerlink" title="全域安裝"></a><strong>全域安裝</strong></h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span> -g 套件名稱<br></code></pre></td></tr></table></figure>
 
 <p>安裝套件時，在指令加入 <code>-g</code>，套件就會被安裝在全域，也就是當前使用的電腦上；這樣做的好處是，當有其他專案需要使用這個套件時，就不用再另外安裝該套件在專案資料夾中。</p>
-<h3 id="安裝於指定目錄"><a href="#安裝於指定目錄" class="headerlink" title="安裝於指定目錄"></a><strong>安裝於指定目錄</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save 套件名稱</span><br></pre></td></tr></table></figure>
+<h3 id="安裝於指定目錄"><a href="#安裝於指定目錄" class="headerlink" title="安裝於指定目錄"></a><strong>安裝於指定目錄</strong></h3><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">npm install <span class="hljs-comment">--save 套件名稱</span><br></code></pre></td></tr></table></figure>
 
 <p>以指定專案資料夾為目錄並執行上述指令，套件就會被安裝在該資料夾中，在加入 <code>--save</code> 參數後，這個套件就會被記錄在 package.json 檔案裡，下列以安裝 jquery 為範例：</p>
-<p><img src="https://i.imgur.com/n1jRC8k.png"></p>
+<p><img src="https://i.imgur.com/n1jRC8k.png" srcset="/img/loading.gif" lazyload></p>
 <p>可以看到檔案中新增了一個 dependencies 項目，並且在下方可以看到已安裝的 jquery 套件與對應版本。</p>
 <p>因為不同專案所使用的套件與套件版本不同，因此在接手別人開發的專案時，可以先依據 dependencies 中的資訊來安裝對應的套件。</p>
 <hr>
 <h2 id="安裝指定版本套件"><a href="#安裝指定版本套件" class="headerlink" title="安裝指定版本套件"></a>安裝指定版本套件</h2><p>正常的情況下，安裝下來的套件預設會是最新的版本，但一些較舊的專案可能不支援新版本的套件，此時就可以使用以下指令來安裝指定版本的套件。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install 套件名稱@版本號</span><br></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span> 套件名稱@版本號<br></code></pre></td></tr></table></figure>
 
 <hr>
 <h2 id="版本數字意義"><a href="#版本數字意義" class="headerlink" title="版本數字意義"></a>版本數字意義</h2><p>通常套件的版本會以 3 個數字的格式來表示，但每個數字所代表的意義其實不同，下列以 jquery 為例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;jquery&quot;： &quot;^3.6.0&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 1c"><span class="hljs-string">&quot;jquery&quot;</span>： <span class="hljs-string">&quot;^3.6.0&quot;</span><br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><code>3</code> - 主要版本，通常會因為重大改版而增加版本號。</li>
@@ -80,20 +338,411 @@ ga('send', 'pageview');</script><meta name="generator" content="Hexo 6.0.0"></he
 <li>未加入任何符號，表示只安裝當前輸入的版本。</li>
 </ul>
 <p>更新套件版本的方式，只需要將專案資料夾中的 node_modules 刪除，再重新執行以下指令，系統就會根據該專案中的 package.json 檔案設置來安裝所有會使用到的套件。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span><br></code></pre></td></tr></table></figure>
 
 <hr>
-<h2 id="移除套件"><a href="#移除套件" class="headerlink" title="移除套件"></a>移除套件</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall 套件名稱</span><br></pre></td></tr></table></figure>
+<h2 id="移除套件"><a href="#移除套件" class="headerlink" title="移除套件"></a>移除套件</h2><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">npm</span> uninstall 套件名稱<br></code></pre></td></tr></table></figure>
 
 <p>需要注意的是，上述指令只會將專案資料夾中的套件移除，但是並不會同時更新 package.json 檔案中的設置，如果有這個需求，只需要在指令中加入 <code>--save</code> 參數即可。</p>
 <hr>
 <p><strong>參考資料：</strong></p>
 <p><a target="_blank" rel="noopener" href="https://medium.com/html-test/%E5%BE%9E%E9%9B%B6%E9%96%8B%E5%A7%8B-%E4%BD%BF%E7%94%A8npm%E5%A5%97%E4%BB%B6-317beefdf182">從零開始：使用NPM套件</a><br><a target="_blank" rel="noopener" href="https://linyencheng.github.io/2020/03/22/tool-npm/">npm 入門到進階</a></p>
-</div><div class="article__tags"><a class="article__tags__item" href="/tags/npm/">npm</a></div><div class="article__author" itemscope itemprop="author" itemtype="https://schema.org/Person"><img class="article__author__image" src="/images/avatar2.jpg" alt="Cliff Chu"><a class="article__author__link" title="About Cliff Chu" rel="author">Cliff Chu</a><p class="article__author__desc">跌倒了可以先躺一下，再爬起來。</p><meta itemprop="name" content="Cliff Chu"></div><!-- Disqus Code--><!-- Meta Tags for Structured Data--><meta itemprop="dateModified" content="2022-10-19T17:47:51.053Z"><meta itemprop="articleBody" content="JavaScript 套件用到懷疑人生，主要是因為被版本造成的各種問題困擾，因此淺淺的紀錄一下相關內容。
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Package/" class="category-chain-item">Package</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/npm/">#npm</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>NPM 基本指令</div>
+      <div>http://kurifu.tw/2022-02-07-npm-note/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Cliff Chu</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>發布於</div>
+          <div>2022年2月7日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>許可協議</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
 
 
 
-甚麼是 NPM？全名 Node Package Manager，是一種套件管理工具，簡言之就是匯集各種 Node js 套件的線上庫。
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022-03-02-css-font-family/" title="關於 CSS Font-Family">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">關於 CSS Font-Family</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022-01-20-git-note/" title="Git 學習筆記">
+                        <span class="hidden-mobile">Git 學習筆記</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
 
-安裝 Node JS &amp;amp; NPM
-上圖是 Node js 官網所提供的下載點，可以看到分成兩個部分，左邊為 LTS（Long Term..."><meta itemprop="url" content="http://kurifu.tw/2022-02-07-npm-note/"><meta itemprop="mainEntityOfPage" content="http://kurifu.tw/2022-02-07-npm-note/"><div itemscope itemtype="https://schema.org/Organization" itemprop="publisher"><meta itemprop="name" content="Cliff Blog"><div itemscope itemprop="logo" itemtype="https://schema.org/ImageObject"><meta itemprop="url" content="http://kurifu.tw/images/touch-icon.png"></div></div><div itemscope itemtype="https://schema.org/ImageObject" itemprop="image"><meta itemprop="contentUrl" content="http://kurifu.tw/images/banner/banner_npm.jpg"><meta itemprop="url" content="http://kurifu.tw/images/banner/banner_npm.jpg"><meta itemprop="width" content="1280"><meta itemprop="height" content="720"></div></article></div></div></div><footer id="footer"><div class="widgets"><div class="widgets-inner"><!-- Jade doesn't support dynamic inclusion with `each`.--><!-- So, I just hard coded the file names that will be included.--><div class="widgets__item"><h3 class="widgets__item__heading">Archives</h3><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">九月 2022</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">六月 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">2</span></li></ul></div><div class="widgets__item"><h3 class="widgets__item__heading">Categories</h3><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Package/">Package</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/RWD/">RWD</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Sass-SCSS/">Sass/SCSS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BF%83%E5%BE%97/">心得</a><span class="category-list-count">2</span></li></ul></div><div class="widgets__item"><h3 class="widgets__item__heading">Tag cloud</h3><div class="tag-cloud"><a href="/tags/Package/" style="font-size: 0.75rem;">Package</a> <a href="/tags/Scope/" style="font-size: 0.75rem;">Scope</a> <a href="/tags/Swiper/" style="font-size: 0.75rem;">Swiper</a> <a href="/tags/array/" style="font-size: 0.75rem;">array</a> <a href="/tags/asynchronous/" style="font-size: 0.75rem;">asynchronous</a> <a href="/tags/call-by-reference/" style="font-size: 0.75rem;">call by reference</a> <a href="/tags/flex/" style="font-size: 0.75rem;">flex</a> <a href="/tags/font-family/" style="font-size: 0.75rem;">font-family</a> <a href="/tags/function/" style="font-size: 0.75rem;">function</a> <a href="/tags/hoisting/" style="font-size: 0.75rem;">hoisting</a> <a href="/tags/loop/" style="font-size: 0.75rem;">loop</a> <a href="/tags/note/" style="font-size: 1.5rem;">note</a> <a href="/tags/npm/" style="font-size: 0.75rem;">npm</a> <a href="/tags/overflow/" style="font-size: 0.75rem;">overflow</a> <a href="/tags/string/" style="font-size: 0.75rem;">string</a> <a href="/tags/synchronous/" style="font-size: 0.75rem;">synchronous</a> <a href="/tags/%E5%85%AD%E8%A7%92%E5%AD%B8%E9%99%A2/" style="font-size: 1.13rem;">六角學院</a></div></div></div></div><p class="copyright"><small>© 2022 Cliff Chu<br>Powered by <a href="https://hexo.io" rel="external" target="_blank">Hexo</a>, Theme by <a href="https://github.com/hyunseob" rel="external" target="_blank">HyunSeob</a></small></p></footer><!--[if lt IE 10]><script src="/js/classList.min.js"></script><![endif]--><script src="/js/index.min.js"></script></body></html>
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'Cliff1213/cliff1213.github.io');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目錄</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">關鍵字</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允許 JavaScript 運行的環境下瀏覽效果更佳</div>
+  </noscript>
+</body>
+</html>

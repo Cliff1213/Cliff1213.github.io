@@ -1,45 +1,303 @@
-<!DOCTYPE html><html lang="zh-TW"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>JavaScript 套件 - Swiper | Cliff Blog</title><link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/css/highlights/dracula.css"><link rel="canonical" href="http://kurifu.tw/2022-06-06-swiper-note/"/>
-<meta name="description" content="輪播效果小幫手。    Swiper 套件Swiper 是一個製作網頁輪播效果的 JavaScript 插件。 安裝CDN透過 CDN 方式安裝 Swiper 時，需要同時引入 swiper-bundle.min.css 與 swiper-bundle.min.js…">
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/touch-icon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Cliff Chu">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="輪播效果小幫手。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript 套件 - Swiper">
-<meta property="og:url" content="http://kurifu.tw/2022-06-06-swiper-note/">
+<meta property="og:url" content="http://kurifu.tw/2022-06-06-swiper-note/index.html">
 <meta property="og:site_name" content="Cliff Blog">
-<meta property="og:description" content="輪播效果小幫手。    Swiper 套件Swiper 是一個製作網頁輪播效果的 JavaScript 插件。 安裝CDN透過 CDN 方式安裝 Swiper 時，需要同時引入 swiper-bundle.min.css 與 swiper-bundle.min.js…">
+<meta property="og:description" content="輪播效果小幫手。">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="http://kurifu.tw/images/banner/banner_20220601.jpg">
+<meta property="og:image" content="http://kurifu.tw/img/banner/banner_20220601.jpg">
 <meta property="article:published_time" content="2022-05-31T16:00:00.000Z">
 <meta property="article:author" content="Cliff Chu">
 <meta property="article:tag" content="Swiper">
 <meta property="article:tag" content="Package">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://kurifu.tw/images/banner/banner_20220601.jpg"><meta property="article:author" content="Cliff Chu"><meta property="twitter:label1" content="Published at"><meta property="twitter:data1" content="2022-06-01 00:00:00"><meta property="twitter:label2" content="Written by"><meta property="twitter:data2" content="Cliff Chu"><link rel="icon" href="/images/touch-icon.png"><script>(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'G-106NQBHYEM', 'auto');
-ga('send', 'pageview');</script><meta name="generator" content="Hexo 6.0.0"></head><body itemscope itemtype="https://schema.org/WebPage"><nav class="menu" id="menu"><div class="menu-inner"><div class="menu__left-area"><div class="menu__item"><a class="menu__item__link menu__item__link--brand" href="/" title="Home" rel="home"><img class="menu__item__link--brand__image" src="/images/touch-icon.png" alt="Cliff Blog"><span class="menu__item__link--brand__label">Cliff Blog</span></a></div></div><div class="menu__right-area"><div class="menu__item"><a class="menu__item__link" href="/">Home</a></div><div class="menu__item"><a class="menu__item__link" href="/about">About</a></div></div></div></nav><div class="page-background"></div><div class="content-container"><div class="content-outer"><div class="content-inner" itemscope itemtype="https://schema.org/Blog"><article class="article" id="article" itemscope itemtype="https://schema.org/BlogPosting"><h1 class="article__title" itemprop="headline">JavaScript 套件 - Swiper</h1><div class="article__meta"><time class="article__meta__time" datetime="2022-05-31T16:00:00.000Z" itemprop="datePublished">2022-06-01 00:00:00</time><div class="article__meta__categories"><a class="article__meta__categories__item" href="/categories/Package/">Package</a></div></div><div class="article__contents"><img src="/images/banner/banner_20220601.jpg"/><p>輪播效果小幫手。</p>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://kurifu.tw/img/banner/banner_20220601.jpg">
+  
+  
+  
+  <title>JavaScript 套件 - Swiper - Cliff Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"kurifu.tw","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":"G-106NQBHYEM","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Cliff Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首頁
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                歸檔
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分類
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                標籤
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                關於
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="JavaScript 套件 - Swiper"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-01 00:00" pubdate>
+          2022年6月1日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          26 分鐘
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">JavaScript 套件 - Swiper</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>輪播效果小幫手。</p>
 <span id="more"></span>
 
 <hr>
 <h2 id="Swiper-套件"><a href="#Swiper-套件" class="headerlink" title="Swiper 套件"></a>Swiper 套件</h2><p><a target="_blank" rel="noopener" href="https://swiperjs.com/get-started">Swiper</a> 是一個製作網頁輪播效果的 JavaScript 插件。</p>
 <h2 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h2><h3 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h3><p>透過 CDN 方式安裝 Swiper 時，需要同時引入 <code>swiper-bundle.min.css</code> 與 <code>swiper-bundle.min.js</code> 兩個檔案，引入壓縮後的版本即可。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- In head --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;https://unpkg.com/swiper@8/swiper-bundle.min.css&quot;</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- In front of body end tag --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/swiper@8/swiper-bundle.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- In head --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://unpkg.com/swiper@8/swiper-bundle.min.css&quot;</span>/&gt;</span><br><span class="hljs-comment">&lt;!-- In front of body end tag --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://unpkg.com/swiper@8/swiper-bundle.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
-<h3 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install swiper</span><br></pre></td></tr></table></figure>
+<h3 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ npm install swiper<br></code></pre></td></tr></table></figure>
 
 <hr>
 <h2 id="基礎結構"><a href="#基礎結構" class="headerlink" title="基礎結構"></a>基礎結構</h2><h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><p>使用 Swiper 時，<code>swiper-container</code>、<code>swiper-wrapper</code>、<code>swiper-slide</code> 三者為必要存在的元素。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Slider main container --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-container&quot;</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- Additional required wrapper --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-wrapper&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Slides --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    ...  <span class="comment">&lt;!-- 新增 swiper-slide 數量 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- If we need pagination --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-pagination&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- If we need navigation buttons --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-button-prev&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-button-next&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- If we need scrollbar --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;swiper-scrollbar&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- Slider main container --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-container&quot;</span>&gt;</span><br>  <span class="hljs-comment">&lt;!-- Additional required wrapper --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-wrapper&quot;</span>&gt;</span><br>    <span class="hljs-comment">&lt;!-- Slides --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 1<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 2<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 3<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    ...  <span class="hljs-comment">&lt;!-- 新增 swiper-slide 數量 --&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-comment">&lt;!-- If we need pagination --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-pagination&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br>  <span class="hljs-comment">&lt;!-- If we need navigation buttons --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-button-prev&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-button-next&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br>  <span class="hljs-comment">&lt;!-- If we need scrollbar --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-scrollbar&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
 <p>需要進行輪播的內容，會放在 <code>swiper-slide</code> 之中，數量可依需求自行新增。</p>
 <h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><p>Swiper 在初始化時，會帶入一個 DOM / CSS Selector，以及一個參數（字串），如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> swiper = <span class="keyword">new</span> Swiper( swiperContainer, parameter );</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> swiper = <span class="hljs-keyword">new</span> Swiper( swiperContainer, parameter );<br></code></pre></td></tr></table></figure>
 
 <p>官方範例如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> swiper = <span class="keyword">new</span> Swiper(<span class="string">&quot;.swiper-container&quot;</span>, &#123;</span><br><span class="line">  <span class="comment">// Optional parameters / 加入參數與設定值</span></span><br><span class="line">  <span class="attr">direction</span>: <span class="string">&quot;vertical&quot;</span>, <span class="comment">// 輪播方向</span></span><br><span class="line">  <span class="attr">loop</span>: <span class="literal">true</span>, <span class="comment">// 重複顯示</span></span><br><span class="line">  <span class="comment">// If we need pagination / 是否顯示分頁</span></span><br><span class="line">  <span class="attr">pagination</span>: &#123;</span><br><span class="line">    <span class="attr">el</span>: <span class="string">&quot;.swiper-pagination&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// Navigation arrows / 是否加入上、下一頁方向圖示</span></span><br><span class="line">  <span class="attr">navigation</span>: &#123;</span><br><span class="line">    <span class="attr">nextEl</span>: <span class="string">&quot;.swiper-button-next&quot;</span>,</span><br><span class="line">    <span class="attr">prevEl</span>: <span class="string">&quot;.swiper-button-prev&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// And if we need scrollbar / 是否顯示滾動軸</span></span><br><span class="line">  <span class="attr">scrollbar</span>: &#123;</span><br><span class="line">    <span class="attr">el</span>: <span class="string">&quot;.swiper-scrollbar&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&quot;.swiper-container&quot;</span>, &#123;<br>  <span class="hljs-comment">// Optional parameters / 加入參數與設定值</span><br>  <span class="hljs-attr">direction</span>: <span class="hljs-string">&quot;vertical&quot;</span>, <span class="hljs-comment">// 輪播方向</span><br>  <span class="hljs-attr">loop</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 重複顯示</span><br>  <span class="hljs-comment">// If we need pagination / 是否顯示分頁</span><br>  <span class="hljs-attr">pagination</span>: &#123;<br>    <span class="hljs-attr">el</span>: <span class="hljs-string">&quot;.swiper-pagination&quot;</span><br>  &#125;,<br>  <span class="hljs-comment">// Navigation arrows / 是否加入上、下一頁方向圖示</span><br>  <span class="hljs-attr">navigation</span>: &#123;<br>    <span class="hljs-attr">nextEl</span>: <span class="hljs-string">&quot;.swiper-button-next&quot;</span>,<br>    <span class="hljs-attr">prevEl</span>: <span class="hljs-string">&quot;.swiper-button-prev&quot;</span><br>  &#125;,<br>  <span class="hljs-comment">// And if we need scrollbar / 是否顯示滾動軸</span><br>  <span class="hljs-attr">scrollbar</span>: &#123;<br>    <span class="hljs-attr">el</span>: <span class="hljs-string">&quot;.swiper-scrollbar&quot;</span><br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
 
 <h3 id="設定容器寬度"><a href="#設定容器寬度" class="headerlink" title="設定容器寬度"></a>設定容器寬度</h3><p>可自訂意義 Swiper 容器大小，範例如下：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.swiper</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">600px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.swiper</span> &#123;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">600px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">300px</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <hr>
 <h2 id="常見參數"><a href="#常見參數" class="headerlink" title="常見參數"></a>常見參數</h2><p>除了先前官方範例提到的參數之外，以下列出一些在不同的版型下，可能會使用到的參數設定，更多可使用的參數可查閱<a target="_blank" rel="noopener" href="https://swiperjs.com/swiper-api">官方文件</a>。</p>
@@ -47,27 +305,421 @@ ga('send', 'pageview');</script><meta name="generator" content="Hexo 6.0.0"></he
 <p>主要用來變更輪播時的轉場效果，預設值為 <code>slide</code>，其他可使用效果還有 <code>fade</code>、<code>cube</code>、<code>coverflow</code>、<code>flip</code>、<code>creative</code>、<code>cards</code>。</p>
 <p><strong><code>autoplay</code></strong></p>
 <p>該參數屬於一個物件，會依據給予的屬性設定來自定義自動輪播的形式，範例如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> swiper = <span class="keyword">new</span> Swiper(<span class="string">&quot;.swiper-container&quot;</span>, &#123;</span><br><span class="line">  <span class="attr">autoplay</span>: &#123;</span><br><span class="line">    <span class="attr">delay</span>: <span class="number">5000</span>, <span class="comment">// 自動輪播延遲時間</span></span><br><span class="line">    <span class="attr">disableOnInteraction</span>: <span class="literal">false</span>, <span class="comment">// 手動滑動後，停止自動撥放，預設值為 true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&quot;.swiper-container&quot;</span>, &#123;<br>  <span class="hljs-attr">autoplay</span>: &#123;<br>    <span class="hljs-attr">delay</span>: <span class="hljs-number">5000</span>, <span class="hljs-comment">// 自動輪播延遲時間</span><br>    <span class="hljs-attr">disableOnInteraction</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 手動滑動後，停止自動撥放，預設值為 true</span><br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
 
 <p><strong><code>slidesPerView</code></strong></p>
 <p>該參數可以決定輪播時，同時顯示的 <code>swiper-slide</code> 數量，範例如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> swiper = <span class="keyword">new</span> Swiper(<span class="string">&quot;.swiper-container&quot;</span>, &#123;</span><br><span class="line">  <span class="attr">slidesPerView</span>: <span class="number">3</span> <span class="comment">// 同時顯示 3 個 swiper-slide</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&quot;.swiper-container&quot;</span>, &#123;<br>  <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">3</span> <span class="hljs-comment">// 同時顯示 3 個 swiper-slide</span><br>&#125;);<br></code></pre></td></tr></table></figure>
 
 <blockquote>
 <p>加入參數 <code>slidesPerView</code> 後，<code>swiper-slide</code> 的寬度會根據 swiper-container 來均分。</p>
 </blockquote>
 <p><strong><code>breakpoints</code></strong></p>
 <p>加入該參數後，配合參數 <code>slidesPerView</code> 可根據所設定的斷點來達成響應式的效果，範例如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> swiper = <span class="keyword">new</span> Swiper(<span class="string">&#x27;.swiper&#x27;</span>, &#123;</span><br><span class="line">  <span class="comment">// 預設的顯示數量為 1</span></span><br><span class="line">  <span class="attr">slidesPerView</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="comment">// 以下為斷點設定</span></span><br><span class="line">  <span class="attr">breakpoints</span>: &#123;</span><br><span class="line">    <span class="comment">// 當頁面寬度大於 768px 時，同時顯示數量為 2</span></span><br><span class="line">    <span class="number">768</span>: &#123;</span><br><span class="line">      <span class="attr">slidesPerView</span>: <span class="number">2</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 當頁面寬度大於 992px 時，同時顯示數量為 3</span></span><br><span class="line">    <span class="number">992</span>: &#123;</span><br><span class="line">      <span class="attr">slidesPerView</span>: <span class="number">3</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&#x27;.swiper&#x27;</span>, &#123;<br>  <span class="hljs-comment">// 預設的顯示數量為 1</span><br>  <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">1</span>,<br>  <span class="hljs-comment">// 以下為斷點設定</span><br>  <span class="hljs-attr">breakpoints</span>: &#123;<br>    <span class="hljs-comment">// 當頁面寬度大於 768px 時，同時顯示數量為 2</span><br>    <span class="hljs-number">768</span>: &#123;<br>      <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">2</span><br>    &#125;,<br>    <span class="hljs-comment">// 當頁面寬度大於 992px 時，同時顯示數量為 3</span><br>    <span class="hljs-number">992</span>: &#123;<br>      <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">3</span><br>    &#125;<br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
 
 <p><strong><code>spacebetween</code></strong></p>
 <p>該參數可以設定每個 <code>swiper-slide</code> 之間的間隙，範例如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> swiper = <span class="keyword">new</span> Swiper(<span class="string">&#x27;.swiper&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">slidesPerView</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">spacebetween</span>: <span class="number">16</span>, <span class="comment">// 預設間隔為 20px</span></span><br><span class="line">  <span class="attr">breakpoints</span>: &#123;</span><br><span class="line">    <span class="number">768</span>: &#123;</span><br><span class="line">      <span class="attr">slidesPerView</span>: <span class="number">3</span>,</span><br><span class="line">      <span class="attr">spacebetween</span>: <span class="number">24</span> <span class="comment">// 當頁面寬度大於 768px 時，間隔為 24px</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&#x27;.swiper&#x27;</span>, &#123;<br>  <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">2</span>,<br>  <span class="hljs-attr">spacebetween</span>: <span class="hljs-number">16</span>, <span class="hljs-comment">// 預設間隔為 20px</span><br>  <span class="hljs-attr">breakpoints</span>: &#123;<br>    <span class="hljs-number">768</span>: &#123;<br>      <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">3</span>,<br>      <span class="hljs-attr">spacebetween</span>: <span class="hljs-number">24</span> <span class="hljs-comment">// 當頁面寬度大於 768px 時，間隔為 24px</span><br>    &#125;<br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
 <hr>
-</div><div class="article__tags"><a class="article__tags__item" href="/tags/Swiper/">Swiper</a><a class="article__tags__item" href="/tags/Package/">Package</a></div><div class="article__author" itemscope itemprop="author" itemtype="https://schema.org/Person"><img class="article__author__image" src="/images/avatar2.jpg" alt="Cliff Chu"><a class="article__author__link" title="About Cliff Chu" rel="author">Cliff Chu</a><p class="article__author__desc">跌倒了可以先躺一下，再爬起來。</p><meta itemprop="name" content="Cliff Chu"></div><!-- Disqus Code--><!-- Meta Tags for Structured Data--><meta itemprop="dateModified" content="2022-10-19T17:47:51.034Z"><meta itemprop="articleBody" content="輪播效果小幫手。
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Package/" class="category-chain-item">Package</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Swiper/">#Swiper</a>
+      
+        <a href="/tags/Package/">#Package</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>JavaScript 套件 - Swiper</div>
+      <div>http://kurifu.tw/2022-06-06-swiper-note/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Cliff Chu</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>發布於</div>
+          <div>2022年6月1日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>許可協議</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
 
 
 
-Swiper 套件Swiper 是一個製作網頁輪播效果的 JavaScript 插件。
-安裝CDN透過 CDN 方式安裝 Swiper 時，需要同時引入 swiper-bundle.min.css 與 swiper-bundle.min.js 兩個檔案，引入壓縮後的版本即可。
-1234&amp;lt;!-- In head --&amp;gt;&amp;lt;link..."><meta itemprop="url" content="http://kurifu.tw/2022-06-06-swiper-note/"><meta itemprop="mainEntityOfPage" content="http://kurifu.tw/2022-06-06-swiper-note/"><div itemscope itemtype="https://schema.org/Organization" itemprop="publisher"><meta itemprop="name" content="Cliff Blog"><div itemscope itemprop="logo" itemtype="https://schema.org/ImageObject"><meta itemprop="url" content="http://kurifu.tw/images/touch-icon.png"></div></div><div itemscope itemtype="https://schema.org/ImageObject" itemprop="image"><meta itemprop="contentUrl" content="http://kurifu.tw/images/banner/banner_20220601.jpg"><meta itemprop="url" content="http://kurifu.tw/images/banner/banner_20220601.jpg"><meta itemprop="width" content="1280"><meta itemprop="height" content="720"></div></article></div></div></div><footer id="footer"><div class="widgets"><div class="widgets-inner"><!-- Jade doesn't support dynamic inclusion with `each`.--><!-- So, I just hard coded the file names that will be included.--><div class="widgets__item"><h3 class="widgets__item__heading">Archives</h3><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">九月 2022</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">六月 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">2</span></li></ul></div><div class="widgets__item"><h3 class="widgets__item__heading">Categories</h3><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Package/">Package</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/RWD/">RWD</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Sass-SCSS/">Sass/SCSS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BF%83%E5%BE%97/">心得</a><span class="category-list-count">2</span></li></ul></div><div class="widgets__item"><h3 class="widgets__item__heading">Tag cloud</h3><div class="tag-cloud"><a href="/tags/Package/" style="font-size: 0.75rem;">Package</a> <a href="/tags/Scope/" style="font-size: 0.75rem;">Scope</a> <a href="/tags/Swiper/" style="font-size: 0.75rem;">Swiper</a> <a href="/tags/array/" style="font-size: 0.75rem;">array</a> <a href="/tags/asynchronous/" style="font-size: 0.75rem;">asynchronous</a> <a href="/tags/call-by-reference/" style="font-size: 0.75rem;">call by reference</a> <a href="/tags/flex/" style="font-size: 0.75rem;">flex</a> <a href="/tags/font-family/" style="font-size: 0.75rem;">font-family</a> <a href="/tags/function/" style="font-size: 0.75rem;">function</a> <a href="/tags/hoisting/" style="font-size: 0.75rem;">hoisting</a> <a href="/tags/loop/" style="font-size: 0.75rem;">loop</a> <a href="/tags/note/" style="font-size: 1.5rem;">note</a> <a href="/tags/npm/" style="font-size: 0.75rem;">npm</a> <a href="/tags/overflow/" style="font-size: 0.75rem;">overflow</a> <a href="/tags/string/" style="font-size: 0.75rem;">string</a> <a href="/tags/synchronous/" style="font-size: 0.75rem;">synchronous</a> <a href="/tags/%E5%85%AD%E8%A7%92%E5%AD%B8%E9%99%A2/" style="font-size: 1.13rem;">六角學院</a></div></div></div></div><p class="copyright"><small>© 2022 Cliff Chu<br>Powered by <a href="https://hexo.io" rel="external" target="_blank">Hexo</a>, Theme by <a href="https://github.com/hyunseob" rel="external" target="_blank">HyunSeob</a></small></p></footer><!--[if lt IE 10]><script src="/js/classList.min.js"></script><![endif]--><script src="/js/index.min.js"></script></body></html>
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022-06-07-sass-note-md/" title="SCSS 實用語法">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SCSS 實用語法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022-05-12-javascript-note/" title="JavaScript 學習筆記">
+                        <span class="hidden-mobile">JavaScript 學習筆記</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'Cliff1213/cliff1213.github.io');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目錄</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">關鍵字</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允許 JavaScript 運行的環境下瀏覽效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -16,12 +16,12 @@
   <meta name="author" content="Cliff Chu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="記錄一些 RWD 的小知識，以及設計過程中可以注意的小細節。">
+    <meta name="description" content="隨著行動裝置的普及，RWD 可以說是現今網頁開發中必備的一項技能，剛好最近也學到這方面的知識，藉此機會寫一篇筆記，提供自己後續資料的查找。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RWD 響應式設計">
 <meta property="og:url" content="http://kurifu.tw/2022-03-14-rwd-note/index.html">
 <meta property="og:site_name" content="Cliff Blog">
-<meta property="og:description" content="記錄一些 RWD 的小知識，以及設計過程中可以注意的小細節。">
+<meta property="og:description" content="隨著行動裝置的普及，RWD 可以說是現今網頁開發中必備的一項技能，剛好最近也學到這方面的知識，藉此機會寫一篇筆記，提供自己後續資料的查找。">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://kurifu.tw/img/banner/banner_20220314.jpg">
 <meta property="article:published_time" content="2022-03-13T16:00:00.000Z">
@@ -70,7 +70,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"kurifu.tw","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":"G-106NQBHYEM","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"kurifu.tw","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":"G-106NQBHYEM","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -231,7 +231,7 @@
         
         
         
-          60 分鐘
+          24 分鐘
         
       </span>
     
@@ -274,12 +274,11 @@
             
               <div class="markdown-body">
                 
-                <p>記錄一些 RWD 的小知識，以及設計過程中可以注意的小細節。</p>
+                <p>隨著行動裝置的普及，RWD 可以說是現今網頁開發中必備的一項技能，剛好最近也學到這方面的知識，藉此機會寫一篇筆記，提供自己後續資料的查找。</p>
 <span id="more"></span>
 
-<hr>
+
 <h2 id="RWD-在做什麼？"><a href="#RWD-在做什麼？" class="headerlink" title="RWD 在做什麼？"></a>RWD 在做什麼？</h2><p>響應式網頁設計（Responsive Web Design），是為了因應現今網頁瀏覽裝置的多樣性，而衍生出來的一網頁設計模式；能夠讓一個網頁在多種裝置寬度下，呈現出不同的內容排版。</p>
-<hr>
 <h2 id="初始設置"><a href="#初始設置" class="headerlink" title="初始設置"></a>初始設置</h2><h3 id="語法"><a href="#語法" class="headerlink" title="語法"></a>語法</h3><p>要使網頁符合 RWD 條件，就必須在 head 標籤內層加入以下設定：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
@@ -297,7 +296,6 @@
 <blockquote>
 <p>補充說明：上述提到的 x 軸，是指瀏覽器底部的水平移動軸（scroll bar）。</p>
 </blockquote>
-<hr>
 <h2 id="Media-Queries"><a href="#Media-Queries" class="headerlink" title="Media Queries"></a>Media Queries</h2><p>media 是在設計響應式網頁時，必然會使用到的語法，而 Media Queries（媒體查詢）的作用是偵測使用者目前裝置的屬性（如裝置寬度），並針對這些屬性定義樣式。 </p>
 <h3 id="媒體類型"><a href="#媒體類型" class="headerlink" title="媒體類型"></a>媒體類型</h3><p>根據 <a target="_blank" rel="noopener" href="https://www.w3schools.com/css/css3_mediaqueries.asp">W3C</a> 文件中所列出的媒體類型，目前主要有以下幾種：</p>
 <ul>
@@ -324,7 +322,8 @@
 <p>如果不指定 media 類型，判斷的裝置類型就會是 all（所有裝置），此時 and 也可以省略，設定方式如下：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-keyword">@media</span> ( <span class="hljs-attribute">max-width</span>: <span class="hljs-number">768px</span> ) &#123;<br>    <span class="hljs-comment">/* CSS Style */</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
-<hr>
+
+
 <h2 id="寬度設定類型"><a href="#寬度設定類型" class="headerlink" title="寬度設定類型"></a>寬度設定類型</h2><p>因為響應式網頁的運作方式是根據裝置的寬度，而相關的設定可使用以下兩種：</p>
 <h3 id="max-width"><a href="#max-width" class="headerlink" title="max-width"></a>max-width</h3><p>表示最大寬度在設定的數值（含）以下時，範例原始碼如下：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">h1</span> &#123;<br>    <span class="hljs-attribute">color</span>: red;<br>&#125;<br><span class="hljs-comment">/* 斷點一 */</span><br><span class="hljs-keyword">@media</span> ( <span class="hljs-attribute">max-width</span>: <span class="hljs-number">768px</span> ) &#123;<br>    <span class="hljs-selector-tag">h1</span> &#123;<br>        <span class="hljs-attribute">color</span>: green;<br>    &#125;<br>&#125;<br><span class="hljs-comment">/* 斷點二 */</span><br><span class="hljs-keyword">@media</span> ( <span class="hljs-attribute">max-width</span>: <span class="hljs-number">375px</span> ) &#123;<br>    <span class="hljs-selector-tag">h1</span> &#123;<br>        <span class="hljs-attribute">font-size</span>: <span class="hljs-number">24px</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -339,7 +338,6 @@
 
 <p>min-width 是依據最小寬度來載入樣式，以此例子來說，在未滿足任何斷點時，文字大小都會是 24 像素，即使斷點一、二的撰寫位置在下方，也會因為沒有滿足媒體查詢條件而使樣式不被套用。</p>
 <h3 id="差異與影響"><a href="#差異與影響" class="headerlink" title="差異與影響"></a>差異與影響</h3><p>因為 CSS 的載入邏輯是先判斷權重，再判斷先後順序，因此若是使用 max-width 來設計響應式網頁，在行動裝置上 Media Queries 就會因為符合所有斷點條件使樣式從電腦版一路覆蓋到行動版；但如果是使用 min-width，在行動裝置上就不會有樣式覆蓋的問題，不過使用上並不會有影響，依照習慣擇一使用即可。</p>
-<hr>
 <h2 id="讓網頁自適應寬度"><a href="#讓網頁自適應寬度" class="headerlink" title="讓網頁自適應寬度"></a>讓網頁自適應寬度</h2><p>一般網頁在沒有設計響應式的情況下，最外層容器都會設定一個固定寬度，範例如下：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- HTML --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">clss</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
@@ -350,7 +348,6 @@
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* CSS */</span><br><span class="hljs-selector-class">.container</span> &#123;<br>    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">1000px</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>如此一來，任意調整瀏覽器寬度時，最外層容器的寬度就會是瀏覽器當下的寬度，並且最大不會超過容器本身的寬度。</p>
-<hr>
 <h2 id="CSS-Reset"><a href="#CSS-Reset" class="headerlink" title="CSS Reset"></a>CSS Reset</h2><p>大部分的網頁在開始設定樣式之前，都會先載入習慣的 CSS Reset 設定，而在響應式網頁中，會建議另外加上幾個 Reset 設定。</p>
 <h3 id="設定圖片"><a href="#設定圖片" class="headerlink" title="設定圖片"></a>設定圖片</h3><p>設定方式如下：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">img</span> &#123;<br>    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">100%</span>;<br>    <span class="hljs-attribute">height</span>: auto;<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -372,7 +369,6 @@
 <blockquote>
 <p>margin 不在 border-box 範疇之內。</p>
 </blockquote>
-<hr>
 <h2 id="使用百分比控制寬度"><a href="#使用百分比控制寬度" class="headerlink" title="使用百分比控制寬度"></a>使用百分比控制寬度</h2><p>在響應式網頁中，也常會使用百分比（%）單位來設計網頁元素的排版，而使用百分比的元素會根據父層元素的寬度，自適應調整自身的寬度與高度。</p>
 <p>以下方原始碼為例：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- HTML --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;wrap&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>圖片一<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;path&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;desc&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>圖片二<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;path&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;desc&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>圖片三<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;path&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;desc&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
@@ -380,12 +376,10 @@
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* CSS / 假設已載入 meyerweb reset */</span><br>*,*<span class="hljs-selector-pseudo">::before</span>,*<span class="hljs-selector-pseudo">::after</span> &#123;<br>    <span class="hljs-attribute">box-sizing</span>: border-box;<br>&#125;<br><span class="hljs-selector-tag">img</span> &#123;<br>    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">100%</span>;<br>    <span class="hljs-attribute">height</span>: auto;<br>&#125;<br><span class="hljs-selector-class">.wrap</span> &#123;<br>    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">1000px</span>;<br>&#125;<br><span class="hljs-selector-tag">ul</span> &#123;<br>    <span class="hljs-attribute">display</span>: flex;<br>    <span class="hljs-attribute">flex-wrap</span>: wrap;<br>&#125;<br><span class="hljs-selector-tag">li</span> &#123;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">33.33%</span>;<br>    <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span>;<br>    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">10px</span>;<br>&#125;<br><span class="hljs-comment">/* 斷點一 */</span><br><span class="hljs-keyword">@media</span> ( <span class="hljs-attribute">max-width</span>: <span class="hljs-number">768px</span> ) &#123;<br>    <span class="hljs-selector-tag">li</span> &#123;<br>        <span class="hljs-attribute">width</span>: <span class="hljs-number">50%</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>上述範例在 ul 使用了 flex 屬性值，讓內層的元素 li 並排，而 li 因為設定了寬度 33.33%，因此當瀏覽器寬度在 1000 像素或以上時，li 會以三個並排的方式呈現；當瀏覽器寬度在 768 像素或以下時，斷點一的條件就會滿足，使該斷點的樣式設定覆蓋原先的設定，因為 ul 有設定 wrap 屬性值，因此 li 會以兩個並排的方式呈現。</p>
-<hr>
 <h2 id="斷點規劃"><a href="#斷點規劃" class="headerlink" title="斷點規劃"></a>斷點規劃</h2><p>雖然在設計響應式網頁時，可以新增斷點讓網頁在不同瀏覽裝置上呈現不同排版，但是礙於現今裝置的多樣性，並沒有辦法透過幾個斷點就兼容所有瀏覽裝置，因此只能針對當下較熱門的解析度來設定斷點內容。</p>
 <blockquote>
 <p>可以使用 <a target="_blank" rel="noopener" href="https://gs.statcounter.com/browser-market-share/all/taiwan/#monthly-202101-202201">statcounter</a> 工具來查詢目前熱門的螢幕解析度，並規劃網頁的斷點。</p>
 </blockquote>
-<hr>
 <h2 id="表格設計"><a href="#表格設計" class="headerlink" title="表格設計"></a>表格設計</h2><p>電腦版網頁中的表格在轉換至行動版時，為了避免瀏覽器寬度不足而擠壓到內容，可透過 display 設定屬性來將較不重要的欄位隱藏，以下為範例：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- HTML --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;wrap&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;d-none&quot;</span>&gt;</span>訂單編號<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>姓名<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>品項<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>產品價格<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;d-none&quot;</span>&gt;</span>001<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>皮卡丘<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>雷之石<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>1500<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br></code></pre></td></tr></table></figure>
 
@@ -398,7 +392,6 @@
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* CSS */</span><br><span class="hljs-selector-class">.wrap</span> &#123;<br>    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">500px</span>;<br>&#125;<br><span class="hljs-selector-tag">table</span> &#123;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;<br>    <span class="hljs-attribute">text-align</span>: center;<br>&#125;<br><span class="hljs-selector-tag">th</span>, <span class="hljs-selector-tag">td</span> &#123;<br>    <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#eee</span>;<br>&#125;<br><span class="hljs-keyword">@media</span> ( <span class="hljs-attribute">max-width</span>: <span class="hljs-number">375px</span> ) &#123;<br>    <span class="hljs-selector-class">.wrap</span> &#123;<br>        <span class="hljs-attribute">overflow-x</span>: auto;<br>    &#125;<br>    <span class="hljs-selector-tag">table</span> &#123;<br>        <span class="hljs-attribute">width</span>: <span class="hljs-number">375px</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>上述範例與先前內容相同，但是在 Media Queries 的設定裡，針對表格的外容器 wrap 設定了 overflow-x 的屬性與對應值 auto，這種設定方式能夠使內容因擠壓而超出元素寬度時，使該容器本身產生 x 軸，而在 CSS 第16 行的部分因為將表格設定了固定寬度，因此就算瀏覽器寬度小於表格寬度也不會被擠壓，而是隱藏在外容器產生的 x 軸外。</p>
-<hr>
 <h2 id="網頁優化"><a href="#網頁優化" class="headerlink" title="網頁優化"></a>網頁優化</h2><p>這一部分的內容與 RWD 較不相關，但也建議學會的小技巧！</p>
 <h3 id="使用圖片取代文字"><a href="#使用圖片取代文字" class="headerlink" title="使用圖片取代文字"></a>使用圖片取代文字</h3><p>LOGO 是用來識別一個網站的重要圖片元素，而 h1 標籤通常是網頁中最重要的內容之一，可以透過以下技巧，將 LOGO 以 h1 標籤的方式撰寫，並將 h1 標籤中的文字隱藏不顯示，範例原始碼如下：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- HTML --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;logo&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;index.html&quot;</span>&gt;</span>最重要網頁標題<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br></code></pre></td></tr></table></figure>
@@ -407,9 +400,7 @@
 
 <p>上述範例中，CSS 第 3~7 行的部分較容易理解，主要是設定背景圖片，而第 8 行開始，text-indent 的屬性值設定 101% 可使文字縮排至本身寬度以外，white-space 的屬性值 nowrap 則是能讓內容超過最大寬度時不會自動斷行，最後再透過 overflow 使寬度以外的部分隱藏不顯示。</p>
 <p>圖片取代文字的用意，在於 LOGO 在網頁上呈現的結果雖然是一張圖片，但是搜索引擎的爬蟲機器人還是能夠抓取到被隱藏的文字內容，會比較有利於 SEO。</p>
-<hr>
-<p><strong>參考資料：</strong></p>
-<p><a target="_blank" rel="noopener" href="https://www.w3schools.com/css/css_rwd_viewport.asp">RWD - The Viewport</a><br><a target="_blank" rel="noopener" href="https://www.oxxostudio.tw/articles/201810/css-media-queries.html">CSS Media Queries 詳細介紹</a></p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a target="_blank" rel="noopener" href="https://www.w3schools.com/css/css_rwd_viewport.asp">RWD - The Viewport</a><br><a target="_blank" rel="noopener" href="https://www.oxxostudio.tw/articles/201810/css-media-queries.html">CSS Media Queries 詳細介紹</a></p>
 
                 
               </div>

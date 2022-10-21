@@ -16,12 +16,12 @@
   <meta name="author" content="Cliff Chu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="基本的函式相關筆記。">
+    <meta name="description" content="簡單的紀錄一下函式的基本知識。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript 觀念 - 函式">
 <meta property="og:url" content="http://kurifu.tw/2022-09-19-javascript-function/index.html">
 <meta property="og:site_name" content="Cliff Blog">
-<meta property="og:description" content="基本的函式相關筆記。">
+<meta property="og:description" content="簡單的紀錄一下函式的基本知識。">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://kurifu.tw/img/banner/banner_js.jpg">
 <meta property="article:published_time" content="2022-09-18T16:00:00.000Z">
@@ -70,7 +70,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"kurifu.tw","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":"G-106NQBHYEM","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"kurifu.tw","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":"G-106NQBHYEM","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -231,7 +231,7 @@
         
         
         
-          13 分鐘
+          5 分鐘
         
       </span>
     
@@ -274,10 +274,9 @@
             
               <div class="markdown-body">
                 
-                <p>基本的函式相關筆記。</p>
+                <p>簡單的紀錄一下函式的基本知識。</p>
 <span id="more"></span>
 
-<hr>
 <h2 id="函式（Function）簡述"><a href="#函式（Function）簡述" class="headerlink" title="函式（Function）簡述"></a>函式（Function）簡述</h2><p>可以將自訂的程式碼進行包裝，並且能在需要時使用，同時減少撰寫重複的程式碼。此外，函式也能接收一個值（參數），並將接收的值進行運算後再回傳，但也可以選擇不接收、不回傳任何值，以「執行某一段邏輯」的目的存在。</p>
 <h2 id="函式結構"><a href="#函式結構" class="headerlink" title="函式結構"></a>函式結構</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doSomeThing</span>(<span class="hljs-params">num</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> num ** num;<br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -421,8 +420,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022-09-17-css-max-content/" title="Flex 水平置中，子元素溢出不被裁切">
-                        <span class="hidden-mobile">Flex 水平置中，子元素溢出不被裁切</span>
+                      <a href="/2022-09-17-css-max-content/" title="Flex 水平置中，子元素溢出時避免被裁切">
+                        <span class="hidden-mobile">Flex 水平置中，子元素溢出時避免被裁切</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -16,12 +16,12 @@
   <meta name="author" content="Cliff Chu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="到底傳遞的是值、還是記憶體的參考位址呢？">
+    <meta name="description" content="什麼情況下是傳遞純值，什麼情況又是傳遞記憶體參考位址？">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript 觀念 - 傳值、傳參考">
-<meta property="og:url" content="http://kurifu.tw/2022-10-20-javascript-call-by-reference/index.html">
+<meta property="og:url" content="http://kurifu.tw/2022-10-20-javascript-by-value-by-reference/index.html">
 <meta property="og:site_name" content="Cliff Blog">
-<meta property="og:description" content="到底傳遞的是值、還是記憶體的參考位址呢？">
+<meta property="og:description" content="什麼情況下是傳遞純值，什麼情況又是傳遞記憶體參考位址？">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://kurifu.tw/img/banner/banner_js.jpg">
 <meta property="article:published_time" content="2022-10-19T17:20:53.000Z">
@@ -70,7 +70,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"kurifu.tw","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":"G-106NQBHYEM","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"kurifu.tw","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":"G-106NQBHYEM","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -231,7 +231,7 @@
         
         
         
-          17 分鐘
+          7 分鐘
         
       </span>
     
@@ -274,10 +274,10 @@
             
               <div class="markdown-body">
                 
-                <p>到底傳遞的是值、還是記憶體的參考位址呢？</p>
+                <p>什麼情況下是傳遞純值，什麼情況又是傳遞記憶體參考位址？</p>
 <span id="more"></span>
 
-<hr>
+
 <p>JS 支援的型別主要分為以下兩種：</p>
 <ul>
 <li>原始型別 / 基本型別（Primitives）：<code>string</code>、<code>number</code>、<code>boolean</code>、<code>null</code>、<code>undefined</code>、<code>symbol</code>（ES6 新增），原始型別也表示這個資料是一個「純值」。</li>
@@ -306,9 +306,7 @@
 <li>物件型別指派給變數時，傳遞的是記憶體的參考位址。</li>
 <li>傳入函式內的物件，如果重新賦值，此時函式內、外物件之間的參考就會消失。</li>
 </ul>
-<hr>
-<p><strong>參考資料</strong></p>
-<p><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10191057">重新認識 JavaScript: Day 05 JavaScript 是「傳值」或「傳址」？</a></p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10191057">重新認識 JavaScript: Day 05 JavaScript 是「傳值」或「傳址」？</a></p>
 <p><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10221506">JS 原力覺醒 Day12- 傳值呼叫、傳址呼叫</a></p>
 
                 
@@ -356,7 +354,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>JavaScript 觀念 - 傳值、傳參考</div>
-      <div>http://kurifu.tw/2022-10-20-javascript-call-by-reference/</div>
+      <div>http://kurifu.tw/2022-10-20-javascript-by-value-by-reference/</div>
     </div>
     <div class="license-meta">
       

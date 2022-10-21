@@ -16,12 +16,12 @@
   <meta name="author" content="Cliff Chu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Looooooop。">
+    <meta name="description" content="雖然 for 迴圈能做到的事情，陣列方法中的 forEach 幾乎都能做到，但基於好奇心，還是想理解一下迴圈是怎麼運作的。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript 筆記 - 迴圈">
-<meta property="og:url" content="http://kurifu.tw/2022-09-10-08-javascript-loop/index.html">
+<meta property="og:url" content="http://kurifu.tw/2022-10-07-javascript-loop/index.html">
 <meta property="og:site_name" content="Cliff Blog">
-<meta property="og:description" content="Looooooop。">
+<meta property="og:description" content="雖然 for 迴圈能做到的事情，陣列方法中的 forEach 幾乎都能做到，但基於好奇心，還是想理解一下迴圈是怎麼運作的。">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://kurifu.tw/img/banner/banner_loop.jpg">
 <meta property="article:published_time" content="2022-10-07T05:19:21.000Z">
@@ -71,7 +71,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"kurifu.tw","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":"G-106NQBHYEM","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"kurifu.tw","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":"G-106NQBHYEM","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -232,7 +232,7 @@
         
         
         
-          11 分鐘
+          5 分鐘
         
       </span>
     
@@ -275,12 +275,10 @@
             
               <div class="markdown-body">
                 
-                <p>Looooooop。</p>
+                <p>雖然 for 迴圈能做到的事情，陣列方法中的 forEach 幾乎都能做到，但基於好奇心，還是想理解一下迴圈是怎麼運作的。</p>
 <span id="more"></span>
 
-<hr>
 <p>迴圈（Loop）指的就是不斷重複做一件事情，當條件滿足就執行一次，一直到不符合條件就終止迴圈，常見的迴圈有 for、while，還有一個 do…while，不過這篇筆記先不提。</p>
-<p>說個笑話，廢物如我一直把迴圈跟陣列方法當作是同類型的東西。</p>
 <h2 id="for"><a href="#for" class="headerlink" title="for"></a>for</h2><p>範例：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> step = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">10</span>; i++) &#123;<br>  step += i;<br>  <span class="hljs-built_in">console</span>.log(i); <span class="hljs-comment">// 0, 1, 2...10</span><br>&#125;<br><span class="hljs-built_in">console</span>.log(step); <span class="hljs-comment">// 55</span><br></code></pre></td></tr></table></figure>
 
@@ -302,7 +300,6 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> numList = [<span class="hljs-number">9</span>,<span class="hljs-number">5</span>,<span class="hljs-number">12</span>,<span class="hljs-number">21</span>,<span class="hljs-number">7</span>,<span class="hljs-number">11</span>,<span class="hljs-number">16</span>];<br><span class="hljs-keyword">const</span> newAry = [];<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt;= numList.length-<span class="hljs-number">1</span>; i++) &#123;<br>  <span class="hljs-keyword">if</span>(i % <span class="hljs-number">3</span> === <span class="hljs-number">0</span>) &#123;<br>    newAry.push(numList[i]);<br>    <span class="hljs-keyword">continue</span>;<br>  &#125;<br>&#125;<br><span class="hljs-built_in">console</span>.log(newAry); <span class="hljs-comment">// [9, 21, 16]</span><br></code></pre></td></tr></table></figure>
 
 <p>將陣列 <code>numList</code> 中符合 3 的倍數的項目篩選出來，再依序加入新陣列 <code>newAry</code> 中。</p>
-<hr>
 
                 
               </div>
@@ -351,7 +348,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>JavaScript 筆記 - 迴圈</div>
-      <div>http://kurifu.tw/2022-09-10-08-javascript-loop/</div>
+      <div>http://kurifu.tw/2022-10-07-javascript-loop/</div>
     </div>
     <div class="license-meta">
       

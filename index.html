@@ -60,7 +60,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"kurifu.tw","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":"G-106NQBHYEM","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"kurifu.tw","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":"G-106NQBHYEM","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -219,7 +219,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2022-10-20-javascript-call-by-reference/" target="_self">
+        <a href="/2022-10-20-javascript-by-value-by-reference/" target="_self">
           <img src="/img/banner/banner_js.jpg" srcset="/img/loading.gif" lazyload alt="JavaScript 觀念 - 傳值、傳參考">
         </a>
       </div>
@@ -227,15 +227,15 @@
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2022-10-20-javascript-call-by-reference/" target="_self">
+        <a href="/2022-10-20-javascript-by-value-by-reference/" target="_self">
           JavaScript 觀念 - 傳值、傳參考
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2022-10-20-javascript-call-by-reference/" target="_self">
+      <a class="index-excerpt " href="/2022-10-20-javascript-by-value-by-reference/" target="_self">
         <div>
-          到底傳遞的是值、還是記憶體的參考位址呢？
+          什麼情況下是傳遞純值，什麼情況又是傳遞記憶體參考位址？
         </div>
       </a>
 
@@ -302,7 +302,7 @@
       
       <a class="index-excerpt " href="/2022-10-11-javascript-string-methods/" target="_self">
         <div>
-          記錄字串處理的方法。
+          紀錄一下常用的字串處理方法。
         </div>
       </a>
 
@@ -369,7 +369,7 @@
       
       <a class="index-excerpt " href="/2022-10-08-javascript-array-methods/" target="_self">
         <div>
-          forEach 很萬用，但其他的也不賴。
+          forEach 很好用，但是其他陣列方法也很不賴！
         </div>
       </a>
 
@@ -420,7 +420,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2022-09-10-08-javascript-loop/" target="_self">
+        <a href="/2022-10-07-javascript-loop/" target="_self">
           <img src="/img/banner/banner_loop.jpg" srcset="/img/loading.gif" lazyload alt="JavaScript 筆記 - 迴圈">
         </a>
       </div>
@@ -428,15 +428,15 @@
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2022-09-10-08-javascript-loop/" target="_self">
+        <a href="/2022-10-07-javascript-loop/" target="_self">
           JavaScript 筆記 - 迴圈
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2022-09-10-08-javascript-loop/" target="_self">
+      <a class="index-excerpt " href="/2022-10-07-javascript-loop/" target="_self">
         <div>
-          Looooooop。
+          雖然 for 迴圈能做到的事情，陣列方法中的 forEach 幾乎都能做到，但基於好奇心，還是想理解一下迴圈是怎麼運作的。
         </div>
       </a>
 

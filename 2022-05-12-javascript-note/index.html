@@ -16,12 +16,12 @@
   <meta name="author" content="Cliff Chu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="初學 JavaScript 的筆記，基本上學到什麼就記錄下來，內容很長很繁雜。">
+    <meta name="description" content="初學 JavaScript 的筆記，因為沒有一個學習的方向，因此幾乎是學到什麼就寫什麼，筆記的內容很冗長也沒有刻意整理，不建議筆者以外的人閱讀。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript 學習筆記">
 <meta property="og:url" content="http://kurifu.tw/2022-05-12-javascript-note/index.html">
 <meta property="og:site_name" content="Cliff Blog">
-<meta property="og:description" content="初學 JavaScript 的筆記，基本上學到什麼就記錄下來，內容很長很繁雜。">
+<meta property="og:description" content="初學 JavaScript 的筆記，因為沒有一個學習的方向，因此幾乎是學到什麼就寫什麼，筆記的內容很冗長也沒有刻意整理，不建議筆者以外的人閱讀。">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://kurifu.tw/img/banner/banner_20220512.jpg">
 <meta property="article:published_time" content="2022-05-12T16:00:00.000Z">
@@ -70,7 +70,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"kurifu.tw","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":"G-106NQBHYEM","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"kurifu.tw","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":"G-106NQBHYEM","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -231,7 +231,7 @@
         
         
         
-          483 分鐘
+          194 分鐘
         
       </span>
     
@@ -274,10 +274,10 @@
             
               <div class="markdown-body">
                 
-                <p>初學 JavaScript 的筆記，基本上學到什麼就記錄下來，內容很長很繁雜。</p>
+                <p>初學 JavaScript 的筆記，因為沒有一個學習的方向，因此幾乎是學到什麼就寫什麼，筆記的內容很冗長也沒有刻意整理，不建議筆者以外的人閱讀。</p>
 <span id="more"></span>
 
-<hr>
+
 <h2 id="宣告"><a href="#宣告" class="headerlink" title="宣告"></a>宣告</h2><h3 id="let"><a href="#let" class="headerlink" title="let"></a>let</h3><p>宣告的值為區域變數，可重新賦予值</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 宣告一變數 &quot;price&quot;，並賦予值為 60</span><br><span class="hljs-keyword">let</span> price = <span class="hljs-number">60</span>;<br><span class="hljs-comment">// 重新賦予變數 &quot;price&quot; 值為 80</span><br>price = <span class="hljs-number">80</span>;<br></code></pre></td></tr></table></figure>
 
@@ -288,7 +288,6 @@
 <blockquote>
 <p>宣告變數的名稱可使用駝峰式命名，此外，若撞到部分保留字，會無法宣告，保留字可參考此<a target="_blank" rel="noopener" href="http://www.w3bai.com/zh-TW/js/js_reserved.html">連結</a>。</p>
 </blockquote>
-<hr>
 <h2 id="型別"><a href="#型別" class="headerlink" title="型別"></a>型別</h2><p>字串（String）、數字（Number）、布林值（Boolean）…等，可透過 <code>typeof</code> 來判斷變數型別，範例如下：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 範例一</span><br><span class="hljs-keyword">let</span> num = <span class="hljs-number">10</span>;<br><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> num);<br><span class="hljs-comment">// 輸出結果為 Number</span><br></code></pre></td></tr></table></figure>
 
@@ -378,7 +377,6 @@
 <blockquote>
 <p><code>null</code> 通常會在需要清空物件或陣列中的資料內容時使用。</p>
 </blockquote>
-<hr>
 <h2 id="運算子"><a href="#運算子" class="headerlink" title="運算子"></a>運算子</h2><h3 id="比較運算子"><a href="#比較運算子" class="headerlink" title="比較運算子"></a>比較運算子</h3><p>常見的比較運算子如下所示：</p>
 <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs tex">| &gt; 大於 | &lt; 小於 | &gt;= 大於且等於 | &lt;= 小於且等於 | == 等於 | != 不等於 | === 等於（包含型別） | !== 不等於（包含型別） |<br></code></pre></td></tr></table></figure>
 
@@ -423,7 +421,6 @@
 <blockquote>
 <p>更多相關運算子內容可參考此<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Expressions_and_Operators">連結</a>。</p>
 </blockquote>
-<hr>
 <h2 id="if-流程判斷"><a href="#if-流程判斷" class="headerlink" title="if 流程判斷"></a>if 流程判斷</h2><p>流程判斷會使用到的判斷方式有 <code>if</code>、<code>else if</code>、<code>else</code> 三種，分別可以理解成 “如果”、”或是”、”否則”，如下方範例情境所示：</p>
 <p><strong>情境一</strong></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 情境：判斷是否下雨，若是，則待在家不出門</span><br><span class="hljs-keyword">let</span> isRain = <span class="hljs-literal">true</span>;<br><span class="hljs-keyword">if</span>( isRain == <span class="hljs-literal">true</span> )&#123; <span class="hljs-comment">// 判斷結果為 true</span><br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;待在家不出門&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// 輸出結果為 &#x27;待在家不出門&#x27;</span><br></code></pre></td></tr></table></figure>
@@ -462,7 +459,6 @@
 <blockquote>
 <p>if 只要滿足其中一個條件（判斷式結果為 <code>true</code>），就會在執行該條件的內容後，終止判斷流程（不再進行後續判斷式判斷）。</p>
 </blockquote>
-<hr>
 <h2 id="資料結構"><a href="#資料結構" class="headerlink" title="資料結構"></a>資料結構</h2><h3 id="陣列（Array）"><a href="#陣列（Array）" class="headerlink" title="陣列（Array）"></a>陣列（Array）</h3><p>一般的情況下，一個變數只能賦予一個值，但是在多筆資料的狀況下，難以針對每一個變數去賦予對應的值，因此在處理多筆資料時，通常會將這些資料透過一個陣列來表示，並賦予到一個變數中，範例如下：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 資料可以是各種型態</span><br><span class="hljs-keyword">let</span> data = [<span class="hljs-string">&#x27;red&#x27;</span>, <span class="hljs-string">&#x27;yellow&#x27;</span>, <span class="hljs-string">&#x27;green&#x27;</span>];<br><span class="hljs-keyword">let</span> data = [<span class="hljs-number">30</span>, <span class="hljs-number">12</span>, <span class="hljs-number">15</span>, <span class="hljs-number">20</span>];<br><span class="hljs-keyword">let</span> data = [<span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">false</span>];<br><span class="hljs-keyword">let</span> data = [<span class="hljs-string">&#x27;red&#x27;</span>, <span class="hljs-number">30</span>, <span class="hljs-literal">true</span>];<br><span class="hljs-keyword">let</span> data = []; <span class="hljs-comment">// 表示沒有資料的空陣列</span><br></code></pre></td></tr></table></figure>
 
@@ -538,7 +534,8 @@
 <h4 id="刪除物件資料"><a href="#刪除物件資料" class="headerlink" title="刪除物件資料"></a>刪除物件資料</h4><p>物件中的屬性，可以透過 <code>delete</code> 來指定刪除，範例如下：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> myInfo = &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Mark&#x27;</span>,<br>    <span class="hljs-attr">age</span>: <span class="hljs-number">18</span>,<br>    <span class="hljs-attr">isSingle</span>: <span class="hljs-literal">true</span><br>&#125;;<br><span class="hljs-keyword">delete</span> myInfo.isSingle; <span class="hljs-comment">// 刪除 myInfo 物件中的 isSingle 屬性與值</span><br><span class="hljs-built_in">console</span>.log( myInfo, myInfo.isSingle );<br><span class="hljs-comment">// 輸出結果 ----</span><br><span class="hljs-comment">// &#123;name: &#x27;Mark&#x27;, age: 18&#125; undefined // 刪除後找不到 isSingle 相關屬性</span><br><span class="hljs-comment">// age: 18</span><br><span class="hljs-comment">// name: &quot;Mark&quot;</span><br><span class="hljs-comment">// [[Prototype]]: Object</span><br><span class="hljs-comment">// ----</span><br></code></pre></td></tr></table></figure>
 
-<hr>
+
+
 <h2 id="物件結合陣列"><a href="#物件結合陣列" class="headerlink" title="物件結合陣列"></a>物件結合陣列</h2><p>陣列除了可以放入一般的變數之外，也能夠放入多個物件，範例如下：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 範例：水果的詳細資訊</span><br><span class="hljs-keyword">let</span> fruitDetail = [<br>    &#123;<br>        <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Apple&#x27;</span>,<br>        <span class="hljs-attr">price</span>: <span class="hljs-number">30</span>,<br>        <span class="hljs-attr">isSoldOut</span>: <span class="hljs-literal">false</span><br>    &#125;,&#123;<br>        <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;banana&#x27;</span>,<br>        <span class="hljs-attr">price</span>: <span class="hljs-number">20</span>,<br>        <span class="hljs-attr">isSoldOut</span>: <span class="hljs-literal">true</span><br>    &#125;<br>]<br><span class="hljs-built_in">console</span>.log( fruitDetail );<br><span class="hljs-comment">// 輸出結果 ----</span><br><span class="hljs-comment">// (2) [&#123;…&#125;, &#123;…&#125;]</span><br><span class="hljs-comment">// 0: &#123;name: &#x27;Apple&#x27;, price: 30, isSoldOut: false&#125;</span><br><span class="hljs-comment">// 1: &#123;name: &#x27;banana&#x27;, price: 20, isSoldOut: true&#125;</span><br><span class="hljs-comment">// length: 2</span><br><span class="hljs-comment">// [[Prototype]]: Array(0)</span><br><span class="hljs-comment">// ----</span><br></code></pre></td></tr></table></figure>
 
@@ -576,7 +573,6 @@
 <blockquote>
 <p>以上只是運作流程與邏輯的參考，而通常資料會有數筆，因此如果像上述範例一樣每有一筆資料就處理一次，效率就會很差且不易閱讀，因此通常會透過迴圈的方式來處理大批資料。</p>
 </blockquote>
-<hr>
 <h2 id="函式"><a href="#函式" class="headerlink" title="函式"></a>函式</h2><p>函式（function）的作用主要是把一系列相關的程式透過一個指令來包裝，並視情況執行，起手式如下：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">showText</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;一段文字內容&#x27;</span>);<br>&#125;<br>showText(); <span class="hljs-comment">// 執行函式 showText</span><br><span class="hljs-comment">// 輸出結果為 一段文字內容</span><br></code></pre></td></tr></table></figure>
 
@@ -620,7 +616,6 @@
 <blockquote>
 <p>從範例中第 4 行可得知，當函式中找不到宣告的變數時，會往全域搜尋是否存在相同名稱的變數。</p>
 </blockquote>
-<hr>
 <h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><p>DOM（Document Object Model）簡單來說，就是將一個 HTML 的文件組成內容（標籤、文字、圖片等），以樹狀結構來表示的模型，詳細資料可參考此<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/API/Document_Object_Model">連結</a>。</p>
 <h3 id="querySelector"><a href="#querySelector" class="headerlink" title="querySelector"></a>querySelector</h3><p>透過 querySelector 可以選取網頁中的元素（標籤、class 選擇器、id 選擇器），語法格式為 <code>document.querySelector(&#39;網頁元素&#39;)</code>，以 id 選擇器為例，如下所示：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- HTML --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">botton</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn&quot;</span>&gt;</span>Botton<span class="hljs-tag">&lt;/<span class="hljs-name">botton</span>&gt;</span><br></code></pre></td></tr></table></figure>
@@ -730,7 +725,8 @@
 
 
 
-<hr>
+
+
 <h2 id="event-事件"><a href="#event-事件" class="headerlink" title="event 事件"></a>event 事件</h2><p>event 表示在一個 DOM 元素上所觸發的事件，像常見的滑鼠點擊就屬於事件的一種，其他事件可參考此<a target="_blank" rel="noopener" href="https://www.w3school.com.cn/jsref/dom_obj_event.asp">連結</a>。</p>
 <h3 id="addEventListener"><a href="#addEventListener" class="headerlink" title="addEventListener"></a>addEventListener</h3><p>DOM 的觸發事件可以透過 addEventListener() 方法來進行註冊，而該方法會有三個參數，分別是事件名稱、觸發後執行的函式、捕獲或冒泡階段的執行（在此不做說明），以點擊事件 <code>click</code> 為例，範例如下：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- HTML --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn&quot;</span>&gt;</span>Button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br></code></pre></td></tr></table></figure>
@@ -807,7 +803,8 @@
 
 
 
-<hr>
+
+
 <h2 id="迴圈-陣列操作"><a href="#迴圈-陣列操作" class="headerlink" title="迴圈/陣列操作"></a>迴圈/陣列操作</h2><p>相同性質的資料若資料筆數過多，通常會透過迴圈迭代的方式，來重複執行相同的動作以取得或組合資料內容，而迴圈常聽到的迭代指的是重複過程的意思，一次迭代表示一次的重複過程。</p>
 <h3 id="for"><a href="#for" class="headerlink" title="for"></a>for</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 範例：運作原理</span><br><span class="hljs-keyword">for</span>( <span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">3</span>; i++ )&#123;<br>    <span class="hljs-built_in">console</span>.log( i );<br>&#125;<br><span class="hljs-comment">// 輸出結果 ----</span><br><span class="hljs-comment">// 0</span><br><span class="hljs-comment">// 1</span><br><span class="hljs-comment">// 2</span><br><span class="hljs-comment">// ----</span><br></code></pre></td></tr></table></figure>
 
@@ -918,7 +915,6 @@
 <blockquote>
 <p>使用 <code>sort()</code> 時，若不加入 compareFunction，陣列中的數值會被轉換成字串，並以 Unicode 編碼位置進行比較來排序，本篇僅論數字的排序方法，相關內容可參考 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/sort">MDN</a>。</p>
 </blockquote>
-<hr>
 <h2 id="AJAX-簡述"><a href="#AJAX-簡述" class="headerlink" title="AJAX 簡述"></a>AJAX 簡述</h2><p>AJAX（Asynchronous JavaScript and XML）是一種非同步的 JavaScript 與 XML 技術，主要的功用是能夠讓網頁在更新內容時，不需要重新載入整個頁面，達到網址不需要變動就能夠更新局部內容效果。</p>
 <h3 id="網路請求"><a href="#網路請求" class="headerlink" title="網路請求"></a>網路請求</h3><p>網路請求（HTTP Request）簡單來說，就是使用者向伺服器發出請求後，伺服器經驗證再從資料庫取得資料，並提供給使用者的過程。以瀏覽器來說，輸入網址並按下 Enter，就屬於網路請求的一種。</p>
 <p>以下方原始碼為例：</p>
@@ -1020,7 +1016,6 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// js</span><br><span class="hljs-keyword">let</span> data = [];<br>axios.get(<span class="hljs-string">&#x27;https://jsonplaceholder.typicode.com/todos/1&#x27;</span>)<br>  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">response</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;資料已回傳&#x27;</span>);<br>    dataTitle = response.data.title;<br>    renderData();<br>&#125;)<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">renderData</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> title = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&#x27;.title&#x27;</span>);<br>  title.textContent = dataTitle;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>上述 JS 範例中， 因為函式 <code>renderData()</code> 位置在第 7 行，而函式 <code>.then</code> 在伺服器回傳資料給瀏覽器後就依序執行，換言之，函式 <code>renderData()</code> 會在 <code>dataTitle</code> 被賦予值（第 6 行）之後執行，因此第 11 行 <code>title</code> 才能正確讀取到 <code>dataTitle</code> 的值，並渲染純文字在畫面中。</p>
-<hr>
 <h2 id="函式-延伸內容"><a href="#函式-延伸內容" class="headerlink" title="函式-延伸內容"></a>函式-延伸內容</h2><h3 id="陳述式與表達式"><a href="#陳述式與表達式" class="headerlink" title="陳述式與表達式"></a>陳述式與表達式</h3><p>JavaScript 函式建立的方式有以下兩種：</p>
 <p><strong>函式陳述式</strong></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">statement</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Hello!&#x27;</span>);<br>&#125;<br>statement();<br><span class="hljs-comment">// 輸出結果為 Hello!</span><br></code></pre></td></tr></table></figure>
@@ -1058,9 +1053,9 @@
 <p>這裡補上不可以簡化的箭頭函式，範例如下：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 箭頭函式（不可簡化）</span><br><span class="hljs-keyword">let</span> funcName = <span class="hljs-function">(<span class="hljs-params">num, num2</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">let</span> result = num + num2; <span class="hljs-comment">// 存在除了 return 以外的程式碼</span><br>  <span class="hljs-keyword">return</span> result;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<hr>
-<p><strong>參考資料：</strong></p>
-<p><a target="_blank" rel="noopener" href="https://www.796t.com/article.php?id=192469">前端利用formData格式進行資料上傳，前端 formData 傳值和 json 傳值的區別？</a><br><a target="_blank" rel="noopener" href="https://www.casper.tw/javascript/2017/06/29/es6-native-array/#Array-prototype-reduce">JavaScript 陣列處理方法 [filter(), find(), forEach(), map(), every(), some(), reduce()]</a><br><a target="_blank" rel="noopener" href="https://www.fooish.com/javascript/array/sort.html#%E8%87%AA%E5%AE%9A%E7%BE%A9%E6%8E%92%E5%BA%8F-custom-sort">JavaScript Array sort() (陣列排序)</a></p>
+
+
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a target="_blank" rel="noopener" href="https://www.796t.com/article.php?id=192469">前端利用formData格式進行資料上傳，前端 formData 傳值和 json 傳值的區別？</a><br><a target="_blank" rel="noopener" href="https://www.casper.tw/javascript/2017/06/29/es6-native-array/#Array-prototype-reduce">JavaScript 陣列處理方法 [filter(), find(), forEach(), map(), every(), some(), reduce()]</a><br><a target="_blank" rel="noopener" href="https://www.fooish.com/javascript/array/sort.html#%E8%87%AA%E5%AE%9A%E7%BE%A9%E6%8E%92%E5%BA%8F-custom-sort">JavaScript Array sort() (陣列排序)</a></p>
 
                 
               </div>

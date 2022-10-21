@@ -7,11 +7,9 @@ categories: CSS
 index_img: img/banner/banner_font.jpg
 ---
 
-字體設定規則有點複雜，趁現在還記得順便紀錄一下。
+在設定字體時，常常會遇到結果不如預期的情況，於是決定研究一下網頁是怎麼套用字體，以及一些相關的注意事項。
 
 <!--more-->
-
----
 
 ## Font-Family 設定規則
 
@@ -44,7 +42,6 @@ font-family: 微軟正黑體;
 font-family: "Microsoft JhengHei", 微軟正黑體;
 ```
 
----
 
 ## Font-Family 字體類型
 
@@ -72,9 +69,6 @@ font-family: "Microsoft JhengHei", 微軟正黑體;
 font-family: 指定字體, "指定 字體", 通用字體;
 ```
 
-
-
----
 
 ## 字體順序觀念
 
@@ -114,7 +108,7 @@ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei"
 
 因此，為了適應各種不同的瀏覽器與作業系統，在設定字體時需要把**較少使用到的字體放前面，較常使用到的字體放後面。**
 
----
+
 
 ## 實務範例
 
@@ -138,9 +132,9 @@ Google：
 font-family: arial, sans-serif;  /* 這絕對不是懶(? */
 ```
 
----
 
-**參考資料：**
+
+## 參考資料
 
 [CSS font-family 詳細介紹](https://www.oxxostudio.tw/articles/201811/css-font-family.html)
 [最標準的系統字型規範 font-family](https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/180456/#outline__1_2_1)

@@ -8,11 +8,10 @@ categories: Package
 index_img: img/banner/banner_20220601.jpg
 ---
 
-輪播效果小幫手。
+Swiper 可以實現網頁元素的輪播效果，本篇大概紀錄一下安裝的方式，以及一些常用的參數設定。
 
 <!--more-->
 
----
 
 ## Swiper 套件
 
@@ -37,7 +36,6 @@ index_img: img/banner/banner_20220601.jpg
 $ npm install swiper
 ```
 
----
 
 ## 基礎結構
 
@@ -112,7 +110,6 @@ const swiper = new Swiper(".swiper-container", {
 }
 ```
 
----
 
 ## 常見參數
 
@@ -185,4 +182,3 @@ const swiper = new Swiper('.swiper', {
   }
 });
 ```
----

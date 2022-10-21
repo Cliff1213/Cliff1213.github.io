@@ -7,11 +7,10 @@ categories: JavaScript
 index_img: img/banner/banner_js.jpg
 ---
 
-不同宣告方式與作用域相關筆記。
+同樣都是用來宣告變數，為什麼還要分成三種方式？到底 let、const 解決了什麼問題？
 
 <!--more-->
 
----
 
 JavaScript 變數的宣告方式有三種，分別是 `var`、`let` 以及 `const`，後兩者是 ES6 新增的語法，而這三種方式所宣告的變數也會有不同的作用。
 
@@ -54,7 +53,6 @@ a = 2;
 // TypeError: Assignment to constant variable.
 ```
 
----
 
 ## 作用域
 
@@ -197,7 +195,6 @@ console.log(window.aaa); // undefined
 
 因此，使用關鍵字 `var` 宣告的變數無法被刪除，而沒有宣告行為的全域屬性，是可以被刪除的。
 
----
 
 最後再補充一下 `var`、`let` 與 `const` 的使用時機：
 

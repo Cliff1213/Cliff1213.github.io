@@ -8,14 +8,12 @@ categories: JavaScript
 index_img: img/banner/banner_loop.jpg
 ---
 
-Looooooop。
+雖然 for 迴圈能做到的事情，陣列方法中的 forEach 幾乎都能做到，但基於好奇心，還是想理解一下迴圈是怎麼運作的。
 
 <!--more-->
 
-------
 迴圈（Loop）指的就是不斷重複做一件事情，當條件滿足就執行一次，一直到不符合條件就終止迴圈，常見的迴圈有 for、while，還有一個 do...while，不過這篇筆記先不提。
 
-說個笑話，廢物如我一直把迴圈跟陣列方法當作是同類型的東西。
 
 ## for
 
@@ -90,4 +88,3 @@ console.log(newAry); // [9, 21, 16]
 
 將陣列 `numList` 中符合 3 的倍數的項目篩選出來，再依序加入新陣列 `newAry` 中。
 
----

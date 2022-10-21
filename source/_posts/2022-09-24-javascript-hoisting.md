@@ -11,7 +11,6 @@ ES6 前後的 Hoisting 觀念筆記。
 
 <!--more-->
 
-------
 
 「提升（Hoisting）」是 JavaScript 特有的一種現象，它的意思是當一個變數或函式在被宣告之前就可以被使用，並且不會出現錯誤，另外 ES6 以前都是使用 `var` 來宣告變數，與 ES6 新增的 `let`、`const` 在提升行為會也有所不同。
 
@@ -116,7 +115,7 @@ fn = function() {
 
 總結來說，JavaScript 中的「提升（Hoisting）」指的是宣告變數的提升，而值的賦予並不會提升；此外，提升並不會變更程式碼的位置，只是感覺像是整段程式碼被移動到最上方。
 
----
+
 
 ## let、const 的提升
 
@@ -145,8 +144,8 @@ fnA();
 
 
 
----
 
-**參考資料：**
+
+## 參考資料
 
 [我知道你懂 hoisting，可是你了解到多深？](https://blog.techbridge.cc/2018/11/10/javascript-hoisting/)

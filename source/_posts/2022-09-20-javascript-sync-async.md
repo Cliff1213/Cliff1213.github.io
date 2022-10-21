@@ -8,11 +8,10 @@ categories: JavaScript
 index_img: img/banner/banner_js.jpg
 ---
 
-好像沒有重點。
+這篇僅記錄同步、非同步是什麼樣的概念，並沒有處理非同步問題的方式。
 
 <!--more-->
 
-------
 
 ## JavaScript 中的同步
 
@@ -32,7 +31,7 @@ console.log('2');
 
 以上面程式碼來說，會先執行函式 `printNum` 印出 `1`，接著再印出 `2`，並且兩者是有先後順序的，屬於同步執行。
 
----
+
 
 ## 何謂非同步
 
@@ -54,9 +53,9 @@ console.log('2');
 
 而 `setTimeout` 等待的期間，程式碼為甚麼能夠繼續往下執行？原因是當 Web APIs 與自己寫的 JavaScript 在瀏覽器一起執行時，透過 Web APIs 非同步呼叫的 callback function 會被放到 Callback Queue（儲列 / 佇列）待命，等到其他程式碼都執行完之後才會被呼叫。
 
----
 
-**參考資料：**
+
+## 參考資料
 
 [Javascript 非同步 & Event Loop！10 分鐘輕鬆圖解學習！](https://chanchandev.com/js/Async/async-sync-intro/2534378084/)
 

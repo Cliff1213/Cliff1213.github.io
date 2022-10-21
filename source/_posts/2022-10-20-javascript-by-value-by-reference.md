@@ -7,11 +7,10 @@ categories: JavaScript
 index_img: img/banner/banner_js.jpg
 ---
 
-到底傳遞的是值、還是記憶體的參考位址呢？
+什麼情況下是傳遞純值，什麼情況又是傳遞記憶體參考位址？
 
 <!--more-->
 
----
 
 JS 支援的型別主要分為以下兩種：
 - 原始型別 / 基本型別（Primitives）：`string`、`number`、`boolean`、`null`、`undefined`、`symbol`（ES6 新增），原始型別也表示這個資料是一個「純值」。
@@ -108,9 +107,8 @@ console.log(obj === obj2); // false（重新指向後，兩個變數不再有參
 - 物件型別指派給變數時，傳遞的是記憶體的參考位址。
 - 傳入函式內的物件，如果重新賦值，此時函式內、外物件之間的參考就會消失。
 
----
 
-**參考資料**
+## 參考資料
 
 [重新認識 JavaScript: Day 05 JavaScript 是「傳值」或「傳址」？](https://ithelp.ithome.com.tw/articles/10191057)
 

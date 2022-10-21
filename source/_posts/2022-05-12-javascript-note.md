@@ -7,11 +7,10 @@ categories: JavaScript
 index_img: img/banner/banner_20220512.jpg
 ---
 
-初學 JavaScript 的筆記，基本上學到什麼就記錄下來，內容很長很繁雜。
+初學 JavaScript 的筆記，因為沒有一個學習的方向，因此幾乎是學到什麼就寫什麼，筆記的內容很冗長也沒有刻意整理，不建議筆者以外的人閱讀。
 
 <!--more-->
 
----
 
 ## 宣告
 
@@ -41,7 +40,6 @@ const sunNum = 1;
 
 > 宣告變數的名稱可使用駝峰式命名，此外，若撞到部分保留字，會無法宣告，保留字可參考此[連結](http://www.w3bai.com/zh-TW/js/js_reserved.html)。
 
----
 
 ## 型別
 
@@ -291,7 +289,7 @@ console.log(a, typeof a);
 
 > `null` 通常會在需要清空物件或陣列中的資料內容時使用。
 
----
+
 
 ## 運算子
 
@@ -422,7 +420,7 @@ console.log( a, b );
 
 > 更多相關運算子內容可參考此[連結](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Expressions_and_Operators)。
 
----
+
 
 ## if 流程判斷
 
@@ -563,7 +561,7 @@ if( sex == 'male' ){
 
 > if 只要滿足其中一個條件（判斷式結果為 `true`），就會在執行該條件的內容後，終止判斷流程（不再進行後續判斷式判斷）。
 
----
+
 
 ## 資料結構
 
@@ -879,7 +877,7 @@ console.log( myInfo, myInfo.isSingle );
 // ----
 ```
 
----
+
 
 ## 物件結合陣列
 
@@ -1137,7 +1135,7 @@ console.log( peopleData[0] );
 
 > 以上只是運作流程與邏輯的參考，而通常資料會有數筆，因此如果像上述範例一樣每有一筆資料就處理一次，效率就會很差且不易閱讀，因此通常會透過迴圈的方式來處理大批資料。
 
----
+
 
 ## 函式
 
@@ -1294,7 +1292,7 @@ console.log( result, `目前總共計算${calcNum}次` );
 
 > 從範例中第 4 行可得知，當函式中找不到宣告的變數時，會往全域搜尋是否存在相同名稱的變數。
 
----
+
 
 ## DOM
 
@@ -1610,7 +1608,7 @@ console.log(checkBox.classList.contains('active'));
 
 
 
----
+
 
 ## event 事件
 
@@ -1940,7 +1938,7 @@ link.addEventListener('click', function(e) {
 
 
 
----
+
 
 ## 迴圈/陣列操作
 
@@ -2541,7 +2539,7 @@ console.log(newArr);
 
 > 使用 `sort()` 時，若不加入 compareFunction，陣列中的數值會被轉換成字串，並以 Unicode 編碼位置進行比較來排序，本篇僅論數字的排序方法，相關內容可參考 [MDN](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)。
 
----
+
 
 ## AJAX 簡述
 
@@ -2893,7 +2891,7 @@ function renderData() {
 
 上述 JS 範例中， 因為函式 `renderData()` 位置在第 7 行，而函式 `.then` 在伺服器回傳資料給瀏覽器後就依序執行，換言之，函式 `renderData()` 會在 `dataTitle` 被賦予值（第 6 行）之後執行，因此第 11 行 `title` 才能正確讀取到 `dataTitle` 的值，並渲染純文字在畫面中。
 
----
+
 
 ## 函式-延伸內容
 
@@ -2997,9 +2995,9 @@ let funcName = (num, num2) => {
 }
 ```
 
----
 
-**參考資料：**
+
+## 參考資料
 
 [前端利用formData格式進行資料上傳，前端 formData 傳值和 json 傳值的區別？](https://www.796t.com/article.php?id=192469)
 [JavaScript 陣列處理方法 [filter(), find(), forEach(), map(), every(), some(), reduce()]](https://www.casper.tw/javascript/2017/06/29/es6-native-array/#Array-prototype-reduce)

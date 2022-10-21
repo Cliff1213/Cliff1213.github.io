@@ -1,5 +1,5 @@
 ---
-title: Flex 水平置中，子元素溢出不被裁切
+title: Flex 水平置中，子元素溢出時避免被裁切
 date: 2022-09-17
 tags:
  - flex
@@ -8,13 +8,12 @@ categories: CSS
 index_img: img/banner/banner_20220910-2.jpg
 ---
 
-記錄一下遇到的切版問題的解法。
+前一段時間在切版上遇到了一個問題，研究之後發現一個有趣的解決方法，也藉此機會紀錄一下。
 
 <!--more-->
 
-------
 
-前一段時間在切版時，遇到一個有趣的問題，範例如下：
+以下是範例情境：
 
 ![](https://i.imgur.com/TK9ZZcF.png)
 

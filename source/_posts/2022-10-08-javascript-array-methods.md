@@ -7,11 +7,10 @@ categories: JavaScript
 index_img: img/banner/banner_20221008.jpg
 ---
 
-forEach 很萬用，但其他的也不賴。
+forEach 很好用，但是其他陣列方法也很不賴！
 
 <!--more-->
 
-------
 
 > 目錄：
 >

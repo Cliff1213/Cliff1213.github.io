@@ -7,7 +7,7 @@ categories: JavaScript
 index_img: img/banner/banner_20221011.jpg
 ---
 
-記錄字串處理的方法。
+紀錄一下常用的字串處理方法。
 
 <!--more-->
 

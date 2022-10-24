@@ -1,45 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>UI 觀念直播班心得</title>
-    <url>/2022-01-17-hexschool-ui-feedback/</url>
-    <content><![CDATA[<p>2021 冬，UI 直播班心得，推！</p>
+    <title>NPM 基本指令</title>
+    <url>/2022-02-07-npm-note/</url>
+    <content><![CDATA[<p>淺淺的紀錄一下 NPM 是甚麼，以及相關的一些指令，藉此避免踩到一些開發中常見的雷。</p>
 <span id="more"></span>
 
+<h2 id="甚麼是-NPM？"><a href="#甚麼是-NPM？" class="headerlink" title="甚麼是 NPM？"></a>甚麼是 NPM？</h2><p>全名 Node Package Manager，是一種套件管理工具，簡言之就是匯集各種 Node js 套件的線上庫。</p>
+<h2 id="安裝-Node-JS-amp-NPM"><a href="#安裝-Node-JS-amp-NPM" class="headerlink" title="安裝 Node JS &amp; NPM"></a>安裝 Node JS &amp; NPM</h2><p><img src="https://i.imgur.com/O3WVkU4.png"></p>
+<p>上圖是 <a href="https://nodejs.org/en/">Node js 官網</a>所提供的下載點，可以看到分成兩個部分，左邊為 LTS（Long Term Support），屬於長期支援維護的版本，可以理解成較穩定的版本；右邊 Current 的部分則是最近、最新的版本。</p>
+<p>Node js 官方在版本的釋出上有自己的邏輯，通常會在每年四月份發布偶數版本，十月份發布奇數版本，可以從下圖看到近期的版本維護狀態：</p>
+<p><img src="https://i.imgur.com/zOGuPaZ.png"></p>
+<p>新的版本在發布後，版本號如果是奇數，六個月後就不會再維護；但版本號如果是偶數，半年後就會進入長期維護（Active LTS）的狀態，並保證在接下來的三十個月內會更新與修復各種問題，因此新專案通常會選擇安裝 LTS 的版本。</p>
+<p>接著進入正題，要如何安裝 NPM？這個問題其實在安裝 Node 後就已經解決了，因為 NPM 是 Node js 開發環境預設的套件管理工具（Packge Manager），因此在安裝 Node 的同時，NPM 會跟著一起安裝。</p>
+<blockquote>
+<p>因為每個專案所使用的 Node 版本不盡相同，因此為了避免產生版本與套件之間的相容問題，建議使用 NVM（Node Version Manager）來切換 Node 版本。</p>
+</blockquote>
+<p>安裝完成後，開啟任一終端機即可開始操作。</p>
+<h2 id="檢視版本"><a href="#檢視版本" class="headerlink" title="檢視版本"></a>檢視版本</h2><p>在終端機輸入以下指令：</p>
+<figure class="highlight coffeescript"><table><tr><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">npm</span> -v<br></code></pre></td></tr></table></figure>
+
+<p>如果顯示 npm 版本號，表示安裝成功，如下所示：</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">6</span>.<span class="hljs-number">9</span>.<span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
 
 
-<h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>本身不是設計相關科系，但還是希望能透過這次的＂六角學院－UI設計觀念必修直播班＂來增進一點 UI/UX 的相關知識，雖然很遺憾沒有完美的走到終點，但還是幫自己記錄一下這次參與直播班的心路歷程。</p>
-<h2 id="報名這堂課的契機是？"><a href="#報名這堂課的契機是？" class="headerlink" title="報名這堂課的契機是？"></a>報名這堂課的契機是？</h2><p>相信在仿間與 UI/UX 設計相關的課程一定數不勝數，但是為什麼我會選擇”六角學院”的課程？原因很簡單，<del>就是信仰（沒</del>，其實早在先前就有報名六角的切版班了，而六角學院整體給我的氛圍是很團結的；你會有自己的小組以及永遠在前線待命等你發問的助教，當然少不了最敬業的老師。而因為你是跟著大家一起學習，所以當腦海衍生出想偷懶的想法同時，也會有一種被人從後面拍肩膀並對你說「欸我先走一步哩，你就繼續耍廢。」的感覺，讓你在學習上能自律。</p>
-<h2 id="每週的學習過程："><a href="#每週的學習過程：" class="headerlink" title="每週的學習過程："></a>每週的學習過程：</h2><p>這一次表訂為期四週的直播課程大綱如下：</p>
+
+<h2 id="初始化目錄"><a href="#初始化目錄" class="headerlink" title="初始化目錄"></a>初始化目錄</h2><p>指定任一資料夾為目錄，輸入以下指令：</p>
+<figure class="highlight coffeescript"><table><tr><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">npm</span> init<br></code></pre></td></tr></table></figure>
+
+<p>此時會顯示訊息要求輸入專案的一些資訊，如下所示：</p>
+<p><img src="https://i.imgur.com/bGQsEeb.png"></p>
+<p>上述部分只需要持續按下 Enter 即可。</p>
+<p>接著透過編輯器開啟專案資料夾，可以看到一個 package.json 的檔案，這是資料夾在進行 npm 初始化後所產生的 json 格式檔案，內容主要是紀錄專案的資訊，如下所示：</p>
+<p><img src="https://i.imgur.com/yjjj8ZV.png"></p>
+<h2 id="安裝套件"><a href="#安裝套件" class="headerlink" title="安裝套件"></a>安裝套件</h2><h3 id="全域安裝"><a href="#全域安裝" class="headerlink" title="全域安裝"></a><strong>全域安裝</strong></h3><figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span> -g 套件名稱<br></code></pre></td></tr></table></figure>
+
+<p>安裝套件時，在指令加入 <code>-g</code>，套件就會被安裝在全域，也就是當前使用的電腦上；這樣做的好處是，當有其他專案需要使用這個套件時，就不用再另外安裝該套件在專案資料夾中。</p>
+<h3 id="安裝於指定目錄"><a href="#安裝於指定目錄" class="headerlink" title="安裝於指定目錄"></a><strong>安裝於指定目錄</strong></h3><figure class="highlight ada"><table><tr><td class="code"><pre><code class="hljs ada">npm install <span class="hljs-comment">--save 套件名稱</span><br></code></pre></td></tr></table></figure>
+
+<p>以指定專案資料夾為目錄並執行上述指令，套件就會被安裝在該資料夾中，在加入 <code>--save</code> 參數後，這個套件就會被記錄在 package.json 檔案裡，下列以安裝 jquery 為範例：</p>
+<p><img src="https://i.imgur.com/n1jRC8k.png"></p>
+<p>可以看到檔案中新增了一個 dependencies 項目，並且在下方可以看到已安裝的 jquery 套件與對應版本。</p>
+<p>因為不同專案所使用的套件與套件版本不同，因此在接手別人開發的專案時，可以先依據 dependencies 中的資訊來安裝對應的套件。</p>
+<h2 id="安裝指定版本套件"><a href="#安裝指定版本套件" class="headerlink" title="安裝指定版本套件"></a>安裝指定版本套件</h2><p>正常的情況下，安裝下來的套件預設會是最新的版本，但一些較舊的專案可能不支援新版本的套件，此時就可以使用以下指令來安裝指定版本的套件。</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span> 套件名稱@版本號<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="版本數字意義"><a href="#版本數字意義" class="headerlink" title="版本數字意義"></a>版本數字意義</h2><p>通常套件的版本會以 3 個數字的格式來表示，但每個數字所代表的意義其實不同，下列以 jquery 為例：</p>
+<figure class="highlight 1c"><table><tr><td class="code"><pre><code class="hljs 1c"><span class="hljs-string">&quot;jquery&quot;</span>： <span class="hljs-string">&quot;^3.6.0&quot;</span><br></code></pre></td></tr></table></figure>
+
 <ul>
-<li><p><strong>Week 1：掌握頁面所有元件</strong></p>
-<p>本次主要使用的設計工具為 Figma，算是目前的主流之一。而這週就是帶你認識軟體的操作介面；雖然我在開課前有先觀看課前釋出的體驗營直播錄影，但是自己在操作上還是有許多不解的地方；不過在聽完第一週的直播後，我私下就利用時間把直播錄影再看一次並且針對操作上比較複雜的地方寫了筆記，<del>對我來說都很複雜所以筆記滿到哭</del>，而這些後續幫助我在練習軟體上幫助很多。</p>
-</li>
-<li><p><strong>Week 2：帶你從草稿到完稿</strong></p>
-<p>這週認識了一些網頁在設計的過程中比較常見會遇到的設計模式，像是C.R.A.P的設計準則，或是在規劃網頁時常用的 AIDA Modal；再來會介紹甚麼是 Wireframe。這週基本上每個人會開始設計第一個 Landing Page，對我這個設計白癡來說算是頗有挑戰性的，<del>（我做的很像釣魚網站</del>。</p>
-</li>
-<li><p><strong>Week 3：伸縮自如的響應式設計</strong></p>
-<p>RWD對我來說雖然早就不陌生，但是這堂課讓我更加的理解網頁在不同寬度的視窗做切換時的一些細節以及過往不懂的知識，像是中斷點、網格切換時的邏輯或是兩個物件之間的間距都是一個學問。</p>
-</li>
-<li><p><strong>Week 4：讓介面動起來</strong></p>
-<p>這週的直播內容算是比較有趣的一次，主要都是在介紹 Prototype 的運作，很多動畫都是在網頁中常見的，但是直播以外的時間幾乎都是拿來做最終作品，從這週開始會覺得時間緊湊起來。</p>
-</li>
-<li><p><strong>Week 5：加碼內容</strong></p>
-<p>標題說是表訂為期四週，但怎麼會還有第五週呢？原因是老師擔心有些同學工作比較忙碌，可能會沒有時間做最終作品，因此開放最終作品有達到一定進度的同學提供額外的一次直播並且延長作品繳交的期限<del>（老師你是神吧</del>，而加碼直播課程的內容是如何把作品上傳到 Behance 以及作品呈現的排版建議；為了拿到這張門票我花了不少時間不反覆改我的作品版型，但一切都值得。</p>
-</li>
+<li><code>3</code> - 主要版本，通常會因為重大改版而增加版本號。</li>
+<li><code>6</code> - 次要版本，依當前的主要版本為基準，新增功能時增加版本號。</li>
+<li><code>0</code> - 修正版本，依當前的主要版本為基準，修正錯誤時增加版本號。</li>
 </ul>
-<h2 id="建議："><a href="#建議：" class="headerlink" title="建議："></a>建議：</h2><p>無論你是不是設計背景，或是你有想轉職 UI 設計師的想法但是沒有明確的學習目標，不仿可以考慮看看六角學院的 UI 設計直播課程；好的學習環境跟課程規劃這裡都提供給你了，但能不能有所成長還是決定在自己身上，以我自己為例，很多觀念在直播上課的當下我是充滿疑惑的，但課後我會盡可能的把當天的直播錄影重頭到尾看一次並且隨時暫停錄影做筆記，因為對我來說暫停的當下會先思考一次問題的所在，而作筆記的時候會間接複習剛剛思考的問題，這確實大幅提升了我的學習效率，當然這是我自己的做法，每個人的學習方式不盡相同，但這裡要表達的重點是自己必須要有所規劃，再搭配現有的資源去做結合，才能最有效率的學習。</p>
-<h2 id="結語："><a href="#結語：" class="headerlink" title="結語："></a>結語：</h2><p>雖然這次的過程對我來說真的不容易，但還是很榮幸可以跟到這次的直播課程，畢竟這是我有史以來最認真跟 UI/UX 相處的一段時間。很喜歡一個人專注在思考或是做某一件事情時的感覺，而這次直播班讓我深刻體會到了，遺憾的是我沒有在時間內完成最終作品，雖然對特別延長繳交期限的老師很不好意思，但這個作品我還是會利用時間把它完成，至少有始有終也算是對參與這個課程的自己負責吧。</p>
-<p>最後我要特別感謝<strong>熾炎鐵甲狼</strong>的組員，特別是組長都會幫忙繳交小組作業以及提醒繳交的時間，也要感謝其他組員都會提出疑問和幫忙解答，雖然各位都很忙，但都盡可能的參與小組任務，這邊讓我私心合影紀念一下。</p>
-<p><img src="https://i.imgur.com/kQuBKJ5.png" alt="img"></p>
-<p>最後的最後，要感謝聲音自帶磁性的俊儀老師和唯一的 Joanne 助教願意回答我提出的蠢問題<del>（假日問跨年也問，吵到真的不好意思</del>，雖然最後階段的作品屢次被退回，但每次的建議我都有仔細看，讓我這個設計肢障提升了設計觀念之餘，也培養了專注思考的能力，感謝兩位的用力鞭打，也辛苦你們了。</p>
-<p><img src="https://i.imgur.com/GIbWClM.png?1"></p>
+<p>開發的過程中通常不會直接更新主要版本，因為這樣有極高的機率毀掉專案，正常的情況下只會更新次要版本或修正版本，依專案的開發情形而定。</p>
+<h2 id="版本標示符號"><a href="#版本標示符號" class="headerlink" title="版本標示符號"></a>版本標示符號</h2><ul>
+<li><code>^x.x.x</code> - 安裝套件時，自動更新次要與修正版本，主要版本不做更動。</li>
+<li><code>~x.x.x</code> - 安裝套件時，自動更新修正版本，主要與次要版本不做更動。</li>
+<li><code>latest</code> - 安裝套件時，自動安裝最新版本。</li>
+<li>未加入任何符號，表示只安裝當前輸入的版本。</li>
+</ul>
+<p>更新套件版本的方式，只需要將專案資料夾中的 node_modules 刪除，再重新執行以下指令，系統就會根據該專案中的 package.json 檔案設置來安裝所有會使用到的套件。</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span><br></code></pre></td></tr></table></figure>
+
+
+<h2 id="移除套件"><a href="#移除套件" class="headerlink" title="移除套件"></a>移除套件</h2><figure class="highlight coffeescript"><table><tr><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">npm</span> uninstall 套件名稱<br></code></pre></td></tr></table></figure>
+
+<p>需要注意的是，上述指令只會將專案資料夾中的套件移除，但是並不會同時更新 package.json 檔案中的設置，如果有這個需求，只需要在指令中加入 <code>--save</code> 參數即可。</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://medium.com/html-test/%E5%BE%9E%E9%9B%B6%E9%96%8B%E5%A7%8B-%E4%BD%BF%E7%94%A8npm%E5%A5%97%E4%BB%B6-317beefdf182">從零開始：使用NPM套件</a><br><a href="https://linyencheng.github.io/2020/03/22/tool-npm/">npm 入門到進階</a></p>
 ]]></content>
       <categories>
-        <category>心得</category>
+        <category>Package</category>
       </categories>
       <tags>
-        <tag>六角學院</tag>
+        <tag>npm</tag>
       </tags>
   </entry>
   <entry>
@@ -115,80 +150,45 @@
       </tags>
   </entry>
   <entry>
-    <title>NPM 基本指令</title>
-    <url>/2022-02-07-npm-note/</url>
-    <content><![CDATA[<p>淺淺的紀錄一下 NPM 是甚麼，以及相關的一些指令，藉此避免踩到一些開發中常見的雷。</p>
+    <title>UI 觀念直播班心得</title>
+    <url>/2022-01-17-hexschool-ui-feedback/</url>
+    <content><![CDATA[<p>2021 冬，UI 直播班心得，推！</p>
 <span id="more"></span>
 
-<h2 id="甚麼是-NPM？"><a href="#甚麼是-NPM？" class="headerlink" title="甚麼是 NPM？"></a>甚麼是 NPM？</h2><p>全名 Node Package Manager，是一種套件管理工具，簡言之就是匯集各種 Node js 套件的線上庫。</p>
-<h2 id="安裝-Node-JS-amp-NPM"><a href="#安裝-Node-JS-amp-NPM" class="headerlink" title="安裝 Node JS &amp; NPM"></a>安裝 Node JS &amp; NPM</h2><p><img src="https://i.imgur.com/O3WVkU4.png"></p>
-<p>上圖是 <a href="https://nodejs.org/en/">Node js 官網</a>所提供的下載點，可以看到分成兩個部分，左邊為 LTS（Long Term Support），屬於長期支援維護的版本，可以理解成較穩定的版本；右邊 Current 的部分則是最近、最新的版本。</p>
-<p>Node js 官方在版本的釋出上有自己的邏輯，通常會在每年四月份發布偶數版本，十月份發布奇數版本，可以從下圖看到近期的版本維護狀態：</p>
-<p><img src="https://i.imgur.com/zOGuPaZ.png"></p>
-<p>新的版本在發布後，版本號如果是奇數，六個月後就不會再維護；但版本號如果是偶數，半年後就會進入長期維護（Active LTS）的狀態，並保證在接下來的三十個月內會更新與修復各種問題，因此新專案通常會選擇安裝 LTS 的版本。</p>
-<p>接著進入正題，要如何安裝 NPM？這個問題其實在安裝 Node 後就已經解決了，因為 NPM 是 Node js 開發環境預設的套件管理工具（Packge Manager），因此在安裝 Node 的同時，NPM 會跟著一起安裝。</p>
-<blockquote>
-<p>因為每個專案所使用的 Node 版本不盡相同，因此為了避免產生版本與套件之間的相容問題，建議使用 NVM（Node Version Manager）來切換 Node 版本。</p>
-</blockquote>
-<p>安裝完成後，開啟任一終端機即可開始操作。</p>
-<h2 id="檢視版本"><a href="#檢視版本" class="headerlink" title="檢視版本"></a>檢視版本</h2><p>在終端機輸入以下指令：</p>
-<figure class="highlight coffeescript"><table><tr><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">npm</span> -v<br></code></pre></td></tr></table></figure>
-
-<p>如果顯示 npm 版本號，表示安裝成功，如下所示：</p>
-<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">6</span>.<span class="hljs-number">9</span>.<span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
 
 
-
-<h2 id="初始化目錄"><a href="#初始化目錄" class="headerlink" title="初始化目錄"></a>初始化目錄</h2><p>指定任一資料夾為目錄，輸入以下指令：</p>
-<figure class="highlight coffeescript"><table><tr><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">npm</span> init<br></code></pre></td></tr></table></figure>
-
-<p>此時會顯示訊息要求輸入專案的一些資訊，如下所示：</p>
-<p><img src="https://i.imgur.com/bGQsEeb.png"></p>
-<p>上述部分只需要持續按下 Enter 即可。</p>
-<p>接著透過編輯器開啟專案資料夾，可以看到一個 package.json 的檔案，這是資料夾在進行 npm 初始化後所產生的 json 格式檔案，內容主要是紀錄專案的資訊，如下所示：</p>
-<p><img src="https://i.imgur.com/yjjj8ZV.png"></p>
-<h2 id="安裝套件"><a href="#安裝套件" class="headerlink" title="安裝套件"></a>安裝套件</h2><h3 id="全域安裝"><a href="#全域安裝" class="headerlink" title="全域安裝"></a><strong>全域安裝</strong></h3><figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span> -g 套件名稱<br></code></pre></td></tr></table></figure>
-
-<p>安裝套件時，在指令加入 <code>-g</code>，套件就會被安裝在全域，也就是當前使用的電腦上；這樣做的好處是，當有其他專案需要使用這個套件時，就不用再另外安裝該套件在專案資料夾中。</p>
-<h3 id="安裝於指定目錄"><a href="#安裝於指定目錄" class="headerlink" title="安裝於指定目錄"></a><strong>安裝於指定目錄</strong></h3><figure class="highlight ada"><table><tr><td class="code"><pre><code class="hljs ada">npm install <span class="hljs-comment">--save 套件名稱</span><br></code></pre></td></tr></table></figure>
-
-<p>以指定專案資料夾為目錄並執行上述指令，套件就會被安裝在該資料夾中，在加入 <code>--save</code> 參數後，這個套件就會被記錄在 package.json 檔案裡，下列以安裝 jquery 為範例：</p>
-<p><img src="https://i.imgur.com/n1jRC8k.png"></p>
-<p>可以看到檔案中新增了一個 dependencies 項目，並且在下方可以看到已安裝的 jquery 套件與對應版本。</p>
-<p>因為不同專案所使用的套件與套件版本不同，因此在接手別人開發的專案時，可以先依據 dependencies 中的資訊來安裝對應的套件。</p>
-<h2 id="安裝指定版本套件"><a href="#安裝指定版本套件" class="headerlink" title="安裝指定版本套件"></a>安裝指定版本套件</h2><p>正常的情況下，安裝下來的套件預設會是最新的版本，但一些較舊的專案可能不支援新版本的套件，此時就可以使用以下指令來安裝指定版本的套件。</p>
-<figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span> 套件名稱@版本號<br></code></pre></td></tr></table></figure>
-
-
-<h2 id="版本數字意義"><a href="#版本數字意義" class="headerlink" title="版本數字意義"></a>版本數字意義</h2><p>通常套件的版本會以 3 個數字的格式來表示，但每個數字所代表的意義其實不同，下列以 jquery 為例：</p>
-<figure class="highlight 1c"><table><tr><td class="code"><pre><code class="hljs 1c"><span class="hljs-string">&quot;jquery&quot;</span>： <span class="hljs-string">&quot;^3.6.0&quot;</span><br></code></pre></td></tr></table></figure>
-
+<h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>本身不是設計相關科系，但還是希望能透過這次的＂六角學院－UI設計觀念必修直播班＂來增進一點 UI/UX 的相關知識，雖然很遺憾沒有完美的走到終點，但還是幫自己記錄一下這次參與直播班的心路歷程。</p>
+<h2 id="報名這堂課的契機是？"><a href="#報名這堂課的契機是？" class="headerlink" title="報名這堂課的契機是？"></a>報名這堂課的契機是？</h2><p>相信在仿間與 UI/UX 設計相關的課程一定數不勝數，但是為什麼我會選擇”六角學院”的課程？原因很簡單，<del>就是信仰（沒</del>，其實早在先前就有報名六角的切版班了，而六角學院整體給我的氛圍是很團結的；你會有自己的小組以及永遠在前線待命等你發問的助教，當然少不了最敬業的老師。而因為你是跟著大家一起學習，所以當腦海衍生出想偷懶的想法同時，也會有一種被人從後面拍肩膀並對你說「欸我先走一步哩，你就繼續耍廢。」的感覺，讓你在學習上能自律。</p>
+<h2 id="每週的學習過程："><a href="#每週的學習過程：" class="headerlink" title="每週的學習過程："></a>每週的學習過程：</h2><p>這一次表訂為期四週的直播課程大綱如下：</p>
 <ul>
-<li><code>3</code> - 主要版本，通常會因為重大改版而增加版本號。</li>
-<li><code>6</code> - 次要版本，依當前的主要版本為基準，新增功能時增加版本號。</li>
-<li><code>0</code> - 修正版本，依當前的主要版本為基準，修正錯誤時增加版本號。</li>
+<li><p><strong>Week 1：掌握頁面所有元件</strong></p>
+<p>本次主要使用的設計工具為 Figma，算是目前的主流之一。而這週就是帶你認識軟體的操作介面；雖然我在開課前有先觀看課前釋出的體驗營直播錄影，但是自己在操作上還是有許多不解的地方；不過在聽完第一週的直播後，我私下就利用時間把直播錄影再看一次並且針對操作上比較複雜的地方寫了筆記，<del>對我來說都很複雜所以筆記滿到哭</del>，而這些後續幫助我在練習軟體上幫助很多。</p>
+</li>
+<li><p><strong>Week 2：帶你從草稿到完稿</strong></p>
+<p>這週認識了一些網頁在設計的過程中比較常見會遇到的設計模式，像是C.R.A.P的設計準則，或是在規劃網頁時常用的 AIDA Modal；再來會介紹甚麼是 Wireframe。這週基本上每個人會開始設計第一個 Landing Page，對我這個設計白癡來說算是頗有挑戰性的，<del>（我做的很像釣魚網站</del>。</p>
+</li>
+<li><p><strong>Week 3：伸縮自如的響應式設計</strong></p>
+<p>RWD對我來說雖然早就不陌生，但是這堂課讓我更加的理解網頁在不同寬度的視窗做切換時的一些細節以及過往不懂的知識，像是中斷點、網格切換時的邏輯或是兩個物件之間的間距都是一個學問。</p>
+</li>
+<li><p><strong>Week 4：讓介面動起來</strong></p>
+<p>這週的直播內容算是比較有趣的一次，主要都是在介紹 Prototype 的運作，很多動畫都是在網頁中常見的，但是直播以外的時間幾乎都是拿來做最終作品，從這週開始會覺得時間緊湊起來。</p>
+</li>
+<li><p><strong>Week 5：加碼內容</strong></p>
+<p>標題說是表訂為期四週，但怎麼會還有第五週呢？原因是老師擔心有些同學工作比較忙碌，可能會沒有時間做最終作品，因此開放最終作品有達到一定進度的同學提供額外的一次直播並且延長作品繳交的期限<del>（老師你是神吧</del>，而加碼直播課程的內容是如何把作品上傳到 Behance 以及作品呈現的排版建議；為了拿到這張門票我花了不少時間不反覆改我的作品版型，但一切都值得。</p>
+</li>
 </ul>
-<p>開發的過程中通常不會直接更新主要版本，因為這樣有極高的機率毀掉專案，正常的情況下只會更新次要版本或修正版本，依專案的開發情形而定。</p>
-<h2 id="版本標示符號"><a href="#版本標示符號" class="headerlink" title="版本標示符號"></a>版本標示符號</h2><ul>
-<li><code>^x.x.x</code> - 安裝套件時，自動更新次要與修正版本，主要版本不做更動。</li>
-<li><code>~x.x.x</code> - 安裝套件時，自動更新修正版本，主要與次要版本不做更動。</li>
-<li><code>latest</code> - 安裝套件時，自動安裝最新版本。</li>
-<li>未加入任何符號，表示只安裝當前輸入的版本。</li>
-</ul>
-<p>更新套件版本的方式，只需要將專案資料夾中的 node_modules 刪除，再重新執行以下指令，系統就會根據該專案中的 package.json 檔案設置來安裝所有會使用到的套件。</p>
-<figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span><br></code></pre></td></tr></table></figure>
-
-
-<h2 id="移除套件"><a href="#移除套件" class="headerlink" title="移除套件"></a>移除套件</h2><figure class="highlight coffeescript"><table><tr><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">npm</span> uninstall 套件名稱<br></code></pre></td></tr></table></figure>
-
-<p>需要注意的是，上述指令只會將專案資料夾中的套件移除，但是並不會同時更新 package.json 檔案中的設置，如果有這個需求，只需要在指令中加入 <code>--save</code> 參數即可。</p>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://medium.com/html-test/%E5%BE%9E%E9%9B%B6%E9%96%8B%E5%A7%8B-%E4%BD%BF%E7%94%A8npm%E5%A5%97%E4%BB%B6-317beefdf182">從零開始：使用NPM套件</a><br><a href="https://linyencheng.github.io/2020/03/22/tool-npm/">npm 入門到進階</a></p>
+<h2 id="建議："><a href="#建議：" class="headerlink" title="建議："></a>建議：</h2><p>無論你是不是設計背景，或是你有想轉職 UI 設計師的想法但是沒有明確的學習目標，不仿可以考慮看看六角學院的 UI 設計直播課程；好的學習環境跟課程規劃這裡都提供給你了，但能不能有所成長還是決定在自己身上，以我自己為例，很多觀念在直播上課的當下我是充滿疑惑的，但課後我會盡可能的把當天的直播錄影重頭到尾看一次並且隨時暫停錄影做筆記，因為對我來說暫停的當下會先思考一次問題的所在，而作筆記的時候會間接複習剛剛思考的問題，這確實大幅提升了我的學習效率，當然這是我自己的做法，每個人的學習方式不盡相同，但這裡要表達的重點是自己必須要有所規劃，再搭配現有的資源去做結合，才能最有效率的學習。</p>
+<h2 id="結語："><a href="#結語：" class="headerlink" title="結語："></a>結語：</h2><p>雖然這次的過程對我來說真的不容易，但還是很榮幸可以跟到這次的直播課程，畢竟這是我有史以來最認真跟 UI/UX 相處的一段時間。很喜歡一個人專注在思考或是做某一件事情時的感覺，而這次直播班讓我深刻體會到了，遺憾的是我沒有在時間內完成最終作品，雖然對特別延長繳交期限的老師很不好意思，但這個作品我還是會利用時間把它完成，至少有始有終也算是對參與這個課程的自己負責吧。</p>
+<p>最後我要特別感謝<strong>熾炎鐵甲狼</strong>的組員，特別是組長都會幫忙繳交小組作業以及提醒繳交的時間，也要感謝其他組員都會提出疑問和幫忙解答，雖然各位都很忙，但都盡可能的參與小組任務，這邊讓我私心合影紀念一下。</p>
+<p><img src="https://i.imgur.com/kQuBKJ5.png" alt="img"></p>
+<p>最後的最後，要感謝聲音自帶磁性的俊儀老師和唯一的 Joanne 助教願意回答我提出的蠢問題<del>（假日問跨年也問，吵到真的不好意思</del>，雖然最後階段的作品屢次被退回，但每次的建議我都有仔細看，讓我這個設計肢障提升了設計觀念之餘，也培養了專注思考的能力，感謝兩位的用力鞭打，也辛苦你們了。</p>
+<p><img src="https://i.imgur.com/GIbWClM.png?1"></p>
 ]]></content>
       <categories>
-        <category>Package</category>
+        <category>心得</category>
       </categories>
       <tags>
-        <tag>npm</tag>
+        <tag>六角學院</tag>
       </tags>
   </entry>
   <entry>
@@ -388,47 +388,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Flex 水平置中，子元素溢出時避免被裁切</title>
-    <url>/2022-09-17-css-max-content/</url>
-    <content><![CDATA[<p>前一段時間在切版上遇到了一個問題，研究之後發現一個有趣的解決方法，也藉此機會紀錄一下。</p>
-<span id="more"></span>
-
-
-<p>以下是範例情境：</p>
-<p><img src="https://i.imgur.com/TK9ZZcF.png"></p>
-<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- HTML --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;section mt-3&quot;</span>&gt;</span>  <br>  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;section-title&quot;</span>&gt;</span>Section Title<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span><br>    ...<br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* CSS（上方列表區塊） */</span><br><span class="hljs-selector-class">.list</span> &#123;<br>  <span class="hljs-attribute">display</span>: flex;<br>  <span class="hljs-attribute">justify-content</span>: center;<br>  <span class="hljs-attribute">overflow</span>: auto;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>上述範例中，上方 <code>.list</code> 區塊使用 <code>display: flex</code> 加上 <code>justify-content: center</code> 讓子元素置中，同時希望瀏覽器寬度縮小至子元素溢出時，溢出的部分以水平軸方式呈現，因此加入了 <code>overflow: auto</code> 設定，呈現畫面如下：</p>
-<p><img src="https://i.imgur.com/Sn1BMH4.png"></p>
-<p>然而將水平軸向左滾動至最底時，溢出的部分卻被裁切了，而問題就在 <code>justify-content: center</code> 這個屬性上，移除該屬性之後，子元素溢出的部分就會正常呈現，如下：</p>
-<p><img src="https://i.imgur.com/6GYarUd.png"></p>
-<p>此時問題來了，在不使用 <code>justify-content: center</code> 的情況下，要如何同時滿足子元素保持置中，但是溢出情況下不會被裁切呢？在思索一番後想到另一個能使區塊水平置中的語法，就是 <code>margin: 0 auto</code>，不過這個語法只適用具有實際寬度但非滿版的區塊，而範例中的 <code>.list</code> 區塊因為 <code>display: flex</code> 的關係佔了滿版的寬，因此並沒有如預期置中。下圖是區塊實際佔用的空間：</p>
-<p><img src="https://i.imgur.com/WnJz6ud.png"></p>
-<p><strong>解決方式：</strong></p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* CSS（上方列表區塊） */</span><br><span class="hljs-selector-class">.list</span> &#123;<br>  <span class="hljs-attribute">display</span>: flex;<br>  <span class="hljs-attribute">max-width</span>: max-content;<br>  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;<br>  <span class="hljs-attribute">overflow</span>: auto;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>僅需在 <code>.list</code> 區塊加上 <code>max-width: max-content</code> 語法即可，而 <code>max-content</code> 最基本的作用是讓區塊寬度或高度自適應子元素，並且當子元素溢出時，內容不會受到擠壓而換行；此處正好利用了前者特性，使 <code>.list</code> 最大寬度等於所有子元素（<code>.list-item</code>）寬度的加總，此時再配合 <code>margin: 0 auto</code> 之後區塊得以置中，並且當子元素溢出時不會被裁切。結果如下圖所示：</p>
-<p><img src="https://i.imgur.com/MLip3hT.png"></p>
-<p><strong>實作範例：</strong></p>
-<iframe src="https://codepen.io/Cliff_hex/embed/bGMqLOq?default-tab=css,result" width="100%" height="300" frameborder="0" loading="lazy" allowfullscreen></iframe>
-
-<blockquote>
-<p>max-content 詳細說明請參考此<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/max-content">文章</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>CSS</category>
-      </categories>
-      <tags>
-        <tag>flex</tag>
-        <tag>overflow</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SCSS 實用語法</title>
-    <url>/2022-06-07-sass-note-md/</url>
+    <url>/2022-06-07-sass-note/</url>
     <content><![CDATA[<p>最近接觸到 Sass/SCSS，覺得各方面的功能都太方便了，這輩子大概不會想回去寫純 CSS 了吧。這篇筆記整理了一些新手必須學會的語法。</p>
 <span id="more"></span>
 
@@ -537,6 +498,45 @@
       </tags>
   </entry>
   <entry>
+    <title>Flex 水平置中，子元素溢出時避免被裁切</title>
+    <url>/2022-09-17-css-max-content/</url>
+    <content><![CDATA[<p>前一段時間在切版上遇到了一個問題，研究之後發現一個有趣的解決方法，也藉此機會紀錄一下。</p>
+<span id="more"></span>
+
+
+<p>以下是範例情境：</p>
+<p><img src="https://i.imgur.com/TK9ZZcF.png"></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- HTML --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;section mt-3&quot;</span>&gt;</span>  <br>  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;section-title&quot;</span>&gt;</span>Section Title<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span><br>    ...<br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* CSS（上方列表區塊） */</span><br><span class="hljs-selector-class">.list</span> &#123;<br>  <span class="hljs-attribute">display</span>: flex;<br>  <span class="hljs-attribute">justify-content</span>: center;<br>  <span class="hljs-attribute">overflow</span>: auto;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>上述範例中，上方 <code>.list</code> 區塊使用 <code>display: flex</code> 加上 <code>justify-content: center</code> 讓子元素置中，同時希望瀏覽器寬度縮小至子元素溢出時，溢出的部分以水平軸方式呈現，因此加入了 <code>overflow: auto</code> 設定，呈現畫面如下：</p>
+<p><img src="https://i.imgur.com/Sn1BMH4.png"></p>
+<p>然而將水平軸向左滾動至最底時，溢出的部分卻被裁切了，而問題就在 <code>justify-content: center</code> 這個屬性上，移除該屬性之後，子元素溢出的部分就會正常呈現，如下：</p>
+<p><img src="https://i.imgur.com/6GYarUd.png"></p>
+<p>此時問題來了，在不使用 <code>justify-content: center</code> 的情況下，要如何同時滿足子元素保持置中，但是溢出情況下不會被裁切呢？在思索一番後想到另一個能使區塊水平置中的語法，就是 <code>margin: 0 auto</code>，不過這個語法只適用具有實際寬度但非滿版的區塊，而範例中的 <code>.list</code> 區塊因為 <code>display: flex</code> 的關係佔了滿版的寬，因此並沒有如預期置中。下圖是區塊實際佔用的空間：</p>
+<p><img src="https://i.imgur.com/WnJz6ud.png"></p>
+<p><strong>解決方式：</strong></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* CSS（上方列表區塊） */</span><br><span class="hljs-selector-class">.list</span> &#123;<br>  <span class="hljs-attribute">display</span>: flex;<br>  <span class="hljs-attribute">max-width</span>: max-content;<br>  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;<br>  <span class="hljs-attribute">overflow</span>: auto;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>僅需在 <code>.list</code> 區塊加上 <code>max-width: max-content</code> 語法即可，而 <code>max-content</code> 最基本的作用是讓區塊寬度或高度自適應子元素，並且當子元素溢出時，內容不會受到擠壓而換行；此處正好利用了前者特性，使 <code>.list</code> 最大寬度等於所有子元素（<code>.list-item</code>）寬度的加總，此時再配合 <code>margin: 0 auto</code> 之後區塊得以置中，並且當子元素溢出時不會被裁切。結果如下圖所示：</p>
+<p><img src="https://i.imgur.com/MLip3hT.png"></p>
+<p><strong>實作範例：</strong></p>
+<iframe src="https://codepen.io/Cliff_hex/embed/bGMqLOq?default-tab=css,result" width="100%" height="300" frameborder="0" loading="lazy" allowfullscreen></iframe>
+
+<blockquote>
+<p>max-content 詳細說明請參考此<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/max-content">文章</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>flex</tag>
+        <tag>overflow</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JavaScript 觀念 - 函式</title>
     <url>/2022-09-19-javascript-function/</url>
     <content><![CDATA[<p>簡單的紀錄一下函式的基本知識。</p>
@@ -627,6 +627,67 @@
       </tags>
   </entry>
   <entry>
+    <title>JavaScript 觀念 - 提升</title>
+    <url>/2022-09-24-javascript-hoisting/</url>
+    <content><![CDATA[<p>ES6 前後的 Hoisting 觀念筆記。</p>
+<span id="more"></span>
+
+
+<p>「提升（Hoisting）」是 JavaScript 特有的一種現象，它的意思是當一個變數或函式在被宣告之前就可以被使用，並且不會出現錯誤，另外 ES6 以前都是使用 <code>var</code> 來宣告變數，與 ES6 新增的 <code>let</code>、<code>const</code> 在提升行為會也有所不同。</p>
+<h2 id="ES6-以前的提升"><a href="#ES6-以前的提升" class="headerlink" title="ES6 以前的提升"></a>ES6 以前的提升</h2><figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-comment">// ReferenceError: x is not defined</span><br></code></pre></td></tr></table></figure>
+
+<p>以上針對 <code>x</code> 取值，但是在這之前並沒有宣告一個名為 <code>x</code> 的變數，因此會找不到該變數而回報錯誤，下面是正常的做法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> x;<br><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
+
+<p>這樣就是一個正常的流程，程式碼會從第一行開始由上往下執行，所以在使用變數之前需要先宣告變數，以確保這個變數是存在的。</p>
+<p>接著下面嘗試把第 1、2 行位置進行對調：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-keyword">var</span> x;<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
+
+<p>按照前面的說法，上述程式碼應該會回報錯誤，但是得到的結果卻是 <code>undefined</code>，而這就是提升所造成的現象，感覺像是 <code>var x</code> 這段程式碼被提升到所有程式碼之前。</p>
+<p>大多數的程式語言中，變數在被使用之前是需要先宣告的，但是 JavaScript 可以在變數宣告之前就使用該變數，不過關於提升還有一些注意事項，就是會被提升的只有<strong>宣告的行為</strong>，值的指派並不會被提升，以下面程式碼為例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> x = <span class="hljs-number">7</span>; <span class="hljs-comment">// 宣告變數並指派值</span><br><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-comment">// 7</span><br></code></pre></td></tr></table></figure>
+
+<p>範例跟前面的相同，只是多了一個指派數值的動作，而最後也印出預期的結果，這個時候如果再將 1、2 行位置進行對調，印出的結果會是 <code>7</code> 嗎？</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-keyword">var</span> x = <span class="hljs-number">7</span>;<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
+
+<p>答案是 <code>undefined</code>，照理來說宣告的變數會被提升，可是得到的結果卻不是 <code>7</code>，原因其實就如前面提到的，會被提升的只有宣告的動作，而範例中宣告的動作指的是 <code>var x</code>，後方的 <code>= 7</code> 屬於值的指派，並不會跟著宣告一起被提升。</p>
+<p>但是結果為甚麼會是 <code>undefined</code>？原因在於 JavaScript 在開始執行你撰寫的程式碼之前，會先把所有宣告的變數、一般函式都預留一個記憶體空間，但不會馬上指派值給變數，這個預留記憶體空間的動作就是提升，到這邊為止屬於「創造階段」，而這個階段結束之後，變數才會被賦值，這個賦值的過程則是「執行階段」，<code>undefined</code> 就是變數在創造階段建立記憶體空間時，預設給定的初始值。</p>
+<p>可以將上面的程式碼運作流程理解成以下形式：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> x; <span class="hljs-comment">// 宣告變數（會被提升）</span><br><span class="hljs-built_in">console</span>.log(x);<br>x = <span class="hljs-number">7</span>; <span class="hljs-comment">// 指派值</span><br></code></pre></td></tr></table></figure>
+
+<p>目前為止已經知道會被提升的只有宣告的動作，但是除了變數之外，一般的函式宣告也會被提升，以下面程式碼為例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">fn();<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// hello</span><br></code></pre></td></tr></table></figure>
+
+<p>嘗試在函式被宣告之前呼叫，也可以順利執行且不會回報錯誤，因為這是一般的函式宣告（具名函式），整個函式都會被提升，因此就可以在函式宣告之前呼叫。</p>
+<p>那匿名函式就不會被提升嗎？答案是會，下面嘗試將範例改成以匿名函式的方式建立：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">fn();<br><span class="hljs-keyword">var</span> fn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// TypeError: fn is not a function</span><br></code></pre></td></tr></table></figure>
+
+<p>結果出現錯誤了，不過是不是與 <code>var</code> 宣告的變數很像？其實概念是一樣的，這裡的程式碼確實有被提升，但是被提升的只有變數的宣告 <code>var fn</code>，函式的資料在執行階段才會指派給變數 <code>fn</code>，此時的 <code>fn</code> 的值為 <code>undefined</code>，而 <code>undefined</code> 並非函式因此呼叫的行為就會回報錯誤。</p>
+<p>雖然無法呼叫，但是能透過變數取值來驗證上述說法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(fn);<br><span class="hljs-keyword">var</span> fn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
+
+<p>而程式碼實際運作流程就像下面這樣：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> fn;<br><span class="hljs-built_in">console</span>.log(fn);<br>fn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>總結來說，JavaScript 中的「提升（Hoisting）」指的是宣告變數的提升，而值的賦予並不會提升；此外，提升並不會變更程式碼的位置，只是感覺像是整段程式碼被移動到最上方。</p>
+<h2 id="let、const-的提升"><a href="#let、const-的提升" class="headerlink" title="let、const 的提升"></a>let、const 的提升</h2><p>關於 <code>let</code>、<code>const</code> 有沒有提升行為，一開始我自己也是透過以下方法來作結論的：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// ReferenceError: a is not defined</span><br><span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure>
+
+<p>原本看到上面的結果，是認為 <code>let</code>、<code>const</code> 沒有提升行為的，直到看到一篇文章寫了下面這段程式碼：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fnA</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(a);<br>  <span class="hljs-keyword">let</span> a = <span class="hljs-number">100</span>;<br>&#125;<br>fnA();<br><span class="hljs-comment">// ReferenceError: Cannot access &#x27;a&#x27; before initialization</span><br></code></pre></td></tr></table></figure>
+
+<p>可以看到在函式 <code>fnA</code> 裡面，嘗試在變數 <code>a</code> 被宣告之前取值，照理來說，如果 <code>let</code> 沒有提升行為，第 3 行的變數 <code>a</code> 應該會指向到函式外層的變數 <code>a</code>，因此印出結果應該是 <code>1</code> 才對，但是最終卻得到 <code>Cannot access &#39;a&#39; before initialization</code> 的錯誤訊息，而這就證明了 <code>let</code> 是有提升行為的，只是不允許在變數宣告之前被存取。</p>
+<p>而前面提到 <code>var</code> 在提升時，也就是創造階段預設會給定初始值 <code>undefined</code>，而 <code>let</code>、<code>const</code> 則不會，所以在變數實際賦值前嘗試存取就會出現上面的錯誤，而提升後到賦值之前的這一個區間，稱為「暫時性死區（TDZ）」。</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://blog.techbridge.cc/2018/11/10/javascript-hoisting/">我知道你懂 hoisting，可是你了解到多深？</a></p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>hoisting</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JavaScript 觀念 - var、let、const 有什麼不同</title>
     <url>/2022-09-21-javascript-var-let-const/</url>
     <content><![CDATA[<p>同樣都是用來宣告變數，為什麼還要分成三種方式？到底 let、const 解決了什麼問題？</p>
@@ -702,195 +763,6 @@
       </categories>
       <tags>
         <tag>Scope</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript 筆記 - 字串方法</title>
-    <url>/2022-10-11-javascript-string-methods/</url>
-    <content><![CDATA[<p>紀錄一下常用的字串處理方法。</p>
-<span id="more"></span>
-
-<hr>
-<blockquote>
-<p>目錄：</p>
-<ul>
-<li>取得字串字數：<a href="#length">length</a></li>
-<li>字串分割：<a href="#split">split</a></li>
-<li>字串連接：<a href="#concat">concat</a></li>
-<li>尋找文字索引：<a href="#indexOf">indexOf</a></li>
-<li>替換文字內容：<a href="#replace">replace</a></li>
-<li>匹配文字：<a href="#match">match</a></li>
-<li>取得兩個索引之間的所有文字：<a href="#substring">substring</a>、<a href="#slice">slice</a></li>
-<li>轉換文字大小寫：<a href="#toUpperCase-toLowerCase">toUpperCase / toLowerCase</a></li>
-</ul>
-</blockquote>
-<h2 id="length"><a href="#length" class="headerlink" title="length"></a>length</h2><p>可以取得字串的字數。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.length<br></code></pre></td></tr></table></figure>
-
-<p>範例：取得字串字數</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> strLength = str.length;<br><span class="hljs-built_in">console</span>.log(strLength); <span class="hljs-comment">// 11</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="split"><a href="#split" class="headerlink" title="split"></a>split</h2><p>可以將字串分割，並將被分割的字串依序存入一個新陣列中。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.split(separator)<br></code></pre></td></tr></table></figure>
-
-<p>參數 <code>separator</code> 表示指定的分割字符（依據甚麼內容做分割）。</p>
-<p>範例一：以半形空白做分割</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;hello world&quot;</span>;<br><span class="hljs-keyword">const</span> arr = str.split(<span class="hljs-string">&quot; &quot;</span>);<br><span class="hljs-built_in">console</span>.log(arr); <span class="hljs-comment">// [&quot;hello&quot;, &quot;world&quot;]</span><br></code></pre></td></tr></table></figure>
-
-<p>範例二：以空字串做分割</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;hello world&quot;</span>;<br><span class="hljs-keyword">const</span> arr = str.split(<span class="hljs-string">&quot;&quot;</span>);<br><span class="hljs-built_in">console</span>.log(arr); <span class="hljs-comment">// [&quot;h&quot;,&quot;e&quot;,&quot;l&quot;,&quot;l&quot;,&quot;o&quot;,&quot; &quot;,&quot;w&quot;,&quot;o&quot;,&quot;r&quot;,&quot;l&quot;,&quot;d&quot;]</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="concat"><a href="#concat" class="headerlink" title="concat"></a>concat</h2><p>可以連接多個字串，並且不會影響原字串，如果連接的內容的型別不是字串，則會轉型為字串再連接。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.concat(str2, ...strN)<br></code></pre></td></tr></table></figure>
-
-<p>參數 <code>str2</code>、<code>...strN</code> 表示要連接的字串，會被連接在原字串後方。</p>
-<p>範例一：連接字串</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello&#x27;</span>;<br><span class="hljs-keyword">let</span> concatStr = str.concat(<span class="hljs-string">&#x27; &#x27;</span>,<span class="hljs-string">&#x27;world&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(concatStr); <span class="hljs-comment">// &quot;hello world&quot;</span><br></code></pre></td></tr></table></figure>
-
-<p>範例二：連接非字串型別</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;123&#x27;</span>;<br><span class="hljs-keyword">let</span> concatStr = str.concat(<span class="hljs-number">456</span>);<br><span class="hljs-built_in">console</span>.log(concatStr); <span class="hljs-comment">// &quot;123456&quot;</span><br></code></pre></td></tr></table></figure>
-
-<blockquote>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/concat">MDN</a> 文件中提到，建議使用 +、+= 來取代 concat()。</p>
-</blockquote>
-<h2 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf"></a>indexOf</h2><p>可以尋找字串中指定的字串位置，只會尋找第一個符合的字串，若找不到則回傳 <code>-1</code>。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.indexOf(searchValue, position)<br></code></pre></td></tr></table></figure>
-
-<p>參數 <code>searchValue</code> 表示要搜尋的字串內容，<code>position</code> 則是起點的索引（選用）。</p>
-<p>範例一：尋找字串中 “e” 索引位置</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> strIndex = str.indexOf(<span class="hljs-string">&#x27;e&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(strIndex); <span class="hljs-comment">// 1</span><br></code></pre></td></tr></table></figure>
-
-<p>範例二：尋找指定內容</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> strIndex = str.indexOf(<span class="hljs-string">&#x27;world&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(strIndex); <span class="hljs-comment">// 6</span><br></code></pre></td></tr></table></figure>
-
-<p>範例三：找不到指定內容</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> strIndex = str.indexOf(<span class="hljs-string">&#x27;a&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(strIndex); <span class="hljs-comment">// -1</span><br></code></pre></td></tr></table></figure>
-
-<p>範例四：從索引 3 開始尋找字串中 “e” 的位置</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> strIndex = str.indexOf(<span class="hljs-string">&#x27;e&#x27;</span>, <span class="hljs-number">3</span>);<br><span class="hljs-built_in">console</span>.log(strIndex); <span class="hljs-comment">// -1（起點位置為第 4 個字，因此找不到第二個字 e）</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="replace"><a href="#replace" class="headerlink" title="replace"></a>replace</h2><p>可以將字串內容替換成指定的字串。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.replace(oriStr, newStr)<br></code></pre></td></tr></table></figure>
-
-<p>參數 <code>oriStr</code> 表示需要做替換的內容，一般情況下只能取代第一個符合的字串，如果要全部替換，需要搭配正規表達式，<code>newStr</code> 則表示替換後的內容。</p>
-<p>範例一：將字串中的第一個 “o” 替換為 “i”</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.replace(<span class="hljs-string">&#x27;o&#x27;</span>, <span class="hljs-string">&#x27;i&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// &quot;helli world&quot;</span><br></code></pre></td></tr></table></figure>
-
-<p>範例二：搭配正規表達式，將字串中所有 “o” 替換為 “i”</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.replace(<span class="hljs-regexp">/o/g</span>, <span class="hljs-string">&#x27;i&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// &quot;helli wirld&quot;</span><br></code></pre></td></tr></table></figure>
-
-<blockquote>
-<p>若需要全部取代，除了使用正規表達式之外，也可以透過 replaceAll() 方法來達成。</p>
-</blockquote>
-<h2 id="match"><a href="#match" class="headerlink" title="match"></a>match</h2><p>會回傳「匹配到的字串內容」，為一個陣列，若找不到匹配的字串，則回傳 <code>null</code>。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.match(regexp)<br></code></pre></td></tr></table></figure>
-
-<p>參數 <code>regexp</code> 表示想要匹配的字串內容，通常會搭配正規表達式，若使用 <code>g</code> 字符，回傳的陣列內容為所有匹配到的字串，反之，則只有第一個匹配到的字串，並且帶有附加屬性。</p>
-<p>範例一：不使用正規表達式</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.match(<span class="hljs-string">&#x27;l&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// [&#x27;l&#x27;, index: 2, input: &#x27;hello world&#x27;, groups: undefined]</span><br></code></pre></td></tr></table></figure>
-
-<p>範例二：搭配正規表達式（不使用 <code>g</code> 字符）</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.match(<span class="hljs-regexp">/l/</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// [&#x27;l&#x27;, index: 2, input: &#x27;hello world&#x27;, groups: undefined]</span><br></code></pre></td></tr></table></figure>
-
-<p>範例三：搭配正規表達式（使用 <code>g</code> 字符）</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.match(<span class="hljs-regexp">/l/g</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// [&#x27;l&#x27;, &#x27;l&#x27;, &#x27;l&#x27;]</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="substring"><a href="#substring" class="headerlink" title="substring"></a>substring</h2><p>可以取得字串中，兩個索引位置之間的文字內容。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.substring(indexStart, indexEnd)<br></code></pre></td></tr></table></figure>
-
-<p>參數 <code>indexStart</code> 表示起始索引，<code>indexEnd</code> 則是結束索引，若不使用結束索引，範圍則會是起始索引到最後一個字之間，此外，起始、結束索引對調不影響結果。</p>
-<p>範例一：取出索引位置 2 到 8 之間的文字</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.substring(<span class="hljs-number">2</span>, <span class="hljs-number">8</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// &quot;llo wo&quot;</span><br></code></pre></td></tr></table></figure>
-
-<p>範例二：取得索引位置 6 到最後一個字之間的文字</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.substring(<span class="hljs-number">6</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// &quot;world&quot;</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="slice"><a href="#slice" class="headerlink" title="slice"></a>slice</h2><p>作用與 <code>substring</code> 類似，差別在於 <code>slice</code> 參數可以傳入負數。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.slice(indexStart, indexEnd)<br></code></pre></td></tr></table></figure>
-
-<p>參數 <code>indexStart</code> 表示起始索引，若為負值，<code>indexEnd</code> 則是結束索引，若不使用結束索引，範圍則會是起始索引到最後一個字之間，若使用負值，則索引順序會從字串最後一個字往回計算。</p>
-<p>範例一：取得索引位置 2 到 8 之間的文字</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.substring(<span class="hljs-number">2</span>, <span class="hljs-number">8</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// &quot;llo wo&quot;</span><br></code></pre></td></tr></table></figure>
-
-<p>範例二：取得倒數第 5 個字，到最後一個字之間的文字</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.slice(-<span class="hljs-number">5</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// &quot;world&quot;</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="toUpperCase-toLowerCase"><a href="#toUpperCase-toLowerCase" class="headerlink" title="toUpperCase / toLowerCase"></a>toUpperCase / toLowerCase</h2><p>可以將字串中的字母轉換為大、小寫</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.toUpperCase() <span class="hljs-comment">// 轉換為大寫</span><br>str.toLowerCase() <span class="hljs-comment">// 轉換為小寫</span><br></code></pre></td></tr></table></figure>
-
-<p>範例一：轉換為大寫</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> upperCaseStr = str.toUpperCase();<br><span class="hljs-built_in">console</span>.log(upperCaseStr); <span class="hljs-comment">// &quot;HELLO WORLD&quot;</span><br></code></pre></td></tr></table></figure>
-
-<p>範例二：轉換為小寫</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;HELLO WORLD&#x27;</span>;<br><span class="hljs-keyword">let</span> lowerCaseStr = str.toLowerCase();<br><span class="hljs-built_in">console</span>.log(lowerCaseStr); <span class="hljs-comment">// &quot;hello world&quot;</span><br></code></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>string</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript 觀念 - 提升</title>
-    <url>/2022-09-24-javascript-hoisting/</url>
-    <content><![CDATA[<p>ES6 前後的 Hoisting 觀念筆記。</p>
-<span id="more"></span>
-
-
-<p>「提升（Hoisting）」是 JavaScript 特有的一種現象，它的意思是當一個變數或函式在被宣告之前就可以被使用，並且不會出現錯誤，另外 ES6 以前都是使用 <code>var</code> 來宣告變數，與 ES6 新增的 <code>let</code>、<code>const</code> 在提升行為會也有所不同。</p>
-<h2 id="ES6-以前的提升"><a href="#ES6-以前的提升" class="headerlink" title="ES6 以前的提升"></a>ES6 以前的提升</h2><figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-comment">// ReferenceError: x is not defined</span><br></code></pre></td></tr></table></figure>
-
-<p>以上針對 <code>x</code> 取值，但是在這之前並沒有宣告一個名為 <code>x</code> 的變數，因此會找不到該變數而回報錯誤，下面是正常的做法：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> x;<br><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
-
-<p>這樣就是一個正常的流程，程式碼會從第一行開始由上往下執行，所以在使用變數之前需要先宣告變數，以確保這個變數是存在的。</p>
-<p>接著下面嘗試把第 1、2 行位置進行對調：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-keyword">var</span> x;<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
-
-<p>按照前面的說法，上述程式碼應該會回報錯誤，但是得到的結果卻是 <code>undefined</code>，而這就是提升所造成的現象，感覺像是 <code>var x</code> 這段程式碼被提升到所有程式碼之前。</p>
-<p>大多數的程式語言中，變數在被使用之前是需要先宣告的，但是 JavaScript 可以在變數宣告之前就使用該變數，不過關於提升還有一些注意事項，就是會被提升的只有<strong>宣告的行為</strong>，值的指派並不會被提升，以下面程式碼為例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> x = <span class="hljs-number">7</span>; <span class="hljs-comment">// 宣告變數並指派值</span><br><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-comment">// 7</span><br></code></pre></td></tr></table></figure>
-
-<p>範例跟前面的相同，只是多了一個指派數值的動作，而最後也印出預期的結果，這個時候如果再將 1、2 行位置進行對調，印出的結果會是 <code>7</code> 嗎？</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-keyword">var</span> x = <span class="hljs-number">7</span>;<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
-
-<p>答案是 <code>undefined</code>，照理來說宣告的變數會被提升，可是得到的結果卻不是 <code>7</code>，原因其實就如前面提到的，會被提升的只有宣告的動作，而範例中宣告的動作指的是 <code>var x</code>，後方的 <code>= 7</code> 屬於值的指派，並不會跟著宣告一起被提升。</p>
-<p>但是結果為甚麼會是 <code>undefined</code>？原因在於 JavaScript 在開始執行你撰寫的程式碼之前，會先把所有宣告的變數、一般函式都預留一個記憶體空間，但不會馬上指派值給變數，這個預留記憶體空間的動作就是提升，到這邊為止屬於「創造階段」，而這個階段結束之後，變數才會被賦值，這個賦值的過程則是「執行階段」，<code>undefined</code> 就是變數在創造階段建立記憶體空間時，預設給定的初始值。</p>
-<p>可以將上面的程式碼運作流程理解成以下形式：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> x; <span class="hljs-comment">// 宣告變數（會被提升）</span><br><span class="hljs-built_in">console</span>.log(x);<br>x = <span class="hljs-number">7</span>; <span class="hljs-comment">// 指派值</span><br></code></pre></td></tr></table></figure>
-
-<p>目前為止已經知道會被提升的只有宣告的動作，但是除了變數之外，一般的函式宣告也會被提升，以下面程式碼為例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">fn();<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// hello</span><br></code></pre></td></tr></table></figure>
-
-<p>嘗試在函式被宣告之前呼叫，也可以順利執行且不會回報錯誤，因為這是一般的函式宣告（具名函式），整個函式都會被提升，因此就可以在函式宣告之前呼叫。</p>
-<p>那匿名函式就不會被提升嗎？答案是會，下面嘗試將範例改成以匿名函式的方式建立：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">fn();<br><span class="hljs-keyword">var</span> fn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// TypeError: fn is not a function</span><br></code></pre></td></tr></table></figure>
-
-<p>結果出現錯誤了，不過是不是與 <code>var</code> 宣告的變數很像？其實概念是一樣的，這裡的程式碼確實有被提升，但是被提升的只有變數的宣告 <code>var fn</code>，函式的資料在執行階段才會指派給變數 <code>fn</code>，此時的 <code>fn</code> 的值為 <code>undefined</code>，而 <code>undefined</code> 並非函式因此呼叫的行為就會回報錯誤。</p>
-<p>雖然無法呼叫，但是能透過變數取值來驗證上述說法：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(fn);<br><span class="hljs-keyword">var</span> fn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
-
-<p>而程式碼實際運作流程就像下面這樣：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> fn;<br><span class="hljs-built_in">console</span>.log(fn);<br>fn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>總結來說，JavaScript 中的「提升（Hoisting）」指的是宣告變數的提升，而值的賦予並不會提升；此外，提升並不會變更程式碼的位置，只是感覺像是整段程式碼被移動到最上方。</p>
-<h2 id="let、const-的提升"><a href="#let、const-的提升" class="headerlink" title="let、const 的提升"></a>let、const 的提升</h2><p>關於 <code>let</code>、<code>const</code> 有沒有提升行為，一開始我自己也是透過以下方法來作結論的：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// ReferenceError: a is not defined</span><br><span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure>
-
-<p>原本看到上面的結果，是認為 <code>let</code>、<code>const</code> 沒有提升行為的，直到看到一篇文章寫了下面這段程式碼：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fnA</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(a);<br>  <span class="hljs-keyword">let</span> a = <span class="hljs-number">100</span>;<br>&#125;<br>fnA();<br><span class="hljs-comment">// ReferenceError: Cannot access &#x27;a&#x27; before initialization</span><br></code></pre></td></tr></table></figure>
-
-<p>可以看到在函式 <code>fnA</code> 裡面，嘗試在變數 <code>a</code> 被宣告之前取值，照理來說，如果 <code>let</code> 沒有提升行為，第 3 行的變數 <code>a</code> 應該會指向到函式外層的變數 <code>a</code>，因此印出結果應該是 <code>1</code> 才對，但是最終卻得到 <code>Cannot access &#39;a&#39; before initialization</code> 的錯誤訊息，而這就證明了 <code>let</code> 是有提升行為的，只是不允許在變數宣告之前被存取。</p>
-<p>而前面提到 <code>var</code> 在提升時，也就是創造階段預設會給定初始值 <code>undefined</code>，而 <code>let</code>、<code>const</code> 則不會，所以在變數實際賦值前嘗試存取就會出現上面的錯誤，而提升後到賦值之前的這一個區間，稱為「暫時性死區（TDZ）」。</p>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://blog.techbridge.cc/2018/11/10/javascript-hoisting/">我知道你懂 hoisting，可是你了解到多深？</a></p>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>hoisting</tag>
       </tags>
   </entry>
   <entry>
@@ -1064,6 +936,134 @@
       </tags>
   </entry>
   <entry>
+    <title>JavaScript 筆記 - 字串方法</title>
+    <url>/2022-10-11-javascript-string-methods/</url>
+    <content><![CDATA[<p>紀錄一下常用的字串處理方法。</p>
+<span id="more"></span>
+
+<hr>
+<blockquote>
+<p>目錄：</p>
+<ul>
+<li>取得字串字數：<a href="#length">length</a></li>
+<li>字串分割：<a href="#split">split</a></li>
+<li>字串連接：<a href="#concat">concat</a></li>
+<li>尋找文字索引：<a href="#indexOf">indexOf</a></li>
+<li>替換文字內容：<a href="#replace">replace</a></li>
+<li>匹配文字：<a href="#match">match</a></li>
+<li>取得兩個索引之間的所有文字：<a href="#substring">substring</a>、<a href="#slice">slice</a></li>
+<li>轉換文字大小寫：<a href="#toUpperCase-toLowerCase">toUpperCase / toLowerCase</a></li>
+</ul>
+</blockquote>
+<h2 id="length"><a href="#length" class="headerlink" title="length"></a>length</h2><p>可以取得字串的字數。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.length<br></code></pre></td></tr></table></figure>
+
+<p>範例：取得字串字數</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> strLength = str.length;<br><span class="hljs-built_in">console</span>.log(strLength); <span class="hljs-comment">// 11</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="split"><a href="#split" class="headerlink" title="split"></a>split</h2><p>可以將字串分割，並將被分割的字串依序存入一個新陣列中。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.split(separator)<br></code></pre></td></tr></table></figure>
+
+<p>參數 <code>separator</code> 表示指定的分割字符（依據甚麼內容做分割）。</p>
+<p>範例一：以半形空白做分割</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;hello world&quot;</span>;<br><span class="hljs-keyword">const</span> arr = str.split(<span class="hljs-string">&quot; &quot;</span>);<br><span class="hljs-built_in">console</span>.log(arr); <span class="hljs-comment">// [&quot;hello&quot;, &quot;world&quot;]</span><br></code></pre></td></tr></table></figure>
+
+<p>範例二：以空字串做分割</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;hello world&quot;</span>;<br><span class="hljs-keyword">const</span> arr = str.split(<span class="hljs-string">&quot;&quot;</span>);<br><span class="hljs-built_in">console</span>.log(arr); <span class="hljs-comment">// [&quot;h&quot;,&quot;e&quot;,&quot;l&quot;,&quot;l&quot;,&quot;o&quot;,&quot; &quot;,&quot;w&quot;,&quot;o&quot;,&quot;r&quot;,&quot;l&quot;,&quot;d&quot;]</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="concat"><a href="#concat" class="headerlink" title="concat"></a>concat</h2><p>可以連接多個字串，並且不會影響原字串，如果連接的內容的型別不是字串，則會轉型為字串再連接。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.concat(str2, ...strN)<br></code></pre></td></tr></table></figure>
+
+<p>參數 <code>str2</code>、<code>...strN</code> 表示要連接的字串，會被連接在原字串後方。</p>
+<p>範例一：連接字串</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello&#x27;</span>;<br><span class="hljs-keyword">let</span> concatStr = str.concat(<span class="hljs-string">&#x27; &#x27;</span>,<span class="hljs-string">&#x27;world&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(concatStr); <span class="hljs-comment">// &quot;hello world&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>範例二：連接非字串型別</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;123&#x27;</span>;<br><span class="hljs-keyword">let</span> concatStr = str.concat(<span class="hljs-number">456</span>);<br><span class="hljs-built_in">console</span>.log(concatStr); <span class="hljs-comment">// &quot;123456&quot;</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/concat">MDN</a> 文件中提到，建議使用 +、+= 來取代 concat()。</p>
+</blockquote>
+<h2 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf"></a>indexOf</h2><p>可以尋找字串中指定的字串位置，只會尋找第一個符合的字串，若找不到則回傳 <code>-1</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.indexOf(searchValue, position)<br></code></pre></td></tr></table></figure>
+
+<p>參數 <code>searchValue</code> 表示要搜尋的字串內容，<code>position</code> 則是起點的索引（選用）。</p>
+<p>範例一：尋找字串中 “e” 索引位置</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> strIndex = str.indexOf(<span class="hljs-string">&#x27;e&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(strIndex); <span class="hljs-comment">// 1</span><br></code></pre></td></tr></table></figure>
+
+<p>範例二：尋找指定內容</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> strIndex = str.indexOf(<span class="hljs-string">&#x27;world&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(strIndex); <span class="hljs-comment">// 6</span><br></code></pre></td></tr></table></figure>
+
+<p>範例三：找不到指定內容</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> strIndex = str.indexOf(<span class="hljs-string">&#x27;a&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(strIndex); <span class="hljs-comment">// -1</span><br></code></pre></td></tr></table></figure>
+
+<p>範例四：從索引 3 開始尋找字串中 “e” 的位置</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> strIndex = str.indexOf(<span class="hljs-string">&#x27;e&#x27;</span>, <span class="hljs-number">3</span>);<br><span class="hljs-built_in">console</span>.log(strIndex); <span class="hljs-comment">// -1（起點位置為第 4 個字，因此找不到第二個字 e）</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="replace"><a href="#replace" class="headerlink" title="replace"></a>replace</h2><p>可以將字串內容替換成指定的字串。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.replace(oriStr, newStr)<br></code></pre></td></tr></table></figure>
+
+<p>參數 <code>oriStr</code> 表示需要做替換的內容，一般情況下只能取代第一個符合的字串，如果要全部替換，需要搭配正規表達式，<code>newStr</code> 則表示替換後的內容。</p>
+<p>範例一：將字串中的第一個 “o” 替換為 “i”</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.replace(<span class="hljs-string">&#x27;o&#x27;</span>, <span class="hljs-string">&#x27;i&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// &quot;helli world&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>範例二：搭配正規表達式，將字串中所有 “o” 替換為 “i”</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.replace(<span class="hljs-regexp">/o/g</span>, <span class="hljs-string">&#x27;i&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// &quot;helli wirld&quot;</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>若需要全部取代，除了使用正規表達式之外，也可以透過 replaceAll() 方法來達成。</p>
+</blockquote>
+<h2 id="match"><a href="#match" class="headerlink" title="match"></a>match</h2><p>會回傳「匹配到的字串內容」，為一個陣列，若找不到匹配的字串，則回傳 <code>null</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.match(regexp)<br></code></pre></td></tr></table></figure>
+
+<p>參數 <code>regexp</code> 表示想要匹配的字串內容，通常會搭配正規表達式，若使用 <code>g</code> 字符，回傳的陣列內容為所有匹配到的字串，反之，則只有第一個匹配到的字串，並且帶有附加屬性。</p>
+<p>範例一：不使用正規表達式</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.match(<span class="hljs-string">&#x27;l&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// [&#x27;l&#x27;, index: 2, input: &#x27;hello world&#x27;, groups: undefined]</span><br></code></pre></td></tr></table></figure>
+
+<p>範例二：搭配正規表達式（不使用 <code>g</code> 字符）</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.match(<span class="hljs-regexp">/l/</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// [&#x27;l&#x27;, index: 2, input: &#x27;hello world&#x27;, groups: undefined]</span><br></code></pre></td></tr></table></figure>
+
+<p>範例三：搭配正規表達式（使用 <code>g</code> 字符）</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.match(<span class="hljs-regexp">/l/g</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// [&#x27;l&#x27;, &#x27;l&#x27;, &#x27;l&#x27;]</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="substring"><a href="#substring" class="headerlink" title="substring"></a>substring</h2><p>可以取得字串中，兩個索引位置之間的文字內容。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.substring(indexStart, indexEnd)<br></code></pre></td></tr></table></figure>
+
+<p>參數 <code>indexStart</code> 表示起始索引，<code>indexEnd</code> 則是結束索引，若不使用結束索引，範圍則會是起始索引到最後一個字之間，此外，起始、結束索引對調不影響結果。</p>
+<p>範例一：取出索引位置 2 到 8 之間的文字</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.substring(<span class="hljs-number">2</span>, <span class="hljs-number">8</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// &quot;llo wo&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>範例二：取得索引位置 6 到最後一個字之間的文字</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.substring(<span class="hljs-number">6</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// &quot;world&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="slice"><a href="#slice" class="headerlink" title="slice"></a>slice</h2><p>作用與 <code>substring</code> 類似，差別在於 <code>slice</code> 參數可以傳入負數。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.slice(indexStart, indexEnd)<br></code></pre></td></tr></table></figure>
+
+<p>參數 <code>indexStart</code> 表示起始索引，若為負值，<code>indexEnd</code> 則是結束索引，若不使用結束索引，範圍則會是起始索引到最後一個字之間，若使用負值，則索引順序會從字串最後一個字往回計算。</p>
+<p>範例一：取得索引位置 2 到 8 之間的文字</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.substring(<span class="hljs-number">2</span>, <span class="hljs-number">8</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// &quot;llo wo&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>範例二：取得倒數第 5 個字，到最後一個字之間的文字</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.slice(-<span class="hljs-number">5</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// &quot;world&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="toUpperCase-toLowerCase"><a href="#toUpperCase-toLowerCase" class="headerlink" title="toUpperCase / toLowerCase"></a>toUpperCase / toLowerCase</h2><p>可以將字串中的字母轉換為大、小寫</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.toUpperCase() <span class="hljs-comment">// 轉換為大寫</span><br>str.toLowerCase() <span class="hljs-comment">// 轉換為小寫</span><br></code></pre></td></tr></table></figure>
+
+<p>範例一：轉換為大寫</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> upperCaseStr = str.toUpperCase();<br><span class="hljs-built_in">console</span>.log(upperCaseStr); <span class="hljs-comment">// &quot;HELLO WORLD&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>範例二：轉換為小寫</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;HELLO WORLD&#x27;</span>;<br><span class="hljs-keyword">let</span> lowerCaseStr = str.toLowerCase();<br><span class="hljs-built_in">console</span>.log(lowerCaseStr); <span class="hljs-comment">// &quot;hello world&quot;</span><br></code></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>string</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JavaScript 觀念 - 傳值、傳參考</title>
     <url>/2022-10-20-javascript-by-value-by-reference/</url>
     <content><![CDATA[<p>什麼情況下是傳遞純值，什麼情況又是傳遞記憶體參考位址？</p>
@@ -1106,6 +1106,83 @@
       </categories>
       <tags>
         <tag>call by reference</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript 筆記 - AJAX</title>
+    <url>/2022-10-24-javascript-ajax-note/</url>
+    <content><![CDATA[<p>關於 AJAX 的四種做法。</p>
+<span id="more"></span>
+
+<h2 id="AJAX-簡述"><a href="#AJAX-簡述" class="headerlink" title="AJAX 簡述"></a>AJAX 簡述</h2><p>AJAX 是「Asynchronous JavaScript and XML」的縮寫，以名稱來看就是是非同步的 JavaScript 與 XML，可以讓 Web 前端與後端伺服器進行資料的交換，以及不需要重新載入網頁就能更新頁面內容。</p>
+<p>過去 AJAX 發出請求會透過 XMLHttpRequest 物件來實作，但是以目前來說，因為有了更適合的方式，因此實務上幾乎不會使用 XMLHttpRequest，不過既然都決定寫筆記了，還是多花一點時間理解所有方法吧！(๑•̀ㅂ•́)و✧</p>
+<h2 id="XMLHttpRequest"><a href="#XMLHttpRequest" class="headerlink" title="XMLHttpRequest"></a>XMLHttpRequest</h2><p>起手式：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest();<br></code></pre></td></tr></table></figure>
+
+<p>此時可以使用 <code>readyState</code> 屬性的回傳值來確認狀態。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(xhr.readyState); <span class="hljs-comment">// 0</span><br></code></pre></td></tr></table></figure>
+<p>以下是不同回傳結果分別所代表的狀態意思：</p>
+<ul>
+<li><code>0</code>（<code>UNSENT</code>）：成功建立一個 XMLHttpRequest 物件，但尚未使用 <code>open()</code> 連接伺服器。</li>
+<li><code>1</code>（<code>OPENED</code>）：已經使用 <code>open()</code> 連接伺服器，但尚未使用 <code>send()</code> 發送請求。</li>
+<li><code>2</code>（<code>HEADERS_RECEIVED</code>）：已使用 <code>send()</code> 發送請求，且可以取得 header 與狀態。</li>
+<li><code>3</code>（<code>LOADING</code>）：資料載入中。</li>
+<li><code>4</code>（<code>DONE</code>）：資料載入完成，成功接收所有數據。</li>
+</ul>
+<h3 id="open"><a href="#open" class="headerlink" title="open"></a>open</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">xhrReq.open(method, url, isAsync);<br></code></pre></td></tr></table></figure>
+<p>連接伺服器，參數依序分別為請求方法（<code>get</code>、<code>post</code> 等）、資料網址以及是否要非同步執行（預設為 <code>true</code>）。</p>
+<h3 id="setRequestHeader"><a href="#setRequestHeader" class="headerlink" title="setRequestHeader"></a>setRequestHeader</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">xhrReq.setRequestHeader(header, value);<br></code></pre></td></tr></table></figure>
+<p>設定請求表頭，參數依序分別為表頭名稱與表頭值，以 <code>post</code> 請求來說，會用來設定發送主體的資料類型（Content-Type）。</p>
+<p>另外，此方法一般會在發送 <code>post</code> 請求時呼叫（<code>get</code> 請求沒有發送主體因此不使用），程式碼位置會在 <code>open()</code> 之後以及 <code>sned()</code> 之前。</p>
+<blockquote>
+<p>相關內容可參考 <a href="https://developer.mozilla.org/zh-TW/docs/Web/API/XMLHttpRequest/setRequestHeader">MDN - XMLHttpRequest.setRequestHeader()</a></p>
+</blockquote>
+<blockquote>
+<p>禁止設定的表頭欄位，請參閱 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Forbidden_header_name">MDN - Forbidden header name</a></p>
+</blockquote>
+<h3 id="send"><a href="#send" class="headerlink" title="send"></a>send</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">xhrReq.send(body);<br></code></pre></td></tr></table></figure>
+<p>發送請求，<code>send()</code> 的應用會根據請求方法的不同而有所差異，若只是單純的 <code>get</code> 請求，參數只需傳入 <code>null</code> 即可，其他請求方法如 <code>post</code> 則需補上相關資訊。</p>
+<p>需要注意的是，發送出去的資料如果是 JSON 格式，則需要先轉型為字串，轉換型別的方法可以使用 <code>JSON.stringify()</code>；同理，接收到的資料如果是 JSON 格式，也可以透過 <code>JSON.parse()</code> 轉換為 JSON 物件。</p>
+<blockquote>
+<p>相關資訊請參閱 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest/send">MDN - XMLHttpRequest.send()</a></p>
+</blockquote>
+<h3 id="非同步執行"><a href="#非同步執行" class="headerlink" title="非同步執行"></a>非同步執行</h3><p>雖然可以選擇要以同步或是非同步方式來發出請求，但是為了避免網頁阻塞，一般都會透過非同步方式來執行，而非同步就會衍生出資料尚未載入完畢，程式碼就繼續往下執行的狀況，此時可以透過事件監聽來解決非同步問題。</p>
+<p>針對 <code>load</code> 事件進行監聽：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">xhr.addEventListener(<span class="hljs-string">&#x27;load&#x27;</span>, getData);<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getData</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(xhr.responseText, <span class="hljs-keyword">typeof</span> xhr.responseText); <span class="hljs-comment">// &quot;[&#123;&quot;name&quot;:&quot;王小名&quot;&#125;]&quot; string</span><br>    <br>  <span class="hljs-comment">// 開始操作資料...</span><br>  <span class="hljs-keyword">const</span> data = <span class="hljs-built_in">JSON</span>.parse(xhr.responseText); <span class="hljs-comment">// 將資料結構轉為物件或陣列</span><br>  ...<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>針對 <code>xhr</code> 物件進行 <code>load</code> 監聽，此時就能確保資料完全載入後，才執行指定操作，此外，可以發現資料的型別為字串，因此可以視情況將資料轉為物件或陣列使用。</p>
+<blockquote>
+<p>字串轉為物件型別可參考 <a href="https://https//developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse">MDN JSON.parse()</a></p>
+</blockquote>
+<h3 id="HTTP-狀態碼"><a href="#HTTP-狀態碼" class="headerlink" title="HTTP 狀態碼"></a>HTTP 狀態碼</h3><p>資料全部載入後，可以透過 <code>status</code> 屬性查看狀態碼。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(xhr.status); <span class="hljs-comment">// 200</span><br></code></pre></td></tr></table></figure>
+<p>以下列出常見的狀態碼，以及代表意思：</p>
+<ul>
+<li>200（請求成功）</li>
+<li>404（用戶端錯誤）</li>
+<li>500（伺服器端錯誤）</li>
+</ul>
+<blockquote>
+<p>更多相關資訊可參考 <a href="https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Status">MDN - HTTP 狀態碼</a></p>
+</blockquote>
+<h3 id="實作練習"><a href="#實作練習" class="headerlink" title="實作練習"></a>實作練習</h3><p>使用<a href="https://hexschool.github.io/ajaxHomework/data.json">六角學院練習 API</a> 實作 <code>get</code> 請求：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs htmlembedded">&lt;p class=&quot;txt&quot;&gt;&lt;/p&gt;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> url = <span class="hljs-string">&#x27;https://hexschool.github.io/ajaxHomework/data.json&#x27;</span>; <span class="hljs-comment">// 資料網址</span><br><br><span class="hljs-keyword">const</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest(); <span class="hljs-comment">// 建立 XMLHttpRequest 物件</span><br>xhr.open(<span class="hljs-string">&#x27;get&#x27;</span>, url, <span class="hljs-literal">true</span>); <span class="hljs-comment">// 連接伺服器</span><br>xhr.send(<span class="hljs-literal">null</span>); <span class="hljs-comment">// 發送請求</span><br><br>xhr.addEventListener(<span class="hljs-string">&#x27;load&#x27;</span>, getData); <span class="hljs-comment">// load 事件監聽</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getData</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">if</span>(xhr.status == <span class="hljs-number">200</span>) &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;請求成功&#x27;</span>);<br>    <br>    <span class="hljs-keyword">const</span> data = <span class="hljs-built_in">JSON</span>.parse(xhr.responseText);<br>  <br>    <span class="hljs-keyword">const</span> txt = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&#x27;.txt&#x27;</span>);<br>    txt.textContent = data[<span class="hljs-number">0</span>].name;<br>  &#125;<span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;請求資料有誤&#x27;</span>);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<p>使用<a href="https://hexschool-tutorial.herokuapp.com/api/signup">六角學院練習 API</a> 實作 <code>post</code> 請求（註冊功能）：</p>
+<p>資料類型：<code>application/x-www-form-urlencoded</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> url = <span class="hljs-string">&#x27;https://hexschool-tutorial.herokuapp.com/api/signup&#x27;</span>; <span class="hljs-comment">// 資料網址</span><br><br><span class="hljs-keyword">const</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest(); <span class="hljs-comment">// 建立 XMLHttpRequest 物件</span><br>xhr.open(<span class="hljs-string">&#x27;post&#x27;</span>, url, <span class="hljs-literal">true</span>); <span class="hljs-comment">// 連接伺服器</span><br>xhr.setRequestHeader(<span class="hljs-string">&#x27;Content-type&#x27;</span>, <span class="hljs-string">&#x27;application/x-www-form-urlencoded&#x27;</span>); <span class="hljs-comment">// 設定請求表頭</span><br>xhr.send(<span class="hljs-string">&#x27;email=test123@gmail.com&amp;password=12345678&#x27;</span>); <span class="hljs-comment">// 發送請求</span><br><br>xhr.addEventListener(<span class="hljs-string">&#x27;load&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> responseMessage = <span class="hljs-built_in">JSON</span>.parse(xhr.response).message;<br><br>  <span class="hljs-keyword">if</span>(xhr.status == <span class="hljs-number">200</span>) &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;請求成功&#x27;</span>);<br>    alert(responseMessage);<br>  &#125;<span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;請求資料有誤&#x27;</span>);<br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>資料類型：<code>application/json</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> url = <span class="hljs-string">&quot;https://hexschool-tutorial.herokuapp.com/api/signup&quot;</span>; <span class="hljs-comment">// 資料網址</span><br><br><span class="hljs-keyword">const</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest(); <span class="hljs-comment">// 建立 XMLHttpRequest 物件</span><br>xhr.open(<span class="hljs-string">&quot;post&quot;</span>, url, <span class="hljs-literal">true</span>); <span class="hljs-comment">// 連接伺服器</span><br>xhr.setRequestHeader(<span class="hljs-string">&quot;Content-type&quot;</span>, <span class="hljs-string">&quot;application/json&quot;</span>); <span class="hljs-comment">// 設定請求表頭</span><br><br><span class="hljs-keyword">const</span> data = &#123;<br>  <span class="hljs-attr">email</span>: <span class="hljs-string">&quot;test123@gmail.com&quot;</span>,<br>  <span class="hljs-attr">password</span>: <span class="hljs-string">&quot;12345678&quot;</span><br>&#125;;<br><br>xhr.send(<span class="hljs-built_in">JSON</span>.stringify(data)); <span class="hljs-comment">// 發送請求</span><br><br>xhr.addEventListener(<span class="hljs-string">&quot;load&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> responseMessage = <span class="hljs-built_in">JSON</span>.parse(xhr.response).message;<br><br>  <span class="hljs-keyword">if</span>(xhr.status == <span class="hljs-number">200</span>) &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;請求成功&#x27;</span>);<br>    alert(responseMessage);<br>  &#125;<span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;請求資料有誤&#x27;</span>);<br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h2 id="jQuery-AJAX"><a href="#jQuery-AJAX" class="headerlink" title="jQuery AJAX"></a>jQuery AJAX</h2><h2 id="Fetch"><a href="#Fetch" class="headerlink" title="Fetch"></a>Fetch</h2><h2 id="Axios"><a href="#Axios" class="headerlink" title="Axios"></a>Axios</h2>]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>ajax</tag>
       </tags>
   </entry>
   <entry>

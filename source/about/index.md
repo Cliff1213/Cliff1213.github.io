@@ -1,5 +1,6 @@
 ---
 title: 關於本站
+layout: about
 date: 2022-01-20
 comments: false
 ---

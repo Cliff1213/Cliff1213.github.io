@@ -7,19 +7,27 @@ categories: JavaScript
 index_img: img/banner/banner_data.jpg
 ---
 
-關於 AJAX 的四種做法。
+這是一篇尚未撰寫完成的筆記。
 
 <!--more-->
+
+> 主要內容目錄：
+>
+> - [XMLHttpRequest](#XMLHttpRequest)
+> - [jQuery AJAX](#jQuery-AJAX)
+> - [Fetch](#Fetch)
+> - [Axios](#Axios)
 
 ## AJAX 簡述
 
 AJAX 是「Asynchronous JavaScript and XML」的縮寫，以名稱來看就是是非同步的 JavaScript 與 XML，可以讓 Web 前端與後端伺服器進行資料的交換，以及不需要重新載入網頁就能更新頁面內容。
 
-過去 AJAX 發出請求會透過 XMLHttpRequest 物件來實作，但是以目前來說，因為有了更適合的方式，因此實務上幾乎不會使用 XMLHttpRequest，不過既然都決定寫筆記了，還是多花一點時間理解所有方法吧！(๑•̀ㅂ•́)و✧
+過去 AJAX 發出請求會透過 XMLHttpRequest 物件來實作，但是以目前來說，因為有了更適合的方式，因此實務上幾乎不會使用 XMLHttpRequest，不過筆記都寫了，就稍微理解一下每個方法吧！(๑•̀ㅂ•́)و✧
 
 ## XMLHttpRequest
 
-起手式：
+### 建立 XHR 物件
+
 ```javascript
 const xhr = new XMLHttpRequest();
 ```
@@ -185,6 +193,83 @@ xhr.addEventListener("load", function () {
 ```
 
 ## jQuery AJAX
+
+使用前需要引入 jQuery，此處使用 CDN 方式引入。
+
+```htmlembedded
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+```
+起手式：
+
+```javascript
+$.ajax({
+  url:,
+  method:,
+  dataType:,
+  contentType:,
+  data:
+}).done(function(res) {
+  // do something...
+}).fail(function(err) {
+  // do something...
+})
+```
+以下為常用的參數：
+
+* `url`：請求資料的網址
+* `method`：請求方法（`get`、`post`...）
+* `data`：傳送的資料
+* `dataType`：伺服器接收的資料格式（`text`、`json`...）
+* `contentType`：傳送至伺服器的資料格式（預設為 `'application/x-www-form-urlencoded; charset=UTF-8'`）
+* `done`：請求成功時的回傳結果
+* `fail`：請求失敗時的回傳結果
+
+若是沒有要向伺服器傳送資料（`get` 請求），則參數 `data`、`contentType` 可省略。
+
+jQuery 3.0 版本開始，刪除了 `success()`、`error()` 以及 `complete()` 等方法，取而代之的是 `done()`、`fail()` 以及 `always()`。
+
+>相關內容請參閱[官方文件](https://api.jquery.com/jquery.ajax/#jQuery-ajax-url-settings)說明。
+
+### 實作練習
+
+使用[六角學院練習 API](https://hexschool.github.io/ajaxHomework/data.json) 實作 `get` 請求：
+
+```htmlembedded
+<ul class="list"></ul>
+```
+
+```javascript
+$.ajax({
+  url: 'https://hexschool.github.io/ajaxHomework/data.json',
+  method: 'get'
+}).done(function(res) {
+  console.log(res)
+    
+  $('.list').html(`<li>${res[0].name}</li>`)
+}).fail(function(err) {
+  console.log(err)
+})
+```
+使用[六角學院練習 API](https://hexschool-tutorial.herokuapp.com/api/signup) 實作 `post` 請求（註冊功能）：
+
+```javascript
+$.ajax({
+  url: 'https://hexschool-tutorial.herokuapp.com/api/signup',
+  method: 'post',
+  dataType: 'json',
+  contentType: 'application/json; charset=utf-8',
+  data: JSON.stringify({
+    email: 'test123@mail.com',
+    password: '12345678'
+  })
+}).done(function(res) {
+  console.log(res)
+    
+  alert(res.message)
+}).fail(function(err) {
+  console.log(err)
+})
+```
 
 ## Fetch
 

@@ -18,7 +18,7 @@
   
     <meta name="description" content="學習前端的所有筆記都會在這裡撰寫，主要用途是提供自己查閱與複習。如果不慎誤入此站，那閱讀之前請再三思，因為內容可能有誤！或是也可以在文章下方留言糾正我，非常感謝 (ΦωΦ)">
 <meta property="og:type" content="website">
-<meta property="og:title" content="關於本站">
+<meta property="og:title" content="關於">
 <meta property="og:url" content="http://kurifu.tw/about/index.html">
 <meta property="og:site_name" content="Cliff Blog">
 <meta property="og:description" content="學習前端的所有筆記都會在這裡撰寫，主要用途是提供自己查閱與複習。如果不慎誤入此站，那閱讀之前請再三思，因為內容可能有誤！或是也可以在文章下方留言糾正我，非常感謝 (ΦωΦ)">
@@ -29,11 +29,17 @@
   
   
   
-  <title>關於本站 - Cliff Blog</title>
+  <title>關於 - Cliff Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
 
@@ -188,7 +194,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="關於本站"></span>
+            <span id="subtitle" data-typed-text="關於"></span>
           
         </div>
 
@@ -210,18 +216,69 @@
         <div id="board"
           >
           
+            <div class="about-avatar">
+              <img src="/img/avatar2.jpg" srcset="/img/loading.gif" lazyload class="img-fluid" alt="avatar">
+            </div>
+          
           <div class="container">
             <div class="row">
               <div class="col-12 col-md-10 m-auto">
                 
 
-<article class="page-content">
-  <p>學習前端的所有筆記都會在這裡撰寫，主要用途是提供自己查閱與複習。<br>如果不慎誤入此站，那閱讀之前請再三思，因為內容可能有誤！<br>或是也可以在文章下方留言糾正我，非常感謝 (ΦωΦ)</p>
+<div class="text-center">
+  <div class="about-info">
+    <div class="about-name">Cliff</div>
+    <div class="about-intro">前端初心者</div>
+    <div class="about-icons">
+      
+        
+        
+        
+        <a href=mailto:wave99487chu@gmail.com class="
+           hint--bottom hint--rounded"
+           aria-label=Email
+           target="_blank"
+        >
+          <i class="iconfont icon-mail" aria-hidden="true"></i>
+          
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+<article class="about-content page-content mt-5">
+  <div class="markdown-body">
+    <p>學習前端的所有筆記都會在這裡撰寫，主要用途是提供自己查閱與複習。<br>如果不慎誤入此站，那閱讀之前請再三思，因為內容可能有誤！<br>或是也可以在文章下方留言糾正我，非常感謝 (ΦωΦ)</p>
+
+  </div>
+
+  
+</article>
+
+
+
 
 
   
 
-</article>
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
 
 
 
@@ -323,6 +380,59 @@
 
 
 
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
 
   <script  src="/js/local-search.js" ></script>
 

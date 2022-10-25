@@ -78,6 +78,48 @@
       </tags>
   </entry>
   <entry>
+    <title>UI 觀念直播班心得</title>
+    <url>/2022-01-17-hexschool-ui-feedback/</url>
+    <content><![CDATA[<p>2021 冬，UI 直播班心得，推！</p>
+<span id="more"></span>
+
+
+
+<h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>本身不是設計相關科系，但還是希望能透過這次的＂六角學院－UI設計觀念必修直播班＂來增進一點 UI/UX 的相關知識，雖然很遺憾沒有完美的走到終點，但還是幫自己記錄一下這次參與直播班的心路歷程。</p>
+<h2 id="報名這堂課的契機是？"><a href="#報名這堂課的契機是？" class="headerlink" title="報名這堂課的契機是？"></a>報名這堂課的契機是？</h2><p>相信在仿間與 UI/UX 設計相關的課程一定數不勝數，但是為什麼我會選擇”六角學院”的課程？原因很簡單，<del>就是信仰（沒</del>，其實早在先前就有報名六角的切版班了，而六角學院整體給我的氛圍是很團結的；你會有自己的小組以及永遠在前線待命等你發問的助教，當然少不了最敬業的老師。而因為你是跟著大家一起學習，所以當腦海衍生出想偷懶的想法同時，也會有一種被人從後面拍肩膀並對你說「欸我先走一步哩，你就繼續耍廢。」的感覺，讓你在學習上能自律。</p>
+<h2 id="每週的學習過程："><a href="#每週的學習過程：" class="headerlink" title="每週的學習過程："></a>每週的學習過程：</h2><p>這一次表訂為期四週的直播課程大綱如下：</p>
+<ul>
+<li><p><strong>Week 1：掌握頁面所有元件</strong></p>
+<p>本次主要使用的設計工具為 Figma，算是目前的主流之一。而這週就是帶你認識軟體的操作介面；雖然我在開課前有先觀看課前釋出的體驗營直播錄影，但是自己在操作上還是有許多不解的地方；不過在聽完第一週的直播後，我私下就利用時間把直播錄影再看一次並且針對操作上比較複雜的地方寫了筆記，<del>對我來說都很複雜所以筆記滿到哭</del>，而這些後續幫助我在練習軟體上幫助很多。</p>
+</li>
+<li><p><strong>Week 2：帶你從草稿到完稿</strong></p>
+<p>這週認識了一些網頁在設計的過程中比較常見會遇到的設計模式，像是C.R.A.P的設計準則，或是在規劃網頁時常用的 AIDA Modal；再來會介紹甚麼是 Wireframe。這週基本上每個人會開始設計第一個 Landing Page，對我這個設計白癡來說算是頗有挑戰性的，<del>（我做的很像釣魚網站</del>。</p>
+</li>
+<li><p><strong>Week 3：伸縮自如的響應式設計</strong></p>
+<p>RWD對我來說雖然早就不陌生，但是這堂課讓我更加的理解網頁在不同寬度的視窗做切換時的一些細節以及過往不懂的知識，像是中斷點、網格切換時的邏輯或是兩個物件之間的間距都是一個學問。</p>
+</li>
+<li><p><strong>Week 4：讓介面動起來</strong></p>
+<p>這週的直播內容算是比較有趣的一次，主要都是在介紹 Prototype 的運作，很多動畫都是在網頁中常見的，但是直播以外的時間幾乎都是拿來做最終作品，從這週開始會覺得時間緊湊起來。</p>
+</li>
+<li><p><strong>Week 5：加碼內容</strong></p>
+<p>標題說是表訂為期四週，但怎麼會還有第五週呢？原因是老師擔心有些同學工作比較忙碌，可能會沒有時間做最終作品，因此開放最終作品有達到一定進度的同學提供額外的一次直播並且延長作品繳交的期限<del>（老師你是神吧</del>，而加碼直播課程的內容是如何把作品上傳到 Behance 以及作品呈現的排版建議；為了拿到這張門票我花了不少時間不反覆改我的作品版型，但一切都值得。</p>
+</li>
+</ul>
+<h2 id="建議："><a href="#建議：" class="headerlink" title="建議："></a>建議：</h2><p>無論你是不是設計背景，或是你有想轉職 UI 設計師的想法但是沒有明確的學習目標，不仿可以考慮看看六角學院的 UI 設計直播課程；好的學習環境跟課程規劃這裡都提供給你了，但能不能有所成長還是決定在自己身上，以我自己為例，很多觀念在直播上課的當下我是充滿疑惑的，但課後我會盡可能的把當天的直播錄影重頭到尾看一次並且隨時暫停錄影做筆記，因為對我來說暫停的當下會先思考一次問題的所在，而作筆記的時候會間接複習剛剛思考的問題，這確實大幅提升了我的學習效率，當然這是我自己的做法，每個人的學習方式不盡相同，但這裡要表達的重點是自己必須要有所規劃，再搭配現有的資源去做結合，才能最有效率的學習。</p>
+<h2 id="結語："><a href="#結語：" class="headerlink" title="結語："></a>結語：</h2><p>雖然這次的過程對我來說真的不容易，但還是很榮幸可以跟到這次的直播課程，畢竟這是我有史以來最認真跟 UI/UX 相處的一段時間。很喜歡一個人專注在思考或是做某一件事情時的感覺，而這次直播班讓我深刻體會到了，遺憾的是我沒有在時間內完成最終作品，雖然對特別延長繳交期限的老師很不好意思，但這個作品我還是會利用時間把它完成，至少有始有終也算是對參與這個課程的自己負責吧。</p>
+<p>最後我要特別感謝<strong>熾炎鐵甲狼</strong>的組員，特別是組長都會幫忙繳交小組作業以及提醒繳交的時間，也要感謝其他組員都會提出疑問和幫忙解答，雖然各位都很忙，但都盡可能的參與小組任務，這邊讓我私心合影紀念一下。</p>
+<p><img src="https://i.imgur.com/kQuBKJ5.png" alt="img"></p>
+<p>最後的最後，要感謝聲音自帶磁性的俊儀老師和唯一的 Joanne 助教願意回答我提出的蠢問題<del>（假日問跨年也問，吵到真的不好意思</del>，雖然最後階段的作品屢次被退回，但每次的建議我都有仔細看，讓我這個設計肢障提升了設計觀念之餘，也培養了專注思考的能力，感謝兩位的用力鞭打，也辛苦你們了。</p>
+<p><img src="https://i.imgur.com/GIbWClM.png?1"></p>
+]]></content>
+      <categories>
+        <category>心得</category>
+      </categories>
+      <tags>
+        <tag>六角學院</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>關於 CSS Font-Family</title>
     <url>/2022-03-02-css-font-family/</url>
     <content><![CDATA[<p>在設定字體時，常常會遇到結果不如預期的情況，於是決定研究一下網頁是怎麼套用字體，以及一些相關的注意事項。</p>
@@ -147,48 +189,6 @@
       </categories>
       <tags>
         <tag>font-family</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>UI 觀念直播班心得</title>
-    <url>/2022-01-17-hexschool-ui-feedback/</url>
-    <content><![CDATA[<p>2021 冬，UI 直播班心得，推！</p>
-<span id="more"></span>
-
-
-
-<h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>本身不是設計相關科系，但還是希望能透過這次的＂六角學院－UI設計觀念必修直播班＂來增進一點 UI/UX 的相關知識，雖然很遺憾沒有完美的走到終點，但還是幫自己記錄一下這次參與直播班的心路歷程。</p>
-<h2 id="報名這堂課的契機是？"><a href="#報名這堂課的契機是？" class="headerlink" title="報名這堂課的契機是？"></a>報名這堂課的契機是？</h2><p>相信在仿間與 UI/UX 設計相關的課程一定數不勝數，但是為什麼我會選擇”六角學院”的課程？原因很簡單，<del>就是信仰（沒</del>，其實早在先前就有報名六角的切版班了，而六角學院整體給我的氛圍是很團結的；你會有自己的小組以及永遠在前線待命等你發問的助教，當然少不了最敬業的老師。而因為你是跟著大家一起學習，所以當腦海衍生出想偷懶的想法同時，也會有一種被人從後面拍肩膀並對你說「欸我先走一步哩，你就繼續耍廢。」的感覺，讓你在學習上能自律。</p>
-<h2 id="每週的學習過程："><a href="#每週的學習過程：" class="headerlink" title="每週的學習過程："></a>每週的學習過程：</h2><p>這一次表訂為期四週的直播課程大綱如下：</p>
-<ul>
-<li><p><strong>Week 1：掌握頁面所有元件</strong></p>
-<p>本次主要使用的設計工具為 Figma，算是目前的主流之一。而這週就是帶你認識軟體的操作介面；雖然我在開課前有先觀看課前釋出的體驗營直播錄影，但是自己在操作上還是有許多不解的地方；不過在聽完第一週的直播後，我私下就利用時間把直播錄影再看一次並且針對操作上比較複雜的地方寫了筆記，<del>對我來說都很複雜所以筆記滿到哭</del>，而這些後續幫助我在練習軟體上幫助很多。</p>
-</li>
-<li><p><strong>Week 2：帶你從草稿到完稿</strong></p>
-<p>這週認識了一些網頁在設計的過程中比較常見會遇到的設計模式，像是C.R.A.P的設計準則，或是在規劃網頁時常用的 AIDA Modal；再來會介紹甚麼是 Wireframe。這週基本上每個人會開始設計第一個 Landing Page，對我這個設計白癡來說算是頗有挑戰性的，<del>（我做的很像釣魚網站</del>。</p>
-</li>
-<li><p><strong>Week 3：伸縮自如的響應式設計</strong></p>
-<p>RWD對我來說雖然早就不陌生，但是這堂課讓我更加的理解網頁在不同寬度的視窗做切換時的一些細節以及過往不懂的知識，像是中斷點、網格切換時的邏輯或是兩個物件之間的間距都是一個學問。</p>
-</li>
-<li><p><strong>Week 4：讓介面動起來</strong></p>
-<p>這週的直播內容算是比較有趣的一次，主要都是在介紹 Prototype 的運作，很多動畫都是在網頁中常見的，但是直播以外的時間幾乎都是拿來做最終作品，從這週開始會覺得時間緊湊起來。</p>
-</li>
-<li><p><strong>Week 5：加碼內容</strong></p>
-<p>標題說是表訂為期四週，但怎麼會還有第五週呢？原因是老師擔心有些同學工作比較忙碌，可能會沒有時間做最終作品，因此開放最終作品有達到一定進度的同學提供額外的一次直播並且延長作品繳交的期限<del>（老師你是神吧</del>，而加碼直播課程的內容是如何把作品上傳到 Behance 以及作品呈現的排版建議；為了拿到這張門票我花了不少時間不反覆改我的作品版型，但一切都值得。</p>
-</li>
-</ul>
-<h2 id="建議："><a href="#建議：" class="headerlink" title="建議："></a>建議：</h2><p>無論你是不是設計背景，或是你有想轉職 UI 設計師的想法但是沒有明確的學習目標，不仿可以考慮看看六角學院的 UI 設計直播課程；好的學習環境跟課程規劃這裡都提供給你了，但能不能有所成長還是決定在自己身上，以我自己為例，很多觀念在直播上課的當下我是充滿疑惑的，但課後我會盡可能的把當天的直播錄影重頭到尾看一次並且隨時暫停錄影做筆記，因為對我來說暫停的當下會先思考一次問題的所在，而作筆記的時候會間接複習剛剛思考的問題，這確實大幅提升了我的學習效率，當然這是我自己的做法，每個人的學習方式不盡相同，但這裡要表達的重點是自己必須要有所規劃，再搭配現有的資源去做結合，才能最有效率的學習。</p>
-<h2 id="結語："><a href="#結語：" class="headerlink" title="結語："></a>結語：</h2><p>雖然這次的過程對我來說真的不容易，但還是很榮幸可以跟到這次的直播課程，畢竟這是我有史以來最認真跟 UI/UX 相處的一段時間。很喜歡一個人專注在思考或是做某一件事情時的感覺，而這次直播班讓我深刻體會到了，遺憾的是我沒有在時間內完成最終作品，雖然對特別延長繳交期限的老師很不好意思，但這個作品我還是會利用時間把它完成，至少有始有終也算是對參與這個課程的自己負責吧。</p>
-<p>最後我要特別感謝<strong>熾炎鐵甲狼</strong>的組員，特別是組長都會幫忙繳交小組作業以及提醒繳交的時間，也要感謝其他組員都會提出疑問和幫忙解答，雖然各位都很忙，但都盡可能的參與小組任務，這邊讓我私心合影紀念一下。</p>
-<p><img src="https://i.imgur.com/kQuBKJ5.png" alt="img"></p>
-<p>最後的最後，要感謝聲音自帶磁性的俊儀老師和唯一的 Joanne 助教願意回答我提出的蠢問題<del>（假日問跨年也問，吵到真的不好意思</del>，雖然最後階段的作品屢次被退回，但每次的建議我都有仔細看，讓我這個設計肢障提升了設計觀念之餘，也培養了專注思考的能力，感謝兩位的用力鞭打，也辛苦你們了。</p>
-<p><img src="https://i.imgur.com/GIbWClM.png?1"></p>
-]]></content>
-      <categories>
-        <category>心得</category>
-      </categories>
-      <tags>
-        <tag>六角學院</tag>
       </tags>
   </entry>
   <entry>
@@ -388,6 +388,73 @@
       </tags>
   </entry>
   <entry>
+    <title>Flex 水平置中，子元素溢出時避免被裁切</title>
+    <url>/2022-09-17-css-max-content/</url>
+    <content><![CDATA[<p>前一段時間在切版上遇到了一個問題，研究之後發現一個有趣的解決方法，也藉此機會紀錄一下。</p>
+<span id="more"></span>
+
+
+<p>以下是範例情境：</p>
+<p><img src="https://i.imgur.com/TK9ZZcF.png"></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- HTML --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;section mt-3&quot;</span>&gt;</span>  <br>  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;section-title&quot;</span>&gt;</span>Section Title<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span><br>    ...<br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* CSS（上方列表區塊） */</span><br><span class="hljs-selector-class">.list</span> &#123;<br>  <span class="hljs-attribute">display</span>: flex;<br>  <span class="hljs-attribute">justify-content</span>: center;<br>  <span class="hljs-attribute">overflow</span>: auto;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>上述範例中，上方 <code>.list</code> 區塊使用 <code>display: flex</code> 加上 <code>justify-content: center</code> 讓子元素置中，同時希望瀏覽器寬度縮小至子元素溢出時，溢出的部分以水平軸方式呈現，因此加入了 <code>overflow: auto</code> 設定，呈現畫面如下：</p>
+<p><img src="https://i.imgur.com/Sn1BMH4.png"></p>
+<p>然而將水平軸向左滾動至最底時，溢出的部分卻被裁切了，而問題就在 <code>justify-content: center</code> 這個屬性上，移除該屬性之後，子元素溢出的部分就會正常呈現，如下：</p>
+<p><img src="https://i.imgur.com/6GYarUd.png"></p>
+<p>此時問題來了，在不使用 <code>justify-content: center</code> 的情況下，要如何同時滿足子元素保持置中，但是溢出情況下不會被裁切呢？在思索一番後想到另一個能使區塊水平置中的語法，就是 <code>margin: 0 auto</code>，不過這個語法只適用具有實際寬度但非滿版的區塊，而範例中的 <code>.list</code> 區塊因為 <code>display: flex</code> 的關係佔了滿版的寬，因此並沒有如預期置中。下圖是區塊實際佔用的空間：</p>
+<p><img src="https://i.imgur.com/WnJz6ud.png"></p>
+<p><strong>解決方式：</strong></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* CSS（上方列表區塊） */</span><br><span class="hljs-selector-class">.list</span> &#123;<br>  <span class="hljs-attribute">display</span>: flex;<br>  <span class="hljs-attribute">max-width</span>: max-content;<br>  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;<br>  <span class="hljs-attribute">overflow</span>: auto;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>僅需在 <code>.list</code> 區塊加上 <code>max-width: max-content</code> 語法即可，而 <code>max-content</code> 最基本的作用是讓區塊寬度或高度自適應子元素，並且當子元素溢出時，內容不會受到擠壓而換行；此處正好利用了前者特性，使 <code>.list</code> 最大寬度等於所有子元素（<code>.list-item</code>）寬度的加總，此時再配合 <code>margin: 0 auto</code> 之後區塊得以置中，並且當子元素溢出時不會被裁切。結果如下圖所示：</p>
+<p><img src="https://i.imgur.com/MLip3hT.png"></p>
+<p><strong>實作範例：</strong></p>
+<iframe src="https://codepen.io/Cliff_hex/embed/bGMqLOq?default-tab=css,result" width="100%" height="300" frameborder="0" loading="lazy" allowfullscreen></iframe>
+
+<blockquote>
+<p>max-content 詳細說明請參考此<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/max-content">文章</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>flex</tag>
+        <tag>overflow</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>網頁切版直播班心得</title>
+    <url>/2022-09-10-hexschool-web-feedback/</url>
+    <content><![CDATA[<p>2022 夏，切版直播班心得。</p>
+<span id="more"></span>
+
+
+
+<h2 id="報名契機"><a href="#報名契機" class="headerlink" title="報名契機"></a>報名契機</h2><p>今年年四月左右參加了為期一個月的公益體驗營，然而在體驗營結束前夕，學院按照慣例會推坑下一次的活動，這次是切版直播班，不過內容相較過去更為豐富，教學大綱除了舊有的 Bootstrap 到近幾年盛行的 Tailwind，思索一番之後還是報名了。其實原本是衝著 Tailwind 來的，但礙於過去在切版方面都是純手刻又覺得 Bootstrap 很困難而遲遲不去面對，導致自己連一個 CSS 框架都不會，另一方面自己在新技能的學習上會需要花不少時間來吸收，擔心一次學兩個會應付不來，因此就把目標先轉向了目前使用率較高的 Bootstrap；除此之外，這次也要求自己必須把八週主線任務的所有頁面都切出來，既然都全職學習了，至少這一點是能做到的吧。</p>
+<h2 id="每週學習歷程"><a href="#每週學習歷程" class="headerlink" title="每週學習歷程"></a>每週學習歷程</h2><h3 id="直播"><a href="#直播" class="headerlink" title="直播"></a>直播</h3><p>雖然每週直播的教學內容算是在複習錄影，但是現場跟大家一起聽課的氛圍比起自己看錄影兩者還是有差的，而且常常會有同學在聊天室提出一些平常可能不太會注意到的有趣問題，也能當作是一種額外的知識吸收，此外當然也少不了校長的嘴砲模式以及心靈雞湯，畢竟學程式容易產生焦慮，長時間學習下還是需要找地方宣洩一下情緒。八週的直播形式基本上都是前面提到的這樣，整體的感覺不錯，這部分也沒有需要特別需要補充甚麼了，不過直播班本來就是以大量輸出為前提，每週花費在作業上的時間自然就比較多。</p>
+<p>另外這次直播班每週是有兩場直播的，上述提到的是週五例行的直播，另一場則是週三的 Tailwind 主題，雖然大部分心思都投入在 Bootstrap 上面，但是每週還是有聽課並把作業都做過一次，整體感覺其實是很不錯的。</p>
+<h3 id="小組討論"><a href="#小組討論" class="headerlink" title="小組討論"></a>小組討論</h3><p>這次被分配到的組別還不錯，每週的小組討論出席率都很高，只是大多數的組員平時都比較忙，也有組員加班到很晚還趕回來餐與討論，辛苦各位了，無法出席的人也會透過線下時間把作業補齊，也要特別感謝組長主持以及做資料彙整，不得不說組長真的很認真好學，小組伺服器的發問次數也是最多的，自己也從不少問題中學到各種額外的知識，賺爛了。</p>
+<h3 id="每日任務"><a href="#每日任務" class="headerlink" title="每日任務"></a>每日任務</h3><p>不得不說每日任務真的是很棒的學習資源，每天會釋出一道小題目給學員練習，有時候作業卡關也能從這邊找到線索，也可以學到很多平常不知道的知識，算是一個小寶庫；不過後半段的部分因為都在趕主線任務的進度，幾乎都是用補交的就是了。</p>
+<h3 id="主線任務"><a href="#主線任務" class="headerlink" title="主線任務"></a>主線任務</h3><p>作業方面主線任務難度是最高的，前兩週比較像是在試水溫，但是從第三週開始版型就是一個完整的電商網站了，印象中在做第三週時，平均一頁包含 RWD 就花了幾乎一天的時間，切完所有頁面後開始地毯式搜索看有甚麼地方沒處理仔細或是可以再調整，也嘗試透過簡單的 JS 加入了一些小功能和效果，結果自己很滿意。</p>
+<p>第四週設計稿和第三週是同一份，差別在於第四週需要透過 Gulp 來做，講白一點這已經不是切版的範疇了，但是提早面對終端機指令、版本相容性或是編譯等問題對未來學習上無疑是好事，不過 Gulp 要怎麼寫任務就要靠自己學了，可惡！好想學會自己寫 Gulp 啊！！</p>
+<p>第五週是後台版型，也開始嘗試使用以前一直不敢面對的 Bootstrap，然而這週的作業是一邊看官方文件一邊做的，大部分的時間都花在看文件而不是切版，為了讓自己能早一點習慣使用 Bootstrap，有好幾天晚上睡前用手機都不是在看社群，而是在看官方文件…。</p>
+<p>校長在第一次直播時，有大概用折線圖描述一下每週的作業難度，印象中第六週的難度是僅次於第八週的，而且第六週開始被要求使用 CSS 框架來做，還好前一段時間花了不少時間研究 Bootstrap，現在通用類別與元件在使用上已經熟練了非常多，頓時覺得自己以前只是懶的去看密密麻麻的文件而已。除此之外，第六週設計稿部分區塊還需要引入 JS 套件，從 Discord 作業討論頻道也可以看到不少學員受到 Swiper 無情肆虐。自己也花費將近一週的時間才做完，就順便整合第七週一起繳交了，然而心想終於可以休息一下，結果第八週設計稿就提前釋出，害我差點就忘記自己還在通往地獄的列車上。</p>
+<p>第八週的設計稿很特別，充斥著各式各樣酷炫的排版。在這過程中也做了很多以往沒做過的嘗試，首先是開始自己設計元件，先前看到其他同學不用 Pages 資料夾就能做出所有頁面，自己早就想嘗試看看了，意外的是然辦到了！果然有些事如果不做永遠不知道結果；另外也學會了客製化通用類別的方法，不得不說使用起來很方便可惜相見恨晚。不過最麻煩的部分還是 JS 套件，這部分花了很多時間不斷嘗試和理解才做出來，從拿到設計稿到切完所有頁面大概用了一個多禮拜的時間，真的好累啊…。</p>
+<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>本來以為自己會倒在第八週，但意外的挺過來了，不得不說即便是全職學習還是覺得時間很緊迫，真心佩服那些平時有工作還來進修的同學。總結來說，這次直播班真的扎扎實實的學到很多知識，同時也深刻體會到學習是沒有捷徑的，追求卓越的唯一方法只有不斷的練習，最後非常感謝六角學院提供這麼棒的學習資源和環境，兩位講師和每位助教都辛苦了，小心肝啊！！</p>
+<p>（長嘆，肝了無數個夜晚終於可以休息一下了，啊~原來我報名了 JS 直播班，差點忘記我搭的是不停靠的直達列車了。</p>
+]]></content>
+      <categories>
+        <category>心得</category>
+      </categories>
+      <tags>
+        <tag>六角學院</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SCSS 實用語法</title>
     <url>/2022-06-07-sass-note/</url>
     <content><![CDATA[<p>最近接觸到 Sass/SCSS，覺得各方面的功能都太方便了，這輩子大概不會想回去寫純 CSS 了吧。這篇筆記整理了一些新手必須學會的語法。</p>
@@ -470,70 +537,36 @@
       </tags>
   </entry>
   <entry>
-    <title>網頁切版直播班心得</title>
-    <url>/2022-09-10-hexschool-web-feedback/</url>
-    <content><![CDATA[<p>2022 夏，切版直播班心得。</p>
+    <title>JavaScript 觀念 - 同步與非同步</title>
+    <url>/2022-09-20-javascript-sync-async/</url>
+    <content><![CDATA[<p>這篇僅記錄同步、非同步是什麼樣的概念，並沒有處理非同步問題的方式。</p>
 <span id="more"></span>
 
 
-
-<h2 id="報名契機"><a href="#報名契機" class="headerlink" title="報名契機"></a>報名契機</h2><p>今年年四月左右參加了為期一個月的公益體驗營，然而在體驗營結束前夕，學院按照慣例會推坑下一次的活動，這次是切版直播班，不過內容相較過去更為豐富，教學大綱除了舊有的 Bootstrap 到近幾年盛行的 Tailwind，思索一番之後還是報名了。其實原本是衝著 Tailwind 來的，但礙於過去在切版方面都是純手刻又覺得 Bootstrap 很困難而遲遲不去面對，導致自己連一個 CSS 框架都不會，另一方面自己在新技能的學習上會需要花不少時間來吸收，擔心一次學兩個會應付不來，因此就把目標先轉向了目前使用率較高的 Bootstrap；除此之外，這次也要求自己必須把八週主線任務的所有頁面都切出來，既然都全職學習了，至少這一點是能做到的吧。</p>
-<h2 id="每週學習歷程"><a href="#每週學習歷程" class="headerlink" title="每週學習歷程"></a>每週學習歷程</h2><h3 id="直播"><a href="#直播" class="headerlink" title="直播"></a>直播</h3><p>雖然每週直播的教學內容算是在複習錄影，但是現場跟大家一起聽課的氛圍比起自己看錄影兩者還是有差的，而且常常會有同學在聊天室提出一些平常可能不太會注意到的有趣問題，也能當作是一種額外的知識吸收，此外當然也少不了校長的嘴砲模式以及心靈雞湯，畢竟學程式容易產生焦慮，長時間學習下還是需要找地方宣洩一下情緒。八週的直播形式基本上都是前面提到的這樣，整體的感覺不錯，這部分也沒有需要特別需要補充甚麼了，不過直播班本來就是以大量輸出為前提，每週花費在作業上的時間自然就比較多。</p>
-<p>另外這次直播班每週是有兩場直播的，上述提到的是週五例行的直播，另一場則是週三的 Tailwind 主題，雖然大部分心思都投入在 Bootstrap 上面，但是每週還是有聽課並把作業都做過一次，整體感覺其實是很不錯的。</p>
-<h3 id="小組討論"><a href="#小組討論" class="headerlink" title="小組討論"></a>小組討論</h3><p>這次被分配到的組別還不錯，每週的小組討論出席率都很高，只是大多數的組員平時都比較忙，也有組員加班到很晚還趕回來餐與討論，辛苦各位了，無法出席的人也會透過線下時間把作業補齊，也要特別感謝組長主持以及做資料彙整，不得不說組長真的很認真好學，小組伺服器的發問次數也是最多的，自己也從不少問題中學到各種額外的知識，賺爛了。</p>
-<h3 id="每日任務"><a href="#每日任務" class="headerlink" title="每日任務"></a>每日任務</h3><p>不得不說每日任務真的是很棒的學習資源，每天會釋出一道小題目給學員練習，有時候作業卡關也能從這邊找到線索，也可以學到很多平常不知道的知識，算是一個小寶庫；不過後半段的部分因為都在趕主線任務的進度，幾乎都是用補交的就是了。</p>
-<h3 id="主線任務"><a href="#主線任務" class="headerlink" title="主線任務"></a>主線任務</h3><p>作業方面主線任務難度是最高的，前兩週比較像是在試水溫，但是從第三週開始版型就是一個完整的電商網站了，印象中在做第三週時，平均一頁包含 RWD 就花了幾乎一天的時間，切完所有頁面後開始地毯式搜索看有甚麼地方沒處理仔細或是可以再調整，也嘗試透過簡單的 JS 加入了一些小功能和效果，結果自己很滿意。</p>
-<p>第四週設計稿和第三週是同一份，差別在於第四週需要透過 Gulp 來做，講白一點這已經不是切版的範疇了，但是提早面對終端機指令、版本相容性或是編譯等問題對未來學習上無疑是好事，不過 Gulp 要怎麼寫任務就要靠自己學了，可惡！好想學會自己寫 Gulp 啊！！</p>
-<p>第五週是後台版型，也開始嘗試使用以前一直不敢面對的 Bootstrap，然而這週的作業是一邊看官方文件一邊做的，大部分的時間都花在看文件而不是切版，為了讓自己能早一點習慣使用 Bootstrap，有好幾天晚上睡前用手機都不是在看社群，而是在看官方文件…。</p>
-<p>校長在第一次直播時，有大概用折線圖描述一下每週的作業難度，印象中第六週的難度是僅次於第八週的，而且第六週開始被要求使用 CSS 框架來做，還好前一段時間花了不少時間研究 Bootstrap，現在通用類別與元件在使用上已經熟練了非常多，頓時覺得自己以前只是懶的去看密密麻麻的文件而已。除此之外，第六週設計稿部分區塊還需要引入 JS 套件，從 Discord 作業討論頻道也可以看到不少學員受到 Swiper 無情肆虐。自己也花費將近一週的時間才做完，就順便整合第七週一起繳交了，然而心想終於可以休息一下，結果第八週設計稿就提前釋出，害我差點就忘記自己還在通往地獄的列車上。</p>
-<p>第八週的設計稿很特別，充斥著各式各樣酷炫的排版。在這過程中也做了很多以往沒做過的嘗試，首先是開始自己設計元件，先前看到其他同學不用 Pages 資料夾就能做出所有頁面，自己早就想嘗試看看了，意外的是然辦到了！果然有些事如果不做永遠不知道結果；另外也學會了客製化通用類別的方法，不得不說使用起來很方便可惜相見恨晚。不過最麻煩的部分還是 JS 套件，這部分花了很多時間不斷嘗試和理解才做出來，從拿到設計稿到切完所有頁面大概用了一個多禮拜的時間，真的好累啊…。</p>
-<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>本來以為自己會倒在第八週，但意外的挺過來了，不得不說即便是全職學習還是覺得時間很緊迫，真心佩服那些平時有工作還來進修的同學。總結來說，這次直播班真的扎扎實實的學到很多知識，同時也深刻體會到學習是沒有捷徑的，追求卓越的唯一方法只有不斷的練習，最後非常感謝六角學院提供這麼棒的學習資源和環境，兩位講師和每位助教都辛苦了，小心肝啊！！</p>
-<p>（長嘆，肝了無數個夜晚終於可以休息一下了，啊~原來我報名了 JS 直播班，差點忘記我搭的是不停靠的直達列車了。</p>
-]]></content>
-      <categories>
-        <category>心得</category>
-      </categories>
-      <tags>
-        <tag>六角學院</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Flex 水平置中，子元素溢出時避免被裁切</title>
-    <url>/2022-09-17-css-max-content/</url>
-    <content><![CDATA[<p>前一段時間在切版上遇到了一個問題，研究之後發現一個有趣的解決方法，也藉此機會紀錄一下。</p>
-<span id="more"></span>
-
-
-<p>以下是範例情境：</p>
-<p><img src="https://i.imgur.com/TK9ZZcF.png"></p>
-<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- HTML --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;section mt-3&quot;</span>&gt;</span>  <br>  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;section-title&quot;</span>&gt;</span>Section Title<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span><br>    ...<br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* CSS（上方列表區塊） */</span><br><span class="hljs-selector-class">.list</span> &#123;<br>  <span class="hljs-attribute">display</span>: flex;<br>  <span class="hljs-attribute">justify-content</span>: center;<br>  <span class="hljs-attribute">overflow</span>: auto;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>上述範例中，上方 <code>.list</code> 區塊使用 <code>display: flex</code> 加上 <code>justify-content: center</code> 讓子元素置中，同時希望瀏覽器寬度縮小至子元素溢出時，溢出的部分以水平軸方式呈現，因此加入了 <code>overflow: auto</code> 設定，呈現畫面如下：</p>
-<p><img src="https://i.imgur.com/Sn1BMH4.png"></p>
-<p>然而將水平軸向左滾動至最底時，溢出的部分卻被裁切了，而問題就在 <code>justify-content: center</code> 這個屬性上，移除該屬性之後，子元素溢出的部分就會正常呈現，如下：</p>
-<p><img src="https://i.imgur.com/6GYarUd.png"></p>
-<p>此時問題來了，在不使用 <code>justify-content: center</code> 的情況下，要如何同時滿足子元素保持置中，但是溢出情況下不會被裁切呢？在思索一番後想到另一個能使區塊水平置中的語法，就是 <code>margin: 0 auto</code>，不過這個語法只適用具有實際寬度但非滿版的區塊，而範例中的 <code>.list</code> 區塊因為 <code>display: flex</code> 的關係佔了滿版的寬，因此並沒有如預期置中。下圖是區塊實際佔用的空間：</p>
-<p><img src="https://i.imgur.com/WnJz6ud.png"></p>
-<p><strong>解決方式：</strong></p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* CSS（上方列表區塊） */</span><br><span class="hljs-selector-class">.list</span> &#123;<br>  <span class="hljs-attribute">display</span>: flex;<br>  <span class="hljs-attribute">max-width</span>: max-content;<br>  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;<br>  <span class="hljs-attribute">overflow</span>: auto;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>僅需在 <code>.list</code> 區塊加上 <code>max-width: max-content</code> 語法即可，而 <code>max-content</code> 最基本的作用是讓區塊寬度或高度自適應子元素，並且當子元素溢出時，內容不會受到擠壓而換行；此處正好利用了前者特性，使 <code>.list</code> 最大寬度等於所有子元素（<code>.list-item</code>）寬度的加總，此時再配合 <code>margin: 0 auto</code> 之後區塊得以置中，並且當子元素溢出時不會被裁切。結果如下圖所示：</p>
-<p><img src="https://i.imgur.com/MLip3hT.png"></p>
-<p><strong>實作範例：</strong></p>
-<iframe src="https://codepen.io/Cliff_hex/embed/bGMqLOq?default-tab=css,result" width="100%" height="300" frameborder="0" loading="lazy" allowfullscreen></iframe>
-
+<h2 id="JavaScript-中的同步"><a href="#JavaScript-中的同步" class="headerlink" title="JavaScript 中的同步"></a>JavaScript 中的同步</h2><p>「同步（Synchronous）」在你的認知上會怎麼解釋？我自己原本的想法是同時處理很多事情，但這個說法在 JavaScript 卻有些出入，原因在於 JavaScript 是以「單執行緒（單線程）」的方式在執行程序，特性是「一次只做一件事，前面的事做完才會依序做下一件事」。</p>
 <blockquote>
-<p>max-content 詳細說明請參考此<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/max-content">文章</a></p>
+<p>執行緒相關內容可參考此<a href="https://www.itread01.com/ixyfq.html">文章</a>。</p>
 </blockquote>
+<p>範例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printNum</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;1&#x27;</span>);<br>&#125; <br>printNum();<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;2&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>以上面程式碼來說，會先執行函式 <code>printNum</code> 印出 <code>1</code>，接著再印出 <code>2</code>，並且兩者是有先後順序的，屬於同步執行。</p>
+<h2 id="何謂非同步"><a href="#何謂非同步" class="headerlink" title="何謂非同步"></a>何謂非同步</h2><p>「非同步（Asynchronous）」特性是「可以同時做很多事，並且不需要等待前面的事做完就能做下一件事」，其實就是自己一開始對同步的認知。</p>
+<p>範例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">setTimeout</span>(printNum, <span class="hljs-number">2000</span>);<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printNum</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;1&#x27;</span>);<br>&#125; <br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;2&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>程式碼中 <code>setTimeout</code> 會分別帶入 <code>callback</code>、<code>等待毫秒</code> 兩個參數，而回調函式 <code>printNum</code> 被設定 2 秒後才執行，但是這程中第 5 行的程式碼並不會等待前面的函式 <code>printNum</code>  執行完才動作，而是先印出 <code>2</code>，等待 2 秒之後呼叫函式 <code>printNum</code> 並印出 <code>1</code>。</p>
+<p>但是 JavaScript 屬於單執行緒，所以一次應該只會做一件事，為什麼會有範例中非同步的狀況？原因是 JavaScript 在 V8 引擎（JavaScript 引擎）運行時，引擎在運作時是同步的，但是除了引擎內的 JavaScript 原始程式碼之外，瀏覽器也會提供許多 Web APIs（如：document、MouseEvent、setTimeout…等等），這些並不屬於 V8 引擎的範疇，但是可以透過呼叫並使用它們做到非同步的行為，並且不會影響到 JavaScript 主程式的運行，可以理解成 JavaScript 需要依賴 Web APIs 才能達成非同步的效果。</p>
+<p>而 <code>setTimeout</code> 等待的期間，程式碼為甚麼能夠繼續往下執行？原因是當 Web APIs 與自己寫的 JavaScript 在瀏覽器一起執行時，透過 Web APIs 非同步呼叫的 callback function 會被放到 Callback Queue（儲列 / 佇列）待命，等到其他程式碼都執行完之後才會被呼叫。</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://chanchandev.com/js/Async/async-sync-intro/2534378084/">Javascript 非同步 &amp; Event Loop！10 分鐘輕鬆圖解學習！</a></p>
+<p><a href="https://5xruby.tw/posts/how-js-synchronous-works">無痛理解 JS | 非同步怎麼運作？</a></p>
 ]]></content>
       <categories>
-        <category>CSS</category>
+        <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>flex</tag>
-        <tag>overflow</tag>
+        <tag>synchronous</tag>
+        <tag>asynchronous</tag>
       </tags>
   </entry>
   <entry>
@@ -591,100 +624,6 @@
       </categories>
       <tags>
         <tag>function</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript 觀念 - 同步與非同步</title>
-    <url>/2022-09-20-javascript-sync-async/</url>
-    <content><![CDATA[<p>這篇僅記錄同步、非同步是什麼樣的概念，並沒有處理非同步問題的方式。</p>
-<span id="more"></span>
-
-
-<h2 id="JavaScript-中的同步"><a href="#JavaScript-中的同步" class="headerlink" title="JavaScript 中的同步"></a>JavaScript 中的同步</h2><p>「同步（Synchronous）」在你的認知上會怎麼解釋？我自己原本的想法是同時處理很多事情，但這個說法在 JavaScript 卻有些出入，原因在於 JavaScript 是以「單執行緒（單線程）」的方式在執行程序，特性是「一次只做一件事，前面的事做完才會依序做下一件事」。</p>
-<blockquote>
-<p>執行緒相關內容可參考此<a href="https://www.itread01.com/ixyfq.html">文章</a>。</p>
-</blockquote>
-<p>範例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printNum</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;1&#x27;</span>);<br>&#125; <br>printNum();<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;2&#x27;</span>);<br></code></pre></td></tr></table></figure>
-
-<p>以上面程式碼來說，會先執行函式 <code>printNum</code> 印出 <code>1</code>，接著再印出 <code>2</code>，並且兩者是有先後順序的，屬於同步執行。</p>
-<h2 id="何謂非同步"><a href="#何謂非同步" class="headerlink" title="何謂非同步"></a>何謂非同步</h2><p>「非同步（Asynchronous）」特性是「可以同時做很多事，並且不需要等待前面的事做完就能做下一件事」，其實就是自己一開始對同步的認知。</p>
-<p>範例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">setTimeout</span>(printNum, <span class="hljs-number">2000</span>);<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printNum</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;1&#x27;</span>);<br>&#125; <br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;2&#x27;</span>);<br></code></pre></td></tr></table></figure>
-
-<p>程式碼中 <code>setTimeout</code> 會分別帶入 <code>callback</code>、<code>等待毫秒</code> 兩個參數，而回調函式 <code>printNum</code> 被設定 2 秒後才執行，但是這程中第 5 行的程式碼並不會等待前面的函式 <code>printNum</code>  執行完才動作，而是先印出 <code>2</code>，等待 2 秒之後呼叫函式 <code>printNum</code> 並印出 <code>1</code>。</p>
-<p>但是 JavaScript 屬於單執行緒，所以一次應該只會做一件事，為什麼會有範例中非同步的狀況？原因是 JavaScript 在 V8 引擎（JavaScript 引擎）運行時，引擎在運作時是同步的，但是除了引擎內的 JavaScript 原始程式碼之外，瀏覽器也會提供許多 Web APIs（如：document、MouseEvent、setTimeout…等等），這些並不屬於 V8 引擎的範疇，但是可以透過呼叫並使用它們做到非同步的行為，並且不會影響到 JavaScript 主程式的運行，可以理解成 JavaScript 需要依賴 Web APIs 才能達成非同步的效果。</p>
-<p>而 <code>setTimeout</code> 等待的期間，程式碼為甚麼能夠繼續往下執行？原因是當 Web APIs 與自己寫的 JavaScript 在瀏覽器一起執行時，透過 Web APIs 非同步呼叫的 callback function 會被放到 Callback Queue（儲列 / 佇列）待命，等到其他程式碼都執行完之後才會被呼叫。</p>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://chanchandev.com/js/Async/async-sync-intro/2534378084/">Javascript 非同步 &amp; Event Loop！10 分鐘輕鬆圖解學習！</a></p>
-<p><a href="https://5xruby.tw/posts/how-js-synchronous-works">無痛理解 JS | 非同步怎麼運作？</a></p>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>synchronous</tag>
-        <tag>asynchronous</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript 觀念 - 提升</title>
-    <url>/2022-09-24-javascript-hoisting/</url>
-    <content><![CDATA[<p>ES6 前後的 Hoisting 觀念筆記。</p>
-<span id="more"></span>
-
-
-<p>「提升（Hoisting）」是 JavaScript 特有的一種現象，它的意思是當一個變數或函式在被宣告之前就可以被使用，並且不會出現錯誤，另外 ES6 以前都是使用 <code>var</code> 來宣告變數，與 ES6 新增的 <code>let</code>、<code>const</code> 在提升行為會也有所不同。</p>
-<h2 id="ES6-以前的提升"><a href="#ES6-以前的提升" class="headerlink" title="ES6 以前的提升"></a>ES6 以前的提升</h2><figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-comment">// ReferenceError: x is not defined</span><br></code></pre></td></tr></table></figure>
-
-<p>以上針對 <code>x</code> 取值，但是在這之前並沒有宣告一個名為 <code>x</code> 的變數，因此會找不到該變數而回報錯誤，下面是正常的做法：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> x;<br><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
-
-<p>這樣就是一個正常的流程，程式碼會從第一行開始由上往下執行，所以在使用變數之前需要先宣告變數，以確保這個變數是存在的。</p>
-<p>接著下面嘗試把第 1、2 行位置進行對調：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-keyword">var</span> x;<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
-
-<p>按照前面的說法，上述程式碼應該會回報錯誤，但是得到的結果卻是 <code>undefined</code>，而這就是提升所造成的現象，感覺像是 <code>var x</code> 這段程式碼被提升到所有程式碼之前。</p>
-<p>大多數的程式語言中，變數在被使用之前是需要先宣告的，但是 JavaScript 可以在變數宣告之前就使用該變數，不過關於提升還有一些注意事項，就是會被提升的只有<strong>宣告的行為</strong>，值的指派並不會被提升，以下面程式碼為例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> x = <span class="hljs-number">7</span>; <span class="hljs-comment">// 宣告變數並指派值</span><br><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-comment">// 7</span><br></code></pre></td></tr></table></figure>
-
-<p>範例跟前面的相同，只是多了一個指派數值的動作，而最後也印出預期的結果，這個時候如果再將 1、2 行位置進行對調，印出的結果會是 <code>7</code> 嗎？</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-keyword">var</span> x = <span class="hljs-number">7</span>;<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
-
-<p>答案是 <code>undefined</code>，照理來說宣告的變數會被提升，可是得到的結果卻不是 <code>7</code>，原因其實就如前面提到的，會被提升的只有宣告的動作，而範例中宣告的動作指的是 <code>var x</code>，後方的 <code>= 7</code> 屬於值的指派，並不會跟著宣告一起被提升。</p>
-<p>但是結果為甚麼會是 <code>undefined</code>？原因在於 JavaScript 在開始執行你撰寫的程式碼之前，會先把所有宣告的變數、一般函式都預留一個記憶體空間，但不會馬上指派值給變數，這個預留記憶體空間的動作就是提升，到這邊為止屬於「創造階段」，而這個階段結束之後，變數才會被賦值，這個賦值的過程則是「執行階段」，<code>undefined</code> 就是變數在創造階段建立記憶體空間時，預設給定的初始值。</p>
-<p>可以將上面的程式碼運作流程理解成以下形式：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> x; <span class="hljs-comment">// 宣告變數（會被提升）</span><br><span class="hljs-built_in">console</span>.log(x);<br>x = <span class="hljs-number">7</span>; <span class="hljs-comment">// 指派值</span><br></code></pre></td></tr></table></figure>
-
-<p>目前為止已經知道會被提升的只有宣告的動作，但是除了變數之外，一般的函式宣告也會被提升，以下面程式碼為例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">fn();<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// hello</span><br></code></pre></td></tr></table></figure>
-
-<p>嘗試在函式被宣告之前呼叫，也可以順利執行且不會回報錯誤，因為這是一般的函式宣告（具名函式），整個函式都會被提升，因此就可以在函式宣告之前呼叫。</p>
-<p>那匿名函式就不會被提升嗎？答案是會，下面嘗試將範例改成以匿名函式的方式建立：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">fn();<br><span class="hljs-keyword">var</span> fn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// TypeError: fn is not a function</span><br></code></pre></td></tr></table></figure>
-
-<p>結果出現錯誤了，不過是不是與 <code>var</code> 宣告的變數很像？其實概念是一樣的，這裡的程式碼確實有被提升，但是被提升的只有變數的宣告 <code>var fn</code>，函式的資料在執行階段才會指派給變數 <code>fn</code>，此時的 <code>fn</code> 的值為 <code>undefined</code>，而 <code>undefined</code> 並非函式因此呼叫的行為就會回報錯誤。</p>
-<p>雖然無法呼叫，但是能透過變數取值來驗證上述說法：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(fn);<br><span class="hljs-keyword">var</span> fn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
-
-<p>而程式碼實際運作流程就像下面這樣：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> fn;<br><span class="hljs-built_in">console</span>.log(fn);<br>fn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>總結來說，JavaScript 中的「提升（Hoisting）」指的是宣告變數的提升，而值的賦予並不會提升；此外，提升並不會變更程式碼的位置，只是感覺像是整段程式碼被移動到最上方。</p>
-<h2 id="let、const-的提升"><a href="#let、const-的提升" class="headerlink" title="let、const 的提升"></a>let、const 的提升</h2><p>關於 <code>let</code>、<code>const</code> 有沒有提升行為，一開始我自己也是透過以下方法來作結論的：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// ReferenceError: a is not defined</span><br><span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure>
-
-<p>原本看到上面的結果，是認為 <code>let</code>、<code>const</code> 沒有提升行為的，直到看到一篇文章寫了下面這段程式碼：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fnA</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(a);<br>  <span class="hljs-keyword">let</span> a = <span class="hljs-number">100</span>;<br>&#125;<br>fnA();<br><span class="hljs-comment">// ReferenceError: Cannot access &#x27;a&#x27; before initialization</span><br></code></pre></td></tr></table></figure>
-
-<p>可以看到在函式 <code>fnA</code> 裡面，嘗試在變數 <code>a</code> 被宣告之前取值，照理來說，如果 <code>let</code> 沒有提升行為，第 3 行的變數 <code>a</code> 應該會指向到函式外層的變數 <code>a</code>，因此印出結果應該是 <code>1</code> 才對，但是最終卻得到 <code>Cannot access &#39;a&#39; before initialization</code> 的錯誤訊息，而這就證明了 <code>let</code> 是有提升行為的，只是不允許在變數宣告之前被存取。</p>
-<p>而前面提到 <code>var</code> 在提升時，也就是創造階段預設會給定初始值 <code>undefined</code>，而 <code>let</code>、<code>const</code> 則不會，所以在變數實際賦值前嘗試存取就會出現上面的錯誤，而提升後到賦值之前的這一個區間，稱為「暫時性死區（TDZ）」。</p>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://blog.techbridge.cc/2018/11/10/javascript-hoisting/">我知道你懂 hoisting，可是你了解到多深？</a></p>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>hoisting</tag>
       </tags>
   </entry>
   <entry>
@@ -763,6 +702,67 @@
       </categories>
       <tags>
         <tag>Scope</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript 觀念 - 提升</title>
+    <url>/2022-09-24-javascript-hoisting/</url>
+    <content><![CDATA[<p>ES6 前後的 Hoisting 觀念筆記。</p>
+<span id="more"></span>
+
+
+<p>「提升（Hoisting）」是 JavaScript 特有的一種現象，它的意思是當一個變數或函式在被宣告之前就可以被使用，並且不會出現錯誤，另外 ES6 以前都是使用 <code>var</code> 來宣告變數，與 ES6 新增的 <code>let</code>、<code>const</code> 在提升行為會也有所不同。</p>
+<h2 id="ES6-以前的提升"><a href="#ES6-以前的提升" class="headerlink" title="ES6 以前的提升"></a>ES6 以前的提升</h2><figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-comment">// ReferenceError: x is not defined</span><br></code></pre></td></tr></table></figure>
+
+<p>以上針對 <code>x</code> 取值，但是在這之前並沒有宣告一個名為 <code>x</code> 的變數，因此會找不到該變數而回報錯誤，下面是正常的做法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> x;<br><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
+
+<p>這樣就是一個正常的流程，程式碼會從第一行開始由上往下執行，所以在使用變數之前需要先宣告變數，以確保這個變數是存在的。</p>
+<p>接著下面嘗試把第 1、2 行位置進行對調：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-keyword">var</span> x;<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
+
+<p>按照前面的說法，上述程式碼應該會回報錯誤，但是得到的結果卻是 <code>undefined</code>，而這就是提升所造成的現象，感覺像是 <code>var x</code> 這段程式碼被提升到所有程式碼之前。</p>
+<p>大多數的程式語言中，變數在被使用之前是需要先宣告的，但是 JavaScript 可以在變數宣告之前就使用該變數，不過關於提升還有一些注意事項，就是會被提升的只有<strong>宣告的行為</strong>，值的指派並不會被提升，以下面程式碼為例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> x = <span class="hljs-number">7</span>; <span class="hljs-comment">// 宣告變數並指派值</span><br><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-comment">// 7</span><br></code></pre></td></tr></table></figure>
+
+<p>範例跟前面的相同，只是多了一個指派數值的動作，而最後也印出預期的結果，這個時候如果再將 1、2 行位置進行對調，印出的結果會是 <code>7</code> 嗎？</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-keyword">var</span> x = <span class="hljs-number">7</span>;<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
+
+<p>答案是 <code>undefined</code>，照理來說宣告的變數會被提升，可是得到的結果卻不是 <code>7</code>，原因其實就如前面提到的，會被提升的只有宣告的動作，而範例中宣告的動作指的是 <code>var x</code>，後方的 <code>= 7</code> 屬於值的指派，並不會跟著宣告一起被提升。</p>
+<p>但是結果為甚麼會是 <code>undefined</code>？原因在於 JavaScript 在開始執行你撰寫的程式碼之前，會先把所有宣告的變數、一般函式都預留一個記憶體空間，但不會馬上指派值給變數，這個預留記憶體空間的動作就是提升，到這邊為止屬於「創造階段」，而這個階段結束之後，變數才會被賦值，這個賦值的過程則是「執行階段」，<code>undefined</code> 就是變數在創造階段建立記憶體空間時，預設給定的初始值。</p>
+<p>可以將上面的程式碼運作流程理解成以下形式：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> x; <span class="hljs-comment">// 宣告變數（會被提升）</span><br><span class="hljs-built_in">console</span>.log(x);<br>x = <span class="hljs-number">7</span>; <span class="hljs-comment">// 指派值</span><br></code></pre></td></tr></table></figure>
+
+<p>目前為止已經知道會被提升的只有宣告的動作，但是除了變數之外，一般的函式宣告也會被提升，以下面程式碼為例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">fn();<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// hello</span><br></code></pre></td></tr></table></figure>
+
+<p>嘗試在函式被宣告之前呼叫，也可以順利執行且不會回報錯誤，因為這是一般的函式宣告（具名函式），整個函式都會被提升，因此就可以在函式宣告之前呼叫。</p>
+<p>那匿名函式就不會被提升嗎？答案是會，下面嘗試將範例改成以匿名函式的方式建立：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">fn();<br><span class="hljs-keyword">var</span> fn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// TypeError: fn is not a function</span><br></code></pre></td></tr></table></figure>
+
+<p>結果出現錯誤了，不過是不是與 <code>var</code> 宣告的變數很像？其實概念是一樣的，這裡的程式碼確實有被提升，但是被提升的只有變數的宣告 <code>var fn</code>，函式的資料在執行階段才會指派給變數 <code>fn</code>，此時的 <code>fn</code> 的值為 <code>undefined</code>，而 <code>undefined</code> 並非函式因此呼叫的行為就會回報錯誤。</p>
+<p>雖然無法呼叫，但是能透過變數取值來驗證上述說法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(fn);<br><span class="hljs-keyword">var</span> fn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
+
+<p>而程式碼實際運作流程就像下面這樣：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> fn;<br><span class="hljs-built_in">console</span>.log(fn);<br>fn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>總結來說，JavaScript 中的「提升（Hoisting）」指的是宣告變數的提升，而值的賦予並不會提升；此外，提升並不會變更程式碼的位置，只是感覺像是整段程式碼被移動到最上方。</p>
+<h2 id="let、const-的提升"><a href="#let、const-的提升" class="headerlink" title="let、const 的提升"></a>let、const 的提升</h2><p>關於 <code>let</code>、<code>const</code> 有沒有提升行為，一開始我自己也是透過以下方法來作結論的：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// ReferenceError: a is not defined</span><br><span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure>
+
+<p>原本看到上面的結果，是認為 <code>let</code>、<code>const</code> 沒有提升行為的，直到看到一篇文章寫了下面這段程式碼：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fnA</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(a);<br>  <span class="hljs-keyword">let</span> a = <span class="hljs-number">100</span>;<br>&#125;<br>fnA();<br><span class="hljs-comment">// ReferenceError: Cannot access &#x27;a&#x27; before initialization</span><br></code></pre></td></tr></table></figure>
+
+<p>可以看到在函式 <code>fnA</code> 裡面，嘗試在變數 <code>a</code> 被宣告之前取值，照理來說，如果 <code>let</code> 沒有提升行為，第 3 行的變數 <code>a</code> 應該會指向到函式外層的變數 <code>a</code>，因此印出結果應該是 <code>1</code> 才對，但是最終卻得到 <code>Cannot access &#39;a&#39; before initialization</code> 的錯誤訊息，而這就證明了 <code>let</code> 是有提升行為的，只是不允許在變數宣告之前被存取。</p>
+<p>而前面提到 <code>var</code> 在提升時，也就是創造階段預設會給定初始值 <code>undefined</code>，而 <code>let</code>、<code>const</code> 則不會，所以在變數實際賦值前嘗試存取就會出現上面的錯誤，而提升後到賦值之前的這一個區間，稱為「暫時性死區（TDZ）」。</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://blog.techbridge.cc/2018/11/10/javascript-hoisting/">我知道你懂 hoisting，可是你了解到多深？</a></p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>hoisting</tag>
       </tags>
   </entry>
   <entry>
@@ -1111,13 +1111,21 @@
   <entry>
     <title>JavaScript 筆記 - AJAX</title>
     <url>/2022-10-24-javascript-ajax-note/</url>
-    <content><![CDATA[<p>關於 AJAX 的四種做法。</p>
+    <content><![CDATA[<p>這是一篇尚未撰寫完成的筆記。</p>
 <span id="more"></span>
 
+<blockquote>
+<p>主要內容目錄：</p>
+<ul>
+<li><a href="#XMLHttpRequest">XMLHttpRequest</a></li>
+<li><a href="#jQuery-AJAX">jQuery AJAX</a></li>
+<li><a href="#Fetch">Fetch</a></li>
+<li><a href="#Axios">Axios</a></li>
+</ul>
+</blockquote>
 <h2 id="AJAX-簡述"><a href="#AJAX-簡述" class="headerlink" title="AJAX 簡述"></a>AJAX 簡述</h2><p>AJAX 是「Asynchronous JavaScript and XML」的縮寫，以名稱來看就是是非同步的 JavaScript 與 XML，可以讓 Web 前端與後端伺服器進行資料的交換，以及不需要重新載入網頁就能更新頁面內容。</p>
-<p>過去 AJAX 發出請求會透過 XMLHttpRequest 物件來實作，但是以目前來說，因為有了更適合的方式，因此實務上幾乎不會使用 XMLHttpRequest，不過既然都決定寫筆記了，還是多花一點時間理解所有方法吧！(๑•̀ㅂ•́)و✧</p>
-<h2 id="XMLHttpRequest"><a href="#XMLHttpRequest" class="headerlink" title="XMLHttpRequest"></a>XMLHttpRequest</h2><p>起手式：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest();<br></code></pre></td></tr></table></figure>
+<p>過去 AJAX 發出請求會透過 XMLHttpRequest 物件來實作，但是以目前來說，因為有了更適合的方式，因此實務上幾乎不會使用 XMLHttpRequest，不過筆記都寫了，就稍微理解一下每個方法吧！(๑•̀ㅂ•́)و✧</p>
+<h2 id="XMLHttpRequest"><a href="#XMLHttpRequest" class="headerlink" title="XMLHttpRequest"></a>XMLHttpRequest</h2><h3 id="建立-XHR-物件"><a href="#建立-XHR-物件" class="headerlink" title="建立 XHR 物件"></a>建立 XHR 物件</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest();<br></code></pre></td></tr></table></figure>
 
 <p>此時可以使用 <code>readyState</code> 屬性的回傳值來確認狀態。</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(xhr.readyState); <span class="hljs-comment">// 0</span><br></code></pre></td></tr></table></figure>
@@ -1177,7 +1185,33 @@
 <p>資料類型：<code>application/json</code></p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> url = <span class="hljs-string">&quot;https://hexschool-tutorial.herokuapp.com/api/signup&quot;</span>; <span class="hljs-comment">// 資料網址</span><br><br><span class="hljs-keyword">const</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest(); <span class="hljs-comment">// 建立 XMLHttpRequest 物件</span><br>xhr.open(<span class="hljs-string">&quot;post&quot;</span>, url, <span class="hljs-literal">true</span>); <span class="hljs-comment">// 連接伺服器</span><br>xhr.setRequestHeader(<span class="hljs-string">&quot;Content-type&quot;</span>, <span class="hljs-string">&quot;application/json&quot;</span>); <span class="hljs-comment">// 設定請求表頭</span><br><br><span class="hljs-keyword">const</span> data = &#123;<br>  <span class="hljs-attr">email</span>: <span class="hljs-string">&quot;test123@gmail.com&quot;</span>,<br>  <span class="hljs-attr">password</span>: <span class="hljs-string">&quot;12345678&quot;</span><br>&#125;;<br><br>xhr.send(<span class="hljs-built_in">JSON</span>.stringify(data)); <span class="hljs-comment">// 發送請求</span><br><br>xhr.addEventListener(<span class="hljs-string">&quot;load&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> responseMessage = <span class="hljs-built_in">JSON</span>.parse(xhr.response).message;<br><br>  <span class="hljs-keyword">if</span>(xhr.status == <span class="hljs-number">200</span>) &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;請求成功&#x27;</span>);<br>    alert(responseMessage);<br>  &#125;<span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;請求資料有誤&#x27;</span>);<br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
 
-<h2 id="jQuery-AJAX"><a href="#jQuery-AJAX" class="headerlink" title="jQuery AJAX"></a>jQuery AJAX</h2><h2 id="Fetch"><a href="#Fetch" class="headerlink" title="Fetch"></a>Fetch</h2><h2 id="Axios"><a href="#Axios" class="headerlink" title="Axios"></a>Axios</h2>]]></content>
+<h2 id="jQuery-AJAX"><a href="#jQuery-AJAX" class="headerlink" title="jQuery AJAX"></a>jQuery AJAX</h2><p>使用前需要引入 jQuery，此處使用 CDN 方式引入。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs htmlembedded">&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js&quot;&gt;&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+<p>起手式：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">$.ajax(&#123;<br>  <span class="hljs-attr">url</span>:,<br>  method:,<br>  dataType:,<br>  contentType:,<br>  data:<br>&#125;).done(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;<br>  <span class="hljs-comment">// do something...</span><br>&#125;).fail(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>  <span class="hljs-comment">// do something...</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+<p>以下為常用的參數：</p>
+<ul>
+<li><code>url</code>：請求資料的網址</li>
+<li><code>method</code>：請求方法（<code>get</code>、<code>post</code>…）</li>
+<li><code>data</code>：傳送的資料</li>
+<li><code>dataType</code>：伺服器接收的資料格式（<code>text</code>、<code>json</code>…）</li>
+<li><code>contentType</code>：傳送至伺服器的資料格式（預設為 <code>&#39;application/x-www-form-urlencoded; charset=UTF-8&#39;</code>）</li>
+<li><code>done</code>：請求成功時的回傳結果</li>
+<li><code>fail</code>：請求失敗時的回傳結果</li>
+</ul>
+<p>若是沒有要向伺服器傳送資料（<code>get</code> 請求），則參數 <code>data</code>、<code>contentType</code> 可省略。</p>
+<p>jQuery 3.0 版本開始，刪除了 <code>success()</code>、<code>error()</code> 以及 <code>complete()</code> 等方法，取而代之的是 <code>done()</code>、<code>fail()</code> 以及 <code>always()</code>。</p>
+<blockquote>
+<p>相關內容請參閱<a href="https://api.jquery.com/jquery.ajax/#jQuery-ajax-url-settings">官方文件</a>說明。</p>
+</blockquote>
+<h3 id="實作練習-1"><a href="#實作練習-1" class="headerlink" title="實作練習"></a>實作練習</h3><p>使用<a href="https://hexschool.github.io/ajaxHomework/data.json">六角學院練習 API</a> 實作 <code>get</code> 請求：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs htmlembedded">&lt;ul class=&quot;list&quot;&gt;&lt;/ul&gt;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">$.ajax(&#123;<br>  <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;https://hexschool.github.io/ajaxHomework/data.json&#x27;</span>,<br>  <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;get&#x27;</span><br>&#125;).done(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(res)<br>    <br>  $(<span class="hljs-string">&#x27;.list&#x27;</span>).html(<span class="hljs-string">`&lt;li&gt;<span class="hljs-subst">$&#123;res[<span class="hljs-number">0</span>].name&#125;</span>&lt;/li&gt;`</span>)<br>&#125;).fail(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(err)<br>&#125;)<br></code></pre></td></tr></table></figure>
+<p>使用<a href="https://hexschool-tutorial.herokuapp.com/api/signup">六角學院練習 API</a> 實作 <code>post</code> 請求（註冊功能）：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">$.ajax(&#123;<br>  <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;https://hexschool-tutorial.herokuapp.com/api/signup&#x27;</span>,<br>  <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;post&#x27;</span>,<br>  <span class="hljs-attr">dataType</span>: <span class="hljs-string">&#x27;json&#x27;</span>,<br>  <span class="hljs-attr">contentType</span>: <span class="hljs-string">&#x27;application/json; charset=utf-8&#x27;</span>,<br>  <span class="hljs-attr">data</span>: <span class="hljs-built_in">JSON</span>.stringify(&#123;<br>    <span class="hljs-attr">email</span>: <span class="hljs-string">&#x27;test123@mail.com&#x27;</span>,<br>    <span class="hljs-attr">password</span>: <span class="hljs-string">&#x27;12345678&#x27;</span><br>  &#125;)<br>&#125;).done(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(res)<br>    <br>  alert(res.message)<br>&#125;).fail(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(err)<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h2 id="Fetch"><a href="#Fetch" class="headerlink" title="Fetch"></a>Fetch</h2><h2 id="Axios"><a href="#Axios" class="headerlink" title="Axios"></a>Axios</h2>]]></content>
       <categories>
         <category>JavaScript</category>
       </categories>

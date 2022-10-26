@@ -1,10 +1,10 @@
 ---
-title: JavaScript 觀念 - 函式
+title: JavaScript 筆記 - 函式
 date: 2022-09-19
 tags:
  - function
 categories: JavaScript
-index_img: img/banner/banner_js.jpg
+index_img: img/banner/banner_code02.jpg
 ---
 
 簡單的紀錄一下函式的基本知識。

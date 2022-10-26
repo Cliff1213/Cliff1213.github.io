@@ -225,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          1.2k 字
         
       </span>
     
@@ -282,7 +282,15 @@
                 <p>這篇僅記錄同步、非同步是什麼樣的概念，並沒有處理非同步問題的方式。</p>
 <span id="more"></span>
 
+<hr>
+<div class="toc">
+<p class="toc-title">目錄：</p>
 
+<ul>
+<li><a href="#JavaScript-%E4%B8%AD%E7%9A%84%E5%90%8C%E6%AD%A5">JavaScript 中的同步</a></li>
+<li><a href="#%E4%BD%95%E8%AC%82%E9%9D%9E%E5%90%8C%E6%AD%A5%EF%BC%9F">何謂非同步？</a></li>
+<li><a href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99">參考資料</a></div></li>
+</ul>
 <h2 id="JavaScript-中的同步"><a href="#JavaScript-中的同步" class="headerlink" title="JavaScript 中的同步"></a>JavaScript 中的同步</h2><p>「同步（Synchronous）」在你的認知上會怎麼解釋？我自己原本的想法是同時處理很多事情，但這個說法在 JavaScript 卻有些出入，原因在於 JavaScript 是以「單執行緒（單線程）」的方式在執行程序，特性是「一次只做一件事，前面的事做完才會依序做下一件事」。</p>
 <blockquote>
 <p>執行緒相關內容可參考此<a target="_blank" rel="noopener" href="https://www.itread01.com/ixyfq.html">文章</a>。</p>
@@ -291,7 +299,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printNum</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;1&#x27;</span>);<br>&#125; <br>printNum();<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;2&#x27;</span>);<br></code></pre></td></tr></table></figure>
 
 <p>以上面程式碼來說，會先執行函式 <code>printNum</code> 印出 <code>1</code>，接著再印出 <code>2</code>，並且兩者是有先後順序的，屬於同步執行。</p>
-<h2 id="何謂非同步"><a href="#何謂非同步" class="headerlink" title="何謂非同步"></a>何謂非同步</h2><p>「非同步（Asynchronous）」特性是「可以同時做很多事，並且不需要等待前面的事做完就能做下一件事」，其實就是自己一開始對同步的認知。</p>
+<h2 id="何謂非同步？"><a href="#何謂非同步？" class="headerlink" title="何謂非同步？"></a>何謂非同步？</h2><p>「非同步（Asynchronous）」特性是「可以同時做很多事，並且不需要等待前面的事做完就能做下一件事」，其實就是自己一開始對同步的認知。</p>
 <p>範例：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">setTimeout</span>(printNum, <span class="hljs-number">2000</span>);<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printNum</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;1&#x27;</span>);<br>&#125; <br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;2&#x27;</span>);<br></code></pre></td></tr></table></figure>
 

@@ -224,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.4k 字
+          2.5k 字
         
       </span>
     
@@ -280,9 +280,17 @@
                 
                 <p>ES6 前後的 Hoisting 觀念筆記。</p>
 <span id="more"></span>
+<hr>
+<div class="toc">
+<p class="toc-title">目錄：</p>
 
-
-<p>「提升（Hoisting）」是 JavaScript 特有的一種現象，它的意思是當一個變數或函式在被宣告之前就可以被使用，並且不會出現錯誤，另外 ES6 以前都是使用 <code>var</code> 來宣告變數，與 ES6 新增的 <code>let</code>、<code>const</code> 在提升行為會也有所不同。</p>
+<ul>
+<li><a href="#%E7%94%9A%E9%BA%BC%E6%98%AF%E6%8F%90%E5%8D%87%EF%BC%9F">甚麼是提升？</a></li>
+<li><a href="#ES6-%E4%BB%A5%E5%89%8D%E7%9A%84%E6%8F%90%E5%8D%87">ES6 以前的提升</a></li>
+<li><a href="#let%E3%80%81const-%E7%9A%84%E6%8F%90%E5%8D%87">let、const 的提升</a></li>
+<li><a href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99">參考資料</a></div></li>
+</ul>
+<h2 id="甚麼是提升？"><a href="#甚麼是提升？" class="headerlink" title="甚麼是提升？"></a>甚麼是提升？</h2><p>「提升（Hoisting）」是 JavaScript 特有的一種現象，它的意思是當一個變數或函式在被宣告之前就可以被使用，並且不會出現錯誤，另外 ES6 以前都是使用 <code>var</code> 來宣告變數，與 ES6 新增的 <code>let</code>、<code>const</code> 在提升行為會也有所不同。</p>
 <h2 id="ES6-以前的提升"><a href="#ES6-以前的提升" class="headerlink" title="ES6 以前的提升"></a>ES6 以前的提升</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-comment">// ReferenceError: x is not defined</span><br></code></pre></td></tr></table></figure>
 
 <p>以上針對 <code>x</code> 取值，但是在這之前並沒有宣告一個名為 <code>x</code> 的變數，因此會找不到該變數而回報錯誤，下面是正常的做法：</p>

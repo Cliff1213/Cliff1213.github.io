@@ -280,8 +280,15 @@
                 
                 <p>最近接觸到 Sass/SCSS，覺得各方面的功能都太方便了，這輩子大概不會想回去寫純 CSS 了吧。這篇筆記整理了一些新手必須學會的語法。</p>
 <span id="more"></span>
+<hr>
+<div class="toc">
+<p class="toc-title">目錄：</p>
 
-
+<ul>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E8%AA%9E%E6%B3%95">基本語法</a></li>
+<li><a href="#%E5%AF%A6%E7%94%A8%E8%AA%9E%E6%B3%95">實用語法</a></li>
+<li><a href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99">參考資料</a></div></li>
+</ul>
 <h2 id="基本語法"><a href="#基本語法" class="headerlink" title="基本語法"></a>基本語法</h2><h3 id="使用-amp-表示父選擇器"><a href="#使用-amp-表示父選擇器" class="headerlink" title="使用 &amp; 表示父選擇器"></a>使用 &amp; 表示父選擇器</h3><p>以下是一個簡單的 Scss 格式設定：</p>
 <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-selector-class">.header</span> &#123;<br>  <span class="hljs-attribute">text-align</span>: center;<br>  <span class="hljs-selector-class">.header-title</span> &#123;<br>    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">2rem</span>;<br>  &#125;<br>  <span class="hljs-selector-tag">a</span> &#123;<br>    <span class="hljs-attribute">padding</span>: <span class="hljs-number">8</span> <span class="hljs-number">16px</span>;<br>    <span class="hljs-attribute">background</span>: <span class="hljs-number">#eee</span>;<br>  &#125;<br>  <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> &#123;<br>    <span class="hljs-attribute">background</span>: <span class="hljs-number">#ddd</span>;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 

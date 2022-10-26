@@ -281,8 +281,18 @@
                 <p>同樣都是用來宣告變數，為什麼還要分成三種方式？到底 let、const 解決了什麼問題？</p>
 <span id="more"></span>
 
+<hr>
+<div class="toc">
+<p class="toc-title">目錄：</p>
 
-<p>JavaScript 變數的宣告方式有三種，分別是 <code>var</code>、<code>let</code> 以及 <code>const</code>，後兩者是 ES6 新增的語法，而這三種方式所宣告的變數也會有不同的作用。</p>
+<ul>
+<li><a href="#%E7%94%9A%E9%BA%BC%E6%98%AF%E6%8F%90%E5%8D%87%EF%BC%9F">甚麼是提升？</a></li>
+<li><a href="#ES6-%E4%BB%A5%E5%89%8D%E7%9A%84%E6%8F%90%E5%8D%87">ES6 以前的提升</a></li>
+<li><a href="#let%E3%80%81const-%E7%9A%84%E6%8F%90%E5%8D%87">let、const 的提升</a></li>
+<li><a href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99">參考資料</a></div></li>
+</ul>
+<p class="first-text-not-title">JavaScript 變數的宣告方式有三種，分別是 <code>var</code>、<code>let</code> 以及 <code>const</code>，後兩者是 ES6 新增的語法，而這三種方式所宣告的變數也會有不同的作用。</p>
+
 <h2 id="重複宣告"><a href="#重複宣告" class="headerlink" title="重複宣告"></a>重複宣告</h2><p>透過 <code>var</code> 宣告的變數，重複宣告的行為不會回報錯誤：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">var</span> a = <span class="hljs-number">2</span>;<br></code></pre></td></tr></table></figure>
 

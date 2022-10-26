@@ -224,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.8k 字
+          2.9k 字
         
       </span>
     
@@ -280,7 +280,17 @@
                 
                 <p>在設定字體時，常常會遇到結果不如預期的情況，於是決定研究一下網頁是怎麼套用字體，以及一些相關的注意事項。</p>
 <span id="more"></span>
+<hr>
+<div class="toc">
+<p class="toc-title">目錄：</p>
 
+<ul>
+<li><a href="#Font-Family-%E8%A8%AD%E5%AE%9A%E8%A6%8F%E5%89%87">Font-Family 設定規則</a></li>
+<li><a href="#Font-Family-%E5%AD%97%E9%AB%94%E9%A1%9E%E5%9E%8B">Font-Family 字體類型</a></li>
+<li><a href="#%E5%AD%97%E9%AB%94%E9%A0%86%E5%BA%8F%E8%A7%80%E5%BF%B5">字體順序觀念</a></li>
+<li><a href="#%E5%AF%A6%E5%8B%99%E7%AF%84%E4%BE%8B">實務範例</a></li>
+<li><a href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99">參考資料</a></div></li>
+</ul>
 <h2 id="Font-Family-設定規則"><a href="#Font-Family-設定規則" class="headerlink" title="Font-Family 設定規則"></a>Font-Family 設定規則</h2><p>基本上只要是網頁設計，都會使用到的屬性，可以自訂頁面上的文字字體，但是初學者在使用這個屬性之前，為了避免結果不如預期，建議需要先理解一些設定上的規則。</p>
 <h3 id="字體套用邏輯"><a href="#字體套用邏輯" class="headerlink" title="字體套用邏輯"></a>字體套用邏輯</h3><p>Font-Family 雖然可以設定多個屬性值，但是並不會將所有寫入的字體都一起套用，而是會根據瀏覽器對該字體的支援與否，由左至右依序判斷，以下方原始碼為例：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: 字體A, 字體B, 字體C;<br></code></pre></td></tr></table></figure>

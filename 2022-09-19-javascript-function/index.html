@@ -235,7 +235,7 @@
         
         
         
-          5 分鐘
+          6 分鐘
         
       </span>
     
@@ -281,6 +281,17 @@
                 <p>簡單的紀錄一下函式的基本知識。</p>
 <span id="more"></span>
 
+<hr>
+<div class="toc">
+<p class="toc-title">目錄：</p>
+
+<ul>
+<li><a href="#%E5%87%BD%E5%BC%8F%EF%BC%88Function%EF%BC%89%E7%B0%A1%E8%BF%B0">函式（Function）簡述</a></li>
+<li><a href="#%E5%87%BD%E5%BC%8F%E7%B5%90%E6%A7%8B">函式結構</a></li>
+<li><a href="#%E5%87%BD%E5%BC%8F%E5%9F%B7%E8%A1%8C">函式執行</a></li>
+<li><a href="#%E5%87%BD%E5%BC%8F%E7%B5%82%E6%AD%A2">函式終止</a></li>
+<li><a href="#%E9%99%B3%E8%BF%B0%E5%BC%8F%E8%88%87%E8%A1%A8%E9%81%94%E5%BC%8F">陳述式與表達式</a></div></li>
+</ul>
 <h2 id="函式（Function）簡述"><a href="#函式（Function）簡述" class="headerlink" title="函式（Function）簡述"></a>函式（Function）簡述</h2><p>可以將自訂的程式碼進行包裝，並且能在需要時使用，同時減少撰寫重複的程式碼。此外，函式也能接收一個值（參數），並將接收的值進行運算後再回傳，但也可以選擇不接收、不回傳任何值，以「執行某一段邏輯」的目的存在。</p>
 <h2 id="函式結構"><a href="#函式結構" class="headerlink" title="函式結構"></a>函式結構</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doSomeThing</span>(<span class="hljs-params">num</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> num ** num;<br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -319,8 +330,8 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 判斷式</span><br><span class="hljs-keyword">if</span>(x === <span class="hljs-number">10</span>) &#123;<br>  <span class="hljs-comment">// do something</span><br>&#125;;<br></code></pre></td></tr></table></figure>
 
 <p>可分別將上述程式碼放在開發人員工具 console 中執行查看，變數在宣告後回傳 <code>undefined</code>，屬於陳述式；指派一個值給變數，而變數會回傳指派的值，屬於表達式；而判斷式本身並不會回傳任何值，因此屬於陳述式。</p>
-<h2 id="函式陳述式"><a href="#函式陳述式" class="headerlink" title="函式陳述式"></a>函式陳述式</h2><p>前面所提到透過給予函式名稱的所宣告的函式，也就是一般函式宣告，就屬於函式陳述式。</p>
-<h2 id="函式表達式"><a href="#函式表達式" class="headerlink" title="函式表達式"></a>函式表達式</h2><p>除了一般的的函式宣告，還可以將函式指派給一個變數，因為函式本身也屬於物件的一種，因此能夠當作一個被指派的值，而這種方式產生的函式曾為函式表達式。</p>
+<h3 id="函式陳述式"><a href="#函式陳述式" class="headerlink" title="函式陳述式"></a>函式陳述式</h3><p>前面所提到透過給予函式名稱的所宣告的函式，也就是一般函式宣告，就屬於函式陳述式。</p>
+<h3 id="函式表達式"><a href="#函式表達式" class="headerlink" title="函式表達式"></a>函式表達式</h3><p>除了一般的的函式宣告，還可以將函式指派給一個變數，因為函式本身也屬於物件的一種，因此能夠當作一個被指派的值，而這種方式產生的函式曾為函式表達式。</p>
 <p>函式表達式範例：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> expressionFn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-comment">// do something</span><br>&#125;<br></code></pre></td></tr></table></figure>
 

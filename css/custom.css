@@ -1,10 +1,27 @@
 
 .markdown-body .toc {
     display: block !important;
+    border-bottom: 1px solid #435266;
+    /* margin-bottom: 2rem; */
+    padding-bottom: 1rem;
 }
 
 @media (min-width: 992px) {
     .markdown-body .toc {
         display: none !important;
+    }
+}
+
+.toc-title {
+    margin-bottom: 1rem;
+}
+
+.first-text-not-title {
+    margin-top: 48px !important;
+}
+
+@media (min-width: 992px) {
+    .first-text-not-title {
+        margin-top: 0 !important;
     }
 }

@@ -1,9 +1,8 @@
 User-agent: *
 Allow: /
-Disallow: /about/
-Disallow: /archives/
-Disallow: /categories/
-Disallow: /tags/
+Allow: /archives/
+Allow: /categories/
+Allow: /tags/
 Disallow: /vendors/
 Disallow: /fonts/
 Disallow: /vendors/

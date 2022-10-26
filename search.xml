@@ -330,131 +330,6 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript 套件 - Swiper</title>
-    <url>/2022-06-06-swiper-note/</url>
-    <content><![CDATA[<p>Swiper 可以實現網頁元素的輪播效果，本篇大概紀錄一下安裝的方式，以及一些常用的參數設定。</p>
-<span id="more"></span>
-
-
-<h2 id="Swiper-套件"><a href="#Swiper-套件" class="headerlink" title="Swiper 套件"></a>Swiper 套件</h2><p><a href="https://swiperjs.com/get-started">Swiper</a> 是一個製作網頁輪播效果的 JavaScript 插件。</p>
-<h2 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h2><h3 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h3><p>透過 CDN 方式安裝 Swiper 時，需要同時引入 <code>swiper-bundle.min.css</code> 與 <code>swiper-bundle.min.js</code> 兩個檔案，引入壓縮後的版本即可。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- In head --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://unpkg.com/swiper@8/swiper-bundle.min.css&quot;</span>/&gt;</span><br><span class="hljs-comment">&lt;!-- In front of body end tag --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://unpkg.com/swiper@8/swiper-bundle.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ npm install swiper<br></code></pre></td></tr></table></figure>
-
-
-<h2 id="基礎結構"><a href="#基礎結構" class="headerlink" title="基礎結構"></a>基礎結構</h2><h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><p>使用 Swiper 時，<code>swiper-container</code>、<code>swiper-wrapper</code>、<code>swiper-slide</code> 三者為必要存在的元素。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- Slider main container --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-container&quot;</span>&gt;</span><br>  <span class="hljs-comment">&lt;!-- Additional required wrapper --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-wrapper&quot;</span>&gt;</span><br>    <span class="hljs-comment">&lt;!-- Slides --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 1<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 2<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 3<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    ...  <span class="hljs-comment">&lt;!-- 新增 swiper-slide 數量 --&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-comment">&lt;!-- If we need pagination --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-pagination&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br>  <span class="hljs-comment">&lt;!-- If we need navigation buttons --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-button-prev&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-button-next&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br>  <span class="hljs-comment">&lt;!-- If we need scrollbar --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-scrollbar&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-<p>需要進行輪播的內容，會放在 <code>swiper-slide</code> 之中，數量可依需求自行新增。</p>
-<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><p>Swiper 在初始化時，會帶入一個 DOM / CSS Selector，以及一個參數（字串），如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> swiper = <span class="hljs-keyword">new</span> Swiper( swiperContainer, parameter );<br></code></pre></td></tr></table></figure>
-
-<p>官方範例如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&quot;.swiper-container&quot;</span>, &#123;<br>  <span class="hljs-comment">// Optional parameters / 加入參數與設定值</span><br>  <span class="hljs-attr">direction</span>: <span class="hljs-string">&quot;vertical&quot;</span>, <span class="hljs-comment">// 輪播方向</span><br>  <span class="hljs-attr">loop</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 重複顯示</span><br>  <span class="hljs-comment">// If we need pagination / 是否顯示分頁</span><br>  <span class="hljs-attr">pagination</span>: &#123;<br>    <span class="hljs-attr">el</span>: <span class="hljs-string">&quot;.swiper-pagination&quot;</span><br>  &#125;,<br>  <span class="hljs-comment">// Navigation arrows / 是否加入上、下一頁方向圖示</span><br>  <span class="hljs-attr">navigation</span>: &#123;<br>    <span class="hljs-attr">nextEl</span>: <span class="hljs-string">&quot;.swiper-button-next&quot;</span>,<br>    <span class="hljs-attr">prevEl</span>: <span class="hljs-string">&quot;.swiper-button-prev&quot;</span><br>  &#125;,<br>  <span class="hljs-comment">// And if we need scrollbar / 是否顯示滾動軸</span><br>  <span class="hljs-attr">scrollbar</span>: &#123;<br>    <span class="hljs-attr">el</span>: <span class="hljs-string">&quot;.swiper-scrollbar&quot;</span><br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
-
-<h3 id="設定容器寬度"><a href="#設定容器寬度" class="headerlink" title="設定容器寬度"></a>設定容器寬度</h3><p>可自訂意義 Swiper 容器大小，範例如下：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.swiper</span> &#123;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">600px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">300px</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-
-<h2 id="常見參數"><a href="#常見參數" class="headerlink" title="常見參數"></a>常見參數</h2><p>除了先前官方範例提到的參數之外，以下列出一些在不同的版型下，可能會使用到的參數設定，更多可使用的參數可查閱<a href="https://swiperjs.com/swiper-api">官方文件</a>。</p>
-<p><strong><code>effect</code></strong></p>
-<p>主要用來變更輪播時的轉場效果，預設值為 <code>slide</code>，其他可使用效果還有 <code>fade</code>、<code>cube</code>、<code>coverflow</code>、<code>flip</code>、<code>creative</code>、<code>cards</code>。</p>
-<p><strong><code>autoplay</code></strong></p>
-<p>該參數屬於一個物件，會依據給予的屬性設定來自定義自動輪播的形式，範例如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&quot;.swiper-container&quot;</span>, &#123;<br>  <span class="hljs-attr">autoplay</span>: &#123;<br>    <span class="hljs-attr">delay</span>: <span class="hljs-number">5000</span>, <span class="hljs-comment">// 自動輪播延遲時間</span><br>    <span class="hljs-attr">disableOnInteraction</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 手動滑動後，停止自動撥放，預設值為 true</span><br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
-
-<p><strong><code>slidesPerView</code></strong></p>
-<p>該參數可以決定輪播時，同時顯示的 <code>swiper-slide</code> 數量，範例如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&quot;.swiper-container&quot;</span>, &#123;<br>  <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">3</span> <span class="hljs-comment">// 同時顯示 3 個 swiper-slide</span><br>&#125;);<br></code></pre></td></tr></table></figure>
-
-<blockquote>
-<p>加入參數 <code>slidesPerView</code> 後，<code>swiper-slide</code> 的寬度會根據 swiper-container 來均分。</p>
-</blockquote>
-<p><strong><code>breakpoints</code></strong></p>
-<p>加入該參數後，配合參數 <code>slidesPerView</code> 可根據所設定的斷點來達成響應式的效果，範例如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&#x27;.swiper&#x27;</span>, &#123;<br>  <span class="hljs-comment">// 預設的顯示數量為 1</span><br>  <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">1</span>,<br>  <span class="hljs-comment">// 以下為斷點設定</span><br>  <span class="hljs-attr">breakpoints</span>: &#123;<br>    <span class="hljs-comment">// 當頁面寬度大於 768px 時，同時顯示數量為 2</span><br>    <span class="hljs-number">768</span>: &#123;<br>      <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">2</span><br>    &#125;,<br>    <span class="hljs-comment">// 當頁面寬度大於 992px 時，同時顯示數量為 3</span><br>    <span class="hljs-number">992</span>: &#123;<br>      <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">3</span><br>    &#125;<br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
-
-<p><strong><code>spacebetween</code></strong></p>
-<p>該參數可以設定每個 <code>swiper-slide</code> 之間的間隙，範例如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&#x27;.swiper&#x27;</span>, &#123;<br>  <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">2</span>,<br>  <span class="hljs-attr">spacebetween</span>: <span class="hljs-number">16</span>, <span class="hljs-comment">// 預設間隔為 20px</span><br>  <span class="hljs-attr">breakpoints</span>: &#123;<br>    <span class="hljs-number">768</span>: &#123;<br>      <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">3</span>,<br>      <span class="hljs-attr">spacebetween</span>: <span class="hljs-number">24</span> <span class="hljs-comment">// 當頁面寬度大於 768px 時，間隔為 24px</span><br>    &#125;<br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Package</category>
-      </categories>
-      <tags>
-        <tag>Swiper</tag>
-        <tag>Package</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Flex 水平置中，子元素溢出時避免被裁切</title>
-    <url>/2022-09-17-css-max-content/</url>
-    <content><![CDATA[<p>前一段時間在切版上遇到了一個問題，研究之後發現一個有趣的解決方法，也藉此機會紀錄一下。</p>
-<span id="more"></span>
-
-
-<p>以下是範例情境：</p>
-<p><img src="https://i.imgur.com/TK9ZZcF.png"></p>
-<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- HTML --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;section mt-3&quot;</span>&gt;</span>  <br>  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;section-title&quot;</span>&gt;</span>Section Title<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span><br>    ...<br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* CSS（上方列表區塊） */</span><br><span class="hljs-selector-class">.list</span> &#123;<br>  <span class="hljs-attribute">display</span>: flex;<br>  <span class="hljs-attribute">justify-content</span>: center;<br>  <span class="hljs-attribute">overflow</span>: auto;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>上述範例中，上方 <code>.list</code> 區塊使用 <code>display: flex</code> 加上 <code>justify-content: center</code> 讓子元素置中，同時希望瀏覽器寬度縮小至子元素溢出時，溢出的部分以水平軸方式呈現，因此加入了 <code>overflow: auto</code> 設定，呈現畫面如下：</p>
-<p><img src="https://i.imgur.com/Sn1BMH4.png"></p>
-<p>然而將水平軸向左滾動至最底時，溢出的部分卻被裁切了，而問題就在 <code>justify-content: center</code> 這個屬性上，移除該屬性之後，子元素溢出的部分就會正常呈現，如下：</p>
-<p><img src="https://i.imgur.com/6GYarUd.png"></p>
-<p>此時問題來了，在不使用 <code>justify-content: center</code> 的情況下，要如何同時滿足子元素保持置中，但是溢出情況下不會被裁切呢？在思索一番後想到另一個能使區塊水平置中的語法，就是 <code>margin: 0 auto</code>，不過這個語法只適用具有實際寬度但非滿版的區塊，而範例中的 <code>.list</code> 區塊因為 <code>display: flex</code> 的關係佔了滿版的寬，因此並沒有如預期置中。下圖是區塊實際佔用的空間：</p>
-<p><img src="https://i.imgur.com/WnJz6ud.png"></p>
-<p><strong>解決方式：</strong></p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* CSS（上方列表區塊） */</span><br><span class="hljs-selector-class">.list</span> &#123;<br>  <span class="hljs-attribute">display</span>: flex;<br>  <span class="hljs-attribute">max-width</span>: max-content;<br>  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;<br>  <span class="hljs-attribute">overflow</span>: auto;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>僅需在 <code>.list</code> 區塊加上 <code>max-width: max-content</code> 語法即可，而 <code>max-content</code> 最基本的作用是讓區塊寬度或高度自適應子元素，並且當子元素溢出時，內容不會受到擠壓而換行；此處正好利用了前者特性，使 <code>.list</code> 最大寬度等於所有子元素（<code>.list-item</code>）寬度的加總，此時再配合 <code>margin: 0 auto</code> 之後區塊得以置中，並且當子元素溢出時不會被裁切。結果如下圖所示：</p>
-<p><img src="https://i.imgur.com/MLip3hT.png"></p>
-<p><strong>實作範例：</strong></p>
-<iframe src="https://codepen.io/Cliff_hex/embed/bGMqLOq?default-tab=css,result" width="100%" height="300" frameborder="0" loading="lazy" allowfullscreen></iframe>
-
-<blockquote>
-<p>max-content 詳細說明請參考此<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/max-content">文章</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>CSS</category>
-      </categories>
-      <tags>
-        <tag>flex</tag>
-        <tag>overflow</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>網頁切版直播班心得</title>
-    <url>/2022-09-10-hexschool-web-feedback/</url>
-    <content><![CDATA[<p>2022 夏，切版直播班心得。</p>
-<span id="more"></span>
-
-
-
-<h2 id="報名契機"><a href="#報名契機" class="headerlink" title="報名契機"></a>報名契機</h2><p>今年年四月左右參加了為期一個月的公益體驗營，然而在體驗營結束前夕，學院按照慣例會推坑下一次的活動，這次是切版直播班，不過內容相較過去更為豐富，教學大綱除了舊有的 Bootstrap 到近幾年盛行的 Tailwind，思索一番之後還是報名了。其實原本是衝著 Tailwind 來的，但礙於過去在切版方面都是純手刻又覺得 Bootstrap 很困難而遲遲不去面對，導致自己連一個 CSS 框架都不會，另一方面自己在新技能的學習上會需要花不少時間來吸收，擔心一次學兩個會應付不來，因此就把目標先轉向了目前使用率較高的 Bootstrap；除此之外，這次也要求自己必須把八週主線任務的所有頁面都切出來，既然都全職學習了，至少這一點是能做到的吧。</p>
-<h2 id="每週學習歷程"><a href="#每週學習歷程" class="headerlink" title="每週學習歷程"></a>每週學習歷程</h2><h3 id="直播"><a href="#直播" class="headerlink" title="直播"></a>直播</h3><p>雖然每週直播的教學內容算是在複習錄影，但是現場跟大家一起聽課的氛圍比起自己看錄影兩者還是有差的，而且常常會有同學在聊天室提出一些平常可能不太會注意到的有趣問題，也能當作是一種額外的知識吸收，此外當然也少不了校長的嘴砲模式以及心靈雞湯，畢竟學程式容易產生焦慮，長時間學習下還是需要找地方宣洩一下情緒。八週的直播形式基本上都是前面提到的這樣，整體的感覺不錯，這部分也沒有需要特別需要補充甚麼了，不過直播班本來就是以大量輸出為前提，每週花費在作業上的時間自然就比較多。</p>
-<p>另外這次直播班每週是有兩場直播的，上述提到的是週五例行的直播，另一場則是週三的 Tailwind 主題，雖然大部分心思都投入在 Bootstrap 上面，但是每週還是有聽課並把作業都做過一次，整體感覺其實是很不錯的。</p>
-<h3 id="小組討論"><a href="#小組討論" class="headerlink" title="小組討論"></a>小組討論</h3><p>這次被分配到的組別還不錯，每週的小組討論出席率都很高，只是大多數的組員平時都比較忙，也有組員加班到很晚還趕回來餐與討論，辛苦各位了，無法出席的人也會透過線下時間把作業補齊，也要特別感謝組長主持以及做資料彙整，不得不說組長真的很認真好學，小組伺服器的發問次數也是最多的，自己也從不少問題中學到各種額外的知識，賺爛了。</p>
-<h3 id="每日任務"><a href="#每日任務" class="headerlink" title="每日任務"></a>每日任務</h3><p>不得不說每日任務真的是很棒的學習資源，每天會釋出一道小題目給學員練習，有時候作業卡關也能從這邊找到線索，也可以學到很多平常不知道的知識，算是一個小寶庫；不過後半段的部分因為都在趕主線任務的進度，幾乎都是用補交的就是了。</p>
-<h3 id="主線任務"><a href="#主線任務" class="headerlink" title="主線任務"></a>主線任務</h3><p>作業方面主線任務難度是最高的，前兩週比較像是在試水溫，但是從第三週開始版型就是一個完整的電商網站了，印象中在做第三週時，平均一頁包含 RWD 就花了幾乎一天的時間，切完所有頁面後開始地毯式搜索看有甚麼地方沒處理仔細或是可以再調整，也嘗試透過簡單的 JS 加入了一些小功能和效果，結果自己很滿意。</p>
-<p>第四週設計稿和第三週是同一份，差別在於第四週需要透過 Gulp 來做，講白一點這已經不是切版的範疇了，但是提早面對終端機指令、版本相容性或是編譯等問題對未來學習上無疑是好事，不過 Gulp 要怎麼寫任務就要靠自己學了，可惡！好想學會自己寫 Gulp 啊！！</p>
-<p>第五週是後台版型，也開始嘗試使用以前一直不敢面對的 Bootstrap，然而這週的作業是一邊看官方文件一邊做的，大部分的時間都花在看文件而不是切版，為了讓自己能早一點習慣使用 Bootstrap，有好幾天晚上睡前用手機都不是在看社群，而是在看官方文件…。</p>
-<p>校長在第一次直播時，有大概用折線圖描述一下每週的作業難度，印象中第六週的難度是僅次於第八週的，而且第六週開始被要求使用 CSS 框架來做，還好前一段時間花了不少時間研究 Bootstrap，現在通用類別與元件在使用上已經熟練了非常多，頓時覺得自己以前只是懶的去看密密麻麻的文件而已。除此之外，第六週設計稿部分區塊還需要引入 JS 套件，從 Discord 作業討論頻道也可以看到不少學員受到 Swiper 無情肆虐。自己也花費將近一週的時間才做完，就順便整合第七週一起繳交了，然而心想終於可以休息一下，結果第八週設計稿就提前釋出，害我差點就忘記自己還在通往地獄的列車上。</p>
-<p>第八週的設計稿很特別，充斥著各式各樣酷炫的排版。在這過程中也做了很多以往沒做過的嘗試，首先是開始自己設計元件，先前看到其他同學不用 Pages 資料夾就能做出所有頁面，自己早就想嘗試看看了，意外的是然辦到了！果然有些事如果不做永遠不知道結果；另外也學會了客製化通用類別的方法，不得不說使用起來很方便可惜相見恨晚。不過最麻煩的部分還是 JS 套件，這部分花了很多時間不斷嘗試和理解才做出來，從拿到設計稿到切完所有頁面大概用了一個多禮拜的時間，真的好累啊…。</p>
-<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>本來以為自己會倒在第八週，但意外的挺過來了，不得不說即便是全職學習還是覺得時間很緊迫，真心佩服那些平時有工作還來進修的同學。總結來說，這次直播班真的扎扎實實的學到很多知識，同時也深刻體會到學習是沒有捷徑的，追求卓越的唯一方法只有不斷的練習，最後非常感謝六角學院提供這麼棒的學習資源和環境，兩位講師和每位助教都辛苦了，小心肝啊！！</p>
-<p>（長嘆，肝了無數個夜晚終於可以休息一下了，啊~原來我報名了 JS 直播班，差點忘記我搭的是不停靠的直達列車了。</p>
-]]></content>
-      <categories>
-        <category>心得</category>
-      </categories>
-      <tags>
-        <tag>六角學院</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SCSS 實用語法</title>
     <url>/2022-06-07-sass-note/</url>
     <content><![CDATA[<p>最近接觸到 Sass/SCSS，覺得各方面的功能都太方便了，這輩子大概不會想回去寫純 CSS 了吧。這篇筆記整理了一些新手必須學會的語法。</p>
@@ -537,36 +412,128 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript 觀念 - 同步與非同步</title>
-    <url>/2022-09-20-javascript-sync-async/</url>
-    <content><![CDATA[<p>這篇僅記錄同步、非同步是什麼樣的概念，並沒有處理非同步問題的方式。</p>
+    <title>Flex 水平置中，子元素溢出時避免被裁切</title>
+    <url>/2022-09-17-css-max-content/</url>
+    <content><![CDATA[<p>前一段時間在切版上遇到了一個問題，研究之後發現一個有趣的解決方法，也藉此機會紀錄一下。</p>
 <span id="more"></span>
 
 
-<h2 id="JavaScript-中的同步"><a href="#JavaScript-中的同步" class="headerlink" title="JavaScript 中的同步"></a>JavaScript 中的同步</h2><p>「同步（Synchronous）」在你的認知上會怎麼解釋？我自己原本的想法是同時處理很多事情，但這個說法在 JavaScript 卻有些出入，原因在於 JavaScript 是以「單執行緒（單線程）」的方式在執行程序，特性是「一次只做一件事，前面的事做完才會依序做下一件事」。</p>
+<p>以下是範例情境：</p>
+<p><img src="https://i.imgur.com/TK9ZZcF.png"></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- HTML --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;section mt-3&quot;</span>&gt;</span>  <br>  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;section-title&quot;</span>&gt;</span>Section Title<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span><br>    ...<br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* CSS（上方列表區塊） */</span><br><span class="hljs-selector-class">.list</span> &#123;<br>  <span class="hljs-attribute">display</span>: flex;<br>  <span class="hljs-attribute">justify-content</span>: center;<br>  <span class="hljs-attribute">overflow</span>: auto;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>上述範例中，上方 <code>.list</code> 區塊使用 <code>display: flex</code> 加上 <code>justify-content: center</code> 讓子元素置中，同時希望瀏覽器寬度縮小至子元素溢出時，溢出的部分以水平軸方式呈現，因此加入了 <code>overflow: auto</code> 設定，呈現畫面如下：</p>
+<p><img src="https://i.imgur.com/Sn1BMH4.png"></p>
+<p>然而將水平軸向左滾動至最底時，溢出的部分卻被裁切了，而問題就在 <code>justify-content: center</code> 這個屬性上，移除該屬性之後，子元素溢出的部分就會正常呈現，如下：</p>
+<p><img src="https://i.imgur.com/6GYarUd.png"></p>
+<p>此時問題來了，在不使用 <code>justify-content: center</code> 的情況下，要如何同時滿足子元素保持置中，但是溢出情況下不會被裁切呢？在思索一番後想到另一個能使區塊水平置中的語法，就是 <code>margin: 0 auto</code>，不過這個語法只適用具有實際寬度但非滿版的區塊，而範例中的 <code>.list</code> 區塊因為 <code>display: flex</code> 的關係佔了滿版的寬，因此並沒有如預期置中。下圖是區塊實際佔用的空間：</p>
+<p><img src="https://i.imgur.com/WnJz6ud.png"></p>
+<p><strong>解決方式：</strong></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* CSS（上方列表區塊） */</span><br><span class="hljs-selector-class">.list</span> &#123;<br>  <span class="hljs-attribute">display</span>: flex;<br>  <span class="hljs-attribute">max-width</span>: max-content;<br>  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;<br>  <span class="hljs-attribute">overflow</span>: auto;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>僅需在 <code>.list</code> 區塊加上 <code>max-width: max-content</code> 語法即可，而 <code>max-content</code> 最基本的作用是讓區塊寬度或高度自適應子元素，並且當子元素溢出時，內容不會受到擠壓而換行；此處正好利用了前者特性，使 <code>.list</code> 最大寬度等於所有子元素（<code>.list-item</code>）寬度的加總，此時再配合 <code>margin: 0 auto</code> 之後區塊得以置中，並且當子元素溢出時不會被裁切。結果如下圖所示：</p>
+<p><img src="https://i.imgur.com/MLip3hT.png"></p>
+<p><strong>實作範例：</strong></p>
+<iframe src="https://codepen.io/Cliff_hex/embed/bGMqLOq?default-tab=css,result" width="100%" height="300" frameborder="0" loading="lazy" allowfullscreen></iframe>
+
 <blockquote>
-<p>執行緒相關內容可參考此<a href="https://www.itread01.com/ixyfq.html">文章</a>。</p>
+<p>max-content 詳細說明請參考此<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/max-content">文章</a></p>
 </blockquote>
-<p>範例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printNum</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;1&#x27;</span>);<br>&#125; <br>printNum();<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;2&#x27;</span>);<br></code></pre></td></tr></table></figure>
-
-<p>以上面程式碼來說，會先執行函式 <code>printNum</code> 印出 <code>1</code>，接著再印出 <code>2</code>，並且兩者是有先後順序的，屬於同步執行。</p>
-<h2 id="何謂非同步"><a href="#何謂非同步" class="headerlink" title="何謂非同步"></a>何謂非同步</h2><p>「非同步（Asynchronous）」特性是「可以同時做很多事，並且不需要等待前面的事做完就能做下一件事」，其實就是自己一開始對同步的認知。</p>
-<p>範例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">setTimeout</span>(printNum, <span class="hljs-number">2000</span>);<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printNum</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;1&#x27;</span>);<br>&#125; <br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;2&#x27;</span>);<br></code></pre></td></tr></table></figure>
-
-<p>程式碼中 <code>setTimeout</code> 會分別帶入 <code>callback</code>、<code>等待毫秒</code> 兩個參數，而回調函式 <code>printNum</code> 被設定 2 秒後才執行，但是這程中第 5 行的程式碼並不會等待前面的函式 <code>printNum</code>  執行完才動作，而是先印出 <code>2</code>，等待 2 秒之後呼叫函式 <code>printNum</code> 並印出 <code>1</code>。</p>
-<p>但是 JavaScript 屬於單執行緒，所以一次應該只會做一件事，為什麼會有範例中非同步的狀況？原因是 JavaScript 在 V8 引擎（JavaScript 引擎）運行時，引擎在運作時是同步的，但是除了引擎內的 JavaScript 原始程式碼之外，瀏覽器也會提供許多 Web APIs（如：document、MouseEvent、setTimeout…等等），這些並不屬於 V8 引擎的範疇，但是可以透過呼叫並使用它們做到非同步的行為，並且不會影響到 JavaScript 主程式的運行，可以理解成 JavaScript 需要依賴 Web APIs 才能達成非同步的效果。</p>
-<p>而 <code>setTimeout</code> 等待的期間，程式碼為甚麼能夠繼續往下執行？原因是當 Web APIs 與自己寫的 JavaScript 在瀏覽器一起執行時，透過 Web APIs 非同步呼叫的 callback function 會被放到 Callback Queue（儲列 / 佇列）待命，等到其他程式碼都執行完之後才會被呼叫。</p>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://chanchandev.com/js/Async/async-sync-intro/2534378084/">Javascript 非同步 &amp; Event Loop！10 分鐘輕鬆圖解學習！</a></p>
-<p><a href="https://5xruby.tw/posts/how-js-synchronous-works">無痛理解 JS | 非同步怎麼運作？</a></p>
 ]]></content>
       <categories>
-        <category>JavaScript</category>
+        <category>CSS</category>
       </categories>
       <tags>
-        <tag>synchronous</tag>
-        <tag>asynchronous</tag>
+        <tag>flex</tag>
+        <tag>overflow</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>網頁切版直播班心得</title>
+    <url>/2022-09-10-hexschool-web-feedback/</url>
+    <content><![CDATA[<p>2022 夏，切版直播班心得。</p>
+<span id="more"></span>
+
+
+
+<h2 id="報名契機"><a href="#報名契機" class="headerlink" title="報名契機"></a>報名契機</h2><p>今年年四月左右參加了為期一個月的公益體驗營，然而在體驗營結束前夕，學院按照慣例會推坑下一次的活動，這次是切版直播班，不過內容相較過去更為豐富，教學大綱除了舊有的 Bootstrap 到近幾年盛行的 Tailwind，思索一番之後還是報名了。其實原本是衝著 Tailwind 來的，但礙於過去在切版方面都是純手刻又覺得 Bootstrap 很困難而遲遲不去面對，導致自己連一個 CSS 框架都不會，另一方面自己在新技能的學習上會需要花不少時間來吸收，擔心一次學兩個會應付不來，因此就把目標先轉向了目前使用率較高的 Bootstrap；除此之外，這次也要求自己必須把八週主線任務的所有頁面都切出來，既然都全職學習了，至少這一點是能做到的吧。</p>
+<h2 id="每週學習歷程"><a href="#每週學習歷程" class="headerlink" title="每週學習歷程"></a>每週學習歷程</h2><h3 id="直播"><a href="#直播" class="headerlink" title="直播"></a>直播</h3><p>雖然每週直播的教學內容算是在複習錄影，但是現場跟大家一起聽課的氛圍比起自己看錄影兩者還是有差的，而且常常會有同學在聊天室提出一些平常可能不太會注意到的有趣問題，也能當作是一種額外的知識吸收，此外當然也少不了校長的嘴砲模式以及心靈雞湯，畢竟學程式容易產生焦慮，長時間學習下還是需要找地方宣洩一下情緒。八週的直播形式基本上都是前面提到的這樣，整體的感覺不錯，這部分也沒有需要特別需要補充甚麼了，不過直播班本來就是以大量輸出為前提，每週花費在作業上的時間自然就比較多。</p>
+<p>另外這次直播班每週是有兩場直播的，上述提到的是週五例行的直播，另一場則是週三的 Tailwind 主題，雖然大部分心思都投入在 Bootstrap 上面，但是每週還是有聽課並把作業都做過一次，整體感覺其實是很不錯的。</p>
+<h3 id="小組討論"><a href="#小組討論" class="headerlink" title="小組討論"></a>小組討論</h3><p>這次被分配到的組別還不錯，每週的小組討論出席率都很高，只是大多數的組員平時都比較忙，也有組員加班到很晚還趕回來餐與討論，辛苦各位了，無法出席的人也會透過線下時間把作業補齊，也要特別感謝組長主持以及做資料彙整，不得不說組長真的很認真好學，小組伺服器的發問次數也是最多的，自己也從不少問題中學到各種額外的知識，賺爛了。</p>
+<h3 id="每日任務"><a href="#每日任務" class="headerlink" title="每日任務"></a>每日任務</h3><p>不得不說每日任務真的是很棒的學習資源，每天會釋出一道小題目給學員練習，有時候作業卡關也能從這邊找到線索，也可以學到很多平常不知道的知識，算是一個小寶庫；不過後半段的部分因為都在趕主線任務的進度，幾乎都是用補交的就是了。</p>
+<h3 id="主線任務"><a href="#主線任務" class="headerlink" title="主線任務"></a>主線任務</h3><p>作業方面主線任務難度是最高的，前兩週比較像是在試水溫，但是從第三週開始版型就是一個完整的電商網站了，印象中在做第三週時，平均一頁包含 RWD 就花了幾乎一天的時間，切完所有頁面後開始地毯式搜索看有甚麼地方沒處理仔細或是可以再調整，也嘗試透過簡單的 JS 加入了一些小功能和效果，結果自己很滿意。</p>
+<p>第四週設計稿和第三週是同一份，差別在於第四週需要透過 Gulp 來做，講白一點這已經不是切版的範疇了，但是提早面對終端機指令、版本相容性或是編譯等問題對未來學習上無疑是好事，不過 Gulp 要怎麼寫任務就要靠自己學了，可惡！好想學會自己寫 Gulp 啊！！</p>
+<p>第五週是後台版型，也開始嘗試使用以前一直不敢面對的 Bootstrap，然而這週的作業是一邊看官方文件一邊做的，大部分的時間都花在看文件而不是切版，為了讓自己能早一點習慣使用 Bootstrap，有好幾天晚上睡前用手機都不是在看社群，而是在看官方文件…。</p>
+<p>校長在第一次直播時，有大概用折線圖描述一下每週的作業難度，印象中第六週的難度是僅次於第八週的，而且第六週開始被要求使用 CSS 框架來做，還好前一段時間花了不少時間研究 Bootstrap，現在通用類別與元件在使用上已經熟練了非常多，頓時覺得自己以前只是懶的去看密密麻麻的文件而已。除此之外，第六週設計稿部分區塊還需要引入 JS 套件，從 Discord 作業討論頻道也可以看到不少學員受到 Swiper 無情肆虐。自己也花費將近一週的時間才做完，就順便整合第七週一起繳交了，然而心想終於可以休息一下，結果第八週設計稿就提前釋出，害我差點就忘記自己還在通往地獄的列車上。</p>
+<p>第八週的設計稿很特別，充斥著各式各樣酷炫的排版。在這過程中也做了很多以往沒做過的嘗試，首先是開始自己設計元件，先前看到其他同學不用 Pages 資料夾就能做出所有頁面，自己早就想嘗試看看了，意外的是然辦到了！果然有些事如果不做永遠不知道結果；另外也學會了客製化通用類別的方法，不得不說使用起來很方便可惜相見恨晚。不過最麻煩的部分還是 JS 套件，這部分花了很多時間不斷嘗試和理解才做出來，從拿到設計稿到切完所有頁面大概用了一個多禮拜的時間，真的好累啊…。</p>
+<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>本來以為自己會倒在第八週，但意外的挺過來了，不得不說即便是全職學習還是覺得時間很緊迫，真心佩服那些平時有工作還來進修的同學。總結來說，這次直播班真的扎扎實實的學到很多知識，同時也深刻體會到學習是沒有捷徑的，追求卓越的唯一方法只有不斷的練習，最後非常感謝六角學院提供這麼棒的學習資源和環境，兩位講師和每位助教都辛苦了，小心肝啊！！</p>
+<p>（長嘆，肝了無數個夜晚終於可以休息一下了，啊~原來我報名了 JS 直播班，差點忘記我搭的是不停靠的直達列車了。</p>
+]]></content>
+      <categories>
+        <category>心得</category>
+      </categories>
+      <tags>
+        <tag>六角學院</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript 套件 - Swiper</title>
+    <url>/2022-06-06-swiper-note/</url>
+    <content><![CDATA[<p>Swiper 可以實現網頁元素的輪播效果，本篇大概紀錄一下安裝的方式，以及一些常用的參數設定。</p>
+<span id="more"></span>
+
+
+<h2 id="Swiper-套件"><a href="#Swiper-套件" class="headerlink" title="Swiper 套件"></a>Swiper 套件</h2><p><a href="https://swiperjs.com/get-started">Swiper</a> 是一個製作網頁輪播效果的 JavaScript 插件。</p>
+<h2 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h2><h3 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h3><p>透過 CDN 方式安裝 Swiper 時，需要同時引入 <code>swiper-bundle.min.css</code> 與 <code>swiper-bundle.min.js</code> 兩個檔案，引入壓縮後的版本即可。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- In head --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://unpkg.com/swiper@8/swiper-bundle.min.css&quot;</span>/&gt;</span><br><span class="hljs-comment">&lt;!-- In front of body end tag --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://unpkg.com/swiper@8/swiper-bundle.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ npm install swiper<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="基礎結構"><a href="#基礎結構" class="headerlink" title="基礎結構"></a>基礎結構</h2><h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><p>使用 Swiper 時，<code>swiper-container</code>、<code>swiper-wrapper</code>、<code>swiper-slide</code> 三者為必要存在的元素。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- Slider main container --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-container&quot;</span>&gt;</span><br>  <span class="hljs-comment">&lt;!-- Additional required wrapper --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-wrapper&quot;</span>&gt;</span><br>    <span class="hljs-comment">&lt;!-- Slides --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 1<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 2<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 3<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    ...  <span class="hljs-comment">&lt;!-- 新增 swiper-slide 數量 --&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-comment">&lt;!-- If we need pagination --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-pagination&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br>  <span class="hljs-comment">&lt;!-- If we need navigation buttons --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-button-prev&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-button-next&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br>  <span class="hljs-comment">&lt;!-- If we need scrollbar --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-scrollbar&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>需要進行輪播的內容，會放在 <code>swiper-slide</code> 之中，數量可依需求自行新增。</p>
+<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><p>Swiper 在初始化時，會帶入一個 DOM / CSS Selector，以及一個參數（字串），如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> swiper = <span class="hljs-keyword">new</span> Swiper( swiperContainer, parameter );<br></code></pre></td></tr></table></figure>
+
+<p>官方範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&quot;.swiper-container&quot;</span>, &#123;<br>  <span class="hljs-comment">// Optional parameters / 加入參數與設定值</span><br>  <span class="hljs-attr">direction</span>: <span class="hljs-string">&quot;vertical&quot;</span>, <span class="hljs-comment">// 輪播方向</span><br>  <span class="hljs-attr">loop</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 重複顯示</span><br>  <span class="hljs-comment">// If we need pagination / 是否顯示分頁</span><br>  <span class="hljs-attr">pagination</span>: &#123;<br>    <span class="hljs-attr">el</span>: <span class="hljs-string">&quot;.swiper-pagination&quot;</span><br>  &#125;,<br>  <span class="hljs-comment">// Navigation arrows / 是否加入上、下一頁方向圖示</span><br>  <span class="hljs-attr">navigation</span>: &#123;<br>    <span class="hljs-attr">nextEl</span>: <span class="hljs-string">&quot;.swiper-button-next&quot;</span>,<br>    <span class="hljs-attr">prevEl</span>: <span class="hljs-string">&quot;.swiper-button-prev&quot;</span><br>  &#125;,<br>  <span class="hljs-comment">// And if we need scrollbar / 是否顯示滾動軸</span><br>  <span class="hljs-attr">scrollbar</span>: &#123;<br>    <span class="hljs-attr">el</span>: <span class="hljs-string">&quot;.swiper-scrollbar&quot;</span><br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h3 id="設定容器寬度"><a href="#設定容器寬度" class="headerlink" title="設定容器寬度"></a>設定容器寬度</h3><p>可自訂意義 Swiper 容器大小，範例如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.swiper</span> &#123;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">600px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">300px</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="常見參數"><a href="#常見參數" class="headerlink" title="常見參數"></a>常見參數</h2><p>除了先前官方範例提到的參數之外，以下列出一些在不同的版型下，可能會使用到的參數設定，更多可使用的參數可查閱<a href="https://swiperjs.com/swiper-api">官方文件</a>。</p>
+<p><strong><code>effect</code></strong></p>
+<p>主要用來變更輪播時的轉場效果，預設值為 <code>slide</code>，其他可使用效果還有 <code>fade</code>、<code>cube</code>、<code>coverflow</code>、<code>flip</code>、<code>creative</code>、<code>cards</code>。</p>
+<p><strong><code>autoplay</code></strong></p>
+<p>該參數屬於一個物件，會依據給予的屬性設定來自定義自動輪播的形式，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&quot;.swiper-container&quot;</span>, &#123;<br>  <span class="hljs-attr">autoplay</span>: &#123;<br>    <span class="hljs-attr">delay</span>: <span class="hljs-number">5000</span>, <span class="hljs-comment">// 自動輪播延遲時間</span><br>    <span class="hljs-attr">disableOnInteraction</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 手動滑動後，停止自動撥放，預設值為 true</span><br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p><strong><code>slidesPerView</code></strong></p>
+<p>該參數可以決定輪播時，同時顯示的 <code>swiper-slide</code> 數量，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&quot;.swiper-container&quot;</span>, &#123;<br>  <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">3</span> <span class="hljs-comment">// 同時顯示 3 個 swiper-slide</span><br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>加入參數 <code>slidesPerView</code> 後，<code>swiper-slide</code> 的寬度會根據 swiper-container 來均分。</p>
+</blockquote>
+<p><strong><code>breakpoints</code></strong></p>
+<p>加入該參數後，配合參數 <code>slidesPerView</code> 可根據所設定的斷點來達成響應式的效果，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&#x27;.swiper&#x27;</span>, &#123;<br>  <span class="hljs-comment">// 預設的顯示數量為 1</span><br>  <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">1</span>,<br>  <span class="hljs-comment">// 以下為斷點設定</span><br>  <span class="hljs-attr">breakpoints</span>: &#123;<br>    <span class="hljs-comment">// 當頁面寬度大於 768px 時，同時顯示數量為 2</span><br>    <span class="hljs-number">768</span>: &#123;<br>      <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">2</span><br>    &#125;,<br>    <span class="hljs-comment">// 當頁面寬度大於 992px 時，同時顯示數量為 3</span><br>    <span class="hljs-number">992</span>: &#123;<br>      <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">3</span><br>    &#125;<br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p><strong><code>spacebetween</code></strong></p>
+<p>該參數可以設定每個 <code>swiper-slide</code> 之間的間隙，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&#x27;.swiper&#x27;</span>, &#123;<br>  <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">2</span>,<br>  <span class="hljs-attr">spacebetween</span>: <span class="hljs-number">16</span>, <span class="hljs-comment">// 預設間隔為 20px</span><br>  <span class="hljs-attr">breakpoints</span>: &#123;<br>    <span class="hljs-number">768</span>: &#123;<br>      <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">3</span>,<br>      <span class="hljs-attr">spacebetween</span>: <span class="hljs-number">24</span> <span class="hljs-comment">// 當頁面寬度大於 768px 時，間隔為 24px</span><br>    &#125;<br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Package</category>
+      </categories>
+      <tags>
+        <tag>Swiper</tag>
+        <tag>Package</tag>
       </tags>
   </entry>
   <entry>
@@ -624,6 +591,100 @@
       </categories>
       <tags>
         <tag>function</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript 觀念 - 同步與非同步</title>
+    <url>/2022-09-20-javascript-sync-async/</url>
+    <content><![CDATA[<p>這篇僅記錄同步、非同步是什麼樣的概念，並沒有處理非同步問題的方式。</p>
+<span id="more"></span>
+
+
+<h2 id="JavaScript-中的同步"><a href="#JavaScript-中的同步" class="headerlink" title="JavaScript 中的同步"></a>JavaScript 中的同步</h2><p>「同步（Synchronous）」在你的認知上會怎麼解釋？我自己原本的想法是同時處理很多事情，但這個說法在 JavaScript 卻有些出入，原因在於 JavaScript 是以「單執行緒（單線程）」的方式在執行程序，特性是「一次只做一件事，前面的事做完才會依序做下一件事」。</p>
+<blockquote>
+<p>執行緒相關內容可參考此<a href="https://www.itread01.com/ixyfq.html">文章</a>。</p>
+</blockquote>
+<p>範例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printNum</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;1&#x27;</span>);<br>&#125; <br>printNum();<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;2&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>以上面程式碼來說，會先執行函式 <code>printNum</code> 印出 <code>1</code>，接著再印出 <code>2</code>，並且兩者是有先後順序的，屬於同步執行。</p>
+<h2 id="何謂非同步"><a href="#何謂非同步" class="headerlink" title="何謂非同步"></a>何謂非同步</h2><p>「非同步（Asynchronous）」特性是「可以同時做很多事，並且不需要等待前面的事做完就能做下一件事」，其實就是自己一開始對同步的認知。</p>
+<p>範例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">setTimeout</span>(printNum, <span class="hljs-number">2000</span>);<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printNum</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;1&#x27;</span>);<br>&#125; <br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;2&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>程式碼中 <code>setTimeout</code> 會分別帶入 <code>callback</code>、<code>等待毫秒</code> 兩個參數，而回調函式 <code>printNum</code> 被設定 2 秒後才執行，但是這程中第 5 行的程式碼並不會等待前面的函式 <code>printNum</code>  執行完才動作，而是先印出 <code>2</code>，等待 2 秒之後呼叫函式 <code>printNum</code> 並印出 <code>1</code>。</p>
+<p>但是 JavaScript 屬於單執行緒，所以一次應該只會做一件事，為什麼會有範例中非同步的狀況？原因是 JavaScript 在 V8 引擎（JavaScript 引擎）運行時，引擎在運作時是同步的，但是除了引擎內的 JavaScript 原始程式碼之外，瀏覽器也會提供許多 Web APIs（如：document、MouseEvent、setTimeout…等等），這些並不屬於 V8 引擎的範疇，但是可以透過呼叫並使用它們做到非同步的行為，並且不會影響到 JavaScript 主程式的運行，可以理解成 JavaScript 需要依賴 Web APIs 才能達成非同步的效果。</p>
+<p>而 <code>setTimeout</code> 等待的期間，程式碼為甚麼能夠繼續往下執行？原因是當 Web APIs 與自己寫的 JavaScript 在瀏覽器一起執行時，透過 Web APIs 非同步呼叫的 callback function 會被放到 Callback Queue（儲列 / 佇列）待命，等到其他程式碼都執行完之後才會被呼叫。</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://chanchandev.com/js/Async/async-sync-intro/2534378084/">Javascript 非同步 &amp; Event Loop！10 分鐘輕鬆圖解學習！</a></p>
+<p><a href="https://5xruby.tw/posts/how-js-synchronous-works">無痛理解 JS | 非同步怎麼運作？</a></p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>synchronous</tag>
+        <tag>asynchronous</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript 觀念 - 提升</title>
+    <url>/2022-09-24-javascript-hoisting/</url>
+    <content><![CDATA[<p>ES6 前後的 Hoisting 觀念筆記。</p>
+<span id="more"></span>
+
+
+<p>「提升（Hoisting）」是 JavaScript 特有的一種現象，它的意思是當一個變數或函式在被宣告之前就可以被使用，並且不會出現錯誤，另外 ES6 以前都是使用 <code>var</code> 來宣告變數，與 ES6 新增的 <code>let</code>、<code>const</code> 在提升行為會也有所不同。</p>
+<h2 id="ES6-以前的提升"><a href="#ES6-以前的提升" class="headerlink" title="ES6 以前的提升"></a>ES6 以前的提升</h2><figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-comment">// ReferenceError: x is not defined</span><br></code></pre></td></tr></table></figure>
+
+<p>以上針對 <code>x</code> 取值，但是在這之前並沒有宣告一個名為 <code>x</code> 的變數，因此會找不到該變數而回報錯誤，下面是正常的做法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> x;<br><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
+
+<p>這樣就是一個正常的流程，程式碼會從第一行開始由上往下執行，所以在使用變數之前需要先宣告變數，以確保這個變數是存在的。</p>
+<p>接著下面嘗試把第 1、2 行位置進行對調：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-keyword">var</span> x;<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
+
+<p>按照前面的說法，上述程式碼應該會回報錯誤，但是得到的結果卻是 <code>undefined</code>，而這就是提升所造成的現象，感覺像是 <code>var x</code> 這段程式碼被提升到所有程式碼之前。</p>
+<p>大多數的程式語言中，變數在被使用之前是需要先宣告的，但是 JavaScript 可以在變數宣告之前就使用該變數，不過關於提升還有一些注意事項，就是會被提升的只有<strong>宣告的行為</strong>，值的指派並不會被提升，以下面程式碼為例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> x = <span class="hljs-number">7</span>; <span class="hljs-comment">// 宣告變數並指派值</span><br><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-comment">// 7</span><br></code></pre></td></tr></table></figure>
+
+<p>範例跟前面的相同，只是多了一個指派數值的動作，而最後也印出預期的結果，這個時候如果再將 1、2 行位置進行對調，印出的結果會是 <code>7</code> 嗎？</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-keyword">var</span> x = <span class="hljs-number">7</span>;<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
+
+<p>答案是 <code>undefined</code>，照理來說宣告的變數會被提升，可是得到的結果卻不是 <code>7</code>，原因其實就如前面提到的，會被提升的只有宣告的動作，而範例中宣告的動作指的是 <code>var x</code>，後方的 <code>= 7</code> 屬於值的指派，並不會跟著宣告一起被提升。</p>
+<p>但是結果為甚麼會是 <code>undefined</code>？原因在於 JavaScript 在開始執行你撰寫的程式碼之前，會先把所有宣告的變數、一般函式都預留一個記憶體空間，但不會馬上指派值給變數，這個預留記憶體空間的動作就是提升，到這邊為止屬於「創造階段」，而這個階段結束之後，變數才會被賦值，這個賦值的過程則是「執行階段」，<code>undefined</code> 就是變數在創造階段建立記憶體空間時，預設給定的初始值。</p>
+<p>可以將上面的程式碼運作流程理解成以下形式：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> x; <span class="hljs-comment">// 宣告變數（會被提升）</span><br><span class="hljs-built_in">console</span>.log(x);<br>x = <span class="hljs-number">7</span>; <span class="hljs-comment">// 指派值</span><br></code></pre></td></tr></table></figure>
+
+<p>目前為止已經知道會被提升的只有宣告的動作，但是除了變數之外，一般的函式宣告也會被提升，以下面程式碼為例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">fn();<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// hello</span><br></code></pre></td></tr></table></figure>
+
+<p>嘗試在函式被宣告之前呼叫，也可以順利執行且不會回報錯誤，因為這是一般的函式宣告（具名函式），整個函式都會被提升，因此就可以在函式宣告之前呼叫。</p>
+<p>那匿名函式就不會被提升嗎？答案是會，下面嘗試將範例改成以匿名函式的方式建立：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">fn();<br><span class="hljs-keyword">var</span> fn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// TypeError: fn is not a function</span><br></code></pre></td></tr></table></figure>
+
+<p>結果出現錯誤了，不過是不是與 <code>var</code> 宣告的變數很像？其實概念是一樣的，這裡的程式碼確實有被提升，但是被提升的只有變數的宣告 <code>var fn</code>，函式的資料在執行階段才會指派給變數 <code>fn</code>，此時的 <code>fn</code> 的值為 <code>undefined</code>，而 <code>undefined</code> 並非函式因此呼叫的行為就會回報錯誤。</p>
+<p>雖然無法呼叫，但是能透過變數取值來驗證上述說法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(fn);<br><span class="hljs-keyword">var</span> fn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
+
+<p>而程式碼實際運作流程就像下面這樣：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> fn;<br><span class="hljs-built_in">console</span>.log(fn);<br>fn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>總結來說，JavaScript 中的「提升（Hoisting）」指的是宣告變數的提升，而值的賦予並不會提升；此外，提升並不會變更程式碼的位置，只是感覺像是整段程式碼被移動到最上方。</p>
+<h2 id="let、const-的提升"><a href="#let、const-的提升" class="headerlink" title="let、const 的提升"></a>let、const 的提升</h2><p>關於 <code>let</code>、<code>const</code> 有沒有提升行為，一開始我自己也是透過以下方法來作結論的：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// ReferenceError: a is not defined</span><br><span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure>
+
+<p>原本看到上面的結果，是認為 <code>let</code>、<code>const</code> 沒有提升行為的，直到看到一篇文章寫了下面這段程式碼：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fnA</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(a);<br>  <span class="hljs-keyword">let</span> a = <span class="hljs-number">100</span>;<br>&#125;<br>fnA();<br><span class="hljs-comment">// ReferenceError: Cannot access &#x27;a&#x27; before initialization</span><br></code></pre></td></tr></table></figure>
+
+<p>可以看到在函式 <code>fnA</code> 裡面，嘗試在變數 <code>a</code> 被宣告之前取值，照理來說，如果 <code>let</code> 沒有提升行為，第 3 行的變數 <code>a</code> 應該會指向到函式外層的變數 <code>a</code>，因此印出結果應該是 <code>1</code> 才對，但是最終卻得到 <code>Cannot access &#39;a&#39; before initialization</code> 的錯誤訊息，而這就證明了 <code>let</code> 是有提升行為的，只是不允許在變數宣告之前被存取。</p>
+<p>而前面提到 <code>var</code> 在提升時，也就是創造階段預設會給定初始值 <code>undefined</code>，而 <code>let</code>、<code>const</code> 則不會，所以在變數實際賦值前嘗試存取就會出現上面的錯誤，而提升後到賦值之前的這一個區間，稱為「暫時性死區（TDZ）」。</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://blog.techbridge.cc/2018/11/10/javascript-hoisting/">我知道你懂 hoisting，可是你了解到多深？</a></p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>hoisting</tag>
       </tags>
   </entry>
   <entry>
@@ -702,67 +763,6 @@
       </categories>
       <tags>
         <tag>Scope</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript 觀念 - 提升</title>
-    <url>/2022-09-24-javascript-hoisting/</url>
-    <content><![CDATA[<p>ES6 前後的 Hoisting 觀念筆記。</p>
-<span id="more"></span>
-
-
-<p>「提升（Hoisting）」是 JavaScript 特有的一種現象，它的意思是當一個變數或函式在被宣告之前就可以被使用，並且不會出現錯誤，另外 ES6 以前都是使用 <code>var</code> 來宣告變數，與 ES6 新增的 <code>let</code>、<code>const</code> 在提升行為會也有所不同。</p>
-<h2 id="ES6-以前的提升"><a href="#ES6-以前的提升" class="headerlink" title="ES6 以前的提升"></a>ES6 以前的提升</h2><figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-comment">// ReferenceError: x is not defined</span><br></code></pre></td></tr></table></figure>
-
-<p>以上針對 <code>x</code> 取值，但是在這之前並沒有宣告一個名為 <code>x</code> 的變數，因此會找不到該變數而回報錯誤，下面是正常的做法：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> x;<br><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
-
-<p>這樣就是一個正常的流程，程式碼會從第一行開始由上往下執行，所以在使用變數之前需要先宣告變數，以確保這個變數是存在的。</p>
-<p>接著下面嘗試把第 1、2 行位置進行對調：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-keyword">var</span> x;<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
-
-<p>按照前面的說法，上述程式碼應該會回報錯誤，但是得到的結果卻是 <code>undefined</code>，而這就是提升所造成的現象，感覺像是 <code>var x</code> 這段程式碼被提升到所有程式碼之前。</p>
-<p>大多數的程式語言中，變數在被使用之前是需要先宣告的，但是 JavaScript 可以在變數宣告之前就使用該變數，不過關於提升還有一些注意事項，就是會被提升的只有<strong>宣告的行為</strong>，值的指派並不會被提升，以下面程式碼為例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> x = <span class="hljs-number">7</span>; <span class="hljs-comment">// 宣告變數並指派值</span><br><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-comment">// 7</span><br></code></pre></td></tr></table></figure>
-
-<p>範例跟前面的相同，只是多了一個指派數值的動作，而最後也印出預期的結果，這個時候如果再將 1、2 行位置進行對調，印出的結果會是 <code>7</code> 嗎？</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-keyword">var</span> x = <span class="hljs-number">7</span>;<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
-
-<p>答案是 <code>undefined</code>，照理來說宣告的變數會被提升，可是得到的結果卻不是 <code>7</code>，原因其實就如前面提到的，會被提升的只有宣告的動作，而範例中宣告的動作指的是 <code>var x</code>，後方的 <code>= 7</code> 屬於值的指派，並不會跟著宣告一起被提升。</p>
-<p>但是結果為甚麼會是 <code>undefined</code>？原因在於 JavaScript 在開始執行你撰寫的程式碼之前，會先把所有宣告的變數、一般函式都預留一個記憶體空間，但不會馬上指派值給變數，這個預留記憶體空間的動作就是提升，到這邊為止屬於「創造階段」，而這個階段結束之後，變數才會被賦值，這個賦值的過程則是「執行階段」，<code>undefined</code> 就是變數在創造階段建立記憶體空間時，預設給定的初始值。</p>
-<p>可以將上面的程式碼運作流程理解成以下形式：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> x; <span class="hljs-comment">// 宣告變數（會被提升）</span><br><span class="hljs-built_in">console</span>.log(x);<br>x = <span class="hljs-number">7</span>; <span class="hljs-comment">// 指派值</span><br></code></pre></td></tr></table></figure>
-
-<p>目前為止已經知道會被提升的只有宣告的動作，但是除了變數之外，一般的函式宣告也會被提升，以下面程式碼為例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">fn();<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// hello</span><br></code></pre></td></tr></table></figure>
-
-<p>嘗試在函式被宣告之前呼叫，也可以順利執行且不會回報錯誤，因為這是一般的函式宣告（具名函式），整個函式都會被提升，因此就可以在函式宣告之前呼叫。</p>
-<p>那匿名函式就不會被提升嗎？答案是會，下面嘗試將範例改成以匿名函式的方式建立：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">fn();<br><span class="hljs-keyword">var</span> fn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// TypeError: fn is not a function</span><br></code></pre></td></tr></table></figure>
-
-<p>結果出現錯誤了，不過是不是與 <code>var</code> 宣告的變數很像？其實概念是一樣的，這裡的程式碼確實有被提升，但是被提升的只有變數的宣告 <code>var fn</code>，函式的資料在執行階段才會指派給變數 <code>fn</code>，此時的 <code>fn</code> 的值為 <code>undefined</code>，而 <code>undefined</code> 並非函式因此呼叫的行為就會回報錯誤。</p>
-<p>雖然無法呼叫，但是能透過變數取值來驗證上述說法：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(fn);<br><span class="hljs-keyword">var</span> fn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
-
-<p>而程式碼實際運作流程就像下面這樣：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> fn;<br><span class="hljs-built_in">console</span>.log(fn);<br>fn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>總結來說，JavaScript 中的「提升（Hoisting）」指的是宣告變數的提升，而值的賦予並不會提升；此外，提升並不會變更程式碼的位置，只是感覺像是整段程式碼被移動到最上方。</p>
-<h2 id="let、const-的提升"><a href="#let、const-的提升" class="headerlink" title="let、const 的提升"></a>let、const 的提升</h2><p>關於 <code>let</code>、<code>const</code> 有沒有提升行為，一開始我自己也是透過以下方法來作結論的：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// ReferenceError: a is not defined</span><br><span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure>
-
-<p>原本看到上面的結果，是認為 <code>let</code>、<code>const</code> 沒有提升行為的，直到看到一篇文章寫了下面這段程式碼：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fnA</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(a);<br>  <span class="hljs-keyword">let</span> a = <span class="hljs-number">100</span>;<br>&#125;<br>fnA();<br><span class="hljs-comment">// ReferenceError: Cannot access &#x27;a&#x27; before initialization</span><br></code></pre></td></tr></table></figure>
-
-<p>可以看到在函式 <code>fnA</code> 裡面，嘗試在變數 <code>a</code> 被宣告之前取值，照理來說，如果 <code>let</code> 沒有提升行為，第 3 行的變數 <code>a</code> 應該會指向到函式外層的變數 <code>a</code>，因此印出結果應該是 <code>1</code> 才對，但是最終卻得到 <code>Cannot access &#39;a&#39; before initialization</code> 的錯誤訊息，而這就證明了 <code>let</code> 是有提升行為的，只是不允許在變數宣告之前被存取。</p>
-<p>而前面提到 <code>var</code> 在提升時，也就是創造階段預設會給定初始值 <code>undefined</code>，而 <code>let</code>、<code>const</code> 則不會，所以在變數實際賦值前嘗試存取就會出現上面的錯誤，而提升後到賦值之前的這一個區間，稱為「暫時性死區（TDZ）」。</p>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://blog.techbridge.cc/2018/11/10/javascript-hoisting/">我知道你懂 hoisting，可是你了解到多深？</a></p>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>hoisting</tag>
       </tags>
   </entry>
   <entry>
@@ -936,6 +936,51 @@
       </tags>
   </entry>
   <entry>
+    <title>JavaScript 觀念 - 傳值、傳參考</title>
+    <url>/2022-10-20-javascript-by-value-by-reference/</url>
+    <content><![CDATA[<p>什麼情況下是傳遞純值，什麼情況又是傳遞記憶體參考位址？</p>
+<span id="more"></span>
+
+
+<p>JS 支援的型別主要分為以下兩種：</p>
+<ul>
+<li>原始型別 / 基本型別（Primitives）：<code>string</code>、<code>number</code>、<code>boolean</code>、<code>null</code>、<code>undefined</code>、<code>symbol</code>（ES6 新增），原始型別也表示這個資料是一個「純值」。</li>
+<li>物件型別（Object）：非基本型別的類型都屬於物件型別（陣列、函式都屬於此型別）</li>
+</ul>
+<p>可透過 typeof 判斷值的型別：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">typeof</span> <span class="hljs-string">&#x27;Test&#x27;</span>  <span class="hljs-comment">// &#x27;string&#x27;</span><br><span class="hljs-keyword">typeof</span> <span class="hljs-literal">true</span>    <span class="hljs-comment">// &#x27;boolean&#x27;</span><br><br><span class="hljs-keyword">typeof</span> &#123;&#125;      <span class="hljs-comment">// &#x27;object&#x27;</span><br><span class="hljs-keyword">typeof</span> []      <span class="hljs-comment">// &#x27;object&#x27;</span><br></code></pre></td></tr></table></figure>
+<h2 id="原始型別的「傳值」（Call-By-Value）"><a href="#原始型別的「傳值」（Call-By-Value）" class="headerlink" title="原始型別的「傳值」（Call By Value）"></a>原始型別的「傳值」（Call By Value）</h2><figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> num = <span class="hljs-number">5</span>;<br><span class="hljs-keyword">let</span> num2 = num;<br><br>num = <span class="hljs-number">10</span>;<br><br><span class="hljs-built_in">console</span>.log(num, num2); <span class="hljs-comment">// 10 5</span><br></code></pre></td></tr></table></figure>
+<p>以上面範例來說，變數 <code>num2</code> 的值是複製變數 <code>num</code> 的值而來，但是將變數 <code>num</code> 重新賦值後，變數 <code>num2</code> 的值並沒有跟著被改變。</p>
+<p>原因是變數 <code>num</code> 的值屬於<strong>原始型別</strong>，JS 看到這個原始型別時，會幫變數 <code>num2</code> 建立一個新的記憶體空間，並「複製」變數 <code>num</code> 的值，最後址派給變數 <code>num2</code>，此時兩個變數彼此是獨立的，所以即使變數 <code>num</code> 的值改變了，變數 <code>num2</code> 也不會受影響，這種情況稱為「傳值」。</p>
+<h2 id="物件型別的「傳參考」（Call-By-Reference）"><a href="#物件型別的「傳參考」（Call-By-Reference）" class="headerlink" title="物件型別的「傳參考」（Call By Reference）"></a>物件型別的「傳參考」（Call By Reference）</h2><figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> obj = &#123; <span class="hljs-attr">val</span>: <span class="hljs-number">5</span> &#125;;<br><span class="hljs-keyword">let</span> obj2 = obj;<br><br>obj.val = <span class="hljs-number">10</span>;<br><br><span class="hljs-built_in">console</span>.log(obj.val, obj2.val); <span class="hljs-comment">// 10 10</span><br></code></pre></td></tr></table></figure>
+<p>從上述範例可以發現，同樣的行為下，如果換成物件型別，兩個變數的值都會一起被修改。</p>
+<p>這是因為 JS 的物件，是透過「記憶體的參考位址」來傳遞資料的，示意圖如下：</p>
+<p><img src="https://i.imgur.com/JcXKYmw.png" alt="指向圖"></p>
+<p>當物件 <code>&#123; val: 5 &#125;</code> 指派給變數 <code>obj</code> 時，JS 會在記憶體某處建立這個物件，然後再將變數 <code>obj</code> 指向存放這個物件的記憶體位址，換句話說，實際上傳入變數 <code>obj</code> 裡面的值，是這個記憶體位址。</p>
+<p>此時將變數 <code>obj</code> 指派給變數 <code>obj2</code> 時，變數 <code>obj2</code> 所傳入的值，也同樣是這個存放物件 <code>&#123; val: 5 &#125;</code> 的記憶體位址，而因為兩個變數都是指向同一個記憶體位址中的物件，所以當變數 <code>obj</code> 重新賦值的同時，變數 <code>obj2</code> 的值也會被修改，這種不同變數之間指向同一個記憶體位址的情況，稱為「傳參考」，或是「傳址」。</p>
+<h2 id="例外情況-Call-By-Sharing"><a href="#例外情況-Call-By-Sharing" class="headerlink" title="例外情況 / Call By Sharing"></a>例外情況 / Call By Sharing</h2><figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> obj = &#123;<br>  <span class="hljs-attr">prop</span>: <span class="hljs-number">5</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params">par</span>) </span>&#123;<br>  par.prop = <span class="hljs-number">500</span>; <span class="hljs-comment">// 修改屬性</span><br>  <span class="hljs-keyword">return</span> par;<br>&#125;<br><br><span class="hljs-keyword">let</span> obj2 = fn(obj);<br><br><span class="hljs-built_in">console</span>.log(obj, obj2); <span class="hljs-comment">// &#123; &#x27;prop&#x27;: 500 &#125; &#123; &#x27;prop&#x27;: 500 &#125;</span><br><span class="hljs-built_in">console</span>.log(obj === obj2); <span class="hljs-comment">// true（因為傳參考的關係，因此比較的是記憶體位址，並非存放於記憶體位址中的值）</span><br></code></pre></td></tr></table></figure>
+<p>因為作為參數傳入函式的 obj 為物件型別，所以根據傳參考的特性，再函式內修改了屬性內容，會連帶影響到函式外的物件。</p>
+<p>但是有一個例外，就是當傳入函式中的物件不是修改屬性內容，而是直接將物件重新賦值時，函式外的物件就不會被影響，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> obj = &#123;<br>  <span class="hljs-attr">prop</span>: <span class="hljs-number">5</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params">par</span>) </span>&#123;<br>  par = &#123; <span class="hljs-comment">// 重新賦值</span><br>    <span class="hljs-attr">prop2</span>: <span class="hljs-number">500</span><br>  &#125;;<br>  <span class="hljs-keyword">return</span> par;<br>&#125;<br><br><span class="hljs-keyword">let</span> obj2 = fn(obj);<br><br><span class="hljs-built_in">console</span>.log(obj, obj2); <span class="hljs-comment">// &#123; &#x27;prop&#x27;: 5 &#125; &#123; &#x27;prop2&#x27;: 500 &#125;</span><br><span class="hljs-built_in">console</span>.log(obj === obj2); <span class="hljs-comment">// false（重新指向後，兩個變數不再有參考關係）</span><br></code></pre></td></tr></table></figure>
+<p>函式外的變數 <code>obj</code> 作為參數傳入函式，接著在函式內進行重新賦值的行為，這代表函式內的 <code>par</code> 會重新指向一個新物件，而不是指向與函式外的 <code>obj</code> 相同的記憶體位址，示意圖如下：</p>
+<p><img src="https://i.imgur.com/pZvGtHV.png"></p>
+<p>以上情況非傳值（Call By Value）、也不屬於傳參考（Call By Reference），因此就衍生出了 Call By Sharing 的說法。</p>
+<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><ul>
+<li>原始型別指派給變數時，傳遞的是值的複製。</li>
+<li>物件型別指派給變數時，傳遞的是記憶體的參考位址。</li>
+<li>傳入函式內的物件，如果重新賦值，此時函式內、外物件之間的參考就會消失。</li>
+</ul>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://ithelp.ithome.com.tw/articles/10191057">重新認識 JavaScript: Day 05 JavaScript 是「傳值」或「傳址」？</a></p>
+<p><a href="https://ithelp.ithome.com.tw/articles/10221506">JS 原力覺醒 Day12- 傳值呼叫、傳址呼叫</a></p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>call by reference</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JavaScript 筆記 - 字串方法</title>
     <url>/2022-10-11-javascript-string-methods/</url>
     <content><![CDATA[<p>紀錄一下常用的字串處理方法。</p>
@@ -1064,65 +1109,20 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript 觀念 - 傳值、傳參考</title>
-    <url>/2022-10-20-javascript-by-value-by-reference/</url>
-    <content><![CDATA[<p>什麼情況下是傳遞純值，什麼情況又是傳遞記憶體參考位址？</p>
-<span id="more"></span>
-
-
-<p>JS 支援的型別主要分為以下兩種：</p>
-<ul>
-<li>原始型別 / 基本型別（Primitives）：<code>string</code>、<code>number</code>、<code>boolean</code>、<code>null</code>、<code>undefined</code>、<code>symbol</code>（ES6 新增），原始型別也表示這個資料是一個「純值」。</li>
-<li>物件型別（Object）：非基本型別的類型都屬於物件型別（陣列、函式都屬於此型別）</li>
-</ul>
-<p>可透過 typeof 判斷值的型別：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">typeof</span> <span class="hljs-string">&#x27;Test&#x27;</span>  <span class="hljs-comment">// &#x27;string&#x27;</span><br><span class="hljs-keyword">typeof</span> <span class="hljs-literal">true</span>    <span class="hljs-comment">// &#x27;boolean&#x27;</span><br><br><span class="hljs-keyword">typeof</span> &#123;&#125;      <span class="hljs-comment">// &#x27;object&#x27;</span><br><span class="hljs-keyword">typeof</span> []      <span class="hljs-comment">// &#x27;object&#x27;</span><br></code></pre></td></tr></table></figure>
-<h2 id="原始型別的「傳值」（Call-By-Value）"><a href="#原始型別的「傳值」（Call-By-Value）" class="headerlink" title="原始型別的「傳值」（Call By Value）"></a>原始型別的「傳值」（Call By Value）</h2><figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> num = <span class="hljs-number">5</span>;<br><span class="hljs-keyword">let</span> num2 = num;<br><br>num = <span class="hljs-number">10</span>;<br><br><span class="hljs-built_in">console</span>.log(num, num2); <span class="hljs-comment">// 10 5</span><br></code></pre></td></tr></table></figure>
-<p>以上面範例來說，變數 <code>num2</code> 的值是複製變數 <code>num</code> 的值而來，但是將變數 <code>num</code> 重新賦值後，變數 <code>num2</code> 的值並沒有跟著被改變。</p>
-<p>原因是變數 <code>num</code> 的值屬於<strong>原始型別</strong>，JS 看到這個原始型別時，會幫變數 <code>num2</code> 建立一個新的記憶體空間，並「複製」變數 <code>num</code> 的值，最後址派給變數 <code>num2</code>，此時兩個變數彼此是獨立的，所以即使變數 <code>num</code> 的值改變了，變數 <code>num2</code> 也不會受影響，這種情況稱為「傳值」。</p>
-<h2 id="物件型別的「傳參考」（Call-By-Reference）"><a href="#物件型別的「傳參考」（Call-By-Reference）" class="headerlink" title="物件型別的「傳參考」（Call By Reference）"></a>物件型別的「傳參考」（Call By Reference）</h2><figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> obj = &#123; <span class="hljs-attr">val</span>: <span class="hljs-number">5</span> &#125;;<br><span class="hljs-keyword">let</span> obj2 = obj;<br><br>obj.val = <span class="hljs-number">10</span>;<br><br><span class="hljs-built_in">console</span>.log(obj.val, obj2.val); <span class="hljs-comment">// 10 10</span><br></code></pre></td></tr></table></figure>
-<p>從上述範例可以發現，同樣的行為下，如果換成物件型別，兩個變數的值都會一起被修改。</p>
-<p>這是因為 JS 的物件，是透過「記憶體的參考位址」來傳遞資料的，示意圖如下：</p>
-<p><img src="https://i.imgur.com/JcXKYmw.png" alt="指向圖"></p>
-<p>當物件 <code>&#123; val: 5 &#125;</code> 指派給變數 <code>obj</code> 時，JS 會在記憶體某處建立這個物件，然後再將變數 <code>obj</code> 指向存放這個物件的記憶體位址，換句話說，實際上傳入變數 <code>obj</code> 裡面的值，是這個記憶體位址。</p>
-<p>此時將變數 <code>obj</code> 指派給變數 <code>obj2</code> 時，變數 <code>obj2</code> 所傳入的值，也同樣是這個存放物件 <code>&#123; val: 5 &#125;</code> 的記憶體位址，而因為兩個變數都是指向同一個記憶體位址中的物件，所以當變數 <code>obj</code> 重新賦值的同時，變數 <code>obj2</code> 的值也會被修改，這種不同變數之間指向同一個記憶體位址的情況，稱為「傳參考」，或是「傳址」。</p>
-<h2 id="例外情況-Call-By-Sharing"><a href="#例外情況-Call-By-Sharing" class="headerlink" title="例外情況 / Call By Sharing"></a>例外情況 / Call By Sharing</h2><figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> obj = &#123;<br>  <span class="hljs-attr">prop</span>: <span class="hljs-number">5</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params">par</span>) </span>&#123;<br>  par.prop = <span class="hljs-number">500</span>; <span class="hljs-comment">// 修改屬性</span><br>  <span class="hljs-keyword">return</span> par;<br>&#125;<br><br><span class="hljs-keyword">let</span> obj2 = fn(obj);<br><br><span class="hljs-built_in">console</span>.log(obj, obj2); <span class="hljs-comment">// &#123; &#x27;prop&#x27;: 500 &#125; &#123; &#x27;prop&#x27;: 500 &#125;</span><br><span class="hljs-built_in">console</span>.log(obj === obj2); <span class="hljs-comment">// true（因為傳參考的關係，因此比較的是記憶體位址，並非存放於記憶體位址中的值）</span><br></code></pre></td></tr></table></figure>
-<p>因為作為參數傳入函式的 obj 為物件型別，所以根據傳參考的特性，再函式內修改了屬性內容，會連帶影響到函式外的物件。</p>
-<p>但是有一個例外，就是當傳入函式中的物件不是修改屬性內容，而是直接將物件重新賦值時，函式外的物件就不會被影響，範例如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> obj = &#123;<br>  <span class="hljs-attr">prop</span>: <span class="hljs-number">5</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params">par</span>) </span>&#123;<br>  par = &#123; <span class="hljs-comment">// 重新賦值</span><br>    <span class="hljs-attr">prop2</span>: <span class="hljs-number">500</span><br>  &#125;;<br>  <span class="hljs-keyword">return</span> par;<br>&#125;<br><br><span class="hljs-keyword">let</span> obj2 = fn(obj);<br><br><span class="hljs-built_in">console</span>.log(obj, obj2); <span class="hljs-comment">// &#123; &#x27;prop&#x27;: 5 &#125; &#123; &#x27;prop2&#x27;: 500 &#125;</span><br><span class="hljs-built_in">console</span>.log(obj === obj2); <span class="hljs-comment">// false（重新指向後，兩個變數不再有參考關係）</span><br></code></pre></td></tr></table></figure>
-<p>函式外的變數 <code>obj</code> 作為參數傳入函式，接著在函式內進行重新賦值的行為，這代表函式內的 <code>par</code> 會重新指向一個新物件，而不是指向與函式外的 <code>obj</code> 相同的記憶體位址，示意圖如下：</p>
-<p><img src="https://i.imgur.com/pZvGtHV.png"></p>
-<p>以上情況非傳值（Call By Value）、也不屬於傳參考（Call By Reference），因此就衍生出了 Call By Sharing 的說法。</p>
-<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><ul>
-<li>原始型別指派給變數時，傳遞的是值的複製。</li>
-<li>物件型別指派給變數時，傳遞的是記憶體的參考位址。</li>
-<li>傳入函式內的物件，如果重新賦值，此時函式內、外物件之間的參考就會消失。</li>
-</ul>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://ithelp.ithome.com.tw/articles/10191057">重新認識 JavaScript: Day 05 JavaScript 是「傳值」或「傳址」？</a></p>
-<p><a href="https://ithelp.ithome.com.tw/articles/10221506">JS 原力覺醒 Day12- 傳值呼叫、傳址呼叫</a></p>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>call by reference</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JavaScript 筆記 - AJAX</title>
     <url>/2022-10-24-javascript-ajax-note/</url>
     <content><![CDATA[<p>這是一篇尚未撰寫完成的筆記。</p>
 <span id="more"></span>
 
-<blockquote>
+<div class="toc">
+
 <p>主要內容目錄：</p>
 <ul>
 <li><a href="#XMLHttpRequest">XMLHttpRequest</a></li>
 <li><a href="#jQuery-AJAX">jQuery AJAX</a></li>
 <li><a href="#Fetch">Fetch</a></li>
-<li><a href="#Axios">Axios</a></li>
+<li><a href="#Axios">Axios</a></div></li>
 </ul>
-</blockquote>
 <h2 id="AJAX-簡述"><a href="#AJAX-簡述" class="headerlink" title="AJAX 簡述"></a>AJAX 簡述</h2><p>AJAX 是「Asynchronous JavaScript and XML」的縮寫，以名稱來看就是是非同步的 JavaScript 與 XML，可以讓 Web 前端與後端伺服器進行資料的交換，以及不需要重新載入網頁就能更新頁面內容。</p>
 <p>過去 AJAX 發出請求會透過 XMLHttpRequest 物件來實作，但是以目前來說，因為有了更適合的方式，因此實務上幾乎不會使用 XMLHttpRequest，不過筆記都寫了，就稍微理解一下每個方法吧！(๑•̀ㅂ•́)و✧</p>
 <h2 id="XMLHttpRequest"><a href="#XMLHttpRequest" class="headerlink" title="XMLHttpRequest"></a>XMLHttpRequest</h2><h3 id="建立-XHR-物件"><a href="#建立-XHR-物件" class="headerlink" title="建立 XHR 物件"></a>建立 XHR 物件</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest();<br></code></pre></td></tr></table></figure>
@@ -1150,7 +1150,7 @@
 </blockquote>
 <h3 id="send"><a href="#send" class="headerlink" title="send"></a>send</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">xhrReq.send(body);<br></code></pre></td></tr></table></figure>
 <p>發送請求，<code>send()</code> 的應用會根據請求方法的不同而有所差異，若只是單純的 <code>get</code> 請求，參數只需傳入 <code>null</code> 即可，其他請求方法如 <code>post</code> 則需補上相關資訊。</p>
-<p>需要注意的是，發送出去的資料如果是 JSON 格式，則需要先轉型為字串，轉換型別的方法可以使用 <code>JSON.stringify()</code>；同理，接收到的資料如果是 JSON 格式，也可以透過 <code>JSON.parse()</code> 轉換為 JSON 物件。</p>
+<p>需要注意的是，資料發送前如果是 JSON 格式，則需要先轉型為字串，轉換型別的方法可以使用 <code>JSON.stringify()</code>；同理，接收到的資料如果是字串，也可以透過 <code>JSON.parse()</code> 轉換為 JSON 物件。</p>
 <blockquote>
 <p>相關資訊請參閱 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest/send">MDN - XMLHttpRequest.send()</a></p>
 </blockquote>

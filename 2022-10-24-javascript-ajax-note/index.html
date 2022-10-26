@@ -66,6 +66,10 @@
 
 
 
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
@@ -277,15 +281,15 @@
                 <p>這是一篇尚未撰寫完成的筆記。</p>
 <span id="more"></span>
 
-<blockquote>
+<div class="toc">
+
 <p>主要內容目錄：</p>
 <ul>
 <li><a href="#XMLHttpRequest">XMLHttpRequest</a></li>
 <li><a href="#jQuery-AJAX">jQuery AJAX</a></li>
 <li><a href="#Fetch">Fetch</a></li>
-<li><a href="#Axios">Axios</a></li>
+<li><a href="#Axios">Axios</a></div></li>
 </ul>
-</blockquote>
 <h2 id="AJAX-簡述"><a href="#AJAX-簡述" class="headerlink" title="AJAX 簡述"></a>AJAX 簡述</h2><p>AJAX 是「Asynchronous JavaScript and XML」的縮寫，以名稱來看就是是非同步的 JavaScript 與 XML，可以讓 Web 前端與後端伺服器進行資料的交換，以及不需要重新載入網頁就能更新頁面內容。</p>
 <p>過去 AJAX 發出請求會透過 XMLHttpRequest 物件來實作，但是以目前來說，因為有了更適合的方式，因此實務上幾乎不會使用 XMLHttpRequest，不過筆記都寫了，就稍微理解一下每個方法吧！(๑•̀ㅂ•́)و✧</p>
 <h2 id="XMLHttpRequest"><a href="#XMLHttpRequest" class="headerlink" title="XMLHttpRequest"></a>XMLHttpRequest</h2><h3 id="建立-XHR-物件"><a href="#建立-XHR-物件" class="headerlink" title="建立 XHR 物件"></a>建立 XHR 物件</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest();<br></code></pre></td></tr></table></figure>
@@ -313,7 +317,7 @@
 </blockquote>
 <h3 id="send"><a href="#send" class="headerlink" title="send"></a>send</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">xhrReq.send(body);<br></code></pre></td></tr></table></figure>
 <p>發送請求，<code>send()</code> 的應用會根據請求方法的不同而有所差異，若只是單純的 <code>get</code> 請求，參數只需傳入 <code>null</code> 即可，其他請求方法如 <code>post</code> 則需補上相關資訊。</p>
-<p>需要注意的是，發送出去的資料如果是 JSON 格式，則需要先轉型為字串，轉換型別的方法可以使用 <code>JSON.stringify()</code>；同理，接收到的資料如果是 JSON 格式，也可以透過 <code>JSON.parse()</code> 轉換為 JSON 物件。</p>
+<p>需要注意的是，資料發送前如果是 JSON 格式，則需要先轉型為字串，轉換型別的方法可以使用 <code>JSON.stringify()</code>；同理，接收到的資料如果是字串，也可以透過 <code>JSON.parse()</code> 轉換為 JSON 物件。</p>
 <blockquote>
 <p>相關資訊請參閱 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest/send">MDN - XMLHttpRequest.send()</a></p>
 </blockquote>
@@ -459,23 +463,6 @@
 
 
 
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022-10-20-javascript-by-value-by-reference/" title="JavaScript 觀念 - 傳值、傳參考">
-                        <span class="hidden-mobile">JavaScript 觀念 - 傳值、傳參考</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
               
             </div>
 

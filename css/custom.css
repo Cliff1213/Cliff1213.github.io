@@ -1,0 +1,10 @@
+
+.markdown-body .toc {
+    display: block !important;
+}
+
+@media (min-width: 992px) {
+    .markdown-body .toc {
+        display: none !important;
+    }
+}

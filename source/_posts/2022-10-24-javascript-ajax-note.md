@@ -11,12 +11,16 @@ index_img: img/banner/banner_data.jpg
 
 <!--more-->
 
-> 主要內容目錄：
->
-> - [XMLHttpRequest](#XMLHttpRequest)
-> - [jQuery AJAX](#jQuery-AJAX)
-> - [Fetch](#Fetch)
-> - [Axios](#Axios)
+<div class="toc">
+
+主要內容目錄：
+
+- [XMLHttpRequest](#XMLHttpRequest)
+- [jQuery AJAX](#jQuery-AJAX)
+- [Fetch](#Fetch)
+- [Axios](#Axios)
+</div>
+
 
 ## AJAX 簡述
 
@@ -70,7 +74,7 @@ xhrReq.send(body);
 ```
 發送請求，`send()` 的應用會根據請求方法的不同而有所差異，若只是單純的 `get` 請求，參數只需傳入 `null` 即可，其他請求方法如 `post` 則需補上相關資訊。
 
-需要注意的是，發送出去的資料如果是 JSON 格式，則需要先轉型為字串，轉換型別的方法可以使用 `JSON.stringify()`；同理，接收到的資料如果是 JSON 格式，也可以透過 `JSON.parse()` 轉換為 JSON 物件。
+需要注意的是，資料發送前如果是 JSON 格式，則需要先轉型為字串，轉換型別的方法可以使用 `JSON.stringify()`；同理，接收到的資料如果是字串，也可以透過 `JSON.parse()` 轉換為 JSON 物件。
 
 > 相關資訊請參閱 [MDN - XMLHttpRequest.send()](https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest/send)
 

@@ -11,8 +11,17 @@ index_img: img/banner/banner_js.jpg
 
 <!--more-->
 
+---
+<div class="toc">
+<p class="toc-title">目錄：</p>
 
-JavaScript 變數的宣告方式有三種，分別是 `var`、`let` 以及 `const`，後兩者是 ES6 新增的語法，而這三種方式所宣告的變數也會有不同的作用。
+- [甚麼是提升？](#甚麼是提升？)
+- [ES6 以前的提升](#ES6-以前的提升)
+- [let、const 的提升](#let、const-的提升)
+- [參考資料](#參考資料)
+</div>
+
+<p class="first-text-not-title">JavaScript 變數的宣告方式有三種，分別是 <code>var</code>、<code>let</code> 以及 <code>const</code>，後兩者是 ES6 新增的語法，而這三種方式所宣告的變數也會有不同的作用。</p>
 
 ## 重複宣告
 

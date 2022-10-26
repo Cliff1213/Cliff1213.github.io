@@ -11,10 +11,11 @@ index_img: img/banner/banner_data.jpg
 
 <!--more-->
 
+---
 <div class="toc">
+<p class="toc-title">目錄：</p>
 
-主要內容目錄：
-
+- [AJAX 簡述](#AJAX-簡述)
 - [XMLHttpRequest](#XMLHttpRequest)
 - [jQuery AJAX](#jQuery-AJAX)
 - [Fetch](#Fetch)

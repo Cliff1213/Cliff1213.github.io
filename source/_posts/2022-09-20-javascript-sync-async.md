@@ -12,6 +12,15 @@ index_img: img/banner/banner_js.jpg
 
 <!--more-->
 
+---
+<div class="toc">
+<p class="toc-title">目錄：</p>
+
+- [JavaScript 中的同步](#JavaScript-中的同步)
+- [何謂非同步？](#何謂非同步？)
+- [參考資料](#參考資料)
+</div>
+
 
 ## JavaScript 中的同步
 
@@ -33,7 +42,7 @@ console.log('2');
 
 
 
-## 何謂非同步
+## 何謂非同步？
 
 「非同步（Asynchronous）」特性是「可以同時做很多事，並且不需要等待前面的事做完就能做下一件事」，其實就是自己一開始對同步的認知。
 

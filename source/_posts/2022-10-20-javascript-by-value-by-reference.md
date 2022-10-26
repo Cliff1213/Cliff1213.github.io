@@ -11,7 +11,19 @@ index_img: img/banner/banner_js.jpg
 
 <!--more-->
 
+---
+<div class="toc">
+<p class="toc-title">目錄：</p>
 
+- [JavaScript 型別](#JavaScript-型別)
+- [原始型別的「傳值」（Call By Value）](#原始型別的「傳值」（Call-By-Value）)
+- [物件型別的「傳參考」（Call By Reference）](物件型別的「傳參考」（Call-By-Reference）)
+- [例外情況 / Call By Sharing](#例外情況-/-Call-By-Sharing)
+- [小結](#小結)
+- [參考資料](#參考資料)
+</div>
+
+## JavaScript 型別
 JS 支援的型別主要分為以下兩種：
 - 原始型別 / 基本型別（Primitives）：`string`、`number`、`boolean`、`null`、`undefined`、`symbol`（ES6 新增），原始型別也表示這個資料是一個「純值」。
 - 物件型別（Object）：非基本型別的類型都屬於物件型別（陣列、函式都屬於此型別）

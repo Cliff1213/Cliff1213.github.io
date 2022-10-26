@@ -10,8 +10,17 @@ index_img: img/banner/banner_js.jpg
 ES6 前後的 Hoisting 觀念筆記。
 
 <!--more-->
+---
+<div class="toc">
+<p class="toc-title">目錄：</p>
 
+- [甚麼是提升？](#甚麼是提升？)
+- [ES6 以前的提升](#ES6-以前的提升)
+- [let、const 的提升](#let、const-的提升)
+- [參考資料](#參考資料)
+</div>
 
+## 甚麼是提升？
 「提升（Hoisting）」是 JavaScript 特有的一種現象，它的意思是當一個變數或函式在被宣告之前就可以被使用，並且不會出現錯誤，另外 ES6 以前都是使用 `var` 來宣告變數，與 ES6 新增的 `let`、`const` 在提升行為會也有所不同。
 
 ## ES6 以前的提升

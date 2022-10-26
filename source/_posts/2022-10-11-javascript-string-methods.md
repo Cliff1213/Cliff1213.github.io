@@ -11,18 +11,22 @@ index_img: img/banner/banner_20221011.jpg
 
 <!--more-->
 
-------
+---
+<div class="toc">
+<p class="toc-title">目錄：</p>
 
-> 目錄：
->
-> - 取得字串字數：[length](#length)
-> - 字串分割：[split](#split)
-> - 字串連接：[concat](#concat)
-> - 尋找文字索引：[indexOf](#indexOf)
-> - 替換文字內容：[replace](#replace)
-> - 匹配文字：[match](#match)
-> - 取得兩個索引之間的所有文字：[substring](#substring)、[slice](#slice)
-> - 轉換文字大小寫：[toUpperCase / toLowerCase](#toUpperCase-toLowerCase)
+- [length](#length)
+- [split](#split)
+- [concat](#concat)
+- [indexOf](#indexOf)
+- [replace](#replace)
+- [match](#match)
+- [substring](#substring)
+- [slice](#slice)
+- [toUpperCase / toLowerCase](#toUpperCase-toLowerCase)
+</div>
+
+
 
 ## length
 

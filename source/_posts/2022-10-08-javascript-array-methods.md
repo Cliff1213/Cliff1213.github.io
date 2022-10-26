@@ -11,18 +11,21 @@ forEach 很好用，但是其他陣列方法也很不賴！
 
 <!--more-->
 
+---
+<div class="toc">
+<p class="toc-title">目錄：</p>
 
-> 目錄：
->
-> - [forEach](#forEach)
-> - [map](#map)
-> - [filter](#filter)
-> - [find](#find)
-> - [every](#every)
-> - [some](#some)
-> - [reduce](#reduce)
+- [forEach](#forEach)
+- [map](#map)
+- [filter](#filter)
+- [find](#find)
+- [every](#every)
+- [some](#some)
+- [reduce](#reduce)
+</div>
 
-範例資料：
+
+<p class="first-text-not-title">範例資料：</p>
 
 ```js
 const data = [

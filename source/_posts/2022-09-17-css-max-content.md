@@ -11,7 +11,15 @@ index_img: img/banner/banner_20220910-2.jpg
 前一段時間在切版上遇到了一個問題，研究之後發現一個有趣的解決方法，也藉此機會紀錄一下。
 
 <!--more-->
+---
+<div class="toc">
+<p class="toc-title">目錄：</p>
 
+- [問題](#問題)
+- [解決方式](#解決方式)
+</div>
+
+## 問題
 
 以下是範例情境：
 
@@ -56,7 +64,7 @@ index_img: img/banner/banner_20220910-2.jpg
 
 ![](https://i.imgur.com/WnJz6ud.png)
 
-**解決方式：**
+## 解決方式
 
 ```css
 /* CSS（上方列表區塊） */

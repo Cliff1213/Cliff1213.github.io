@@ -10,6 +10,17 @@ index_img: img/banner/banner_font.jpg
 在設定字體時，常常會遇到結果不如預期的情況，於是決定研究一下網頁是怎麼套用字體，以及一些相關的注意事項。
 
 <!--more-->
+---
+<div class="toc">
+<p class="toc-title">目錄：</p>
+
+- [Font-Family 設定規則](#Font-Family-設定規則)
+- [Font-Family 字體類型](#Font-Family-字體類型)
+- [字體順序觀念](#字體順序觀念)
+- [實務範例](#實務範例)
+- [參考資料](#參考資料)
+</div>
+
 
 ## Font-Family 設定規則
 

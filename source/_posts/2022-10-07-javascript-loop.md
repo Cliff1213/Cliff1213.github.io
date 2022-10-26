@@ -12,7 +12,17 @@ index_img: img/banner/banner_loop.jpg
 
 <!--more-->
 
-迴圈（Loop）指的就是不斷重複做一件事情，當條件滿足就執行一次，一直到不符合條件就終止迴圈，常見的迴圈有 for、while，還有一個 do...while，不過這篇筆記先不提。
+---
+<div class="toc">
+<p class="toc-title">目錄：</p>
+
+- [for](#for)
+- [while](#while)
+- [break 與 continue](#break-與-continue)
+</div>
+
+
+<p class="first-text-not-title">迴圈（Loop）指的就是不斷重複做一件事情，當條件滿足就執行一次，一直到不符合條件就終止迴圈，常見的迴圈有 for、while，還有一個 do...while，不過這篇筆記先不提。</p>
 
 
 ## for

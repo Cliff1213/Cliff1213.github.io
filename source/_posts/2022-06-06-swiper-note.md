@@ -11,11 +11,17 @@ index_img: img/banner/banner_20220601.jpg
 Swiper 可以實現網頁元素的輪播效果，本篇大概紀錄一下安裝的方式，以及一些常用的參數設定。
 
 <!--more-->
+---
+<div class="toc">
+<p class="toc-title">目錄：</p>
 
+- [安裝](#安裝)
+- [基礎結構](#基礎結構)
+- [常見參數](#常見參數)
+</div>
 
-## Swiper 套件
+<p class="first-text-not-title"><a href="https://swiperjs.com/get-started" target="_blank">Swiper</a> 是一個製作網頁輪播效果的 JavaScript 套件。</p>
 
-[Swiper](https://swiperjs.com/get-started) 是一個製作網頁輪播效果的 JavaScript 插件。
 
 ## 安裝
 

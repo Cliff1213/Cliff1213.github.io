@@ -16,13 +16,6 @@
   </url>
   
   <url>
-    <loc>http://kurifu.tw/2022-03-02-css-font-family/</loc>
-    
-    <lastmod>2022-03-01</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://kurifu.tw/2022-03-14-rwd-note/</loc>
     
     <lastmod>2022-03-13</lastmod>
@@ -30,9 +23,9 @@
   </url>
   
   <url>
-    <loc>http://kurifu.tw/2022-06-07-sass-note/</loc>
+    <loc>http://kurifu.tw/2022-03-02-css-font-family/</loc>
     
-    <lastmod>2022-06-06</lastmod>
+    <lastmod>2022-03-01</lastmod>
     
   </url>
   
@@ -51,9 +44,9 @@
   </url>
   
   <url>
-    <loc>http://kurifu.tw/2022-09-17-css-max-content/</loc>
+    <loc>http://kurifu.tw/2022-06-07-sass-note/</loc>
     
-    <lastmod>2022-09-16</lastmod>
+    <lastmod>2022-06-06</lastmod>
     
   </url>
   
@@ -61,6 +54,20 @@
     <loc>http://kurifu.tw/2022-09-19-javascript-function/</loc>
     
     <lastmod>2022-09-18</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kurifu.tw/2022-09-17-css-max-content/</loc>
+    
+    <lastmod>2022-09-16</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kurifu.tw/2022-09-20-javascript-sync-async/</loc>
+    
+    <lastmod>2022-09-19</lastmod>
     
   </url>
   
@@ -79,30 +86,9 @@
   </url>
   
   <url>
-    <loc>http://kurifu.tw/2022-09-20-javascript-sync-async/</loc>
-    
-    <lastmod>2022-09-19</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kurifu.tw/2022-10-08-javascript-array-methods/</loc>
-    
-    <lastmod>2022-10-08</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://kurifu.tw/2022-10-07-javascript-loop/</loc>
     
     <lastmod>2022-10-07</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kurifu.tw/2022-10-20-javascript-by-value-by-reference/</loc>
-    
-    <lastmod>2022-10-19</lastmod>
     
   </url>
   
@@ -114,9 +100,30 @@
   </url>
   
   <url>
+    <loc>http://kurifu.tw/2022-10-08-javascript-array-methods/</loc>
+    
+    <lastmod>2022-10-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kurifu.tw/2022-10-20-javascript-by-value-by-reference/</loc>
+    
+    <lastmod>2022-10-19</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://kurifu.tw/2022-10-24-javascript-ajax-note/</loc>
     
     <lastmod>2022-10-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kurifu.tw/2022-10-27-javascript-promise/</loc>
+    
+    <lastmod>2022-10-27</lastmod>
     
   </url>
   
@@ -142,13 +149,6 @@
   </url>
   
   <url>
-    <loc>http://kurifu.tw/categories/index.html</loc>
-    
-    <lastmod>2022-01-19</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://kurifu.tw/404.html</loc>
     
     <lastmod>2022-02-20</lastmod>
@@ -157,6 +157,13 @@
   
   <url>
     <loc>http://kurifu.tw/about/index.html</loc>
+    
+    <lastmod>2022-01-19</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kurifu.tw/categories/index.html</loc>
     
     <lastmod>2022-01-19</lastmod>
     
@@ -172,7 +179,7 @@
 
   <url>
     <loc>http://kurifu.tw/</loc>
-    <lastmod>2022-10-26</lastmod>
+    <lastmod>2022-11-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>

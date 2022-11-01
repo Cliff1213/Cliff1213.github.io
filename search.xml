@@ -143,88 +143,6 @@
       </tags>
   </entry>
   <entry>
-    <title>關於 CSS Font-Family</title>
-    <url>/2022-03-02-css-font-family/</url>
-    <content><![CDATA[<p>在設定字體時，常常會遇到結果不如預期的情況，於是決定研究一下網頁是怎麼套用字體，以及一些相關的注意事項。</p>
-<span id="more"></span>
-<hr>
-<div class="toc">
-<p class="toc-title">目錄：</p>
-
-<ul>
-<li><a href="#Font-Family-%E8%A8%AD%E5%AE%9A%E8%A6%8F%E5%89%87">Font-Family 設定規則</a></li>
-<li><a href="#Font-Family-%E5%AD%97%E9%AB%94%E9%A1%9E%E5%9E%8B">Font-Family 字體類型</a></li>
-<li><a href="#%E5%AD%97%E9%AB%94%E9%A0%86%E5%BA%8F%E8%A7%80%E5%BF%B5">字體順序觀念</a></li>
-<li><a href="#%E5%AF%A6%E5%8B%99%E7%AF%84%E4%BE%8B">實務範例</a></li>
-<li><a href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99">參考資料</a></div></li>
-</ul>
-<h2 id="Font-Family-設定規則"><a href="#Font-Family-設定規則" class="headerlink" title="Font-Family 設定規則"></a>Font-Family 設定規則</h2><p>基本上只要是網頁設計，都會使用到的屬性，可以自訂頁面上的文字字體，但是初學者在使用這個屬性之前，為了避免結果不如預期，建議需要先理解一些設定上的規則。</p>
-<h3 id="字體套用邏輯"><a href="#字體套用邏輯" class="headerlink" title="字體套用邏輯"></a>字體套用邏輯</h3><p>Font-Family 雖然可以設定多個屬性值，但是並不會將所有寫入的字體都一起套用，而是會根據瀏覽器對該字體的支援與否，由左至右依序判斷，以下方原始碼為例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: 字體A, 字體B, 字體C;<br></code></pre></td></tr></table></figure>
-
-<p>假設使用者的電腦系統中僅存在 “字體B”，此時瀏覽器載入網頁時，會根據上述設定先判斷系統內是否有對應的字體A，但因為系統中找不到這個字體，因此會跳過該字體並判斷下一個字體B，此時找到字體B之後，就會套用該字體，並且不再往下進行判斷。</p>
-<h3 id="語法注意事項"><a href="#語法注意事項" class="headerlink" title="語法注意事項"></a>語法注意事項</h3><p>在部分字體的選用上，同一個字體可以選擇使用中文名稱或英文名稱的屬性值設定，其結果會相同，以下方原始碼為例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: <span class="hljs-string">&quot;Microsoft JhengHei&quot;</span>;<br><span class="hljs-attribute">font-family</span>: 微軟正黑體;<br></code></pre></td></tr></table></figure>
-
-<p>從上述語法中可以發現，第一行的字體加上了雙引號，這是因為該字體的名稱之間如果存在空白，在不加上雙引號的情形下，瀏覽器會無法辨識而導致讀取失敗。</p>
-<p>另一個值得注意的是，雖然使用中文名稱來設定字體結果與英文名稱相同，但是只單獨設定中文名稱的話，可能會遇到編碼的問題而導致結果不如預期，因此會建議使用英文名稱的屬性值，或是中、英文一起使用，以下方原始碼為例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: <span class="hljs-string">&quot;Microsoft JhengHei&quot;</span>, 微軟正黑體;<br></code></pre></td></tr></table></figure>
-
-
-<h2 id="Font-Family-字體類型"><a href="#Font-Family-字體類型" class="headerlink" title="Font-Family 字體類型"></a>Font-Family 字體類型</h2><p>在當今這麼大量的字體中，主要可以分為 “指定字體” 與 “通用字體” 兩種類型。</p>
-<h3 id="指定字體（family-name）"><a href="#指定字體（family-name）" class="headerlink" title="指定字體（family-name）"></a>指定字體（family-name）</h3><p>不同的字體也會影響網頁的視覺感受，因此在選用字體時，通常會優先使用指定的字體。</p>
-<h3 id="通用字體（generic-family）"><a href="#通用字體（generic-family）" class="headerlink" title="通用字體（generic-family）"></a>通用字體（generic-family）</h3><p>通用字體可以理解成多數的電腦系統中，內建就已存在的字體，常見的通用字體有以下五種，其中無襯線體、襯線體使用最為廣泛：</p>
-<ul>
-<li>sans-serif（無襯線體 / 黑體）</li>
-<li>serif（襯線體 / 明體）</li>
-<li>cursive（手寫體）</li>
-<li>monospace（等寬體）</li>
-<li>fantasy（幻想體）</li>
-</ul>
-<h3 id="設定方式"><a href="#設定方式" class="headerlink" title="設定方式"></a>設定方式</h3><p>雖然可以透過指定字體名稱的方式，來達到自訂網頁上想要呈現的字體，但是並非所有電腦系統都有對應的指定字體，因此在使用指定字體時，通常都會在 font-family 屬性值的<strong>最後方位置</strong>設定預設的通用字體；而前面有提到 font-family 是由左至右判斷屬性值，所以當瀏覽器不支援或無法從系統中找到前方所對應的指定字體時，就會套用最後設定的通用字體，設定格式如下：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: 指定字體, <span class="hljs-string">&quot;指定 字體&quot;</span>, 通用字體;<br></code></pre></td></tr></table></figure>
-
-
-<h2 id="字體順序觀念"><a href="#字體順序觀念" class="headerlink" title="字體順序觀念"></a>字體順序觀念</h2><p>本篇一開始在設定規則的地方有簡單提到字體是由左邊開始判斷，但是在順序方面還有一些重要觀念需要熟記，這邊先記住以下設定順序，後續會說明原因：</p>
-<p>設定順序：<strong>英文字體 &gt; Linux &gt; Mac &gt; Windows &gt; 通用字體</strong></p>
-<!-- 這部分一直沒有比較好的解釋 -->
-
-
-
-<h3 id="中、英文順序"><a href="#中、英文順序" class="headerlink" title="中、英文順序"></a>中、英文順序</h3><p>一個網頁通常會存在多個語言（以中、英文為例），但是並非所有的字體都同時支援中、英文，因此許多網頁會利用這個由左至右判斷的技巧，分別針對中文與英文各別設定不同的字體，以下方原始碼為例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: Arial, 微軟正黑體;<br></code></pre></td></tr></table></figure>
-
-<p>上述設定中，Arial 只有英文字體，而微軟正黑體則是中、英文字體都有，因此瀏覽器在判斷 Arial 之後，就會因為符合條件而套用英文字體，而中文會因為找不到對應字體則往下判斷微軟正黑體並套用，此時網頁上的中文與英文就會呈現不同字體的效果。</p>
-<p>但是如果順序換成微軟正黑體在前面，瀏覽器就會先判斷微軟正黑體，因為該字體中、英文都可以使用，所以網頁上的兩種語言都會套用成微軟正黑體，而後面的 Arial 會因為英文字體已套用成微軟正黑體而不會被讀取。</p>
-<p>因此，正確的屬性值順序為<strong>英文字體在前面，中文字體在後面。</strong></p>
-<h3 id="字體使用率與順序"><a href="#字體使用率與順序" class="headerlink" title="字體使用率與順序"></a>字體使用率與順序</h3><p>每個作業系統都有自己的系統字體，例如 -apple-system 與 BlinkMacSystemFont 分別是 iOS 以及 macOS 的系統字體，並且前者只能使用在 Safari 瀏覽器上，後者則是用於 Chrome，像這種只能使用在特定系統或瀏覽器的字體，順序就需要放在前面，以下方原始碼為例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: -apple-system, BlinkMacSystemFont, <span class="hljs-string">&quot;Segoe UI&quot;</span>, <span class="hljs-string">&quot;Microsoft JhengHei&quot;</span>, Roboto, <span class="hljs-string">&quot;Helvetica Neue&quot;</span>, Arial, sans-serif;<br>	     <span class="hljs-comment">/* mac系統字體, iOS系統字體,	windows英文系統字體, 微軟正黑體, Android系統字體, iOS系統字體, 通用字體, 通用字體 */</span><br></code></pre></td></tr></table></figure>
-
-<p>假設使用者電腦系統為 windows，瀏覽器因為在系統中找不到 -apple-system 與 BlinkMacSystemFont 而直接跳過這兩個字體，而下一個 Segoe UI 屬於 windows 的英文系統字體，因此英文字體就會套用 Segoe UI，中文字體則是因為 Segoe UI 並沒有對應的中文而判斷下一個值，最終套用 Microsoft JhengHei。</p>
-<p>如果電腦系統是 macOS 並且使用 Chrome 瀏覽網頁，當瀏覽器在讀取到 -apple-system 時，就會套用對應的中文及英文字體，並且不再往下判斷。</p>
-<p>因此，為了適應各種不同的瀏覽器與作業系統，在設定字體時需要把<strong>較少使用到的字體放前面，較常使用到的字體放後面。</strong></p>
-<h2 id="實務範例"><a href="#實務範例" class="headerlink" title="實務範例"></a>實務範例</h2><p>附上幾個知名企業的字體設定當作參考，有興趣的也可以自行研究順序邏輯。</p>
-<p>Apple（台灣）：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: <span class="hljs-string">&quot;SF Pro TC&quot;</span>, <span class="hljs-string">&quot;SF Pro Text&quot;</span>, <span class="hljs-string">&quot;SF Pro Icons&quot;</span>, <span class="hljs-string">&quot;PingFang TC&quot;</span>, <span class="hljs-string">&quot;Helvetica Neue&quot;</span>, <span class="hljs-string">&quot;Helvetica&quot;</span>, <span class="hljs-string">&quot;Arial&quot;</span>, sans-serif;<br></code></pre></td></tr></table></figure>
-
-<p>微軟台灣：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: <span class="hljs-string">&#x27;Segoe UI&#x27;</span>, SegoeUI, <span class="hljs-string">&#x27;Microsoft JhengHei&#x27;</span>, 微軟正黑體, <span class="hljs-string">&quot;Helvetica Neue&quot;</span>, Helvetica, Arial, sans-serif;<br></code></pre></td></tr></table></figure>
-
-<p>Google：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: arial, sans-serif;  <span class="hljs-comment">/* 這絕對不是懶(? */</span><br></code></pre></td></tr></table></figure>
-
-
-
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://www.oxxostudio.tw/articles/201811/css-font-family.html">CSS font-family 詳細介紹</a><br><a href="https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/180456/#outline__1_2_1">最標準的系統字型規範 font-family</a><br><a href="https://www.casper.tw/css/2014/01/01/font-family/">font-family要怎麼玩</a></p>
-]]></content>
-      <categories>
-        <category>CSS</category>
-      </categories>
-      <tags>
-        <tag>font-family</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>RWD 響應式設計</title>
     <url>/2022-03-14-rwd-note/</url>
     <content><![CDATA[<p>隨著行動裝置的普及，RWD 可以說是現今網頁開發中必備的一項技能，剛好最近也學到這方面的知識，藉此機會寫一篇筆記，提供自己後續資料的查找。</p>
@@ -378,92 +296,85 @@
       </tags>
   </entry>
   <entry>
-    <title>SCSS 實用語法</title>
-    <url>/2022-06-07-sass-note/</url>
-    <content><![CDATA[<p>最近接觸到 Sass/SCSS，覺得各方面的功能都太方便了，這輩子大概不會想回去寫純 CSS 了吧。這篇筆記整理了一些新手必須學會的語法。</p>
+    <title>關於 CSS Font-Family</title>
+    <url>/2022-03-02-css-font-family/</url>
+    <content><![CDATA[<p>在設定字體時，常常會遇到結果不如預期的情況，於是決定研究一下網頁是怎麼套用字體，以及一些相關的注意事項。</p>
 <span id="more"></span>
 <hr>
 <div class="toc">
 <p class="toc-title">目錄：</p>
 
 <ul>
-<li><a href="#%E5%9F%BA%E6%9C%AC%E8%AA%9E%E6%B3%95">基本語法</a></li>
-<li><a href="#%E5%AF%A6%E7%94%A8%E8%AA%9E%E6%B3%95">實用語法</a></li>
+<li><a href="#Font-Family-%E8%A8%AD%E5%AE%9A%E8%A6%8F%E5%89%87">Font-Family 設定規則</a></li>
+<li><a href="#Font-Family-%E5%AD%97%E9%AB%94%E9%A1%9E%E5%9E%8B">Font-Family 字體類型</a></li>
+<li><a href="#%E5%AD%97%E9%AB%94%E9%A0%86%E5%BA%8F%E8%A7%80%E5%BF%B5">字體順序觀念</a></li>
+<li><a href="#%E5%AF%A6%E5%8B%99%E7%AF%84%E4%BE%8B">實務範例</a></li>
 <li><a href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99">參考資料</a></div></li>
 </ul>
-<h2 id="基本語法"><a href="#基本語法" class="headerlink" title="基本語法"></a>基本語法</h2><h3 id="使用-amp-表示父選擇器"><a href="#使用-amp-表示父選擇器" class="headerlink" title="使用 &amp; 表示父選擇器"></a>使用 &amp; 表示父選擇器</h3><p>以下是一個簡單的 Scss 格式設定：</p>
-<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-selector-class">.header</span> &#123;<br>  <span class="hljs-attribute">text-align</span>: center;<br>  <span class="hljs-selector-class">.header-title</span> &#123;<br>    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">2rem</span>;<br>  &#125;<br>  <span class="hljs-selector-tag">a</span> &#123;<br>    <span class="hljs-attribute">padding</span>: <span class="hljs-number">8</span> <span class="hljs-number">16px</span>;<br>    <span class="hljs-attribute">background</span>: <span class="hljs-number">#eee</span>;<br>  &#125;<br>  <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> &#123;<br>    <span class="hljs-attribute">background</span>: <span class="hljs-number">#ddd</span>;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="Font-Family-設定規則"><a href="#Font-Family-設定規則" class="headerlink" title="Font-Family 設定規則"></a>Font-Family 設定規則</h2><p>基本上只要是網頁設計，都會使用到的屬性，可以自訂頁面上的文字字體，但是初學者在使用這個屬性之前，為了避免結果不如預期，建議需要先理解一些設定上的規則。</p>
+<h3 id="字體套用邏輯"><a href="#字體套用邏輯" class="headerlink" title="字體套用邏輯"></a>字體套用邏輯</h3><p>Font-Family 雖然可以設定多個屬性值，但是並不會將所有寫入的字體都一起套用，而是會根據瀏覽器對該字體的支援與否，由左至右依序判斷，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: 字體A, 字體B, 字體C;<br></code></pre></td></tr></table></figure>
 
-<p>上述例子可以改用 &amp; 的方式來撰寫，以 &amp; 符號來表示父層，其運行結果想同，如下所示：</p>
-<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-selector-class">.header</span> &#123;<br>  <span class="hljs-attribute">text-align</span>: center;<br>  &amp;-title &#123;<br>    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">2rem</span>;<br>  &#125;<br>  <span class="hljs-selector-tag">a</span> &#123;<br>    <span class="hljs-attribute">padding</span>: <span class="hljs-number">8</span> <span class="hljs-number">16px</span>;<br>    <span class="hljs-attribute">background</span>: <span class="hljs-number">#eee</span>;<br>    &amp;<span class="hljs-selector-pseudo">:hover</span> &#123;<br>      <span class="hljs-attribute">background</span>: <span class="hljs-number">#ddd</span>;<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>假設使用者的電腦系統中僅存在 “字體B”，此時瀏覽器載入網頁時，會根據上述設定先判斷系統內是否有對應的字體A，但因為系統中找不到這個字體，因此會跳過該字體並判斷下一個字體B，此時找到字體B之後，就會套用該字體，並且不再往下進行判斷。</p>
+<h3 id="語法注意事項"><a href="#語法注意事項" class="headerlink" title="語法注意事項"></a>語法注意事項</h3><p>在部分字體的選用上，同一個字體可以選擇使用中文名稱或英文名稱的屬性值設定，其結果會相同，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: <span class="hljs-string">&quot;Microsoft JhengHei&quot;</span>;<br><span class="hljs-attribute">font-family</span>: 微軟正黑體;<br></code></pre></td></tr></table></figure>
 
-<h3 id="Variable-變數"><a href="#Variable-變數" class="headerlink" title="Variable 變數"></a>Variable 變數</h3><p>一個設定可能會在許多不同的區塊重複被使用，此時就能夠透過變數來統一管理，好處是後續若需要修改值，只需要修改變數值即可，而變數格式為 <code>$name: value</code>，以顏色為範例，如下所示：</p>
-<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-variable">$color-primary</span>: <span class="hljs-number">#00cc99</span>;<br><span class="hljs-selector-class">.header</span> &#123;<br>  &amp;-title &#123;<br>    <span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-primary</span>;<br>  &#125;<br>&#125;<br><span class="hljs-selector-class">.footer</span> &#123;<br>  &amp;-title &#123;<br>    <span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-primary</span>;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>從上述語法中可以發現，第一行的字體加上了雙引號，這是因為該字體的名稱之間如果存在空白，在不加上雙引號的情形下，瀏覽器會無法辨識而導致讀取失敗。</p>
+<p>另一個值得注意的是，雖然使用中文名稱來設定字體結果與英文名稱相同，但是只單獨設定中文名稱的話，可能會遇到編碼的問題而導致結果不如預期，因此會建議使用英文名稱的屬性值，或是中、英文一起使用，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: <span class="hljs-string">&quot;Microsoft JhengHei&quot;</span>, 微軟正黑體;<br></code></pre></td></tr></table></figure>
 
-<p>變數值可使用的格式分別有以下幾種：</p>
+
+<h2 id="Font-Family-字體類型"><a href="#Font-Family-字體類型" class="headerlink" title="Font-Family 字體類型"></a>Font-Family 字體類型</h2><p>在當今這麼大量的字體中，主要可以分為 “指定字體” 與 “通用字體” 兩種類型。</p>
+<h3 id="指定字體（family-name）"><a href="#指定字體（family-name）" class="headerlink" title="指定字體（family-name）"></a>指定字體（family-name）</h3><p>不同的字體也會影響網頁的視覺感受，因此在選用字體時，通常會優先使用指定的字體。</p>
+<h3 id="通用字體（generic-family）"><a href="#通用字體（generic-family）" class="headerlink" title="通用字體（generic-family）"></a>通用字體（generic-family）</h3><p>通用字體可以理解成多數的電腦系統中，內建就已存在的字體，常見的通用字體有以下五種，其中無襯線體、襯線體使用最為廣泛：</p>
 <ul>
-<li>數字：<code>2</code>、<code>16px</code>、<code>2rem</code></li>
-<li>字串：<code>"文字"</code>、<code>"./img/logo.png"</code></li>
-<li>顏色：<code>blue</code>、<code>#00CC99</code>、<code>rgba(0,0,0,0.5)</code></li>
-<li>布林：<code>true</code>、<code>false</code></li>
-<li>空值：<code>null</code></li>
-<li>值列：<code>16px 8px</code>、<code>"arial, sans-serif"</code></li>
-<li>運算：<code>1rem * 1.25</code></li>
+<li>sans-serif（無襯線體 / 黑體）</li>
+<li>serif（襯線體 / 明體）</li>
+<li>cursive（手寫體）</li>
+<li>monospace（等寬體）</li>
+<li>fantasy（幻想體）</li>
 </ul>
-<h3 id="調整色彩明度"><a href="#調整色彩明度" class="headerlink" title="調整色彩明度"></a>調整色彩明度</h3><p>除了直接輸入顏色或色碼，也能夠使用 <code>darken</code>、<code>lighten</code> 來調整所設定顏色的明暗程度，範例如下：</p>
-<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-variable">$color-primary</span>: <span class="hljs-number">#00cc99</span>;<br><span class="hljs-selector-class">.title</span> &#123;<br>  <span class="hljs-attribute">color</span>: darken(<span class="hljs-variable">$color-primary</span>, <span class="hljs-number">25%</span>); <span class="hljs-comment">// 亮度減少 25%</span><br>&#125;<br><span class="hljs-selector-tag">a</span> &#123;<br>  <span class="hljs-attribute">color</span>: lighten(<span class="hljs-number">#ddd</span>, <span class="hljs-number">15%</span>); <span class="hljs-comment">// 亮度增加 15%</span><br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h3 id="import-匯入檔案"><a href="#import-匯入檔案" class="headerlink" title="@import 匯入檔案"></a>@import 匯入檔案</h3><p>較大的專案為了方便管理程式碼，通常會將 scss 檔案進行較細的拆分，而這些拆分出來的檔案可透過 <code>@import</code> 來統一匯入（合併）一個 scss 檔案中，範例如下：</p>
-<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// 目前檔案為 all.scss</span><br><br><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;variable&#x27;</span>;<br><br><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;reset&#x27;</span>;<br><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;base&#x27;</span>;<br><br><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;mixin&#x27;</span>;<br><br><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;main&#x27;</span>;<br></code></pre></td></tr></table></figure>
-
-<blockquote>
-<p>檔案的分類可參考 <a href="https://gist.github.com/rveitch/84cea9650092119527bc">Sass 7-1 Pattern</a>，或是此篇<a href="https://medium.com/ivycodefive/4-%E4%BB%80%E9%BA%BC%E6%98%AFsass-7-1%E6%9E%B6%E6%A7%8B-8687e9a10a64">文章</a>。</p>
-</blockquote>
-<p>補充說明：被合併的 scss 檔案，檔案名稱會使用 _ 做開頭，除了用來表示合併用，也不會被編譯成 css 檔案，但是在匯入時不需要加上下底線，如下所示：</p>
-<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// 正確匯入方式</span><br><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;variable&#x27;</span>;<br><span class="hljs-comment">// 錯誤匯入方式</span><br><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;_variable&#x27;</span>;<br></code></pre></td></tr></table></figure>
-
-<h3 id="mixin-混合多個設定"><a href="#mixin-混合多個設定" class="headerlink" title="@mixin 混合多個設定"></a>@mixin 混合多個設定</h3><p>Mixin 的原理與變數相同，主要是將一些較常使用的語法組合封裝並且定義成一個名稱，等需要使用時，再透過 <code>@include</code> 來導入內容，範例如下：</p>
-<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// _mixin.scss</span><br><span class="hljs-keyword">@mixin</span> textHide &#123; <span class="hljs-comment">// 圖片取代文字</span><br>  <span class="hljs-attribute">display</span>: inline-block;<br>  <span class="hljs-attribute">text-indent</span>: <span class="hljs-number">101%</span>;<br>  <span class="hljs-attribute">white-space</span>: nowrap;<br>  <span class="hljs-attribute">overflow</span>: hidden;<br>&#125;<br><br><span class="hljs-keyword">@mixin</span> desktop &#123; <span class="hljs-comment">// 響應式斷點</span><br>  <span class="hljs-keyword">@media</span> (<span class="hljs-attribute">min-width</span>: <span class="hljs-number">768px</span>) &#123;<br>    <span class="hljs-keyword">@content</span>; <span class="hljs-comment">// 表示導入後所撰寫的內容位置</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// _main.scss</span><br><span class="hljs-selector-tag">h1</span> <span class="hljs-selector-class">.logo</span> &#123;<br>  <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">&quot;images/logo.svg&quot;</span>);<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">150px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">80px</span>;<br>  <span class="hljs-attribute">background-size</span>: contain;<br>  <span class="hljs-keyword">@include</span> textHide;<br>  <span class="hljs-keyword">@include</span> desktop &#123;<br>    <span class="hljs-comment">// 此區塊的內容會對應 @content 位置</span><br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="設定方式"><a href="#設定方式" class="headerlink" title="設定方式"></a>設定方式</h3><p>雖然可以透過指定字體名稱的方式，來達到自訂網頁上想要呈現的字體，但是並非所有電腦系統都有對應的指定字體，因此在使用指定字體時，通常都會在 font-family 屬性值的<strong>最後方位置</strong>設定預設的通用字體；而前面有提到 font-family 是由左至右判斷屬性值，所以當瀏覽器不支援或無法從系統中找到前方所對應的指定字體時，就會套用最後設定的通用字體，設定格式如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: 指定字體, <span class="hljs-string">&quot;指定 字體&quot;</span>, 通用字體;<br></code></pre></td></tr></table></figure>
 
 
-<h2 id="實用語法"><a href="#實用語法" class="headerlink" title="實用語法"></a>實用語法</h2><h3 id="for-運作原理"><a href="#for-運作原理" class="headerlink" title="@for 運作原理"></a>@for 運作原理</h3><p>Sass 的 <code>@for</code> 運作方式類似 JavaScript 的 for 迴圈，能夠依序並重複套用相同的設定，範例如下：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- html --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box box-1&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box box-2&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box box-3&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box box-4&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box box-5&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="字體順序觀念"><a href="#字體順序觀念" class="headerlink" title="字體順序觀念"></a>字體順序觀念</h2><p>本篇一開始在設定規則的地方有簡單提到字體是由左邊開始判斷，但是在順序方面還有一些重要觀念需要熟記，這邊先記住以下設定順序，後續會說明原因：</p>
+<p>設定順序：<strong>英文字體 &gt; Linux &gt; Mac &gt; Windows &gt; 通用字體</strong></p>
+<!-- 這部分一直沒有比較好的解釋 -->
 
-<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// scss</span><br><span class="hljs-selector-class">.box</span> &#123;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<br>&#125;<br><span class="hljs-keyword">@for</span> <span class="hljs-variable">$i</span> from <span class="hljs-number">1</span> through <span class="hljs-number">5</span> &#123; <span class="hljs-comment">// through 若改使用 to，則不包含最終值</span><br>    <span class="hljs-selector-class">.box-</span>#&#123; <span class="hljs-variable">$i</span> &#125;&#123; <span class="hljs-comment">// 變數需要加上 # 並使用 &#123;&#125; 包覆，否則無法正常讀取</span><br>    <span class="hljs-attribute">background</span>: darken( <span class="hljs-number">#eee</span>, <span class="hljs-variable">$i</span> * <span class="hljs-number">5%</span> );<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>上述範例 scss 設定中，第 6 行使用了 <code>@for</code> 方法來設定不同的背景顏色，<code>$i</code> 表示帶入數字的變數，<code>from</code> 會接一個起始值，<code>through</code> 則是會接一個最終值。</p>
-<p>而第 7 行的 <code>$i</code> 會先帶入初始值 1，此時就會針對 <code>.box-1</code> 設定下方的樣式 <code>background: darken( #eee, 1 * 5% )</code>，接著 <code>$i</code> 會再帶入 2，並進行與前一次相同的設定，直到最終值進行結束為止。</p>
-<h3 id="Sass-Map-是甚麼"><a href="#Sass-Map-是甚麼" class="headerlink" title="Sass Map 是甚麼?"></a>Sass Map 是甚麼?</h3><p>Sass Map 是一種集合變數，概念有點類似 JSON，但是不同的地方在於 Sass Map 會將定義的變數透過<strong>小括弧</strong> <code>()</code> 包裝成一個群組，格式為 <code>$變數名稱: (key: value);</code>，範例如下：</p>
-<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-variable">$colors</span>: (<br>  // key: value<br>  <span class="hljs-string">&#x27;primary&#x27;</span>: <span class="hljs-number">#007bff</span>, // 每個設定之間需要使用半形逗號隔開<br>  <span class="hljs-string">&#x27;secondary&#x27;</span>: <span class="hljs-number">#6c757d</span>,<br>  <span class="hljs-string">&#x27;success&#x27;</span>: <span class="hljs-number">#28a745</span><br>); <span class="hljs-comment">// 必須加上 ; 做結尾以免影響後方程式碼運作</span><br></code></pre></td></tr></table></figure>
 
-<p>設定 Sass Map 之後，可以透過 <code>map-get</code> 來取用變數的內容，以上述例子來說，若想取用 <code>$primary</code> 來當作文字的顏色，做法如下：</p>
-<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-selector-tag">h1</span> &#123;<br>  <span class="hljs-attribute">background</span>: map-get(<span class="hljs-variable">$colors</span>, <span class="hljs-string">&#x27;primary&#x27;</span>);<br>&#125;;<br><span class="hljs-selector-tag">h2</span> &#123;<br>  <span class="hljs-attribute">background</span>: map-get(<span class="hljs-variable">$colors</span>, <span class="hljs-string">&#x27;secondary&#x27;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="中、英文順序"><a href="#中、英文順序" class="headerlink" title="中、英文順序"></a>中、英文順序</h3><p>一個網頁通常會存在多個語言（以中、英文為例），但是並非所有的字體都同時支援中、英文，因此許多網頁會利用這個由左至右判斷的技巧，分別針對中文與英文各別設定不同的字體，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: Arial, 微軟正黑體;<br></code></pre></td></tr></table></figure>
 
-<p>以上述範例來說，雖然可以透過 <code>map-get</code> 來取得對應的變數內容，但是若針對個別項目逐一取用設定，效率會相對較低，因此通常會搭配 <code>@each</code> 來做使用。</p>
-<h3 id="each-運作原理"><a href="#each-運作原理" class="headerlink" title="@each 運作原理"></a>@each 運作原理</h3><p>Sass 的 <code>@each</code> 類似 JavaScript 的 each，搭配先前提到的 Sass Map 就可以產出大量的樣式設定，而 <code>@each</code> 的格式為 <code>@each $key, $value in 集合變數&#123;...&#125;</code> ，範例如下：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- HTML --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-primary&quot;</span>&gt;</span>Button1<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-secondary&quot;</span>&gt;</span>Button2<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-success&quot;</span>&gt;</span>Button3<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>上述設定中，Arial 只有英文字體，而微軟正黑體則是中、英文字體都有，因此瀏覽器在判斷 Arial 之後，就會因為符合條件而套用英文字體，而中文會因為找不到對應字體則往下判斷微軟正黑體並套用，此時網頁上的中文與英文就會呈現不同字體的效果。</p>
+<p>但是如果順序換成微軟正黑體在前面，瀏覽器就會先判斷微軟正黑體，因為該字體中、英文都可以使用，所以網頁上的兩種語言都會套用成微軟正黑體，而後面的 Arial 會因為英文字體已套用成微軟正黑體而不會被讀取。</p>
+<p>因此，正確的屬性值順序為<strong>英文字體在前面，中文字體在後面。</strong></p>
+<h3 id="字體使用率與順序"><a href="#字體使用率與順序" class="headerlink" title="字體使用率與順序"></a>字體使用率與順序</h3><p>每個作業系統都有自己的系統字體，例如 -apple-system 與 BlinkMacSystemFont 分別是 iOS 以及 macOS 的系統字體，並且前者只能使用在 Safari 瀏覽器上，後者則是用於 Chrome，像這種只能使用在特定系統或瀏覽器的字體，順序就需要放在前面，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: -apple-system, BlinkMacSystemFont, <span class="hljs-string">&quot;Segoe UI&quot;</span>, <span class="hljs-string">&quot;Microsoft JhengHei&quot;</span>, Roboto, <span class="hljs-string">&quot;Helvetica Neue&quot;</span>, Arial, sans-serif;<br>	     <span class="hljs-comment">/* mac系統字體, iOS系統字體,	windows英文系統字體, 微軟正黑體, Android系統字體, iOS系統字體, 通用字體, 通用字體 */</span><br></code></pre></td></tr></table></figure>
 
-<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// scss</span><br><span class="hljs-selector-class">.btn</span> &#123;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">16px</span>;<br>&#125;<br><span class="hljs-variable">$colors</span>: (<br>  <span class="hljs-string">&#x27;primary&#x27;</span>: <span class="hljs-number">#007bff</span>,<br>  <span class="hljs-string">&#x27;secondary&#x27;</span>: <span class="hljs-number">#6c757d</span>,<br>  <span class="hljs-string">&#x27;success&#x27;</span>: <span class="hljs-number">#28a745</span><br>);<br><span class="hljs-keyword">@each</span> <span class="hljs-variable">$key</span>, <span class="hljs-variable">$value</span> in <span class="hljs-variable">$colors</span> &#123;<br>  <span class="hljs-selector-class">.btn-</span>#&#123;<span class="hljs-variable">$key</span>&#125; &#123;<br>    <span class="hljs-attribute">background</span>: <span class="hljs-variable">$value</span>;<br>  &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>假設使用者電腦系統為 windows，瀏覽器因為在系統中找不到 -apple-system 與 BlinkMacSystemFont 而直接跳過這兩個字體，而下一個 Segoe UI 屬於 windows 的英文系統字體，因此英文字體就會套用 Segoe UI，中文字體則是因為 Segoe UI 並沒有對應的中文而判斷下一個值，最終套用 Microsoft JhengHei。</p>
+<p>如果電腦系統是 macOS 並且使用 Chrome 瀏覽網頁，當瀏覽器在讀取到 -apple-system 時，就會套用對應的中文及英文字體，並且不再往下判斷。</p>
+<p>因此，為了適應各種不同的瀏覽器與作業系統，在設定字體時需要把<strong>較少使用到的字體放前面，較常使用到的字體放後面。</strong></p>
+<h2 id="實務範例"><a href="#實務範例" class="headerlink" title="實務範例"></a>實務範例</h2><p>附上幾個知名企業的字體設定當作參考，有興趣的也可以自行研究順序邏輯。</p>
+<p>Apple（台灣）：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: <span class="hljs-string">&quot;SF Pro TC&quot;</span>, <span class="hljs-string">&quot;SF Pro Text&quot;</span>, <span class="hljs-string">&quot;SF Pro Icons&quot;</span>, <span class="hljs-string">&quot;PingFang TC&quot;</span>, <span class="hljs-string">&quot;Helvetica Neue&quot;</span>, <span class="hljs-string">&quot;Helvetica&quot;</span>, <span class="hljs-string">&quot;Arial&quot;</span>, sans-serif;<br></code></pre></td></tr></table></figure>
 
-<p>上述範例 scss 設定中，第 10 行使用了 <code>@each</code> 並指定了集合變數 <code>$colors</code>，此時變數 <code>$colors</code> 中的每個 key 與 value 就會帶入 <code>@each</code> 大括弧裡的對應位置，最後再套用設定到對應的類別之中。</p>
-<h3 id="extend-合併相同樣式"><a href="#extend-合併相同樣式" class="headerlink" title="@extend 合併相同樣式"></a>@extend 合併相同樣式</h3><p>在進入 <code>@extend</code> 之前，先簡單說明<strong>佔位符選擇器</strong>（Placeholder Selectors）是什麼，它與 class、id 兩種選擇器類似，差別在於佔位符選擇器在 Sass 中會使用 <code>%</code> 來定義，且必須透過 <code>@extend</code> 來調用，在被 <code>@extend</code> 調用之前，本身並不會被編譯到 .css 檔案中。</p>
-<p>進入正題，如果相同的樣式設定被重複使用在多個類別中，可以透過 <code>%</code> 搭配 <code>@extend</code> 的做法，使 Sass 檔案在編譯後，有相同設定的類別就會被合併在一起，以減少多餘的程式碼產生，簡單概念如下：</p>
-<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// .scss 未使用 @extend</span><br><span class="hljs-selector-class">.header-btn</span> &#123;<br>  <span class="hljs-attribute">display</span>: inline-block;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">16px</span>;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#007bff</span>;<br>&#125;<br><span class="hljs-selector-class">.section-btn</span> &#123;<br>  <span class="hljs-attribute">display</span>: inline-block;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">16px</span>;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#6c757d</span>;<br>&#125;<br><span class="hljs-selector-class">.footer-btn</span> &#123;<br>  <span class="hljs-attribute">display</span>: inline-block;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">16px</span>;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#28a745</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>微軟台灣：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: <span class="hljs-string">&#x27;Segoe UI&#x27;</span>, SegoeUI, <span class="hljs-string">&#x27;Microsoft JhengHei&#x27;</span>, 微軟正黑體, <span class="hljs-string">&quot;Helvetica Neue&quot;</span>, Helvetica, Arial, sans-serif;<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// .scss 使用 @extend</span><br>%btn-base &#123;<br>  <span class="hljs-attribute">display</span>: inline-block;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">16px</span>;<br>&#125;<br><span class="hljs-selector-class">.header-btn</span> &#123;<br>  <span class="hljs-keyword">@extend</span> %btn-base;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#007bff</span>;<br>&#125;<br><span class="hljs-selector-class">.section-btn</span> &#123;<br>  <span class="hljs-keyword">@extend</span> %btn-base;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#6c757d</span>;<br>&#125;<br><span class="hljs-selector-class">.footer-btn</span> &#123;<br>  <span class="hljs-keyword">@extend</span> %btn-base;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#28a745</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>Google：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: arial, sans-serif;  <span class="hljs-comment">/* 這絕對不是懶(? */</span><br></code></pre></td></tr></table></figure>
 
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/*  編譯後的 .css  */</span><br><span class="hljs-selector-class">.footer-btn</span>, <span class="hljs-selector-class">.section-btn</span>, <span class="hljs-selector-class">.header-btn</span> &#123; <span class="hljs-comment">/* 相同設定合併在一起 */</span><br>  <span class="hljs-attribute">display</span>: inline-block;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">16px</span>;<br>&#125;<br><span class="hljs-selector-class">.header-btn</span> &#123;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#007bff</span>;<br>&#125;<br><span class="hljs-selector-class">.section-btn</span> &#123;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#6c757d</span>;<br>&#125;<br><span class="hljs-selector-class">.footer-btn</span> &#123;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#28a745</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>可能會有人說，直接將共通的設定寫在一個 <code>.btn</code> 裡面不是比較方便且簡潔嗎？確實是這樣，而上述使用 <code>%btn-base</code> 來當作案例，主要是為了方便理解 <code>@extend</code> 的運作原理，實際上較不會透過以上做法來設定按鈕的共通樣式。</p>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://medium.com/ivycodefive/4-%E4%BB%80%E9%BA%BC%E6%98%AFsass-7-1%E6%9E%B6%E6%A7%8B-8687e9a10a64">什麼是Sass 7-1架構?</a><br><a href="https://www.casper.tw/css/2016/12/25/sass-map/">鐵人賽 25 - 實戰心法 - Sass Map 快出產出大量樣式</a></p>
+
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://www.oxxostudio.tw/articles/201811/css-font-family.html">CSS font-family 詳細介紹</a><br><a href="https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/180456/#outline__1_2_1">最標準的系統字型規範 font-family</a><br><a href="https://www.casper.tw/css/2014/01/01/font-family/">font-family要怎麼玩</a></p>
 ]]></content>
       <categories>
-        <category>Sass/SCSS</category>
+        <category>CSS</category>
       </categories>
       <tags>
-        <tag>note</tag>
+        <tag>font-family</tag>
       </tags>
   </entry>
   <entry>
@@ -568,47 +479,92 @@
       </tags>
   </entry>
   <entry>
-    <title>Flex 水平置中，子元素溢出時避免被裁切</title>
-    <url>/2022-09-17-css-max-content/</url>
-    <content><![CDATA[<p>前一段時間在切版上遇到了一個問題，研究之後發現一個有趣的解決方法，也藉此機會紀錄一下。</p>
+    <title>SCSS 實用語法</title>
+    <url>/2022-06-07-sass-note/</url>
+    <content><![CDATA[<p>最近接觸到 Sass/SCSS，覺得各方面的功能都太方便了，這輩子大概不會想回去寫純 CSS 了吧。這篇筆記整理了一些新手必須學會的語法。</p>
 <span id="more"></span>
 <hr>
 <div class="toc">
 <p class="toc-title">目錄：</p>
 
 <ul>
-<li><a href="#%E5%95%8F%E9%A1%8C">問題</a></li>
-<li><a href="#%E8%A7%A3%E6%B1%BA%E6%96%B9%E5%BC%8F">解決方式</a></div></li>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E8%AA%9E%E6%B3%95">基本語法</a></li>
+<li><a href="#%E5%AF%A6%E7%94%A8%E8%AA%9E%E6%B3%95">實用語法</a></li>
+<li><a href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99">參考資料</a></div></li>
 </ul>
-<h2 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h2><p>以下是範例情境：</p>
-<p><img src="https://i.imgur.com/TK9ZZcF.png"></p>
-<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- HTML --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;section mt-3&quot;</span>&gt;</span>  <br>  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;section-title&quot;</span>&gt;</span>Section Title<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span><br>    ...<br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="基本語法"><a href="#基本語法" class="headerlink" title="基本語法"></a>基本語法</h2><h3 id="使用-amp-表示父選擇器"><a href="#使用-amp-表示父選擇器" class="headerlink" title="使用 &amp; 表示父選擇器"></a>使用 &amp; 表示父選擇器</h3><p>以下是一個簡單的 Scss 格式設定：</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-selector-class">.header</span> &#123;<br>  <span class="hljs-attribute">text-align</span>: center;<br>  <span class="hljs-selector-class">.header-title</span> &#123;<br>    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">2rem</span>;<br>  &#125;<br>  <span class="hljs-selector-tag">a</span> &#123;<br>    <span class="hljs-attribute">padding</span>: <span class="hljs-number">8</span> <span class="hljs-number">16px</span>;<br>    <span class="hljs-attribute">background</span>: <span class="hljs-number">#eee</span>;<br>  &#125;<br>  <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> &#123;<br>    <span class="hljs-attribute">background</span>: <span class="hljs-number">#ddd</span>;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* CSS（上方列表區塊） */</span><br><span class="hljs-selector-class">.list</span> &#123;<br>  <span class="hljs-attribute">display</span>: flex;<br>  <span class="hljs-attribute">justify-content</span>: center;<br>  <span class="hljs-attribute">overflow</span>: auto;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>上述例子可以改用 &amp; 的方式來撰寫，以 &amp; 符號來表示父層，其運行結果想同，如下所示：</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-selector-class">.header</span> &#123;<br>  <span class="hljs-attribute">text-align</span>: center;<br>  &amp;-title &#123;<br>    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">2rem</span>;<br>  &#125;<br>  <span class="hljs-selector-tag">a</span> &#123;<br>    <span class="hljs-attribute">padding</span>: <span class="hljs-number">8</span> <span class="hljs-number">16px</span>;<br>    <span class="hljs-attribute">background</span>: <span class="hljs-number">#eee</span>;<br>    &amp;<span class="hljs-selector-pseudo">:hover</span> &#123;<br>      <span class="hljs-attribute">background</span>: <span class="hljs-number">#ddd</span>;<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>上述範例中，上方 <code>.list</code> 區塊使用 <code>display: flex</code> 加上 <code>justify-content: center</code> 讓子元素置中，同時希望瀏覽器寬度縮小至子元素溢出時，溢出的部分以水平軸方式呈現，因此加入了 <code>overflow: auto</code> 設定，呈現畫面如下：</p>
-<p><img src="https://i.imgur.com/Sn1BMH4.png"></p>
-<p>然而將水平軸向左滾動至最底時，溢出的部分卻被裁切了，而問題就在 <code>justify-content: center</code> 這個屬性上，移除該屬性之後，子元素溢出的部分就會正常呈現，如下：</p>
-<p><img src="https://i.imgur.com/6GYarUd.png"></p>
-<p>此時問題來了，在不使用 <code>justify-content: center</code> 的情況下，要如何同時滿足子元素保持置中，但是溢出情況下不會被裁切呢？在思索一番後想到另一個能使區塊水平置中的語法，就是 <code>margin: 0 auto</code>，不過這個語法只適用具有實際寬度但非滿版的區塊，而範例中的 <code>.list</code> 區塊因為 <code>display: flex</code> 的關係佔了滿版的寬，因此並沒有如預期置中。下圖是區塊實際佔用的空間：</p>
-<p><img src="https://i.imgur.com/WnJz6ud.png"></p>
-<h2 id="解決方式"><a href="#解決方式" class="headerlink" title="解決方式"></a>解決方式</h2><figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* CSS（上方列表區塊） */</span><br><span class="hljs-selector-class">.list</span> &#123;<br>  <span class="hljs-attribute">display</span>: flex;<br>  <span class="hljs-attribute">max-width</span>: max-content;<br>  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;<br>  <span class="hljs-attribute">overflow</span>: auto;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="Variable-變數"><a href="#Variable-變數" class="headerlink" title="Variable 變數"></a>Variable 變數</h3><p>一個設定可能會在許多不同的區塊重複被使用，此時就能夠透過變數來統一管理，好處是後續若需要修改值，只需要修改變數值即可，而變數格式為 <code>$name: value</code>，以顏色為範例，如下所示：</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-variable">$color-primary</span>: <span class="hljs-number">#00cc99</span>;<br><span class="hljs-selector-class">.header</span> &#123;<br>  &amp;-title &#123;<br>    <span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-primary</span>;<br>  &#125;<br>&#125;<br><span class="hljs-selector-class">.footer</span> &#123;<br>  &amp;-title &#123;<br>    <span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-primary</span>;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>僅需在 <code>.list</code> 區塊加上 <code>max-width: max-content</code> 語法即可，而 <code>max-content</code> 最基本的作用是讓區塊寬度或高度自適應子元素，並且當子元素溢出時，內容不會受到擠壓而換行；此處正好利用了前者特性，使 <code>.list</code> 最大寬度等於所有子元素（<code>.list-item</code>）寬度的加總，此時再配合 <code>margin: 0 auto</code> 之後區塊得以置中，並且當子元素溢出時不會被裁切。結果如下圖所示：</p>
-<p><img src="https://i.imgur.com/MLip3hT.png"></p>
-<p><strong>實作範例：</strong></p>
-<iframe src="https://codepen.io/Cliff_hex/embed/bGMqLOq?default-tab=css,result" width="100%" height="300" frameborder="0" loading="lazy" allowfullscreen></iframe>
+<p>變數值可使用的格式分別有以下幾種：</p>
+<ul>
+<li>數字：<code>2</code>、<code>16px</code>、<code>2rem</code></li>
+<li>字串：<code>"文字"</code>、<code>"./img/logo.png"</code></li>
+<li>顏色：<code>blue</code>、<code>#00CC99</code>、<code>rgba(0,0,0,0.5)</code></li>
+<li>布林：<code>true</code>、<code>false</code></li>
+<li>空值：<code>null</code></li>
+<li>值列：<code>16px 8px</code>、<code>"arial, sans-serif"</code></li>
+<li>運算：<code>1rem * 1.25</code></li>
+</ul>
+<h3 id="調整色彩明度"><a href="#調整色彩明度" class="headerlink" title="調整色彩明度"></a>調整色彩明度</h3><p>除了直接輸入顏色或色碼，也能夠使用 <code>darken</code>、<code>lighten</code> 來調整所設定顏色的明暗程度，範例如下：</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-variable">$color-primary</span>: <span class="hljs-number">#00cc99</span>;<br><span class="hljs-selector-class">.title</span> &#123;<br>  <span class="hljs-attribute">color</span>: darken(<span class="hljs-variable">$color-primary</span>, <span class="hljs-number">25%</span>); <span class="hljs-comment">// 亮度減少 25%</span><br>&#125;<br><span class="hljs-selector-tag">a</span> &#123;<br>  <span class="hljs-attribute">color</span>: lighten(<span class="hljs-number">#ddd</span>, <span class="hljs-number">15%</span>); <span class="hljs-comment">// 亮度增加 15%</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="import-匯入檔案"><a href="#import-匯入檔案" class="headerlink" title="@import 匯入檔案"></a>@import 匯入檔案</h3><p>較大的專案為了方便管理程式碼，通常會將 scss 檔案進行較細的拆分，而這些拆分出來的檔案可透過 <code>@import</code> 來統一匯入（合併）一個 scss 檔案中，範例如下：</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// 目前檔案為 all.scss</span><br><br><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;variable&#x27;</span>;<br><br><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;reset&#x27;</span>;<br><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;base&#x27;</span>;<br><br><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;mixin&#x27;</span>;<br><br><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;main&#x27;</span>;<br></code></pre></td></tr></table></figure>
 
 <blockquote>
-<p>max-content 詳細說明請參考此<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/max-content">文章</a></p>
+<p>檔案的分類可參考 <a href="https://gist.github.com/rveitch/84cea9650092119527bc">Sass 7-1 Pattern</a>，或是此篇<a href="https://medium.com/ivycodefive/4-%E4%BB%80%E9%BA%BC%E6%98%AFsass-7-1%E6%9E%B6%E6%A7%8B-8687e9a10a64">文章</a>。</p>
 </blockquote>
+<p>補充說明：被合併的 scss 檔案，檔案名稱會使用 _ 做開頭，除了用來表示合併用，也不會被編譯成 css 檔案，但是在匯入時不需要加上下底線，如下所示：</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// 正確匯入方式</span><br><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;variable&#x27;</span>;<br><span class="hljs-comment">// 錯誤匯入方式</span><br><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;_variable&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<h3 id="mixin-混合多個設定"><a href="#mixin-混合多個設定" class="headerlink" title="@mixin 混合多個設定"></a>@mixin 混合多個設定</h3><p>Mixin 的原理與變數相同，主要是將一些較常使用的語法組合封裝並且定義成一個名稱，等需要使用時，再透過 <code>@include</code> 來導入內容，範例如下：</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// _mixin.scss</span><br><span class="hljs-keyword">@mixin</span> textHide &#123; <span class="hljs-comment">// 圖片取代文字</span><br>  <span class="hljs-attribute">display</span>: inline-block;<br>  <span class="hljs-attribute">text-indent</span>: <span class="hljs-number">101%</span>;<br>  <span class="hljs-attribute">white-space</span>: nowrap;<br>  <span class="hljs-attribute">overflow</span>: hidden;<br>&#125;<br><br><span class="hljs-keyword">@mixin</span> desktop &#123; <span class="hljs-comment">// 響應式斷點</span><br>  <span class="hljs-keyword">@media</span> (<span class="hljs-attribute">min-width</span>: <span class="hljs-number">768px</span>) &#123;<br>    <span class="hljs-keyword">@content</span>; <span class="hljs-comment">// 表示導入後所撰寫的內容位置</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// _main.scss</span><br><span class="hljs-selector-tag">h1</span> <span class="hljs-selector-class">.logo</span> &#123;<br>  <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">&quot;images/logo.svg&quot;</span>);<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">150px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">80px</span>;<br>  <span class="hljs-attribute">background-size</span>: contain;<br>  <span class="hljs-keyword">@include</span> textHide;<br>  <span class="hljs-keyword">@include</span> desktop &#123;<br>    <span class="hljs-comment">// 此區塊的內容會對應 @content 位置</span><br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="實用語法"><a href="#實用語法" class="headerlink" title="實用語法"></a>實用語法</h2><h3 id="for-運作原理"><a href="#for-運作原理" class="headerlink" title="@for 運作原理"></a>@for 運作原理</h3><p>Sass 的 <code>@for</code> 運作方式類似 JavaScript 的 for 迴圈，能夠依序並重複套用相同的設定，範例如下：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- html --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box box-1&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box box-2&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box box-3&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box box-4&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box box-5&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// scss</span><br><span class="hljs-selector-class">.box</span> &#123;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<br>&#125;<br><span class="hljs-keyword">@for</span> <span class="hljs-variable">$i</span> from <span class="hljs-number">1</span> through <span class="hljs-number">5</span> &#123; <span class="hljs-comment">// through 若改使用 to，則不包含最終值</span><br>    <span class="hljs-selector-class">.box-</span>#&#123; <span class="hljs-variable">$i</span> &#125;&#123; <span class="hljs-comment">// 變數需要加上 # 並使用 &#123;&#125; 包覆，否則無法正常讀取</span><br>    <span class="hljs-attribute">background</span>: darken( <span class="hljs-number">#eee</span>, <span class="hljs-variable">$i</span> * <span class="hljs-number">5%</span> );<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>上述範例 scss 設定中，第 6 行使用了 <code>@for</code> 方法來設定不同的背景顏色，<code>$i</code> 表示帶入數字的變數，<code>from</code> 會接一個起始值，<code>through</code> 則是會接一個最終值。</p>
+<p>而第 7 行的 <code>$i</code> 會先帶入初始值 1，此時就會針對 <code>.box-1</code> 設定下方的樣式 <code>background: darken( #eee, 1 * 5% )</code>，接著 <code>$i</code> 會再帶入 2，並進行與前一次相同的設定，直到最終值進行結束為止。</p>
+<h3 id="Sass-Map-是甚麼"><a href="#Sass-Map-是甚麼" class="headerlink" title="Sass Map 是甚麼?"></a>Sass Map 是甚麼?</h3><p>Sass Map 是一種集合變數，概念有點類似 JSON，但是不同的地方在於 Sass Map 會將定義的變數透過<strong>小括弧</strong> <code>()</code> 包裝成一個群組，格式為 <code>$變數名稱: (key: value);</code>，範例如下：</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-variable">$colors</span>: (<br>  // key: value<br>  <span class="hljs-string">&#x27;primary&#x27;</span>: <span class="hljs-number">#007bff</span>, // 每個設定之間需要使用半形逗號隔開<br>  <span class="hljs-string">&#x27;secondary&#x27;</span>: <span class="hljs-number">#6c757d</span>,<br>  <span class="hljs-string">&#x27;success&#x27;</span>: <span class="hljs-number">#28a745</span><br>); <span class="hljs-comment">// 必須加上 ; 做結尾以免影響後方程式碼運作</span><br></code></pre></td></tr></table></figure>
+
+<p>設定 Sass Map 之後，可以透過 <code>map-get</code> 來取用變數的內容，以上述例子來說，若想取用 <code>$primary</code> 來當作文字的顏色，做法如下：</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-selector-tag">h1</span> &#123;<br>  <span class="hljs-attribute">background</span>: map-get(<span class="hljs-variable">$colors</span>, <span class="hljs-string">&#x27;primary&#x27;</span>);<br>&#125;;<br><span class="hljs-selector-tag">h2</span> &#123;<br>  <span class="hljs-attribute">background</span>: map-get(<span class="hljs-variable">$colors</span>, <span class="hljs-string">&#x27;secondary&#x27;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>以上述範例來說，雖然可以透過 <code>map-get</code> 來取得對應的變數內容，但是若針對個別項目逐一取用設定，效率會相對較低，因此通常會搭配 <code>@each</code> 來做使用。</p>
+<h3 id="each-運作原理"><a href="#each-運作原理" class="headerlink" title="@each 運作原理"></a>@each 運作原理</h3><p>Sass 的 <code>@each</code> 類似 JavaScript 的 each，搭配先前提到的 Sass Map 就可以產出大量的樣式設定，而 <code>@each</code> 的格式為 <code>@each $key, $value in 集合變數&#123;...&#125;</code> ，範例如下：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- HTML --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-primary&quot;</span>&gt;</span>Button1<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-secondary&quot;</span>&gt;</span>Button2<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-success&quot;</span>&gt;</span>Button3<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// scss</span><br><span class="hljs-selector-class">.btn</span> &#123;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">16px</span>;<br>&#125;<br><span class="hljs-variable">$colors</span>: (<br>  <span class="hljs-string">&#x27;primary&#x27;</span>: <span class="hljs-number">#007bff</span>,<br>  <span class="hljs-string">&#x27;secondary&#x27;</span>: <span class="hljs-number">#6c757d</span>,<br>  <span class="hljs-string">&#x27;success&#x27;</span>: <span class="hljs-number">#28a745</span><br>);<br><span class="hljs-keyword">@each</span> <span class="hljs-variable">$key</span>, <span class="hljs-variable">$value</span> in <span class="hljs-variable">$colors</span> &#123;<br>  <span class="hljs-selector-class">.btn-</span>#&#123;<span class="hljs-variable">$key</span>&#125; &#123;<br>    <span class="hljs-attribute">background</span>: <span class="hljs-variable">$value</span>;<br>  &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>上述範例 scss 設定中，第 10 行使用了 <code>@each</code> 並指定了集合變數 <code>$colors</code>，此時變數 <code>$colors</code> 中的每個 key 與 value 就會帶入 <code>@each</code> 大括弧裡的對應位置，最後再套用設定到對應的類別之中。</p>
+<h3 id="extend-合併相同樣式"><a href="#extend-合併相同樣式" class="headerlink" title="@extend 合併相同樣式"></a>@extend 合併相同樣式</h3><p>在進入 <code>@extend</code> 之前，先簡單說明<strong>佔位符選擇器</strong>（Placeholder Selectors）是什麼，它與 class、id 兩種選擇器類似，差別在於佔位符選擇器在 Sass 中會使用 <code>%</code> 來定義，且必須透過 <code>@extend</code> 來調用，在被 <code>@extend</code> 調用之前，本身並不會被編譯到 .css 檔案中。</p>
+<p>進入正題，如果相同的樣式設定被重複使用在多個類別中，可以透過 <code>%</code> 搭配 <code>@extend</code> 的做法，使 Sass 檔案在編譯後，有相同設定的類別就會被合併在一起，以減少多餘的程式碼產生，簡單概念如下：</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// .scss 未使用 @extend</span><br><span class="hljs-selector-class">.header-btn</span> &#123;<br>  <span class="hljs-attribute">display</span>: inline-block;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">16px</span>;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#007bff</span>;<br>&#125;<br><span class="hljs-selector-class">.section-btn</span> &#123;<br>  <span class="hljs-attribute">display</span>: inline-block;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">16px</span>;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#6c757d</span>;<br>&#125;<br><span class="hljs-selector-class">.footer-btn</span> &#123;<br>  <span class="hljs-attribute">display</span>: inline-block;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">16px</span>;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#28a745</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// .scss 使用 @extend</span><br>%btn-base &#123;<br>  <span class="hljs-attribute">display</span>: inline-block;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">16px</span>;<br>&#125;<br><span class="hljs-selector-class">.header-btn</span> &#123;<br>  <span class="hljs-keyword">@extend</span> %btn-base;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#007bff</span>;<br>&#125;<br><span class="hljs-selector-class">.section-btn</span> &#123;<br>  <span class="hljs-keyword">@extend</span> %btn-base;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#6c757d</span>;<br>&#125;<br><span class="hljs-selector-class">.footer-btn</span> &#123;<br>  <span class="hljs-keyword">@extend</span> %btn-base;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#28a745</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/*  編譯後的 .css  */</span><br><span class="hljs-selector-class">.footer-btn</span>, <span class="hljs-selector-class">.section-btn</span>, <span class="hljs-selector-class">.header-btn</span> &#123; <span class="hljs-comment">/* 相同設定合併在一起 */</span><br>  <span class="hljs-attribute">display</span>: inline-block;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">16px</span>;<br>&#125;<br><span class="hljs-selector-class">.header-btn</span> &#123;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#007bff</span>;<br>&#125;<br><span class="hljs-selector-class">.section-btn</span> &#123;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#6c757d</span>;<br>&#125;<br><span class="hljs-selector-class">.footer-btn</span> &#123;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#28a745</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>可能會有人說，直接將共通的設定寫在一個 <code>.btn</code> 裡面不是比較方便且簡潔嗎？確實是這樣，而上述使用 <code>%btn-base</code> 來當作案例，主要是為了方便理解 <code>@extend</code> 的運作原理，實際上較不會透過以上做法來設定按鈕的共通樣式。</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://medium.com/ivycodefive/4-%E4%BB%80%E9%BA%BC%E6%98%AFsass-7-1%E6%9E%B6%E6%A7%8B-8687e9a10a64">什麼是Sass 7-1架構?</a><br><a href="https://www.casper.tw/css/2016/12/25/sass-map/">鐵人賽 25 - 實戰心法 - Sass Map 快出產出大量樣式</a></p>
 ]]></content>
       <categories>
-        <category>CSS</category>
+        <category>Sass/SCSS</category>
       </categories>
       <tags>
-        <tag>flex</tag>
-        <tag>overflow</tag>
+        <tag>note</tag>
       </tags>
   </entry>
   <entry>
@@ -677,6 +633,91 @@
       </categories>
       <tags>
         <tag>function</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Flex 水平置中，子元素溢出時避免被裁切</title>
+    <url>/2022-09-17-css-max-content/</url>
+    <content><![CDATA[<p>前一段時間在切版上遇到了一個問題，研究之後發現一個有趣的解決方法，也藉此機會紀錄一下。</p>
+<span id="more"></span>
+<hr>
+<div class="toc">
+<p class="toc-title">目錄：</p>
+
+<ul>
+<li><a href="#%E5%95%8F%E9%A1%8C">問題</a></li>
+<li><a href="#%E8%A7%A3%E6%B1%BA%E6%96%B9%E5%BC%8F">解決方式</a></div></li>
+</ul>
+<h2 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h2><p>以下是範例情境：</p>
+<p><img src="https://i.imgur.com/TK9ZZcF.png"></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- HTML --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;section mt-3&quot;</span>&gt;</span>  <br>  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;section-title&quot;</span>&gt;</span>Section Title<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span><br>    ...<br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* CSS（上方列表區塊） */</span><br><span class="hljs-selector-class">.list</span> &#123;<br>  <span class="hljs-attribute">display</span>: flex;<br>  <span class="hljs-attribute">justify-content</span>: center;<br>  <span class="hljs-attribute">overflow</span>: auto;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>上述範例中，上方 <code>.list</code> 區塊使用 <code>display: flex</code> 加上 <code>justify-content: center</code> 讓子元素置中，同時希望瀏覽器寬度縮小至子元素溢出時，溢出的部分以水平軸方式呈現，因此加入了 <code>overflow: auto</code> 設定，呈現畫面如下：</p>
+<p><img src="https://i.imgur.com/Sn1BMH4.png"></p>
+<p>然而將水平軸向左滾動至最底時，溢出的部分卻被裁切了，而問題就在 <code>justify-content: center</code> 這個屬性上，移除該屬性之後，子元素溢出的部分就會正常呈現，如下：</p>
+<p><img src="https://i.imgur.com/6GYarUd.png"></p>
+<p>此時問題來了，在不使用 <code>justify-content: center</code> 的情況下，要如何同時滿足子元素保持置中，但是溢出情況下不會被裁切呢？在思索一番後想到另一個能使區塊水平置中的語法，就是 <code>margin: 0 auto</code>，不過這個語法只適用具有實際寬度但非滿版的區塊，而範例中的 <code>.list</code> 區塊因為 <code>display: flex</code> 的關係佔了滿版的寬，因此並沒有如預期置中。下圖是區塊實際佔用的空間：</p>
+<p><img src="https://i.imgur.com/WnJz6ud.png"></p>
+<h2 id="解決方式"><a href="#解決方式" class="headerlink" title="解決方式"></a>解決方式</h2><figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* CSS（上方列表區塊） */</span><br><span class="hljs-selector-class">.list</span> &#123;<br>  <span class="hljs-attribute">display</span>: flex;<br>  <span class="hljs-attribute">max-width</span>: max-content;<br>  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;<br>  <span class="hljs-attribute">overflow</span>: auto;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>僅需在 <code>.list</code> 區塊加上 <code>max-width: max-content</code> 語法即可，而 <code>max-content</code> 最基本的作用是讓區塊寬度或高度自適應子元素，並且當子元素溢出時，內容不會受到擠壓而換行；此處正好利用了前者特性，使 <code>.list</code> 最大寬度等於所有子元素（<code>.list-item</code>）寬度的加總，此時再配合 <code>margin: 0 auto</code> 之後區塊得以置中，並且當子元素溢出時不會被裁切。結果如下圖所示：</p>
+<p><img src="https://i.imgur.com/MLip3hT.png"></p>
+<p><strong>實作範例：</strong></p>
+<iframe src="https://codepen.io/Cliff_hex/embed/bGMqLOq?default-tab=css,result" width="100%" height="300" frameborder="0" loading="lazy" allowfullscreen></iframe>
+
+<blockquote>
+<p>max-content 詳細說明請參考此<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/max-content">文章</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>flex</tag>
+        <tag>overflow</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript 觀念 - 同步與非同步</title>
+    <url>/2022-09-20-javascript-sync-async/</url>
+    <content><![CDATA[<p>這篇僅記錄同步、非同步是什麼樣的概念，並沒有處理非同步問題的方式。</p>
+<span id="more"></span>
+
+<hr>
+<div class="toc">
+<p class="toc-title">目錄：</p>
+
+<ul>
+<li><a href="#JavaScript-%E4%B8%AD%E7%9A%84%E5%90%8C%E6%AD%A5">JavaScript 中的同步</a></li>
+<li><a href="#%E4%BD%95%E8%AC%82%E9%9D%9E%E5%90%8C%E6%AD%A5%EF%BC%9F">何謂非同步？</a></li>
+<li><a href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99">參考資料</a></div></li>
+</ul>
+<h2 id="JavaScript-中的同步"><a href="#JavaScript-中的同步" class="headerlink" title="JavaScript 中的同步"></a>JavaScript 中的同步</h2><p>「同步（Synchronous）」在你的認知上會怎麼解釋？我自己原本的想法是同時處理很多事情，但這個說法在 JavaScript 卻有些出入，原因在於 JavaScript 是以「單執行緒（單線程）」的方式在執行程序，特性是「一次只做一件事，前面的事做完才會依序做下一件事」。</p>
+<blockquote>
+<p>執行緒相關內容可參考此<a href="https://www.itread01.com/ixyfq.html">文章</a>。</p>
+</blockquote>
+<p>範例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printNum</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;1&#x27;</span>);<br>&#125; <br>printNum();<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;2&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>以上面程式碼來說，會先執行函式 <code>printNum</code> 印出 <code>1</code>，接著再印出 <code>2</code>，並且兩者是有先後順序的，屬於同步執行。</p>
+<h2 id="何謂非同步？"><a href="#何謂非同步？" class="headerlink" title="何謂非同步？"></a>何謂非同步？</h2><p>「非同步（Asynchronous）」特性是「可以同時做很多事，並且不需要等待前面的事做完就能做下一件事」，其實就是自己一開始對同步的認知。</p>
+<p>範例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">setTimeout</span>(printNum, <span class="hljs-number">2000</span>);<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printNum</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;1&#x27;</span>);<br>&#125; <br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;2&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>程式碼中 <code>setTimeout</code> 會分別帶入 <code>callback</code>、<code>等待毫秒</code> 兩個參數，而回調函式 <code>printNum</code> 被設定 2 秒後才執行，但是這程中第 5 行的程式碼並不會等待前面的函式 <code>printNum</code>  執行完才動作，而是先印出 <code>2</code>，等待 2 秒之後呼叫函式 <code>printNum</code> 並印出 <code>1</code>。</p>
+<p>但是 JavaScript 屬於單執行緒，所以一次應該只會做一件事，為什麼會有範例中非同步的狀況？原因是 JavaScript 在 V8 引擎（JavaScript 引擎）運行時，引擎在運作時是同步的，但是除了引擎內的 JavaScript 原始程式碼之外，瀏覽器也會提供許多 Web APIs（如：document、MouseEvent、setTimeout…等等），這些並不屬於 V8 引擎的範疇，但是可以透過呼叫並使用它們做到非同步的行為，並且不會影響到 JavaScript 主程式的運行，可以理解成 JavaScript 需要依賴 Web APIs 才能達成非同步的效果。</p>
+<p>而 <code>setTimeout</code> 等待的期間，程式碼為甚麼能夠繼續往下執行？原因是當 Web APIs 與自己寫的 JavaScript 在瀏覽器一起執行時，透過 Web APIs 非同步呼叫的 callback function 會被放到 Callback Queue（儲列 / 佇列）待命，等到其他程式碼都執行完之後才會被呼叫。</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://chanchandev.com/js/Async/async-sync-intro/2534378084/">Javascript 非同步 &amp; Event Loop！10 分鐘輕鬆圖解學習！</a></p>
+<p><a href="https://5xruby.tw/posts/how-js-synchronous-works">無痛理解 JS | 非同步怎麼運作？</a></p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>synchronous</tag>
+        <tag>asynchronous</tag>
       </tags>
   </entry>
   <entry>
@@ -835,9 +876,9 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript 觀念 - 同步與非同步</title>
-    <url>/2022-09-20-javascript-sync-async/</url>
-    <content><![CDATA[<p>這篇僅記錄同步、非同步是什麼樣的概念，並沒有處理非同步問題的方式。</p>
+    <title>JavaScript 筆記 - 迴圈</title>
+    <url>/2022-10-07-javascript-loop/</url>
+    <content><![CDATA[<p>雖然 for 迴圈能做到的事情，陣列方法中的 forEach 幾乎都能做到，但基於好奇心，還是想理解一下迴圈是怎麼運作的。</p>
 <span id="more"></span>
 
 <hr>
@@ -845,34 +886,170 @@
 <p class="toc-title">目錄：</p>
 
 <ul>
-<li><a href="#JavaScript-%E4%B8%AD%E7%9A%84%E5%90%8C%E6%AD%A5">JavaScript 中的同步</a></li>
-<li><a href="#%E4%BD%95%E8%AC%82%E9%9D%9E%E5%90%8C%E6%AD%A5%EF%BC%9F">何謂非同步？</a></li>
-<li><a href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99">參考資料</a></div></li>
+<li><a href="#for">for</a></li>
+<li><a href="#while">while</a></li>
+<li><a href="#break-%E8%88%87-continue">break 與 continue</a></div></li>
 </ul>
-<h2 id="JavaScript-中的同步"><a href="#JavaScript-中的同步" class="headerlink" title="JavaScript 中的同步"></a>JavaScript 中的同步</h2><p>「同步（Synchronous）」在你的認知上會怎麼解釋？我自己原本的想法是同時處理很多事情，但這個說法在 JavaScript 卻有些出入，原因在於 JavaScript 是以「單執行緒（單線程）」的方式在執行程序，特性是「一次只做一件事，前面的事做完才會依序做下一件事」。</p>
+<p class="first-text-not-title">迴圈（Loop）指的就是不斷重複做一件事情，當條件滿足就執行一次，一直到不符合條件就終止迴圈，常見的迴圈有 for、while，還有一個 do...while，不過這篇筆記先不提。</p>
+
+
+<h2 id="for"><a href="#for" class="headerlink" title="for"></a>for</h2><p>範例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> step = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">10</span>; i++) &#123;<br>  step += i;<br>  <span class="hljs-built_in">console</span>.log(i); <span class="hljs-comment">// 0, 1, 2...10</span><br>&#125;<br><span class="hljs-built_in">console</span>.log(step); <span class="hljs-comment">// 55</span><br></code></pre></td></tr></table></figure>
+
+<p>for 迴圈小括號中的 <code>i</code> 是一個變數，而左到右依序分別代表<strong>初始值</strong>、<strong>條件</strong>以及<strong>結束時的變動</strong>，以範例來說，<code>i</code> 從 <code>0</code> 開始，如果  <code>i &lt;= 10</code> 條件為 true，就執行大括號<code>&#123;&#125;</code>裡面的程式碼，執行結束後 <code>i</code> 就加 <code>1</code>，反覆循環直到條件為 false 時，就跳出迴圈。</p>
+<p>使用 for 迴圈需要注意小括號中的變數 <code>i</code>，盡可能都使用 <code>let</code> 來宣告，如果用 <code>var</code> 宣告，則變數 <code>i</code> 的作用域就不會在 for 迴圈的大括號裡面。</p>
+<h2 id="while"><a href="#while" class="headerlink" title="while"></a>while</h2><p>範例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">while</span>(i &lt;= <span class="hljs-number">10</span>) &#123;<br>  <span class="hljs-built_in">console</span>.log(i); <span class="hljs-comment">// 0, 1, 2...10</span><br>  i ++;<br>&#125;<br><span class="hljs-built_in">console</span>.log(i); <span class="hljs-comment">// 11</span><br></code></pre></td></tr></table></figure>
+
+<p>while 迴圈比較直白，可以將一個變數放入小括號中進行條件判斷，當判斷為 true 時，就執行大括號 <code>&#123;&#125;</code> 中的程式碼，而結束時的變動需加入執行的程式碼當中，如大括號中的 <code>i ++</code>。</p>
 <blockquote>
-<p>執行緒相關內容可參考此<a href="https://www.itread01.com/ixyfq.html">文章</a>。</p>
+<p>無論是使用 for 還是 white，終止迴圈的條件都要多加留意，以避免造成無窮迴圈，無窮迴圈意味著你的迴圈永遠不會終止，以上面 white 迴圈為例，如果不加上 <code>i ++</code>，每次判斷都會是 true。</p>
 </blockquote>
-<p>範例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printNum</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;1&#x27;</span>);<br>&#125; <br>printNum();<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;2&#x27;</span>);<br></code></pre></td></tr></table></figure>
+<h2 id="break-與-continue"><a href="#break-與-continue" class="headerlink" title="break 與 continue"></a>break 與 continue</h2><p>雖然迴圈可以重複執行程式碼，但是有時候可能會希望迴圈在達到某個目的時，就終止迴圈而非一路執行到底，此時就可以使用 break 或是 continue，通常會搭配 if 一起使用。</p>
+<h3 id="break"><a href="#break" class="headerlink" title="break"></a>break</h3><p>break 能夠直接終止迴圈，以下面程式碼為例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> numList = [<span class="hljs-number">9</span>,<span class="hljs-number">5</span>,<span class="hljs-number">12</span>,<span class="hljs-number">21</span>,<span class="hljs-number">7</span>,<span class="hljs-number">11</span>,<span class="hljs-number">16</span>];<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt;= numList.length-<span class="hljs-number">1</span>; i++) &#123;<br>  <span class="hljs-keyword">if</span>(i % <span class="hljs-number">3</span> === <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-built_in">console</span>.log(numList[i]);<br>    <span class="hljs-keyword">break</span>;<br>  &#125;<br>&#125;<br><span class="hljs-comment">// 9</span><br></code></pre></td></tr></table></figure>
 
-<p>以上面程式碼來說，會先執行函式 <code>printNum</code> 印出 <code>1</code>，接著再印出 <code>2</code>，並且兩者是有先後順序的，屬於同步執行。</p>
-<h2 id="何謂非同步？"><a href="#何謂非同步？" class="headerlink" title="何謂非同步？"></a>何謂非同步？</h2><p>「非同步（Asynchronous）」特性是「可以同時做很多事，並且不需要等待前面的事做完就能做下一件事」，其實就是自己一開始對同步的認知。</p>
-<p>範例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">setTimeout</span>(printNum, <span class="hljs-number">2000</span>);<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printNum</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;1&#x27;</span>);<br>&#125; <br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;2&#x27;</span>);<br></code></pre></td></tr></table></figure>
+<p>找出陣列中第一個能夠被 3 整除的數字，找到後終止迴圈。</p>
+<h3 id="continue"><a href="#continue" class="headerlink" title="continue"></a>continue</h3><p>continue 可以在執行迴圈的過程中，跳過一些指定特定的條件：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> numList = [<span class="hljs-number">9</span>,<span class="hljs-number">5</span>,<span class="hljs-number">12</span>,<span class="hljs-number">21</span>,<span class="hljs-number">7</span>,<span class="hljs-number">11</span>,<span class="hljs-number">16</span>];<br><span class="hljs-keyword">const</span> newAry = [];<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt;= numList.length-<span class="hljs-number">1</span>; i++) &#123;<br>  <span class="hljs-keyword">if</span>(i % <span class="hljs-number">3</span> === <span class="hljs-number">0</span>) &#123;<br>    newAry.push(numList[i]);<br>    <span class="hljs-keyword">continue</span>;<br>  &#125;<br>&#125;<br><span class="hljs-built_in">console</span>.log(newAry); <span class="hljs-comment">// [9, 21, 16]</span><br></code></pre></td></tr></table></figure>
 
-<p>程式碼中 <code>setTimeout</code> 會分別帶入 <code>callback</code>、<code>等待毫秒</code> 兩個參數，而回調函式 <code>printNum</code> 被設定 2 秒後才執行，但是這程中第 5 行的程式碼並不會等待前面的函式 <code>printNum</code>  執行完才動作，而是先印出 <code>2</code>，等待 2 秒之後呼叫函式 <code>printNum</code> 並印出 <code>1</code>。</p>
-<p>但是 JavaScript 屬於單執行緒，所以一次應該只會做一件事，為什麼會有範例中非同步的狀況？原因是 JavaScript 在 V8 引擎（JavaScript 引擎）運行時，引擎在運作時是同步的，但是除了引擎內的 JavaScript 原始程式碼之外，瀏覽器也會提供許多 Web APIs（如：document、MouseEvent、setTimeout…等等），這些並不屬於 V8 引擎的範疇，但是可以透過呼叫並使用它們做到非同步的行為，並且不會影響到 JavaScript 主程式的運行，可以理解成 JavaScript 需要依賴 Web APIs 才能達成非同步的效果。</p>
-<p>而 <code>setTimeout</code> 等待的期間，程式碼為甚麼能夠繼續往下執行？原因是當 Web APIs 與自己寫的 JavaScript 在瀏覽器一起執行時，透過 Web APIs 非同步呼叫的 callback function 會被放到 Callback Queue（儲列 / 佇列）待命，等到其他程式碼都執行完之後才會被呼叫。</p>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://chanchandev.com/js/Async/async-sync-intro/2534378084/">Javascript 非同步 &amp; Event Loop！10 分鐘輕鬆圖解學習！</a></p>
-<p><a href="https://5xruby.tw/posts/how-js-synchronous-works">無痛理解 JS | 非同步怎麼運作？</a></p>
+<p>將陣列 <code>numList</code> 中符合 3 的倍數的項目篩選出來，再依序加入新陣列 <code>newAry</code> 中。</p>
 ]]></content>
       <categories>
         <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>synchronous</tag>
-        <tag>asynchronous</tag>
+        <tag>note</tag>
+        <tag>loop</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript 筆記 - 字串方法</title>
+    <url>/2022-10-11-javascript-string-methods/</url>
+    <content><![CDATA[<p>紀錄一下常用的字串處理方法。</p>
+<span id="more"></span>
+
+<hr>
+<div class="toc">
+<p class="toc-title">目錄：</p>
+
+<ul>
+<li><a href="#length">length</a></li>
+<li><a href="#split">split</a></li>
+<li><a href="#concat">concat</a></li>
+<li><a href="#indexOf">indexOf</a></li>
+<li><a href="#replace">replace</a></li>
+<li><a href="#match">match</a></li>
+<li><a href="#substring">substring</a></li>
+<li><a href="#slice">slice</a></li>
+<li><a href="#toUpperCase-toLowerCase">toUpperCase / toLowerCase</a></div></li>
+</ul>
+<h2 id="length"><a href="#length" class="headerlink" title="length"></a>length</h2><p>可以取得字串的字數。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.length<br></code></pre></td></tr></table></figure>
+
+<p>範例：取得字串字數</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> strLength = str.length;<br><span class="hljs-built_in">console</span>.log(strLength); <span class="hljs-comment">// 11</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="split"><a href="#split" class="headerlink" title="split"></a>split</h2><p>可以將字串分割，並將被分割的字串依序存入一個新陣列中。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.split(separator)<br></code></pre></td></tr></table></figure>
+
+<p>參數 <code>separator</code> 表示指定的分割字符（依據甚麼內容做分割）。</p>
+<p>範例一：以半形空白做分割</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;hello world&quot;</span>;<br><span class="hljs-keyword">const</span> arr = str.split(<span class="hljs-string">&quot; &quot;</span>);<br><span class="hljs-built_in">console</span>.log(arr); <span class="hljs-comment">// [&quot;hello&quot;, &quot;world&quot;]</span><br></code></pre></td></tr></table></figure>
+
+<p>範例二：以空字串做分割</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;hello world&quot;</span>;<br><span class="hljs-keyword">const</span> arr = str.split(<span class="hljs-string">&quot;&quot;</span>);<br><span class="hljs-built_in">console</span>.log(arr); <span class="hljs-comment">// [&quot;h&quot;,&quot;e&quot;,&quot;l&quot;,&quot;l&quot;,&quot;o&quot;,&quot; &quot;,&quot;w&quot;,&quot;o&quot;,&quot;r&quot;,&quot;l&quot;,&quot;d&quot;]</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="concat"><a href="#concat" class="headerlink" title="concat"></a>concat</h2><p>可以連接多個字串，並且不會影響原字串，如果連接的內容的型別不是字串，則會轉型為字串再連接。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.concat(str2, ...strN)<br></code></pre></td></tr></table></figure>
+
+<p>參數 <code>str2</code>、<code>...strN</code> 表示要連接的字串，會被連接在原字串後方。</p>
+<p>範例一：連接字串</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello&#x27;</span>;<br><span class="hljs-keyword">let</span> concatStr = str.concat(<span class="hljs-string">&#x27; &#x27;</span>,<span class="hljs-string">&#x27;world&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(concatStr); <span class="hljs-comment">// &quot;hello world&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>範例二：連接非字串型別</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;123&#x27;</span>;<br><span class="hljs-keyword">let</span> concatStr = str.concat(<span class="hljs-number">456</span>);<br><span class="hljs-built_in">console</span>.log(concatStr); <span class="hljs-comment">// &quot;123456&quot;</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/concat">MDN</a> 文件中提到，建議使用 +、+= 來取代 concat()。</p>
+</blockquote>
+<h2 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf"></a>indexOf</h2><p>可以尋找字串中指定的字串位置，只會尋找第一個符合的字串，若找不到則回傳 <code>-1</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.indexOf(searchValue, position)<br></code></pre></td></tr></table></figure>
+
+<p>參數 <code>searchValue</code> 表示要搜尋的字串內容，<code>position</code> 則是起點的索引（選用）。</p>
+<p>範例一：尋找字串中 “e” 索引位置</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> strIndex = str.indexOf(<span class="hljs-string">&#x27;e&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(strIndex); <span class="hljs-comment">// 1</span><br></code></pre></td></tr></table></figure>
+
+<p>範例二：尋找指定內容</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> strIndex = str.indexOf(<span class="hljs-string">&#x27;world&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(strIndex); <span class="hljs-comment">// 6</span><br></code></pre></td></tr></table></figure>
+
+<p>範例三：找不到指定內容</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> strIndex = str.indexOf(<span class="hljs-string">&#x27;a&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(strIndex); <span class="hljs-comment">// -1</span><br></code></pre></td></tr></table></figure>
+
+<p>範例四：從索引 3 開始尋找字串中 “e” 的位置</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> strIndex = str.indexOf(<span class="hljs-string">&#x27;e&#x27;</span>, <span class="hljs-number">3</span>);<br><span class="hljs-built_in">console</span>.log(strIndex); <span class="hljs-comment">// -1（起點位置為第 4 個字，因此找不到第二個字 e）</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="replace"><a href="#replace" class="headerlink" title="replace"></a>replace</h2><p>可以將字串內容替換成指定的字串。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.replace(oriStr, newStr)<br></code></pre></td></tr></table></figure>
+
+<p>參數 <code>oriStr</code> 表示需要做替換的內容，一般情況下只能取代第一個符合的字串，如果要全部替換，需要搭配正規表達式，<code>newStr</code> 則表示替換後的內容。</p>
+<p>範例一：將字串中的第一個 “o” 替換為 “i”</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.replace(<span class="hljs-string">&#x27;o&#x27;</span>, <span class="hljs-string">&#x27;i&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// &quot;helli world&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>範例二：搭配正規表達式，將字串中所有 “o” 替換為 “i”</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.replace(<span class="hljs-regexp">/o/g</span>, <span class="hljs-string">&#x27;i&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// &quot;helli wirld&quot;</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>若需要全部取代，除了使用正規表達式之外，也可以透過 replaceAll() 方法來達成。</p>
+</blockquote>
+<h2 id="match"><a href="#match" class="headerlink" title="match"></a>match</h2><p>會回傳「匹配到的字串內容」，為一個陣列，若找不到匹配的字串，則回傳 <code>null</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.match(regexp)<br></code></pre></td></tr></table></figure>
+
+<p>參數 <code>regexp</code> 表示想要匹配的字串內容，通常會搭配正規表達式，若使用 <code>g</code> 字符，回傳的陣列內容為所有匹配到的字串，反之，則只有第一個匹配到的字串，並且帶有附加屬性。</p>
+<p>範例一：不使用正規表達式</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.match(<span class="hljs-string">&#x27;l&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// [&#x27;l&#x27;, index: 2, input: &#x27;hello world&#x27;, groups: undefined]</span><br></code></pre></td></tr></table></figure>
+
+<p>範例二：搭配正規表達式（不使用 <code>g</code> 字符）</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.match(<span class="hljs-regexp">/l/</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// [&#x27;l&#x27;, index: 2, input: &#x27;hello world&#x27;, groups: undefined]</span><br></code></pre></td></tr></table></figure>
+
+<p>範例三：搭配正規表達式（使用 <code>g</code> 字符）</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.match(<span class="hljs-regexp">/l/g</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// [&#x27;l&#x27;, &#x27;l&#x27;, &#x27;l&#x27;]</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="substring"><a href="#substring" class="headerlink" title="substring"></a>substring</h2><p>可以取得字串中，兩個索引位置之間的文字內容。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.substring(indexStart, indexEnd)<br></code></pre></td></tr></table></figure>
+
+<p>參數 <code>indexStart</code> 表示起始索引，<code>indexEnd</code> 則是結束索引，若不使用結束索引，範圍則會是起始索引到最後一個字之間，此外，起始、結束索引對調不影響結果。</p>
+<p>範例一：取出索引位置 2 到 8 之間的文字</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.substring(<span class="hljs-number">2</span>, <span class="hljs-number">8</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// &quot;llo wo&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>範例二：取得索引位置 6 到最後一個字之間的文字</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.substring(<span class="hljs-number">6</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// &quot;world&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="slice"><a href="#slice" class="headerlink" title="slice"></a>slice</h2><p>作用與 <code>substring</code> 類似，差別在於 <code>slice</code> 參數可以傳入負數。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.slice(indexStart, indexEnd)<br></code></pre></td></tr></table></figure>
+
+<p>參數 <code>indexStart</code> 表示起始索引，若為負值，<code>indexEnd</code> 則是結束索引，若不使用結束索引，範圍則會是起始索引到最後一個字之間，若使用負值，則索引順序會從字串最後一個字往回計算。</p>
+<p>範例一：取得索引位置 2 到 8 之間的文字</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.substring(<span class="hljs-number">2</span>, <span class="hljs-number">8</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// &quot;llo wo&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>範例二：取得倒數第 5 個字，到最後一個字之間的文字</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.slice(-<span class="hljs-number">5</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// &quot;world&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="toUpperCase-toLowerCase"><a href="#toUpperCase-toLowerCase" class="headerlink" title="toUpperCase / toLowerCase"></a>toUpperCase / toLowerCase</h2><p>可以將字串中的字母轉換為大、小寫</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.toUpperCase() <span class="hljs-comment">// 轉換為大寫</span><br>str.toLowerCase() <span class="hljs-comment">// 轉換為小寫</span><br></code></pre></td></tr></table></figure>
+
+<p>範例一：轉換為大寫</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> upperCaseStr = str.toUpperCase();<br><span class="hljs-built_in">console</span>.log(upperCaseStr); <span class="hljs-comment">// &quot;HELLO WORLD&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>範例二：轉換為小寫</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;HELLO WORLD&#x27;</span>;<br><span class="hljs-keyword">let</span> lowerCaseStr = str.toLowerCase();<br><span class="hljs-built_in">console</span>.log(lowerCaseStr); <span class="hljs-comment">// &quot;hello world&quot;</span><br></code></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>string</tag>
       </tags>
   </entry>
   <entry>
@@ -1010,54 +1187,6 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript 筆記 - 迴圈</title>
-    <url>/2022-10-07-javascript-loop/</url>
-    <content><![CDATA[<p>雖然 for 迴圈能做到的事情，陣列方法中的 forEach 幾乎都能做到，但基於好奇心，還是想理解一下迴圈是怎麼運作的。</p>
-<span id="more"></span>
-
-<hr>
-<div class="toc">
-<p class="toc-title">目錄：</p>
-
-<ul>
-<li><a href="#for">for</a></li>
-<li><a href="#while">while</a></li>
-<li><a href="#break-%E8%88%87-continue">break 與 continue</a></div></li>
-</ul>
-<p class="first-text-not-title">迴圈（Loop）指的就是不斷重複做一件事情，當條件滿足就執行一次，一直到不符合條件就終止迴圈，常見的迴圈有 for、while，還有一個 do...while，不過這篇筆記先不提。</p>
-
-
-<h2 id="for"><a href="#for" class="headerlink" title="for"></a>for</h2><p>範例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> step = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">10</span>; i++) &#123;<br>  step += i;<br>  <span class="hljs-built_in">console</span>.log(i); <span class="hljs-comment">// 0, 1, 2...10</span><br>&#125;<br><span class="hljs-built_in">console</span>.log(step); <span class="hljs-comment">// 55</span><br></code></pre></td></tr></table></figure>
-
-<p>for 迴圈小括號中的 <code>i</code> 是一個變數，而左到右依序分別代表<strong>初始值</strong>、<strong>條件</strong>以及<strong>結束時的變動</strong>，以範例來說，<code>i</code> 從 <code>0</code> 開始，如果  <code>i &lt;= 10</code> 條件為 true，就執行大括號<code>&#123;&#125;</code>裡面的程式碼，執行結束後 <code>i</code> 就加 <code>1</code>，反覆循環直到條件為 false 時，就跳出迴圈。</p>
-<p>使用 for 迴圈需要注意小括號中的變數 <code>i</code>，盡可能都使用 <code>let</code> 來宣告，如果用 <code>var</code> 宣告，則變數 <code>i</code> 的作用域就不會在 for 迴圈的大括號裡面。</p>
-<h2 id="while"><a href="#while" class="headerlink" title="while"></a>while</h2><p>範例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">while</span>(i &lt;= <span class="hljs-number">10</span>) &#123;<br>  <span class="hljs-built_in">console</span>.log(i); <span class="hljs-comment">// 0, 1, 2...10</span><br>  i ++;<br>&#125;<br><span class="hljs-built_in">console</span>.log(i); <span class="hljs-comment">// 11</span><br></code></pre></td></tr></table></figure>
-
-<p>while 迴圈比較直白，可以將一個變數放入小括號中進行條件判斷，當判斷為 true 時，就執行大括號 <code>&#123;&#125;</code> 中的程式碼，而結束時的變動需加入執行的程式碼當中，如大括號中的 <code>i ++</code>。</p>
-<blockquote>
-<p>無論是使用 for 還是 white，終止迴圈的條件都要多加留意，以避免造成無窮迴圈，無窮迴圈意味著你的迴圈永遠不會終止，以上面 white 迴圈為例，如果不加上 <code>i ++</code>，每次判斷都會是 true。</p>
-</blockquote>
-<h2 id="break-與-continue"><a href="#break-與-continue" class="headerlink" title="break 與 continue"></a>break 與 continue</h2><p>雖然迴圈可以重複執行程式碼，但是有時候可能會希望迴圈在達到某個目的時，就終止迴圈而非一路執行到底，此時就可以使用 break 或是 continue，通常會搭配 if 一起使用。</p>
-<h3 id="break"><a href="#break" class="headerlink" title="break"></a>break</h3><p>break 能夠直接終止迴圈，以下面程式碼為例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> numList = [<span class="hljs-number">9</span>,<span class="hljs-number">5</span>,<span class="hljs-number">12</span>,<span class="hljs-number">21</span>,<span class="hljs-number">7</span>,<span class="hljs-number">11</span>,<span class="hljs-number">16</span>];<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt;= numList.length-<span class="hljs-number">1</span>; i++) &#123;<br>  <span class="hljs-keyword">if</span>(i % <span class="hljs-number">3</span> === <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-built_in">console</span>.log(numList[i]);<br>    <span class="hljs-keyword">break</span>;<br>  &#125;<br>&#125;<br><span class="hljs-comment">// 9</span><br></code></pre></td></tr></table></figure>
-
-<p>找出陣列中第一個能夠被 3 整除的數字，找到後終止迴圈。</p>
-<h3 id="continue"><a href="#continue" class="headerlink" title="continue"></a>continue</h3><p>continue 可以在執行迴圈的過程中，跳過一些指定特定的條件：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> numList = [<span class="hljs-number">9</span>,<span class="hljs-number">5</span>,<span class="hljs-number">12</span>,<span class="hljs-number">21</span>,<span class="hljs-number">7</span>,<span class="hljs-number">11</span>,<span class="hljs-number">16</span>];<br><span class="hljs-keyword">const</span> newAry = [];<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt;= numList.length-<span class="hljs-number">1</span>; i++) &#123;<br>  <span class="hljs-keyword">if</span>(i % <span class="hljs-number">3</span> === <span class="hljs-number">0</span>) &#123;<br>    newAry.push(numList[i]);<br>    <span class="hljs-keyword">continue</span>;<br>  &#125;<br>&#125;<br><span class="hljs-built_in">console</span>.log(newAry); <span class="hljs-comment">// [9, 21, 16]</span><br></code></pre></td></tr></table></figure>
-
-<p>將陣列 <code>numList</code> 中符合 3 的倍數的項目篩選出來，再依序加入新陣列 <code>newAry</code> 中。</p>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>note</tag>
-        <tag>loop</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JavaScript 觀念 - 傳值、傳參考</title>
     <url>/2022-10-20-javascript-by-value-by-reference/</url>
     <content><![CDATA[<p>什麼情況下是傳遞純值，什麼情況又是傳遞記憶體參考位址？</p>
@@ -1111,135 +1240,6 @@
       </categories>
       <tags>
         <tag>call by reference</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript 筆記 - 字串方法</title>
-    <url>/2022-10-11-javascript-string-methods/</url>
-    <content><![CDATA[<p>紀錄一下常用的字串處理方法。</p>
-<span id="more"></span>
-
-<hr>
-<div class="toc">
-<p class="toc-title">目錄：</p>
-
-<ul>
-<li><a href="#length">length</a></li>
-<li><a href="#split">split</a></li>
-<li><a href="#concat">concat</a></li>
-<li><a href="#indexOf">indexOf</a></li>
-<li><a href="#replace">replace</a></li>
-<li><a href="#match">match</a></li>
-<li><a href="#substring">substring</a></li>
-<li><a href="#slice">slice</a></li>
-<li><a href="#toUpperCase-toLowerCase">toUpperCase / toLowerCase</a></div></li>
-</ul>
-<h2 id="length"><a href="#length" class="headerlink" title="length"></a>length</h2><p>可以取得字串的字數。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.length<br></code></pre></td></tr></table></figure>
-
-<p>範例：取得字串字數</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> strLength = str.length;<br><span class="hljs-built_in">console</span>.log(strLength); <span class="hljs-comment">// 11</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="split"><a href="#split" class="headerlink" title="split"></a>split</h2><p>可以將字串分割，並將被分割的字串依序存入一個新陣列中。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.split(separator)<br></code></pre></td></tr></table></figure>
-
-<p>參數 <code>separator</code> 表示指定的分割字符（依據甚麼內容做分割）。</p>
-<p>範例一：以半形空白做分割</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;hello world&quot;</span>;<br><span class="hljs-keyword">const</span> arr = str.split(<span class="hljs-string">&quot; &quot;</span>);<br><span class="hljs-built_in">console</span>.log(arr); <span class="hljs-comment">// [&quot;hello&quot;, &quot;world&quot;]</span><br></code></pre></td></tr></table></figure>
-
-<p>範例二：以空字串做分割</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;hello world&quot;</span>;<br><span class="hljs-keyword">const</span> arr = str.split(<span class="hljs-string">&quot;&quot;</span>);<br><span class="hljs-built_in">console</span>.log(arr); <span class="hljs-comment">// [&quot;h&quot;,&quot;e&quot;,&quot;l&quot;,&quot;l&quot;,&quot;o&quot;,&quot; &quot;,&quot;w&quot;,&quot;o&quot;,&quot;r&quot;,&quot;l&quot;,&quot;d&quot;]</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="concat"><a href="#concat" class="headerlink" title="concat"></a>concat</h2><p>可以連接多個字串，並且不會影響原字串，如果連接的內容的型別不是字串，則會轉型為字串再連接。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.concat(str2, ...strN)<br></code></pre></td></tr></table></figure>
-
-<p>參數 <code>str2</code>、<code>...strN</code> 表示要連接的字串，會被連接在原字串後方。</p>
-<p>範例一：連接字串</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello&#x27;</span>;<br><span class="hljs-keyword">let</span> concatStr = str.concat(<span class="hljs-string">&#x27; &#x27;</span>,<span class="hljs-string">&#x27;world&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(concatStr); <span class="hljs-comment">// &quot;hello world&quot;</span><br></code></pre></td></tr></table></figure>
-
-<p>範例二：連接非字串型別</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;123&#x27;</span>;<br><span class="hljs-keyword">let</span> concatStr = str.concat(<span class="hljs-number">456</span>);<br><span class="hljs-built_in">console</span>.log(concatStr); <span class="hljs-comment">// &quot;123456&quot;</span><br></code></pre></td></tr></table></figure>
-
-<blockquote>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/concat">MDN</a> 文件中提到，建議使用 +、+= 來取代 concat()。</p>
-</blockquote>
-<h2 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf"></a>indexOf</h2><p>可以尋找字串中指定的字串位置，只會尋找第一個符合的字串，若找不到則回傳 <code>-1</code>。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.indexOf(searchValue, position)<br></code></pre></td></tr></table></figure>
-
-<p>參數 <code>searchValue</code> 表示要搜尋的字串內容，<code>position</code> 則是起點的索引（選用）。</p>
-<p>範例一：尋找字串中 “e” 索引位置</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> strIndex = str.indexOf(<span class="hljs-string">&#x27;e&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(strIndex); <span class="hljs-comment">// 1</span><br></code></pre></td></tr></table></figure>
-
-<p>範例二：尋找指定內容</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> strIndex = str.indexOf(<span class="hljs-string">&#x27;world&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(strIndex); <span class="hljs-comment">// 6</span><br></code></pre></td></tr></table></figure>
-
-<p>範例三：找不到指定內容</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> strIndex = str.indexOf(<span class="hljs-string">&#x27;a&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(strIndex); <span class="hljs-comment">// -1</span><br></code></pre></td></tr></table></figure>
-
-<p>範例四：從索引 3 開始尋找字串中 “e” 的位置</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> strIndex = str.indexOf(<span class="hljs-string">&#x27;e&#x27;</span>, <span class="hljs-number">3</span>);<br><span class="hljs-built_in">console</span>.log(strIndex); <span class="hljs-comment">// -1（起點位置為第 4 個字，因此找不到第二個字 e）</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="replace"><a href="#replace" class="headerlink" title="replace"></a>replace</h2><p>可以將字串內容替換成指定的字串。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.replace(oriStr, newStr)<br></code></pre></td></tr></table></figure>
-
-<p>參數 <code>oriStr</code> 表示需要做替換的內容，一般情況下只能取代第一個符合的字串，如果要全部替換，需要搭配正規表達式，<code>newStr</code> 則表示替換後的內容。</p>
-<p>範例一：將字串中的第一個 “o” 替換為 “i”</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.replace(<span class="hljs-string">&#x27;o&#x27;</span>, <span class="hljs-string">&#x27;i&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// &quot;helli world&quot;</span><br></code></pre></td></tr></table></figure>
-
-<p>範例二：搭配正規表達式，將字串中所有 “o” 替換為 “i”</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.replace(<span class="hljs-regexp">/o/g</span>, <span class="hljs-string">&#x27;i&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// &quot;helli wirld&quot;</span><br></code></pre></td></tr></table></figure>
-
-<blockquote>
-<p>若需要全部取代，除了使用正規表達式之外，也可以透過 replaceAll() 方法來達成。</p>
-</blockquote>
-<h2 id="match"><a href="#match" class="headerlink" title="match"></a>match</h2><p>會回傳「匹配到的字串內容」，為一個陣列，若找不到匹配的字串，則回傳 <code>null</code>。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.match(regexp)<br></code></pre></td></tr></table></figure>
-
-<p>參數 <code>regexp</code> 表示想要匹配的字串內容，通常會搭配正規表達式，若使用 <code>g</code> 字符，回傳的陣列內容為所有匹配到的字串，反之，則只有第一個匹配到的字串，並且帶有附加屬性。</p>
-<p>範例一：不使用正規表達式</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.match(<span class="hljs-string">&#x27;l&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// [&#x27;l&#x27;, index: 2, input: &#x27;hello world&#x27;, groups: undefined]</span><br></code></pre></td></tr></table></figure>
-
-<p>範例二：搭配正規表達式（不使用 <code>g</code> 字符）</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.match(<span class="hljs-regexp">/l/</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// [&#x27;l&#x27;, index: 2, input: &#x27;hello world&#x27;, groups: undefined]</span><br></code></pre></td></tr></table></figure>
-
-<p>範例三：搭配正規表達式（使用 <code>g</code> 字符）</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.match(<span class="hljs-regexp">/l/g</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// [&#x27;l&#x27;, &#x27;l&#x27;, &#x27;l&#x27;]</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="substring"><a href="#substring" class="headerlink" title="substring"></a>substring</h2><p>可以取得字串中，兩個索引位置之間的文字內容。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.substring(indexStart, indexEnd)<br></code></pre></td></tr></table></figure>
-
-<p>參數 <code>indexStart</code> 表示起始索引，<code>indexEnd</code> 則是結束索引，若不使用結束索引，範圍則會是起始索引到最後一個字之間，此外，起始、結束索引對調不影響結果。</p>
-<p>範例一：取出索引位置 2 到 8 之間的文字</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.substring(<span class="hljs-number">2</span>, <span class="hljs-number">8</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// &quot;llo wo&quot;</span><br></code></pre></td></tr></table></figure>
-
-<p>範例二：取得索引位置 6 到最後一個字之間的文字</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.substring(<span class="hljs-number">6</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// &quot;world&quot;</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="slice"><a href="#slice" class="headerlink" title="slice"></a>slice</h2><p>作用與 <code>substring</code> 類似，差別在於 <code>slice</code> 參數可以傳入負數。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.slice(indexStart, indexEnd)<br></code></pre></td></tr></table></figure>
-
-<p>參數 <code>indexStart</code> 表示起始索引，若為負值，<code>indexEnd</code> 則是結束索引，若不使用結束索引，範圍則會是起始索引到最後一個字之間，若使用負值，則索引順序會從字串最後一個字往回計算。</p>
-<p>範例一：取得索引位置 2 到 8 之間的文字</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.substring(<span class="hljs-number">2</span>, <span class="hljs-number">8</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// &quot;llo wo&quot;</span><br></code></pre></td></tr></table></figure>
-
-<p>範例二：取得倒數第 5 個字，到最後一個字之間的文字</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> newStr = str.slice(-<span class="hljs-number">5</span>);<br><span class="hljs-built_in">console</span>.log(newStr); <span class="hljs-comment">// &quot;world&quot;</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="toUpperCase-toLowerCase"><a href="#toUpperCase-toLowerCase" class="headerlink" title="toUpperCase / toLowerCase"></a>toUpperCase / toLowerCase</h2><p>可以將字串中的字母轉換為大、小寫</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">str.toUpperCase() <span class="hljs-comment">// 轉換為大寫</span><br>str.toLowerCase() <span class="hljs-comment">// 轉換為小寫</span><br></code></pre></td></tr></table></figure>
-
-<p>範例一：轉換為大寫</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world&#x27;</span>;<br><span class="hljs-keyword">let</span> upperCaseStr = str.toUpperCase();<br><span class="hljs-built_in">console</span>.log(upperCaseStr); <span class="hljs-comment">// &quot;HELLO WORLD&quot;</span><br></code></pre></td></tr></table></figure>
-
-<p>範例二：轉換為小寫</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;HELLO WORLD&#x27;</span>;<br><span class="hljs-keyword">let</span> lowerCaseStr = str.toLowerCase();<br><span class="hljs-built_in">console</span>.log(lowerCaseStr); <span class="hljs-comment">// &quot;hello world&quot;</span><br></code></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>string</tag>
       </tags>
   </entry>
   <entry>
@@ -1356,6 +1356,56 @@
       </tags>
   </entry>
   <entry>
+    <title>JavaScript 筆記 - Promise</title>
+    <url>/2022-10-27-javascript-promise/</url>
+    <content><![CDATA[<p>在研究 AJAX 時，認識了這個 Promise 新語法，因此決定先停筆，來稍微理解 Promise 的基本的運作方式，內容會慢慢補充完整。</p>
+<span id="more"></span>
+
+<hr>
+<div class="toc">
+<p class="toc-title">目錄：</p>
+
+<ul>
+<li><a href="#%E7%8B%80%E6%85%8B">狀態</a></li>
+<li><a href="#%E5%BB%BA%E7%AB%8B-Promise-%E7%89%A9%E4%BB%B6">建立 Promise 物件</a></li>
+<li><a href="#then%E3%80%81catch">then、catch</a></div></li>
+</ul>
+<p>Promise 是 ES6 新增的語法，用於處理非同步的行為，以白話文的方式說就是「我會幫你做一件事，結果會成功或失敗不確定，但是做完後會把結果告訴你」，換句話說，Promise 可以理解成一個表示成功或失敗的未來值。</p>
+<h2 id="狀態"><a href="#狀態" class="headerlink" title="狀態"></a>狀態</h2><p>一個 Promise 在處理非同步操作的過程中，會有以下幾種狀態：</p>
+<ol>
+<li><code>pending</code>：操作尚未處理完成，結果待定。</li>
+<li><code>settled</code>：操作已處理完成，結果已確定，為以下兩種結果之一：<ul>
+<li><code>fulfilled</code>：操作成功，Promise 已被實現。</li>
+<li><code>rejected</code>：操作失敗，Promise 已被拒絕。</li>
+</ul>
+</li>
+</ol>
+<h2 id="建立-Promise-物件"><a href="#建立-Promise-物件" class="headerlink" title="建立 Promise 物件"></a>建立 Promise 物件</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(executor)<br></code></pre></td></tr></table></figure>
+<p>Promise 是一個建構函式，需要透過 <code>new</code> 關鍵字來建立，接收一個函式（<code>executor</code>）作為參數參數，用來封裝非同步的操作。</p>
+<p>當 Promise 完成非同步操作後，若操作成功（狀態 <code>fulfilled</code>），可以呼叫函式 <code>resolve</code> 回傳結果，並且可以使用 <code>then</code> 來接收結果，反之，若操作失敗（狀態 <code>rejected</code>），可以呼叫 <code>reject</code> 來回傳結果，並使用 <code>catch</code> 來接收結果，而無論成功或失敗只會得到一個結果。</p>
+<p>Promise 一般通常會用函式封裝，當需要取得非同步操作結果時，再呼叫該函是即可，範例如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>) </span>&#123;<br>    <span class="hljs-comment">// ...</span><br>  &#125;)<br>&#125;<br>fn();<br><br><span class="hljs-built_in">console</span>.log(fn());<br></code></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/pTVfu2l.png"></p>
+<p>也可以從 <code>console.log</code> 看到 Promise 目前的狀態 <code>PromiseState</code>，以及等待向外回傳的結果 <code>PromiseResault</code>。</p>
+<p>以下是簡單的非同步操作範例：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">promiseAsyncOperate</span>(<span class="hljs-params">status</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>) </span>&#123;<br>    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>      <span class="hljs-keyword">if</span>(status) &#123;<br>        resolve(<span class="hljs-string">&#x27;非同步操作成功&#x27;</span>);<br>      &#125;<span class="hljs-keyword">else</span>&#123;<br>        reject(<span class="hljs-string">&#x27;非同步操作失敗&#x27;</span>);<br>      &#125;<br>    &#125;, <span class="hljs-number">1000</span>);<br>  &#125;)<br>&#125;<br>promiseAsyncOperate(<span class="hljs-literal">true</span>) <span class="hljs-comment">// 模擬非同步操作成功</span><br></code></pre></td></tr></table></figure>
+<p>上述建立了一個函式 <code>promiseAsyncOperate</code> 來將非同步操作封裝起來，並且以參數 <code>status</code> 來模擬非同步操作的結果為成功或失敗，接著執行函式並傳入 <code>true</code>。</p>
+<blockquote>
+<p>實務上非同步操作的成功與否並不是由我們決定的，以 AJAX 來說，當瀏覽器對伺服器發出請求時，可能會因為各種因素而影響到伺服器回傳的結果，範例只是透過模擬來演示過程。</p>
+</blockquote>
+<p>此時函式中的 Promise 就會執行，而因為傳入 <code>true</code> 的關係，判斷式中的 <code>resolve</code> 會被呼叫，並且回傳非同步操作的結果，以範例來說就是代入的字串內容。</p>
+<h2 id="then、catch"><a href="#then、catch" class="headerlink" title="then、catch"></a>then、catch</h2><p>接續上一個範例，若需要將回傳結果進行後續的處理改怎麼做？這個問題前面就有提到，<code>resolve</code> 所回傳的結果，可以使用 <code>then</code> 來接收，反之，若一開始傳入的值為 <code>false</code>，<code>reject</code> 就會被呼叫，此時就能使用 <code>catch</code> 來接收回傳結果，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">promiseAsyncOperate</span>(<span class="hljs-params">status</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>) </span>&#123;<br>    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>      <span class="hljs-keyword">if</span>(status) &#123;<br>        resolve(<span class="hljs-string">&#x27;非同步操作成功&#x27;</span>);<br>      &#125;<span class="hljs-keyword">else</span>&#123;<br>        reject(<span class="hljs-string">&#x27;非同步操作失敗&#x27;</span>);<br>      &#125;<br>    &#125;, <span class="hljs-number">1000</span>);<br>  &#125;)<br>&#125;<br>promiseAsyncOperate(<span class="hljs-literal">true</span>)<br>.then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(res); <span class="hljs-comment">// 取得　resolve 回傳結果 =&gt; &#x27;非同步操作成功&#x27;</span><br>&#125;)<br>.catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123; <span class="hljs-comment">// 非同步操作成功因此未被執行</span><br>  <span class="hljs-built_in">console</span>.log(err);<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>promise</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Git 學習筆記</title>
     <url>/2022-01-20-git-note/</url>
     <content><![CDATA[<p>這篇是初學 Git 時期草率寫下的筆記，主要目的是幫助自己能快速查找指令。</p>
@@ -1375,10 +1425,10 @@
 <li><a href="#%E5%88%86%E6%94%AF">分支</a></li>
 <li><a href="#%E6%A8%99%E7%B1%A4%EF%BC%88Tag%EF%BC%89">標籤（Tag）</a></li>
 <li><a href="#%E6%9A%AB%E5%AD%98%EF%BC%88Stash%EF%BC%89">暫存（Stash）</a></li>
-<li><a href="#%E9%81%A0%E7%AB%AF%E5%84%B2%E5%AD%98%E5%BA%AB%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4">遠端儲存庫操作指令</a></div></li>
+<li><a href="#%E9%81%A0%E7%AB%AF%E5%84%B2%E5%AD%98%E5%BA%AB%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4">遠端儲存庫操作指令</a></li>
+<li><a href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99">參考資料</a></div></li>
 </ul>
 <h2 id="環境安裝"><a href="#環境安裝" class="headerlink" title="環境安裝"></a>環境安裝</h2><p>在進入正題之前，必須先根據電腦的作業系統安裝 <a href="https://git-scm.com/">Git</a> 的環境，安裝成功後在 Git 資料夾中會有 “Git Bash” 的應用程式，可以透過它來操作 Git 指令；或是使用自己習慣的終端機也可以。</p>
-<hr>
 <h2 id="終端機基本指令"><a href="#終端機基本指令" class="headerlink" title="終端機基本指令"></a>終端機基本指令</h2><p>使用 Git 時，通常還會搭配一些終端機的基本指令去輔助操作，常用的指令如下：</p>
 <h3 id="移動到指定目錄"><a href="#移動到指定目錄" class="headerlink" title="移動到指定目錄"></a><strong>移動到指定目錄</strong></h3><p>指令：<code>cd 資料夾路徑</code></p>
 <p>除了直接輸入路徑，也可以直接將資料夾拖曳至終端機視窗中。</p>
@@ -1394,17 +1444,16 @@
 <p>在當前目錄建立一個檔案。</p>
 <h3 id="刪除檔案"><a href="#刪除檔案" class="headerlink" title="刪除檔案"></a><strong>刪除檔案</strong></h3><p>指令：<code>rm 檔案名稱.檔案類型</code></p>
 <p>刪除當前目錄中指定檔案，若要刪除指定資料夾（含內容所有檔案）可輸入 <code>rm -r 資料夾名稱</code>。</p>
-<hr>
 <h2 id="Git-版本檢視"><a href="#Git-版本檢視" class="headerlink" title="Git 版本檢視"></a>Git 版本檢視</h2><p>環境安裝完成後開啟終端機，嘗試輸入指令 <code>$ git version</code> ，如果若出現 Git 版本訊息即表示安裝成功。</p>
 <p>版本訊息範例：</p>
 <figure class="highlight applescript"><table><tr><td class="code"><pre><code class="hljs applescript">$ git <span class="hljs-built_in">version</span><br>git <span class="hljs-built_in">version</span> <span class="hljs-number">2.32</span><span class="hljs-number">.0</span>.windows<span class="hljs-number">.2</span><br></code></pre></td></tr></table></figure>
 
-<hr>
+
+
 <h2 id="Git-環境設定"><a href="#Git-環境設定" class="headerlink" title="Git 環境設定"></a>Git 環境設定</h2><p>使用 Git 進行版本控制時，每一個更新紀錄的更新人、更新時間以及部分的內容都會被記錄；因此在開始使用 Git 之前，需要先設定一些基本的資訊。</p>
 <h3 id="設定使用者暱稱"><a href="#設定使用者暱稱" class="headerlink" title="設定使用者暱稱"></a><strong>設定使用者暱稱</strong></h3><p>指令：<code>$ git config --global user.name &quot;使用者暱稱&quot;</code></p>
 <h3 id="設定使用者信箱"><a href="#設定使用者信箱" class="headerlink" title="設定使用者信箱"></a><strong>設定使用者信箱</strong></h3><p>指令：<code>$ git config --global user.email &quot;使用者信箱&quot;</code></p>
 <h3 id="查看設定值"><a href="#查看設定值" class="headerlink" title="查看設定值"></a><strong>查看設定值</strong></h3><p>指令：<code>$ git config --list</code></p>
-<hr>
 <h2 id="Git-常用指令"><a href="#Git-常用指令" class="headerlink" title="Git 常用指令"></a>Git 常用指令</h2><p>Git 基本操作流程示意圖：</p>
 <p><img src="https://i.imgur.com/zLOR8aN.png"></p>
 <p>Git 操作方式會根據不同情境而有所差異，但是運作原理相同。</p>
@@ -1455,7 +1504,6 @@
 <figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql">$ git <span class="hljs-keyword">log</span><br><span class="hljs-keyword">commit</span> ce9d92723df3302156a9523453c0fff21f7fdcc0 (HEAD -&gt; master)<br>Author: Cliff Chu &lt;wave99487chu@gmail.com&gt;<br><span class="hljs-type">Date</span>:   Sun Jan <span class="hljs-number">23</span> <span class="hljs-number">17</span>:<span class="hljs-number">53</span>:<span class="hljs-number">08</span> <span class="hljs-number">2022</span> +<span class="hljs-number">0800</span><br><br>    新增 <span class="hljs-keyword">index</span><br></code></pre></td></tr></table></figure>
 
 <p>顯示的筆數較多時，按下鍵盤 q 即可返回原內容。</p>
-<hr>
 <h2 id="忽略檔案"><a href="#忽略檔案" class="headerlink" title="忽略檔案"></a><strong>忽略檔案</strong></h2><p>不希望某些檔案被 Git 追蹤時，可以建立一個 .gitignore 檔案，透過編輯器開啟檔案後，輸入希望被忽略的檔案名稱和檔案類型並儲存即可；需要注意的是 .gitignore 檔案本身不會被忽略。</p>
 <p>被忽略檔案的輸入格式分別為下列幾種類型：</p>
 <ul>
@@ -1466,7 +1514,6 @@
 <li><p><strong>忽略單一資料夾</strong>：輸入格式：<code>資料夾名稱/</code></p>
 </li>
 </ul>
-<hr>
 <h2 id="還原（Reset）"><a href="#還原（Reset）" class="headerlink" title="還原（Reset）"></a>還原（Reset）</h2><p>開始介紹 <code>$ git reset</code> 相關指令之前，需要先理解 Reset 會使用到的三種參數模式，如下所示：</p>
 <ul>
 <li><code>--mixed</code>（預設模式）：暫存區的檔案會被丟回工作目錄，但是原本工作目錄的檔案不會被影響。</li>
@@ -1498,7 +1545,6 @@
 <p>修改當前分支最新一次的提交描述。</p>
 <h3 id="追加檔案到最新的提交節點"><a href="#追加檔案到最新的提交節點" class="headerlink" title="追加檔案到最新的提交節點"></a><strong>追加檔案到最新的提交節點</strong></h3><p>指令：<code>$ git commit --amend --no-edit</code></p>
 <p>執行指令時如果未加上 <code>--no-edit</code> 參數，會跳出 Vim 編輯視窗。</p>
-<hr>
 <h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><p>分支（branch）是開發者在團隊協作一個專案時，會需要使用到的 Git 架構內容；可以理解成將當前儲存庫的所有檔案複製一份，而這兩個版本可以獨立進行檔案新增、編輯與修改。這樣的好處是檔案的內容如果需要做更動，就可以先移動到另一個分支動作，同時也不用擔心影響到原本的檔案狀態。</p>
 <p>以下列出常見分支名稱與主要用途：</p>
 <ul>
@@ -1565,7 +1611,6 @@
 
 <p>確認檔案沒問題後，就可以進行提交，結果如下圖所示：</p>
 <p><img src="https://i.imgur.com/wJeP32p.png"></p>
-<hr>
 <h2 id="標籤（Tag）"><a href="#標籤（Tag）" class="headerlink" title="標籤（Tag）"></a>標籤（Tag）</h2><p>開發專案過程中，會因為檔案不斷新增、刪除或修改而增加許多提交節點，雖然彼此都有獨自的版本描述，但是這樣很難去區分彼此之間的重要程度，如不同時間點的上線版本；因此為了有效區別，可以使用標籤相關指令。</p>
 <p>補充說明：</p>
 <p>標籤和分支都是指向某一個提交節點的指標，但是兩者的差別在於標籤只會指向固定的提交節點，而分支會隨著提交的增加而移動到最新的節點。</p>
@@ -1579,7 +1624,8 @@
 <p>移動 HEAD 的位置到指定標籤上查看檔案狀態，輸入 <code>$ git checkout 分支名稱</code> 即可回到原本內容。</p>
 <!-- 標籤類似快照，移動過去時無法編輯檔案，待補充說明 -->
 
-<hr>
+
+
 <h2 id="暫存（Stash）"><a href="#暫存（Stash）" class="headerlink" title="暫存（Stash）"></a>暫存（Stash）</h2><p>團隊開發專案的過程中，常常會開發到一半出現突發狀況要處理，其中一種作法是，先將目前的工作內容加入暫存區並提交，解決突發狀況後，再透過指令 <code>$ git reset --soft HEAD^</code> 刪除最後一次的提交節點，並還原提交前的所有狀態；另外一種做法則是透過 <code>$ git stash</code> 相關指令來暫存檔案狀態。</p>
 <p>補充說明：</p>
 <p>暫存（stash）和暫存區（Staging Area）兩者屬於不同的概念。</p>
@@ -1597,7 +1643,6 @@
 <p>刪除暫存列表最新的暫存紀錄，並無法還原。</p>
 <h3 id="清除全部暫存"><a href="#清除全部暫存" class="headerlink" title="清除全部暫存"></a>清除全部暫存</h3><p>指令：<code>$ git stash clear</code></p>
 <p>刪除暫存列表所有的暫存紀錄，並無法還原。</p>
-<hr>
 <h2 id="遠端儲存庫操作指令"><a href="#遠端儲存庫操作指令" class="headerlink" title="遠端儲存庫操作指令"></a>遠端儲存庫操作指令</h2><p>本篇內容主要是在著重講述 Git 的基本操作，因此先不討論遠端儲存庫的建立方式與相關內容。</p>
 <h3 id="連結遠端儲存庫"><a href="#連結遠端儲存庫" class="headerlink" title="連結遠端儲存庫"></a>連結遠端儲存庫</h3><p>指令：<code>$ git remote add origin 遠端儲存庫網址</code></p>
 <p>指令中的 <code>origin</code> 為遠端儲存庫的預設名稱；實務上通常會有多個儲存庫，如正式主機與測試主機；使用者可根據儲存庫用途來自訂名稱。</p>
@@ -1629,9 +1674,9 @@
 <p>從上述行為可得知，<code>$ git pull</code> 做的動作相當於 <code>$ git fetch</code> 加上 <code>$ git merge</code>。</p>
 <!-- 可以補充說明 -->
 
-<hr>
-<p><strong>參考資料：</strong></p>
-<p><a href="https://gitbook.tw/chapters/using-git/amend-commit2">如何使用 –amend 追加檔案</a><br><a href="https://ithelp.ithome.com.tw/articles/10211795">Fast-Forward 快轉模式詳細介紹</a><br><a href="https://gitbook.tw/chapters/faq/stash">Git Stash 詳細使用方式</a><br><a href="https://gitbook.tw/chapters/using-git/reset-commit">Git Reset 使用模式</a><br><a href="https://gitbook.tw/chapters/branch/merge-with-rebase">使用 Git Rebase 合併</a><br><a href="https://iter01.com/539474.html">Git Fetch 詳細介紹</a></p>
+
+
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://gitbook.tw/chapters/using-git/amend-commit2">如何使用 –amend 追加檔案</a><br><a href="https://ithelp.ithome.com.tw/articles/10211795">Fast-Forward 快轉模式詳細介紹</a><br><a href="https://gitbook.tw/chapters/faq/stash">Git Stash 詳細使用方式</a><br><a href="https://gitbook.tw/chapters/using-git/reset-commit">Git Reset 使用模式</a><br><a href="https://gitbook.tw/chapters/branch/merge-with-rebase">使用 Git Rebase 合併</a><br><a href="https://iter01.com/539474.html">Git Fetch 詳細介紹</a></p>
 ]]></content>
       <categories>
         <category>Git</category>

@@ -51,6 +51,88 @@
       </tags>
   </entry>
   <entry>
+    <title>關於 CSS Font-Family</title>
+    <url>/2022-03-02-css-font-family/</url>
+    <content><![CDATA[<p>在設定字體時，常常會遇到結果不如預期的情況，於是決定研究一下網頁是怎麼套用字體，以及一些相關的注意事項。</p>
+<span id="more"></span>
+<hr>
+<div class="toc">
+<p class="toc-title">目錄：</p>
+
+<ul>
+<li><a href="#Font-Family-%E8%A8%AD%E5%AE%9A%E8%A6%8F%E5%89%87">Font-Family 設定規則</a></li>
+<li><a href="#Font-Family-%E5%AD%97%E9%AB%94%E9%A1%9E%E5%9E%8B">Font-Family 字體類型</a></li>
+<li><a href="#%E5%AD%97%E9%AB%94%E9%A0%86%E5%BA%8F%E8%A7%80%E5%BF%B5">字體順序觀念</a></li>
+<li><a href="#%E5%AF%A6%E5%8B%99%E7%AF%84%E4%BE%8B">實務範例</a></li>
+<li><a href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99">參考資料</a></div></li>
+</ul>
+<h2 id="Font-Family-設定規則"><a href="#Font-Family-設定規則" class="headerlink" title="Font-Family 設定規則"></a>Font-Family 設定規則</h2><p>基本上只要是網頁設計，都會使用到的屬性，可以自訂頁面上的文字字體，但是初學者在使用這個屬性之前，為了避免結果不如預期，建議需要先理解一些設定上的規則。</p>
+<h3 id="字體套用邏輯"><a href="#字體套用邏輯" class="headerlink" title="字體套用邏輯"></a>字體套用邏輯</h3><p>Font-Family 雖然可以設定多個屬性值，但是並不會將所有寫入的字體都一起套用，而是會根據瀏覽器對該字體的支援與否，由左至右依序判斷，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: 字體A, 字體B, 字體C;<br></code></pre></td></tr></table></figure>
+
+<p>假設使用者的電腦系統中僅存在 “字體B”，此時瀏覽器載入網頁時，會根據上述設定先判斷系統內是否有對應的字體A，但因為系統中找不到這個字體，因此會跳過該字體並判斷下一個字體B，此時找到字體B之後，就會套用該字體，並且不再往下進行判斷。</p>
+<h3 id="語法注意事項"><a href="#語法注意事項" class="headerlink" title="語法注意事項"></a>語法注意事項</h3><p>在部分字體的選用上，同一個字體可以選擇使用中文名稱或英文名稱的屬性值設定，其結果會相同，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: <span class="hljs-string">&quot;Microsoft JhengHei&quot;</span>;<br><span class="hljs-attribute">font-family</span>: 微軟正黑體;<br></code></pre></td></tr></table></figure>
+
+<p>從上述語法中可以發現，第一行的字體加上了雙引號，這是因為該字體的名稱之間如果存在空白，在不加上雙引號的情形下，瀏覽器會無法辨識而導致讀取失敗。</p>
+<p>另一個值得注意的是，雖然使用中文名稱來設定字體結果與英文名稱相同，但是只單獨設定中文名稱的話，可能會遇到編碼的問題而導致結果不如預期，因此會建議使用英文名稱的屬性值，或是中、英文一起使用，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: <span class="hljs-string">&quot;Microsoft JhengHei&quot;</span>, 微軟正黑體;<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="Font-Family-字體類型"><a href="#Font-Family-字體類型" class="headerlink" title="Font-Family 字體類型"></a>Font-Family 字體類型</h2><p>在當今這麼大量的字體中，主要可以分為 “指定字體” 與 “通用字體” 兩種類型。</p>
+<h3 id="指定字體（family-name）"><a href="#指定字體（family-name）" class="headerlink" title="指定字體（family-name）"></a>指定字體（family-name）</h3><p>不同的字體也會影響網頁的視覺感受，因此在選用字體時，通常會優先使用指定的字體。</p>
+<h3 id="通用字體（generic-family）"><a href="#通用字體（generic-family）" class="headerlink" title="通用字體（generic-family）"></a>通用字體（generic-family）</h3><p>通用字體可以理解成多數的電腦系統中，內建就已存在的字體，常見的通用字體有以下五種，其中無襯線體、襯線體使用最為廣泛：</p>
+<ul>
+<li>sans-serif（無襯線體 / 黑體）</li>
+<li>serif（襯線體 / 明體）</li>
+<li>cursive（手寫體）</li>
+<li>monospace（等寬體）</li>
+<li>fantasy（幻想體）</li>
+</ul>
+<h3 id="設定方式"><a href="#設定方式" class="headerlink" title="設定方式"></a>設定方式</h3><p>雖然可以透過指定字體名稱的方式，來達到自訂網頁上想要呈現的字體，但是並非所有電腦系統都有對應的指定字體，因此在使用指定字體時，通常都會在 font-family 屬性值的<strong>最後方位置</strong>設定預設的通用字體；而前面有提到 font-family 是由左至右判斷屬性值，所以當瀏覽器不支援或無法從系統中找到前方所對應的指定字體時，就會套用最後設定的通用字體，設定格式如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: 指定字體, <span class="hljs-string">&quot;指定 字體&quot;</span>, 通用字體;<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="字體順序觀念"><a href="#字體順序觀念" class="headerlink" title="字體順序觀念"></a>字體順序觀念</h2><p>本篇一開始在設定規則的地方有簡單提到字體是由左邊開始判斷，但是在順序方面還有一些重要觀念需要熟記，這邊先記住以下設定順序，後續會說明原因：</p>
+<p>設定順序：<strong>英文字體 &gt; Linux &gt; Mac &gt; Windows &gt; 通用字體</strong></p>
+<!-- 這部分一直沒有比較好的解釋 -->
+
+
+
+<h3 id="中、英文順序"><a href="#中、英文順序" class="headerlink" title="中、英文順序"></a>中、英文順序</h3><p>一個網頁通常會存在多個語言（以中、英文為例），但是並非所有的字體都同時支援中、英文，因此許多網頁會利用這個由左至右判斷的技巧，分別針對中文與英文各別設定不同的字體，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: Arial, 微軟正黑體;<br></code></pre></td></tr></table></figure>
+
+<p>上述設定中，Arial 只有英文字體，而微軟正黑體則是中、英文字體都有，因此瀏覽器在判斷 Arial 之後，就會因為符合條件而套用英文字體，而中文會因為找不到對應字體則往下判斷微軟正黑體並套用，此時網頁上的中文與英文就會呈現不同字體的效果。</p>
+<p>但是如果順序換成微軟正黑體在前面，瀏覽器就會先判斷微軟正黑體，因為該字體中、英文都可以使用，所以網頁上的兩種語言都會套用成微軟正黑體，而後面的 Arial 會因為英文字體已套用成微軟正黑體而不會被讀取。</p>
+<p>因此，正確的屬性值順序為<strong>英文字體在前面，中文字體在後面。</strong></p>
+<h3 id="字體使用率與順序"><a href="#字體使用率與順序" class="headerlink" title="字體使用率與順序"></a>字體使用率與順序</h3><p>每個作業系統都有自己的系統字體，例如 -apple-system 與 BlinkMacSystemFont 分別是 iOS 以及 macOS 的系統字體，並且前者只能使用在 Safari 瀏覽器上，後者則是用於 Chrome，像這種只能使用在特定系統或瀏覽器的字體，順序就需要放在前面，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: -apple-system, BlinkMacSystemFont, <span class="hljs-string">&quot;Segoe UI&quot;</span>, <span class="hljs-string">&quot;Microsoft JhengHei&quot;</span>, Roboto, <span class="hljs-string">&quot;Helvetica Neue&quot;</span>, Arial, sans-serif;<br>	     <span class="hljs-comment">/* mac系統字體, iOS系統字體,	windows英文系統字體, 微軟正黑體, Android系統字體, iOS系統字體, 通用字體, 通用字體 */</span><br></code></pre></td></tr></table></figure>
+
+<p>假設使用者電腦系統為 windows，瀏覽器因為在系統中找不到 -apple-system 與 BlinkMacSystemFont 而直接跳過這兩個字體，而下一個 Segoe UI 屬於 windows 的英文系統字體，因此英文字體就會套用 Segoe UI，中文字體則是因為 Segoe UI 並沒有對應的中文而判斷下一個值，最終套用 Microsoft JhengHei。</p>
+<p>如果電腦系統是 macOS 並且使用 Chrome 瀏覽網頁，當瀏覽器在讀取到 -apple-system 時，就會套用對應的中文及英文字體，並且不再往下判斷。</p>
+<p>因此，為了適應各種不同的瀏覽器與作業系統，在設定字體時需要把<strong>較少使用到的字體放前面，較常使用到的字體放後面。</strong></p>
+<h2 id="實務範例"><a href="#實務範例" class="headerlink" title="實務範例"></a>實務範例</h2><p>附上幾個知名企業的字體設定當作參考，有興趣的也可以自行研究順序邏輯。</p>
+<p>Apple（台灣）：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: <span class="hljs-string">&quot;SF Pro TC&quot;</span>, <span class="hljs-string">&quot;SF Pro Text&quot;</span>, <span class="hljs-string">&quot;SF Pro Icons&quot;</span>, <span class="hljs-string">&quot;PingFang TC&quot;</span>, <span class="hljs-string">&quot;Helvetica Neue&quot;</span>, <span class="hljs-string">&quot;Helvetica&quot;</span>, <span class="hljs-string">&quot;Arial&quot;</span>, sans-serif;<br></code></pre></td></tr></table></figure>
+
+<p>微軟台灣：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: <span class="hljs-string">&#x27;Segoe UI&#x27;</span>, SegoeUI, <span class="hljs-string">&#x27;Microsoft JhengHei&#x27;</span>, 微軟正黑體, <span class="hljs-string">&quot;Helvetica Neue&quot;</span>, Helvetica, Arial, sans-serif;<br></code></pre></td></tr></table></figure>
+
+<p>Google：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: arial, sans-serif;  <span class="hljs-comment">/* 這絕對不是懶(? */</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://www.oxxostudio.tw/articles/201811/css-font-family.html">CSS font-family 詳細介紹</a><br><a href="https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/180456/#outline__1_2_1">最標準的系統字型規範 font-family</a><br><a href="https://www.casper.tw/css/2014/01/01/font-family/">font-family要怎麼玩</a></p>
+]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>font-family</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>NPM 基本指令</title>
     <url>/2022-02-07-npm-note/</url>
     <content><![CDATA[<p>淺淺的紀錄一下 NPM 是甚麼，以及相關的一些指令，藉此避免踩到一些開發中常見的雷。</p>
@@ -140,88 +222,6 @@
       </categories>
       <tags>
         <tag>npm</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>關於 CSS Font-Family</title>
-    <url>/2022-03-02-css-font-family/</url>
-    <content><![CDATA[<p>在設定字體時，常常會遇到結果不如預期的情況，於是決定研究一下網頁是怎麼套用字體，以及一些相關的注意事項。</p>
-<span id="more"></span>
-<hr>
-<div class="toc">
-<p class="toc-title">目錄：</p>
-
-<ul>
-<li><a href="#Font-Family-%E8%A8%AD%E5%AE%9A%E8%A6%8F%E5%89%87">Font-Family 設定規則</a></li>
-<li><a href="#Font-Family-%E5%AD%97%E9%AB%94%E9%A1%9E%E5%9E%8B">Font-Family 字體類型</a></li>
-<li><a href="#%E5%AD%97%E9%AB%94%E9%A0%86%E5%BA%8F%E8%A7%80%E5%BF%B5">字體順序觀念</a></li>
-<li><a href="#%E5%AF%A6%E5%8B%99%E7%AF%84%E4%BE%8B">實務範例</a></li>
-<li><a href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99">參考資料</a></div></li>
-</ul>
-<h2 id="Font-Family-設定規則"><a href="#Font-Family-設定規則" class="headerlink" title="Font-Family 設定規則"></a>Font-Family 設定規則</h2><p>基本上只要是網頁設計，都會使用到的屬性，可以自訂頁面上的文字字體，但是初學者在使用這個屬性之前，為了避免結果不如預期，建議需要先理解一些設定上的規則。</p>
-<h3 id="字體套用邏輯"><a href="#字體套用邏輯" class="headerlink" title="字體套用邏輯"></a>字體套用邏輯</h3><p>Font-Family 雖然可以設定多個屬性值，但是並不會將所有寫入的字體都一起套用，而是會根據瀏覽器對該字體的支援與否，由左至右依序判斷，以下方原始碼為例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: 字體A, 字體B, 字體C;<br></code></pre></td></tr></table></figure>
-
-<p>假設使用者的電腦系統中僅存在 “字體B”，此時瀏覽器載入網頁時，會根據上述設定先判斷系統內是否有對應的字體A，但因為系統中找不到這個字體，因此會跳過該字體並判斷下一個字體B，此時找到字體B之後，就會套用該字體，並且不再往下進行判斷。</p>
-<h3 id="語法注意事項"><a href="#語法注意事項" class="headerlink" title="語法注意事項"></a>語法注意事項</h3><p>在部分字體的選用上，同一個字體可以選擇使用中文名稱或英文名稱的屬性值設定，其結果會相同，以下方原始碼為例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: <span class="hljs-string">&quot;Microsoft JhengHei&quot;</span>;<br><span class="hljs-attribute">font-family</span>: 微軟正黑體;<br></code></pre></td></tr></table></figure>
-
-<p>從上述語法中可以發現，第一行的字體加上了雙引號，這是因為該字體的名稱之間如果存在空白，在不加上雙引號的情形下，瀏覽器會無法辨識而導致讀取失敗。</p>
-<p>另一個值得注意的是，雖然使用中文名稱來設定字體結果與英文名稱相同，但是只單獨設定中文名稱的話，可能會遇到編碼的問題而導致結果不如預期，因此會建議使用英文名稱的屬性值，或是中、英文一起使用，以下方原始碼為例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: <span class="hljs-string">&quot;Microsoft JhengHei&quot;</span>, 微軟正黑體;<br></code></pre></td></tr></table></figure>
-
-
-<h2 id="Font-Family-字體類型"><a href="#Font-Family-字體類型" class="headerlink" title="Font-Family 字體類型"></a>Font-Family 字體類型</h2><p>在當今這麼大量的字體中，主要可以分為 “指定字體” 與 “通用字體” 兩種類型。</p>
-<h3 id="指定字體（family-name）"><a href="#指定字體（family-name）" class="headerlink" title="指定字體（family-name）"></a>指定字體（family-name）</h3><p>不同的字體也會影響網頁的視覺感受，因此在選用字體時，通常會優先使用指定的字體。</p>
-<h3 id="通用字體（generic-family）"><a href="#通用字體（generic-family）" class="headerlink" title="通用字體（generic-family）"></a>通用字體（generic-family）</h3><p>通用字體可以理解成多數的電腦系統中，內建就已存在的字體，常見的通用字體有以下五種，其中無襯線體、襯線體使用最為廣泛：</p>
-<ul>
-<li>sans-serif（無襯線體 / 黑體）</li>
-<li>serif（襯線體 / 明體）</li>
-<li>cursive（手寫體）</li>
-<li>monospace（等寬體）</li>
-<li>fantasy（幻想體）</li>
-</ul>
-<h3 id="設定方式"><a href="#設定方式" class="headerlink" title="設定方式"></a>設定方式</h3><p>雖然可以透過指定字體名稱的方式，來達到自訂網頁上想要呈現的字體，但是並非所有電腦系統都有對應的指定字體，因此在使用指定字體時，通常都會在 font-family 屬性值的<strong>最後方位置</strong>設定預設的通用字體；而前面有提到 font-family 是由左至右判斷屬性值，所以當瀏覽器不支援或無法從系統中找到前方所對應的指定字體時，就會套用最後設定的通用字體，設定格式如下：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: 指定字體, <span class="hljs-string">&quot;指定 字體&quot;</span>, 通用字體;<br></code></pre></td></tr></table></figure>
-
-
-<h2 id="字體順序觀念"><a href="#字體順序觀念" class="headerlink" title="字體順序觀念"></a>字體順序觀念</h2><p>本篇一開始在設定規則的地方有簡單提到字體是由左邊開始判斷，但是在順序方面還有一些重要觀念需要熟記，這邊先記住以下設定順序，後續會說明原因：</p>
-<p>設定順序：<strong>英文字體 &gt; Linux &gt; Mac &gt; Windows &gt; 通用字體</strong></p>
-<!-- 這部分一直沒有比較好的解釋 -->
-
-
-
-<h3 id="中、英文順序"><a href="#中、英文順序" class="headerlink" title="中、英文順序"></a>中、英文順序</h3><p>一個網頁通常會存在多個語言（以中、英文為例），但是並非所有的字體都同時支援中、英文，因此許多網頁會利用這個由左至右判斷的技巧，分別針對中文與英文各別設定不同的字體，以下方原始碼為例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: Arial, 微軟正黑體;<br></code></pre></td></tr></table></figure>
-
-<p>上述設定中，Arial 只有英文字體，而微軟正黑體則是中、英文字體都有，因此瀏覽器在判斷 Arial 之後，就會因為符合條件而套用英文字體，而中文會因為找不到對應字體則往下判斷微軟正黑體並套用，此時網頁上的中文與英文就會呈現不同字體的效果。</p>
-<p>但是如果順序換成微軟正黑體在前面，瀏覽器就會先判斷微軟正黑體，因為該字體中、英文都可以使用，所以網頁上的兩種語言都會套用成微軟正黑體，而後面的 Arial 會因為英文字體已套用成微軟正黑體而不會被讀取。</p>
-<p>因此，正確的屬性值順序為<strong>英文字體在前面，中文字體在後面。</strong></p>
-<h3 id="字體使用率與順序"><a href="#字體使用率與順序" class="headerlink" title="字體使用率與順序"></a>字體使用率與順序</h3><p>每個作業系統都有自己的系統字體，例如 -apple-system 與 BlinkMacSystemFont 分別是 iOS 以及 macOS 的系統字體，並且前者只能使用在 Safari 瀏覽器上，後者則是用於 Chrome，像這種只能使用在特定系統或瀏覽器的字體，順序就需要放在前面，以下方原始碼為例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: -apple-system, BlinkMacSystemFont, <span class="hljs-string">&quot;Segoe UI&quot;</span>, <span class="hljs-string">&quot;Microsoft JhengHei&quot;</span>, Roboto, <span class="hljs-string">&quot;Helvetica Neue&quot;</span>, Arial, sans-serif;<br>	     <span class="hljs-comment">/* mac系統字體, iOS系統字體,	windows英文系統字體, 微軟正黑體, Android系統字體, iOS系統字體, 通用字體, 通用字體 */</span><br></code></pre></td></tr></table></figure>
-
-<p>假設使用者電腦系統為 windows，瀏覽器因為在系統中找不到 -apple-system 與 BlinkMacSystemFont 而直接跳過這兩個字體，而下一個 Segoe UI 屬於 windows 的英文系統字體，因此英文字體就會套用 Segoe UI，中文字體則是因為 Segoe UI 並沒有對應的中文而判斷下一個值，最終套用 Microsoft JhengHei。</p>
-<p>如果電腦系統是 macOS 並且使用 Chrome 瀏覽網頁，當瀏覽器在讀取到 -apple-system 時，就會套用對應的中文及英文字體，並且不再往下判斷。</p>
-<p>因此，為了適應各種不同的瀏覽器與作業系統，在設定字體時需要把<strong>較少使用到的字體放前面，較常使用到的字體放後面。</strong></p>
-<h2 id="實務範例"><a href="#實務範例" class="headerlink" title="實務範例"></a>實務範例</h2><p>附上幾個知名企業的字體設定當作參考，有興趣的也可以自行研究順序邏輯。</p>
-<p>Apple（台灣）：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: <span class="hljs-string">&quot;SF Pro TC&quot;</span>, <span class="hljs-string">&quot;SF Pro Text&quot;</span>, <span class="hljs-string">&quot;SF Pro Icons&quot;</span>, <span class="hljs-string">&quot;PingFang TC&quot;</span>, <span class="hljs-string">&quot;Helvetica Neue&quot;</span>, <span class="hljs-string">&quot;Helvetica&quot;</span>, <span class="hljs-string">&quot;Arial&quot;</span>, sans-serif;<br></code></pre></td></tr></table></figure>
-
-<p>微軟台灣：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: <span class="hljs-string">&#x27;Segoe UI&#x27;</span>, SegoeUI, <span class="hljs-string">&#x27;Microsoft JhengHei&#x27;</span>, 微軟正黑體, <span class="hljs-string">&quot;Helvetica Neue&quot;</span>, Helvetica, Arial, sans-serif;<br></code></pre></td></tr></table></figure>
-
-<p>Google：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: arial, sans-serif;  <span class="hljs-comment">/* 這絕對不是懶(? */</span><br></code></pre></td></tr></table></figure>
-
-
-
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://www.oxxostudio.tw/articles/201811/css-font-family.html">CSS font-family 詳細介紹</a><br><a href="https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/180456/#outline__1_2_1">最標準的系統字型規範 font-family</a><br><a href="https://www.casper.tw/css/2014/01/01/font-family/">font-family要怎麼玩</a></p>
-]]></content>
-      <categories>
-        <category>CSS</category>
-      </categories>
-      <tags>
-        <tag>font-family</tag>
       </tags>
   </entry>
   <entry>
@@ -378,95 +378,6 @@
       </tags>
   </entry>
   <entry>
-    <title>SCSS 實用語法</title>
-    <url>/2022-06-07-sass-note/</url>
-    <content><![CDATA[<p>最近接觸到 Sass/SCSS，覺得各方面的功能都太方便了，這輩子大概不會想回去寫純 CSS 了吧。這篇筆記整理了一些新手必須學會的語法。</p>
-<span id="more"></span>
-<hr>
-<div class="toc">
-<p class="toc-title">目錄：</p>
-
-<ul>
-<li><a href="#%E5%9F%BA%E6%9C%AC%E8%AA%9E%E6%B3%95">基本語法</a></li>
-<li><a href="#%E5%AF%A6%E7%94%A8%E8%AA%9E%E6%B3%95">實用語法</a></li>
-<li><a href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99">參考資料</a></div></li>
-</ul>
-<h2 id="基本語法"><a href="#基本語法" class="headerlink" title="基本語法"></a>基本語法</h2><h3 id="使用-amp-表示父選擇器"><a href="#使用-amp-表示父選擇器" class="headerlink" title="使用 &amp; 表示父選擇器"></a>使用 &amp; 表示父選擇器</h3><p>以下是一個簡單的 Scss 格式設定：</p>
-<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-selector-class">.header</span> &#123;<br>  <span class="hljs-attribute">text-align</span>: center;<br>  <span class="hljs-selector-class">.header-title</span> &#123;<br>    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">2rem</span>;<br>  &#125;<br>  <span class="hljs-selector-tag">a</span> &#123;<br>    <span class="hljs-attribute">padding</span>: <span class="hljs-number">8</span> <span class="hljs-number">16px</span>;<br>    <span class="hljs-attribute">background</span>: <span class="hljs-number">#eee</span>;<br>  &#125;<br>  <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> &#123;<br>    <span class="hljs-attribute">background</span>: <span class="hljs-number">#ddd</span>;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>上述例子可以改用 &amp; 的方式來撰寫，以 &amp; 符號來表示父層，其運行結果想同，如下所示：</p>
-<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-selector-class">.header</span> &#123;<br>  <span class="hljs-attribute">text-align</span>: center;<br>  &amp;-title &#123;<br>    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">2rem</span>;<br>  &#125;<br>  <span class="hljs-selector-tag">a</span> &#123;<br>    <span class="hljs-attribute">padding</span>: <span class="hljs-number">8</span> <span class="hljs-number">16px</span>;<br>    <span class="hljs-attribute">background</span>: <span class="hljs-number">#eee</span>;<br>    &amp;<span class="hljs-selector-pseudo">:hover</span> &#123;<br>      <span class="hljs-attribute">background</span>: <span class="hljs-number">#ddd</span>;<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h3 id="Variable-變數"><a href="#Variable-變數" class="headerlink" title="Variable 變數"></a>Variable 變數</h3><p>一個設定可能會在許多不同的區塊重複被使用，此時就能夠透過變數來統一管理，好處是後續若需要修改值，只需要修改變數值即可，而變數格式為 <code>$name: value</code>，以顏色為範例，如下所示：</p>
-<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-variable">$color-primary</span>: <span class="hljs-number">#00cc99</span>;<br><span class="hljs-selector-class">.header</span> &#123;<br>  &amp;-title &#123;<br>    <span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-primary</span>;<br>  &#125;<br>&#125;<br><span class="hljs-selector-class">.footer</span> &#123;<br>  &amp;-title &#123;<br>    <span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-primary</span>;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>變數值可使用的格式分別有以下幾種：</p>
-<ul>
-<li>數字：<code>2</code>、<code>16px</code>、<code>2rem</code></li>
-<li>字串：<code>"文字"</code>、<code>"./img/logo.png"</code></li>
-<li>顏色：<code>blue</code>、<code>#00CC99</code>、<code>rgba(0,0,0,0.5)</code></li>
-<li>布林：<code>true</code>、<code>false</code></li>
-<li>空值：<code>null</code></li>
-<li>值列：<code>16px 8px</code>、<code>"arial, sans-serif"</code></li>
-<li>運算：<code>1rem * 1.25</code></li>
-</ul>
-<h3 id="調整色彩明度"><a href="#調整色彩明度" class="headerlink" title="調整色彩明度"></a>調整色彩明度</h3><p>除了直接輸入顏色或色碼，也能夠使用 <code>darken</code>、<code>lighten</code> 來調整所設定顏色的明暗程度，範例如下：</p>
-<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-variable">$color-primary</span>: <span class="hljs-number">#00cc99</span>;<br><span class="hljs-selector-class">.title</span> &#123;<br>  <span class="hljs-attribute">color</span>: darken(<span class="hljs-variable">$color-primary</span>, <span class="hljs-number">25%</span>); <span class="hljs-comment">// 亮度減少 25%</span><br>&#125;<br><span class="hljs-selector-tag">a</span> &#123;<br>  <span class="hljs-attribute">color</span>: lighten(<span class="hljs-number">#ddd</span>, <span class="hljs-number">15%</span>); <span class="hljs-comment">// 亮度增加 15%</span><br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h3 id="import-匯入檔案"><a href="#import-匯入檔案" class="headerlink" title="@import 匯入檔案"></a>@import 匯入檔案</h3><p>較大的專案為了方便管理程式碼，通常會將 scss 檔案進行較細的拆分，而這些拆分出來的檔案可透過 <code>@import</code> 來統一匯入（合併）一個 scss 檔案中，範例如下：</p>
-<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// 目前檔案為 all.scss</span><br><br><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;variable&#x27;</span>;<br><br><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;reset&#x27;</span>;<br><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;base&#x27;</span>;<br><br><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;mixin&#x27;</span>;<br><br><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;main&#x27;</span>;<br></code></pre></td></tr></table></figure>
-
-<blockquote>
-<p>檔案的分類可參考 <a href="https://gist.github.com/rveitch/84cea9650092119527bc">Sass 7-1 Pattern</a>，或是此篇<a href="https://medium.com/ivycodefive/4-%E4%BB%80%E9%BA%BC%E6%98%AFsass-7-1%E6%9E%B6%E6%A7%8B-8687e9a10a64">文章</a>。</p>
-</blockquote>
-<p>補充說明：被合併的 scss 檔案，檔案名稱會使用 _ 做開頭，除了用來表示合併用，也不會被編譯成 css 檔案，但是在匯入時不需要加上下底線，如下所示：</p>
-<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// 正確匯入方式</span><br><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;variable&#x27;</span>;<br><span class="hljs-comment">// 錯誤匯入方式</span><br><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;_variable&#x27;</span>;<br></code></pre></td></tr></table></figure>
-
-<h3 id="mixin-混合多個設定"><a href="#mixin-混合多個設定" class="headerlink" title="@mixin 混合多個設定"></a>@mixin 混合多個設定</h3><p>Mixin 的原理與變數相同，主要是將一些較常使用的語法組合封裝並且定義成一個名稱，等需要使用時，再透過 <code>@include</code> 來導入內容，範例如下：</p>
-<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// _mixin.scss</span><br><span class="hljs-keyword">@mixin</span> textHide &#123; <span class="hljs-comment">// 圖片取代文字</span><br>  <span class="hljs-attribute">display</span>: inline-block;<br>  <span class="hljs-attribute">text-indent</span>: <span class="hljs-number">101%</span>;<br>  <span class="hljs-attribute">white-space</span>: nowrap;<br>  <span class="hljs-attribute">overflow</span>: hidden;<br>&#125;<br><br><span class="hljs-keyword">@mixin</span> desktop &#123; <span class="hljs-comment">// 響應式斷點</span><br>  <span class="hljs-keyword">@media</span> (<span class="hljs-attribute">min-width</span>: <span class="hljs-number">768px</span>) &#123;<br>    <span class="hljs-keyword">@content</span>; <span class="hljs-comment">// 表示導入後所撰寫的內容位置</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// _main.scss</span><br><span class="hljs-selector-tag">h1</span> <span class="hljs-selector-class">.logo</span> &#123;<br>  <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">&quot;images/logo.svg&quot;</span>);<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">150px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">80px</span>;<br>  <span class="hljs-attribute">background-size</span>: contain;<br>  <span class="hljs-keyword">@include</span> textHide;<br>  <span class="hljs-keyword">@include</span> desktop &#123;<br>    <span class="hljs-comment">// 此區塊的內容會對應 @content 位置</span><br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-
-<h2 id="實用語法"><a href="#實用語法" class="headerlink" title="實用語法"></a>實用語法</h2><h3 id="for-運作原理"><a href="#for-運作原理" class="headerlink" title="@for 運作原理"></a>@for 運作原理</h3><p>Sass 的 <code>@for</code> 運作方式類似 JavaScript 的 for 迴圈，能夠依序並重複套用相同的設定，範例如下：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- html --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box box-1&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box box-2&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box box-3&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box box-4&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box box-5&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// scss</span><br><span class="hljs-selector-class">.box</span> &#123;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<br>&#125;<br><span class="hljs-keyword">@for</span> <span class="hljs-variable">$i</span> from <span class="hljs-number">1</span> through <span class="hljs-number">5</span> &#123; <span class="hljs-comment">// through 若改使用 to，則不包含最終值</span><br>    <span class="hljs-selector-class">.box-</span>#&#123; <span class="hljs-variable">$i</span> &#125;&#123; <span class="hljs-comment">// 變數需要加上 # 並使用 &#123;&#125; 包覆，否則無法正常讀取</span><br>    <span class="hljs-attribute">background</span>: darken( <span class="hljs-number">#eee</span>, <span class="hljs-variable">$i</span> * <span class="hljs-number">5%</span> );<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>上述範例 scss 設定中，第 6 行使用了 <code>@for</code> 方法來設定不同的背景顏色，<code>$i</code> 表示帶入數字的變數，<code>from</code> 會接一個起始值，<code>through</code> 則是會接一個最終值。</p>
-<p>而第 7 行的 <code>$i</code> 會先帶入初始值 1，此時就會針對 <code>.box-1</code> 設定下方的樣式 <code>background: darken( #eee, 1 * 5% )</code>，接著 <code>$i</code> 會再帶入 2，並進行與前一次相同的設定，直到最終值進行結束為止。</p>
-<h3 id="Sass-Map-是甚麼"><a href="#Sass-Map-是甚麼" class="headerlink" title="Sass Map 是甚麼?"></a>Sass Map 是甚麼?</h3><p>Sass Map 是一種集合變數，概念有點類似 JSON，但是不同的地方在於 Sass Map 會將定義的變數透過<strong>小括弧</strong> <code>()</code> 包裝成一個群組，格式為 <code>$變數名稱: (key: value);</code>，範例如下：</p>
-<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-variable">$colors</span>: (<br>  // key: value<br>  <span class="hljs-string">&#x27;primary&#x27;</span>: <span class="hljs-number">#007bff</span>, // 每個設定之間需要使用半形逗號隔開<br>  <span class="hljs-string">&#x27;secondary&#x27;</span>: <span class="hljs-number">#6c757d</span>,<br>  <span class="hljs-string">&#x27;success&#x27;</span>: <span class="hljs-number">#28a745</span><br>); <span class="hljs-comment">// 必須加上 ; 做結尾以免影響後方程式碼運作</span><br></code></pre></td></tr></table></figure>
-
-<p>設定 Sass Map 之後，可以透過 <code>map-get</code> 來取用變數的內容，以上述例子來說，若想取用 <code>$primary</code> 來當作文字的顏色，做法如下：</p>
-<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-selector-tag">h1</span> &#123;<br>  <span class="hljs-attribute">background</span>: map-get(<span class="hljs-variable">$colors</span>, <span class="hljs-string">&#x27;primary&#x27;</span>);<br>&#125;;<br><span class="hljs-selector-tag">h2</span> &#123;<br>  <span class="hljs-attribute">background</span>: map-get(<span class="hljs-variable">$colors</span>, <span class="hljs-string">&#x27;secondary&#x27;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>以上述範例來說，雖然可以透過 <code>map-get</code> 來取得對應的變數內容，但是若針對個別項目逐一取用設定，效率會相對較低，因此通常會搭配 <code>@each</code> 來做使用。</p>
-<h3 id="each-運作原理"><a href="#each-運作原理" class="headerlink" title="@each 運作原理"></a>@each 運作原理</h3><p>Sass 的 <code>@each</code> 類似 JavaScript 的 each，搭配先前提到的 Sass Map 就可以產出大量的樣式設定，而 <code>@each</code> 的格式為 <code>@each $key, $value in 集合變數&#123;...&#125;</code> ，範例如下：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- HTML --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-primary&quot;</span>&gt;</span>Button1<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-secondary&quot;</span>&gt;</span>Button2<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-success&quot;</span>&gt;</span>Button3<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// scss</span><br><span class="hljs-selector-class">.btn</span> &#123;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">16px</span>;<br>&#125;<br><span class="hljs-variable">$colors</span>: (<br>  <span class="hljs-string">&#x27;primary&#x27;</span>: <span class="hljs-number">#007bff</span>,<br>  <span class="hljs-string">&#x27;secondary&#x27;</span>: <span class="hljs-number">#6c757d</span>,<br>  <span class="hljs-string">&#x27;success&#x27;</span>: <span class="hljs-number">#28a745</span><br>);<br><span class="hljs-keyword">@each</span> <span class="hljs-variable">$key</span>, <span class="hljs-variable">$value</span> in <span class="hljs-variable">$colors</span> &#123;<br>  <span class="hljs-selector-class">.btn-</span>#&#123;<span class="hljs-variable">$key</span>&#125; &#123;<br>    <span class="hljs-attribute">background</span>: <span class="hljs-variable">$value</span>;<br>  &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-
-<p>上述範例 scss 設定中，第 10 行使用了 <code>@each</code> 並指定了集合變數 <code>$colors</code>，此時變數 <code>$colors</code> 中的每個 key 與 value 就會帶入 <code>@each</code> 大括弧裡的對應位置，最後再套用設定到對應的類別之中。</p>
-<h3 id="extend-合併相同樣式"><a href="#extend-合併相同樣式" class="headerlink" title="@extend 合併相同樣式"></a>@extend 合併相同樣式</h3><p>在進入 <code>@extend</code> 之前，先簡單說明<strong>佔位符選擇器</strong>（Placeholder Selectors）是什麼，它與 class、id 兩種選擇器類似，差別在於佔位符選擇器在 Sass 中會使用 <code>%</code> 來定義，且必須透過 <code>@extend</code> 來調用，在被 <code>@extend</code> 調用之前，本身並不會被編譯到 .css 檔案中。</p>
-<p>進入正題，如果相同的樣式設定被重複使用在多個類別中，可以透過 <code>%</code> 搭配 <code>@extend</code> 的做法，使 Sass 檔案在編譯後，有相同設定的類別就會被合併在一起，以減少多餘的程式碼產生，簡單概念如下：</p>
-<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// .scss 未使用 @extend</span><br><span class="hljs-selector-class">.header-btn</span> &#123;<br>  <span class="hljs-attribute">display</span>: inline-block;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">16px</span>;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#007bff</span>;<br>&#125;<br><span class="hljs-selector-class">.section-btn</span> &#123;<br>  <span class="hljs-attribute">display</span>: inline-block;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">16px</span>;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#6c757d</span>;<br>&#125;<br><span class="hljs-selector-class">.footer-btn</span> &#123;<br>  <span class="hljs-attribute">display</span>: inline-block;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">16px</span>;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#28a745</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// .scss 使用 @extend</span><br>%btn-base &#123;<br>  <span class="hljs-attribute">display</span>: inline-block;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">16px</span>;<br>&#125;<br><span class="hljs-selector-class">.header-btn</span> &#123;<br>  <span class="hljs-keyword">@extend</span> %btn-base;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#007bff</span>;<br>&#125;<br><span class="hljs-selector-class">.section-btn</span> &#123;<br>  <span class="hljs-keyword">@extend</span> %btn-base;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#6c757d</span>;<br>&#125;<br><span class="hljs-selector-class">.footer-btn</span> &#123;<br>  <span class="hljs-keyword">@extend</span> %btn-base;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#28a745</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/*  編譯後的 .css  */</span><br><span class="hljs-selector-class">.footer-btn</span>, <span class="hljs-selector-class">.section-btn</span>, <span class="hljs-selector-class">.header-btn</span> &#123; <span class="hljs-comment">/* 相同設定合併在一起 */</span><br>  <span class="hljs-attribute">display</span>: inline-block;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">16px</span>;<br>&#125;<br><span class="hljs-selector-class">.header-btn</span> &#123;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#007bff</span>;<br>&#125;<br><span class="hljs-selector-class">.section-btn</span> &#123;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#6c757d</span>;<br>&#125;<br><span class="hljs-selector-class">.footer-btn</span> &#123;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#28a745</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>可能會有人說，直接將共通的設定寫在一個 <code>.btn</code> 裡面不是比較方便且簡潔嗎？確實是這樣，而上述使用 <code>%btn-base</code> 來當作案例，主要是為了方便理解 <code>@extend</code> 的運作原理，實際上較不會透過以上做法來設定按鈕的共通樣式。</p>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://medium.com/ivycodefive/4-%E4%BB%80%E9%BA%BC%E6%98%AFsass-7-1%E6%9E%B6%E6%A7%8B-8687e9a10a64">什麼是Sass 7-1架構?</a><br><a href="https://www.casper.tw/css/2016/12/25/sass-map/">鐵人賽 25 - 實戰心法 - Sass Map 快出產出大量樣式</a></p>
-]]></content>
-      <categories>
-        <category>Sass/SCSS</category>
-      </categories>
-      <tags>
-        <tag>note</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>網頁切版直播班心得</title>
     <url>/2022-09-10-hexschool-web-feedback/</url>
     <content><![CDATA[<p>2022 夏，切版直播班心得。</p>
@@ -565,6 +476,270 @@
       <tags>
         <tag>Swiper</tag>
         <tag>Package</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript 觀念 - 同步與非同步</title>
+    <url>/2022-09-20-javascript-sync-async/</url>
+    <content><![CDATA[<p>這篇僅記錄同步、非同步是什麼樣的概念，並沒有處理非同步問題的方式。</p>
+<span id="more"></span>
+
+<hr>
+<div class="toc">
+<p class="toc-title">目錄：</p>
+
+<ul>
+<li><a href="#JavaScript-%E4%B8%AD%E7%9A%84%E5%90%8C%E6%AD%A5">JavaScript 中的同步</a></li>
+<li><a href="#%E4%BD%95%E8%AC%82%E9%9D%9E%E5%90%8C%E6%AD%A5%EF%BC%9F">何謂非同步？</a></li>
+<li><a href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99">參考資料</a></div></li>
+</ul>
+<h2 id="JavaScript-中的同步"><a href="#JavaScript-中的同步" class="headerlink" title="JavaScript 中的同步"></a>JavaScript 中的同步</h2><p>「同步（Synchronous）」在你的認知上會怎麼解釋？我自己原本的想法是同時處理很多事情，但這個說法在 JavaScript 卻有些出入，原因在於 JavaScript 是以「單執行緒（單線程）」的方式在執行程序，特性是「一次只做一件事，前面的事做完才會依序做下一件事」。</p>
+<blockquote>
+<p>執行緒相關內容可參考此<a href="https://www.itread01.com/ixyfq.html">文章</a>。</p>
+</blockquote>
+<p>範例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printNum</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;1&#x27;</span>);<br>&#125; <br>printNum();<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;2&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>以上面程式碼來說，會先執行函式 <code>printNum</code> 印出 <code>1</code>，接著再印出 <code>2</code>，並且兩者是有先後順序的，屬於同步執行。</p>
+<h2 id="何謂非同步？"><a href="#何謂非同步？" class="headerlink" title="何謂非同步？"></a>何謂非同步？</h2><p>「非同步（Asynchronous）」特性是「可以同時做很多事，並且不需要等待前面的事做完就能做下一件事」，其實就是自己一開始對同步的認知。</p>
+<p>範例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">setTimeout</span>(printNum, <span class="hljs-number">2000</span>);<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printNum</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;1&#x27;</span>);<br>&#125; <br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;2&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>程式碼中 <code>setTimeout</code> 會分別帶入 <code>callback</code>、<code>等待毫秒</code> 兩個參數，而回調函式 <code>printNum</code> 被設定 2 秒後才執行，但是這程中第 5 行的程式碼並不會等待前面的函式 <code>printNum</code>  執行完才動作，而是先印出 <code>2</code>，等待 2 秒之後呼叫函式 <code>printNum</code> 並印出 <code>1</code>。</p>
+<p>但是 JavaScript 屬於單執行緒，所以一次應該只會做一件事，為什麼會有範例中非同步的狀況？原因是 JavaScript 在 V8 引擎（JavaScript 引擎）運行時，引擎在運作時是同步的，但是除了引擎內的 JavaScript 原始程式碼之外，瀏覽器也會提供許多 Web APIs（如：document、MouseEvent、setTimeout…等等），這些並不屬於 V8 引擎的範疇，但是可以透過呼叫並使用它們做到非同步的行為，並且不會影響到 JavaScript 主程式的運行，可以理解成 JavaScript 需要依賴 Web APIs 才能達成非同步的效果。</p>
+<p>而 <code>setTimeout</code> 等待的期間，程式碼為甚麼能夠繼續往下執行？原因是當 Web APIs 與自己寫的 JavaScript 在瀏覽器一起執行時，透過 Web APIs 非同步呼叫的 callback function 會被放到 Callback Queue（儲列 / 佇列）待命，等到其他程式碼都執行完之後才會被呼叫。</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://chanchandev.com/js/Async/async-sync-intro/2534378084/">Javascript 非同步 &amp; Event Loop！10 分鐘輕鬆圖解學習！</a></p>
+<p><a href="https://5xruby.tw/posts/how-js-synchronous-works">無痛理解 JS | 非同步怎麼運作？</a></p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>synchronous</tag>
+        <tag>asynchronous</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SCSS 實用語法</title>
+    <url>/2022-06-07-sass-note/</url>
+    <content><![CDATA[<p>最近接觸到 Sass/SCSS，覺得各方面的功能都太方便了，這輩子大概不會想回去寫純 CSS 了吧。這篇筆記整理了一些新手必須學會的語法。</p>
+<span id="more"></span>
+<hr>
+<div class="toc">
+<p class="toc-title">目錄：</p>
+
+<ul>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E8%AA%9E%E6%B3%95">基本語法</a></li>
+<li><a href="#%E5%AF%A6%E7%94%A8%E8%AA%9E%E6%B3%95">實用語法</a></li>
+<li><a href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99">參考資料</a></div></li>
+</ul>
+<h2 id="基本語法"><a href="#基本語法" class="headerlink" title="基本語法"></a>基本語法</h2><h3 id="使用-amp-表示父選擇器"><a href="#使用-amp-表示父選擇器" class="headerlink" title="使用 &amp; 表示父選擇器"></a>使用 &amp; 表示父選擇器</h3><p>以下是一個簡單的 Scss 格式設定：</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-selector-class">.header</span> &#123;<br>  <span class="hljs-attribute">text-align</span>: center;<br>  <span class="hljs-selector-class">.header-title</span> &#123;<br>    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">2rem</span>;<br>  &#125;<br>  <span class="hljs-selector-tag">a</span> &#123;<br>    <span class="hljs-attribute">padding</span>: <span class="hljs-number">8</span> <span class="hljs-number">16px</span>;<br>    <span class="hljs-attribute">background</span>: <span class="hljs-number">#eee</span>;<br>  &#125;<br>  <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> &#123;<br>    <span class="hljs-attribute">background</span>: <span class="hljs-number">#ddd</span>;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>上述例子可以改用 &amp; 的方式來撰寫，以 &amp; 符號來表示父層，其運行結果想同，如下所示：</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-selector-class">.header</span> &#123;<br>  <span class="hljs-attribute">text-align</span>: center;<br>  &amp;-title &#123;<br>    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">2rem</span>;<br>  &#125;<br>  <span class="hljs-selector-tag">a</span> &#123;<br>    <span class="hljs-attribute">padding</span>: <span class="hljs-number">8</span> <span class="hljs-number">16px</span>;<br>    <span class="hljs-attribute">background</span>: <span class="hljs-number">#eee</span>;<br>    &amp;<span class="hljs-selector-pseudo">:hover</span> &#123;<br>      <span class="hljs-attribute">background</span>: <span class="hljs-number">#ddd</span>;<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="Variable-變數"><a href="#Variable-變數" class="headerlink" title="Variable 變數"></a>Variable 變數</h3><p>一個設定可能會在許多不同的區塊重複被使用，此時就能夠透過變數來統一管理，好處是後續若需要修改值，只需要修改變數值即可，而變數格式為 <code>$name: value</code>，以顏色為範例，如下所示：</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-variable">$color-primary</span>: <span class="hljs-number">#00cc99</span>;<br><span class="hljs-selector-class">.header</span> &#123;<br>  &amp;-title &#123;<br>    <span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-primary</span>;<br>  &#125;<br>&#125;<br><span class="hljs-selector-class">.footer</span> &#123;<br>  &amp;-title &#123;<br>    <span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-primary</span>;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>變數值可使用的格式分別有以下幾種：</p>
+<ul>
+<li>數字：<code>2</code>、<code>16px</code>、<code>2rem</code></li>
+<li>字串：<code>"文字"</code>、<code>"./img/logo.png"</code></li>
+<li>顏色：<code>blue</code>、<code>#00CC99</code>、<code>rgba(0,0,0,0.5)</code></li>
+<li>布林：<code>true</code>、<code>false</code></li>
+<li>空值：<code>null</code></li>
+<li>值列：<code>16px 8px</code>、<code>"arial, sans-serif"</code></li>
+<li>運算：<code>1rem * 1.25</code></li>
+</ul>
+<h3 id="調整色彩明度"><a href="#調整色彩明度" class="headerlink" title="調整色彩明度"></a>調整色彩明度</h3><p>除了直接輸入顏色或色碼，也能夠使用 <code>darken</code>、<code>lighten</code> 來調整所設定顏色的明暗程度，範例如下：</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-variable">$color-primary</span>: <span class="hljs-number">#00cc99</span>;<br><span class="hljs-selector-class">.title</span> &#123;<br>  <span class="hljs-attribute">color</span>: darken(<span class="hljs-variable">$color-primary</span>, <span class="hljs-number">25%</span>); <span class="hljs-comment">// 亮度減少 25%</span><br>&#125;<br><span class="hljs-selector-tag">a</span> &#123;<br>  <span class="hljs-attribute">color</span>: lighten(<span class="hljs-number">#ddd</span>, <span class="hljs-number">15%</span>); <span class="hljs-comment">// 亮度增加 15%</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="import-匯入檔案"><a href="#import-匯入檔案" class="headerlink" title="@import 匯入檔案"></a>@import 匯入檔案</h3><p>較大的專案為了方便管理程式碼，通常會將 scss 檔案進行較細的拆分，而這些拆分出來的檔案可透過 <code>@import</code> 來統一匯入（合併）一個 scss 檔案中，範例如下：</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// 目前檔案為 all.scss</span><br><br><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;variable&#x27;</span>;<br><br><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;reset&#x27;</span>;<br><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;base&#x27;</span>;<br><br><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;mixin&#x27;</span>;<br><br><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;main&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>檔案的分類可參考 <a href="https://gist.github.com/rveitch/84cea9650092119527bc">Sass 7-1 Pattern</a>，或是此篇<a href="https://medium.com/ivycodefive/4-%E4%BB%80%E9%BA%BC%E6%98%AFsass-7-1%E6%9E%B6%E6%A7%8B-8687e9a10a64">文章</a>。</p>
+</blockquote>
+<p>補充說明：被合併的 scss 檔案，檔案名稱會使用 _ 做開頭，除了用來表示合併用，也不會被編譯成 css 檔案，但是在匯入時不需要加上下底線，如下所示：</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// 正確匯入方式</span><br><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;variable&#x27;</span>;<br><span class="hljs-comment">// 錯誤匯入方式</span><br><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;_variable&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<h3 id="mixin-混合多個設定"><a href="#mixin-混合多個設定" class="headerlink" title="@mixin 混合多個設定"></a>@mixin 混合多個設定</h3><p>Mixin 的原理與變數相同，主要是將一些較常使用的語法組合封裝並且定義成一個名稱，等需要使用時，再透過 <code>@include</code> 來導入內容，範例如下：</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// _mixin.scss</span><br><span class="hljs-keyword">@mixin</span> textHide &#123; <span class="hljs-comment">// 圖片取代文字</span><br>  <span class="hljs-attribute">display</span>: inline-block;<br>  <span class="hljs-attribute">text-indent</span>: <span class="hljs-number">101%</span>;<br>  <span class="hljs-attribute">white-space</span>: nowrap;<br>  <span class="hljs-attribute">overflow</span>: hidden;<br>&#125;<br><br><span class="hljs-keyword">@mixin</span> desktop &#123; <span class="hljs-comment">// 響應式斷點</span><br>  <span class="hljs-keyword">@media</span> (<span class="hljs-attribute">min-width</span>: <span class="hljs-number">768px</span>) &#123;<br>    <span class="hljs-keyword">@content</span>; <span class="hljs-comment">// 表示導入後所撰寫的內容位置</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// _main.scss</span><br><span class="hljs-selector-tag">h1</span> <span class="hljs-selector-class">.logo</span> &#123;<br>  <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">&quot;images/logo.svg&quot;</span>);<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">150px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">80px</span>;<br>  <span class="hljs-attribute">background-size</span>: contain;<br>  <span class="hljs-keyword">@include</span> textHide;<br>  <span class="hljs-keyword">@include</span> desktop &#123;<br>    <span class="hljs-comment">// 此區塊的內容會對應 @content 位置</span><br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="實用語法"><a href="#實用語法" class="headerlink" title="實用語法"></a>實用語法</h2><h3 id="for-運作原理"><a href="#for-運作原理" class="headerlink" title="@for 運作原理"></a>@for 運作原理</h3><p>Sass 的 <code>@for</code> 運作方式類似 JavaScript 的 for 迴圈，能夠依序並重複套用相同的設定，範例如下：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- html --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box box-1&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box box-2&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box box-3&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box box-4&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box box-5&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// scss</span><br><span class="hljs-selector-class">.box</span> &#123;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<br>&#125;<br><span class="hljs-keyword">@for</span> <span class="hljs-variable">$i</span> from <span class="hljs-number">1</span> through <span class="hljs-number">5</span> &#123; <span class="hljs-comment">// through 若改使用 to，則不包含最終值</span><br>    <span class="hljs-selector-class">.box-</span>#&#123; <span class="hljs-variable">$i</span> &#125;&#123; <span class="hljs-comment">// 變數需要加上 # 並使用 &#123;&#125; 包覆，否則無法正常讀取</span><br>    <span class="hljs-attribute">background</span>: darken( <span class="hljs-number">#eee</span>, <span class="hljs-variable">$i</span> * <span class="hljs-number">5%</span> );<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>上述範例 scss 設定中，第 6 行使用了 <code>@for</code> 方法來設定不同的背景顏色，<code>$i</code> 表示帶入數字的變數，<code>from</code> 會接一個起始值，<code>through</code> 則是會接一個最終值。</p>
+<p>而第 7 行的 <code>$i</code> 會先帶入初始值 1，此時就會針對 <code>.box-1</code> 設定下方的樣式 <code>background: darken( #eee, 1 * 5% )</code>，接著 <code>$i</code> 會再帶入 2，並進行與前一次相同的設定，直到最終值進行結束為止。</p>
+<h3 id="Sass-Map-是甚麼"><a href="#Sass-Map-是甚麼" class="headerlink" title="Sass Map 是甚麼?"></a>Sass Map 是甚麼?</h3><p>Sass Map 是一種集合變數，概念有點類似 JSON，但是不同的地方在於 Sass Map 會將定義的變數透過<strong>小括弧</strong> <code>()</code> 包裝成一個群組，格式為 <code>$變數名稱: (key: value);</code>，範例如下：</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-variable">$colors</span>: (<br>  // key: value<br>  <span class="hljs-string">&#x27;primary&#x27;</span>: <span class="hljs-number">#007bff</span>, // 每個設定之間需要使用半形逗號隔開<br>  <span class="hljs-string">&#x27;secondary&#x27;</span>: <span class="hljs-number">#6c757d</span>,<br>  <span class="hljs-string">&#x27;success&#x27;</span>: <span class="hljs-number">#28a745</span><br>); <span class="hljs-comment">// 必須加上 ; 做結尾以免影響後方程式碼運作</span><br></code></pre></td></tr></table></figure>
+
+<p>設定 Sass Map 之後，可以透過 <code>map-get</code> 來取用變數的內容，以上述例子來說，若想取用 <code>$primary</code> 來當作文字的顏色，做法如下：</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-selector-tag">h1</span> &#123;<br>  <span class="hljs-attribute">background</span>: map-get(<span class="hljs-variable">$colors</span>, <span class="hljs-string">&#x27;primary&#x27;</span>);<br>&#125;;<br><span class="hljs-selector-tag">h2</span> &#123;<br>  <span class="hljs-attribute">background</span>: map-get(<span class="hljs-variable">$colors</span>, <span class="hljs-string">&#x27;secondary&#x27;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>以上述範例來說，雖然可以透過 <code>map-get</code> 來取得對應的變數內容，但是若針對個別項目逐一取用設定，效率會相對較低，因此通常會搭配 <code>@each</code> 來做使用。</p>
+<h3 id="each-運作原理"><a href="#each-運作原理" class="headerlink" title="@each 運作原理"></a>@each 運作原理</h3><p>Sass 的 <code>@each</code> 類似 JavaScript 的 each，搭配先前提到的 Sass Map 就可以產出大量的樣式設定，而 <code>@each</code> 的格式為 <code>@each $key, $value in 集合變數&#123;...&#125;</code> ，範例如下：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- HTML --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-primary&quot;</span>&gt;</span>Button1<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-secondary&quot;</span>&gt;</span>Button2<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-success&quot;</span>&gt;</span>Button3<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// scss</span><br><span class="hljs-selector-class">.btn</span> &#123;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">16px</span>;<br>&#125;<br><span class="hljs-variable">$colors</span>: (<br>  <span class="hljs-string">&#x27;primary&#x27;</span>: <span class="hljs-number">#007bff</span>,<br>  <span class="hljs-string">&#x27;secondary&#x27;</span>: <span class="hljs-number">#6c757d</span>,<br>  <span class="hljs-string">&#x27;success&#x27;</span>: <span class="hljs-number">#28a745</span><br>);<br><span class="hljs-keyword">@each</span> <span class="hljs-variable">$key</span>, <span class="hljs-variable">$value</span> in <span class="hljs-variable">$colors</span> &#123;<br>  <span class="hljs-selector-class">.btn-</span>#&#123;<span class="hljs-variable">$key</span>&#125; &#123;<br>    <span class="hljs-attribute">background</span>: <span class="hljs-variable">$value</span>;<br>  &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>上述範例 scss 設定中，第 10 行使用了 <code>@each</code> 並指定了集合變數 <code>$colors</code>，此時變數 <code>$colors</code> 中的每個 key 與 value 就會帶入 <code>@each</code> 大括弧裡的對應位置，最後再套用設定到對應的類別之中。</p>
+<h3 id="extend-合併相同樣式"><a href="#extend-合併相同樣式" class="headerlink" title="@extend 合併相同樣式"></a>@extend 合併相同樣式</h3><p>在進入 <code>@extend</code> 之前，先簡單說明<strong>佔位符選擇器</strong>（Placeholder Selectors）是什麼，它與 class、id 兩種選擇器類似，差別在於佔位符選擇器在 Sass 中會使用 <code>%</code> 來定義，且必須透過 <code>@extend</code> 來調用，在被 <code>@extend</code> 調用之前，本身並不會被編譯到 .css 檔案中。</p>
+<p>進入正題，如果相同的樣式設定被重複使用在多個類別中，可以透過 <code>%</code> 搭配 <code>@extend</code> 的做法，使 Sass 檔案在編譯後，有相同設定的類別就會被合併在一起，以減少多餘的程式碼產生，簡單概念如下：</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// .scss 未使用 @extend</span><br><span class="hljs-selector-class">.header-btn</span> &#123;<br>  <span class="hljs-attribute">display</span>: inline-block;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">16px</span>;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#007bff</span>;<br>&#125;<br><span class="hljs-selector-class">.section-btn</span> &#123;<br>  <span class="hljs-attribute">display</span>: inline-block;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">16px</span>;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#6c757d</span>;<br>&#125;<br><span class="hljs-selector-class">.footer-btn</span> &#123;<br>  <span class="hljs-attribute">display</span>: inline-block;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">16px</span>;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#28a745</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// .scss 使用 @extend</span><br>%btn-base &#123;<br>  <span class="hljs-attribute">display</span>: inline-block;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">16px</span>;<br>&#125;<br><span class="hljs-selector-class">.header-btn</span> &#123;<br>  <span class="hljs-keyword">@extend</span> %btn-base;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#007bff</span>;<br>&#125;<br><span class="hljs-selector-class">.section-btn</span> &#123;<br>  <span class="hljs-keyword">@extend</span> %btn-base;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#6c757d</span>;<br>&#125;<br><span class="hljs-selector-class">.footer-btn</span> &#123;<br>  <span class="hljs-keyword">@extend</span> %btn-base;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#28a745</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/*  編譯後的 .css  */</span><br><span class="hljs-selector-class">.footer-btn</span>, <span class="hljs-selector-class">.section-btn</span>, <span class="hljs-selector-class">.header-btn</span> &#123; <span class="hljs-comment">/* 相同設定合併在一起 */</span><br>  <span class="hljs-attribute">display</span>: inline-block;<br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">16px</span>;<br>&#125;<br><span class="hljs-selector-class">.header-btn</span> &#123;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#007bff</span>;<br>&#125;<br><span class="hljs-selector-class">.section-btn</span> &#123;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#6c757d</span>;<br>&#125;<br><span class="hljs-selector-class">.footer-btn</span> &#123;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#28a745</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>可能會有人說，直接將共通的設定寫在一個 <code>.btn</code> 裡面不是比較方便且簡潔嗎？確實是這樣，而上述使用 <code>%btn-base</code> 來當作案例，主要是為了方便理解 <code>@extend</code> 的運作原理，實際上較不會透過以上做法來設定按鈕的共通樣式。</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://medium.com/ivycodefive/4-%E4%BB%80%E9%BA%BC%E6%98%AFsass-7-1%E6%9E%B6%E6%A7%8B-8687e9a10a64">什麼是Sass 7-1架構?</a><br><a href="https://www.casper.tw/css/2016/12/25/sass-map/">鐵人賽 25 - 實戰心法 - Sass Map 快出產出大量樣式</a></p>
+]]></content>
+      <categories>
+        <category>Sass/SCSS</category>
+      </categories>
+      <tags>
+        <tag>note</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript 觀念 - var、let、const 有什麼不同</title>
+    <url>/2022-09-21-javascript-var-let-const/</url>
+    <content><![CDATA[<p>同樣都是用來宣告變數，為什麼還要分成三種方式？到底 let、const 解決了什麼問題？</p>
+<span id="more"></span>
+
+<hr>
+<div class="toc">
+<p class="toc-title">目錄：</p>
+
+<ul>
+<li><a href="#%E9%87%8D%E8%A4%87%E5%AE%A3%E5%91%8A">重複宣告</a></li>
+<li><a href="#%E4%BD%9C%E7%94%A8%E5%9F%9F">作用域</a></div></li>
+</ul>
+<p class="first-text-not-title">JavaScript 變數的宣告方式有三種，分別是 <code>var</code>、<code>let</code> 以及 <code>const</code>，後兩者是 ES6 新增的語法，而這三種方式所宣告的變數也會有不同的作用。</p>
+
+<h2 id="重複宣告"><a href="#重複宣告" class="headerlink" title="重複宣告"></a>重複宣告</h2><p>透過 <code>var</code> 宣告的變數，重複宣告的行為不會回報錯誤：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">var</span> a = <span class="hljs-number">2</span>;<br></code></pre></td></tr></table></figure>
+
+<p>雖然 JavaScript 允許上面這種行為，但是一般情況下，一個變數只會進行一次宣告。</p>
+<p><code>let</code> 不可重複宣告，但是可以重新賦值：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">let</span> a = <span class="hljs-number">2</span>;<br><span class="hljs-comment">// SyntaxError: Identifier &#x27;a&#x27; has already been declared</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span>;<br>a = <span class="hljs-number">2</span>;<br><span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// 2</span><br></code></pre></td></tr></table></figure>
+
+<p><code>const</code> 則是不可重複宣告，也無法重新賦值：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">const</span> a = <span class="hljs-number">2</span>;<br><span class="hljs-comment">// SyntaxError: Identifier &#x27;a&#x27; has already been declared</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> a = <span class="hljs-number">1</span>;<br>a = <span class="hljs-number">2</span>;<br><span class="hljs-comment">// TypeError: Assignment to constant variable.</span><br></code></pre></td></tr></table></figure>
+
+
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>「作用域（Scope）」可以理解成一個變數能夠被存取/使用的範圍。ES6 之前的作用域有兩種，分別是<strong>全域作用域</strong>以及<strong>函式作用域</strong>，而 ES6 新增了<strong>區塊作用域</strong>。</p>
+<h3 id="全域作用域（Global-Scope）"><a href="#全域作用域（Global-Scope）" class="headerlink" title="全域作用域（Global Scope）"></a>全域作用域（Global Scope）</h3><p>不是在 <code>function</code> 或 <code>block</code> 裡面宣告的變數，作用域就是全域。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(a + <span class="hljs-number">1</span>);<br>&#125;<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i=<span class="hljs-number">0</span>; i&lt;=<span class="hljs-number">5</span>; i++) &#123;<br>  a += i;<br>  <span class="hljs-built_in">console</span>.log(a);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>上方範例中的變數 <code>a</code> 是在全域環境下被宣告的，而全域變數可以在檔案中的任何地方存取。</p>
+<h3 id="函式作用域（Function-Scope）"><a href="#函式作用域（Function-Scope）" class="headerlink" title="函式作用域（Function Scope）"></a>函式作用域（Function Scope）</h3><figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> b = <span class="hljs-number">0</span>;<br>&#125;<br>fn();<br><span class="hljs-built_in">console</span>.log(a, <span class="hljs-string">&#x27;global&#x27;</span>); <span class="hljs-comment">// 1 &quot;global&quot;</span><br><span class="hljs-built_in">console</span>.log(b, <span class="hljs-string">&#x27;function&#x27;</span>); <span class="hljs-comment">// ReferenceError: b is not defined</span><br></code></pre></td></tr></table></figure>
+
+<p>上方範例嘗試在全域環境下取得變數 <code>b</code> 值，結果會因為沒有這個變數而出現錯誤，原因在於 <code>var</code> 宣告的變數是屬於<strong>函式作用域</strong>，而變數 <code>b</code> 是在函式 <code>fn</code> 裡面被宣告的，因此就只能在這個函式裡面被使用，無法從函式外存取該變數。</p>
+<p>而函式裡面可以使用函式外面的變數，如果在函式裡找不到變數，預設就會向外查找是否有相同名稱的變數。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">var</span> b = <span class="hljs-number">2</span>;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> b = <span class="hljs-number">20</span>;<br>  <span class="hljs-built_in">console</span>.log(a + b);<br>&#125;<br>fn();<br><span class="hljs-comment">// 21</span><br></code></pre></td></tr></table></figure>
+
+<p>上方範例第 5 行因為函式內不存在 <code>a</code> 變數，因此就會使用外層的全域變數 <code>a</code>，而 <code>b</code> 因為函式內已宣告，所以即使全域環境下也有同名的變數 <code>b</code>，也會優先使用函式裡面的變數，而全域變數 <code>b</code> 與函式中的區域變數 <code>b</code> 彼此是不同的兩個變數。</p>
+<p>同樣都是函式作用域，那兩個不同函式的變數可以互相存取嗎？</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fnA</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> a = <span class="hljs-string">&#x27;hello&#x27;</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fnB</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> b = <span class="hljs-string">&#x27;world&#x27;</span>;<br>  <span class="hljs-built_in">console</span>.log(a + b);<br>&#125;<br>fnA();<br>fnB();<br><span class="hljs-comment">// ReferenceError: a is not defined</span><br></code></pre></td></tr></table></figure>
+
+<p>答案是不行，函式裡面宣告的變數，存取範圍只能在當前的函式或是內層的函式。</p>
+<h3 id="區塊作用域（Block-Scope）"><a href="#區塊作用域（Block-Scope）" class="headerlink" title="區塊作用域（Block Scope）"></a>區塊作用域（Block Scope）</h3><p>ES6 之前只能只能使用 <code>function</code> 來定義作用域，ES6 開始因為新增了 <code>let</code>、<code>const</code> 兩種宣告方式，使變數能夠以區塊（Block）來規範作用域，而區塊作用域指的是一對大括號 <code>&#123;&#125;</code> 裡面的範圍，常見區塊像是 <code>if</code> 判斷式、<code>for</code> 迴圈等等。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">&#123;<br>  <span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">let</span> b = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">const</span> c = <span class="hljs-literal">true</span>;<br>&#125;<br><span class="hljs-built_in">console</span>.log(a, b, c);<br><span class="hljs-comment">// 1</span><br><span class="hljs-comment">// ReferenceError: b is not defined</span><br><span class="hljs-comment">// ReferenceError: c is not defined</span><br></code></pre></td></tr></table></figure>
+
+<p>以上可以看到區塊外無法存取區塊內透過 <code>let</code>、<code>const</code> 宣告的變數，因為 <code>var</code> 宣告的變數是函式作用域，所以變數 <code>a</code> 並不會被區塊限制作用域，因此作用域會是全域。</p>
+<p>以 <code>if</code> 判斷式為例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">if</span>(<span class="hljs-literal">true</span>) &#123;<br>  <span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-built_in">console</span>.log(a);<br><span class="hljs-comment">// 1</span><br><span class="hljs-comment">// ReferenceError: a is not defined</span><br></code></pre></td></tr></table></figure>
+
+<p>變數 <code>a</code> 因為是在 <code>if</code> 區塊中宣告的，因此無法從區塊之外存取該變數。</p>
+<p>到這邊可以知道一件事，無論變數的作用域是函式還是區塊，都能夠存取外層的變數，外層則無法存取內層變數，為單向性。</p>
+<h3 id="變數與物件屬性"><a href="#變數與物件屬性" class="headerlink" title="變數與物件屬性"></a>變數與物件屬性</h3><p>使用 <code>var</code>、<code>let</code>、 <code>const</code> 與不做關鍵字宣告行為有甚麼差別？</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">let</span> aa = <span class="hljs-number">10</span>;<br>aaa = <span class="hljs-number">100</span>;<br></code></pre></td></tr></table></figure>
+
+<p>透過 <code>var</code> 宣告變數後，會在 window（全域物件）下新增一個同名<strong>屬性</strong>，<code>let</code>、<code>const</code> 則不會。</p>
+<p><img src="https://i.imgur.com/NWJJi9r.png"></p>
+<p>從圖中 window 物件下也可以看到 <code>var</code> 宣告的變數 <code>a</code>，但是 <code>let</code> 宣告的變數 <code>aa</code> 就沒有出現在 window 物件下，另外 window 屬於全域物件，因此也可以下方式來取得物件中屬性：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">window</span>.a); <span class="hljs-comment">// 1</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">window</span>.aa); <span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
+
+<p>若不使用關鍵字來宣告，結果與使用 <code>var</code> 一樣都會在 window 物件下新增一個同名屬性，而差別就在於是否能被刪除，以下嘗試使用 <code>delete</code> 刪除變數 <code>a</code>：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">delete</span> <span class="hljs-built_in">window</span>.a;<br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">window</span>.a); <span class="hljs-comment">// 1</span><br></code></pre></td></tr></table></figure>
+
+<p>以上面結果來看，變數 <code>a</code> 並沒有被刪除；接著使用 <code>delete</code> 刪除屬性 <code>aaa</code>：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">aaa = <span class="hljs-number">100</span>;<br><span class="hljs-keyword">delete</span> <span class="hljs-built_in">window</span>.aaa;<br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">window</span>.aaa); <span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
+
+<p>可以發現 <code>aaa</code> 成功被刪除了。</p>
+<p>因此，使用關鍵字 <code>var</code> 宣告的變數無法被刪除，而沒有宣告行為的全域屬性，是可以被刪除的。</p>
+<p>最後再補充一下 <code>var</code>、<code>let</code> 與 <code>const</code> 的使用時機：</p>
+<ul>
+<li>預設都以 <code>const</code> 為主</li>
+<li>當變數需要重新指向時使用 <code>let</code></li>
+<li>盡可能避免使用 <code>var</code></li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>Scope</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript 筆記 - 迴圈</title>
+    <url>/2022-10-07-javascript-loop/</url>
+    <content><![CDATA[<p>雖然 for 迴圈能做到的事情，陣列方法中的 forEach 幾乎都能做到，但基於好奇心，還是想理解一下迴圈是怎麼運作的。</p>
+<span id="more"></span>
+
+<hr>
+<div class="toc">
+<p class="toc-title">目錄：</p>
+
+<ul>
+<li><a href="#for">for</a></li>
+<li><a href="#while">while</a></li>
+<li><a href="#break-%E8%88%87-continue">break 與 continue</a></div></li>
+</ul>
+<p class="first-text-not-title">迴圈（Loop）指的就是不斷重複做一件事情，當條件滿足就執行一次，一直到不符合條件就終止迴圈，常見的迴圈有 for、while，還有一個 do...while，不過這篇筆記先不提。</p>
+
+
+<h2 id="for"><a href="#for" class="headerlink" title="for"></a>for</h2><p>範例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> step = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">10</span>; i++) &#123;<br>  step += i;<br>  <span class="hljs-built_in">console</span>.log(i); <span class="hljs-comment">// 0, 1, 2...10</span><br>&#125;<br><span class="hljs-built_in">console</span>.log(step); <span class="hljs-comment">// 55</span><br></code></pre></td></tr></table></figure>
+
+<p>for 迴圈小括號中的 <code>i</code> 是一個變數，而左到右依序分別代表<strong>初始值</strong>、<strong>條件</strong>以及<strong>結束時的變動</strong>，以範例來說，<code>i</code> 從 <code>0</code> 開始，如果  <code>i &lt;= 10</code> 條件為 true，就執行大括號<code>&#123;&#125;</code>裡面的程式碼，執行結束後 <code>i</code> 就加 <code>1</code>，反覆循環直到條件為 false 時，就跳出迴圈。</p>
+<p>使用 for 迴圈需要注意小括號中的變數 <code>i</code>，盡可能都使用 <code>let</code> 來宣告，如果用 <code>var</code> 宣告，則變數 <code>i</code> 的作用域就不會在 for 迴圈的大括號裡面。</p>
+<h2 id="while"><a href="#while" class="headerlink" title="while"></a>while</h2><p>範例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">while</span>(i &lt;= <span class="hljs-number">10</span>) &#123;<br>  <span class="hljs-built_in">console</span>.log(i); <span class="hljs-comment">// 0, 1, 2...10</span><br>  i ++;<br>&#125;<br><span class="hljs-built_in">console</span>.log(i); <span class="hljs-comment">// 11</span><br></code></pre></td></tr></table></figure>
+
+<p>while 迴圈比較直白，可以將一個變數放入小括號中進行條件判斷，當判斷為 true 時，就執行大括號 <code>&#123;&#125;</code> 中的程式碼，而結束時的變動需加入執行的程式碼當中，如大括號中的 <code>i ++</code>。</p>
+<blockquote>
+<p>無論是使用 for 還是 white，終止迴圈的條件都要多加留意，以避免造成無窮迴圈，無窮迴圈意味著你的迴圈永遠不會終止，以上面 white 迴圈為例，如果不加上 <code>i ++</code>，每次判斷都會是 true。</p>
+</blockquote>
+<h2 id="break-與-continue"><a href="#break-與-continue" class="headerlink" title="break 與 continue"></a>break 與 continue</h2><p>雖然迴圈可以重複執行程式碼，但是有時候可能會希望迴圈在達到某個目的時，就終止迴圈而非一路執行到底，此時就可以使用 break 或是 continue，通常會搭配 if 一起使用。</p>
+<h3 id="break"><a href="#break" class="headerlink" title="break"></a>break</h3><p>break 能夠直接終止迴圈，以下面程式碼為例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> numList = [<span class="hljs-number">9</span>,<span class="hljs-number">5</span>,<span class="hljs-number">12</span>,<span class="hljs-number">21</span>,<span class="hljs-number">7</span>,<span class="hljs-number">11</span>,<span class="hljs-number">16</span>];<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt;= numList.length-<span class="hljs-number">1</span>; i++) &#123;<br>  <span class="hljs-keyword">if</span>(i % <span class="hljs-number">3</span> === <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-built_in">console</span>.log(numList[i]);<br>    <span class="hljs-keyword">break</span>;<br>  &#125;<br>&#125;<br><span class="hljs-comment">// 9</span><br></code></pre></td></tr></table></figure>
+
+<p>找出陣列中第一個能夠被 3 整除的數字，找到後終止迴圈。</p>
+<h3 id="continue"><a href="#continue" class="headerlink" title="continue"></a>continue</h3><p>continue 可以在執行迴圈的過程中，跳過一些指定特定的條件：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> numList = [<span class="hljs-number">9</span>,<span class="hljs-number">5</span>,<span class="hljs-number">12</span>,<span class="hljs-number">21</span>,<span class="hljs-number">7</span>,<span class="hljs-number">11</span>,<span class="hljs-number">16</span>];<br><span class="hljs-keyword">const</span> newAry = [];<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt;= numList.length-<span class="hljs-number">1</span>; i++) &#123;<br>  <span class="hljs-keyword">if</span>(i % <span class="hljs-number">3</span> === <span class="hljs-number">0</span>) &#123;<br>    newAry.push(numList[i]);<br>    <span class="hljs-keyword">continue</span>;<br>  &#125;<br>&#125;<br><span class="hljs-built_in">console</span>.log(newAry); <span class="hljs-comment">// [9, 21, 16]</span><br></code></pre></td></tr></table></figure>
+
+<p>將陣列 <code>numList</code> 中符合 3 的倍數的項目篩選出來，再依序加入新陣列 <code>newAry</code> 中。</p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>note</tag>
+        <tag>loop</tag>
       </tags>
   </entry>
   <entry>
@@ -677,384 +852,6 @@
       </categories>
       <tags>
         <tag>function</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript 觀念 - var、let、const 有什麼不同</title>
-    <url>/2022-09-21-javascript-var-let-const/</url>
-    <content><![CDATA[<p>同樣都是用來宣告變數，為什麼還要分成三種方式？到底 let、const 解決了什麼問題？</p>
-<span id="more"></span>
-
-<hr>
-<div class="toc">
-<p class="toc-title">目錄：</p>
-
-<ul>
-<li><a href="#%E9%87%8D%E8%A4%87%E5%AE%A3%E5%91%8A">重複宣告</a></li>
-<li><a href="#%E4%BD%9C%E7%94%A8%E5%9F%9F">作用域</a></div></li>
-</ul>
-<p class="first-text-not-title">JavaScript 變數的宣告方式有三種，分別是 <code>var</code>、<code>let</code> 以及 <code>const</code>，後兩者是 ES6 新增的語法，而這三種方式所宣告的變數也會有不同的作用。</p>
-
-<h2 id="重複宣告"><a href="#重複宣告" class="headerlink" title="重複宣告"></a>重複宣告</h2><p>透過 <code>var</code> 宣告的變數，重複宣告的行為不會回報錯誤：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">var</span> a = <span class="hljs-number">2</span>;<br></code></pre></td></tr></table></figure>
-
-<p>雖然 JavaScript 允許上面這種行為，但是一般情況下，一個變數只會進行一次宣告。</p>
-<p><code>let</code> 不可重複宣告，但是可以重新賦值：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">let</span> a = <span class="hljs-number">2</span>;<br><span class="hljs-comment">// SyntaxError: Identifier &#x27;a&#x27; has already been declared</span><br></code></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span>;<br>a = <span class="hljs-number">2</span>;<br><span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// 2</span><br></code></pre></td></tr></table></figure>
-
-<p><code>const</code> 則是不可重複宣告，也無法重新賦值：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">const</span> a = <span class="hljs-number">2</span>;<br><span class="hljs-comment">// SyntaxError: Identifier &#x27;a&#x27; has already been declared</span><br></code></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> a = <span class="hljs-number">1</span>;<br>a = <span class="hljs-number">2</span>;<br><span class="hljs-comment">// TypeError: Assignment to constant variable.</span><br></code></pre></td></tr></table></figure>
-
-
-<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>「作用域（Scope）」可以理解成一個變數能夠被存取/使用的範圍。ES6 之前的作用域有兩種，分別是<strong>全域作用域</strong>以及<strong>函式作用域</strong>，而 ES6 新增了<strong>區塊作用域</strong>。</p>
-<h3 id="全域作用域（Global-Scope）"><a href="#全域作用域（Global-Scope）" class="headerlink" title="全域作用域（Global Scope）"></a>全域作用域（Global Scope）</h3><p>不是在 <code>function</code> 或 <code>block</code> 裡面宣告的變數，作用域就是全域。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(a + <span class="hljs-number">1</span>);<br>&#125;<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i=<span class="hljs-number">0</span>; i&lt;=<span class="hljs-number">5</span>; i++) &#123;<br>  a += i;<br>  <span class="hljs-built_in">console</span>.log(a);<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>上方範例中的變數 <code>a</code> 是在全域環境下被宣告的，而全域變數可以在檔案中的任何地方存取。</p>
-<h3 id="函式作用域（Function-Scope）"><a href="#函式作用域（Function-Scope）" class="headerlink" title="函式作用域（Function Scope）"></a>函式作用域（Function Scope）</h3><figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> b = <span class="hljs-number">0</span>;<br>&#125;<br>fn();<br><span class="hljs-built_in">console</span>.log(a, <span class="hljs-string">&#x27;global&#x27;</span>); <span class="hljs-comment">// 1 &quot;global&quot;</span><br><span class="hljs-built_in">console</span>.log(b, <span class="hljs-string">&#x27;function&#x27;</span>); <span class="hljs-comment">// ReferenceError: b is not defined</span><br></code></pre></td></tr></table></figure>
-
-<p>上方範例嘗試在全域環境下取得變數 <code>b</code> 值，結果會因為沒有這個變數而出現錯誤，原因在於 <code>var</code> 宣告的變數是屬於<strong>函式作用域</strong>，而變數 <code>b</code> 是在函式 <code>fn</code> 裡面被宣告的，因此就只能在這個函式裡面被使用，無法從函式外存取該變數。</p>
-<p>而函式裡面可以使用函式外面的變數，如果在函式裡找不到變數，預設就會向外查找是否有相同名稱的變數。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">var</span> b = <span class="hljs-number">2</span>;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> b = <span class="hljs-number">20</span>;<br>  <span class="hljs-built_in">console</span>.log(a + b);<br>&#125;<br>fn();<br><span class="hljs-comment">// 21</span><br></code></pre></td></tr></table></figure>
-
-<p>上方範例第 5 行因為函式內不存在 <code>a</code> 變數，因此就會使用外層的全域變數 <code>a</code>，而 <code>b</code> 因為函式內已宣告，所以即使全域環境下也有同名的變數 <code>b</code>，也會優先使用函式裡面的變數，而全域變數 <code>b</code> 與函式中的區域變數 <code>b</code> 彼此是不同的兩個變數。</p>
-<p>同樣都是函式作用域，那兩個不同函式的變數可以互相存取嗎？</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fnA</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> a = <span class="hljs-string">&#x27;hello&#x27;</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fnB</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> b = <span class="hljs-string">&#x27;world&#x27;</span>;<br>  <span class="hljs-built_in">console</span>.log(a + b);<br>&#125;<br>fnA();<br>fnB();<br><span class="hljs-comment">// ReferenceError: a is not defined</span><br></code></pre></td></tr></table></figure>
-
-<p>答案是不行，函式裡面宣告的變數，存取範圍只能在當前的函式或是內層的函式。</p>
-<h3 id="區塊作用域（Block-Scope）"><a href="#區塊作用域（Block-Scope）" class="headerlink" title="區塊作用域（Block Scope）"></a>區塊作用域（Block Scope）</h3><p>ES6 之前只能只能使用 <code>function</code> 來定義作用域，ES6 開始因為新增了 <code>let</code>、<code>const</code> 兩種宣告方式，使變數能夠以區塊（Block）來規範作用域，而區塊作用域指的是一對大括號 <code>&#123;&#125;</code> 裡面的範圍，常見區塊像是 <code>if</code> 判斷式、<code>for</code> 迴圈等等。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">&#123;<br>  <span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">let</span> b = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">const</span> c = <span class="hljs-literal">true</span>;<br>&#125;<br><span class="hljs-built_in">console</span>.log(a, b, c);<br><span class="hljs-comment">// 1</span><br><span class="hljs-comment">// ReferenceError: b is not defined</span><br><span class="hljs-comment">// ReferenceError: c is not defined</span><br></code></pre></td></tr></table></figure>
-
-<p>以上可以看到區塊外無法存取區塊內透過 <code>let</code>、<code>const</code> 宣告的變數，因為 <code>var</code> 宣告的變數是函式作用域，所以變數 <code>a</code> 並不會被區塊限制作用域，因此作用域會是全域。</p>
-<p>以 <code>if</code> 判斷式為例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">if</span>(<span class="hljs-literal">true</span>) &#123;<br>  <span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-built_in">console</span>.log(a);<br><span class="hljs-comment">// 1</span><br><span class="hljs-comment">// ReferenceError: a is not defined</span><br></code></pre></td></tr></table></figure>
-
-<p>變數 <code>a</code> 因為是在 <code>if</code> 區塊中宣告的，因此無法從區塊之外存取該變數。</p>
-<p>到這邊可以知道一件事，無論變數的作用域是函式還是區塊，都能夠存取外層的變數，外層則無法存取內層變數，為單向性。</p>
-<h3 id="變數與物件屬性"><a href="#變數與物件屬性" class="headerlink" title="變數與物件屬性"></a>變數與物件屬性</h3><p>使用 <code>var</code>、<code>let</code>、 <code>const</code> 與不做關鍵字宣告行為有甚麼差別？</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">let</span> aa = <span class="hljs-number">10</span>;<br>aaa = <span class="hljs-number">100</span>;<br></code></pre></td></tr></table></figure>
-
-<p>透過 <code>var</code> 宣告變數後，會在 window（全域物件）下新增一個同名<strong>屬性</strong>，<code>let</code>、<code>const</code> 則不會。</p>
-<p><img src="https://i.imgur.com/NWJJi9r.png"></p>
-<p>從圖中 window 物件下也可以看到 <code>var</code> 宣告的變數 <code>a</code>，但是 <code>let</code> 宣告的變數 <code>aa</code> 就沒有出現在 window 物件下，另外 window 屬於全域物件，因此也可以下方式來取得物件中屬性：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">window</span>.a); <span class="hljs-comment">// 1</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">window</span>.aa); <span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
-
-<p>若不使用關鍵字來宣告，結果與使用 <code>var</code> 一樣都會在 window 物件下新增一個同名屬性，而差別就在於是否能被刪除，以下嘗試使用 <code>delete</code> 刪除變數 <code>a</code>：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">delete</span> <span class="hljs-built_in">window</span>.a;<br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">window</span>.a); <span class="hljs-comment">// 1</span><br></code></pre></td></tr></table></figure>
-
-<p>以上面結果來看，變數 <code>a</code> 並沒有被刪除；接著使用 <code>delete</code> 刪除屬性 <code>aaa</code>：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">aaa = <span class="hljs-number">100</span>;<br><span class="hljs-keyword">delete</span> <span class="hljs-built_in">window</span>.aaa;<br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">window</span>.aaa); <span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
-
-<p>可以發現 <code>aaa</code> 成功被刪除了。</p>
-<p>因此，使用關鍵字 <code>var</code> 宣告的變數無法被刪除，而沒有宣告行為的全域屬性，是可以被刪除的。</p>
-<p>最後再補充一下 <code>var</code>、<code>let</code> 與 <code>const</code> 的使用時機：</p>
-<ul>
-<li>預設都以 <code>const</code> 為主</li>
-<li>當變數需要重新指向時使用 <code>let</code></li>
-<li>盡可能避免使用 <code>var</code></li>
-</ul>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>Scope</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript 觀念 - 同步與非同步</title>
-    <url>/2022-09-20-javascript-sync-async/</url>
-    <content><![CDATA[<p>這篇僅記錄同步、非同步是什麼樣的概念，並沒有處理非同步問題的方式。</p>
-<span id="more"></span>
-
-<hr>
-<div class="toc">
-<p class="toc-title">目錄：</p>
-
-<ul>
-<li><a href="#JavaScript-%E4%B8%AD%E7%9A%84%E5%90%8C%E6%AD%A5">JavaScript 中的同步</a></li>
-<li><a href="#%E4%BD%95%E8%AC%82%E9%9D%9E%E5%90%8C%E6%AD%A5%EF%BC%9F">何謂非同步？</a></li>
-<li><a href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99">參考資料</a></div></li>
-</ul>
-<h2 id="JavaScript-中的同步"><a href="#JavaScript-中的同步" class="headerlink" title="JavaScript 中的同步"></a>JavaScript 中的同步</h2><p>「同步（Synchronous）」在你的認知上會怎麼解釋？我自己原本的想法是同時處理很多事情，但這個說法在 JavaScript 卻有些出入，原因在於 JavaScript 是以「單執行緒（單線程）」的方式在執行程序，特性是「一次只做一件事，前面的事做完才會依序做下一件事」。</p>
-<blockquote>
-<p>執行緒相關內容可參考此<a href="https://www.itread01.com/ixyfq.html">文章</a>。</p>
-</blockquote>
-<p>範例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printNum</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;1&#x27;</span>);<br>&#125; <br>printNum();<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;2&#x27;</span>);<br></code></pre></td></tr></table></figure>
-
-<p>以上面程式碼來說，會先執行函式 <code>printNum</code> 印出 <code>1</code>，接著再印出 <code>2</code>，並且兩者是有先後順序的，屬於同步執行。</p>
-<h2 id="何謂非同步？"><a href="#何謂非同步？" class="headerlink" title="何謂非同步？"></a>何謂非同步？</h2><p>「非同步（Asynchronous）」特性是「可以同時做很多事，並且不需要等待前面的事做完就能做下一件事」，其實就是自己一開始對同步的認知。</p>
-<p>範例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">setTimeout</span>(printNum, <span class="hljs-number">2000</span>);<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printNum</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;1&#x27;</span>);<br>&#125; <br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;2&#x27;</span>);<br></code></pre></td></tr></table></figure>
-
-<p>程式碼中 <code>setTimeout</code> 會分別帶入 <code>callback</code>、<code>等待毫秒</code> 兩個參數，而回調函式 <code>printNum</code> 被設定 2 秒後才執行，但是這程中第 5 行的程式碼並不會等待前面的函式 <code>printNum</code>  執行完才動作，而是先印出 <code>2</code>，等待 2 秒之後呼叫函式 <code>printNum</code> 並印出 <code>1</code>。</p>
-<p>但是 JavaScript 屬於單執行緒，所以一次應該只會做一件事，為什麼會有範例中非同步的狀況？原因是 JavaScript 在 V8 引擎（JavaScript 引擎）運行時，引擎在運作時是同步的，但是除了引擎內的 JavaScript 原始程式碼之外，瀏覽器也會提供許多 Web APIs（如：document、MouseEvent、setTimeout…等等），這些並不屬於 V8 引擎的範疇，但是可以透過呼叫並使用它們做到非同步的行為，並且不會影響到 JavaScript 主程式的運行，可以理解成 JavaScript 需要依賴 Web APIs 才能達成非同步的效果。</p>
-<p>而 <code>setTimeout</code> 等待的期間，程式碼為甚麼能夠繼續往下執行？原因是當 Web APIs 與自己寫的 JavaScript 在瀏覽器一起執行時，透過 Web APIs 非同步呼叫的 callback function 會被放到 Callback Queue（儲列 / 佇列）待命，等到其他程式碼都執行完之後才會被呼叫。</p>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://chanchandev.com/js/Async/async-sync-intro/2534378084/">Javascript 非同步 &amp; Event Loop！10 分鐘輕鬆圖解學習！</a></p>
-<p><a href="https://5xruby.tw/posts/how-js-synchronous-works">無痛理解 JS | 非同步怎麼運作？</a></p>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>synchronous</tag>
-        <tag>asynchronous</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript 觀念 - 提升</title>
-    <url>/2022-09-24-javascript-hoisting/</url>
-    <content><![CDATA[<p>ES6 前後的 Hoisting 觀念筆記。</p>
-<span id="more"></span>
-<hr>
-<div class="toc">
-<p class="toc-title">目錄：</p>
-
-<ul>
-<li><a href="#%E7%94%9A%E9%BA%BC%E6%98%AF%E6%8F%90%E5%8D%87%EF%BC%9F">甚麼是提升？</a></li>
-<li><a href="#ES6-%E4%BB%A5%E5%89%8D%E7%9A%84%E6%8F%90%E5%8D%87">ES6 以前的提升</a></li>
-<li><a href="#let%E3%80%81const-%E7%9A%84%E6%8F%90%E5%8D%87">let、const 的提升</a></li>
-<li><a href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99">參考資料</a></div></li>
-</ul>
-<h2 id="甚麼是提升？"><a href="#甚麼是提升？" class="headerlink" title="甚麼是提升？"></a>甚麼是提升？</h2><p>「提升（Hoisting）」是 JavaScript 特有的一種現象，它的意思是當一個變數或函式在被宣告之前就可以被使用，並且不會出現錯誤，另外 ES6 以前都是使用 <code>var</code> 來宣告變數，與 ES6 新增的 <code>let</code>、<code>const</code> 在提升行為會也有所不同。</p>
-<h2 id="ES6-以前的提升"><a href="#ES6-以前的提升" class="headerlink" title="ES6 以前的提升"></a>ES6 以前的提升</h2><figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-comment">// ReferenceError: x is not defined</span><br></code></pre></td></tr></table></figure>
-
-<p>以上針對 <code>x</code> 取值，但是在這之前並沒有宣告一個名為 <code>x</code> 的變數，因此會找不到該變數而回報錯誤，下面是正常的做法：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> x;<br><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
-
-<p>這樣就是一個正常的流程，程式碼會從第一行開始由上往下執行，所以在使用變數之前需要先宣告變數，以確保這個變數是存在的。</p>
-<p>接著下面嘗試把第 1、2 行位置進行對調：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-keyword">var</span> x;<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
-
-<p>按照前面的說法，上述程式碼應該會回報錯誤，但是得到的結果卻是 <code>undefined</code>，而這就是提升所造成的現象，感覺像是 <code>var x</code> 這段程式碼被提升到所有程式碼之前。</p>
-<p>大多數的程式語言中，變數在被使用之前是需要先宣告的，但是 JavaScript 可以在變數宣告之前就使用該變數，不過關於提升還有一些注意事項，就是會被提升的只有<strong>宣告的行為</strong>，值的指派並不會被提升，以下面程式碼為例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> x = <span class="hljs-number">7</span>; <span class="hljs-comment">// 宣告變數並指派值</span><br><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-comment">// 7</span><br></code></pre></td></tr></table></figure>
-
-<p>範例跟前面的相同，只是多了一個指派數值的動作，而最後也印出預期的結果，這個時候如果再將 1、2 行位置進行對調，印出的結果會是 <code>7</code> 嗎？</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-keyword">var</span> x = <span class="hljs-number">7</span>;<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
-
-<p>答案是 <code>undefined</code>，照理來說宣告的變數會被提升，可是得到的結果卻不是 <code>7</code>，原因其實就如前面提到的，會被提升的只有宣告的動作，而範例中宣告的動作指的是 <code>var x</code>，後方的 <code>= 7</code> 屬於值的指派，並不會跟著宣告一起被提升。</p>
-<p>但是結果為甚麼會是 <code>undefined</code>？原因在於 JavaScript 在開始執行你撰寫的程式碼之前，會先把所有宣告的變數、一般函式都預留一個記憶體空間，但不會馬上指派值給變數，這個預留記憶體空間的動作就是提升，到這邊為止屬於「創造階段」，而這個階段結束之後，變數才會被賦值，這個賦值的過程則是「執行階段」，<code>undefined</code> 就是變數在創造階段建立記憶體空間時，預設給定的初始值。</p>
-<p>可以將上面的程式碼運作流程理解成以下形式：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> x; <span class="hljs-comment">// 宣告變數（會被提升）</span><br><span class="hljs-built_in">console</span>.log(x);<br>x = <span class="hljs-number">7</span>; <span class="hljs-comment">// 指派值</span><br></code></pre></td></tr></table></figure>
-
-<p>目前為止已經知道會被提升的只有宣告的動作，但是除了變數之外，一般的函式宣告也會被提升，以下面程式碼為例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">fn();<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// hello</span><br></code></pre></td></tr></table></figure>
-
-<p>嘗試在函式被宣告之前呼叫，也可以順利執行且不會回報錯誤，因為這是一般的函式宣告（具名函式），整個函式都會被提升，因此就可以在函式宣告之前呼叫。</p>
-<p>那匿名函式就不會被提升嗎？答案是會，下面嘗試將範例改成以匿名函式的方式建立：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">fn();<br><span class="hljs-keyword">var</span> fn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// TypeError: fn is not a function</span><br></code></pre></td></tr></table></figure>
-
-<p>結果出現錯誤了，不過是不是與 <code>var</code> 宣告的變數很像？其實概念是一樣的，這裡的程式碼確實有被提升，但是被提升的只有變數的宣告 <code>var fn</code>，函式的資料在執行階段才會指派給變數 <code>fn</code>，此時的 <code>fn</code> 的值為 <code>undefined</code>，而 <code>undefined</code> 並非函式因此呼叫的行為就會回報錯誤。</p>
-<p>雖然無法呼叫，但是能透過變數取值來驗證上述說法：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(fn);<br><span class="hljs-keyword">var</span> fn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
-
-<p>而程式碼實際運作流程就像下面這樣：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> fn;<br><span class="hljs-built_in">console</span>.log(fn);<br>fn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>總結來說，JavaScript 中的「提升（Hoisting）」指的是宣告變數的提升，而值的賦予並不會提升；此外，提升並不會變更程式碼的位置，只是感覺像是整段程式碼被移動到最上方。</p>
-<h2 id="let、const-的提升"><a href="#let、const-的提升" class="headerlink" title="let、const 的提升"></a>let、const 的提升</h2><p>關於 <code>let</code>、<code>const</code> 有沒有提升行為，一開始我自己也是透過以下方法來作結論的：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// ReferenceError: a is not defined</span><br><span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure>
-
-<p>原本看到上面的結果，是認為 <code>let</code>、<code>const</code> 沒有提升行為的，直到看到一篇文章寫了下面這段程式碼：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fnA</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(a);<br>  <span class="hljs-keyword">let</span> a = <span class="hljs-number">100</span>;<br>&#125;<br>fnA();<br><span class="hljs-comment">// ReferenceError: Cannot access &#x27;a&#x27; before initialization</span><br></code></pre></td></tr></table></figure>
-
-<p>可以看到在函式 <code>fnA</code> 裡面，嘗試在變數 <code>a</code> 被宣告之前取值，照理來說，如果 <code>let</code> 沒有提升行為，第 3 行的變數 <code>a</code> 應該會指向到函式外層的變數 <code>a</code>，因此印出結果應該是 <code>1</code> 才對，但是最終卻得到 <code>Cannot access &#39;a&#39; before initialization</code> 的錯誤訊息，而這就證明了 <code>let</code> 是有提升行為的，只是不允許在變數宣告之前被存取。</p>
-<p>而前面提到 <code>var</code> 在提升時，也就是創造階段預設會給定初始值 <code>undefined</code>，而 <code>let</code>、<code>const</code> 則不會，所以在變數實際賦值前嘗試存取就會出現上面的錯誤，而提升後到賦值之前的這一個區間，稱為「暫時性死區（TDZ）」。</p>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://blog.techbridge.cc/2018/11/10/javascript-hoisting/">我知道你懂 hoisting，可是你了解到多深？</a></p>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>hoisting</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript 筆記 - 迴圈</title>
-    <url>/2022-10-07-javascript-loop/</url>
-    <content><![CDATA[<p>雖然 for 迴圈能做到的事情，陣列方法中的 forEach 幾乎都能做到，但基於好奇心，還是想理解一下迴圈是怎麼運作的。</p>
-<span id="more"></span>
-
-<hr>
-<div class="toc">
-<p class="toc-title">目錄：</p>
-
-<ul>
-<li><a href="#for">for</a></li>
-<li><a href="#while">while</a></li>
-<li><a href="#break-%E8%88%87-continue">break 與 continue</a></div></li>
-</ul>
-<p class="first-text-not-title">迴圈（Loop）指的就是不斷重複做一件事情，當條件滿足就執行一次，一直到不符合條件就終止迴圈，常見的迴圈有 for、while，還有一個 do...while，不過這篇筆記先不提。</p>
-
-
-<h2 id="for"><a href="#for" class="headerlink" title="for"></a>for</h2><p>範例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> step = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">10</span>; i++) &#123;<br>  step += i;<br>  <span class="hljs-built_in">console</span>.log(i); <span class="hljs-comment">// 0, 1, 2...10</span><br>&#125;<br><span class="hljs-built_in">console</span>.log(step); <span class="hljs-comment">// 55</span><br></code></pre></td></tr></table></figure>
-
-<p>for 迴圈小括號中的 <code>i</code> 是一個變數，而左到右依序分別代表<strong>初始值</strong>、<strong>條件</strong>以及<strong>結束時的變動</strong>，以範例來說，<code>i</code> 從 <code>0</code> 開始，如果  <code>i &lt;= 10</code> 條件為 true，就執行大括號<code>&#123;&#125;</code>裡面的程式碼，執行結束後 <code>i</code> 就加 <code>1</code>，反覆循環直到條件為 false 時，就跳出迴圈。</p>
-<p>使用 for 迴圈需要注意小括號中的變數 <code>i</code>，盡可能都使用 <code>let</code> 來宣告，如果用 <code>var</code> 宣告，則變數 <code>i</code> 的作用域就不會在 for 迴圈的大括號裡面。</p>
-<h2 id="while"><a href="#while" class="headerlink" title="while"></a>while</h2><p>範例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">while</span>(i &lt;= <span class="hljs-number">10</span>) &#123;<br>  <span class="hljs-built_in">console</span>.log(i); <span class="hljs-comment">// 0, 1, 2...10</span><br>  i ++;<br>&#125;<br><span class="hljs-built_in">console</span>.log(i); <span class="hljs-comment">// 11</span><br></code></pre></td></tr></table></figure>
-
-<p>while 迴圈比較直白，可以將一個變數放入小括號中進行條件判斷，當判斷為 true 時，就執行大括號 <code>&#123;&#125;</code> 中的程式碼，而結束時的變動需加入執行的程式碼當中，如大括號中的 <code>i ++</code>。</p>
-<blockquote>
-<p>無論是使用 for 還是 white，終止迴圈的條件都要多加留意，以避免造成無窮迴圈，無窮迴圈意味著你的迴圈永遠不會終止，以上面 white 迴圈為例，如果不加上 <code>i ++</code>，每次判斷都會是 true。</p>
-</blockquote>
-<h2 id="break-與-continue"><a href="#break-與-continue" class="headerlink" title="break 與 continue"></a>break 與 continue</h2><p>雖然迴圈可以重複執行程式碼，但是有時候可能會希望迴圈在達到某個目的時，就終止迴圈而非一路執行到底，此時就可以使用 break 或是 continue，通常會搭配 if 一起使用。</p>
-<h3 id="break"><a href="#break" class="headerlink" title="break"></a>break</h3><p>break 能夠直接終止迴圈，以下面程式碼為例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> numList = [<span class="hljs-number">9</span>,<span class="hljs-number">5</span>,<span class="hljs-number">12</span>,<span class="hljs-number">21</span>,<span class="hljs-number">7</span>,<span class="hljs-number">11</span>,<span class="hljs-number">16</span>];<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt;= numList.length-<span class="hljs-number">1</span>; i++) &#123;<br>  <span class="hljs-keyword">if</span>(i % <span class="hljs-number">3</span> === <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-built_in">console</span>.log(numList[i]);<br>    <span class="hljs-keyword">break</span>;<br>  &#125;<br>&#125;<br><span class="hljs-comment">// 9</span><br></code></pre></td></tr></table></figure>
-
-<p>找出陣列中第一個能夠被 3 整除的數字，找到後終止迴圈。</p>
-<h3 id="continue"><a href="#continue" class="headerlink" title="continue"></a>continue</h3><p>continue 可以在執行迴圈的過程中，跳過一些指定特定的條件：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> numList = [<span class="hljs-number">9</span>,<span class="hljs-number">5</span>,<span class="hljs-number">12</span>,<span class="hljs-number">21</span>,<span class="hljs-number">7</span>,<span class="hljs-number">11</span>,<span class="hljs-number">16</span>];<br><span class="hljs-keyword">const</span> newAry = [];<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt;= numList.length-<span class="hljs-number">1</span>; i++) &#123;<br>  <span class="hljs-keyword">if</span>(i % <span class="hljs-number">3</span> === <span class="hljs-number">0</span>) &#123;<br>    newAry.push(numList[i]);<br>    <span class="hljs-keyword">continue</span>;<br>  &#125;<br>&#125;<br><span class="hljs-built_in">console</span>.log(newAry); <span class="hljs-comment">// [9, 21, 16]</span><br></code></pre></td></tr></table></figure>
-
-<p>將陣列 <code>numList</code> 中符合 3 的倍數的項目篩選出來，再依序加入新陣列 <code>newAry</code> 中。</p>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>note</tag>
-        <tag>loop</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript 筆記 - 陣列方法</title>
-    <url>/2022-10-08-javascript-array-methods/</url>
-    <content><![CDATA[<p>forEach 很好用，但是其他陣列方法也很不賴！</p>
-<span id="more"></span>
-
-<hr>
-<div class="toc">
-<p class="toc-title">目錄：</p>
-
-<ul>
-<li><a href="#forEach">forEach</a></li>
-<li><a href="#map">map</a></li>
-<li><a href="#filter">filter</a></li>
-<li><a href="#find">find</a></li>
-<li><a href="#every">every</a></li>
-<li><a href="#some">some</a></li>
-<li><a href="#reduce">reduce</a></div></li>
-</ul>
-<p class="first-text-not-title">範例資料：</p>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> data = [<br>  &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Leo&#x27;</span>,<br>    <span class="hljs-attr">sex</span>: <span class="hljs-string">&#x27;男生&#x27;</span>,<br>    <span class="hljs-attr">age</span>: <span class="hljs-number">22</span><br>  &#125;,&#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Ryan&#x27;</span>,<br>    <span class="hljs-attr">sex</span>: <span class="hljs-string">&#x27;男生&#x27;</span>,<br>    <span class="hljs-attr">age</span>: <span class="hljs-number">16</span><br>  &#125;,&#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Amber&#x27;</span>,<br>    <span class="hljs-attr">sex</span>: <span class="hljs-string">&#x27;女生&#x27;</span>,<br>    <span class="hljs-attr">age</span>: <span class="hljs-number">20</span><br>  &#125;<br>]<br></code></pre></td></tr></table></figure>
-
-
-
-<h2 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h2><p>forEach 會針對陣列中的每一個元素進行操作。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">arr.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item, index, array</span>) </span>&#123;<br>  <span class="hljs-comment">// do something...</span><br>&#125;)<br></code></pre></td></tr></table></figure>
-
-<p>陣列所元素皆傳入函式執行一次，但是不會回傳任何值（<code>reutrn</code> 沒有作用），換言之，forEach 不會產生新陣列。</p>
-<p>callback 函式可傳入以下參數：</p>
-<ul>
-<li><code>item</code> 目前元素</li>
-<li><code>index</code> 目前元素索引（選用）</li>
-<li><code>array</code> 陣列本身（選用）</li>
-</ul>
-<p>範例：依序印出人物資訊</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">data.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">$&#123;item.name&#125;</span> 是<span class="hljs-subst">$&#123;item.sex&#125;</span>，目前 <span class="hljs-subst">$&#123;item.age&#125;</span> 歲`</span>)<br>&#125;)<br><span class="hljs-comment">// &quot;Leo 是男生，目前 22 歲&quot;</span><br><span class="hljs-comment">// &quot;Ryan 是男生，目前 16 歲&quot;</span><br><span class="hljs-comment">// &quot;Amber 是女生，目前 20 歲&quot;</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><p>map 可以把原陣列所有元素進行轉換，並以新的資料形式在新陣列中呈現。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">arr.map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item, index, array</span>) </span>&#123;<br>  <span class="hljs-comment">// do something...</span><br>&#125;)<br></code></pre></td></tr></table></figure>
-
-<p>會建立一個新陣列，內容為原陣列的每一個元素運算、轉換後回傳的值，若不回傳，新陣列所有元素皆為 <code>undefined</code>。</p>
-<p>callback 函式可傳入以下參數：</p>
-<ul>
-<li><code>item</code> 目前元素</li>
-<li><code>index</code> 目前元素索引（選用）</li>
-<li><code>array</code> 陣列本身（選用）</li>
-</ul>
-<p>範例：將所有人的年齡加五歲</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> mapArray = data.map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> item.age += <span class="hljs-number">5</span>;<br>&#125;)<br><span class="hljs-built_in">console</span>.log(mapArray)<br><span class="hljs-comment">// [27,21,25]</span><br></code></pre></td></tr></table></figure>
-
-
-
-<h2 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h2><p>filter 就如字面上的意思，可以用來篩選陣列中符合條件的元素。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">arr.filter(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item, index, array</span>) </span>&#123;<br>  <span class="hljs-comment">// do something...</span><br>&#125;)<br></code></pre></td></tr></table></figure>
-
-<p>會建立一個新陣列，內容為原陣列中所有符合條件的元素。</p>
-<p>callback 函式可傳入以下參數：</p>
-<ul>
-<li><code>item</code> 目前元素</li>
-<li><code>index</code> 目前元素索引（選用）</li>
-<li><code>array</code> 陣列本身（選用）</li>
-</ul>
-<p>範例：篩選出年齡 18 歲以上的人</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> filterArray = data.filter(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> item.age &gt;= <span class="hljs-number">18</span>;<br>&#125;)<br><span class="hljs-built_in">console</span>.log(filterArray);<br><span class="hljs-comment">// [&#123;&quot;name&quot;: &quot;Leo&quot;, &quot;sex&quot;: &quot;男生&quot;&#125;,&#123;&quot;name&quot;: &quot;Amber&quot;, &quot;sex&quot;: &quot;女生&quot;&#125;]</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="find"><a href="#find" class="headerlink" title="find"></a>find</h2><p>find 與 filter 類似，差別在於 find 只會找到陣列第一筆符合條件的元素。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">arr.find(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item, index, array</span>) </span>&#123;<br>  <span class="hljs-comment">// do something...</span><br>&#125;)<br></code></pre></td></tr></table></figure>
-
-<p>會回傳一個元素，該元素是陣列中第一個符合條件的元素，若都不符合條件則回傳一個 <code>undefined</code>。</p>
-<p>callback 函式可傳入以下參數：</p>
-<ul>
-<li><code>item</code> 目前元素</li>
-<li><code>index</code> 目前元素索引（選用）</li>
-<li><code>array</code> 陣列本身（選用）</li>
-</ul>
-<p>範例：找出第一個女生</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> findItem = data.filter(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> item.sex === <span class="hljs-string">&#x27;女生&#x27;</span>;<br>&#125;)<br><span class="hljs-built_in">console</span>.log(findItem)<br><span class="hljs-comment">// &#123;&quot;name&quot;: &quot;Amber&quot;, &quot;sex&quot;: &quot;女生&quot;&#125;</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="every"><a href="#every" class="headerlink" title="every"></a>every</h2><p>every 可以檢測陣列是否全部元素都符合條件。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">arr.every(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item, index, array</span>) </span>&#123;<br>  <span class="hljs-comment">// do something...</span><br>&#125;)<br></code></pre></td></tr></table></figure>
-
-<p>會回傳一個 <code>boolean</code>，陣列中的元素必須全部符合條件，最終才會回傳 <code>true</code>，否則會回傳 <code>false</code>。</p>
-<p>callback 函式可傳入以下參數：</p>
-<ul>
-<li><code>item</code> 目前元素</li>
-<li><code>index</code> 目前元素索引（選用）</li>
-<li><code>array</code> 陣列本身（選用）</li>
-</ul>
-<p>範例：    判斷是否全部都是男生</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> result = data.every(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> item.sex === <span class="hljs-string">&#x27;男生&#x27;</span>;<br>&#125;)<br><span class="hljs-built_in">console</span>.log(result); <span class="hljs-comment">// false</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="some"><a href="#some" class="headerlink" title="some"></a>some</h2><p>some 與 every 概念類似，差別在於 some 用來檢測陣列是否有任何一個（或以上）元素符合條件，兩個方法從字面上也可以區別。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">arr.some(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item, index, array</span>) </span>&#123;<br>  <span class="hljs-comment">// do something...</span><br>&#125;)<br></code></pre></td></tr></table></figure>
-
-<p>最終會回傳一個 <code>boolean</code>，陣列中只要有任何一個元素符合條件，最終就回傳 <code>true</code>，否則回傳 <code>false</code>。</p>
-<p>callback 函式可傳入以下參數：</p>
-<ul>
-<li><code>item</code> 目前元素</li>
-<li><code>index</code> 目前元素索引（選用）</li>
-<li><code>array</code> 陣列本身（選用）</li>
-</ul>
-<p>範例：    判斷是否有未成年的人</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> result = data.some(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> item.age &lt; <span class="hljs-number">18</span>;<br>&#125;)<br><span class="hljs-built_in">console</span>.log(result); <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h2><p>reduce 與其他陣列方法差異較大，可以將陣列中所有元素累計運算，最終回傳一個累計的結果。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">arr.reduce(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">accumulator, currentValue, currentIndex, array</span>) </span>&#123;<br>  <span class="hljs-comment">// do something...</span><br>&#125;, initialValue)<br></code></pre></td></tr></table></figure>
-
-<p>接收一個 callback 函式與一個起始值作為參數，callback 函式可傳入以下參數：</p>
-<ul>
-<li><code>accumulator</code> 前一個元素</li>
-<li><code>currentValue</code> 目前元素</li>
-<li><code>currentIndex</code> 目前元素索引（選用）</li>
-<li><code>array</code> 陣列本身（選用）</li>
-</ul>
-<p>第二個參數為起始值 <code>initialValue</code>（選用），若沒有給定起始值，<code>accumulator</code> 預設會是陣列第一個元素，<code>currentValue</code> 則預設是第二個；反之，如果有給定起始值，<code>accumulator</code> 就會是給定的起始值，而 <code>currentValue</code> 會是陣列第一個元素。</p>
-<p>callback 函式每次呼叫時，會把 <code>accumulator</code> 與 <code>currentValue</code> 相加，再把相加的值再次回傳入 <code>accumulator</code>， 不斷反覆進行累計，換言之，<code>accumulator</code> 除了起始值之外，每次運算的值都是前一次相加累計的值。</p>
-<p>範例一：不指定起始值</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];<br><span class="hljs-keyword">const</span> totalNum = arr.reduce(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">acc, cur</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> acc + cur;<br>&#125;)<br><span class="hljs-built_in">console</span>.log(totalNum); <span class="hljs-comment">// 15</span><br><span class="hljs-comment">// 累加過程：1+2=3 -&gt; 3+3=6 -&gt; 6+4=10 -&gt; 10+5=15</span><br></code></pre></td></tr></table></figure>
-
-<p>範例二：指定起始值為 10</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];<br><span class="hljs-keyword">const</span> totalNum = arr.reduce(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">acc, cur</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> acc + cur;<br>&#125;, <span class="hljs-number">10</span>)<br><span class="hljs-built_in">console</span>.log(totalNum); <span class="hljs-comment">// 25</span><br><span class="hljs-comment">// 累加過程：10+1=11 -&gt; 11+2=13 -&gt; 13+3=16 -&gt; 16+4=20 -&gt; 20+5=25</span><br></code></pre></td></tr></table></figure>
-
-<p>範例三：加總範例資料中所有人的年齡</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> ageTotal = data.reduce(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">acc, cur</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> acc + cur.age;<br>&#125;, <span class="hljs-number">0</span>)<br><span class="hljs-built_in">console</span>.log(ageTotal); <span class="hljs-comment">// 58</span><br><span class="hljs-comment">// 累加過程：0+22=22 -&gt; 22+16=38 -&gt; 38+20=58</span><br></code></pre></td></tr></table></figure>
-
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2>]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>array</tag>
       </tags>
   </entry>
   <entry>
@@ -1404,6 +1201,209 @@
       </categories>
       <tags>
         <tag>promise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript 觀念 - 提升</title>
+    <url>/2022-09-24-javascript-hoisting/</url>
+    <content><![CDATA[<p>ES6 前後的 Hoisting 觀念筆記。</p>
+<span id="more"></span>
+<hr>
+<div class="toc">
+<p class="toc-title">目錄：</p>
+
+<ul>
+<li><a href="#%E7%94%9A%E9%BA%BC%E6%98%AF%E6%8F%90%E5%8D%87%EF%BC%9F">甚麼是提升？</a></li>
+<li><a href="#ES6-%E4%BB%A5%E5%89%8D%E7%9A%84%E6%8F%90%E5%8D%87">ES6 以前的提升</a></li>
+<li><a href="#let%E3%80%81const-%E7%9A%84%E6%8F%90%E5%8D%87">let、const 的提升</a></li>
+<li><a href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99">參考資料</a></div></li>
+</ul>
+<h2 id="甚麼是提升？"><a href="#甚麼是提升？" class="headerlink" title="甚麼是提升？"></a>甚麼是提升？</h2><p>「提升（Hoisting）」是 JavaScript 特有的一種現象，它的意思是當一個變數或函式在被宣告之前就可以被使用，並且不會出現錯誤，另外 ES6 以前都是使用 <code>var</code> 來宣告變數，與 ES6 新增的 <code>let</code>、<code>const</code> 在提升行為會也有所不同。</p>
+<h2 id="ES6-以前的提升"><a href="#ES6-以前的提升" class="headerlink" title="ES6 以前的提升"></a>ES6 以前的提升</h2><figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-comment">// ReferenceError: x is not defined</span><br></code></pre></td></tr></table></figure>
+
+<p>以上針對 <code>x</code> 取值，但是在這之前並沒有宣告一個名為 <code>x</code> 的變數，因此會找不到該變數而回報錯誤，下面是正常的做法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> x;<br><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
+
+<p>這樣就是一個正常的流程，程式碼會從第一行開始由上往下執行，所以在使用變數之前需要先宣告變數，以確保這個變數是存在的。</p>
+<p>接著下面嘗試把第 1、2 行位置進行對調：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-keyword">var</span> x;<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
+
+<p>按照前面的說法，上述程式碼應該會回報錯誤，但是得到的結果卻是 <code>undefined</code>，而這就是提升所造成的現象，感覺像是 <code>var x</code> 這段程式碼被提升到所有程式碼之前。</p>
+<p>大多數的程式語言中，變數在被使用之前是需要先宣告的，但是 JavaScript 可以在變數宣告之前就使用該變數，不過關於提升還有一些注意事項，就是會被提升的只有<strong>宣告的行為</strong>，值的指派並不會被提升，以下面程式碼為例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> x = <span class="hljs-number">7</span>; <span class="hljs-comment">// 宣告變數並指派值</span><br><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-comment">// 7</span><br></code></pre></td></tr></table></figure>
+
+<p>範例跟前面的相同，只是多了一個指派數值的動作，而最後也印出預期的結果，這個時候如果再將 1、2 行位置進行對調，印出的結果會是 <code>7</code> 嗎？</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-keyword">var</span> x = <span class="hljs-number">7</span>;<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
+
+<p>答案是 <code>undefined</code>，照理來說宣告的變數會被提升，可是得到的結果卻不是 <code>7</code>，原因其實就如前面提到的，會被提升的只有宣告的動作，而範例中宣告的動作指的是 <code>var x</code>，後方的 <code>= 7</code> 屬於值的指派，並不會跟著宣告一起被提升。</p>
+<p>但是結果為甚麼會是 <code>undefined</code>？原因在於 JavaScript 在開始執行你撰寫的程式碼之前，會先把所有宣告的變數、一般函式都預留一個記憶體空間，但不會馬上指派值給變數，這個預留記憶體空間的動作就是提升，到這邊為止屬於「創造階段」，而這個階段結束之後，變數才會被賦值，這個賦值的過程則是「執行階段」，<code>undefined</code> 就是變數在創造階段建立記憶體空間時，預設給定的初始值。</p>
+<p>可以將上面的程式碼運作流程理解成以下形式：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> x; <span class="hljs-comment">// 宣告變數（會被提升）</span><br><span class="hljs-built_in">console</span>.log(x);<br>x = <span class="hljs-number">7</span>; <span class="hljs-comment">// 指派值</span><br></code></pre></td></tr></table></figure>
+
+<p>目前為止已經知道會被提升的只有宣告的動作，但是除了變數之外，一般的函式宣告也會被提升，以下面程式碼為例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">fn();<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// hello</span><br></code></pre></td></tr></table></figure>
+
+<p>嘗試在函式被宣告之前呼叫，也可以順利執行且不會回報錯誤，因為這是一般的函式宣告（具名函式），整個函式都會被提升，因此就可以在函式宣告之前呼叫。</p>
+<p>那匿名函式就不會被提升嗎？答案是會，下面嘗試將範例改成以匿名函式的方式建立：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">fn();<br><span class="hljs-keyword">var</span> fn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// TypeError: fn is not a function</span><br></code></pre></td></tr></table></figure>
+
+<p>結果出現錯誤了，不過是不是與 <code>var</code> 宣告的變數很像？其實概念是一樣的，這裡的程式碼確實有被提升，但是被提升的只有變數的宣告 <code>var fn</code>，函式的資料在執行階段才會指派給變數 <code>fn</code>，此時的 <code>fn</code> 的值為 <code>undefined</code>，而 <code>undefined</code> 並非函式因此呼叫的行為就會回報錯誤。</p>
+<p>雖然無法呼叫，但是能透過變數取值來驗證上述說法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(fn);<br><span class="hljs-keyword">var</span> fn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
+
+<p>而程式碼實際運作流程就像下面這樣：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> fn;<br><span class="hljs-built_in">console</span>.log(fn);<br>fn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>總結來說，JavaScript 中的「提升（Hoisting）」指的是宣告變數的提升，而值的賦予並不會提升；此外，提升並不會變更程式碼的位置，只是感覺像是整段程式碼被移動到最上方。</p>
+<h2 id="let、const-的提升"><a href="#let、const-的提升" class="headerlink" title="let、const 的提升"></a>let、const 的提升</h2><p>關於 <code>let</code>、<code>const</code> 有沒有提升行為，一開始我自己也是透過以下方法來作結論的：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// ReferenceError: a is not defined</span><br><span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure>
+
+<p>原本看到上面的結果，是認為 <code>let</code>、<code>const</code> 沒有提升行為的，直到看到一篇文章寫了下面這段程式碼：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fnA</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(a);<br>  <span class="hljs-keyword">let</span> a = <span class="hljs-number">100</span>;<br>&#125;<br>fnA();<br><span class="hljs-comment">// ReferenceError: Cannot access &#x27;a&#x27; before initialization</span><br></code></pre></td></tr></table></figure>
+
+<p>可以看到在函式 <code>fnA</code> 裡面，嘗試在變數 <code>a</code> 被宣告之前取值，照理來說，如果 <code>let</code> 沒有提升行為，第 3 行的變數 <code>a</code> 應該會指向到函式外層的變數 <code>a</code>，因此印出結果應該是 <code>1</code> 才對，但是最終卻得到 <code>Cannot access &#39;a&#39; before initialization</code> 的錯誤訊息，而這就證明了 <code>let</code> 是有提升行為的，只是不允許在變數宣告之前被存取。</p>
+<p>而前面提到 <code>var</code> 在提升時，也就是創造階段預設會給定初始值 <code>undefined</code>，而 <code>let</code>、<code>const</code> 則不會，所以在變數實際賦值前嘗試存取就會出現上面的錯誤，而提升後到賦值之前的這一個區間，稱為「暫時性死區（TDZ）」。</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://blog.techbridge.cc/2018/11/10/javascript-hoisting/">我知道你懂 hoisting，可是你了解到多深？</a></p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>hoisting</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript 筆記 - 陣列方法</title>
+    <url>/2022-10-08-javascript-array-methods/</url>
+    <content><![CDATA[<p>forEach 很好用，但是其他陣列方法也很不賴！</p>
+<span id="more"></span>
+
+<hr>
+<div class="toc">
+<p class="toc-title">目錄：</p>
+
+<ul>
+<li><a href="#forEach">forEach</a></li>
+<li><a href="#map">map</a></li>
+<li><a href="#filter">filter</a></li>
+<li><a href="#find">find</a></li>
+<li><a href="#every">every</a></li>
+<li><a href="#some">some</a></li>
+<li><a href="#reduce">reduce</a></div></li>
+</ul>
+<p class="first-text-not-title">範例資料：</p>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> data = [<br>  &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Leo&#x27;</span>,<br>    <span class="hljs-attr">sex</span>: <span class="hljs-string">&#x27;男生&#x27;</span>,<br>    <span class="hljs-attr">age</span>: <span class="hljs-number">22</span><br>  &#125;,&#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Ryan&#x27;</span>,<br>    <span class="hljs-attr">sex</span>: <span class="hljs-string">&#x27;男生&#x27;</span>,<br>    <span class="hljs-attr">age</span>: <span class="hljs-number">16</span><br>  &#125;,&#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Amber&#x27;</span>,<br>    <span class="hljs-attr">sex</span>: <span class="hljs-string">&#x27;女生&#x27;</span>,<br>    <span class="hljs-attr">age</span>: <span class="hljs-number">20</span><br>  &#125;<br>]<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h2><p>forEach 會針對陣列中的每一個元素進行操作。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">arr.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item, index, array</span>) </span>&#123;<br>  <span class="hljs-comment">// do something...</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>陣列所元素皆傳入函式執行一次，但是不會回傳任何值（<code>reutrn</code> 沒有作用），換言之，forEach 不會產生新陣列。</p>
+<p>callback 函式可傳入以下參數：</p>
+<ul>
+<li><code>item</code> 目前元素</li>
+<li><code>index</code> 目前元素索引（選用）</li>
+<li><code>array</code> 陣列本身（選用）</li>
+</ul>
+<p>範例：依序印出人物資訊</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">data.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">$&#123;item.name&#125;</span> 是<span class="hljs-subst">$&#123;item.sex&#125;</span>，目前 <span class="hljs-subst">$&#123;item.age&#125;</span> 歲`</span>)<br>&#125;)<br><span class="hljs-comment">// &quot;Leo 是男生，目前 22 歲&quot;</span><br><span class="hljs-comment">// &quot;Ryan 是男生，目前 16 歲&quot;</span><br><span class="hljs-comment">// &quot;Amber 是女生，目前 20 歲&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><p>map 可以把原陣列所有元素進行轉換，並以新的資料形式在新陣列中呈現。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">arr.map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item, index, array</span>) </span>&#123;<br>  <span class="hljs-comment">// do something...</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>會建立一個新陣列，內容為原陣列的每一個元素運算、轉換後回傳的值，若不回傳，新陣列所有元素皆為 <code>undefined</code>。</p>
+<p>callback 函式可傳入以下參數：</p>
+<ul>
+<li><code>item</code> 目前元素</li>
+<li><code>index</code> 目前元素索引（選用）</li>
+<li><code>array</code> 陣列本身（選用）</li>
+</ul>
+<p>範例：將所有人的年齡加五歲</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> mapArray = data.map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> item.age += <span class="hljs-number">5</span>;<br>&#125;)<br><span class="hljs-built_in">console</span>.log(mapArray)<br><span class="hljs-comment">// [27,21,25]</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h2><p>filter 就如字面上的意思，可以用來篩選陣列中符合條件的元素。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">arr.filter(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item, index, array</span>) </span>&#123;<br>  <span class="hljs-comment">// do something...</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>會建立一個新陣列，內容為原陣列中所有符合條件的元素。</p>
+<p>callback 函式可傳入以下參數：</p>
+<ul>
+<li><code>item</code> 目前元素</li>
+<li><code>index</code> 目前元素索引（選用）</li>
+<li><code>array</code> 陣列本身（選用）</li>
+</ul>
+<p>範例：篩選出年齡 18 歲以上的人</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> filterArray = data.filter(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> item.age &gt;= <span class="hljs-number">18</span>;<br>&#125;)<br><span class="hljs-built_in">console</span>.log(filterArray);<br><span class="hljs-comment">// [&#123;&quot;name&quot;: &quot;Leo&quot;, &quot;sex&quot;: &quot;男生&quot;&#125;,&#123;&quot;name&quot;: &quot;Amber&quot;, &quot;sex&quot;: &quot;女生&quot;&#125;]</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="find"><a href="#find" class="headerlink" title="find"></a>find</h2><p>find 與 filter 類似，差別在於 find 只會找到陣列第一筆符合條件的元素。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">arr.find(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item, index, array</span>) </span>&#123;<br>  <span class="hljs-comment">// do something...</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>會回傳一個元素，該元素是陣列中第一個符合條件的元素，若都不符合條件則回傳一個 <code>undefined</code>。</p>
+<p>callback 函式可傳入以下參數：</p>
+<ul>
+<li><code>item</code> 目前元素</li>
+<li><code>index</code> 目前元素索引（選用）</li>
+<li><code>array</code> 陣列本身（選用）</li>
+</ul>
+<p>範例：找出第一個女生</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> findItem = data.filter(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> item.sex === <span class="hljs-string">&#x27;女生&#x27;</span>;<br>&#125;)<br><span class="hljs-built_in">console</span>.log(findItem)<br><span class="hljs-comment">// &#123;&quot;name&quot;: &quot;Amber&quot;, &quot;sex&quot;: &quot;女生&quot;&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="every"><a href="#every" class="headerlink" title="every"></a>every</h2><p>every 可以檢測陣列是否全部元素都符合條件。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">arr.every(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item, index, array</span>) </span>&#123;<br>  <span class="hljs-comment">// do something...</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>會回傳一個 <code>boolean</code>，陣列中的元素必須全部符合條件，最終才會回傳 <code>true</code>，否則會回傳 <code>false</code>。</p>
+<p>callback 函式可傳入以下參數：</p>
+<ul>
+<li><code>item</code> 目前元素</li>
+<li><code>index</code> 目前元素索引（選用）</li>
+<li><code>array</code> 陣列本身（選用）</li>
+</ul>
+<p>範例：    判斷是否全部都是男生</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> result = data.every(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> item.sex === <span class="hljs-string">&#x27;男生&#x27;</span>;<br>&#125;)<br><span class="hljs-built_in">console</span>.log(result); <span class="hljs-comment">// false</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="some"><a href="#some" class="headerlink" title="some"></a>some</h2><p>some 與 every 概念類似，差別在於 some 用來檢測陣列是否有任何一個（或以上）元素符合條件，兩個方法從字面上也可以區別。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">arr.some(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item, index, array</span>) </span>&#123;<br>  <span class="hljs-comment">// do something...</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>最終會回傳一個 <code>boolean</code>，陣列中只要有任何一個元素符合條件，最終就回傳 <code>true</code>，否則回傳 <code>false</code>。</p>
+<p>callback 函式可傳入以下參數：</p>
+<ul>
+<li><code>item</code> 目前元素</li>
+<li><code>index</code> 目前元素索引（選用）</li>
+<li><code>array</code> 陣列本身（選用）</li>
+</ul>
+<p>範例：    判斷是否有未成年的人</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> result = data.some(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> item.age &lt; <span class="hljs-number">18</span>;<br>&#125;)<br><span class="hljs-built_in">console</span>.log(result); <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h2><p>reduce 與其他陣列方法差異較大，可以將陣列中所有元素累計運算，最終回傳一個累計的結果。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">arr.reduce(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">accumulator, currentValue, currentIndex, array</span>) </span>&#123;<br>  <span class="hljs-comment">// do something...</span><br>&#125;, initialValue)<br></code></pre></td></tr></table></figure>
+
+<p>接收一個 callback 函式與一個起始值作為參數，callback 函式可傳入以下參數：</p>
+<ul>
+<li><code>accumulator</code> 前一個元素</li>
+<li><code>currentValue</code> 目前元素</li>
+<li><code>currentIndex</code> 目前元素索引（選用）</li>
+<li><code>array</code> 陣列本身（選用）</li>
+</ul>
+<p>第二個參數為起始值 <code>initialValue</code>（選用），若沒有給定起始值，<code>accumulator</code> 預設會是陣列第一個元素，<code>currentValue</code> 則預設是第二個；反之，如果有給定起始值，<code>accumulator</code> 就會是給定的起始值，而 <code>currentValue</code> 會是陣列第一個元素。</p>
+<p>callback 函式每次呼叫時，會把 <code>accumulator</code> 與 <code>currentValue</code> 相加，再把相加的值再次回傳入 <code>accumulator</code>， 不斷反覆進行累計，換言之，<code>accumulator</code> 除了起始值之外，每次運算的值都是前一次相加累計的值。</p>
+<p>範例一：不指定起始值</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];<br><span class="hljs-keyword">const</span> totalNum = arr.reduce(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">acc, cur</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> acc + cur;<br>&#125;)<br><span class="hljs-built_in">console</span>.log(totalNum); <span class="hljs-comment">// 15</span><br><span class="hljs-comment">// 累加過程：1+2=3 -&gt; 3+3=6 -&gt; 6+4=10 -&gt; 10+5=15</span><br></code></pre></td></tr></table></figure>
+
+<p>範例二：指定起始值為 10</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];<br><span class="hljs-keyword">const</span> totalNum = arr.reduce(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">acc, cur</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> acc + cur;<br>&#125;, <span class="hljs-number">10</span>)<br><span class="hljs-built_in">console</span>.log(totalNum); <span class="hljs-comment">// 25</span><br><span class="hljs-comment">// 累加過程：10+1=11 -&gt; 11+2=13 -&gt; 13+3=16 -&gt; 16+4=20 -&gt; 20+5=25</span><br></code></pre></td></tr></table></figure>
+
+<p>範例三：加總範例資料中所有人的年齡</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> ageTotal = data.reduce(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">acc, cur</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> acc + cur.age;<br>&#125;, <span class="hljs-number">0</span>)<br><span class="hljs-built_in">console</span>.log(ageTotal); <span class="hljs-comment">// 58</span><br><span class="hljs-comment">// 累加過程：0+22=22 -&gt; 22+16=38 -&gt; 38+20=58</span><br></code></pre></td></tr></table></figure>
+
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2>]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>array</tag>
       </tags>
   </entry>
   <entry>

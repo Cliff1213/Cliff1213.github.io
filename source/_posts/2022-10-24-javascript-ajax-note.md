@@ -278,4 +278,89 @@ $.ajax({
 
 ## Fetch
 
+Fetch API 是 ES6 的原生方法，發出請求的方式相較 XHR 簡單了許多。
+
+起手式：
+
+```javascript
+fetch(url, { method: 'get' })
+  .then(function(res) {
+    return res.json();  
+  })
+  .then(function(result) {
+    console.log(result);  
+  })
+  .catch(function(err) {
+    console.log(err);  
+  })
+```
+Fetch 方法接收兩個參數，第一個是**請求資料的網址**（必填），第二個參數是一個物件（選擇性使用），內容是 Request 的相關屬性設定，以下列出幾個常見的屬性：
+
+- `method`：請求方法（預設為 `get`）
+- `headers`：一個物件，內容為請求表頭相關資訊（`'Content-Type'`...等，不設定則預設為 `{}`）
+- `body`：傳送的資料（需要先轉為字串型別）
+
+>更多屬性設定請參閱 [MDN - Fetch Request](https://developer.mozilla.org/zh-CN/docs/Web/API/Request)。
+
+接著可以在程式碼下方看到 `then()` 的使用，而這也是 Fetch 獨特的地方，因為 Fetch 就是透過 Promise 來做回應，嘗試輸入以下程式碼進行測試：
+
+```javascript
+const url = '請求資料的網址';
+const test = fetch(url);
+
+console.log(test); // 印出結果如下圖
+```
+![測試](https://i.imgur.com/I8kUqAx.png)
+
+從印出的結果來看，可以確定 Fetch 會回傳一個狀態為 `fulfilled`（已實現）的 Promise 物件，並且在 `response` 當中也可以看到一些伺服器收到請求後回傳的資訊，而我們需要的資料就在 `Response` 的 `body` 屬性當中。
+
+需要注意的是，第一次使用 `then` 接收 Promise 物件時，這裡的 `body` 屬性是一個 `ReadableStream` 物件，這意味著資料的內容無法直接讀取，因此在 `return` 給第二個 `then` 之前，需要先對 `Response` 進行特殊的處理，常見的做法像是先使用 `json()`、`text()` 轉型後再進行 `return`，這樣就能將實際的資料在下一個 `then` 進行進一步的操作。
+
+>詳細的 Response 處理方法請參閱 [MDN - Using Fetch - body](https://developer.mozilla.org/zh-TW/docs/Web/API/Fetch_API/Using_Fetch#body)
+
+另外對 Fetch 來說，只要伺服器有回傳 `Response`，無論狀態碼是 `200`、`404` 或是其他狀態，都會被 `then` 接收，若要查看較詳細的狀態，可以在 Fetch 回傳的 `Response`，也就是第一個 `then` 接收的結果中查看，而 `catch` 則是在請求資料網址不正確，或是網路連線異常的時候被執行。
+
+### 實作練習
+
+使用[六角學院練習 API](https://hexschool.github.io/ajaxHomework/data.json) 實作 `get` 請求：
+
+```javascript
+const url = 'https://hexschool.github.io/ajaxHomework/data.json';
+fetch(url)
+  .then(function(res) {
+    return res.json();
+  })
+  .then(function(result) {
+    console.log(result);
+  })
+  .catch(function(err) {
+    console.log(err)  
+  })
+```
+
+使用[六角學院練習 API](https://hexschool-tutorial.herokuapp.com/api/signup) 實作 `post` 請求（註冊功能）：
+
+```javascript
+const url = 'https://hexschool-tutorial.herokuapp.com/api/signup';
+fetch(url, {
+  method: 'post',
+  body: JSON.stringify({
+    email: 'test123@mail.com',
+    password: '12345678'
+  }),
+  headers: {
+    'Content-Type': 'application/json; charset=utf-8'
+  }
+})
+  .then(function(res) {
+    return res.json();  
+  })
+  .then(function(result) {
+    console.log(result);  
+  })
+  .catch(function(err) {
+    console.log(err);  
+  })
+```
+
 ## Axios

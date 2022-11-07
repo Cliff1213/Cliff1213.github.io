@@ -251,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.2k 字
+          7.1k 字
         
       </span>
     
@@ -262,7 +262,7 @@
         
         
         
-          18 分鐘
+          24 分鐘
         
       </span>
     
@@ -407,7 +407,34 @@
 <p>使用<a target="_blank" rel="noopener" href="https://hexschool-tutorial.herokuapp.com/api/signup">六角學院練習 API</a> 實作 <code>post</code> 請求（註冊功能）：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript">$.ajax(&#123;<br>  <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;https://hexschool-tutorial.herokuapp.com/api/signup&#x27;</span>,<br>  <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;post&#x27;</span>,<br>  <span class="hljs-attr">dataType</span>: <span class="hljs-string">&#x27;json&#x27;</span>,<br>  <span class="hljs-attr">contentType</span>: <span class="hljs-string">&#x27;application/json; charset=utf-8&#x27;</span>,<br>  <span class="hljs-attr">data</span>: <span class="hljs-built_in">JSON</span>.stringify(&#123;<br>    <span class="hljs-attr">email</span>: <span class="hljs-string">&#x27;test123@mail.com&#x27;</span>,<br>    <span class="hljs-attr">password</span>: <span class="hljs-string">&#x27;12345678&#x27;</span><br>  &#125;)<br>&#125;).done(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(res)<br>    <br>  alert(res.message)<br>&#125;).fail(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(err)<br>&#125;)<br></code></pre></td></tr></table></figure>
 
-<h2 id="Fetch"><a href="#Fetch" class="headerlink" title="Fetch"></a>Fetch</h2><h2 id="Axios"><a href="#Axios" class="headerlink" title="Axios"></a>Axios</h2>
+<h2 id="Fetch"><a href="#Fetch" class="headerlink" title="Fetch"></a>Fetch</h2><p>Fetch API 是 ES6 的原生方法，發出請求的方式相較 XHR 簡單了許多。</p>
+<p>起手式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript">fetch(url, &#123; <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;get&#x27;</span> &#125;)<br>  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> res.json();  <br>  &#125;)<br>  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">result</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(result);  <br>  &#125;)<br>  .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(err);  <br>  &#125;)<br></code></pre></td></tr></table></figure>
+<p>Fetch 方法接收兩個參數，第一個是<strong>請求資料的網址</strong>（必填），第二個參數是一個物件（選擇性使用），內容是 Request 的相關屬性設定，以下列出幾個常見的屬性：</p>
+<ul>
+<li><code>method</code>：請求方法（預設為 <code>get</code>）</li>
+<li><code>headers</code>：一個物件，內容為請求表頭相關資訊（<code>&#39;Content-Type&#39;</code>…等，不設定則預設為 <code>&#123;&#125;</code>）</li>
+<li><code>body</code>：傳送的資料（需要先轉為字串型別）</li>
+</ul>
+<blockquote>
+<p>更多屬性設定請參閱 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Request">MDN - Fetch Request</a>。</p>
+</blockquote>
+<p>接著可以在程式碼下方看到 <code>then()</code> 的使用，而這也是 Fetch 獨特的地方，因為 Fetch 就是透過 Promise 來做回應，嘗試輸入以下程式碼進行測試：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> url = <span class="hljs-string">&#x27;請求資料的網址&#x27;</span>;<br><span class="hljs-keyword">const</span> test = fetch(url);<br><br><span class="hljs-built_in">console</span>.log(test); <span class="hljs-comment">// 印出結果如下圖</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/I8kUqAx.png" srcset="/img/loading.gif" lazyload alt="測試"></p>
+<p>從印出的結果來看，可以確定 Fetch 會回傳一個狀態為 <code>fulfilled</code>（已實現）的 Promise 物件，並且在 <code>response</code> 當中也可以看到一些伺服器收到請求後回傳的資訊，而我們需要的資料就在 <code>Response</code> 的 <code>body</code> 屬性當中。</p>
+<p>需要注意的是，第一次使用 <code>then</code> 接收 Promise 物件時，這裡的 <code>body</code> 屬性是一個 <code>ReadableStream</code> 物件，這意味著資料的內容無法直接讀取，因此在 <code>return</code> 給第二個 <code>then</code> 之前，需要先對 <code>Response</code> 進行特殊的處理，常見的做法像是先使用 <code>json()</code>、<code>text()</code> 轉型後再進行 <code>return</code>，這樣就能將實際的資料在下一個 <code>then</code> 進行進一步的操作。</p>
+<blockquote>
+<p>詳細的 Response 處理方法請參閱 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/API/Fetch_API/Using_Fetch#body">MDN - Using Fetch - body</a></p>
+</blockquote>
+<p>另外對 Fetch 來說，只要伺服器有回傳 <code>Response</code>，無論狀態碼是 <code>200</code>、<code>404</code> 或是其他狀態，都會被 <code>then</code> 接收，若要查看較詳細的狀態，可以在 Fetch 回傳的 <code>Response</code>，也就是第一個 <code>then</code> 接收的結果中查看，而 <code>catch</code> 則是在請求資料網址不正確，或是網路連線異常的時候被執行。</p>
+<h3 id="實作練習-2"><a href="#實作練習-2" class="headerlink" title="實作練習"></a>實作練習</h3><p>使用<a target="_blank" rel="noopener" href="https://hexschool.github.io/ajaxHomework/data.json">六角學院練習 API</a> 實作 <code>get</code> 請求：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> url = <span class="hljs-string">&#x27;https://hexschool.github.io/ajaxHomework/data.json&#x27;</span>;<br>fetch(url)<br>  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> res.json();<br>  &#125;)<br>  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">result</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(result);<br>  &#125;)<br>  .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(err)  <br>  &#125;)<br></code></pre></td></tr></table></figure>
+
+<p>使用<a target="_blank" rel="noopener" href="https://hexschool-tutorial.herokuapp.com/api/signup">六角學院練習 API</a> 實作 <code>post</code> 請求（註冊功能）：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> url = <span class="hljs-string">&#x27;https://hexschool-tutorial.herokuapp.com/api/signup&#x27;</span>;<br>fetch(url, &#123;<br>  <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;post&#x27;</span>,<br>  <span class="hljs-attr">body</span>: <span class="hljs-built_in">JSON</span>.stringify(&#123;<br>    <span class="hljs-attr">email</span>: <span class="hljs-string">&#x27;test123@mail.com&#x27;</span>,<br>    <span class="hljs-attr">password</span>: <span class="hljs-string">&#x27;12345678&#x27;</span><br>  &#125;),<br>  <span class="hljs-attr">headers</span>: &#123;<br>    <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/json; charset=utf-8&#x27;</span><br>  &#125;<br>&#125;)<br>  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> res.json();  <br>  &#125;)<br>  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">result</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(result);  <br>  &#125;)<br>  .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(err);  <br>  &#125;)<br></code></pre></td></tr></table></figure>
+
+<h2 id="Axios"><a href="#Axios" class="headerlink" title="Axios"></a>Axios</h2>
                 
               </div>
             

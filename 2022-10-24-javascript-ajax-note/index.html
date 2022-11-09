@@ -16,12 +16,12 @@
   <meta name="author" content="Cliff Chu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="這是一篇尚未撰寫完成的筆記。">
+    <meta name="description" content="紀錄一下 AJAX 的相關知識。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript 筆記 - AJAX">
 <meta property="og:url" content="http://kurifu.tw/2022-10-24-javascript-ajax-note/index.html">
 <meta property="og:site_name" content="Cliff Blog">
-<meta property="og:description" content="這是一篇尚未撰寫完成的筆記。">
+<meta property="og:description" content="紀錄一下 AJAX 的相關知識。">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="http://kurifu.tw/img/banner/banner_data.jpg">
 <meta property="article:published_time" content="2022-10-24T14:51:28.000Z">
@@ -251,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          9.1k 字
+          9.3k 字
         
       </span>
     
@@ -305,7 +305,7 @@
             
               <div class="markdown-body">
                 
-                <p>這是一篇尚未撰寫完成的筆記。</p>
+                <p>紀錄一下 AJAX 的相關知識。</p>
 <span id="more"></span>
 
 <hr>
@@ -317,7 +317,7 @@
 <li><a href="#XMLHttpRequest">XMLHttpRequest</a></li>
 <li><a href="#jQuery-AJAX">jQuery AJAX</a></li>
 <li><a href="#Fetch">Fetch</a></li>
-<li><a href="#axios">axios</a></div></li>
+<li><a href="#Axios">Axios</a></div></li>
 </ul>
 <h2 id="AJAX-簡述"><a href="#AJAX-簡述" class="headerlink" title="AJAX 簡述"></a>AJAX 簡述</h2><p>AJAX 是「Asynchronous JavaScript and XML」的縮寫，以名稱來看就是是非同步的 JavaScript 與 XML，可以讓 Web 前端與後端伺服器進行資料的交換，以及不需要重新載入網頁就能更新頁面內容。</p>
 <p>過去 AJAX 發出請求會透過 XMLHttpRequest 物件來實作，但是以目前來說，因為有了更適合的方式，因此實務上幾乎不會使用 XMLHttpRequest，不過筆記都寫了，就稍微理解一下每個方法吧！(๑•̀ㅂ•́)و✧</p>
@@ -421,7 +421,7 @@
 </blockquote>
 <p>接著可以在程式碼下方看到 <code>then()</code> 的使用，而這也是 Fetch 獨特的地方，因為 Fetch 就是透過 Promise 來做回應，嘗試輸入以下程式碼進行測試：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> url = <span class="hljs-string">&#x27;請求資料的網址&#x27;</span>;<br><span class="hljs-keyword">const</span> test = fetch(url);<br><br><span class="hljs-built_in">console</span>.log(test); <span class="hljs-comment">// 印出結果如下圖</span><br></code></pre></td></tr></table></figure>
-<p><img src="https://i.imgur.com/I8kUqAx.png" srcset="/img/loading.gif" lazyload alt="測試"></p>
+<p><img src="https://i.imgur.com/I8kUqAx.png" srcset="/img/loading.gif" lazyload alt="圖一"></p>
 <p>從印出的結果來看，可以確定 Fetch 會回傳一個狀態為 <code>fulfilled</code>（已實現）的 Promise 物件，並且在 <code>response</code> 當中也可以看到一些伺服器收到請求後回傳的資訊，而我們需要的資料就在 <code>Response</code> 的 <code>body</code> 屬性當中。</p>
 <p>需要注意的是，第一次使用 <code>then</code> 接收 Promise 物件時，這裡的 <code>body</code> 屬性是一個 <code>ReadableStream</code> 物件，這意味著資料的內容無法直接讀取，因此在 <code>return</code> 給第二個 <code>then</code> 之前，需要先對 <code>Response</code> 進行特殊的處理，常見的做法像是先使用 <code>json()</code>、<code>text()</code> 轉型後再進行 <code>return</code>，這樣就能將實際的資料在下一個 <code>then</code> 進行進一步的操作。</p>
 <blockquote>
@@ -457,11 +457,16 @@
 <p><img src="https://i.imgur.com/AlxDSb1.png" srcset="/img/loading.gif" lazyload alt="圖三"></p>
 <p>發出 <code>post</code> 請求時，除了請求的資料網址之外，還需要加入第二個參數，也就是傳送給伺服器的資料。</p>
 <h3 id="axios-API"><a href="#axios-API" class="headerlink" title="axios API"></a>axios API</h3><p>可以使用以下兩種方式發出請求：</p>
-<h4 id="axios-config"><a href="#axios-config" class="headerlink" title="axios(config)"></a>axios(config)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript">axios(&#123;<br>  <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;post&#x27;</span>,<br>  <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;請求資料網址&#x27;</span>,<br>  <span class="hljs-attr">data</span>: &#123;<br>    <span class="hljs-comment">// 需要傳送的資料</span><br>  &#125;<br>&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(res);<br>&#125;).catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(err);<br>&#125;)<br></code></pre></td></tr></table></figure>
+<h4 id="axios-config"><a href="#axios-config" class="headerlink" title="axios(config)"></a>axios(config)</h4><p>第一種方式是在物件中指定相關請求設定，並將物件傳入 axios 發出請求，以 <code>POST</code> 請求為例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript">axios(&#123;<br>  <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;post&#x27;</span>,<br>  <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;請求資料網址&#x27;</span>,<br>  <span class="hljs-attr">data</span>: &#123;<br>    <span class="hljs-comment">// 需要傳送的資料</span><br>  &#125;<br>&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(res);<br>&#125;).catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(err);<br>&#125;)<br></code></pre></td></tr></table></figure>
 
-<p>第一種方式是在物件中指定相關請求設定，並將物件傳入 axios 發出請求。</p>
-<h4 id="axios-url-config"><a href="#axios-url-config" class="headerlink" title="axios(url[, config])"></a>axios(url[, config])</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript">axios.get(<span class="hljs-string">&#x27;請求資料網址&#x27;</span>)<br>  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(res);<br>  &#125;)<br>  .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(err);  <br>  &#125;)<br></code></pre></td></tr></table></figure>
-<p>第二種方式是透過請求方法別名來發出請求，以下列出<a target="_blank" rel="noopener" href="https://github.com/axios/axios#request-method-aliases">官方文件</a>提供的所有請求方法別名：</p>
+
+
+<h4 id="axios-url-config"><a href="#axios-url-config" class="headerlink" title="axios(url[, config])"></a>axios(url[, config])</h4><p>第二種方式是透過請求方法別名來發出請求，以下分別是 <code>GET</code>、<code>POST</code> 請求的範例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript">axios(<span class="hljs-string">&#x27;請求資料網址&#x27;</span>) <span class="hljs-comment">// 不使用方法別名則預設為 GET</span><br>  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(res);<br>  &#125;)<br>  .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(err);  <br>  &#125;)<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript">axios.post(<span class="hljs-string">&#x27;請求資料網址&#x27;</span>, &#123;<br>  <span class="hljs-comment">// 需要傳送的資料</span><br>&#125;)<br>.then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(res)<br>&#125;)<br>.catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(err);<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>以下列出<a target="_blank" rel="noopener" href="https://github.com/axios/axios#request-method-aliases">官方文件</a>提供的所有請求方法別名：</p>
 <ul>
 <li><code>axios.request(config)</code></li>
 <li><code>axios.get(url[, config])</code></li>

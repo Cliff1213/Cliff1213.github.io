@@ -251,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7.1k 字
+          9.1k 字
         
       </span>
     
@@ -262,7 +262,7 @@
         
         
         
-          24 分鐘
+          31 分鐘
         
       </span>
     
@@ -317,7 +317,7 @@
 <li><a href="#XMLHttpRequest">XMLHttpRequest</a></li>
 <li><a href="#jQuery-AJAX">jQuery AJAX</a></li>
 <li><a href="#Fetch">Fetch</a></li>
-<li><a href="#Axios">Axios</a></div></li>
+<li><a href="#axios">axios</a></div></li>
 </ul>
 <h2 id="AJAX-簡述"><a href="#AJAX-簡述" class="headerlink" title="AJAX 簡述"></a>AJAX 簡述</h2><p>AJAX 是「Asynchronous JavaScript and XML」的縮寫，以名稱來看就是是非同步的 JavaScript 與 XML，可以讓 Web 前端與後端伺服器進行資料的交換，以及不需要重新載入網頁就能更新頁面內容。</p>
 <p>過去 AJAX 發出請求會透過 XMLHttpRequest 物件來實作，但是以目前來說，因為有了更適合的方式，因此實務上幾乎不會使用 XMLHttpRequest，不過筆記都寫了，就稍微理解一下每個方法吧！(๑•̀ㅂ•́)و✧</p>
@@ -407,7 +407,7 @@
 <p>使用<a target="_blank" rel="noopener" href="https://hexschool-tutorial.herokuapp.com/api/signup">六角學院練習 API</a> 實作 <code>post</code> 請求（註冊功能）：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript">$.ajax(&#123;<br>  <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;https://hexschool-tutorial.herokuapp.com/api/signup&#x27;</span>,<br>  <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;post&#x27;</span>,<br>  <span class="hljs-attr">dataType</span>: <span class="hljs-string">&#x27;json&#x27;</span>,<br>  <span class="hljs-attr">contentType</span>: <span class="hljs-string">&#x27;application/json; charset=utf-8&#x27;</span>,<br>  <span class="hljs-attr">data</span>: <span class="hljs-built_in">JSON</span>.stringify(&#123;<br>    <span class="hljs-attr">email</span>: <span class="hljs-string">&#x27;test123@mail.com&#x27;</span>,<br>    <span class="hljs-attr">password</span>: <span class="hljs-string">&#x27;12345678&#x27;</span><br>  &#125;)<br>&#125;).done(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(res)<br>    <br>  alert(res.message)<br>&#125;).fail(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(err)<br>&#125;)<br></code></pre></td></tr></table></figure>
 
-<h2 id="Fetch"><a href="#Fetch" class="headerlink" title="Fetch"></a>Fetch</h2><p>Fetch API 是 ES6 的原生方法，發出請求的方式相較 XHR 簡單了許多。</p>
+<h2 id="Fetch"><a href="#Fetch" class="headerlink" title="Fetch"></a>Fetch</h2><p>Fetch API 是 ES6 的原生方法，發出請求的方式相較 XHR 簡單了許多，此外 IE 瀏覽器不支援。</p>
 <p>起手式：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript">fetch(url, &#123; <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;get&#x27;</span> &#125;)<br>  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> res.json();  <br>  &#125;)<br>  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">result</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(result);  <br>  &#125;)<br>  .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(err);  <br>  &#125;)<br></code></pre></td></tr></table></figure>
 <p>Fetch 方法接收兩個參數，第一個是<strong>請求資料的網址</strong>（必填），第二個參數是一個物件（選擇性使用），內容是 Request 的相關屬性設定，以下列出幾個常見的屬性：</p>
@@ -434,7 +434,47 @@
 <p>使用<a target="_blank" rel="noopener" href="https://hexschool-tutorial.herokuapp.com/api/signup">六角學院練習 API</a> 實作 <code>post</code> 請求（註冊功能）：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> url = <span class="hljs-string">&#x27;https://hexschool-tutorial.herokuapp.com/api/signup&#x27;</span>;<br>fetch(url, &#123;<br>  <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;post&#x27;</span>,<br>  <span class="hljs-attr">body</span>: <span class="hljs-built_in">JSON</span>.stringify(&#123;<br>    <span class="hljs-attr">email</span>: <span class="hljs-string">&#x27;test123@mail.com&#x27;</span>,<br>    <span class="hljs-attr">password</span>: <span class="hljs-string">&#x27;12345678&#x27;</span><br>  &#125;),<br>  <span class="hljs-attr">headers</span>: &#123;<br>    <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/json; charset=utf-8&#x27;</span><br>  &#125;<br>&#125;)<br>  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> res.json();  <br>  &#125;)<br>  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">result</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(result);  <br>  &#125;)<br>  .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(err);  <br>  &#125;)<br></code></pre></td></tr></table></figure>
 
-<h2 id="Axios"><a href="#Axios" class="headerlink" title="Axios"></a>Axios</h2>
+<h2 id="Axios"><a href="#Axios" class="headerlink" title="Axios"></a>Axios</h2><p><a target="_blank" rel="noopener" href="https://github.com/axios/axios">axios</a> 是一個基於 Promise 的網路請求套件，作用於瀏覽器和 node.js。</p>
+<p>axios 具備以下特點：</p>
+<ul>
+<li>從瀏覽器發出 XMLHttpRequest</li>
+<li>從 node.js 發出 http 請求</li>
+<li>支援 Promise API</li>
+<li>攔截請求和回應</li>
+<li>轉換請求和回應資料</li>
+<li>取消請求</li>
+<li>JSON 資料格式的自動轉換</li>
+</ul>
+<p>使用前需要先引入 axios，以下使用 cdn 方式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs htmlembedded">&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js&quot;&gt;&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+<p>axios 的使用方式相當簡單，開頭輸入 <code>axios</code>，接著再接上請求的方法即可，另外因為 axios 是基於 Promise，因此請求成功時，會回傳一個 Promise 物件，此時就會使用 <code>then()</code> 來做接收，而請求失敗時，就會透過 <code>catch()</code> 來取得錯誤的資訊。</p>
+<p>以下直接使用<a target="_blank" rel="noopener" href="https://hexschool.github.io/ajaxHomework/data.json">六角學院練習 API</a> 實作 <code>get</code> 請求並觀察回傳結果：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> url = <span class="hljs-string">&#x27;https://hexschool.github.io/ajaxHomework/data.json&#x27;</span>;<br>axios.get(url)<br>  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(res);  <br>  &#125;)<br>  .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(err);  <br>  &#125;)<br></code></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/rrdCEhD.png" srcset="/img/loading.gif" lazyload></p>
+<p>從接收到的回傳物件中可以看到許多資訊，例如 <code>config</code> 屬性表示 axios 發出請求時預設的一些設定，常見的像是 <code>method</code>（請求方法）、<code>headers</code>（請求表頭）以及 <code>url</code>（請求的網址路徑）等等，另一個外層的 <code>headers</code> 屬性則是伺服器回應的相關資訊，而我們需要的資料就在 <code>data</code> 屬性裡面，除此之外，可以發現資料的格式已經被自動轉換為 JSON 物件了。</p>
+<p>接著再來看 <code>post</code> 請求，照慣例一樣使用<a target="_blank" rel="noopener" href="https://hexschool-tutorial.herokuapp.com/api/signup">六角學院練習 API</a> 實作 <code>post</code> 請求（註冊功能）：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> url = <span class="hljs-string">&#x27;https://hexschool-tutorial.herokuapp.com/api/signup&#x27;</span>;<br>axios.post(url, &#123;<br>  <span class="hljs-attr">email</span>: <span class="hljs-string">&#x27;test1234@mail.com&#x27;</span>,<br>  <span class="hljs-attr">password</span>: <span class="hljs-string">&#x27;12345678&#x27;</span><br>&#125;)<br>  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(res);  <br>  &#125;)<br>  .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(err); <br>  &#125;)<br></code></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/AlxDSb1.png" srcset="/img/loading.gif" lazyload alt="圖三"></p>
+<p>發出 <code>post</code> 請求時，除了請求的資料網址之外，還需要加入第二個參數，也就是傳送給伺服器的資料。</p>
+<h3 id="axios-API"><a href="#axios-API" class="headerlink" title="axios API"></a>axios API</h3><p>可以使用以下兩種方式發出請求：</p>
+<h4 id="axios-config"><a href="#axios-config" class="headerlink" title="axios(config)"></a>axios(config)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript">axios(&#123;<br>  <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;post&#x27;</span>,<br>  <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;請求資料網址&#x27;</span>,<br>  <span class="hljs-attr">data</span>: &#123;<br>    <span class="hljs-comment">// 需要傳送的資料</span><br>  &#125;<br>&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(res);<br>&#125;).catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(err);<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>第一種方式是在物件中指定相關請求設定，並將物件傳入 axios 發出請求。</p>
+<h4 id="axios-url-config"><a href="#axios-url-config" class="headerlink" title="axios(url[, config])"></a>axios(url[, config])</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript">axios.get(<span class="hljs-string">&#x27;請求資料網址&#x27;</span>)<br>  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(res);<br>  &#125;)<br>  .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(err);  <br>  &#125;)<br></code></pre></td></tr></table></figure>
+<p>第二種方式是透過請求方法別名來發出請求，以下列出<a target="_blank" rel="noopener" href="https://github.com/axios/axios#request-method-aliases">官方文件</a>提供的所有請求方法別名：</p>
+<ul>
+<li><code>axios.request(config)</code></li>
+<li><code>axios.get(url[, config])</code></li>
+<li><code>axios.delete(url[, config])</code></li>
+<li><code>axios.head(url[, config])</code></li>
+<li><code>axios.options(url[, config])</code></li>
+<li><code>axios.post(url[, data[, config]])</code></li>
+<li><code>axios.put(url[, data[, config]])</code></li>
+<li><code>axios.patch(url[, data[, config]])</code></li>
+</ul>
+<p>若沒有加上別名，預設會使用 <code>get</code> 來發出請求，另外在官方文件有提到使用別名方法時，不需要在 <code>config</code>（存放請求設定的物件）中指定 <code>url</code>、<code>method</code> 以及 <code>data</code> 屬性。</p>
+<h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>關於 AJAX 筆記先暫時寫到這邊，後續如果時間充裕會再深入學習，並補充更多相關內容。</p>
+
                 
               </div>
             

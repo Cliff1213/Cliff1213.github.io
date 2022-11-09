@@ -51,6 +51,88 @@
       </tags>
   </entry>
   <entry>
+    <title>關於 CSS Font-Family</title>
+    <url>/2022-03-02-css-font-family/</url>
+    <content><![CDATA[<p>在設定字體時，常常會遇到結果不如預期的情況，於是決定研究一下網頁是怎麼套用字體，以及一些相關的注意事項。</p>
+<span id="more"></span>
+<hr>
+<div class="toc">
+<p class="toc-title">目錄：</p>
+
+<ul>
+<li><a href="#Font-Family-%E8%A8%AD%E5%AE%9A%E8%A6%8F%E5%89%87">Font-Family 設定規則</a></li>
+<li><a href="#Font-Family-%E5%AD%97%E9%AB%94%E9%A1%9E%E5%9E%8B">Font-Family 字體類型</a></li>
+<li><a href="#%E5%AD%97%E9%AB%94%E9%A0%86%E5%BA%8F%E8%A7%80%E5%BF%B5">字體順序觀念</a></li>
+<li><a href="#%E5%AF%A6%E5%8B%99%E7%AF%84%E4%BE%8B">實務範例</a></li>
+<li><a href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99">參考資料</a></div></li>
+</ul>
+<h2 id="Font-Family-設定規則"><a href="#Font-Family-設定規則" class="headerlink" title="Font-Family 設定規則"></a>Font-Family 設定規則</h2><p>基本上只要是網頁設計，都會使用到的屬性，可以自訂頁面上的文字字體，但是初學者在使用這個屬性之前，為了避免結果不如預期，建議需要先理解一些設定上的規則。</p>
+<h3 id="字體套用邏輯"><a href="#字體套用邏輯" class="headerlink" title="字體套用邏輯"></a>字體套用邏輯</h3><p>Font-Family 雖然可以設定多個屬性值，但是並不會將所有寫入的字體都一起套用，而是會根據瀏覽器對該字體的支援與否，由左至右依序判斷，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: 字體A, 字體B, 字體C;<br></code></pre></td></tr></table></figure>
+
+<p>假設使用者的電腦系統中僅存在 “字體B”，此時瀏覽器載入網頁時，會根據上述設定先判斷系統內是否有對應的字體A，但因為系統中找不到這個字體，因此會跳過該字體並判斷下一個字體B，此時找到字體B之後，就會套用該字體，並且不再往下進行判斷。</p>
+<h3 id="語法注意事項"><a href="#語法注意事項" class="headerlink" title="語法注意事項"></a>語法注意事項</h3><p>在部分字體的選用上，同一個字體可以選擇使用中文名稱或英文名稱的屬性值設定，其結果會相同，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: <span class="hljs-string">&quot;Microsoft JhengHei&quot;</span>;<br><span class="hljs-attribute">font-family</span>: 微軟正黑體;<br></code></pre></td></tr></table></figure>
+
+<p>從上述語法中可以發現，第一行的字體加上了雙引號，這是因為該字體的名稱之間如果存在空白，在不加上雙引號的情形下，瀏覽器會無法辨識而導致讀取失敗。</p>
+<p>另一個值得注意的是，雖然使用中文名稱來設定字體結果與英文名稱相同，但是只單獨設定中文名稱的話，可能會遇到編碼的問題而導致結果不如預期，因此會建議使用英文名稱的屬性值，或是中、英文一起使用，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: <span class="hljs-string">&quot;Microsoft JhengHei&quot;</span>, 微軟正黑體;<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="Font-Family-字體類型"><a href="#Font-Family-字體類型" class="headerlink" title="Font-Family 字體類型"></a>Font-Family 字體類型</h2><p>在當今這麼大量的字體中，主要可以分為 “指定字體” 與 “通用字體” 兩種類型。</p>
+<h3 id="指定字體（family-name）"><a href="#指定字體（family-name）" class="headerlink" title="指定字體（family-name）"></a>指定字體（family-name）</h3><p>不同的字體也會影響網頁的視覺感受，因此在選用字體時，通常會優先使用指定的字體。</p>
+<h3 id="通用字體（generic-family）"><a href="#通用字體（generic-family）" class="headerlink" title="通用字體（generic-family）"></a>通用字體（generic-family）</h3><p>通用字體可以理解成多數的電腦系統中，內建就已存在的字體，常見的通用字體有以下五種，其中無襯線體、襯線體使用最為廣泛：</p>
+<ul>
+<li>sans-serif（無襯線體 / 黑體）</li>
+<li>serif（襯線體 / 明體）</li>
+<li>cursive（手寫體）</li>
+<li>monospace（等寬體）</li>
+<li>fantasy（幻想體）</li>
+</ul>
+<h3 id="設定方式"><a href="#設定方式" class="headerlink" title="設定方式"></a>設定方式</h3><p>雖然可以透過指定字體名稱的方式，來達到自訂網頁上想要呈現的字體，但是並非所有電腦系統都有對應的指定字體，因此在使用指定字體時，通常都會在 font-family 屬性值的<strong>最後方位置</strong>設定預設的通用字體；而前面有提到 font-family 是由左至右判斷屬性值，所以當瀏覽器不支援或無法從系統中找到前方所對應的指定字體時，就會套用最後設定的通用字體，設定格式如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: 指定字體, <span class="hljs-string">&quot;指定 字體&quot;</span>, 通用字體;<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="字體順序觀念"><a href="#字體順序觀念" class="headerlink" title="字體順序觀念"></a>字體順序觀念</h2><p>本篇一開始在設定規則的地方有簡單提到字體是由左邊開始判斷，但是在順序方面還有一些重要觀念需要熟記，這邊先記住以下設定順序，後續會說明原因：</p>
+<p>設定順序：<strong>英文字體 &gt; Linux &gt; Mac &gt; Windows &gt; 通用字體</strong></p>
+<!-- 這部分一直沒有比較好的解釋 -->
+
+
+
+<h3 id="中、英文順序"><a href="#中、英文順序" class="headerlink" title="中、英文順序"></a>中、英文順序</h3><p>一個網頁通常會存在多個語言（以中、英文為例），但是並非所有的字體都同時支援中、英文，因此許多網頁會利用這個由左至右判斷的技巧，分別針對中文與英文各別設定不同的字體，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: Arial, 微軟正黑體;<br></code></pre></td></tr></table></figure>
+
+<p>上述設定中，Arial 只有英文字體，而微軟正黑體則是中、英文字體都有，因此瀏覽器在判斷 Arial 之後，就會因為符合條件而套用英文字體，而中文會因為找不到對應字體則往下判斷微軟正黑體並套用，此時網頁上的中文與英文就會呈現不同字體的效果。</p>
+<p>但是如果順序換成微軟正黑體在前面，瀏覽器就會先判斷微軟正黑體，因為該字體中、英文都可以使用，所以網頁上的兩種語言都會套用成微軟正黑體，而後面的 Arial 會因為英文字體已套用成微軟正黑體而不會被讀取。</p>
+<p>因此，正確的屬性值順序為<strong>英文字體在前面，中文字體在後面。</strong></p>
+<h3 id="字體使用率與順序"><a href="#字體使用率與順序" class="headerlink" title="字體使用率與順序"></a>字體使用率與順序</h3><p>每個作業系統都有自己的系統字體，例如 -apple-system 與 BlinkMacSystemFont 分別是 iOS 以及 macOS 的系統字體，並且前者只能使用在 Safari 瀏覽器上，後者則是用於 Chrome，像這種只能使用在特定系統或瀏覽器的字體，順序就需要放在前面，以下方原始碼為例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: -apple-system, BlinkMacSystemFont, <span class="hljs-string">&quot;Segoe UI&quot;</span>, <span class="hljs-string">&quot;Microsoft JhengHei&quot;</span>, Roboto, <span class="hljs-string">&quot;Helvetica Neue&quot;</span>, Arial, sans-serif;<br>	     <span class="hljs-comment">/* mac系統字體, iOS系統字體,	windows英文系統字體, 微軟正黑體, Android系統字體, iOS系統字體, 通用字體, 通用字體 */</span><br></code></pre></td></tr></table></figure>
+
+<p>假設使用者電腦系統為 windows，瀏覽器因為在系統中找不到 -apple-system 與 BlinkMacSystemFont 而直接跳過這兩個字體，而下一個 Segoe UI 屬於 windows 的英文系統字體，因此英文字體就會套用 Segoe UI，中文字體則是因為 Segoe UI 並沒有對應的中文而判斷下一個值，最終套用 Microsoft JhengHei。</p>
+<p>如果電腦系統是 macOS 並且使用 Chrome 瀏覽網頁，當瀏覽器在讀取到 -apple-system 時，就會套用對應的中文及英文字體，並且不再往下判斷。</p>
+<p>因此，為了適應各種不同的瀏覽器與作業系統，在設定字體時需要把<strong>較少使用到的字體放前面，較常使用到的字體放後面。</strong></p>
+<h2 id="實務範例"><a href="#實務範例" class="headerlink" title="實務範例"></a>實務範例</h2><p>附上幾個知名企業的字體設定當作參考，有興趣的也可以自行研究順序邏輯。</p>
+<p>Apple（台灣）：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: <span class="hljs-string">&quot;SF Pro TC&quot;</span>, <span class="hljs-string">&quot;SF Pro Text&quot;</span>, <span class="hljs-string">&quot;SF Pro Icons&quot;</span>, <span class="hljs-string">&quot;PingFang TC&quot;</span>, <span class="hljs-string">&quot;Helvetica Neue&quot;</span>, <span class="hljs-string">&quot;Helvetica&quot;</span>, <span class="hljs-string">&quot;Arial&quot;</span>, sans-serif;<br></code></pre></td></tr></table></figure>
+
+<p>微軟台灣：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: <span class="hljs-string">&#x27;Segoe UI&#x27;</span>, SegoeUI, <span class="hljs-string">&#x27;Microsoft JhengHei&#x27;</span>, 微軟正黑體, <span class="hljs-string">&quot;Helvetica Neue&quot;</span>, Helvetica, Arial, sans-serif;<br></code></pre></td></tr></table></figure>
+
+<p>Google：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: arial, sans-serif;  <span class="hljs-comment">/* 這絕對不是懶(? */</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://www.oxxostudio.tw/articles/201811/css-font-family.html">CSS font-family 詳細介紹</a><br><a href="https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/180456/#outline__1_2_1">最標準的系統字型規範 font-family</a><br><a href="https://www.casper.tw/css/2014/01/01/font-family/">font-family要怎麼玩</a></p>
+]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>font-family</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>NPM 基本指令</title>
     <url>/2022-02-07-npm-note/</url>
     <content><![CDATA[<p>淺淺的紀錄一下 NPM 是甚麼，以及相關的一些指令，藉此避免踩到一些開發中常見的雷。</p>
@@ -140,73 +222,6 @@
       </categories>
       <tags>
         <tag>npm</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript 套件 - Swiper</title>
-    <url>/2022-06-06-swiper-note/</url>
-    <content><![CDATA[<p>Swiper 可以實現網頁元素的輪播效果，本篇大概紀錄一下安裝的方式，以及一些常用的參數設定。</p>
-<span id="more"></span>
-<hr>
-<div class="toc">
-<p class="toc-title">目錄：</p>
-
-<ul>
-<li><a href="#%E5%AE%89%E8%A3%9D">安裝</a></li>
-<li><a href="#%E5%9F%BA%E7%A4%8E%E7%B5%90%E6%A7%8B">基礎結構</a></li>
-<li><a href="#%E5%B8%B8%E8%A6%8B%E5%8F%83%E6%95%B8">常見參數</a></div></li>
-</ul>
-<p class="first-text-not-title"><a href="https://swiperjs.com/get-started" target="_blank">Swiper</a> 是一個製作網頁輪播效果的 JavaScript 套件。</p>
-
-
-<h2 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h2><h3 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h3><p>透過 CDN 方式安裝 Swiper 時，需要同時引入 <code>swiper-bundle.min.css</code> 與 <code>swiper-bundle.min.js</code> 兩個檔案，引入壓縮後的版本即可。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- In head --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://unpkg.com/swiper@8/swiper-bundle.min.css&quot;</span>/&gt;</span><br><span class="hljs-comment">&lt;!-- In front of body end tag --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://unpkg.com/swiper@8/swiper-bundle.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ npm install swiper<br></code></pre></td></tr></table></figure>
-
-
-<h2 id="基礎結構"><a href="#基礎結構" class="headerlink" title="基礎結構"></a>基礎結構</h2><h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><p>使用 Swiper 時，<code>swiper-container</code>、<code>swiper-wrapper</code>、<code>swiper-slide</code> 三者為必要存在的元素。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- Slider main container --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-container&quot;</span>&gt;</span><br>  <span class="hljs-comment">&lt;!-- Additional required wrapper --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-wrapper&quot;</span>&gt;</span><br>    <span class="hljs-comment">&lt;!-- Slides --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 1<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 2<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 3<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    ...  <span class="hljs-comment">&lt;!-- 新增 swiper-slide 數量 --&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-comment">&lt;!-- If we need pagination --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-pagination&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br>  <span class="hljs-comment">&lt;!-- If we need navigation buttons --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-button-prev&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-button-next&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br>  <span class="hljs-comment">&lt;!-- If we need scrollbar --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-scrollbar&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-<p>需要進行輪播的內容，會放在 <code>swiper-slide</code> 之中，數量可依需求自行新增。</p>
-<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><p>Swiper 在初始化時，會帶入一個 DOM / CSS Selector，以及一個參數（字串），如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> swiper = <span class="hljs-keyword">new</span> Swiper( swiperContainer, parameter );<br></code></pre></td></tr></table></figure>
-
-<p>官方範例如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&quot;.swiper-container&quot;</span>, &#123;<br>  <span class="hljs-comment">// Optional parameters / 加入參數與設定值</span><br>  <span class="hljs-attr">direction</span>: <span class="hljs-string">&quot;vertical&quot;</span>, <span class="hljs-comment">// 輪播方向</span><br>  <span class="hljs-attr">loop</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 重複顯示</span><br>  <span class="hljs-comment">// If we need pagination / 是否顯示分頁</span><br>  <span class="hljs-attr">pagination</span>: &#123;<br>    <span class="hljs-attr">el</span>: <span class="hljs-string">&quot;.swiper-pagination&quot;</span><br>  &#125;,<br>  <span class="hljs-comment">// Navigation arrows / 是否加入上、下一頁方向圖示</span><br>  <span class="hljs-attr">navigation</span>: &#123;<br>    <span class="hljs-attr">nextEl</span>: <span class="hljs-string">&quot;.swiper-button-next&quot;</span>,<br>    <span class="hljs-attr">prevEl</span>: <span class="hljs-string">&quot;.swiper-button-prev&quot;</span><br>  &#125;,<br>  <span class="hljs-comment">// And if we need scrollbar / 是否顯示滾動軸</span><br>  <span class="hljs-attr">scrollbar</span>: &#123;<br>    <span class="hljs-attr">el</span>: <span class="hljs-string">&quot;.swiper-scrollbar&quot;</span><br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
-
-<h3 id="設定容器寬度"><a href="#設定容器寬度" class="headerlink" title="設定容器寬度"></a>設定容器寬度</h3><p>可自訂意義 Swiper 容器大小，範例如下：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.swiper</span> &#123;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">600px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">300px</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-
-<h2 id="常見參數"><a href="#常見參數" class="headerlink" title="常見參數"></a>常見參數</h2><p>除了先前官方範例提到的參數之外，以下列出一些在不同的版型下，可能會使用到的參數設定，更多可使用的參數可查閱<a href="https://swiperjs.com/swiper-api">官方文件</a>。</p>
-<p><strong><code>effect</code></strong></p>
-<p>主要用來變更輪播時的轉場效果，預設值為 <code>slide</code>，其他可使用效果還有 <code>fade</code>、<code>cube</code>、<code>coverflow</code>、<code>flip</code>、<code>creative</code>、<code>cards</code>。</p>
-<p><strong><code>autoplay</code></strong></p>
-<p>該參數屬於一個物件，會依據給予的屬性設定來自定義自動輪播的形式，範例如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&quot;.swiper-container&quot;</span>, &#123;<br>  <span class="hljs-attr">autoplay</span>: &#123;<br>    <span class="hljs-attr">delay</span>: <span class="hljs-number">5000</span>, <span class="hljs-comment">// 自動輪播延遲時間</span><br>    <span class="hljs-attr">disableOnInteraction</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 手動滑動後，停止自動撥放，預設值為 true</span><br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
-
-<p><strong><code>slidesPerView</code></strong></p>
-<p>該參數可以決定輪播時，同時顯示的 <code>swiper-slide</code> 數量，範例如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&quot;.swiper-container&quot;</span>, &#123;<br>  <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">3</span> <span class="hljs-comment">// 同時顯示 3 個 swiper-slide</span><br>&#125;);<br></code></pre></td></tr></table></figure>
-
-<blockquote>
-<p>加入參數 <code>slidesPerView</code> 後，<code>swiper-slide</code> 的寬度會根據 swiper-container 來均分。</p>
-</blockquote>
-<p><strong><code>breakpoints</code></strong></p>
-<p>加入該參數後，配合參數 <code>slidesPerView</code> 可根據所設定的斷點來達成響應式的效果，範例如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&#x27;.swiper&#x27;</span>, &#123;<br>  <span class="hljs-comment">// 預設的顯示數量為 1</span><br>  <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">1</span>,<br>  <span class="hljs-comment">// 以下為斷點設定</span><br>  <span class="hljs-attr">breakpoints</span>: &#123;<br>    <span class="hljs-comment">// 當頁面寬度大於 768px 時，同時顯示數量為 2</span><br>    <span class="hljs-number">768</span>: &#123;<br>      <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">2</span><br>    &#125;,<br>    <span class="hljs-comment">// 當頁面寬度大於 992px 時，同時顯示數量為 3</span><br>    <span class="hljs-number">992</span>: &#123;<br>      <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">3</span><br>    &#125;<br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
-
-<p><strong><code>spacebetween</code></strong></p>
-<p>該參數可以設定每個 <code>swiper-slide</code> 之間的間隙，範例如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&#x27;.swiper&#x27;</span>, &#123;<br>  <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">2</span>,<br>  <span class="hljs-attr">spacebetween</span>: <span class="hljs-number">16</span>, <span class="hljs-comment">// 預設間隔為 20px</span><br>  <span class="hljs-attr">breakpoints</span>: &#123;<br>    <span class="hljs-number">768</span>: &#123;<br>      <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">3</span>,<br>      <span class="hljs-attr">spacebetween</span>: <span class="hljs-number">24</span> <span class="hljs-comment">// 當頁面寬度大於 768px 時，間隔為 24px</span><br>    &#125;<br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Package</category>
-      </categories>
-      <tags>
-        <tag>Swiper</tag>
-        <tag>Package</tag>
       </tags>
   </entry>
   <entry>
@@ -363,119 +378,70 @@
       </tags>
   </entry>
   <entry>
-    <title>關於 CSS Font-Family</title>
-    <url>/2022-03-02-css-font-family/</url>
-    <content><![CDATA[<p>在設定字體時，常常會遇到結果不如預期的情況，於是決定研究一下網頁是怎麼套用字體，以及一些相關的注意事項。</p>
+    <title>JavaScript 套件 - Swiper</title>
+    <url>/2022-06-06-swiper-note/</url>
+    <content><![CDATA[<p>Swiper 可以實現網頁元素的輪播效果，本篇大概紀錄一下安裝的方式，以及一些常用的參數設定。</p>
 <span id="more"></span>
 <hr>
 <div class="toc">
 <p class="toc-title">目錄：</p>
 
 <ul>
-<li><a href="#Font-Family-%E8%A8%AD%E5%AE%9A%E8%A6%8F%E5%89%87">Font-Family 設定規則</a></li>
-<li><a href="#Font-Family-%E5%AD%97%E9%AB%94%E9%A1%9E%E5%9E%8B">Font-Family 字體類型</a></li>
-<li><a href="#%E5%AD%97%E9%AB%94%E9%A0%86%E5%BA%8F%E8%A7%80%E5%BF%B5">字體順序觀念</a></li>
-<li><a href="#%E5%AF%A6%E5%8B%99%E7%AF%84%E4%BE%8B">實務範例</a></li>
-<li><a href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99">參考資料</a></div></li>
+<li><a href="#%E5%AE%89%E8%A3%9D">安裝</a></li>
+<li><a href="#%E5%9F%BA%E7%A4%8E%E7%B5%90%E6%A7%8B">基礎結構</a></li>
+<li><a href="#%E5%B8%B8%E8%A6%8B%E5%8F%83%E6%95%B8">常見參數</a></div></li>
 </ul>
-<h2 id="Font-Family-設定規則"><a href="#Font-Family-設定規則" class="headerlink" title="Font-Family 設定規則"></a>Font-Family 設定規則</h2><p>基本上只要是網頁設計，都會使用到的屬性，可以自訂頁面上的文字字體，但是初學者在使用這個屬性之前，為了避免結果不如預期，建議需要先理解一些設定上的規則。</p>
-<h3 id="字體套用邏輯"><a href="#字體套用邏輯" class="headerlink" title="字體套用邏輯"></a>字體套用邏輯</h3><p>Font-Family 雖然可以設定多個屬性值，但是並不會將所有寫入的字體都一起套用，而是會根據瀏覽器對該字體的支援與否，由左至右依序判斷，以下方原始碼為例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: 字體A, 字體B, 字體C;<br></code></pre></td></tr></table></figure>
-
-<p>假設使用者的電腦系統中僅存在 “字體B”，此時瀏覽器載入網頁時，會根據上述設定先判斷系統內是否有對應的字體A，但因為系統中找不到這個字體，因此會跳過該字體並判斷下一個字體B，此時找到字體B之後，就會套用該字體，並且不再往下進行判斷。</p>
-<h3 id="語法注意事項"><a href="#語法注意事項" class="headerlink" title="語法注意事項"></a>語法注意事項</h3><p>在部分字體的選用上，同一個字體可以選擇使用中文名稱或英文名稱的屬性值設定，其結果會相同，以下方原始碼為例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: <span class="hljs-string">&quot;Microsoft JhengHei&quot;</span>;<br><span class="hljs-attribute">font-family</span>: 微軟正黑體;<br></code></pre></td></tr></table></figure>
-
-<p>從上述語法中可以發現，第一行的字體加上了雙引號，這是因為該字體的名稱之間如果存在空白，在不加上雙引號的情形下，瀏覽器會無法辨識而導致讀取失敗。</p>
-<p>另一個值得注意的是，雖然使用中文名稱來設定字體結果與英文名稱相同，但是只單獨設定中文名稱的話，可能會遇到編碼的問題而導致結果不如預期，因此會建議使用英文名稱的屬性值，或是中、英文一起使用，以下方原始碼為例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: <span class="hljs-string">&quot;Microsoft JhengHei&quot;</span>, 微軟正黑體;<br></code></pre></td></tr></table></figure>
+<p class="first-text-not-title"><a href="https://swiperjs.com/get-started" target="_blank">Swiper</a> 是一個製作網頁輪播效果的 JavaScript 套件。</p>
 
 
-<h2 id="Font-Family-字體類型"><a href="#Font-Family-字體類型" class="headerlink" title="Font-Family 字體類型"></a>Font-Family 字體類型</h2><p>在當今這麼大量的字體中，主要可以分為 “指定字體” 與 “通用字體” 兩種類型。</p>
-<h3 id="指定字體（family-name）"><a href="#指定字體（family-name）" class="headerlink" title="指定字體（family-name）"></a>指定字體（family-name）</h3><p>不同的字體也會影響網頁的視覺感受，因此在選用字體時，通常會優先使用指定的字體。</p>
-<h3 id="通用字體（generic-family）"><a href="#通用字體（generic-family）" class="headerlink" title="通用字體（generic-family）"></a>通用字體（generic-family）</h3><p>通用字體可以理解成多數的電腦系統中，內建就已存在的字體，常見的通用字體有以下五種，其中無襯線體、襯線體使用最為廣泛：</p>
-<ul>
-<li>sans-serif（無襯線體 / 黑體）</li>
-<li>serif（襯線體 / 明體）</li>
-<li>cursive（手寫體）</li>
-<li>monospace（等寬體）</li>
-<li>fantasy（幻想體）</li>
-</ul>
-<h3 id="設定方式"><a href="#設定方式" class="headerlink" title="設定方式"></a>設定方式</h3><p>雖然可以透過指定字體名稱的方式，來達到自訂網頁上想要呈現的字體，但是並非所有電腦系統都有對應的指定字體，因此在使用指定字體時，通常都會在 font-family 屬性值的<strong>最後方位置</strong>設定預設的通用字體；而前面有提到 font-family 是由左至右判斷屬性值，所以當瀏覽器不支援或無法從系統中找到前方所對應的指定字體時，就會套用最後設定的通用字體，設定格式如下：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: 指定字體, <span class="hljs-string">&quot;指定 字體&quot;</span>, 通用字體;<br></code></pre></td></tr></table></figure>
+<h2 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h2><h3 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h3><p>透過 CDN 方式安裝 Swiper 時，需要同時引入 <code>swiper-bundle.min.css</code> 與 <code>swiper-bundle.min.js</code> 兩個檔案，引入壓縮後的版本即可。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- In head --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://unpkg.com/swiper@8/swiper-bundle.min.css&quot;</span>/&gt;</span><br><span class="hljs-comment">&lt;!-- In front of body end tag --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://unpkg.com/swiper@8/swiper-bundle.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ npm install swiper<br></code></pre></td></tr></table></figure>
 
 
-<h2 id="字體順序觀念"><a href="#字體順序觀念" class="headerlink" title="字體順序觀念"></a>字體順序觀念</h2><p>本篇一開始在設定規則的地方有簡單提到字體是由左邊開始判斷，但是在順序方面還有一些重要觀念需要熟記，這邊先記住以下設定順序，後續會說明原因：</p>
-<p>設定順序：<strong>英文字體 &gt; Linux &gt; Mac &gt; Windows &gt; 通用字體</strong></p>
-<!-- 這部分一直沒有比較好的解釋 -->
+<h2 id="基礎結構"><a href="#基礎結構" class="headerlink" title="基礎結構"></a>基礎結構</h2><h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><p>使用 Swiper 時，<code>swiper-container</code>、<code>swiper-wrapper</code>、<code>swiper-slide</code> 三者為必要存在的元素。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- Slider main container --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-container&quot;</span>&gt;</span><br>  <span class="hljs-comment">&lt;!-- Additional required wrapper --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-wrapper&quot;</span>&gt;</span><br>    <span class="hljs-comment">&lt;!-- Slides --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 1<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 2<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 3<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    ...  <span class="hljs-comment">&lt;!-- 新增 swiper-slide 數量 --&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-comment">&lt;!-- If we need pagination --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-pagination&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br>  <span class="hljs-comment">&lt;!-- If we need navigation buttons --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-button-prev&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-button-next&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br>  <span class="hljs-comment">&lt;!-- If we need scrollbar --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-scrollbar&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>需要進行輪播的內容，會放在 <code>swiper-slide</code> 之中，數量可依需求自行新增。</p>
+<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><p>Swiper 在初始化時，會帶入一個 DOM / CSS Selector，以及一個參數（字串），如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> swiper = <span class="hljs-keyword">new</span> Swiper( swiperContainer, parameter );<br></code></pre></td></tr></table></figure>
+
+<p>官方範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&quot;.swiper-container&quot;</span>, &#123;<br>  <span class="hljs-comment">// Optional parameters / 加入參數與設定值</span><br>  <span class="hljs-attr">direction</span>: <span class="hljs-string">&quot;vertical&quot;</span>, <span class="hljs-comment">// 輪播方向</span><br>  <span class="hljs-attr">loop</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 重複顯示</span><br>  <span class="hljs-comment">// If we need pagination / 是否顯示分頁</span><br>  <span class="hljs-attr">pagination</span>: &#123;<br>    <span class="hljs-attr">el</span>: <span class="hljs-string">&quot;.swiper-pagination&quot;</span><br>  &#125;,<br>  <span class="hljs-comment">// Navigation arrows / 是否加入上、下一頁方向圖示</span><br>  <span class="hljs-attr">navigation</span>: &#123;<br>    <span class="hljs-attr">nextEl</span>: <span class="hljs-string">&quot;.swiper-button-next&quot;</span>,<br>    <span class="hljs-attr">prevEl</span>: <span class="hljs-string">&quot;.swiper-button-prev&quot;</span><br>  &#125;,<br>  <span class="hljs-comment">// And if we need scrollbar / 是否顯示滾動軸</span><br>  <span class="hljs-attr">scrollbar</span>: &#123;<br>    <span class="hljs-attr">el</span>: <span class="hljs-string">&quot;.swiper-scrollbar&quot;</span><br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h3 id="設定容器寬度"><a href="#設定容器寬度" class="headerlink" title="設定容器寬度"></a>設定容器寬度</h3><p>可自訂意義 Swiper 容器大小，範例如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.swiper</span> &#123;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">600px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">300px</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 
+<h2 id="常見參數"><a href="#常見參數" class="headerlink" title="常見參數"></a>常見參數</h2><p>除了先前官方範例提到的參數之外，以下列出一些在不同的版型下，可能會使用到的參數設定，更多可使用的參數可查閱<a href="https://swiperjs.com/swiper-api">官方文件</a>。</p>
+<p><strong><code>effect</code></strong></p>
+<p>主要用來變更輪播時的轉場效果，預設值為 <code>slide</code>，其他可使用效果還有 <code>fade</code>、<code>cube</code>、<code>coverflow</code>、<code>flip</code>、<code>creative</code>、<code>cards</code>。</p>
+<p><strong><code>autoplay</code></strong></p>
+<p>該參數屬於一個物件，會依據給予的屬性設定來自定義自動輪播的形式，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&quot;.swiper-container&quot;</span>, &#123;<br>  <span class="hljs-attr">autoplay</span>: &#123;<br>    <span class="hljs-attr">delay</span>: <span class="hljs-number">5000</span>, <span class="hljs-comment">// 自動輪播延遲時間</span><br>    <span class="hljs-attr">disableOnInteraction</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 手動滑動後，停止自動撥放，預設值為 true</span><br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
 
-<h3 id="中、英文順序"><a href="#中、英文順序" class="headerlink" title="中、英文順序"></a>中、英文順序</h3><p>一個網頁通常會存在多個語言（以中、英文為例），但是並非所有的字體都同時支援中、英文，因此許多網頁會利用這個由左至右判斷的技巧，分別針對中文與英文各別設定不同的字體，以下方原始碼為例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: Arial, 微軟正黑體;<br></code></pre></td></tr></table></figure>
+<p><strong><code>slidesPerView</code></strong></p>
+<p>該參數可以決定輪播時，同時顯示的 <code>swiper-slide</code> 數量，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&quot;.swiper-container&quot;</span>, &#123;<br>  <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">3</span> <span class="hljs-comment">// 同時顯示 3 個 swiper-slide</span><br>&#125;);<br></code></pre></td></tr></table></figure>
 
-<p>上述設定中，Arial 只有英文字體，而微軟正黑體則是中、英文字體都有，因此瀏覽器在判斷 Arial 之後，就會因為符合條件而套用英文字體，而中文會因為找不到對應字體則往下判斷微軟正黑體並套用，此時網頁上的中文與英文就會呈現不同字體的效果。</p>
-<p>但是如果順序換成微軟正黑體在前面，瀏覽器就會先判斷微軟正黑體，因為該字體中、英文都可以使用，所以網頁上的兩種語言都會套用成微軟正黑體，而後面的 Arial 會因為英文字體已套用成微軟正黑體而不會被讀取。</p>
-<p>因此，正確的屬性值順序為<strong>英文字體在前面，中文字體在後面。</strong></p>
-<h3 id="字體使用率與順序"><a href="#字體使用率與順序" class="headerlink" title="字體使用率與順序"></a>字體使用率與順序</h3><p>每個作業系統都有自己的系統字體，例如 -apple-system 與 BlinkMacSystemFont 分別是 iOS 以及 macOS 的系統字體，並且前者只能使用在 Safari 瀏覽器上，後者則是用於 Chrome，像這種只能使用在特定系統或瀏覽器的字體，順序就需要放在前面，以下方原始碼為例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: -apple-system, BlinkMacSystemFont, <span class="hljs-string">&quot;Segoe UI&quot;</span>, <span class="hljs-string">&quot;Microsoft JhengHei&quot;</span>, Roboto, <span class="hljs-string">&quot;Helvetica Neue&quot;</span>, Arial, sans-serif;<br>	     <span class="hljs-comment">/* mac系統字體, iOS系統字體,	windows英文系統字體, 微軟正黑體, Android系統字體, iOS系統字體, 通用字體, 通用字體 */</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>加入參數 <code>slidesPerView</code> 後，<code>swiper-slide</code> 的寬度會根據 swiper-container 來均分。</p>
+</blockquote>
+<p><strong><code>breakpoints</code></strong></p>
+<p>加入該參數後，配合參數 <code>slidesPerView</code> 可根據所設定的斷點來達成響應式的效果，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&#x27;.swiper&#x27;</span>, &#123;<br>  <span class="hljs-comment">// 預設的顯示數量為 1</span><br>  <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">1</span>,<br>  <span class="hljs-comment">// 以下為斷點設定</span><br>  <span class="hljs-attr">breakpoints</span>: &#123;<br>    <span class="hljs-comment">// 當頁面寬度大於 768px 時，同時顯示數量為 2</span><br>    <span class="hljs-number">768</span>: &#123;<br>      <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">2</span><br>    &#125;,<br>    <span class="hljs-comment">// 當頁面寬度大於 992px 時，同時顯示數量為 3</span><br>    <span class="hljs-number">992</span>: &#123;<br>      <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">3</span><br>    &#125;<br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
 
-<p>假設使用者電腦系統為 windows，瀏覽器因為在系統中找不到 -apple-system 與 BlinkMacSystemFont 而直接跳過這兩個字體，而下一個 Segoe UI 屬於 windows 的英文系統字體，因此英文字體就會套用 Segoe UI，中文字體則是因為 Segoe UI 並沒有對應的中文而判斷下一個值，最終套用 Microsoft JhengHei。</p>
-<p>如果電腦系統是 macOS 並且使用 Chrome 瀏覽網頁，當瀏覽器在讀取到 -apple-system 時，就會套用對應的中文及英文字體，並且不再往下判斷。</p>
-<p>因此，為了適應各種不同的瀏覽器與作業系統，在設定字體時需要把<strong>較少使用到的字體放前面，較常使用到的字體放後面。</strong></p>
-<h2 id="實務範例"><a href="#實務範例" class="headerlink" title="實務範例"></a>實務範例</h2><p>附上幾個知名企業的字體設定當作參考，有興趣的也可以自行研究順序邏輯。</p>
-<p>Apple（台灣）：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: <span class="hljs-string">&quot;SF Pro TC&quot;</span>, <span class="hljs-string">&quot;SF Pro Text&quot;</span>, <span class="hljs-string">&quot;SF Pro Icons&quot;</span>, <span class="hljs-string">&quot;PingFang TC&quot;</span>, <span class="hljs-string">&quot;Helvetica Neue&quot;</span>, <span class="hljs-string">&quot;Helvetica&quot;</span>, <span class="hljs-string">&quot;Arial&quot;</span>, sans-serif;<br></code></pre></td></tr></table></figure>
-
-<p>微軟台灣：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: <span class="hljs-string">&#x27;Segoe UI&#x27;</span>, SegoeUI, <span class="hljs-string">&#x27;Microsoft JhengHei&#x27;</span>, 微軟正黑體, <span class="hljs-string">&quot;Helvetica Neue&quot;</span>, Helvetica, Arial, sans-serif;<br></code></pre></td></tr></table></figure>
-
-<p>Google：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">font-family</span>: arial, sans-serif;  <span class="hljs-comment">/* 這絕對不是懶(? */</span><br></code></pre></td></tr></table></figure>
-
-
-
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://www.oxxostudio.tw/articles/201811/css-font-family.html">CSS font-family 詳細介紹</a><br><a href="https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/180456/#outline__1_2_1">最標準的系統字型規範 font-family</a><br><a href="https://www.casper.tw/css/2014/01/01/font-family/">font-family要怎麼玩</a></p>
+<p><strong><code>spacebetween</code></strong></p>
+<p>該參數可以設定每個 <code>swiper-slide</code> 之間的間隙，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&#x27;.swiper&#x27;</span>, &#123;<br>  <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">2</span>,<br>  <span class="hljs-attr">spacebetween</span>: <span class="hljs-number">16</span>, <span class="hljs-comment">// 預設間隔為 20px</span><br>  <span class="hljs-attr">breakpoints</span>: &#123;<br>    <span class="hljs-number">768</span>: &#123;<br>      <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">3</span>,<br>      <span class="hljs-attr">spacebetween</span>: <span class="hljs-number">24</span> <span class="hljs-comment">// 當頁面寬度大於 768px 時，間隔為 24px</span><br>    &#125;<br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>CSS</category>
+        <category>Package</category>
       </categories>
       <tags>
-        <tag>font-family</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>網頁切版直播班心得</title>
-    <url>/2022-09-10-hexschool-web-feedback/</url>
-    <content><![CDATA[<p>2022 夏，切版直播班心得。</p>
-<span id="more"></span>
-<hr>
-<div class="toc">
-<p class="toc-title">目錄：</p>
-
-<ul>
-<li><a href="#%E5%A0%B1%E5%90%8D%E5%A5%91%E6%A9%9F">報名契機</a></li>
-<li><a href="#%E6%AF%8F%E9%80%B1%E5%AD%B8%E7%BF%92%E6%AD%B7%E7%A8%8B">每週學習歷程</a></li>
-<li><a href="#%E7%B5%90%E8%AA%9E">結語</a></div></li>
-</ul>
-<h2 id="報名契機"><a href="#報名契機" class="headerlink" title="報名契機"></a>報名契機</h2><p>今年年四月左右參加了為期一個月的公益體驗營，然而在體驗營結束前夕，學院按照慣例會推坑下一次的活動，這次是切版直播班，不過內容相較過去更為豐富，教學大綱除了舊有的 Bootstrap 到近幾年盛行的 Tailwind，思索一番之後還是報名了。其實原本是衝著 Tailwind 來的，但礙於過去在切版方面都是純手刻又覺得 Bootstrap 很困難而遲遲不去面對，導致自己連一個 CSS 框架都不會，另一方面自己在新技能的學習上會需要花不少時間來吸收，擔心一次學兩個會應付不來，因此就把目標先轉向了目前使用率較高的 Bootstrap；除此之外，這次也要求自己必須把八週主線任務的所有頁面都切出來，既然都全職學習了，至少這一點是能做到的吧。</p>
-<h2 id="每週學習歷程"><a href="#每週學習歷程" class="headerlink" title="每週學習歷程"></a>每週學習歷程</h2><h3 id="直播"><a href="#直播" class="headerlink" title="直播"></a>直播</h3><p>雖然每週直播的教學內容算是在複習錄影，但是現場跟大家一起聽課的氛圍比起自己看錄影兩者還是有差的，而且常常會有同學在聊天室提出一些平常可能不太會注意到的有趣問題，也能當作是一種額外的知識吸收，此外當然也少不了校長的嘴砲模式以及心靈雞湯，畢竟學程式容易產生焦慮，長時間學習下還是需要找地方宣洩一下情緒。八週的直播形式基本上都是前面提到的這樣，整體的感覺不錯，這部分也沒有需要特別需要補充甚麼了，不過直播班本來就是以大量輸出為前提，每週花費在作業上的時間自然就比較多。</p>
-<p>另外這次直播班每週是有兩場直播的，上述提到的是週五例行的直播，另一場則是週三的 Tailwind 主題，雖然大部分心思都投入在 Bootstrap 上面，但是每週還是有聽課並把作業都做過一次，整體感覺其實是很不錯的。</p>
-<h3 id="小組討論"><a href="#小組討論" class="headerlink" title="小組討論"></a>小組討論</h3><p>這次被分配到的組別還不錯，每週的小組討論出席率都很高，只是大多數的組員平時都比較忙，也有組員加班到很晚還趕回來餐與討論，辛苦各位了，無法出席的人也會透過線下時間把作業補齊，也要特別感謝組長主持以及做資料彙整，不得不說組長真的很認真好學，小組伺服器的發問次數也是最多的，自己也從不少問題中學到各種額外的知識，賺爛了。</p>
-<h3 id="每日任務"><a href="#每日任務" class="headerlink" title="每日任務"></a>每日任務</h3><p>不得不說每日任務真的是很棒的學習資源，每天會釋出一道小題目給學員練習，有時候作業卡關也能從這邊找到線索，也可以學到很多平常不知道的知識，算是一個小寶庫；不過後半段的部分因為都在趕主線任務的進度，幾乎都是用補交的就是了。</p>
-<h3 id="主線任務"><a href="#主線任務" class="headerlink" title="主線任務"></a>主線任務</h3><p>作業方面主線任務難度是最高的，前兩週比較像是在試水溫，但是從第三週開始版型就是一個完整的電商網站了，印象中在做第三週時，平均一頁包含 RWD 就花了幾乎一天的時間，切完所有頁面後開始地毯式搜索看有甚麼地方沒處理仔細或是可以再調整，也嘗試透過簡單的 JS 加入了一些小功能和效果，結果自己很滿意。</p>
-<p>第四週設計稿和第三週是同一份，差別在於第四週需要透過 Gulp 來做，講白一點這已經不是切版的範疇了，但是提早面對終端機指令、版本相容性或是編譯等問題對未來學習上無疑是好事，不過 Gulp 要怎麼寫任務就要靠自己學了，可惡！好想學會自己寫 Gulp 啊！！</p>
-<p>第五週是後台版型，也開始嘗試使用以前一直不敢面對的 Bootstrap，然而這週的作業是一邊看官方文件一邊做的，大部分的時間都花在看文件而不是切版，為了讓自己能早一點習慣使用 Bootstrap，有好幾天晚上睡前用手機都不是在看社群，而是在看官方文件…。</p>
-<p>校長在第一次直播時，有大概用折線圖描述一下每週的作業難度，印象中第六週的難度是僅次於第八週的，而且第六週開始被要求使用 CSS 框架來做，還好前一段時間花了不少時間研究 Bootstrap，現在通用類別與元件在使用上已經熟練了非常多，頓時覺得自己以前只是懶的去看密密麻麻的文件而已。除此之外，第六週設計稿部分區塊還需要引入 JS 套件，從 Discord 作業討論頻道也可以看到不少學員受到 Swiper 無情肆虐。自己也花費將近一週的時間才做完，就順便整合第七週一起繳交了，然而心想終於可以休息一下，結果第八週設計稿就提前釋出，害我差點就忘記自己還在通往地獄的列車上。</p>
-<p>第八週的設計稿很特別，充斥著各式各樣酷炫的排版。在這過程中也做了很多以往沒做過的嘗試，首先是開始自己設計元件，先前看到其他同學不用 Pages 資料夾就能做出所有頁面，自己早就想嘗試看看了，意外的是然辦到了！果然有些事如果不做永遠不知道結果；另外也學會了客製化通用類別的方法，不得不說使用起來很方便可惜相見恨晚。不過最麻煩的部分還是 JS 套件，這部分花了很多時間不斷嘗試和理解才做出來，從拿到設計稿到切完所有頁面大概用了一個多禮拜的時間，真的好累啊…。</p>
-<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>本來以為自己會倒在第八週，但意外的挺過來了，不得不說即便是全職學習還是覺得時間很緊迫，真心佩服那些平時有工作還來進修的同學。總結來說，這次直播班真的扎扎實實的學到很多知識，同時也深刻體會到學習是沒有捷徑的，追求卓越的唯一方法只有不斷的練習，最後非常感謝六角學院提供這麼棒的學習資源和環境，兩位講師和每位助教都辛苦了，小心肝啊！！</p>
-<p>（長嘆，肝了無數個夜晚終於可以休息一下了，啊~原來我報名了 JS 直播班，差點忘記我搭的是不停靠的直達列車了。</p>
-]]></content>
-      <categories>
-        <category>心得</category>
-      </categories>
-      <tags>
-        <tag>六角學院</tag>
+        <tag>Swiper</tag>
+        <tag>Package</tag>
       </tags>
   </entry>
   <entry>
@@ -568,6 +534,84 @@
       </tags>
   </entry>
   <entry>
+    <title>網頁切版直播班心得</title>
+    <url>/2022-09-10-hexschool-web-feedback/</url>
+    <content><![CDATA[<p>2022 夏，切版直播班心得。</p>
+<span id="more"></span>
+<hr>
+<div class="toc">
+<p class="toc-title">目錄：</p>
+
+<ul>
+<li><a href="#%E5%A0%B1%E5%90%8D%E5%A5%91%E6%A9%9F">報名契機</a></li>
+<li><a href="#%E6%AF%8F%E9%80%B1%E5%AD%B8%E7%BF%92%E6%AD%B7%E7%A8%8B">每週學習歷程</a></li>
+<li><a href="#%E7%B5%90%E8%AA%9E">結語</a></div></li>
+</ul>
+<h2 id="報名契機"><a href="#報名契機" class="headerlink" title="報名契機"></a>報名契機</h2><p>今年年四月左右參加了為期一個月的公益體驗營，然而在體驗營結束前夕，學院按照慣例會推坑下一次的活動，這次是切版直播班，不過內容相較過去更為豐富，教學大綱除了舊有的 Bootstrap 到近幾年盛行的 Tailwind，思索一番之後還是報名了。其實原本是衝著 Tailwind 來的，但礙於過去在切版方面都是純手刻又覺得 Bootstrap 很困難而遲遲不去面對，導致自己連一個 CSS 框架都不會，另一方面自己在新技能的學習上會需要花不少時間來吸收，擔心一次學兩個會應付不來，因此就把目標先轉向了目前使用率較高的 Bootstrap；除此之外，這次也要求自己必須把八週主線任務的所有頁面都切出來，既然都全職學習了，至少這一點是能做到的吧。</p>
+<h2 id="每週學習歷程"><a href="#每週學習歷程" class="headerlink" title="每週學習歷程"></a>每週學習歷程</h2><h3 id="直播"><a href="#直播" class="headerlink" title="直播"></a>直播</h3><p>雖然每週直播的教學內容算是在複習錄影，但是現場跟大家一起聽課的氛圍比起自己看錄影兩者還是有差的，而且常常會有同學在聊天室提出一些平常可能不太會注意到的有趣問題，也能當作是一種額外的知識吸收，此外當然也少不了校長的嘴砲模式以及心靈雞湯，畢竟學程式容易產生焦慮，長時間學習下還是需要找地方宣洩一下情緒。八週的直播形式基本上都是前面提到的這樣，整體的感覺不錯，這部分也沒有需要特別需要補充甚麼了，不過直播班本來就是以大量輸出為前提，每週花費在作業上的時間自然就比較多。</p>
+<p>另外這次直播班每週是有兩場直播的，上述提到的是週五例行的直播，另一場則是週三的 Tailwind 主題，雖然大部分心思都投入在 Bootstrap 上面，但是每週還是有聽課並把作業都做過一次，整體感覺其實是很不錯的。</p>
+<h3 id="小組討論"><a href="#小組討論" class="headerlink" title="小組討論"></a>小組討論</h3><p>這次被分配到的組別還不錯，每週的小組討論出席率都很高，只是大多數的組員平時都比較忙，也有組員加班到很晚還趕回來餐與討論，辛苦各位了，無法出席的人也會透過線下時間把作業補齊，也要特別感謝組長主持以及做資料彙整，不得不說組長真的很認真好學，小組伺服器的發問次數也是最多的，自己也從不少問題中學到各種額外的知識，賺爛了。</p>
+<h3 id="每日任務"><a href="#每日任務" class="headerlink" title="每日任務"></a>每日任務</h3><p>不得不說每日任務真的是很棒的學習資源，每天會釋出一道小題目給學員練習，有時候作業卡關也能從這邊找到線索，也可以學到很多平常不知道的知識，算是一個小寶庫；不過後半段的部分因為都在趕主線任務的進度，幾乎都是用補交的就是了。</p>
+<h3 id="主線任務"><a href="#主線任務" class="headerlink" title="主線任務"></a>主線任務</h3><p>作業方面主線任務難度是最高的，前兩週比較像是在試水溫，但是從第三週開始版型就是一個完整的電商網站了，印象中在做第三週時，平均一頁包含 RWD 就花了幾乎一天的時間，切完所有頁面後開始地毯式搜索看有甚麼地方沒處理仔細或是可以再調整，也嘗試透過簡單的 JS 加入了一些小功能和效果，結果自己很滿意。</p>
+<p>第四週設計稿和第三週是同一份，差別在於第四週需要透過 Gulp 來做，講白一點這已經不是切版的範疇了，但是提早面對終端機指令、版本相容性或是編譯等問題對未來學習上無疑是好事，不過 Gulp 要怎麼寫任務就要靠自己學了，可惡！好想學會自己寫 Gulp 啊！！</p>
+<p>第五週是後台版型，也開始嘗試使用以前一直不敢面對的 Bootstrap，然而這週的作業是一邊看官方文件一邊做的，大部分的時間都花在看文件而不是切版，為了讓自己能早一點習慣使用 Bootstrap，有好幾天晚上睡前用手機都不是在看社群，而是在看官方文件…。</p>
+<p>校長在第一次直播時，有大概用折線圖描述一下每週的作業難度，印象中第六週的難度是僅次於第八週的，而且第六週開始被要求使用 CSS 框架來做，還好前一段時間花了不少時間研究 Bootstrap，現在通用類別與元件在使用上已經熟練了非常多，頓時覺得自己以前只是懶的去看密密麻麻的文件而已。除此之外，第六週設計稿部分區塊還需要引入 JS 套件，從 Discord 作業討論頻道也可以看到不少學員受到 Swiper 無情肆虐。自己也花費將近一週的時間才做完，就順便整合第七週一起繳交了，然而心想終於可以休息一下，結果第八週設計稿就提前釋出，害我差點就忘記自己還在通往地獄的列車上。</p>
+<p>第八週的設計稿很特別，充斥著各式各樣酷炫的排版。在這過程中也做了很多以往沒做過的嘗試，首先是開始自己設計元件，先前看到其他同學不用 Pages 資料夾就能做出所有頁面，自己早就想嘗試看看了，意外的是然辦到了！果然有些事如果不做永遠不知道結果；另外也學會了客製化通用類別的方法，不得不說使用起來很方便可惜相見恨晚。不過最麻煩的部分還是 JS 套件，這部分花了很多時間不斷嘗試和理解才做出來，從拿到設計稿到切完所有頁面大概用了一個多禮拜的時間，真的好累啊…。</p>
+<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>本來以為自己會倒在第八週，但意外的挺過來了，不得不說即便是全職學習還是覺得時間很緊迫，真心佩服那些平時有工作還來進修的同學。總結來說，這次直播班真的扎扎實實的學到很多知識，同時也深刻體會到學習是沒有捷徑的，追求卓越的唯一方法只有不斷的練習，最後非常感謝六角學院提供這麼棒的學習資源和環境，兩位講師和每位助教都辛苦了，小心肝啊！！</p>
+<p>（長嘆，肝了無數個夜晚終於可以休息一下了，啊~原來我報名了 JS 直播班，差點忘記我搭的是不停靠的直達列車了。</p>
+]]></content>
+      <categories>
+        <category>心得</category>
+      </categories>
+      <tags>
+        <tag>六角學院</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Flex 水平置中，子元素溢出時避免被裁切</title>
+    <url>/2022-09-17-css-max-content/</url>
+    <content><![CDATA[<p>前一段時間在切版上遇到了一個問題，研究之後發現一個有趣的解決方法，也藉此機會紀錄一下。</p>
+<span id="more"></span>
+<hr>
+<div class="toc">
+<p class="toc-title">目錄：</p>
+
+<ul>
+<li><a href="#%E5%95%8F%E9%A1%8C">問題</a></li>
+<li><a href="#%E8%A7%A3%E6%B1%BA%E6%96%B9%E5%BC%8F">解決方式</a></div></li>
+</ul>
+<h2 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h2><p>以下是範例情境：</p>
+<p><img src="https://i.imgur.com/TK9ZZcF.png"></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- HTML --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;section mt-3&quot;</span>&gt;</span>  <br>  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;section-title&quot;</span>&gt;</span>Section Title<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span><br>    ...<br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* CSS（上方列表區塊） */</span><br><span class="hljs-selector-class">.list</span> &#123;<br>  <span class="hljs-attribute">display</span>: flex;<br>  <span class="hljs-attribute">justify-content</span>: center;<br>  <span class="hljs-attribute">overflow</span>: auto;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>上述範例中，上方 <code>.list</code> 區塊使用 <code>display: flex</code> 加上 <code>justify-content: center</code> 讓子元素置中，同時希望瀏覽器寬度縮小至子元素溢出時，溢出的部分以水平軸方式呈現，因此加入了 <code>overflow: auto</code> 設定，呈現畫面如下：</p>
+<p><img src="https://i.imgur.com/Sn1BMH4.png"></p>
+<p>然而將水平軸向左滾動至最底時，溢出的部分卻被裁切了，而問題就在 <code>justify-content: center</code> 這個屬性上，移除該屬性之後，子元素溢出的部分就會正常呈現，如下：</p>
+<p><img src="https://i.imgur.com/6GYarUd.png"></p>
+<p>此時問題來了，在不使用 <code>justify-content: center</code> 的情況下，要如何同時滿足子元素保持置中，但是溢出情況下不會被裁切呢？在思索一番後想到另一個能使區塊水平置中的語法，就是 <code>margin: 0 auto</code>，不過這個語法只適用具有實際寬度但非滿版的區塊，而範例中的 <code>.list</code> 區塊因為 <code>display: flex</code> 的關係佔了滿版的寬，因此並沒有如預期置中。下圖是區塊實際佔用的空間：</p>
+<p><img src="https://i.imgur.com/WnJz6ud.png"></p>
+<h2 id="解決方式"><a href="#解決方式" class="headerlink" title="解決方式"></a>解決方式</h2><figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* CSS（上方列表區塊） */</span><br><span class="hljs-selector-class">.list</span> &#123;<br>  <span class="hljs-attribute">display</span>: flex;<br>  <span class="hljs-attribute">max-width</span>: max-content;<br>  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;<br>  <span class="hljs-attribute">overflow</span>: auto;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>僅需在 <code>.list</code> 區塊加上 <code>max-width: max-content</code> 語法即可，而 <code>max-content</code> 最基本的作用是讓區塊寬度或高度自適應子元素，並且當子元素溢出時，內容不會受到擠壓而換行；此處正好利用了前者特性，使 <code>.list</code> 最大寬度等於所有子元素（<code>.list-item</code>）寬度的加總，此時再配合 <code>margin: 0 auto</code> 之後區塊得以置中，並且當子元素溢出時不會被裁切。結果如下圖所示：</p>
+<p><img src="https://i.imgur.com/MLip3hT.png"></p>
+<p><strong>實作範例：</strong></p>
+<iframe src="https://codepen.io/Cliff_hex/embed/bGMqLOq?default-tab=css,result" width="100%" height="300" frameborder="0" loading="lazy" allowfullscreen></iframe>
+
+<blockquote>
+<p>max-content 詳細說明請參考此<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/max-content">文章</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>flex</tag>
+        <tag>overflow</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JavaScript 筆記 - 函式</title>
     <url>/2022-09-19-javascript-function/</url>
     <content><![CDATA[<p>簡單的紀錄一下函式的基本知識。</p>
@@ -636,47 +680,44 @@
       </tags>
   </entry>
   <entry>
-    <title>Flex 水平置中，子元素溢出時避免被裁切</title>
-    <url>/2022-09-17-css-max-content/</url>
-    <content><![CDATA[<p>前一段時間在切版上遇到了一個問題，研究之後發現一個有趣的解決方法，也藉此機會紀錄一下。</p>
+    <title>JavaScript 觀念 - 同步與非同步</title>
+    <url>/2022-09-20-javascript-sync-async/</url>
+    <content><![CDATA[<p>這篇僅記錄同步、非同步是什麼樣的概念，並沒有處理非同步問題的方式。</p>
 <span id="more"></span>
+
 <hr>
 <div class="toc">
 <p class="toc-title">目錄：</p>
 
 <ul>
-<li><a href="#%E5%95%8F%E9%A1%8C">問題</a></li>
-<li><a href="#%E8%A7%A3%E6%B1%BA%E6%96%B9%E5%BC%8F">解決方式</a></div></li>
+<li><a href="#JavaScript-%E4%B8%AD%E7%9A%84%E5%90%8C%E6%AD%A5">JavaScript 中的同步</a></li>
+<li><a href="#%E4%BD%95%E8%AC%82%E9%9D%9E%E5%90%8C%E6%AD%A5%EF%BC%9F">何謂非同步？</a></li>
+<li><a href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99">參考資料</a></div></li>
 </ul>
-<h2 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h2><p>以下是範例情境：</p>
-<p><img src="https://i.imgur.com/TK9ZZcF.png"></p>
-<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- HTML --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;section mt-3&quot;</span>&gt;</span>  <br>  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-item&quot;</span>&gt;</span>item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;section-title&quot;</span>&gt;</span>Section Title<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span><br>    ...<br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* CSS（上方列表區塊） */</span><br><span class="hljs-selector-class">.list</span> &#123;<br>  <span class="hljs-attribute">display</span>: flex;<br>  <span class="hljs-attribute">justify-content</span>: center;<br>  <span class="hljs-attribute">overflow</span>: auto;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>上述範例中，上方 <code>.list</code> 區塊使用 <code>display: flex</code> 加上 <code>justify-content: center</code> 讓子元素置中，同時希望瀏覽器寬度縮小至子元素溢出時，溢出的部分以水平軸方式呈現，因此加入了 <code>overflow: auto</code> 設定，呈現畫面如下：</p>
-<p><img src="https://i.imgur.com/Sn1BMH4.png"></p>
-<p>然而將水平軸向左滾動至最底時，溢出的部分卻被裁切了，而問題就在 <code>justify-content: center</code> 這個屬性上，移除該屬性之後，子元素溢出的部分就會正常呈現，如下：</p>
-<p><img src="https://i.imgur.com/6GYarUd.png"></p>
-<p>此時問題來了，在不使用 <code>justify-content: center</code> 的情況下，要如何同時滿足子元素保持置中，但是溢出情況下不會被裁切呢？在思索一番後想到另一個能使區塊水平置中的語法，就是 <code>margin: 0 auto</code>，不過這個語法只適用具有實際寬度但非滿版的區塊，而範例中的 <code>.list</code> 區塊因為 <code>display: flex</code> 的關係佔了滿版的寬，因此並沒有如預期置中。下圖是區塊實際佔用的空間：</p>
-<p><img src="https://i.imgur.com/WnJz6ud.png"></p>
-<h2 id="解決方式"><a href="#解決方式" class="headerlink" title="解決方式"></a>解決方式</h2><figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* CSS（上方列表區塊） */</span><br><span class="hljs-selector-class">.list</span> &#123;<br>  <span class="hljs-attribute">display</span>: flex;<br>  <span class="hljs-attribute">max-width</span>: max-content;<br>  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;<br>  <span class="hljs-attribute">overflow</span>: auto;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>僅需在 <code>.list</code> 區塊加上 <code>max-width: max-content</code> 語法即可，而 <code>max-content</code> 最基本的作用是讓區塊寬度或高度自適應子元素，並且當子元素溢出時，內容不會受到擠壓而換行；此處正好利用了前者特性，使 <code>.list</code> 最大寬度等於所有子元素（<code>.list-item</code>）寬度的加總，此時再配合 <code>margin: 0 auto</code> 之後區塊得以置中，並且當子元素溢出時不會被裁切。結果如下圖所示：</p>
-<p><img src="https://i.imgur.com/MLip3hT.png"></p>
-<p><strong>實作範例：</strong></p>
-<iframe src="https://codepen.io/Cliff_hex/embed/bGMqLOq?default-tab=css,result" width="100%" height="300" frameborder="0" loading="lazy" allowfullscreen></iframe>
-
+<h2 id="JavaScript-中的同步"><a href="#JavaScript-中的同步" class="headerlink" title="JavaScript 中的同步"></a>JavaScript 中的同步</h2><p>「同步（Synchronous）」在你的認知上會怎麼解釋？我自己原本的想法是同時處理很多事情，但這個說法在 JavaScript 卻有些出入，原因在於 JavaScript 是以「單執行緒（單線程）」的方式在執行程序，特性是「一次只做一件事，前面的事做完才會依序做下一件事」。</p>
 <blockquote>
-<p>max-content 詳細說明請參考此<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/max-content">文章</a></p>
+<p>執行緒相關內容可參考此<a href="https://www.itread01.com/ixyfq.html">文章</a>。</p>
 </blockquote>
+<p>範例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printNum</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;1&#x27;</span>);<br>&#125; <br>printNum();<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;2&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>以上面程式碼來說，會先執行函式 <code>printNum</code> 印出 <code>1</code>，接著再印出 <code>2</code>，並且兩者是有先後順序的，屬於同步執行。</p>
+<h2 id="何謂非同步？"><a href="#何謂非同步？" class="headerlink" title="何謂非同步？"></a>何謂非同步？</h2><p>「非同步（Asynchronous）」特性是「可以同時做很多事，並且不需要等待前面的事做完就能做下一件事」，其實就是自己一開始對同步的認知。</p>
+<p>範例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">setTimeout</span>(printNum, <span class="hljs-number">2000</span>);<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printNum</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;1&#x27;</span>);<br>&#125; <br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;2&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>程式碼中 <code>setTimeout</code> 會分別帶入 <code>callback</code>、<code>等待毫秒</code> 兩個參數，而回調函式 <code>printNum</code> 被設定 2 秒後才執行，但是這程中第 5 行的程式碼並不會等待前面的函式 <code>printNum</code>  執行完才動作，而是先印出 <code>2</code>，等待 2 秒之後呼叫函式 <code>printNum</code> 並印出 <code>1</code>。</p>
+<p>但是 JavaScript 屬於單執行緒，所以一次應該只會做一件事，為什麼會有範例中非同步的狀況？原因是 JavaScript 在 V8 引擎（JavaScript 引擎）運行時，引擎在運作時是同步的，但是除了引擎內的 JavaScript 原始程式碼之外，瀏覽器也會提供許多 Web APIs（如：document、MouseEvent、setTimeout…等等），這些並不屬於 V8 引擎的範疇，但是可以透過呼叫並使用它們做到非同步的行為，並且不會影響到 JavaScript 主程式的運行，可以理解成 JavaScript 需要依賴 Web APIs 才能達成非同步的效果。</p>
+<p>而 <code>setTimeout</code> 等待的期間，程式碼為甚麼能夠繼續往下執行？原因是當 Web APIs 與自己寫的 JavaScript 在瀏覽器一起執行時，透過 Web APIs 非同步呼叫的 callback function 會被放到 Callback Queue（儲列 / 佇列）待命，等到其他程式碼都執行完之後才會被呼叫。</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://chanchandev.com/js/Async/async-sync-intro/2534378084/">Javascript 非同步 &amp; Event Loop！10 分鐘輕鬆圖解學習！</a></p>
+<p><a href="https://5xruby.tw/posts/how-js-synchronous-works">無痛理解 JS | 非同步怎麼運作？</a></p>
 ]]></content>
       <categories>
-        <category>CSS</category>
+        <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>flex</tag>
-        <tag>overflow</tag>
+        <tag>synchronous</tag>
+        <tag>asynchronous</tag>
       </tags>
   </entry>
   <entry>
@@ -766,95 +807,6 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript 觀念 - 同步與非同步</title>
-    <url>/2022-09-20-javascript-sync-async/</url>
-    <content><![CDATA[<p>這篇僅記錄同步、非同步是什麼樣的概念，並沒有處理非同步問題的方式。</p>
-<span id="more"></span>
-
-<hr>
-<div class="toc">
-<p class="toc-title">目錄：</p>
-
-<ul>
-<li><a href="#JavaScript-%E4%B8%AD%E7%9A%84%E5%90%8C%E6%AD%A5">JavaScript 中的同步</a></li>
-<li><a href="#%E4%BD%95%E8%AC%82%E9%9D%9E%E5%90%8C%E6%AD%A5%EF%BC%9F">何謂非同步？</a></li>
-<li><a href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99">參考資料</a></div></li>
-</ul>
-<h2 id="JavaScript-中的同步"><a href="#JavaScript-中的同步" class="headerlink" title="JavaScript 中的同步"></a>JavaScript 中的同步</h2><p>「同步（Synchronous）」在你的認知上會怎麼解釋？我自己原本的想法是同時處理很多事情，但這個說法在 JavaScript 卻有些出入，原因在於 JavaScript 是以「單執行緒（單線程）」的方式在執行程序，特性是「一次只做一件事，前面的事做完才會依序做下一件事」。</p>
-<blockquote>
-<p>執行緒相關內容可參考此<a href="https://www.itread01.com/ixyfq.html">文章</a>。</p>
-</blockquote>
-<p>範例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printNum</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;1&#x27;</span>);<br>&#125; <br>printNum();<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;2&#x27;</span>);<br></code></pre></td></tr></table></figure>
-
-<p>以上面程式碼來說，會先執行函式 <code>printNum</code> 印出 <code>1</code>，接著再印出 <code>2</code>，並且兩者是有先後順序的，屬於同步執行。</p>
-<h2 id="何謂非同步？"><a href="#何謂非同步？" class="headerlink" title="何謂非同步？"></a>何謂非同步？</h2><p>「非同步（Asynchronous）」特性是「可以同時做很多事，並且不需要等待前面的事做完就能做下一件事」，其實就是自己一開始對同步的認知。</p>
-<p>範例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">setTimeout</span>(printNum, <span class="hljs-number">2000</span>);<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printNum</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;1&#x27;</span>);<br>&#125; <br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;2&#x27;</span>);<br></code></pre></td></tr></table></figure>
-
-<p>程式碼中 <code>setTimeout</code> 會分別帶入 <code>callback</code>、<code>等待毫秒</code> 兩個參數，而回調函式 <code>printNum</code> 被設定 2 秒後才執行，但是這程中第 5 行的程式碼並不會等待前面的函式 <code>printNum</code>  執行完才動作，而是先印出 <code>2</code>，等待 2 秒之後呼叫函式 <code>printNum</code> 並印出 <code>1</code>。</p>
-<p>但是 JavaScript 屬於單執行緒，所以一次應該只會做一件事，為什麼會有範例中非同步的狀況？原因是 JavaScript 在 V8 引擎（JavaScript 引擎）運行時，引擎在運作時是同步的，但是除了引擎內的 JavaScript 原始程式碼之外，瀏覽器也會提供許多 Web APIs（如：document、MouseEvent、setTimeout…等等），這些並不屬於 V8 引擎的範疇，但是可以透過呼叫並使用它們做到非同步的行為，並且不會影響到 JavaScript 主程式的運行，可以理解成 JavaScript 需要依賴 Web APIs 才能達成非同步的效果。</p>
-<p>而 <code>setTimeout</code> 等待的期間，程式碼為甚麼能夠繼續往下執行？原因是當 Web APIs 與自己寫的 JavaScript 在瀏覽器一起執行時，透過 Web APIs 非同步呼叫的 callback function 會被放到 Callback Queue（儲列 / 佇列）待命，等到其他程式碼都執行完之後才會被呼叫。</p>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://chanchandev.com/js/Async/async-sync-intro/2534378084/">Javascript 非同步 &amp; Event Loop！10 分鐘輕鬆圖解學習！</a></p>
-<p><a href="https://5xruby.tw/posts/how-js-synchronous-works">無痛理解 JS | 非同步怎麼運作？</a></p>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>synchronous</tag>
-        <tag>asynchronous</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript 筆記 - 迴圈</title>
-    <url>/2022-10-07-javascript-loop/</url>
-    <content><![CDATA[<p>雖然 for 迴圈能做到的事情，陣列方法中的 forEach 幾乎都能做到，但基於好奇心，還是想理解一下迴圈是怎麼運作的。</p>
-<span id="more"></span>
-
-<hr>
-<div class="toc">
-<p class="toc-title">目錄：</p>
-
-<ul>
-<li><a href="#for">for</a></li>
-<li><a href="#while">while</a></li>
-<li><a href="#break-%E8%88%87-continue">break 與 continue</a></div></li>
-</ul>
-<p class="first-text-not-title">迴圈（Loop）指的就是不斷重複做一件事情，當條件滿足就執行一次，一直到不符合條件就終止迴圈，常見的迴圈有 for、while，還有一個 do...while，不過這篇筆記先不提。</p>
-
-
-<h2 id="for"><a href="#for" class="headerlink" title="for"></a>for</h2><p>範例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> step = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">10</span>; i++) &#123;<br>  step += i;<br>  <span class="hljs-built_in">console</span>.log(i); <span class="hljs-comment">// 0, 1, 2...10</span><br>&#125;<br><span class="hljs-built_in">console</span>.log(step); <span class="hljs-comment">// 55</span><br></code></pre></td></tr></table></figure>
-
-<p>for 迴圈小括號中的 <code>i</code> 是一個變數，而左到右依序分別代表<strong>初始值</strong>、<strong>條件</strong>以及<strong>結束時的變動</strong>，以範例來說，<code>i</code> 從 <code>0</code> 開始，如果  <code>i &lt;= 10</code> 條件為 true，就執行大括號<code>&#123;&#125;</code>裡面的程式碼，執行結束後 <code>i</code> 就加 <code>1</code>，反覆循環直到條件為 false 時，就跳出迴圈。</p>
-<p>使用 for 迴圈需要注意小括號中的變數 <code>i</code>，盡可能都使用 <code>let</code> 來宣告，如果用 <code>var</code> 宣告，則變數 <code>i</code> 的作用域就不會在 for 迴圈的大括號裡面。</p>
-<h2 id="while"><a href="#while" class="headerlink" title="while"></a>while</h2><p>範例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">while</span>(i &lt;= <span class="hljs-number">10</span>) &#123;<br>  <span class="hljs-built_in">console</span>.log(i); <span class="hljs-comment">// 0, 1, 2...10</span><br>  i ++;<br>&#125;<br><span class="hljs-built_in">console</span>.log(i); <span class="hljs-comment">// 11</span><br></code></pre></td></tr></table></figure>
-
-<p>while 迴圈比較直白，可以將一個變數放入小括號中進行條件判斷，當判斷為 true 時，就執行大括號 <code>&#123;&#125;</code> 中的程式碼，而結束時的變動需加入執行的程式碼當中，如大括號中的 <code>i ++</code>。</p>
-<blockquote>
-<p>無論是使用 for 還是 white，終止迴圈的條件都要多加留意，以避免造成無窮迴圈，無窮迴圈意味著你的迴圈永遠不會終止，以上面 white 迴圈為例，如果不加上 <code>i ++</code>，每次判斷都會是 true。</p>
-</blockquote>
-<h2 id="break-與-continue"><a href="#break-與-continue" class="headerlink" title="break 與 continue"></a>break 與 continue</h2><p>雖然迴圈可以重複執行程式碼，但是有時候可能會希望迴圈在達到某個目的時，就終止迴圈而非一路執行到底，此時就可以使用 break 或是 continue，通常會搭配 if 一起使用。</p>
-<h3 id="break"><a href="#break" class="headerlink" title="break"></a>break</h3><p>break 能夠直接終止迴圈，以下面程式碼為例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> numList = [<span class="hljs-number">9</span>,<span class="hljs-number">5</span>,<span class="hljs-number">12</span>,<span class="hljs-number">21</span>,<span class="hljs-number">7</span>,<span class="hljs-number">11</span>,<span class="hljs-number">16</span>];<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt;= numList.length-<span class="hljs-number">1</span>; i++) &#123;<br>  <span class="hljs-keyword">if</span>(i % <span class="hljs-number">3</span> === <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-built_in">console</span>.log(numList[i]);<br>    <span class="hljs-keyword">break</span>;<br>  &#125;<br>&#125;<br><span class="hljs-comment">// 9</span><br></code></pre></td></tr></table></figure>
-
-<p>找出陣列中第一個能夠被 3 整除的數字，找到後終止迴圈。</p>
-<h3 id="continue"><a href="#continue" class="headerlink" title="continue"></a>continue</h3><p>continue 可以在執行迴圈的過程中，跳過一些指定特定的條件：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> numList = [<span class="hljs-number">9</span>,<span class="hljs-number">5</span>,<span class="hljs-number">12</span>,<span class="hljs-number">21</span>,<span class="hljs-number">7</span>,<span class="hljs-number">11</span>,<span class="hljs-number">16</span>];<br><span class="hljs-keyword">const</span> newAry = [];<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt;= numList.length-<span class="hljs-number">1</span>; i++) &#123;<br>  <span class="hljs-keyword">if</span>(i % <span class="hljs-number">3</span> === <span class="hljs-number">0</span>) &#123;<br>    newAry.push(numList[i]);<br>    <span class="hljs-keyword">continue</span>;<br>  &#125;<br>&#125;<br><span class="hljs-built_in">console</span>.log(newAry); <span class="hljs-comment">// [9, 21, 16]</span><br></code></pre></td></tr></table></figure>
-
-<p>將陣列 <code>numList</code> 中符合 3 的倍數的項目篩選出來，再依序加入新陣列 <code>newAry</code> 中。</p>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>note</tag>
-        <tag>loop</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JavaScript 觀念 - 提升</title>
     <url>/2022-09-24-javascript-hoisting/</url>
     <content><![CDATA[<p>ES6 前後的 Hoisting 觀念筆記。</p>
@@ -921,6 +873,54 @@
       </categories>
       <tags>
         <tag>hoisting</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript 筆記 - 迴圈</title>
+    <url>/2022-10-07-javascript-loop/</url>
+    <content><![CDATA[<p>雖然 for 迴圈能做到的事情，陣列方法中的 forEach 幾乎都能做到，但基於好奇心，還是想理解一下迴圈是怎麼運作的。</p>
+<span id="more"></span>
+
+<hr>
+<div class="toc">
+<p class="toc-title">目錄：</p>
+
+<ul>
+<li><a href="#for">for</a></li>
+<li><a href="#while">while</a></li>
+<li><a href="#break-%E8%88%87-continue">break 與 continue</a></div></li>
+</ul>
+<p class="first-text-not-title">迴圈（Loop）指的就是不斷重複做一件事情，當條件滿足就執行一次，一直到不符合條件就終止迴圈，常見的迴圈有 for、while，還有一個 do...while，不過這篇筆記先不提。</p>
+
+
+<h2 id="for"><a href="#for" class="headerlink" title="for"></a>for</h2><p>範例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> step = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">10</span>; i++) &#123;<br>  step += i;<br>  <span class="hljs-built_in">console</span>.log(i); <span class="hljs-comment">// 0, 1, 2...10</span><br>&#125;<br><span class="hljs-built_in">console</span>.log(step); <span class="hljs-comment">// 55</span><br></code></pre></td></tr></table></figure>
+
+<p>for 迴圈小括號中的 <code>i</code> 是一個變數，而左到右依序分別代表<strong>初始值</strong>、<strong>條件</strong>以及<strong>結束時的變動</strong>，以範例來說，<code>i</code> 從 <code>0</code> 開始，如果  <code>i &lt;= 10</code> 條件為 true，就執行大括號<code>&#123;&#125;</code>裡面的程式碼，執行結束後 <code>i</code> 就加 <code>1</code>，反覆循環直到條件為 false 時，就跳出迴圈。</p>
+<p>使用 for 迴圈需要注意小括號中的變數 <code>i</code>，盡可能都使用 <code>let</code> 來宣告，如果用 <code>var</code> 宣告，則變數 <code>i</code> 的作用域就不會在 for 迴圈的大括號裡面。</p>
+<h2 id="while"><a href="#while" class="headerlink" title="while"></a>while</h2><p>範例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">while</span>(i &lt;= <span class="hljs-number">10</span>) &#123;<br>  <span class="hljs-built_in">console</span>.log(i); <span class="hljs-comment">// 0, 1, 2...10</span><br>  i ++;<br>&#125;<br><span class="hljs-built_in">console</span>.log(i); <span class="hljs-comment">// 11</span><br></code></pre></td></tr></table></figure>
+
+<p>while 迴圈比較直白，可以將一個變數放入小括號中進行條件判斷，當判斷為 true 時，就執行大括號 <code>&#123;&#125;</code> 中的程式碼，而結束時的變動需加入執行的程式碼當中，如大括號中的 <code>i ++</code>。</p>
+<blockquote>
+<p>無論是使用 for 還是 white，終止迴圈的條件都要多加留意，以避免造成無窮迴圈，無窮迴圈意味著你的迴圈永遠不會終止，以上面 white 迴圈為例，如果不加上 <code>i ++</code>，每次判斷都會是 true。</p>
+</blockquote>
+<h2 id="break-與-continue"><a href="#break-與-continue" class="headerlink" title="break 與 continue"></a>break 與 continue</h2><p>雖然迴圈可以重複執行程式碼，但是有時候可能會希望迴圈在達到某個目的時，就終止迴圈而非一路執行到底，此時就可以使用 break 或是 continue，通常會搭配 if 一起使用。</p>
+<h3 id="break"><a href="#break" class="headerlink" title="break"></a>break</h3><p>break 能夠直接終止迴圈，以下面程式碼為例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> numList = [<span class="hljs-number">9</span>,<span class="hljs-number">5</span>,<span class="hljs-number">12</span>,<span class="hljs-number">21</span>,<span class="hljs-number">7</span>,<span class="hljs-number">11</span>,<span class="hljs-number">16</span>];<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt;= numList.length-<span class="hljs-number">1</span>; i++) &#123;<br>  <span class="hljs-keyword">if</span>(i % <span class="hljs-number">3</span> === <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-built_in">console</span>.log(numList[i]);<br>    <span class="hljs-keyword">break</span>;<br>  &#125;<br>&#125;<br><span class="hljs-comment">// 9</span><br></code></pre></td></tr></table></figure>
+
+<p>找出陣列中第一個能夠被 3 整除的數字，找到後終止迴圈。</p>
+<h3 id="continue"><a href="#continue" class="headerlink" title="continue"></a>continue</h3><p>continue 可以在執行迴圈的過程中，跳過一些指定特定的條件：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> numList = [<span class="hljs-number">9</span>,<span class="hljs-number">5</span>,<span class="hljs-number">12</span>,<span class="hljs-number">21</span>,<span class="hljs-number">7</span>,<span class="hljs-number">11</span>,<span class="hljs-number">16</span>];<br><span class="hljs-keyword">const</span> newAry = [];<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt;= numList.length-<span class="hljs-number">1</span>; i++) &#123;<br>  <span class="hljs-keyword">if</span>(i % <span class="hljs-number">3</span> === <span class="hljs-number">0</span>) &#123;<br>    newAry.push(numList[i]);<br>    <span class="hljs-keyword">continue</span>;<br>  &#125;<br>&#125;<br><span class="hljs-built_in">console</span>.log(newAry); <span class="hljs-comment">// [9, 21, 16]</span><br></code></pre></td></tr></table></figure>
+
+<p>將陣列 <code>numList</code> 中符合 3 的倍數的項目篩選出來，再依序加入新陣列 <code>newAry</code> 中。</p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>note</tag>
+        <tag>loop</tag>
       </tags>
   </entry>
   <entry>
@@ -1257,7 +1257,7 @@
 <li><a href="#XMLHttpRequest">XMLHttpRequest</a></li>
 <li><a href="#jQuery-AJAX">jQuery AJAX</a></li>
 <li><a href="#Fetch">Fetch</a></li>
-<li><a href="#Axios">Axios</a></div></li>
+<li><a href="#axios">axios</a></div></li>
 </ul>
 <h2 id="AJAX-簡述"><a href="#AJAX-簡述" class="headerlink" title="AJAX 簡述"></a>AJAX 簡述</h2><p>AJAX 是「Asynchronous JavaScript and XML」的縮寫，以名稱來看就是是非同步的 JavaScript 與 XML，可以讓 Web 前端與後端伺服器進行資料的交換，以及不需要重新載入網頁就能更新頁面內容。</p>
 <p>過去 AJAX 發出請求會透過 XMLHttpRequest 物件來實作，但是以目前來說，因為有了更適合的方式，因此實務上幾乎不會使用 XMLHttpRequest，不過筆記都寫了，就稍微理解一下每個方法吧！(๑•̀ㅂ•́)و✧</p>
@@ -1347,7 +1347,7 @@
 <p>使用<a href="https://hexschool-tutorial.herokuapp.com/api/signup">六角學院練習 API</a> 實作 <code>post</code> 請求（註冊功能）：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">$.ajax(&#123;<br>  <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;https://hexschool-tutorial.herokuapp.com/api/signup&#x27;</span>,<br>  <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;post&#x27;</span>,<br>  <span class="hljs-attr">dataType</span>: <span class="hljs-string">&#x27;json&#x27;</span>,<br>  <span class="hljs-attr">contentType</span>: <span class="hljs-string">&#x27;application/json; charset=utf-8&#x27;</span>,<br>  <span class="hljs-attr">data</span>: <span class="hljs-built_in">JSON</span>.stringify(&#123;<br>    <span class="hljs-attr">email</span>: <span class="hljs-string">&#x27;test123@mail.com&#x27;</span>,<br>    <span class="hljs-attr">password</span>: <span class="hljs-string">&#x27;12345678&#x27;</span><br>  &#125;)<br>&#125;).done(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(res)<br>    <br>  alert(res.message)<br>&#125;).fail(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(err)<br>&#125;)<br></code></pre></td></tr></table></figure>
 
-<h2 id="Fetch"><a href="#Fetch" class="headerlink" title="Fetch"></a>Fetch</h2><p>Fetch API 是 ES6 的原生方法，發出請求的方式相較 XHR 簡單了許多。</p>
+<h2 id="Fetch"><a href="#Fetch" class="headerlink" title="Fetch"></a>Fetch</h2><p>Fetch API 是 ES6 的原生方法，發出請求的方式相較 XHR 簡單了許多，此外 IE 瀏覽器不支援。</p>
 <p>起手式：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">fetch(url, &#123; <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;get&#x27;</span> &#125;)<br>  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> res.json();  <br>  &#125;)<br>  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">result</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(result);  <br>  &#125;)<br>  .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(err);  <br>  &#125;)<br></code></pre></td></tr></table></figure>
 <p>Fetch 方法接收兩個參數，第一個是<strong>請求資料的網址</strong>（必填），第二個參數是一個物件（選擇性使用），內容是 Request 的相關屬性設定，以下列出幾個常見的屬性：</p>
@@ -1374,7 +1374,47 @@
 <p>使用<a href="https://hexschool-tutorial.herokuapp.com/api/signup">六角學院練習 API</a> 實作 <code>post</code> 請求（註冊功能）：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> url = <span class="hljs-string">&#x27;https://hexschool-tutorial.herokuapp.com/api/signup&#x27;</span>;<br>fetch(url, &#123;<br>  <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;post&#x27;</span>,<br>  <span class="hljs-attr">body</span>: <span class="hljs-built_in">JSON</span>.stringify(&#123;<br>    <span class="hljs-attr">email</span>: <span class="hljs-string">&#x27;test123@mail.com&#x27;</span>,<br>    <span class="hljs-attr">password</span>: <span class="hljs-string">&#x27;12345678&#x27;</span><br>  &#125;),<br>  <span class="hljs-attr">headers</span>: &#123;<br>    <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/json; charset=utf-8&#x27;</span><br>  &#125;<br>&#125;)<br>  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> res.json();  <br>  &#125;)<br>  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">result</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(result);  <br>  &#125;)<br>  .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(err);  <br>  &#125;)<br></code></pre></td></tr></table></figure>
 
-<h2 id="Axios"><a href="#Axios" class="headerlink" title="Axios"></a>Axios</h2>]]></content>
+<h2 id="Axios"><a href="#Axios" class="headerlink" title="Axios"></a>Axios</h2><p><a href="https://github.com/axios/axios">axios</a> 是一個基於 Promise 的網路請求套件，作用於瀏覽器和 node.js。</p>
+<p>axios 具備以下特點：</p>
+<ul>
+<li>從瀏覽器發出 XMLHttpRequest</li>
+<li>從 node.js 發出 http 請求</li>
+<li>支援 Promise API</li>
+<li>攔截請求和回應</li>
+<li>轉換請求和回應資料</li>
+<li>取消請求</li>
+<li>JSON 資料格式的自動轉換</li>
+</ul>
+<p>使用前需要先引入 axios，以下使用 cdn 方式：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs htmlembedded">&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js&quot;&gt;&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+<p>axios 的使用方式相當簡單，開頭輸入 <code>axios</code>，接著再接上請求的方法即可，另外因為 axios 是基於 Promise，因此請求成功時，會回傳一個 Promise 物件，此時就會使用 <code>then()</code> 來做接收，而請求失敗時，就會透過 <code>catch()</code> 來取得錯誤的資訊。</p>
+<p>以下直接使用<a href="https://hexschool.github.io/ajaxHomework/data.json">六角學院練習 API</a> 實作 <code>get</code> 請求並觀察回傳結果：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> url = <span class="hljs-string">&#x27;https://hexschool.github.io/ajaxHomework/data.json&#x27;</span>;<br>axios.get(url)<br>  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(res);  <br>  &#125;)<br>  .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(err);  <br>  &#125;)<br></code></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/rrdCEhD.png"></p>
+<p>從接收到的回傳物件中可以看到許多資訊，例如 <code>config</code> 屬性表示 axios 發出請求時預設的一些設定，常見的像是 <code>method</code>（請求方法）、<code>headers</code>（請求表頭）以及 <code>url</code>（請求的網址路徑）等等，另一個外層的 <code>headers</code> 屬性則是伺服器回應的相關資訊，而我們需要的資料就在 <code>data</code> 屬性裡面，除此之外，可以發現資料的格式已經被自動轉換為 JSON 物件了。</p>
+<p>接著再來看 <code>post</code> 請求，照慣例一樣使用<a href="https://hexschool-tutorial.herokuapp.com/api/signup">六角學院練習 API</a> 實作 <code>post</code> 請求（註冊功能）：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> url = <span class="hljs-string">&#x27;https://hexschool-tutorial.herokuapp.com/api/signup&#x27;</span>;<br>axios.post(url, &#123;<br>  <span class="hljs-attr">email</span>: <span class="hljs-string">&#x27;test1234@mail.com&#x27;</span>,<br>  <span class="hljs-attr">password</span>: <span class="hljs-string">&#x27;12345678&#x27;</span><br>&#125;)<br>  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(res);  <br>  &#125;)<br>  .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(err); <br>  &#125;)<br></code></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/AlxDSb1.png" alt="圖三"></p>
+<p>發出 <code>post</code> 請求時，除了請求的資料網址之外，還需要加入第二個參數，也就是傳送給伺服器的資料。</p>
+<h3 id="axios-API"><a href="#axios-API" class="headerlink" title="axios API"></a>axios API</h3><p>可以使用以下兩種方式發出請求：</p>
+<h4 id="axios-config"><a href="#axios-config" class="headerlink" title="axios(config)"></a>axios(config)</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">axios(&#123;<br>  <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;post&#x27;</span>,<br>  <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;請求資料網址&#x27;</span>,<br>  <span class="hljs-attr">data</span>: &#123;<br>    <span class="hljs-comment">// 需要傳送的資料</span><br>  &#125;<br>&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(res);<br>&#125;).catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(err);<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>第一種方式是在物件中指定相關請求設定，並將物件傳入 axios 發出請求。</p>
+<h4 id="axios-url-config"><a href="#axios-url-config" class="headerlink" title="axios(url[, config])"></a>axios(url[, config])</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">axios.get(<span class="hljs-string">&#x27;請求資料網址&#x27;</span>)<br>  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(res);<br>  &#125;)<br>  .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(err);  <br>  &#125;)<br></code></pre></td></tr></table></figure>
+<p>第二種方式是透過請求方法別名來發出請求，以下列出<a href="https://github.com/axios/axios#request-method-aliases">官方文件</a>提供的所有請求方法別名：</p>
+<ul>
+<li><code>axios.request(config)</code></li>
+<li><code>axios.get(url[, config])</code></li>
+<li><code>axios.delete(url[, config])</code></li>
+<li><code>axios.head(url[, config])</code></li>
+<li><code>axios.options(url[, config])</code></li>
+<li><code>axios.post(url[, data[, config]])</code></li>
+<li><code>axios.put(url[, data[, config]])</code></li>
+<li><code>axios.patch(url[, data[, config]])</code></li>
+</ul>
+<p>若沒有加上別名，預設會使用 <code>get</code> 來發出請求，另外在官方文件有提到使用別名方法時，不需要在 <code>config</code>（存放請求設定的物件）中指定 <code>url</code>、<code>method</code> 以及 <code>data</code> 屬性。</p>
+<h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>關於 AJAX 筆記先暫時寫到這邊，後續如果時間充裕會再深入學習，並補充更多相關內容。</p>
+]]></content>
       <categories>
         <category>JavaScript</category>
       </categories>

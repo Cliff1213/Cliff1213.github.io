@@ -7,8 +7,7 @@ categories: JavaScript
 index_img: img/banner/banner_data.jpg
 ---
 
-這是一篇尚未撰寫完成的筆記。
-
+紀錄一下 AJAX 的相關知識。
 <!--more-->
 
 ---
@@ -19,7 +18,7 @@ index_img: img/banner/banner_data.jpg
 - [XMLHttpRequest](#XMLHttpRequest)
 - [jQuery AJAX](#jQuery-AJAX)
 - [Fetch](#Fetch)
-- [axios](#axios)
+- [Axios](#Axios)
 </div>
 
 
@@ -310,7 +309,7 @@ const test = fetch(url);
 
 console.log(test); // 印出結果如下圖
 ```
-![測試](https://i.imgur.com/I8kUqAx.png)
+![圖一](https://i.imgur.com/I8kUqAx.png)
 
 從印出的結果來看，可以確定 Fetch 會回傳一個狀態為 `fulfilled`（已實現）的 Promise 物件，並且在 `response` 當中也可以看到一些伺服器收到請求後回傳的資訊，而我們需要的資料就在 `Response` 的 `body` 屬性當中。
 
@@ -427,6 +426,8 @@ axios.post(url, {
 
 #### axios(config)
 
+第一種方式是在物件中指定相關請求設定，並將物件傳入 axios 發出請求，以 `POST` 請求為例：
+
 ```javascript
 axios({
   method: 'post',
@@ -441,12 +442,14 @@ axios({
 })
 ```
 
-第一種方式是在物件中指定相關請求設定，並將物件傳入 axios 發出請求。
+
 
 #### axios(url[, config])
 
+第二種方式是透過請求方法別名來發出請求，以下分別是 `GET`、`POST` 請求的範例：
+
 ```javascript
-axios.get('請求資料網址')
+axios('請求資料網址') // 不使用方法別名則預設為 GET
   .then(function(res) {
     console.log(res);
   })
@@ -454,7 +457,19 @@ axios.get('請求資料網址')
     console.log(err);  
   })
 ```
-第二種方式是透過請求方法別名來發出請求，以下列出[官方文件](https://github.com/axios/axios#request-method-aliases)提供的所有請求方法別名：
+```javascript
+axios.post('請求資料網址', {
+  // 需要傳送的資料
+})
+.then(function(res) {
+  console.log(res)
+})
+.catch(function(err) {
+  console.log(err);
+})
+```
+
+以下列出[官方文件](https://github.com/axios/axios#request-method-aliases)提供的所有請求方法別名：
 
 - `axios.request(config)`
 - `axios.get(url[, config])`

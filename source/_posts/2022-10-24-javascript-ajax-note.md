@@ -19,7 +19,7 @@ index_img: img/banner/banner_data.jpg
 - [XMLHttpRequest](#XMLHttpRequest)
 - [jQuery AJAX](#jQuery-AJAX)
 - [Fetch](#Fetch)
-- [Axios](#Axios)
+- [axios](#axios)
 </div>
 
 
@@ -278,7 +278,7 @@ $.ajax({
 
 ## Fetch
 
-Fetch API 是 ES6 的原生方法，發出請求的方式相較 XHR 簡單了許多。
+Fetch API 是 ES6 的原生方法，發出請求的方式相較 XHR 簡單了許多，此外 IE 瀏覽器不支援。
 
 起手式：
 
@@ -364,3 +364,109 @@ fetch(url, {
 ```
 
 ## Axios
+
+[axios](https://github.com/axios/axios) 是一個基於 Promise 的網路請求套件，作用於瀏覽器和 node.js。
+
+axios 具備以下特點：
+
+- 從瀏覽器發出 XMLHttpRequest
+- 從 node.js 發出 http 請求
+- 支援 Promise API
+- 攔截請求和回應
+- 轉換請求和回應資料
+- 取消請求
+- JSON 資料格式的自動轉換
+
+使用前需要先引入 axios，以下使用 cdn 方式：
+
+```htmlembedded
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js"></script>
+```
+axios 的使用方式相當簡單，開頭輸入 `axios`，接著再接上請求的方法即可，另外因為 axios 是基於 Promise，因此請求成功時，會回傳一個 Promise 物件，此時就會使用 `then()` 來做接收，而請求失敗時，就會透過 `catch()` 來取得錯誤的資訊。
+
+以下直接使用[六角學院練習 API](https://hexschool.github.io/ajaxHomework/data.json) 實作 `get` 請求並觀察回傳結果：
+
+```javascript
+const url = 'https://hexschool.github.io/ajaxHomework/data.json';
+axios.get(url)
+  .then(function(res) {
+    console.log(res);  
+  })
+  .catch(function(err) {
+    console.log(err);  
+  })
+```
+![](https://i.imgur.com/rrdCEhD.png)
+
+
+從接收到的回傳物件中可以看到許多資訊，例如 `config` 屬性表示 axios 發出請求時預設的一些設定，常見的像是 `method`（請求方法）、`headers`（請求表頭）以及 `url`（請求的網址路徑）等等，另一個外層的 `headers` 屬性則是伺服器回應的相關資訊，而我們需要的資料就在 `data` 屬性裡面，除此之外，可以發現資料的格式已經被自動轉換為 JSON 物件了。
+
+
+接著再來看 `post` 請求，照慣例一樣使用[六角學院練習 API](https://hexschool-tutorial.herokuapp.com/api/signup) 實作 `post` 請求（註冊功能）：
+
+```javascript
+const url = 'https://hexschool-tutorial.herokuapp.com/api/signup';
+axios.post(url, {
+  email: 'test1234@mail.com',
+  password: '12345678'
+})
+  .then(function(res) {
+    console.log(res);  
+  })
+  .catch(function(err) {
+    console.log(err); 
+  })
+```
+![圖三](https://i.imgur.com/AlxDSb1.png)
+
+發出 `post` 請求時，除了請求的資料網址之外，還需要加入第二個參數，也就是傳送給伺服器的資料。
+
+### axios API
+
+可以使用以下兩種方式發出請求：
+
+#### axios(config)
+
+```javascript
+axios({
+  method: 'post',
+  url: '請求資料網址',
+  data: {
+    // 需要傳送的資料
+  }
+}).then(function(res) {
+  console.log(res);
+}).catch(function(err) {
+  console.log(err);
+})
+```
+
+第一種方式是在物件中指定相關請求設定，並將物件傳入 axios 發出請求。
+
+#### axios(url[, config])
+
+```javascript
+axios.get('請求資料網址')
+  .then(function(res) {
+    console.log(res);
+  })
+  .catch(function(err) {
+    console.log(err);  
+  })
+```
+第二種方式是透過請求方法別名來發出請求，以下列出[官方文件](https://github.com/axios/axios#request-method-aliases)提供的所有請求方法別名：
+
+- `axios.request(config)`
+- `axios.get(url[, config])`
+- `axios.delete(url[, config])`
+- `axios.head(url[, config])`
+- `axios.options(url[, config])`
+- `axios.post(url[, data[, config]])`
+- `axios.put(url[, data[, config]])`
+- `axios.patch(url[, data[, config]])`
+
+若沒有加上別名，預設會使用 `get` 來發出請求，另外在官方文件有提到使用別名方法時，不需要在 `config`（存放請求設定的物件）中指定 `url`、`method` 以及 `data` 屬性。
+
+## 後記
+
+關於 AJAX 筆記先暫時寫到這邊，後續如果時間充裕會再深入學習，並補充更多相關內容。

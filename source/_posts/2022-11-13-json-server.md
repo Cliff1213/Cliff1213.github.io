@@ -21,7 +21,6 @@ index_img: img/banner/banner_npm.jpg
 - [建立資料庫](#建立資料庫)
 - [JSON Server 注意事項](#JSON-Server-注意事項)
 - [發送請求（axios 為例）](#發送請求（axios-為例）)
-- [GET 取得資料](#GET-取得資料)
 - [指定 Port](#指定-Port)
 - [新增靜態網頁](#新增靜態網頁)
 - [資料操作](#資料操作)

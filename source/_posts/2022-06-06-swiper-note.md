@@ -3,7 +3,6 @@ title: JavaScript 套件 - Swiper
 date: 2022-06-01
 tags:
  - Swiper
- - Package
 categories: Package
 index_img: img/banner/banner_20220601.jpg
 ---

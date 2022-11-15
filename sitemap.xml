@@ -9,6 +9,13 @@
   </url>
   
   <url>
+    <loc>http://kurifu.tw/2022-02-07-npm-note/</loc>
+    
+    <lastmod>2022-02-06</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://kurifu.tw/2022-03-14-rwd-note/</loc>
     
     <lastmod>2022-03-13</lastmod>
@@ -23,9 +30,9 @@
   </url>
   
   <url>
-    <loc>http://kurifu.tw/2022-02-07-npm-note/</loc>
+    <loc>http://kurifu.tw/2022-06-06-swiper-note/</loc>
     
-    <lastmod>2022-02-06</lastmod>
+    <lastmod>2022-05-31</lastmod>
     
   </url>
   
@@ -37,9 +44,9 @@
   </url>
   
   <url>
-    <loc>http://kurifu.tw/2022-06-06-swiper-note/</loc>
+    <loc>http://kurifu.tw/2022-09-10-hexschool-web-feedback/</loc>
     
-    <lastmod>2022-05-31</lastmod>
+    <lastmod>2022-09-09</lastmod>
     
   </url>
   
@@ -61,13 +68,6 @@
     <loc>http://kurifu.tw/2022-09-20-javascript-sync-async/</loc>
     
     <lastmod>2022-09-19</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kurifu.tw/2022-09-10-hexschool-web-feedback/</loc>
-    
-    <lastmod>2022-09-09</lastmod>
     
   </url>
   
@@ -107,16 +107,16 @@
   </url>
   
   <url>
-    <loc>http://kurifu.tw/2022-10-20-javascript-by-value-by-reference/</loc>
+    <loc>http://kurifu.tw/2022-10-24-javascript-ajax-note/</loc>
     
-    <lastmod>2022-10-19</lastmod>
+    <lastmod>2022-10-24</lastmod>
     
   </url>
   
   <url>
-    <loc>http://kurifu.tw/2022-10-24-javascript-ajax-note/</loc>
+    <loc>http://kurifu.tw/2022-10-20-javascript-by-value-by-reference/</loc>
     
-    <lastmod>2022-10-24</lastmod>
+    <lastmod>2022-10-19</lastmod>
     
   </url>
   
@@ -149,9 +149,9 @@
   </url>
   
   <url>
-    <loc>http://kurifu.tw/404.html</loc>
+    <loc>http://kurifu.tw/about/index.html</loc>
     
-    <lastmod>2022-02-20</lastmod>
+    <lastmod>2022-01-19</lastmod>
     
   </url>
   
@@ -163,9 +163,9 @@
   </url>
   
   <url>
-    <loc>http://kurifu.tw/about/index.html</loc>
+    <loc>http://kurifu.tw/404.html</loc>
     
-    <lastmod>2022-01-19</lastmod>
+    <lastmod>2022-02-20</lastmod>
     
   </url>
   

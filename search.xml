@@ -1,98 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>NPM 基本指令</title>
-    <url>/2022-02-07-npm-note/</url>
-    <content><![CDATA[<p>淺淺的紀錄一下 NPM 是甚麼，以及相關的一些指令，藉此避免踩到一些開發中常見的雷。</p>
-<span id="more"></span>
-<hr>
-<div class="toc">
-<p class="toc-title">目錄：</p>
-
-<ul>
-<li><a href="#%E7%94%9A%E9%BA%BC%E6%98%AF-NPM%EF%BC%9F">甚麼是 NPM？</a></li>
-<li><a href="#%E5%AE%89%E8%A3%9D-Node-JS-&-NPM">安裝 Node JS &amp; NPM</a></li>
-<li><a href="#%E6%AA%A2%E8%A6%96%E7%89%88%E6%9C%AC">檢視版本</a></li>
-<li><a href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9B%AE%E9%8C%84">初始化目錄</a></li>
-<li><a href="#%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6">安裝套件</a></li>
-<li><a href="#%E5%AE%89%E8%A3%9D%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC%E5%A5%97%E4%BB%B6">安裝指定版本套件</a></li>
-<li><a href="#%E7%89%88%E6%9C%AC%E6%95%B8%E5%AD%97%E6%84%8F%E7%BE%A9">版本數字意義</a></li>
-<li><a href="#%E7%89%88%E6%9C%AC%E6%A8%99%E7%A4%BA%E7%AC%A6%E8%99%9F">版本標示符號</a></li>
-<li><a href="#%E7%A7%BB%E9%99%A4%E5%A5%97%E4%BB%B6">移除套件</a></li>
-<li><a href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99">參考資料</a></div></li>
-</ul>
-<h2 id="甚麼是-NPM？"><a href="#甚麼是-NPM？" class="headerlink" title="甚麼是 NPM？"></a>甚麼是 NPM？</h2><p>全名 Node Package Manager，是一種套件管理工具，簡言之就是匯集各種 Node js 套件的線上庫。</p>
-<h2 id="安裝-Node-JS-amp-NPM"><a href="#安裝-Node-JS-amp-NPM" class="headerlink" title="安裝 Node JS &amp; NPM"></a>安裝 Node JS &amp; NPM</h2><p><img src="https://i.imgur.com/O3WVkU4.png"></p>
-<p>上圖是 <a href="https://nodejs.org/en/">Node js 官網</a>所提供的下載點，可以看到分成兩個部分，左邊為 LTS（Long Term Support），屬於長期支援維護的版本，可以理解成較穩定的版本；右邊 Current 的部分則是最近、最新的版本。</p>
-<p>Node js 官方在版本的釋出上有自己的邏輯，通常會在每年四月份發布偶數版本，十月份發布奇數版本，可以從下圖看到近期的版本維護狀態：</p>
-<p><img src="https://i.imgur.com/zOGuPaZ.png"></p>
-<p>新的版本在發布後，版本號如果是奇數，六個月後就不會再維護；但版本號如果是偶數，半年後就會進入長期維護（Active LTS）的狀態，並保證在接下來的三十個月內會更新與修復各種問題，因此新專案通常會選擇安裝 LTS 的版本。</p>
-<p>接著進入正題，要如何安裝 NPM？這個問題其實在安裝 Node 後就已經解決了，因為 NPM 是 Node js 開發環境預設的套件管理工具（Packge Manager），因此在安裝 Node 的同時，NPM 會跟著一起安裝。</p>
-<blockquote>
-<p>因為每個專案所使用的 Node 版本不盡相同，因此為了避免產生版本與套件之間的相容問題，建議使用 NVM（Node Version Manager）來切換 Node 版本。</p>
-</blockquote>
-<p>安裝完成後，開啟任一終端機即可開始操作。</p>
-<h2 id="檢視版本"><a href="#檢視版本" class="headerlink" title="檢視版本"></a>檢視版本</h2><p>在終端機輸入以下指令：</p>
-<figure class="highlight coffeescript"><table><tr><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">npm</span> -v<br></code></pre></td></tr></table></figure>
-
-<p>如果顯示 npm 版本號，表示安裝成功，如下所示：</p>
-<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">6</span>.<span class="hljs-number">9</span>.<span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
-
-
-
-<h2 id="初始化目錄"><a href="#初始化目錄" class="headerlink" title="初始化目錄"></a>初始化目錄</h2><p>指定任一資料夾為目錄，輸入以下指令：</p>
-<figure class="highlight coffeescript"><table><tr><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">npm</span> init<br></code></pre></td></tr></table></figure>
-
-<p>此時會顯示訊息要求輸入專案的一些資訊，如下所示：</p>
-<p><img src="https://i.imgur.com/bGQsEeb.png"></p>
-<p>上述部分只需要持續按下 Enter 即可。</p>
-<p>接著透過編輯器開啟專案資料夾，可以看到一個 package.json 的檔案，這是資料夾在進行 npm 初始化後所產生的 json 格式檔案，內容主要是紀錄專案的資訊，如下所示：</p>
-<p><img src="https://i.imgur.com/yjjj8ZV.png"></p>
-<h2 id="安裝套件"><a href="#安裝套件" class="headerlink" title="安裝套件"></a>安裝套件</h2><h3 id="全域安裝"><a href="#全域安裝" class="headerlink" title="全域安裝"></a><strong>全域安裝</strong></h3><figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span> -g 套件名稱<br></code></pre></td></tr></table></figure>
-
-<p>安裝套件時，在指令加入 <code>-g</code>，套件就會被安裝在全域，也就是當前使用的電腦上；這樣做的好處是，當有其他專案需要使用這個套件時，就不用再另外安裝該套件在專案資料夾中。</p>
-<h3 id="安裝於指定目錄"><a href="#安裝於指定目錄" class="headerlink" title="安裝於指定目錄"></a><strong>安裝於指定目錄</strong></h3><figure class="highlight ada"><table><tr><td class="code"><pre><code class="hljs ada">npm install <span class="hljs-comment">--save 套件名稱</span><br></code></pre></td></tr></table></figure>
-
-<p>以指定專案資料夾為目錄並執行上述指令，套件就會被安裝在該資料夾中，在加入 <code>--save</code> 參數後，這個套件就會被記錄在 package.json 檔案裡，下列以安裝 jquery 為範例：</p>
-<p><img src="https://i.imgur.com/n1jRC8k.png"></p>
-<p>可以看到檔案中新增了一個 dependencies 項目，並且在下方可以看到已安裝的 jquery 套件與對應版本。</p>
-<p>因為不同專案所使用的套件與套件版本不同，因此在接手別人開發的專案時，可以先依據 dependencies 中的資訊來安裝對應的套件。</p>
-<h2 id="安裝指定版本套件"><a href="#安裝指定版本套件" class="headerlink" title="安裝指定版本套件"></a>安裝指定版本套件</h2><p>正常的情況下，安裝下來的套件預設會是最新的版本，但一些較舊的專案可能不支援新版本的套件，此時就可以使用以下指令來安裝指定版本的套件。</p>
-<figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span> 套件名稱@版本號<br></code></pre></td></tr></table></figure>
-
-
-<h2 id="版本數字意義"><a href="#版本數字意義" class="headerlink" title="版本數字意義"></a>版本數字意義</h2><p>通常套件的版本會以 3 個數字的格式來表示，但每個數字所代表的意義其實不同，下列以 jquery 為例：</p>
-<figure class="highlight 1c"><table><tr><td class="code"><pre><code class="hljs 1c"><span class="hljs-string">&quot;jquery&quot;</span>： <span class="hljs-string">&quot;^3.6.0&quot;</span><br></code></pre></td></tr></table></figure>
-
-<ul>
-<li><code>3</code> - 主要版本，通常會因為重大改版而增加版本號。</li>
-<li><code>6</code> - 次要版本，依當前的主要版本為基準，新增功能時增加版本號。</li>
-<li><code>0</code> - 修正版本，依當前的主要版本為基準，修正錯誤時增加版本號。</li>
-</ul>
-<p>開發的過程中通常不會直接更新主要版本，因為這樣有極高的機率毀掉專案，正常的情況下只會更新次要版本或修正版本，依專案的開發情形而定。</p>
-<h2 id="版本標示符號"><a href="#版本標示符號" class="headerlink" title="版本標示符號"></a>版本標示符號</h2><ul>
-<li><code>^x.x.x</code> - 安裝套件時，自動更新次要與修正版本，主要版本不做更動。</li>
-<li><code>~x.x.x</code> - 安裝套件時，自動更新修正版本，主要與次要版本不做更動。</li>
-<li><code>latest</code> - 安裝套件時，自動安裝最新版本。</li>
-<li>未加入任何符號，表示只安裝當前輸入的版本。</li>
-</ul>
-<p>更新套件版本的方式，只需要將專案資料夾中的 node_modules 刪除，再重新執行以下指令，系統就會根據該專案中的 package.json 檔案設置來安裝所有會使用到的套件。</p>
-<figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span><br></code></pre></td></tr></table></figure>
-
-
-<h2 id="移除套件"><a href="#移除套件" class="headerlink" title="移除套件"></a>移除套件</h2><figure class="highlight coffeescript"><table><tr><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">npm</span> uninstall 套件名稱<br></code></pre></td></tr></table></figure>
-
-<p>需要注意的是，上述指令只會將專案資料夾中的套件移除，但是並不會同時更新 package.json 檔案中的設置，如果有這個需求，只需要在指令中加入 <code>--save</code> 參數即可。</p>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://medium.com/html-test/%E5%BE%9E%E9%9B%B6%E9%96%8B%E5%A7%8B-%E4%BD%BF%E7%94%A8npm%E5%A5%97%E4%BB%B6-317beefdf182">從零開始：使用NPM套件</a><br><a href="https://linyencheng.github.io/2020/03/22/tool-npm/">npm 入門到進階</a></p>
-]]></content>
-      <categories>
-        <category>Package</category>
-      </categories>
-      <tags>
-        <tag>npm</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>UI 觀念直播班心得</title>
     <url>/2022-01-17-hexschool-ui-feedback/</url>
     <content><![CDATA[<p>2021 冬，UI 直播班心得，推！</p>
@@ -378,70 +286,95 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript 套件 - Swiper</title>
-    <url>/2022-06-06-swiper-note/</url>
-    <content><![CDATA[<p>Swiper 可以實現網頁元素的輪播效果，本篇大概紀錄一下安裝的方式，以及一些常用的參數設定。</p>
+    <title>NPM 基本指令</title>
+    <url>/2022-02-07-npm-note/</url>
+    <content><![CDATA[<p>淺淺的紀錄一下 NPM 是甚麼，以及相關的一些指令，藉此避免踩到一些開發中常見的雷。</p>
 <span id="more"></span>
 <hr>
 <div class="toc">
 <p class="toc-title">目錄：</p>
 
 <ul>
-<li><a href="#%E5%AE%89%E8%A3%9D">安裝</a></li>
-<li><a href="#%E5%9F%BA%E7%A4%8E%E7%B5%90%E6%A7%8B">基礎結構</a></li>
-<li><a href="#%E5%B8%B8%E8%A6%8B%E5%8F%83%E6%95%B8">常見參數</a></div></li>
+<li><a href="#%E7%94%9A%E9%BA%BC%E6%98%AF-NPM%EF%BC%9F">甚麼是 NPM？</a></li>
+<li><a href="#%E5%AE%89%E8%A3%9D-Node-JS-&-NPM">安裝 Node JS &amp; NPM</a></li>
+<li><a href="#%E6%AA%A2%E8%A6%96%E7%89%88%E6%9C%AC">檢視版本</a></li>
+<li><a href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9B%AE%E9%8C%84">初始化目錄</a></li>
+<li><a href="#%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6">安裝套件</a></li>
+<li><a href="#%E5%AE%89%E8%A3%9D%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC%E5%A5%97%E4%BB%B6">安裝指定版本套件</a></li>
+<li><a href="#%E7%89%88%E6%9C%AC%E6%95%B8%E5%AD%97%E6%84%8F%E7%BE%A9">版本數字意義</a></li>
+<li><a href="#%E7%89%88%E6%9C%AC%E6%A8%99%E7%A4%BA%E7%AC%A6%E8%99%9F">版本標示符號</a></li>
+<li><a href="#%E7%A7%BB%E9%99%A4%E5%A5%97%E4%BB%B6">移除套件</a></li>
+<li><a href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99">參考資料</a></div></li>
 </ul>
-<p class="first-text-not-title"><a href="https://swiperjs.com/get-started" target="_blank">Swiper</a> 是一個製作網頁輪播效果的 JavaScript 套件。</p>
-
-
-<h2 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h2><h3 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h3><p>透過 CDN 方式安裝 Swiper 時，需要同時引入 <code>swiper-bundle.min.css</code> 與 <code>swiper-bundle.min.js</code> 兩個檔案，引入壓縮後的版本即可。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- In head --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://unpkg.com/swiper@8/swiper-bundle.min.css&quot;</span>/&gt;</span><br><span class="hljs-comment">&lt;!-- In front of body end tag --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://unpkg.com/swiper@8/swiper-bundle.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ npm install swiper<br></code></pre></td></tr></table></figure>
-
-
-<h2 id="基礎結構"><a href="#基礎結構" class="headerlink" title="基礎結構"></a>基礎結構</h2><h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><p>使用 Swiper 時，<code>swiper-container</code>、<code>swiper-wrapper</code>、<code>swiper-slide</code> 三者為必要存在的元素。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- Slider main container --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-container&quot;</span>&gt;</span><br>  <span class="hljs-comment">&lt;!-- Additional required wrapper --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-wrapper&quot;</span>&gt;</span><br>    <span class="hljs-comment">&lt;!-- Slides --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 1<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 2<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 3<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    ...  <span class="hljs-comment">&lt;!-- 新增 swiper-slide 數量 --&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-comment">&lt;!-- If we need pagination --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-pagination&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br>  <span class="hljs-comment">&lt;!-- If we need navigation buttons --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-button-prev&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-button-next&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br>  <span class="hljs-comment">&lt;!-- If we need scrollbar --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-scrollbar&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-<p>需要進行輪播的內容，會放在 <code>swiper-slide</code> 之中，數量可依需求自行新增。</p>
-<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><p>Swiper 在初始化時，會帶入一個 DOM / CSS Selector，以及一個參數（字串），如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> swiper = <span class="hljs-keyword">new</span> Swiper( swiperContainer, parameter );<br></code></pre></td></tr></table></figure>
-
-<p>官方範例如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&quot;.swiper-container&quot;</span>, &#123;<br>  <span class="hljs-comment">// Optional parameters / 加入參數與設定值</span><br>  <span class="hljs-attr">direction</span>: <span class="hljs-string">&quot;vertical&quot;</span>, <span class="hljs-comment">// 輪播方向</span><br>  <span class="hljs-attr">loop</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 重複顯示</span><br>  <span class="hljs-comment">// If we need pagination / 是否顯示分頁</span><br>  <span class="hljs-attr">pagination</span>: &#123;<br>    <span class="hljs-attr">el</span>: <span class="hljs-string">&quot;.swiper-pagination&quot;</span><br>  &#125;,<br>  <span class="hljs-comment">// Navigation arrows / 是否加入上、下一頁方向圖示</span><br>  <span class="hljs-attr">navigation</span>: &#123;<br>    <span class="hljs-attr">nextEl</span>: <span class="hljs-string">&quot;.swiper-button-next&quot;</span>,<br>    <span class="hljs-attr">prevEl</span>: <span class="hljs-string">&quot;.swiper-button-prev&quot;</span><br>  &#125;,<br>  <span class="hljs-comment">// And if we need scrollbar / 是否顯示滾動軸</span><br>  <span class="hljs-attr">scrollbar</span>: &#123;<br>    <span class="hljs-attr">el</span>: <span class="hljs-string">&quot;.swiper-scrollbar&quot;</span><br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
-
-<h3 id="設定容器寬度"><a href="#設定容器寬度" class="headerlink" title="設定容器寬度"></a>設定容器寬度</h3><p>可自訂意義 Swiper 容器大小，範例如下：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.swiper</span> &#123;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">600px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">300px</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-
-<h2 id="常見參數"><a href="#常見參數" class="headerlink" title="常見參數"></a>常見參數</h2><p>除了先前官方範例提到的參數之外，以下列出一些在不同的版型下，可能會使用到的參數設定，更多可使用的參數可查閱<a href="https://swiperjs.com/swiper-api">官方文件</a>。</p>
-<p><strong><code>effect</code></strong></p>
-<p>主要用來變更輪播時的轉場效果，預設值為 <code>slide</code>，其他可使用效果還有 <code>fade</code>、<code>cube</code>、<code>coverflow</code>、<code>flip</code>、<code>creative</code>、<code>cards</code>。</p>
-<p><strong><code>autoplay</code></strong></p>
-<p>該參數屬於一個物件，會依據給予的屬性設定來自定義自動輪播的形式，範例如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&quot;.swiper-container&quot;</span>, &#123;<br>  <span class="hljs-attr">autoplay</span>: &#123;<br>    <span class="hljs-attr">delay</span>: <span class="hljs-number">5000</span>, <span class="hljs-comment">// 自動輪播延遲時間</span><br>    <span class="hljs-attr">disableOnInteraction</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 手動滑動後，停止自動撥放，預設值為 true</span><br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
-
-<p><strong><code>slidesPerView</code></strong></p>
-<p>該參數可以決定輪播時，同時顯示的 <code>swiper-slide</code> 數量，範例如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&quot;.swiper-container&quot;</span>, &#123;<br>  <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">3</span> <span class="hljs-comment">// 同時顯示 3 個 swiper-slide</span><br>&#125;);<br></code></pre></td></tr></table></figure>
-
+<h2 id="甚麼是-NPM？"><a href="#甚麼是-NPM？" class="headerlink" title="甚麼是 NPM？"></a>甚麼是 NPM？</h2><p>全名 Node Package Manager，是一種套件管理工具，簡言之就是匯集各種 Node js 套件的線上庫。</p>
+<h2 id="安裝-Node-JS-amp-NPM"><a href="#安裝-Node-JS-amp-NPM" class="headerlink" title="安裝 Node JS &amp; NPM"></a>安裝 Node JS &amp; NPM</h2><p><img src="https://i.imgur.com/O3WVkU4.png"></p>
+<p>上圖是 <a href="https://nodejs.org/en/">Node js 官網</a>所提供的下載點，可以看到分成兩個部分，左邊為 LTS（Long Term Support），屬於長期支援維護的版本，可以理解成較穩定的版本；右邊 Current 的部分則是最近、最新的版本。</p>
+<p>Node js 官方在版本的釋出上有自己的邏輯，通常會在每年四月份發布偶數版本，十月份發布奇數版本，可以從下圖看到近期的版本維護狀態：</p>
+<p><img src="https://i.imgur.com/zOGuPaZ.png"></p>
+<p>新的版本在發布後，版本號如果是奇數，六個月後就不會再維護；但版本號如果是偶數，半年後就會進入長期維護（Active LTS）的狀態，並保證在接下來的三十個月內會更新與修復各種問題，因此新專案通常會選擇安裝 LTS 的版本。</p>
+<p>接著進入正題，要如何安裝 NPM？這個問題其實在安裝 Node 後就已經解決了，因為 NPM 是 Node js 開發環境預設的套件管理工具（Packge Manager），因此在安裝 Node 的同時，NPM 會跟著一起安裝。</p>
 <blockquote>
-<p>加入參數 <code>slidesPerView</code> 後，<code>swiper-slide</code> 的寬度會根據 swiper-container 來均分。</p>
+<p>因為每個專案所使用的 Node 版本不盡相同，因此為了避免產生版本與套件之間的相容問題，建議使用 NVM（Node Version Manager）來切換 Node 版本。</p>
 </blockquote>
-<p><strong><code>breakpoints</code></strong></p>
-<p>加入該參數後，配合參數 <code>slidesPerView</code> 可根據所設定的斷點來達成響應式的效果，範例如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&#x27;.swiper&#x27;</span>, &#123;<br>  <span class="hljs-comment">// 預設的顯示數量為 1</span><br>  <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">1</span>,<br>  <span class="hljs-comment">// 以下為斷點設定</span><br>  <span class="hljs-attr">breakpoints</span>: &#123;<br>    <span class="hljs-comment">// 當頁面寬度大於 768px 時，同時顯示數量為 2</span><br>    <span class="hljs-number">768</span>: &#123;<br>      <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">2</span><br>    &#125;,<br>    <span class="hljs-comment">// 當頁面寬度大於 992px 時，同時顯示數量為 3</span><br>    <span class="hljs-number">992</span>: &#123;<br>      <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">3</span><br>    &#125;<br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+<p>安裝完成後，開啟任一終端機即可開始操作。</p>
+<h2 id="檢視版本"><a href="#檢視版本" class="headerlink" title="檢視版本"></a>檢視版本</h2><p>在終端機輸入以下指令：</p>
+<figure class="highlight coffeescript"><table><tr><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">npm</span> -v<br></code></pre></td></tr></table></figure>
 
-<p><strong><code>spacebetween</code></strong></p>
-<p>該參數可以設定每個 <code>swiper-slide</code> 之間的間隙，範例如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&#x27;.swiper&#x27;</span>, &#123;<br>  <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">2</span>,<br>  <span class="hljs-attr">spacebetween</span>: <span class="hljs-number">16</span>, <span class="hljs-comment">// 預設間隔為 20px</span><br>  <span class="hljs-attr">breakpoints</span>: &#123;<br>    <span class="hljs-number">768</span>: &#123;<br>      <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">3</span>,<br>      <span class="hljs-attr">spacebetween</span>: <span class="hljs-number">24</span> <span class="hljs-comment">// 當頁面寬度大於 768px 時，間隔為 24px</span><br>    &#125;<br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+<p>如果顯示 npm 版本號，表示安裝成功，如下所示：</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">6</span>.<span class="hljs-number">9</span>.<span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="初始化目錄"><a href="#初始化目錄" class="headerlink" title="初始化目錄"></a>初始化目錄</h2><p>指定任一資料夾為目錄，輸入以下指令：</p>
+<figure class="highlight coffeescript"><table><tr><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">npm</span> init<br></code></pre></td></tr></table></figure>
+
+<p>此時會顯示訊息要求輸入專案的一些資訊，如下所示：</p>
+<p><img src="https://i.imgur.com/bGQsEeb.png"></p>
+<p>上述部分只需要持續按下 Enter 即可。</p>
+<p>接著透過編輯器開啟專案資料夾，可以看到一個 package.json 的檔案，這是資料夾在進行 npm 初始化後所產生的 json 格式檔案，內容主要是紀錄專案的資訊，如下所示：</p>
+<p><img src="https://i.imgur.com/yjjj8ZV.png"></p>
+<h2 id="安裝套件"><a href="#安裝套件" class="headerlink" title="安裝套件"></a>安裝套件</h2><h3 id="全域安裝"><a href="#全域安裝" class="headerlink" title="全域安裝"></a><strong>全域安裝</strong></h3><figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span> -g 套件名稱<br></code></pre></td></tr></table></figure>
+
+<p>安裝套件時，在指令加入 <code>-g</code>，套件就會被安裝在全域，也就是當前使用的電腦上；這樣做的好處是，當有其他專案需要使用這個套件時，就不用再另外安裝該套件在專案資料夾中。</p>
+<h3 id="安裝於指定目錄"><a href="#安裝於指定目錄" class="headerlink" title="安裝於指定目錄"></a><strong>安裝於指定目錄</strong></h3><figure class="highlight ada"><table><tr><td class="code"><pre><code class="hljs ada">npm install <span class="hljs-comment">--save 套件名稱</span><br></code></pre></td></tr></table></figure>
+
+<p>以指定專案資料夾為目錄並執行上述指令，套件就會被安裝在該資料夾中，在加入 <code>--save</code> 參數後，這個套件就會被記錄在 package.json 檔案裡，下列以安裝 jquery 為範例：</p>
+<p><img src="https://i.imgur.com/n1jRC8k.png"></p>
+<p>可以看到檔案中新增了一個 dependencies 項目，並且在下方可以看到已安裝的 jquery 套件與對應版本。</p>
+<p>因為不同專案所使用的套件與套件版本不同，因此在接手別人開發的專案時，可以先依據 dependencies 中的資訊來安裝對應的套件。</p>
+<h2 id="安裝指定版本套件"><a href="#安裝指定版本套件" class="headerlink" title="安裝指定版本套件"></a>安裝指定版本套件</h2><p>正常的情況下，安裝下來的套件預設會是最新的版本，但一些較舊的專案可能不支援新版本的套件，此時就可以使用以下指令來安裝指定版本的套件。</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span> 套件名稱@版本號<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="版本數字意義"><a href="#版本數字意義" class="headerlink" title="版本數字意義"></a>版本數字意義</h2><p>通常套件的版本會以 3 個數字的格式來表示，但每個數字所代表的意義其實不同，下列以 jquery 為例：</p>
+<figure class="highlight 1c"><table><tr><td class="code"><pre><code class="hljs 1c"><span class="hljs-string">&quot;jquery&quot;</span>： <span class="hljs-string">&quot;^3.6.0&quot;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>3</code> - 主要版本，通常會因為重大改版而增加版本號。</li>
+<li><code>6</code> - 次要版本，依當前的主要版本為基準，新增功能時增加版本號。</li>
+<li><code>0</code> - 修正版本，依當前的主要版本為基準，修正錯誤時增加版本號。</li>
+</ul>
+<p>開發的過程中通常不會直接更新主要版本，因為這樣有極高的機率毀掉專案，正常的情況下只會更新次要版本或修正版本，依專案的開發情形而定。</p>
+<h2 id="版本標示符號"><a href="#版本標示符號" class="headerlink" title="版本標示符號"></a>版本標示符號</h2><ul>
+<li><code>^x.x.x</code> - 安裝套件時，自動更新次要與修正版本，主要版本不做更動。</li>
+<li><code>~x.x.x</code> - 安裝套件時，自動更新修正版本，主要與次要版本不做更動。</li>
+<li><code>latest</code> - 安裝套件時，自動安裝最新版本。</li>
+<li>未加入任何符號，表示只安裝當前輸入的版本。</li>
+</ul>
+<p>更新套件版本的方式，只需要將專案資料夾中的 node_modules 刪除，再重新執行以下指令，系統就會根據該專案中的 package.json 檔案設置來安裝所有會使用到的套件。</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span><br></code></pre></td></tr></table></figure>
+
+
+<h2 id="移除套件"><a href="#移除套件" class="headerlink" title="移除套件"></a>移除套件</h2><figure class="highlight coffeescript"><table><tr><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">npm</span> uninstall 套件名稱<br></code></pre></td></tr></table></figure>
+
+<p>需要注意的是，上述指令只會將專案資料夾中的套件移除，但是並不會同時更新 package.json 檔案中的設置，如果有這個需求，只需要在指令中加入 <code>--save</code> 參數即可。</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://medium.com/html-test/%E5%BE%9E%E9%9B%B6%E9%96%8B%E5%A7%8B-%E4%BD%BF%E7%94%A8npm%E5%A5%97%E4%BB%B6-317beefdf182">從零開始：使用NPM套件</a><br><a href="https://linyencheng.github.io/2020/03/22/tool-npm/">npm 入門到進階</a></p>
 ]]></content>
       <categories>
         <category>Package</category>
       </categories>
       <tags>
-        <tag>Swiper</tag>
-        <tag>Package</tag>
+        <tag>npm</tag>
       </tags>
   </entry>
   <entry>
@@ -534,37 +467,69 @@
       </tags>
   </entry>
   <entry>
-    <title>網頁切版直播班心得</title>
-    <url>/2022-09-10-hexschool-web-feedback/</url>
-    <content><![CDATA[<p>2022 夏，切版直播班心得。</p>
+    <title>JavaScript 套件 - Swiper</title>
+    <url>/2022-06-06-swiper-note/</url>
+    <content><![CDATA[<p>Swiper 可以實現網頁元素的輪播效果，本篇大概紀錄一下安裝的方式，以及一些常用的參數設定。</p>
 <span id="more"></span>
 <hr>
 <div class="toc">
 <p class="toc-title">目錄：</p>
 
 <ul>
-<li><a href="#%E5%A0%B1%E5%90%8D%E5%A5%91%E6%A9%9F">報名契機</a></li>
-<li><a href="#%E6%AF%8F%E9%80%B1%E5%AD%B8%E7%BF%92%E6%AD%B7%E7%A8%8B">每週學習歷程</a></li>
-<li><a href="#%E7%B5%90%E8%AA%9E">結語</a></div></li>
+<li><a href="#%E5%AE%89%E8%A3%9D">安裝</a></li>
+<li><a href="#%E5%9F%BA%E7%A4%8E%E7%B5%90%E6%A7%8B">基礎結構</a></li>
+<li><a href="#%E5%B8%B8%E8%A6%8B%E5%8F%83%E6%95%B8">常見參數</a></div></li>
 </ul>
-<h2 id="報名契機"><a href="#報名契機" class="headerlink" title="報名契機"></a>報名契機</h2><p>今年年四月左右參加了為期一個月的公益體驗營，然而在體驗營結束前夕，學院按照慣例會推坑下一次的活動，這次是切版直播班，不過內容相較過去更為豐富，教學大綱除了舊有的 Bootstrap 到近幾年盛行的 Tailwind，思索一番之後還是報名了。其實原本是衝著 Tailwind 來的，但礙於過去在切版方面都是純手刻又覺得 Bootstrap 很困難而遲遲不去面對，導致自己連一個 CSS 框架都不會，另一方面自己在新技能的學習上會需要花不少時間來吸收，擔心一次學兩個會應付不來，因此就把目標先轉向了目前使用率較高的 Bootstrap；除此之外，這次也要求自己必須把八週主線任務的所有頁面都切出來，既然都全職學習了，至少這一點是能做到的吧。</p>
-<h2 id="每週學習歷程"><a href="#每週學習歷程" class="headerlink" title="每週學習歷程"></a>每週學習歷程</h2><h3 id="直播"><a href="#直播" class="headerlink" title="直播"></a>直播</h3><p>雖然每週直播的教學內容算是在複習錄影，但是現場跟大家一起聽課的氛圍比起自己看錄影兩者還是有差的，而且常常會有同學在聊天室提出一些平常可能不太會注意到的有趣問題，也能當作是一種額外的知識吸收，此外當然也少不了校長的嘴砲模式以及心靈雞湯，畢竟學程式容易產生焦慮，長時間學習下還是需要找地方宣洩一下情緒。八週的直播形式基本上都是前面提到的這樣，整體的感覺不錯，這部分也沒有需要特別需要補充甚麼了，不過直播班本來就是以大量輸出為前提，每週花費在作業上的時間自然就比較多。</p>
-<p>另外這次直播班每週是有兩場直播的，上述提到的是週五例行的直播，另一場則是週三的 Tailwind 主題，雖然大部分心思都投入在 Bootstrap 上面，但是每週還是有聽課並把作業都做過一次，整體感覺其實是很不錯的。</p>
-<h3 id="小組討論"><a href="#小組討論" class="headerlink" title="小組討論"></a>小組討論</h3><p>這次被分配到的組別還不錯，每週的小組討論出席率都很高，只是大多數的組員平時都比較忙，也有組員加班到很晚還趕回來餐與討論，辛苦各位了，無法出席的人也會透過線下時間把作業補齊，也要特別感謝組長主持以及做資料彙整，不得不說組長真的很認真好學，小組伺服器的發問次數也是最多的，自己也從不少問題中學到各種額外的知識，賺爛了。</p>
-<h3 id="每日任務"><a href="#每日任務" class="headerlink" title="每日任務"></a>每日任務</h3><p>不得不說每日任務真的是很棒的學習資源，每天會釋出一道小題目給學員練習，有時候作業卡關也能從這邊找到線索，也可以學到很多平常不知道的知識，算是一個小寶庫；不過後半段的部分因為都在趕主線任務的進度，幾乎都是用補交的就是了。</p>
-<h3 id="主線任務"><a href="#主線任務" class="headerlink" title="主線任務"></a>主線任務</h3><p>作業方面主線任務難度是最高的，前兩週比較像是在試水溫，但是從第三週開始版型就是一個完整的電商網站了，印象中在做第三週時，平均一頁包含 RWD 就花了幾乎一天的時間，切完所有頁面後開始地毯式搜索看有甚麼地方沒處理仔細或是可以再調整，也嘗試透過簡單的 JS 加入了一些小功能和效果，結果自己很滿意。</p>
-<p>第四週設計稿和第三週是同一份，差別在於第四週需要透過 Gulp 來做，講白一點這已經不是切版的範疇了，但是提早面對終端機指令、版本相容性或是編譯等問題對未來學習上無疑是好事，不過 Gulp 要怎麼寫任務就要靠自己學了，可惡！好想學會自己寫 Gulp 啊！！</p>
-<p>第五週是後台版型，也開始嘗試使用以前一直不敢面對的 Bootstrap，然而這週的作業是一邊看官方文件一邊做的，大部分的時間都花在看文件而不是切版，為了讓自己能早一點習慣使用 Bootstrap，有好幾天晚上睡前用手機都不是在看社群，而是在看官方文件…。</p>
-<p>校長在第一次直播時，有大概用折線圖描述一下每週的作業難度，印象中第六週的難度是僅次於第八週的，而且第六週開始被要求使用 CSS 框架來做，還好前一段時間花了不少時間研究 Bootstrap，現在通用類別與元件在使用上已經熟練了非常多，頓時覺得自己以前只是懶的去看密密麻麻的文件而已。除此之外，第六週設計稿部分區塊還需要引入 JS 套件，從 Discord 作業討論頻道也可以看到不少學員受到 Swiper 無情肆虐。自己也花費將近一週的時間才做完，就順便整合第七週一起繳交了，然而心想終於可以休息一下，結果第八週設計稿就提前釋出，害我差點就忘記自己還在通往地獄的列車上。</p>
-<p>第八週的設計稿很特別，充斥著各式各樣酷炫的排版。在這過程中也做了很多以往沒做過的嘗試，首先是開始自己設計元件，先前看到其他同學不用 Pages 資料夾就能做出所有頁面，自己早就想嘗試看看了，意外的是然辦到了！果然有些事如果不做永遠不知道結果；另外也學會了客製化通用類別的方法，不得不說使用起來很方便可惜相見恨晚。不過最麻煩的部分還是 JS 套件，這部分花了很多時間不斷嘗試和理解才做出來，從拿到設計稿到切完所有頁面大概用了一個多禮拜的時間，真的好累啊…。</p>
-<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>本來以為自己會倒在第八週，但意外的挺過來了，不得不說即便是全職學習還是覺得時間很緊迫，真心佩服那些平時有工作還來進修的同學。總結來說，這次直播班真的扎扎實實的學到很多知識，同時也深刻體會到學習是沒有捷徑的，追求卓越的唯一方法只有不斷的練習，最後非常感謝六角學院提供這麼棒的學習資源和環境，兩位講師和每位助教都辛苦了，小心肝啊！！</p>
-<p>（長嘆，肝了無數個夜晚終於可以休息一下了，啊~原來我報名了 JS 直播班，差點忘記我搭的是不停靠的直達列車了。</p>
+<p class="first-text-not-title"><a href="https://swiperjs.com/get-started" target="_blank">Swiper</a> 是一個製作網頁輪播效果的 JavaScript 套件。</p>
+
+
+<h2 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h2><h3 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h3><p>透過 CDN 方式安裝 Swiper 時，需要同時引入 <code>swiper-bundle.min.css</code> 與 <code>swiper-bundle.min.js</code> 兩個檔案，引入壓縮後的版本即可。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- In head --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://unpkg.com/swiper@8/swiper-bundle.min.css&quot;</span>/&gt;</span><br><span class="hljs-comment">&lt;!-- In front of body end tag --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://unpkg.com/swiper@8/swiper-bundle.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ npm install swiper<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="基礎結構"><a href="#基礎結構" class="headerlink" title="基礎結構"></a>基礎結構</h2><h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><p>使用 Swiper 時，<code>swiper-container</code>、<code>swiper-wrapper</code>、<code>swiper-slide</code> 三者為必要存在的元素。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- Slider main container --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-container&quot;</span>&gt;</span><br>  <span class="hljs-comment">&lt;!-- Additional required wrapper --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-wrapper&quot;</span>&gt;</span><br>    <span class="hljs-comment">&lt;!-- Slides --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 1<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 2<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-slide&quot;</span>&gt;</span>Slide 3<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    ...  <span class="hljs-comment">&lt;!-- 新增 swiper-slide 數量 --&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-comment">&lt;!-- If we need pagination --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-pagination&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br>  <span class="hljs-comment">&lt;!-- If we need navigation buttons --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-button-prev&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-button-next&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br>  <span class="hljs-comment">&lt;!-- If we need scrollbar --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-scrollbar&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>需要進行輪播的內容，會放在 <code>swiper-slide</code> 之中，數量可依需求自行新增。</p>
+<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><p>Swiper 在初始化時，會帶入一個 DOM / CSS Selector，以及一個參數（字串），如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> swiper = <span class="hljs-keyword">new</span> Swiper( swiperContainer, parameter );<br></code></pre></td></tr></table></figure>
+
+<p>官方範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&quot;.swiper-container&quot;</span>, &#123;<br>  <span class="hljs-comment">// Optional parameters / 加入參數與設定值</span><br>  <span class="hljs-attr">direction</span>: <span class="hljs-string">&quot;vertical&quot;</span>, <span class="hljs-comment">// 輪播方向</span><br>  <span class="hljs-attr">loop</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 重複顯示</span><br>  <span class="hljs-comment">// If we need pagination / 是否顯示分頁</span><br>  <span class="hljs-attr">pagination</span>: &#123;<br>    <span class="hljs-attr">el</span>: <span class="hljs-string">&quot;.swiper-pagination&quot;</span><br>  &#125;,<br>  <span class="hljs-comment">// Navigation arrows / 是否加入上、下一頁方向圖示</span><br>  <span class="hljs-attr">navigation</span>: &#123;<br>    <span class="hljs-attr">nextEl</span>: <span class="hljs-string">&quot;.swiper-button-next&quot;</span>,<br>    <span class="hljs-attr">prevEl</span>: <span class="hljs-string">&quot;.swiper-button-prev&quot;</span><br>  &#125;,<br>  <span class="hljs-comment">// And if we need scrollbar / 是否顯示滾動軸</span><br>  <span class="hljs-attr">scrollbar</span>: &#123;<br>    <span class="hljs-attr">el</span>: <span class="hljs-string">&quot;.swiper-scrollbar&quot;</span><br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h3 id="設定容器寬度"><a href="#設定容器寬度" class="headerlink" title="設定容器寬度"></a>設定容器寬度</h3><p>可自訂意義 Swiper 容器大小，範例如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.swiper</span> &#123;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">600px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">300px</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="常見參數"><a href="#常見參數" class="headerlink" title="常見參數"></a>常見參數</h2><p>除了先前官方範例提到的參數之外，以下列出一些在不同的版型下，可能會使用到的參數設定，更多可使用的參數可查閱<a href="https://swiperjs.com/swiper-api">官方文件</a>。</p>
+<p><strong><code>effect</code></strong></p>
+<p>主要用來變更輪播時的轉場效果，預設值為 <code>slide</code>，其他可使用效果還有 <code>fade</code>、<code>cube</code>、<code>coverflow</code>、<code>flip</code>、<code>creative</code>、<code>cards</code>。</p>
+<p><strong><code>autoplay</code></strong></p>
+<p>該參數屬於一個物件，會依據給予的屬性設定來自定義自動輪播的形式，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&quot;.swiper-container&quot;</span>, &#123;<br>  <span class="hljs-attr">autoplay</span>: &#123;<br>    <span class="hljs-attr">delay</span>: <span class="hljs-number">5000</span>, <span class="hljs-comment">// 自動輪播延遲時間</span><br>    <span class="hljs-attr">disableOnInteraction</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 手動滑動後，停止自動撥放，預設值為 true</span><br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p><strong><code>slidesPerView</code></strong></p>
+<p>該參數可以決定輪播時，同時顯示的 <code>swiper-slide</code> 數量，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&quot;.swiper-container&quot;</span>, &#123;<br>  <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">3</span> <span class="hljs-comment">// 同時顯示 3 個 swiper-slide</span><br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>加入參數 <code>slidesPerView</code> 後，<code>swiper-slide</code> 的寬度會根據 swiper-container 來均分。</p>
+</blockquote>
+<p><strong><code>breakpoints</code></strong></p>
+<p>加入該參數後，配合參數 <code>slidesPerView</code> 可根據所設定的斷點來達成響應式的效果，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&#x27;.swiper&#x27;</span>, &#123;<br>  <span class="hljs-comment">// 預設的顯示數量為 1</span><br>  <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">1</span>,<br>  <span class="hljs-comment">// 以下為斷點設定</span><br>  <span class="hljs-attr">breakpoints</span>: &#123;<br>    <span class="hljs-comment">// 當頁面寬度大於 768px 時，同時顯示數量為 2</span><br>    <span class="hljs-number">768</span>: &#123;<br>      <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">2</span><br>    &#125;,<br>    <span class="hljs-comment">// 當頁面寬度大於 992px 時，同時顯示數量為 3</span><br>    <span class="hljs-number">992</span>: &#123;<br>      <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">3</span><br>    &#125;<br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p><strong><code>spacebetween</code></strong></p>
+<p>該參數可以設定每個 <code>swiper-slide</code> 之間的間隙，範例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> swiper = <span class="hljs-keyword">new</span> Swiper(<span class="hljs-string">&#x27;.swiper&#x27;</span>, &#123;<br>  <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">2</span>,<br>  <span class="hljs-attr">spacebetween</span>: <span class="hljs-number">16</span>, <span class="hljs-comment">// 預設間隔為 20px</span><br>  <span class="hljs-attr">breakpoints</span>: &#123;<br>    <span class="hljs-number">768</span>: &#123;<br>      <span class="hljs-attr">slidesPerView</span>: <span class="hljs-number">3</span>,<br>      <span class="hljs-attr">spacebetween</span>: <span class="hljs-number">24</span> <span class="hljs-comment">// 當頁面寬度大於 768px 時，間隔為 24px</span><br>    &#125;<br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>心得</category>
+        <category>Package</category>
       </categories>
       <tags>
-        <tag>六角學院</tag>
+        <tag>Swiper</tag>
       </tags>
   </entry>
   <entry>
@@ -721,51 +686,37 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript 筆記 - 迴圈</title>
-    <url>/2022-10-07-javascript-loop/</url>
-    <content><![CDATA[<p>雖然 for 迴圈能做到的事情，陣列方法中的 forEach 幾乎都能做到，但基於好奇心，還是想理解一下迴圈是怎麼運作的。</p>
+    <title>網頁切版直播班心得</title>
+    <url>/2022-09-10-hexschool-web-feedback/</url>
+    <content><![CDATA[<p>2022 夏，切版直播班心得。</p>
 <span id="more"></span>
-
 <hr>
 <div class="toc">
 <p class="toc-title">目錄：</p>
 
 <ul>
-<li><a href="#for">for</a></li>
-<li><a href="#while">while</a></li>
-<li><a href="#break-%E8%88%87-continue">break 與 continue</a></div></li>
+<li><a href="#%E5%A0%B1%E5%90%8D%E5%A5%91%E6%A9%9F">報名契機</a></li>
+<li><a href="#%E6%AF%8F%E9%80%B1%E5%AD%B8%E7%BF%92%E6%AD%B7%E7%A8%8B">每週學習歷程</a></li>
+<li><a href="#%E7%B5%90%E8%AA%9E">結語</a></div></li>
 </ul>
-<p class="first-text-not-title">迴圈（Loop）指的就是不斷重複做一件事情，當條件滿足就執行一次，一直到不符合條件就終止迴圈，常見的迴圈有 for、while，還有一個 do...while，不過這篇筆記先不提。</p>
-
-
-<h2 id="for"><a href="#for" class="headerlink" title="for"></a>for</h2><p>範例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> step = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">10</span>; i++) &#123;<br>  step += i;<br>  <span class="hljs-built_in">console</span>.log(i); <span class="hljs-comment">// 0, 1, 2...10</span><br>&#125;<br><span class="hljs-built_in">console</span>.log(step); <span class="hljs-comment">// 55</span><br></code></pre></td></tr></table></figure>
-
-<p>for 迴圈小括號中的 <code>i</code> 是一個變數，而左到右依序分別代表<strong>初始值</strong>、<strong>條件</strong>以及<strong>結束時的變動</strong>，以範例來說，<code>i</code> 從 <code>0</code> 開始，如果  <code>i &lt;= 10</code> 條件為 true，就執行大括號<code>&#123;&#125;</code>裡面的程式碼，執行結束後 <code>i</code> 就加 <code>1</code>，反覆循環直到條件為 false 時，就跳出迴圈。</p>
-<p>使用 for 迴圈需要注意小括號中的變數 <code>i</code>，盡可能都使用 <code>let</code> 來宣告，如果用 <code>var</code> 宣告，則變數 <code>i</code> 的作用域就不會在 for 迴圈的大括號裡面。</p>
-<h2 id="while"><a href="#while" class="headerlink" title="while"></a>while</h2><p>範例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">while</span>(i &lt;= <span class="hljs-number">10</span>) &#123;<br>  <span class="hljs-built_in">console</span>.log(i); <span class="hljs-comment">// 0, 1, 2...10</span><br>  i ++;<br>&#125;<br><span class="hljs-built_in">console</span>.log(i); <span class="hljs-comment">// 11</span><br></code></pre></td></tr></table></figure>
-
-<p>while 迴圈比較直白，可以將一個變數放入小括號中進行條件判斷，當判斷為 true 時，就執行大括號 <code>&#123;&#125;</code> 中的程式碼，而結束時的變動需加入執行的程式碼當中，如大括號中的 <code>i ++</code>。</p>
-<blockquote>
-<p>無論是使用 for 還是 white，終止迴圈的條件都要多加留意，以避免造成無窮迴圈，無窮迴圈意味著你的迴圈永遠不會終止，以上面 white 迴圈為例，如果不加上 <code>i ++</code>，每次判斷都會是 true。</p>
-</blockquote>
-<h2 id="break-與-continue"><a href="#break-與-continue" class="headerlink" title="break 與 continue"></a>break 與 continue</h2><p>雖然迴圈可以重複執行程式碼，但是有時候可能會希望迴圈在達到某個目的時，就終止迴圈而非一路執行到底，此時就可以使用 break 或是 continue，通常會搭配 if 一起使用。</p>
-<h3 id="break"><a href="#break" class="headerlink" title="break"></a>break</h3><p>break 能夠直接終止迴圈，以下面程式碼為例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> numList = [<span class="hljs-number">9</span>,<span class="hljs-number">5</span>,<span class="hljs-number">12</span>,<span class="hljs-number">21</span>,<span class="hljs-number">7</span>,<span class="hljs-number">11</span>,<span class="hljs-number">16</span>];<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt;= numList.length-<span class="hljs-number">1</span>; i++) &#123;<br>  <span class="hljs-keyword">if</span>(i % <span class="hljs-number">3</span> === <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-built_in">console</span>.log(numList[i]);<br>    <span class="hljs-keyword">break</span>;<br>  &#125;<br>&#125;<br><span class="hljs-comment">// 9</span><br></code></pre></td></tr></table></figure>
-
-<p>找出陣列中第一個能夠被 3 整除的數字，找到後終止迴圈。</p>
-<h3 id="continue"><a href="#continue" class="headerlink" title="continue"></a>continue</h3><p>continue 可以在執行迴圈的過程中，跳過一些指定特定的條件：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> numList = [<span class="hljs-number">9</span>,<span class="hljs-number">5</span>,<span class="hljs-number">12</span>,<span class="hljs-number">21</span>,<span class="hljs-number">7</span>,<span class="hljs-number">11</span>,<span class="hljs-number">16</span>];<br><span class="hljs-keyword">const</span> newAry = [];<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt;= numList.length-<span class="hljs-number">1</span>; i++) &#123;<br>  <span class="hljs-keyword">if</span>(i % <span class="hljs-number">3</span> === <span class="hljs-number">0</span>) &#123;<br>    newAry.push(numList[i]);<br>    <span class="hljs-keyword">continue</span>;<br>  &#125;<br>&#125;<br><span class="hljs-built_in">console</span>.log(newAry); <span class="hljs-comment">// [9, 21, 16]</span><br></code></pre></td></tr></table></figure>
-
-<p>將陣列 <code>numList</code> 中符合 3 的倍數的項目篩選出來，再依序加入新陣列 <code>newAry</code> 中。</p>
+<h2 id="報名契機"><a href="#報名契機" class="headerlink" title="報名契機"></a>報名契機</h2><p>今年年四月左右參加了為期一個月的公益體驗營，然而在體驗營結束前夕，學院按照慣例會推坑下一次的活動，這次是切版直播班，不過內容相較過去更為豐富，教學大綱除了舊有的 Bootstrap 到近幾年盛行的 Tailwind，思索一番之後還是報名了。其實原本是衝著 Tailwind 來的，但礙於過去在切版方面都是純手刻又覺得 Bootstrap 很困難而遲遲不去面對，導致自己連一個 CSS 框架都不會，另一方面自己在新技能的學習上會需要花不少時間來吸收，擔心一次學兩個會應付不來，因此就把目標先轉向了目前使用率較高的 Bootstrap；除此之外，這次也要求自己必須把八週主線任務的所有頁面都切出來，既然都全職學習了，至少這一點是能做到的吧。</p>
+<h2 id="每週學習歷程"><a href="#每週學習歷程" class="headerlink" title="每週學習歷程"></a>每週學習歷程</h2><h3 id="直播"><a href="#直播" class="headerlink" title="直播"></a>直播</h3><p>雖然每週直播的教學內容算是在複習錄影，但是現場跟大家一起聽課的氛圍比起自己看錄影兩者還是有差的，而且常常會有同學在聊天室提出一些平常可能不太會注意到的有趣問題，也能當作是一種額外的知識吸收，此外當然也少不了校長的嘴砲模式以及心靈雞湯，畢竟學程式容易產生焦慮，長時間學習下還是需要找地方宣洩一下情緒。八週的直播形式基本上都是前面提到的這樣，整體的感覺不錯，這部分也沒有需要特別需要補充甚麼了，不過直播班本來就是以大量輸出為前提，每週花費在作業上的時間自然就比較多。</p>
+<p>另外這次直播班每週是有兩場直播的，上述提到的是週五例行的直播，另一場則是週三的 Tailwind 主題，雖然大部分心思都投入在 Bootstrap 上面，但是每週還是有聽課並把作業都做過一次，整體感覺其實是很不錯的。</p>
+<h3 id="小組討論"><a href="#小組討論" class="headerlink" title="小組討論"></a>小組討論</h3><p>這次被分配到的組別還不錯，每週的小組討論出席率都很高，只是大多數的組員平時都比較忙，也有組員加班到很晚還趕回來餐與討論，辛苦各位了，無法出席的人也會透過線下時間把作業補齊，也要特別感謝組長主持以及做資料彙整，不得不說組長真的很認真好學，小組伺服器的發問次數也是最多的，自己也從不少問題中學到各種額外的知識，賺爛了。</p>
+<h3 id="每日任務"><a href="#每日任務" class="headerlink" title="每日任務"></a>每日任務</h3><p>不得不說每日任務真的是很棒的學習資源，每天會釋出一道小題目給學員練習，有時候作業卡關也能從這邊找到線索，也可以學到很多平常不知道的知識，算是一個小寶庫；不過後半段的部分因為都在趕主線任務的進度，幾乎都是用補交的就是了。</p>
+<h3 id="主線任務"><a href="#主線任務" class="headerlink" title="主線任務"></a>主線任務</h3><p>作業方面主線任務難度是最高的，前兩週比較像是在試水溫，但是從第三週開始版型就是一個完整的電商網站了，印象中在做第三週時，平均一頁包含 RWD 就花了幾乎一天的時間，切完所有頁面後開始地毯式搜索看有甚麼地方沒處理仔細或是可以再調整，也嘗試透過簡單的 JS 加入了一些小功能和效果，結果自己很滿意。</p>
+<p>第四週設計稿和第三週是同一份，差別在於第四週需要透過 Gulp 來做，講白一點這已經不是切版的範疇了，但是提早面對終端機指令、版本相容性或是編譯等問題對未來學習上無疑是好事，不過 Gulp 要怎麼寫任務就要靠自己學了，可惡！好想學會自己寫 Gulp 啊！！</p>
+<p>第五週是後台版型，也開始嘗試使用以前一直不敢面對的 Bootstrap，然而這週的作業是一邊看官方文件一邊做的，大部分的時間都花在看文件而不是切版，為了讓自己能早一點習慣使用 Bootstrap，有好幾天晚上睡前用手機都不是在看社群，而是在看官方文件…。</p>
+<p>校長在第一次直播時，有大概用折線圖描述一下每週的作業難度，印象中第六週的難度是僅次於第八週的，而且第六週開始被要求使用 CSS 框架來做，還好前一段時間花了不少時間研究 Bootstrap，現在通用類別與元件在使用上已經熟練了非常多，頓時覺得自己以前只是懶的去看密密麻麻的文件而已。除此之外，第六週設計稿部分區塊還需要引入 JS 套件，從 Discord 作業討論頻道也可以看到不少學員受到 Swiper 無情肆虐。自己也花費將近一週的時間才做完，就順便整合第七週一起繳交了，然而心想終於可以休息一下，結果第八週設計稿就提前釋出，害我差點就忘記自己還在通往地獄的列車上。</p>
+<p>第八週的設計稿很特別，充斥著各式各樣酷炫的排版。在這過程中也做了很多以往沒做過的嘗試，首先是開始自己設計元件，先前看到其他同學不用 Pages 資料夾就能做出所有頁面，自己早就想嘗試看看了，意外的是然辦到了！果然有些事如果不做永遠不知道結果；另外也學會了客製化通用類別的方法，不得不說使用起來很方便可惜相見恨晚。不過最麻煩的部分還是 JS 套件，這部分花了很多時間不斷嘗試和理解才做出來，從拿到設計稿到切完所有頁面大概用了一個多禮拜的時間，真的好累啊…。</p>
+<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>本來以為自己會倒在第八週，但意外的挺過來了，不得不說即便是全職學習還是覺得時間很緊迫，真心佩服那些平時有工作還來進修的同學。總結來說，這次直播班真的扎扎實實的學到很多知識，同時也深刻體會到學習是沒有捷徑的，追求卓越的唯一方法只有不斷的練習，最後非常感謝六角學院提供這麼棒的學習資源和環境，兩位講師和每位助教都辛苦了，小心肝啊！！</p>
+<p>（長嘆，肝了無數個夜晚終於可以休息一下了，啊~原來我報名了 JS 直播班，差點忘記我搭的是不停靠的直達列車了。</p>
 ]]></content>
       <categories>
-        <category>JavaScript</category>
+        <category>心得</category>
       </categories>
       <tags>
-        <tag>note</tag>
-        <tag>loop</tag>
+        <tag>六角學院</tag>
       </tags>
   </entry>
   <entry>
@@ -852,6 +803,123 @@
       </categories>
       <tags>
         <tag>Scope</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript 觀念 - 提升</title>
+    <url>/2022-09-24-javascript-hoisting/</url>
+    <content><![CDATA[<p>ES6 前後的 Hoisting 觀念筆記。</p>
+<span id="more"></span>
+<hr>
+<div class="toc">
+<p class="toc-title">目錄：</p>
+
+<ul>
+<li><a href="#%E7%94%9A%E9%BA%BC%E6%98%AF%E6%8F%90%E5%8D%87%EF%BC%9F">甚麼是提升？</a></li>
+<li><a href="#ES6-%E4%BB%A5%E5%89%8D%E7%9A%84%E6%8F%90%E5%8D%87">ES6 以前的提升</a></li>
+<li><a href="#let%E3%80%81const-%E7%9A%84%E6%8F%90%E5%8D%87">let、const 的提升</a></li>
+<li><a href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99">參考資料</a></div></li>
+</ul>
+<h2 id="甚麼是提升？"><a href="#甚麼是提升？" class="headerlink" title="甚麼是提升？"></a>甚麼是提升？</h2><p>「提升（Hoisting）」是 JavaScript 特有的一種現象，它的意思是當一個變數或函式在被宣告之前就可以被使用，並且不會出現錯誤，另外 ES6 以前都是使用 <code>var</code> 來宣告變數，與 ES6 新增的 <code>let</code>、<code>const</code> 在提升行為會也有所不同。</p>
+<h2 id="ES6-以前的提升"><a href="#ES6-以前的提升" class="headerlink" title="ES6 以前的提升"></a>ES6 以前的提升</h2><figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-comment">// ReferenceError: x is not defined</span><br></code></pre></td></tr></table></figure>
+
+<p>以上針對 <code>x</code> 取值，但是在這之前並沒有宣告一個名為 <code>x</code> 的變數，因此會找不到該變數而回報錯誤，下面是正常的做法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> x;<br><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
+
+<p>這樣就是一個正常的流程，程式碼會從第一行開始由上往下執行，所以在使用變數之前需要先宣告變數，以確保這個變數是存在的。</p>
+<p>接著下面嘗試把第 1、2 行位置進行對調：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-keyword">var</span> x;<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
+
+<p>按照前面的說法，上述程式碼應該會回報錯誤，但是得到的結果卻是 <code>undefined</code>，而這就是提升所造成的現象，感覺像是 <code>var x</code> 這段程式碼被提升到所有程式碼之前。</p>
+<p>大多數的程式語言中，變數在被使用之前是需要先宣告的，但是 JavaScript 可以在變數宣告之前就使用該變數，不過關於提升還有一些注意事項，就是會被提升的只有<strong>宣告的行為</strong>，值的指派並不會被提升，以下面程式碼為例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> x = <span class="hljs-number">7</span>; <span class="hljs-comment">// 宣告變數並指派值</span><br><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-comment">// 7</span><br></code></pre></td></tr></table></figure>
+
+<p>範例跟前面的相同，只是多了一個指派數值的動作，而最後也印出預期的結果，這個時候如果再將 1、2 行位置進行對調，印出的結果會是 <code>7</code> 嗎？</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-keyword">var</span> x = <span class="hljs-number">7</span>;<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
+
+<p>答案是 <code>undefined</code>，照理來說宣告的變數會被提升，可是得到的結果卻不是 <code>7</code>，原因其實就如前面提到的，會被提升的只有宣告的動作，而範例中宣告的動作指的是 <code>var x</code>，後方的 <code>= 7</code> 屬於值的指派，並不會跟著宣告一起被提升。</p>
+<p>但是結果為甚麼會是 <code>undefined</code>？原因在於 JavaScript 在開始執行你撰寫的程式碼之前，會先把所有宣告的變數、一般函式都預留一個記憶體空間，但不會馬上指派值給變數，這個預留記憶體空間的動作就是提升，到這邊為止屬於「創造階段」，而這個階段結束之後，變數才會被賦值，這個賦值的過程則是「執行階段」，<code>undefined</code> 就是變數在創造階段建立記憶體空間時，預設給定的初始值。</p>
+<p>可以將上面的程式碼運作流程理解成以下形式：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> x; <span class="hljs-comment">// 宣告變數（會被提升）</span><br><span class="hljs-built_in">console</span>.log(x);<br>x = <span class="hljs-number">7</span>; <span class="hljs-comment">// 指派值</span><br></code></pre></td></tr></table></figure>
+
+<p>目前為止已經知道會被提升的只有宣告的動作，但是除了變數之外，一般的函式宣告也會被提升，以下面程式碼為例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">fn();<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// hello</span><br></code></pre></td></tr></table></figure>
+
+<p>嘗試在函式被宣告之前呼叫，也可以順利執行且不會回報錯誤，因為這是一般的函式宣告（具名函式），整個函式都會被提升，因此就可以在函式宣告之前呼叫。</p>
+<p>那匿名函式就不會被提升嗎？答案是會，下面嘗試將範例改成以匿名函式的方式建立：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">fn();<br><span class="hljs-keyword">var</span> fn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// TypeError: fn is not a function</span><br></code></pre></td></tr></table></figure>
+
+<p>結果出現錯誤了，不過是不是與 <code>var</code> 宣告的變數很像？其實概念是一樣的，這裡的程式碼確實有被提升，但是被提升的只有變數的宣告 <code>var fn</code>，函式的資料在執行階段才會指派給變數 <code>fn</code>，此時的 <code>fn</code> 的值為 <code>undefined</code>，而 <code>undefined</code> 並非函式因此呼叫的行為就會回報錯誤。</p>
+<p>雖然無法呼叫，但是能透過變數取值來驗證上述說法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(fn);<br><span class="hljs-keyword">var</span> fn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
+
+<p>而程式碼實際運作流程就像下面這樣：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> fn;<br><span class="hljs-built_in">console</span>.log(fn);<br>fn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>總結來說，JavaScript 中的「提升（Hoisting）」指的是宣告變數的提升，而值的賦予並不會提升；此外，提升並不會變更程式碼的位置，只是感覺像是整段程式碼被移動到最上方。</p>
+<h2 id="let、const-的提升"><a href="#let、const-的提升" class="headerlink" title="let、const 的提升"></a>let、const 的提升</h2><p>關於 <code>let</code>、<code>const</code> 有沒有提升行為，一開始我自己也是透過以下方法來作結論的：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// ReferenceError: a is not defined</span><br><span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure>
+
+<p>原本看到上面的結果，是認為 <code>let</code>、<code>const</code> 沒有提升行為的，直到看到一篇文章寫了下面這段程式碼：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fnA</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(a);<br>  <span class="hljs-keyword">let</span> a = <span class="hljs-number">100</span>;<br>&#125;<br>fnA();<br><span class="hljs-comment">// ReferenceError: Cannot access &#x27;a&#x27; before initialization</span><br></code></pre></td></tr></table></figure>
+
+<p>可以看到在函式 <code>fnA</code> 裡面，嘗試在變數 <code>a</code> 被宣告之前取值，照理來說，如果 <code>let</code> 沒有提升行為，第 3 行的變數 <code>a</code> 應該會指向到函式外層的變數 <code>a</code>，因此印出結果應該是 <code>1</code> 才對，但是最終卻得到 <code>Cannot access &#39;a&#39; before initialization</code> 的錯誤訊息，而這就證明了 <code>let</code> 是有提升行為的，只是不允許在變數宣告之前被存取。</p>
+<p>而前面提到 <code>var</code> 在提升時，也就是創造階段預設會給定初始值 <code>undefined</code>，而 <code>let</code>、<code>const</code> 則不會，所以在變數實際賦值前嘗試存取就會出現上面的錯誤，而提升後到賦值之前的這一個區間，稱為「暫時性死區（TDZ）」。</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://blog.techbridge.cc/2018/11/10/javascript-hoisting/">我知道你懂 hoisting，可是你了解到多深？</a></p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>hoisting</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript 筆記 - 迴圈</title>
+    <url>/2022-10-07-javascript-loop/</url>
+    <content><![CDATA[<p>雖然 for 迴圈能做到的事情，陣列方法中的 forEach 幾乎都能做到，但基於好奇心，還是想理解一下迴圈是怎麼運作的。</p>
+<span id="more"></span>
+
+<hr>
+<div class="toc">
+<p class="toc-title">目錄：</p>
+
+<ul>
+<li><a href="#for">for</a></li>
+<li><a href="#while">while</a></li>
+<li><a href="#break-%E8%88%87-continue">break 與 continue</a></div></li>
+</ul>
+<p class="first-text-not-title">迴圈（Loop）指的就是不斷重複做一件事情，當條件滿足就執行一次，一直到不符合條件就終止迴圈，常見的迴圈有 for、while，還有一個 do...while，不過這篇筆記先不提。</p>
+
+
+<h2 id="for"><a href="#for" class="headerlink" title="for"></a>for</h2><p>範例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> step = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">10</span>; i++) &#123;<br>  step += i;<br>  <span class="hljs-built_in">console</span>.log(i); <span class="hljs-comment">// 0, 1, 2...10</span><br>&#125;<br><span class="hljs-built_in">console</span>.log(step); <span class="hljs-comment">// 55</span><br></code></pre></td></tr></table></figure>
+
+<p>for 迴圈小括號中的 <code>i</code> 是一個變數，而左到右依序分別代表<strong>初始值</strong>、<strong>條件</strong>以及<strong>結束時的變動</strong>，以範例來說，<code>i</code> 從 <code>0</code> 開始，如果  <code>i &lt;= 10</code> 條件為 true，就執行大括號<code>&#123;&#125;</code>裡面的程式碼，執行結束後 <code>i</code> 就加 <code>1</code>，反覆循環直到條件為 false 時，就跳出迴圈。</p>
+<p>使用 for 迴圈需要注意小括號中的變數 <code>i</code>，盡可能都使用 <code>let</code> 來宣告，如果用 <code>var</code> 宣告，則變數 <code>i</code> 的作用域就不會在 for 迴圈的大括號裡面。</p>
+<h2 id="while"><a href="#while" class="headerlink" title="while"></a>while</h2><p>範例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">while</span>(i &lt;= <span class="hljs-number">10</span>) &#123;<br>  <span class="hljs-built_in">console</span>.log(i); <span class="hljs-comment">// 0, 1, 2...10</span><br>  i ++;<br>&#125;<br><span class="hljs-built_in">console</span>.log(i); <span class="hljs-comment">// 11</span><br></code></pre></td></tr></table></figure>
+
+<p>while 迴圈比較直白，可以將一個變數放入小括號中進行條件判斷，當判斷為 true 時，就執行大括號 <code>&#123;&#125;</code> 中的程式碼，而結束時的變動需加入執行的程式碼當中，如大括號中的 <code>i ++</code>。</p>
+<blockquote>
+<p>無論是使用 for 還是 white，終止迴圈的條件都要多加留意，以避免造成無窮迴圈，無窮迴圈意味著你的迴圈永遠不會終止，以上面 white 迴圈為例，如果不加上 <code>i ++</code>，每次判斷都會是 true。</p>
+</blockquote>
+<h2 id="break-與-continue"><a href="#break-與-continue" class="headerlink" title="break 與 continue"></a>break 與 continue</h2><p>雖然迴圈可以重複執行程式碼，但是有時候可能會希望迴圈在達到某個目的時，就終止迴圈而非一路執行到底，此時就可以使用 break 或是 continue，通常會搭配 if 一起使用。</p>
+<h3 id="break"><a href="#break" class="headerlink" title="break"></a>break</h3><p>break 能夠直接終止迴圈，以下面程式碼為例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> numList = [<span class="hljs-number">9</span>,<span class="hljs-number">5</span>,<span class="hljs-number">12</span>,<span class="hljs-number">21</span>,<span class="hljs-number">7</span>,<span class="hljs-number">11</span>,<span class="hljs-number">16</span>];<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt;= numList.length-<span class="hljs-number">1</span>; i++) &#123;<br>  <span class="hljs-keyword">if</span>(i % <span class="hljs-number">3</span> === <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-built_in">console</span>.log(numList[i]);<br>    <span class="hljs-keyword">break</span>;<br>  &#125;<br>&#125;<br><span class="hljs-comment">// 9</span><br></code></pre></td></tr></table></figure>
+
+<p>找出陣列中第一個能夠被 3 整除的數字，找到後終止迴圈。</p>
+<h3 id="continue"><a href="#continue" class="headerlink" title="continue"></a>continue</h3><p>continue 可以在執行迴圈的過程中，跳過一些指定特定的條件：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> numList = [<span class="hljs-number">9</span>,<span class="hljs-number">5</span>,<span class="hljs-number">12</span>,<span class="hljs-number">21</span>,<span class="hljs-number">7</span>,<span class="hljs-number">11</span>,<span class="hljs-number">16</span>];<br><span class="hljs-keyword">const</span> newAry = [];<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt;= numList.length-<span class="hljs-number">1</span>; i++) &#123;<br>  <span class="hljs-keyword">if</span>(i % <span class="hljs-number">3</span> === <span class="hljs-number">0</span>) &#123;<br>    newAry.push(numList[i]);<br>    <span class="hljs-keyword">continue</span>;<br>  &#125;<br>&#125;<br><span class="hljs-built_in">console</span>.log(newAry); <span class="hljs-comment">// [9, 21, 16]</span><br></code></pre></td></tr></table></figure>
+
+<p>將陣列 <code>numList</code> 中符合 3 的倍數的項目篩選出來，再依序加入新陣列 <code>newAry</code> 中。</p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>note</tag>
+        <tag>loop</tag>
       </tags>
   </entry>
   <entry>
@@ -986,75 +1054,6 @@
       </categories>
       <tags>
         <tag>array</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript 觀念 - 提升</title>
-    <url>/2022-09-24-javascript-hoisting/</url>
-    <content><![CDATA[<p>ES6 前後的 Hoisting 觀念筆記。</p>
-<span id="more"></span>
-<hr>
-<div class="toc">
-<p class="toc-title">目錄：</p>
-
-<ul>
-<li><a href="#%E7%94%9A%E9%BA%BC%E6%98%AF%E6%8F%90%E5%8D%87%EF%BC%9F">甚麼是提升？</a></li>
-<li><a href="#ES6-%E4%BB%A5%E5%89%8D%E7%9A%84%E6%8F%90%E5%8D%87">ES6 以前的提升</a></li>
-<li><a href="#let%E3%80%81const-%E7%9A%84%E6%8F%90%E5%8D%87">let、const 的提升</a></li>
-<li><a href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99">參考資料</a></div></li>
-</ul>
-<h2 id="甚麼是提升？"><a href="#甚麼是提升？" class="headerlink" title="甚麼是提升？"></a>甚麼是提升？</h2><p>「提升（Hoisting）」是 JavaScript 特有的一種現象，它的意思是當一個變數或函式在被宣告之前就可以被使用，並且不會出現錯誤，另外 ES6 以前都是使用 <code>var</code> 來宣告變數，與 ES6 新增的 <code>let</code>、<code>const</code> 在提升行為會也有所不同。</p>
-<h2 id="ES6-以前的提升"><a href="#ES6-以前的提升" class="headerlink" title="ES6 以前的提升"></a>ES6 以前的提升</h2><figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-comment">// ReferenceError: x is not defined</span><br></code></pre></td></tr></table></figure>
-
-<p>以上針對 <code>x</code> 取值，但是在這之前並沒有宣告一個名為 <code>x</code> 的變數，因此會找不到該變數而回報錯誤，下面是正常的做法：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> x;<br><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
-
-<p>這樣就是一個正常的流程，程式碼會從第一行開始由上往下執行，所以在使用變數之前需要先宣告變數，以確保這個變數是存在的。</p>
-<p>接著下面嘗試把第 1、2 行位置進行對調：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-keyword">var</span> x;<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
-
-<p>按照前面的說法，上述程式碼應該會回報錯誤，但是得到的結果卻是 <code>undefined</code>，而這就是提升所造成的現象，感覺像是 <code>var x</code> 這段程式碼被提升到所有程式碼之前。</p>
-<p>大多數的程式語言中，變數在被使用之前是需要先宣告的，但是 JavaScript 可以在變數宣告之前就使用該變數，不過關於提升還有一些注意事項，就是會被提升的只有<strong>宣告的行為</strong>，值的指派並不會被提升，以下面程式碼為例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> x = <span class="hljs-number">7</span>; <span class="hljs-comment">// 宣告變數並指派值</span><br><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-comment">// 7</span><br></code></pre></td></tr></table></figure>
-
-<p>範例跟前面的相同，只是多了一個指派數值的動作，而最後也印出預期的結果，這個時候如果再將 1、2 行位置進行對調，印出的結果會是 <code>7</code> 嗎？</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(x);<br><span class="hljs-keyword">var</span> x = <span class="hljs-number">7</span>;<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
-
-<p>答案是 <code>undefined</code>，照理來說宣告的變數會被提升，可是得到的結果卻不是 <code>7</code>，原因其實就如前面提到的，會被提升的只有宣告的動作，而範例中宣告的動作指的是 <code>var x</code>，後方的 <code>= 7</code> 屬於值的指派，並不會跟著宣告一起被提升。</p>
-<p>但是結果為甚麼會是 <code>undefined</code>？原因在於 JavaScript 在開始執行你撰寫的程式碼之前，會先把所有宣告的變數、一般函式都預留一個記憶體空間，但不會馬上指派值給變數，這個預留記憶體空間的動作就是提升，到這邊為止屬於「創造階段」，而這個階段結束之後，變數才會被賦值，這個賦值的過程則是「執行階段」，<code>undefined</code> 就是變數在創造階段建立記憶體空間時，預設給定的初始值。</p>
-<p>可以將上面的程式碼運作流程理解成以下形式：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> x; <span class="hljs-comment">// 宣告變數（會被提升）</span><br><span class="hljs-built_in">console</span>.log(x);<br>x = <span class="hljs-number">7</span>; <span class="hljs-comment">// 指派值</span><br></code></pre></td></tr></table></figure>
-
-<p>目前為止已經知道會被提升的只有宣告的動作，但是除了變數之外，一般的函式宣告也會被提升，以下面程式碼為例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">fn();<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// hello</span><br></code></pre></td></tr></table></figure>
-
-<p>嘗試在函式被宣告之前呼叫，也可以順利執行且不會回報錯誤，因為這是一般的函式宣告（具名函式），整個函式都會被提升，因此就可以在函式宣告之前呼叫。</p>
-<p>那匿名函式就不會被提升嗎？答案是會，下面嘗試將範例改成以匿名函式的方式建立：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">fn();<br><span class="hljs-keyword">var</span> fn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// TypeError: fn is not a function</span><br></code></pre></td></tr></table></figure>
-
-<p>結果出現錯誤了，不過是不是與 <code>var</code> 宣告的變數很像？其實概念是一樣的，這裡的程式碼確實有被提升，但是被提升的只有變數的宣告 <code>var fn</code>，函式的資料在執行階段才會指派給變數 <code>fn</code>，此時的 <code>fn</code> 的值為 <code>undefined</code>，而 <code>undefined</code> 並非函式因此呼叫的行為就會回報錯誤。</p>
-<p>雖然無法呼叫，但是能透過變數取值來驗證上述說法：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(fn);<br><span class="hljs-keyword">var</span> fn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
-
-<p>而程式碼實際運作流程就像下面這樣：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> fn;<br><span class="hljs-built_in">console</span>.log(fn);<br>fn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>總結來說，JavaScript 中的「提升（Hoisting）」指的是宣告變數的提升，而值的賦予並不會提升；此外，提升並不會變更程式碼的位置，只是感覺像是整段程式碼被移動到最上方。</p>
-<h2 id="let、const-的提升"><a href="#let、const-的提升" class="headerlink" title="let、const 的提升"></a>let、const 的提升</h2><p>關於 <code>let</code>、<code>const</code> 有沒有提升行為，一開始我自己也是透過以下方法來作結論的：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// ReferenceError: a is not defined</span><br><span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure>
-
-<p>原本看到上面的結果，是認為 <code>let</code>、<code>const</code> 沒有提升行為的，直到看到一篇文章寫了下面這段程式碼：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fnA</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(a);<br>  <span class="hljs-keyword">let</span> a = <span class="hljs-number">100</span>;<br>&#125;<br>fnA();<br><span class="hljs-comment">// ReferenceError: Cannot access &#x27;a&#x27; before initialization</span><br></code></pre></td></tr></table></figure>
-
-<p>可以看到在函式 <code>fnA</code> 裡面，嘗試在變數 <code>a</code> 被宣告之前取值，照理來說，如果 <code>let</code> 沒有提升行為，第 3 行的變數 <code>a</code> 應該會指向到函式外層的變數 <code>a</code>，因此印出結果應該是 <code>1</code> 才對，但是最終卻得到 <code>Cannot access &#39;a&#39; before initialization</code> 的錯誤訊息，而這就證明了 <code>let</code> 是有提升行為的，只是不允許在變數宣告之前被存取。</p>
-<p>而前面提到 <code>var</code> 在提升時，也就是創造階段預設會給定初始值 <code>undefined</code>，而 <code>let</code>、<code>const</code> 則不會，所以在變數實際賦值前嘗試存取就會出現上面的錯誤，而提升後到賦值之前的這一個區間，稱為「暫時性死區（TDZ）」。</p>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://blog.techbridge.cc/2018/11/10/javascript-hoisting/">我知道你懂 hoisting，可是你了解到多深？</a></p>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>hoisting</tag>
       </tags>
   </entry>
   <entry>
@@ -1476,6 +1475,131 @@
       </categories>
       <tags>
         <tag>promise</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>初見 JSON Server</title>
+    <url>/2022-11-13-json-server/</url>
+    <content><![CDATA[<p>使用 JSON Server 建立 RESTful API。</p>
+<span id="more"></span>
+
+<hr>
+<div class="toc">
+<p class="toc-title">目錄：</p>
+
+<ul>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#RESTful-API-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5">RESTful API 基本概念</a></li>
+<li><a href="%E5%AE%89%E8%A3%9D-JSON-Server">安裝 JSON Server</a></li>
+<li><a href="#%E5%BB%BA%E7%AB%8B%E8%B3%87%E6%96%99%E5%BA%AB">建立資料庫</a></li>
+<li><a href="#JSON-Server-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85">JSON Server 注意事項</a></li>
+<li><a href="#%E7%99%BC%E9%80%81%E8%AB%8B%E6%B1%82%EF%BC%88axios-%E7%82%BA%E4%BE%8B%EF%BC%89">發送請求（axios 為例）</a></li>
+<li><a href="#GET-%E5%8F%96%E5%BE%97%E8%B3%87%E6%96%99">GET 取得資料</a></li>
+<li><a href="#%E6%8C%87%E5%AE%9A-Port">指定 Port</a></li>
+<li><a href="#%E6%96%B0%E5%A2%9E%E9%9D%9C%E6%85%8B%E7%B6%B2%E9%A0%81">新增靜態網頁</a></li>
+<li><a href="#%E8%B3%87%E6%96%99%E6%93%8D%E4%BD%9C">資料操作</a></div></li>
+</ul>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><a href="https://github.com/typicode/json-server">JSON Server</a> 可以快速建立一個虛擬的資料庫，很適合前端菜鳥用於作品集，但是實務上正式的資料庫則完全不建議用此方法來建立。</p>
+<h2 id="RESTful-API-基本概念"><a href="#RESTful-API-基本概念" class="headerlink" title="RESTful API 基本概念"></a>RESTful API 基本概念</h2><p>REST 完整名稱 Representational State Transfer（表現層狀態轉移），只是一種設計風格，RESTful 只是轉換成形容詞，而 RESTful API 可以理解成以 REST 規範所設計的 API，實際上並沒有任何特殊功能。</p>
+<p>以使用者資料來說，一般的 API 可能為以下形式：</p>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><code class="hljs gradle">取得全部使用者 GET     api<span class="hljs-regexp">/users/g</span>etAll<br>取得指定使用者 GET     api<span class="hljs-regexp">/users/g</span>etUser/<span class="hljs-number">1</span><br>新增一筆使用者 POST    api<span class="hljs-regexp">/users/</span>createUser<br>更新指定使用者 POST    api<span class="hljs-regexp">/users/u</span>pdateOne<br>刪除指定使用者 <span class="hljs-keyword">DELETE</span>  api<span class="hljs-regexp">/users/</span>deleteUser/<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+<p>若是依照 RESTful API 規範則是以下形式：</p>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><code class="hljs gradle">取得全部使用者 GET     api/users<br>取得指定使用者 GET     api<span class="hljs-regexp">/users/</span><span class="hljs-number">1</span><br>新增一筆使用者 POST    api/users<br>更新指定使用者 PUT     api<span class="hljs-regexp">/users/</span><span class="hljs-number">1</span><br>刪除指定使用者 <span class="hljs-keyword">DELETE</span>  api<span class="hljs-regexp">/users/</span><span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+<p>上述範例可以看到 RESTful API 都是使用相同網址路徑，只是請求的方法不同，換句話說，只需要從請求方法就能得知這個 API 是要進行 C、R、U、D 哪種操作，RESTful API 因為網址更一致，不同開發者維護上也會更清楚。</p>
+<blockquote>
+<p>CRUD 分別代表 Create、Read、Update、Delete。</p>
+</blockquote>
+<h2 id="安裝-JSON-Server"><a href="#安裝-JSON-Server" class="headerlink" title="安裝 JSON Server"></a>安裝 JSON Server</h2><p>以下使用 npm 進行全域安裝：</p>
+<figure class="highlight tex"><table><tr><td class="code"><pre><code class="hljs tex">npm install -g json-server<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>基本的 Node.js 環境本篇不討論</p>
+</blockquote>
+<h2 id="建立資料庫"><a href="#建立資料庫" class="headerlink" title="建立資料庫"></a>建立資料庫</h2><p>手動新增一個 JSON 檔案作為資料庫，如以下範例：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json">&#123;<br>  <span class="hljs-attr">&quot;users&quot;</span>: [<br>    &#123;<br>      <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Jack&quot;</span>,<br>      <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-number">1</span><br>    &#125;, &#123;<br>      <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Leo&quot;</span>,<br>      <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-number">2</span><br>    &#125;, &#123;<br>      <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Annie&quot;</span>,<br>      <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-number">3</span><br>    &#125;<br>  ]<br>&#125;<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>需要注意 JSON 格式的最外層必須是物件，並且屬性與對應的值，需要使用雙引號包覆。</p>
+</blockquote>
+<p>完成資料庫的建立後，即可輸入以下指令開啟 JSON Server：</p>
+<figure class="highlight tex"><table><tr><td class="code"><pre><code class="hljs tex">json-server --watch data.json<br></code></pre></td></tr></table></figure>
+<p>指令中 <code>data</code> 為 JSON 檔案名稱（需要注意路徑是否正確），此外，如果不先建立檔案直接輸入指令，預設會產生一個 JSON 檔案，以下是預設的資料內容：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json">&#123;<br>  <span class="hljs-attr">&quot;posts&quot;</span>: [<br>    &#123; <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">&quot;title&quot;</span>: <span class="hljs-string">&quot;json-server&quot;</span>, <span class="hljs-attr">&quot;author&quot;</span>: <span class="hljs-string">&quot;typicode&quot;</span> &#125;<br>  ],<br>  <span class="hljs-attr">&quot;comments&quot;</span>: [<br>    &#123; <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">&quot;body&quot;</span>: <span class="hljs-string">&quot;some comment&quot;</span>, <span class="hljs-attr">&quot;postId&quot;</span>: <span class="hljs-number">1</span> &#125;<br>  ],<br>  <span class="hljs-attr">&quot;profile&quot;</span>: &#123; <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;typicode&quot;</span> &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>接著成功開啟 JSON Server 之後，終端機會回應以下資訊：</p>
+<p><img src="https://i.imgur.com/85TEwvP.png"></p>
+<p><code>Resources</code> 會對應 JSON 物件下的每個屬性，<code>Home</code> 下方的 <code>localhost:3000</code> 為伺服器的路徑，嘗試從瀏覽器網址列輸入該路徑就會進入預設的首頁：</p>
+<p><img src="https://i.imgur.com/W1eiz2E.png"></p>
+<p>頁面中 Resources 下方可以看到 <code>/users</code> 的連結，進入連結後會看到一開始新增的資料（下圖），而這個網址就是我們能操作的 RESTful API。</p>
+<p><img src="https://i.imgur.com/mPb5kqL.png"></p>
+<h2 id="JSON-Server-注意事項"><a href="#JSON-Server-注意事項" class="headerlink" title="JSON Server 注意事項"></a>JSON Server 注意事項</h2><ul>
+<li>Content-Type 只支援 applicetion/json</li>
+<li>所有 <code>POST</code>、<code>PUT</code>、<code>PATCH</code>、<code>DELETE</code> 操作都會自動儲存 json 檔案，建議將原資料先備份</li>
+<li>預設支援 CORS 與 JSONP 協定（對所有來源開放）</li>
+<li>每筆資料都會有 <code>id</code> 屬性，該屬性新增後無法再變更</li>
+<li>終端機輸入 <code>s</code> 並按下 Enter 會建立一個 json 檔案，內容與黨前資料庫相同</li>
+</ul>
+<h2 id="發送請求（axios-為例）"><a href="#發送請求（axios-為例）" class="headerlink" title="發送請求（axios 為例）"></a>發送請求（axios 為例）</h2><p>常用的請求方法有以下幾種：</p>
+<ul>
+<li>GET：取得資料</li>
+<li>POST：新增資料</li>
+<li>PUT：修改完整資料</li>
+<li>PATCH：修改局部資料</li>
+<li>DELETE：刪除資料</li>
+</ul>
+<h3 id="GET-取得資料"><a href="#GET-取得資料" class="headerlink" title="GET 取得資料"></a>GET 取得資料</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">axios(<span class="hljs-string">&#x27;http://localhost:3000/users&#x27;</span>)<br>  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(res)<br>  &#125;)<br>  .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(err)  <br>  &#125;)<br></code></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/kt1gKua.png"></p>
+<p>可以看到回傳結果 <code>data</code> 資料與 JSON Server 內容相同。</p>
+<h3 id="POST-新增資料"><a href="#POST-新增資料" class="headerlink" title="POST 新增資料"></a>POST 新增資料</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs htmlembedded">&lt;input type=&quot;text&quot; placeholder=&quot;輸入名稱&quot; id=&quot;userName&quot;&gt;<br>&lt;input type=&quot;button&quot; value=&quot;新增使用者資料&quot; id=&quot;createBtn&quot;&gt;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> userName = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&#x27;#userName&#x27;</span>);<br>addUserBtn.addEventListener(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> addUserBtn = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&#x27;#createBtn&#x27;</span>);<br>  axios(&#123;<br>    <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;http://localhost:3000/users&#x27;</span>,<br>    <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;post&#x27;</span>,<br>    <span class="hljs-attr">data</span>: &#123;<br>      <span class="hljs-attr">name</span>: userName.value<br>    &#125;<br>  &#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(res)<br>  &#125;).catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(err)<br>  &#125;)<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>當點擊 <code>新增使用者資料</code> 按鈕之後，進入 <code>http://localhost:3000/users</code> 可以看到資料新增進去了（下圖），也可以開啟 data.json 檔案，結果會相同。</p>
+<p><img src="https://i.imgur.com/bYHat3x.png"></p>
+<h3 id="PUT-修改資料"><a href="#PUT-修改資料" class="headerlink" title="PUT 修改資料"></a>PUT 修改資料</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs htmlembedded">&lt;input type=&quot;text&quot; placeholder=&quot;輸入修改 ID&quot; id=&quot;userId&quot;&gt;<br>&lt;input type=&quot;text&quot; placeholder=&quot;輸入修改名稱&quot; id=&quot;userName&quot;&gt;<br>&lt;input type=&quot;button&quot; value=&quot;更新使用者資料&quot; id=&quot;updateBtn&quot;&gt;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> updataBtn = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&#x27;#updateBtn&#x27;</span>);<br>updateBtn.addEventListener(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> userId = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&#x27;#userId&#x27;</span>);<br>  <span class="hljs-keyword">const</span> userName = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&#x27;#userName&#x27;</span>);<br>  axios(&#123;<br>    <span class="hljs-attr">url</span>: <span class="hljs-string">`http://localhost:3000/users/<span class="hljs-subst">$&#123;userId.value&#125;</span>`</span>,<br>    <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;put&#x27;</span>,<br>    <span class="hljs-attr">data</span>: &#123;<br>      <span class="hljs-attr">name</span>: userName.value<br>    &#125;<br>  &#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(res)<br>  &#125;).catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(err)<br>  &#125;)<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h3 id="DELETE-刪除資料"><a href="#DELETE-刪除資料" class="headerlink" title="DELETE 刪除資料"></a>DELETE 刪除資料</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs htmlembedded">&lt;input type=&quot;text&quot; placeholder=&quot;輸入刪除IDID&quot; id=&quot;deleteId&quot;&gt;<br>&lt;input type=&quot;button&quot; value=&quot;刪除使用者資料&quot; id=&quot;deleteBtn&quot;&gt;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> deleteBtn = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&#x27;#deleteBtn&#x27;</span>);<br>deleteBtn.addEventListener(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> userId = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&#x27;#userId&#x27;</span>);<br>  axios(&#123;<br>    <span class="hljs-attr">url</span>: <span class="hljs-string">`http://localhost:3000/users/<span class="hljs-subst">$&#123;userId.value&#125;</span>`</span>,<br>    <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;delete&#x27;</span><br>  &#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(res)<br>  &#125;).catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(err)<br>  &#125;)<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>輸入 <code>2</code> 並點擊 <code>刪除使用者資料</code> 按鈕之後，<code>id</code> 為 <code>2</code> 的資料就被刪除了（下圖）。</p>
+<p><img src="https://i.imgur.com/MBohFtZ.png"></p>
+<h2 id="指定-Port"><a href="#指定-Port" class="headerlink" title="指定 Port"></a>指定 Port</h2><p>JSON Server 預設使用 <code>localhost:3000</code>，若有變更需求可以在終端機入以下指令：</p>
+<figure class="highlight tex"><table><tr><td class="code"><pre><code class="hljs tex">json-server --watch xxx.json --port 指定的號碼<br></code></pre></td></tr></table></figure>
+
+<h2 id="新增靜態網頁"><a href="#新增靜態網頁" class="headerlink" title="新增靜態網頁"></a>新增靜態網頁</h2><p>只需要在資料夾目錄建立一個 public 資料夾，再將所有靜態檔案放入資料夾裡面即可，而預設的首頁檔名為 <code>index.html</code>。</p>
+<h2 id="資料操作"><a href="#資料操作" class="headerlink" title="資料操作"></a>資料操作</h2><p>透過網址也能對資料進行各種操作：</p>
+<ul>
+<li>搜索資料（全部內容）</li>
+</ul>
+<figure class="highlight tex"><table><tr><td class="code"><pre><code class="hljs tex">http://localhost:3000/users?q=Cliff<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>篩選資料（指定內容）</li>
+</ul>
+<figure class="highlight tex"><table><tr><td class="code"><pre><code class="hljs tex">http://localhost:3000/users?name=&quot;Cliff&quot;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>資料分頁</li>
+</ul>
+<figure class="highlight tex"><table><tr><td class="code"><pre><code class="hljs tex">http://localhost:3000/users?<span class="hljs-built_in">_</span>page=5<span class="hljs-built_in">&amp;</span>limit=3<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>資料排序</li>
+</ul>
+<figure class="highlight tex"><table><tr><td class="code"><pre><code class="hljs tex">http://localhost:3000/users?<span class="hljs-built_in">_</span>sort=id<span class="hljs-built_in">&amp;</span><span class="hljs-built_in">_</span>order=DESC<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>更多操作方式請參閱<a href="https://github.com/typicode/json-server">官方文件</a>。</p>
+</blockquote>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://github.com/typicode/json-server">JSON Server Github</a><br><a href="https://www.youtube.com/watch?v=uFKa4xrc42c">Will 保哥 - 線上直播</a></p>
+]]></content>
+      <categories>
+        <category>Package</category>
+      </categories>
+      <tags>
+        <tag>JSON Server</tag>
+        <tag>RESTful API</tag>
       </tags>
   </entry>
   <entry>

@@ -68,7 +68,85 @@ console.log(obj.val, obj2.val); // 10 10
 
 此時將變數 `obj` 指派給變數 `obj2` 時，變數 `obj2` 所傳入的值，也同樣是這個存放物件 `{ val: 5 }` 的記憶體位址，而因為兩個變數都是指向同一個記憶體位址中的物件，所以當變數 `obj` 重新賦值的同時，變數 `obj2` 的值也會被修改，這種不同變數之間指向同一個記憶體位址的情況，稱為「傳參考」，或是「傳址」。
 
-## 例外情況 / Call By Sharing
+根據傳參考的特性，兩個物件因為指向同一個記憶體空間，因此當物件修改屬性值時，其他物件也會同步被修改，此時可以使用以下兩種方式來避免：
+
+- 淺拷貝：只複製物件的第一層，第二層開始還是依照傳參考特性（指向的記憶體位置相同）。
+- 深拷貝：複製物件，並且操作不影響原物件（指向的記憶體位置不同）。
+
+**淺拷貝範例一（Object.assign）：**
+
+```js
+let obj = { val: 5 };
+let obj2 = Object.assign({}, obj);
+
+obj.val = 10;
+
+console.log(obj === obj2); // false
+console.log(obj.val, obj2.val); // 10 5
+```
+
+其中一種方式是透過 `Object.assign` 來複製原物件，從上述結果可以看到 `obj2` 在修改屬性值後，原物件的屬性值仍保值不變。
+
+> [Object.assign 相關內容](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)。
+
+**淺拷貝做法二（展開運算子）：**
+
+```js
+let obj = { val: 5 };
+let obj2 = {...obj};
+
+obj.val = 10;
+
+console.log(obj === obj2); // false
+console.log(obj.val, obj2.val); // 10 5
+```
+
+另一種方式是使用 `...` 將原物件展開並複製，結果與第一種方式相同。
+
+前面有提到淺拷貝只會複製物件第一層，第二層開始還是還是只向相同的記憶體位置，如下方範例：
+
+```js
+const person = {
+  name: 'Alen',
+  info: {
+    height: 170,
+    weight: 72
+  }
+};
+const person2 = {...person};
+person2.info.age = 20;
+
+console.log(person === person2); // false（第一層）
+console.log(person.info === person2.info); // true（第二層）
+console.log(person.info, person2.info); // {height: 170, weight: 72, age: 20} {height: 170, weight: 72, age: 20}
+// 變數的記憶體指向位置：person（0x001）、person.info（0x001）、person2（0x002）
+```
+
+此時，可以使用深拷貝。
+
+**深拷貝範例：**
+
+```js
+const person = {
+  name: 'Alen',
+  info: {
+    height: 170,
+    weight: 72
+  }
+};
+
+const person2 = JSON.parse(JSON.stringify(person));
+
+person2.info.age = 20;
+
+console.log(person === person2); // false（第一層）
+console.log(person.info === person2.info); // false（第二層）
+console.log(person.info, person2.info); // {height: 170, weight: 72} {height: 170, weight: 72, age: 20}
+```
+
+深拷貝是使用 `JSON.stringify` 先將物件轉為純字串，再使用 `JSON.parse` 將純字串轉為物件，而從結果可以得知，因為兩物件的記憶體指向不同，因此物件修改屬性值後，原物件也不會受影響。
+
+## Call By Sharing
 
 ```js
 let obj = {
@@ -109,7 +187,6 @@ console.log(obj === obj2); // false（重新指向後，兩個變數不再有參
 函式外的變數 `obj` 作為參數傳入函式，接著在函式內進行重新賦值的行為，這代表函式內的 `par` 會重新指向一個新物件，而不是指向與函式外的 `obj` 相同的記憶體位址，示意圖如下：
 
 ![](https://i.imgur.com/pZvGtHV.png)
-
 
 以上情況非傳值（Call By Value）、也不屬於傳參考（Call By Reference），因此就衍生出了 Call By Sharing 的說法。
 
